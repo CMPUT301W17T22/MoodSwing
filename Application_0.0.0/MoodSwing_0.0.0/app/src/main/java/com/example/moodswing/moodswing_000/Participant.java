@@ -9,9 +9,7 @@ import java.util.ArrayList;
  */
 
 public class Participant extends User {
-    //might only need one of the following lists depending on implementation
-    private ArrayList<Participant> following = new ArrayList<Participant>();
-    private ArrayList<Participant> followers = new ArrayList<Participant>();
+    private FollowingList followingList = new FollowingList();
 
     public Participant(String username){
         this.username = username;
