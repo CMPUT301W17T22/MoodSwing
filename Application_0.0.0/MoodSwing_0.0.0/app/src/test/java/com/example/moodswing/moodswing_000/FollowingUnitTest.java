@@ -17,7 +17,7 @@ public class FollowingUnitTest {
         assertTrue(participant1.followingList.getPending().isEmpty());
         assertTrue(participant1.followingList.getFollowing().isEmpty());
 
-        participant1.followingList.addParticipant(participant2);
+        participant1.followingList.followParticipant(participant2);
         assertEquals(participant1.followingList.getPending().get(0), participant2);
         assertTrue(participant1.followingList.getFollowing().isEmpty());
     }
@@ -27,8 +27,8 @@ public class FollowingUnitTest {
         Participant participant1 = new Participant("participant1");
         Participant participant2 = new Participant("participant2");
 
-        participant1.followingList.addParticipant(participant2);
-        participant1.followingList.approveParticipant(participant2);
+        participant1.followingList.followParticipant(participant2);
+        participant1.followingList.approveFollowRequest(participant2);
         assertTrue(participant1.followingList.getPending().isEmpty());
         assertEquals(participant1.followingList.getFollowing().get(0), participant2);
     }*/

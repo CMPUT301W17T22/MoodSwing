@@ -10,9 +10,10 @@ import java.util.ArrayList;
  */
 
 public class Participant extends User {
-    //TODO: refactor so that followingList is not public. Either add access methods or change OO implementation.
     //These are the participants that are requesting to follow this.participant
     private ArrayList<FollowRequest> followRequests = new ArrayList<FollowRequest>();
+    private ArrayList<Participant> pending = new ArrayList<Participant>();
+    private ArrayList<Participant> following = new ArrayList<Participant>();
 
     public Participant(String username){
         this.username = username;
@@ -22,32 +23,28 @@ public class Participant extends User {
         followRequests.add(new FollowRequest(requestingParticipant, this));
     }
 
-    //new code
+    public void removeFollowRequest(Participant requestingParticipant){
+        //TODO: make this actually work. Below statement might not work.
+        followRequests.remove(new FollowRequest(requestingParticipant, this));
+    }
 
-    private ArrayList<Participant> pending = new ArrayList<Participant>();
-    private ArrayList<Participant> following = new ArrayList<Participant>();
-    //TODO: implement blocking if time allows. This is beyond the project specification.
-    //this collection will not have a getter.
-    private ArrayList<Participant> blocked = new ArrayList<Participant>();
-
-    public void addParticipant(Participant participant){
+    public void followParticipant(Participant participant){
         if(pending.contains(participant) || following.contains(participant)){
             throw new InvalidParameterException();
         }
-        //TODO: create new follow request
-        //participant.requestFollow(); //need to pass requesting participant
+        participant.requestFollow(this);
         pending.add(participant);
     }
 
+    //TODO: rename the following 2 methods.
     public boolean removeParticipant(Participant participant){
         return(pending.remove(participant) | following.remove(participant));
     }
-
-    public boolean declineParticipant(Participant participant){
+    public boolean declineFollowRequest(Participant participant){
         return removeParticipant(participant);
     }
 
-    public void approveParticipant(Participant participant){
+    public void approveFollowRequest(Participant participant){
         if(pending.contains(participant)){
             pending.remove(participant);
             if(following.contains(participant)){

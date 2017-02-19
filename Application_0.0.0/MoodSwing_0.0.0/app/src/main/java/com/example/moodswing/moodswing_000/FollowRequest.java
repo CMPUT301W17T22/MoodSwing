@@ -14,6 +14,17 @@ public class FollowRequest {
     }
 
     public void confirmRequest(){
-        requestingParticipant.followingList.approveParticipant(receivingParticipant);
+        requestingParticipant.approveFollowRequest(receivingParticipant);
+        receivingParticipant.removeFollowRequest(receivingParticipant);
+    }
+
+    public void declineRequest(){
+        requestingParticipant.declineFollowRequest(receivingParticipant);
+        receivingParticipant.removeFollowRequest(receivingParticipant);
+    }
+
+    public void blockRequest(){
+        //do nothing with requestingParticipant. Therefore requestingParticipant cannot re-request.
+        receivingParticipant.removeFollowRequest(receivingParticipant);
     }
 }
