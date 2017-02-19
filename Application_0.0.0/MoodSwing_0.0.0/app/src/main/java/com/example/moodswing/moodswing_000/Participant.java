@@ -22,8 +22,13 @@ public class Participant extends User {
     }
 
     public void removeFollowRequest(Participant requestingParticipant){
-        //TODO: make this actually work. Below statement might not work.
-        followRequests.remove(new FollowRequest(requestingParticipant, this));
+        //TODO: This doesn't work.
+        //TODO: Using a hash may be a cleaner solution?
+        for(FollowRequest followRequest : followRequests){
+            if(followRequest.getRequestingParticipant().equals(requestingParticipant)){
+                followRequests.remove(followRequest);
+            }
+        }
     }
 
     public void followParticipant(Participant participant){

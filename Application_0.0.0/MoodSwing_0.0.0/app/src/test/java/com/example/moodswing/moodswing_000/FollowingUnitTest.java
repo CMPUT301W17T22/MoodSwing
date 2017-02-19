@@ -43,7 +43,7 @@ public class FollowingUnitTest {
         participant1.followParticipant(participant2);
         assertTrue(participant2.getFollowRequests().get(0).equals(new FollowRequest(participant1, participant2)));
 
-        participant1.approveFollowRequest(participant2);
+        participant2.getFollowRequests().get(0).confirmRequest();
         assertTrue(participant2.getFollowRequests().isEmpty());
     }
 }

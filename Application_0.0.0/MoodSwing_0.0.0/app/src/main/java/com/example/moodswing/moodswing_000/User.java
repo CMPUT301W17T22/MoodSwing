@@ -10,4 +10,16 @@ public abstract class User {
     public String getUsername() {
         return username;
     }
+
+    @Override
+    public boolean equals(Object otherObject){
+        if(this == otherObject){
+            return true;
+        }
+        if(!(otherObject instanceof FollowRequest)){
+            return false;
+        }
+        User otherUser = (User) otherObject;
+        return(this.username == otherUser.username);
+    }
 }
