@@ -18,7 +18,7 @@ public class MoodEventUnitTest {
     @Test
     public void testBasicMoodEvent(){
         EmotionalState emotionalState = new EmotionalState("happy","somewhere", Color.BLACK);
-        MoodEvent moodEvent = new MoodEvent(emotionalState, null, null, null, null);
+        MoodEvent moodEvent = new MoodEvent(emotionalState, null, null, null, false);
 
         assertEquals(moodEvent.getEmotionalState(), emotionalState);
         //This might not work?
@@ -36,7 +36,7 @@ public class MoodEventUnitTest {
         SocialSituation socialSituation = new SocialSituation("so popular", "somewhere");
         String photoLoaction = "somewhere else";
         //TODO: add location, pass as parameter, and test
-        MoodEvent moodEvent = new MoodEvent(emotionalState, trigger, socialSituation, photoLoaction, null);
+        MoodEvent moodEvent = new MoodEvent(emotionalState, trigger, socialSituation, photoLoaction, true);
 
         assertEquals(moodEvent.getEmotionalState(), emotionalState);
         //TODO: test date
