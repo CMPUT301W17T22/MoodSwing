@@ -11,10 +11,20 @@ import static org.junit.Assert.*;
 public class FollowingUnitTest {
     @Test
     public void testCreateFollowRequest(){
-        assertTrue(false);
-
+        //TODO: finish
         Participant participant1 = new Participant("participant1");
         Participant participant2 = new Participant("participant2");
-        participant1.createFollowRequest(participant2);
+        assertTrue(participant1.followingList.getPending().isEmpty());
+        assertTrue(participant1.followingList.getFollowing().isEmpty());
+
+        participant1.followingList.addParticipant(participant2);
+        assertTrue(participant1.followingList.getPending().get(0) == participant2);
+        assertTrue(participant1.followingList.getFollowing().isEmpty());
+    }
+
+    @Test
+    public void testConfirmFollowRequest(){
+        //TODO: finish
+        assertTrue(false);
     }
 }

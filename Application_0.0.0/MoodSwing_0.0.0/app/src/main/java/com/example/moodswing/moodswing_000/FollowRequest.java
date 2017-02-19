@@ -14,6 +14,6 @@ public class FollowRequest {
     }
 
     public void confirmRequest(){
-        requestingParticipant.confirmFollowRequest(receivingParticipant);
+        requestingParticipant.followingList.approveParticipant(receivingParticipant);
     }
 }

@@ -39,4 +39,12 @@ public class FollowingList {
             throw new InvalidParameterException();
         }
     }
+
+    public ArrayList<Participant> getPending() {
+        return pending;
+    }
+
+    public ArrayList<Participant> getFollowing() {
+        return following;
+    }
 }

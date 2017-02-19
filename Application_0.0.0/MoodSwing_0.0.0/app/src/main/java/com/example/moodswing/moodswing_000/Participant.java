@@ -9,13 +9,14 @@ import java.util.ArrayList;
  */
 
 public class Participant extends User {
-    private FollowingList followingList = new FollowingList();
+    //TODO: refactor so that this is not public. Either add access methods or change OO implementation.
+    public FollowingList followingList = new FollowingList();
 
     public Participant(String username){
         this.username = username;
     }
 
-    public void confirmFollowRequest(Participant participant){
+    /*public void confirmFollowRequest(Participant participant){
         followingList.approveParticipant(participant);
     }
 
@@ -25,5 +26,5 @@ public class Participant extends User {
 
     public void createFollowRequest(Participant participant){
         followingList.addParticipant(participant);
-    }
+    }*/
 }
