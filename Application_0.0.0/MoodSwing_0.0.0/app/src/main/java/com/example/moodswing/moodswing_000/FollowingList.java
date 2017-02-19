@@ -10,6 +10,9 @@ import java.util.ArrayList;
 public class FollowingList {
     private ArrayList<Participant> pending = new ArrayList<Participant>();
     private ArrayList<Participant> following = new ArrayList<Participant>();
+    //TODO: implement blocking if time allows. This is beyond the project specification.
+    //this collection will not have a getter.
+    private ArrayList<Participant> blocked = new ArrayList<Participant>();
 
     public FollowingList(){}
 
@@ -18,11 +21,16 @@ public class FollowingList {
             throw new InvalidParameterException();
         }
         //TODO: create new follow request
+        //participant.requestFollow(); //need to pass requesting participant
         pending.add(participant);
     }
 
     public boolean removeParticipant(Participant participant){
         return(pending.remove(participant) | following.remove(participant));
+    }
+
+    public boolean declineParticipant(Participant participant){
+        return removeParticipant(participant);
     }
 
     public void approveParticipant(Participant participant){

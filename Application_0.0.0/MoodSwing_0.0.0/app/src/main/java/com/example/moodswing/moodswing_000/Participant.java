@@ -22,16 +22,4 @@ public class Participant extends User {
     public void requestFollow(Participant requestingParticipant){
         followRequests.add(new FollowRequest(requestingParticipant, this));
     }
-
-    /*public void confirmFollowRequest(Participant participant){
-        followingList.approveParticipant(participant);
-    }
-
-    public void denyFollowRequest(Participant participant){
-        followingList.removeParticipant(participant);
-    }
-
-    public void createFollowRequest(Participant participant){
-        followingList.addParticipant(participant);
-    }*/
 }
