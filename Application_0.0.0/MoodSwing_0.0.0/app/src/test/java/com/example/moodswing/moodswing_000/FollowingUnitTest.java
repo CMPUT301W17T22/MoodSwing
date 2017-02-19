@@ -41,7 +41,7 @@ public class FollowingUnitTest {
         assertTrue(participant2.getFollowRequests().isEmpty());
 
         participant1.followParticipant(participant2);
-        assertEquals(participant2.getFollowRequests().get(0), new FollowRequest(participant1, participant2));
+        assertTrue(participant2.getFollowRequests().get(0).equals(new FollowRequest(participant1, participant2)));
 
         participant1.approveFollowRequest(participant2);
         assertTrue(participant2.getFollowRequests().isEmpty());

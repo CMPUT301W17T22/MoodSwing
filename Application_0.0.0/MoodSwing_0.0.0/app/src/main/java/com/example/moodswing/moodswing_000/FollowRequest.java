@@ -27,4 +27,25 @@ public class FollowRequest {
         //do nothing with requestingParticipant. Therefore requestingParticipant cannot re-request.
         receivingParticipant.removeFollowRequest(receivingParticipant);
     }
+
+    public Participant getRequestingParticipant() {
+        return requestingParticipant;
+    }
+
+    public Participant getReceivingParticipant() {
+        return receivingParticipant;
+    }
+
+    @Override
+    public boolean equals(Object otherObject){
+        if(this == otherObject){
+            return true;
+        }
+        if(!(otherObject instanceof FollowRequest)){
+            return false;
+        }
+        FollowRequest otherFollowRequest = (FollowRequest) otherObject;
+        return(this.getReceivingParticipant().getUsername() == otherFollowRequest.getReceivingParticipant().getUsername()
+                && this.getRequestingParticipant().getUsername() == otherFollowRequest.getRequestingParticipant().getUsername());
+    }
 }

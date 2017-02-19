@@ -6,4 +6,8 @@ package com.example.moodswing.moodswing_000;
 
 public abstract class User {
     protected String username;
+
+    public String getUsername() {
+        return username;
+    }
 }
