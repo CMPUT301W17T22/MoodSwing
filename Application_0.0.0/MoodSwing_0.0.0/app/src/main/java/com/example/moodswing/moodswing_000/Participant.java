@@ -1,7 +1,5 @@
 package com.example.moodswing.moodswing_000;
 
-import android.icu.text.MessagePattern;
-
 import java.security.InvalidParameterException;
 import java.util.ArrayList;
 
@@ -12,7 +10,7 @@ import java.util.ArrayList;
 public class Participant extends User {
     //These are the participants that are requesting to follow this.participant
     private ArrayList<FollowRequest> followRequests = new ArrayList<FollowRequest>();
-    private ArrayList<Participant> pending = new ArrayList<Participant>();
+    private ArrayList<Participant> pendingFollowing = new ArrayList<Participant>();
     private ArrayList<Participant> following = new ArrayList<Participant>();
 
     public Participant(String username){
@@ -29,24 +27,24 @@ public class Participant extends User {
     }
 
     public void followParticipant(Participant participant){
-        if(pending.contains(participant) || following.contains(participant)){
+        if(pendingFollowing.contains(participant) || following.contains(participant)){
             throw new InvalidParameterException();
         }
         participant.requestFollow(this);
-        pending.add(participant);
+        pendingFollowing.add(participant);
     }
 
     //TODO: rename the following 2 methods.
     public boolean removeParticipant(Participant participant){
-        return(pending.remove(participant) | following.remove(participant));
+        return(pendingFollowing.remove(participant) | following.remove(participant));
     }
     public boolean declineFollowRequest(Participant participant){
         return removeParticipant(participant);
     }
 
     public void approveFollowRequest(Participant participant){
-        if(pending.contains(participant)){
-            pending.remove(participant);
+        if(pendingFollowing.contains(participant)){
+            pendingFollowing.remove(participant);
             if(following.contains(participant)){
                 throw new InvalidParameterException();
             }
@@ -59,11 +57,15 @@ public class Participant extends User {
         }
     }
 
-    public ArrayList<Participant> getPending() {
-        return pending;
+    public ArrayList<Participant> getPendingFollowing() {
+        return pendingFollowing;
     }
 
     public ArrayList<Participant> getFollowing() {
         return following;
+    }
+
+    public ArrayList<FollowRequest> getFollowRequests() {
+        return followRequests;
     }
 }
