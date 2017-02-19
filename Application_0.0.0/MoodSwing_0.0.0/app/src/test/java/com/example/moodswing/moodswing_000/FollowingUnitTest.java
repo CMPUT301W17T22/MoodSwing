@@ -12,5 +12,9 @@ public class FollowingUnitTest {
     @Test
     public void testCreateFollowRequest(){
         assertTrue(false);
+
+        Participant participant1 = new Participant("participant1");
+        Participant participant2 = new Participant("participant2");
+        participant1.createFollowRequest(participant2);
     }
 }

@@ -11,15 +11,13 @@ public class FollowingList {
     private ArrayList<Participant> pending = new ArrayList<Participant>();
     private ArrayList<Participant> following = new ArrayList<Participant>();
 
-    public FollowingList(){
-
-    }
+    public FollowingList(){}
 
     public void addParticipant(Participant participant){
         if(pending.contains(participant) || following.contains(participant)){
             throw new InvalidParameterException();
         }
-        //TODO: create new follow request?
+        //TODO: create new follow request
         pending.add(participant);
     }
 

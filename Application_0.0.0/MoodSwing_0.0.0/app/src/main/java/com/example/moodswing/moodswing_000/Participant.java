@@ -14,4 +14,16 @@ public class Participant extends User {
     public Participant(String username){
         this.username = username;
     }
+
+    public void confirmFollowRequest(Participant participant){
+        followingList.approveParticipant(participant);
+    }
+
+    public void denyFollowRequest(Participant participant){
+        followingList.removeParticipant(participant);
+    }
+
+    public void createFollowRequest(Participant participant){
+        followingList.addParticipant(participant);
+    }
 }

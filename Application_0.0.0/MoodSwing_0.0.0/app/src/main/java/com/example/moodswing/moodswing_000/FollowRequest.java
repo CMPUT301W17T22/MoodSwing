@@ -6,10 +6,14 @@ package com.example.moodswing.moodswing_000;
 
 public class FollowRequest {
     private Participant requestingParticipant;
-    private Participant recievingParticipant;
+    private Participant receivingParticipant;
 
-    public FollowRequest(Participant requestingParticipant, Participant recievingParticipant){
+    public FollowRequest(Participant requestingParticipant, Participant receivingParticipant){
         this.requestingParticipant = requestingParticipant;
-        this.recievingParticipant = recievingParticipant;
+        this.receivingParticipant = receivingParticipant;
+    }
+
+    public void confirmRequest(){
+        requestingParticipant.confirmFollowRequest(receivingParticipant);
     }
 }
