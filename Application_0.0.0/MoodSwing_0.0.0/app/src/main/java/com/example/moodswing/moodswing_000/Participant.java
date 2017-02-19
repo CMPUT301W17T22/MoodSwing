@@ -19,6 +19,10 @@ public class Participant extends User {
         this.username = username;
     }
 
+    public void requestFollow(Participant requestingParticipant){
+        followRequests.add(new FollowRequest(requestingParticipant, this));
+    }
+
     /*public void confirmFollowRequest(Participant participant){
         followingList.approveParticipant(participant);
     }

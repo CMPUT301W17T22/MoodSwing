@@ -20,7 +20,7 @@ public class MoodEvent {
     //pass null for unused parameters
     //TODO: finish handling of null (or empty) inputs
     public MoodEvent(EmotionalState emotionalState, String trigger, SocialSituation socialSituation,
-                     String photoLocation, Location location) {
+                     String photoLocation, boolean saveLocation) {
         this.emotionalState = emotionalState;
         //automatically selects current date
         this.date = new Date();
@@ -32,7 +32,13 @@ public class MoodEvent {
         }
         this.socialSituation = socialSituation;
         this.photoLocation = photoLocation;
-        this.location = location;
+        if(saveLocation){
+            //TODO: save current location
+            this.location = null;
+        }
+        else{
+            this.location = null;
+        }
     }
 
     public EmotionalState getEmotionalState() {

@@ -5,6 +5,8 @@ import android.location.Location;
 
 import org.junit.Test;
 
+import java.util.Date;
+
 import static org.junit.Assert.*;
 
 /**
@@ -19,7 +21,8 @@ public class MoodEventUnitTest {
         MoodEvent moodEvent = new MoodEvent(emotionalState, null, null, null, null);
 
         assertEquals(moodEvent.getEmotionalState(), emotionalState);
-        //TODO: test date
+        //This might not work?
+        assertEquals(moodEvent.getDate(), new Date());
         assertEquals(moodEvent.getTrigger(), null);
         assertEquals(moodEvent.getSocialSituation(), null);
         assertEquals(moodEvent.getPhotoLocation(), null);
