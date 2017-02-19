@@ -8,18 +8,18 @@ import android.media.Image;
 
 public class SocialSituation {
     private String description;
-    private Image icon;
+    private String iconLocation;
 
-    public SocialSituation(String description, Image icon){
+    public SocialSituation(String description, String icon){
         this.description = description;
-        this.icon = icon;
+        this.iconLocation = icon;
     }
 
     public String getDescription() {
         return description;
     }
 
-    public Image getIcon() {
-        return icon;
+    public String getIcon() {
+        return iconLocation;
     }
 }

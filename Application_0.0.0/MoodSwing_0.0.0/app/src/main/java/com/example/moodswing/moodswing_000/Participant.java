@@ -9,8 +9,11 @@ import java.util.ArrayList;
  */
 
 public class Participant extends User {
-    //TODO: refactor so that this is not public. Either add access methods or change OO implementation.
+    //TODO: refactor so that followingList is not public. Either add access methods or change OO implementation.
+    //These are the participants that this.participant is following
     public FollowingList followingList = new FollowingList();
+    //These are the participants that are requesting to follow this.participant
+    private ArrayList<FollowRequest> followRequests = new ArrayList<FollowRequest>();
 
     public Participant(String username){
         this.username = username;

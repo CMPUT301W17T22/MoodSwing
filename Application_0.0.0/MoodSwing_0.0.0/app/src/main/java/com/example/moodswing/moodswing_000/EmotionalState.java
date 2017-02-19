@@ -9,12 +9,12 @@ import android.media.Image;
 
 public class EmotionalState {
     private String description;
-    private Image emoticon;
-    private Color color;
+    private String emoticonLocation;
+    private int color;
 
-    public EmotionalState(String description, Image emoticon, Color color){
+    public EmotionalState(String description, String emoticon, int color){
         this.description = description;
-        this. emoticon = emoticon;
+        this.emoticonLocation = emoticon;
         this.color = color;
     }
 
@@ -22,11 +22,11 @@ public class EmotionalState {
         return description;
     }
 
-    public Image getEmoticon(){
-        return emoticon;
+    public String getEmoticon(){
+        return emoticonLocation;
     }
 
-    public Color getColor(){
+    public int getColor(){
         return color;
     }
 }
