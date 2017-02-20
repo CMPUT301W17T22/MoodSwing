@@ -15,11 +15,12 @@ public class FollowRequest {
 
     public void confirmRequest(){
         requestingParticipant.approveFollowRequest(receivingParticipant);
-        receivingParticipant.removeFollowRequest(receivingParticipant);
+        //receivingParticipant.removeFollowRequest(receivingParticipant);
+        receivingParticipant.cancelFollowRequest(receivingParticipant);
     }
 
     public void declineRequest(){
-        requestingParticipant.cancelFollowRequest(receivingParticipant); //wrong method called
+        requestingParticipant.cancelFollowRequest(receivingParticipant);
         receivingParticipant.removeFollowRequest(receivingParticipant);
     }
 
