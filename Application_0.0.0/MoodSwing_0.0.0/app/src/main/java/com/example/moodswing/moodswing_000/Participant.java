@@ -38,7 +38,7 @@ public class Participant extends User {
         followingList.approveFollowRequest(receivingParticipant);
     }
 
-    public void cancelFollowRequest(Participant receivingParticipant){
+    public void followRequestDeclined(Participant receivingParticipant){
         followingList.removeParticipant(receivingParticipant);
     }
 
@@ -48,11 +48,11 @@ public class Participant extends User {
     // --- Follower methods ---
 
     public void createFollowerRequest(Participant requestingParticipant){
-        followerList.createRequest(requestingParticipant, this);
+        followerList.createRequest(requestingParticipant);
     }
 
     public void approveFollowerRequest(Participant requestingParticipant){
-        followerList.confirmRequest(requestingParticipant, this);
+        followerList.approveRequest(requestingParticipant, this);
     }
 
     public void declineFollowerRequest(Participant requestingParticipant){

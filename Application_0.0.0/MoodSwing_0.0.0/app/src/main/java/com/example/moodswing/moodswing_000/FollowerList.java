@@ -12,31 +12,25 @@ public class FollowerList {
     private ArrayList<Participant> pending = new ArrayList<>();
     private ArrayList<Participant> followers = new ArrayList<>();
 
+
     public FollowerList(){}
 
-    public ArrayList<Participant> getFollowers() {
-        return followers;
-    }
 
-    public ArrayList<Participant> getPending() {
-        return pending;
-    }
-
-    public void createRequest(Participant requestingParticipant, Participant receivingParticipant){
+    public void createRequest(Participant requestingParticipant){
         if(pending.contains(requestingParticipant) || followers.contains(requestingParticipant)){
             throw new InvalidParameterException();
         }
         pending.add(requestingParticipant);
     }
 
-    public void confirmRequest(Participant requestingParticipant, Participant receivingParticipant){
-        requestingParticipant.followRequestApproved(receivingParticipant);
+    public void approveRequest(Participant requestingParticipant, Participant receivingParticipant){
         if(pending.contains(requestingParticipant)){
             pending.remove(requestingParticipant);
             if(followers.contains(requestingParticipant)){
                 throw new InvalidParameterException();
             }
             else{
+                requestingParticipant.followRequestApproved(receivingParticipant);
                 followers.add(requestingParticipant);
             }
         }
@@ -46,11 +40,24 @@ public class FollowerList {
     }
 
     public void declineRequest(Participant requestingParticipant, Participant receivingParticipant){
-        requestingParticipant.cancelFollowRequest(receivingParticipant);
-        receivingParticipant.removeFollowerRequest(requestingParticipant);
+        requestingParticipant.followRequestDeclined(receivingParticipant);
+        removeFollowRequest(requestingParticipant);
     }
 
     public boolean removeFollowRequest(Participant receivingParticipant){
         return(pending.remove(receivingParticipant));
     }
+
+
+    // --- getters and setters ---
+
+    public ArrayList<Participant> getFollowers() {
+        return followers;
+    }
+
+    public ArrayList<Participant> getPending() {
+        return pending;
+    }
+
+    // --- end getters and setters ---
 }
