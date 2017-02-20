@@ -39,6 +39,8 @@ public class FollowingUnitTest {
         Participant participant2 = new Participant("participant2");
 
         participant1.followParticipant(participant2);
+        assertFalse(participant1.getPendingFollowing().isEmpty());
+
         participant2.declineFollowRequest(participant1);
         assertTrue(participant1.getPendingFollowing().isEmpty());
         assertTrue(participant1.getFollowing().isEmpty());
@@ -65,7 +67,10 @@ public class FollowingUnitTest {
         Participant participant2 = new Participant("participant2");
 
         participant1.followParticipant(participant2);
+        assertFalse(participant2.getFollowerRequests().isEmpty());
+        
         participant2.declineFollowRequest(participant1);
         assertTrue(participant2.getFollowerRequests().isEmpty());
+        assertTrue(participant2.getFollowers().isEmpty());
     }
 }
