@@ -11,7 +11,6 @@ public class Participant extends User {
     //TODO: rename methods to be more clear (requester vs receiver)
     private FollowingList followingList = new FollowingList();
     private FollowerList followerList = new FollowerList();
-    private ArrayList<FollowRequest> followRequests = new ArrayList<>();
 
     private ArrayList<MoodEvent> moodEvents = new ArrayList<>();
 
@@ -32,25 +31,15 @@ public class Participant extends User {
     }
 
     public void declineFollowRequest(Participant requestingParticipant){
-        for(FollowRequest followRequest : followRequests){
-            if(followRequest.getRequestingParticipant().equals(requestingParticipant)){
-                followRequest.declineRequest();
-            }
-        }
+        followerList.declineRequest(requestingParticipant, this);
     }
 
     public void requestFollow(Participant requestingParticipant){
-        followRequests.add(new FollowRequest(requestingParticipant, this));
+        followerList.createRequest(requestingParticipant, this);
     }
 
     public void removeFollowRequest(Participant requestingParticipant){
-        //TODO: This doesn't work.
-        //TODO: Using a hash may be a cleaner solution?
-        for(FollowRequest followRequest : followRequests){
-            if(followRequest.getRequestingParticipant().equals(requestingParticipant)){
-                followRequests.remove(followRequest);
-            }
-        }
+        followerList.removeFollowRequest(requestingParticipant);
     }
 
     public ArrayList<Participant> getPendingFollowing() {
@@ -61,8 +50,12 @@ public class Participant extends User {
         return followingList.getFollowing();
     }
 
-    public ArrayList<FollowRequest> getFollowRequests() {
-        return followRequests;
+    public ArrayList<Participant> getFollowerRequests() {
+        return followerList.getPending();
+    }
+
+    public ArrayList<Participant> getFollowers() {
+        return followerList.getFollowers();
     }
 
 

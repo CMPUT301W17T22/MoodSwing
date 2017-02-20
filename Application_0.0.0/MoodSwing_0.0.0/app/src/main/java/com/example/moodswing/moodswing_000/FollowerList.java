@@ -8,6 +8,7 @@ import java.util.ArrayList;
  */
 
 public class FollowerList {
+    //TODO: remove references to Participant that redirect straight here.
     private ArrayList<Participant> pending = new ArrayList<>();
     private ArrayList<Participant> followers = new ArrayList<>();
 
@@ -19,6 +20,14 @@ public class FollowerList {
 
     public ArrayList<Participant> getPending() {
         return pending;
+    }
+
+    public void createRequest(Participant receivingParticipant, Participant requestingParticipant){
+        if(pending.contains(receivingParticipant) || followers.contains(receivingParticipant)){
+            throw new InvalidParameterException();
+        }
+        receivingParticipant.requestFollow(requestingParticipant);
+        pending.add(receivingParticipant);
     }
 
     public void confirmRequest(Participant requestingParticipant, Participant receivingParticipant){
@@ -35,5 +44,14 @@ public class FollowerList {
         else{
             throw new InvalidParameterException();
         }
+    }
+
+    public void declineRequest(Participant requestingParticipant, Participant receivingParticipant){
+        requestingParticipant.cancelFollowRequest(receivingParticipant);
+        receivingParticipant.removeFollowRequest(receivingParticipant);
+    }
+
+    public boolean removeFollowRequest(Participant receivingParticipant){
+        return(pending.remove(receivingParticipant));
     }
 }
