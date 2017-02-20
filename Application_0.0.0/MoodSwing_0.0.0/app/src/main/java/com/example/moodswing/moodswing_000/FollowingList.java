@@ -18,7 +18,7 @@ public class FollowingList {
         if(pending.contains(receivingParticipant) || following.contains(receivingParticipant)){
             throw new InvalidParameterException();
         }
-        receivingParticipant.requestFollow(requestingParticipant);
+        receivingParticipant.createFollowerRequest(requestingParticipant);
         pending.add(receivingParticipant);
     }
 

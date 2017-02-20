@@ -28,7 +28,7 @@ public class FollowingUnitTest {
         Participant participant2 = new Participant("participant2");
 
         participant1.followParticipant(participant2);
-        participant1.approveFollowRequest(participant2);
+        participant1.followRequestApproved(participant2);
         assertTrue(participant1.getPendingFollowing().isEmpty());
         assertEquals(participant1.getFollowing().get(0), participant2);
     }
@@ -41,7 +41,7 @@ public class FollowingUnitTest {
         participant1.followParticipant(participant2);
         assertFalse(participant1.getPendingFollowing().isEmpty());
 
-        participant2.declineFollowRequest(participant1);
+        participant2.declineFollowerRequest(participant1);
         assertTrue(participant1.getPendingFollowing().isEmpty());
         assertTrue(participant1.getFollowing().isEmpty());
     }
@@ -51,14 +51,14 @@ public class FollowingUnitTest {
     public void testFollowRequestReceiver(){
         Participant participant1 = new Participant("participant1");
         Participant participant2 = new Participant("participant2");
-        assertTrue(participant2.getFollowerRequests().isEmpty());
+        assertTrue(participant2.getPendingFollowers().isEmpty());
         assertTrue(participant2.getFollowers().isEmpty());
 
         participant1.followParticipant(participant2);
-        assertTrue(participant2.getFollowerRequests().get(0).equals(participant1));
+        assertTrue(participant2.getPendingFollowers().get(0).equals(participant1));
 
-        participant2.confirmFollowerRequest(participant1);
-        assertTrue(participant2.getFollowerRequests().isEmpty());
+        participant2.approveFollowerRequest(participant1);
+        assertTrue(participant2.getPendingFollowers().isEmpty());
     }
 
     @Test
@@ -67,10 +67,10 @@ public class FollowingUnitTest {
         Participant participant2 = new Participant("participant2");
 
         participant1.followParticipant(participant2);
-        assertFalse(participant2.getFollowerRequests().isEmpty());
+        assertFalse(participant2.getPendingFollowers().isEmpty());
         
-        participant2.declineFollowRequest(participant1);
-        assertTrue(participant2.getFollowerRequests().isEmpty());
+        participant2.declineFollowerRequest(participant1);
+        assertTrue(participant2.getPendingFollowers().isEmpty());
         assertTrue(participant2.getFollowers().isEmpty());
     }
 }

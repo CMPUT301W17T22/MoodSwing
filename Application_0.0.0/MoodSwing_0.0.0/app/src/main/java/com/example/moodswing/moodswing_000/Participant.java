@@ -1,6 +1,5 @@
 package com.example.moodswing.moodswing_000;
 
-import java.security.InvalidParameterException;
 import java.util.ArrayList;
 
 /**
@@ -8,21 +7,34 @@ import java.util.ArrayList;
  */
 
 public class Participant extends User {
-    //TODO: rename methods to be more clear (requester vs receiver)
     private FollowingList followingList = new FollowingList();
     private FollowerList followerList = new FollowerList();
 
     private ArrayList<MoodEvent> moodEvents = new ArrayList<>();
 
+
     public Participant(String username){
         this.username = username;
     }
+
+
+    // --- MoodEvent methods
+
+    public void addMoodEvent(EmotionalState emotionalState, String trigger, SocialSituation socialSituation,
+                             String photoLocation, boolean saveLocation) {
+        moodEvents.add(new MoodEvent(emotionalState, trigger, socialSituation, photoLocation, saveLocation));
+    }
+
+    // --- end MoodEvent methods
+
+
+    // --- Following methods ---
 
     public void followParticipant(Participant receivingParticipant){
         followingList.followParticipant(receivingParticipant, this);
     }
 
-    public void approveFollowRequest(Participant receivingParticipant){
+    public void followRequestApproved(Participant receivingParticipant){
         followingList.approveFollowRequest(receivingParticipant);
     }
 
@@ -30,21 +42,31 @@ public class Participant extends User {
         followingList.removeParticipant(receivingParticipant);
     }
 
-    public void confirmFollowerRequest(Participant requestingParticipant){
-        followerList.confirmRequest(requestingParticipant, this);
-    }
+    // --- end Following methods ---
 
-    public void declineFollowRequest(Participant requestingParticipant){
-        followerList.declineRequest(requestingParticipant, this);
-    }
 
-    public void requestFollow(Participant requestingParticipant){
+    // --- Follower methods ---
+
+    public void createFollowerRequest(Participant requestingParticipant){
         followerList.createRequest(requestingParticipant, this);
     }
 
-    public void removeFollowRequest(Participant requestingParticipant){
+    public void approveFollowerRequest(Participant requestingParticipant){
+        followerList.confirmRequest(requestingParticipant, this);
+    }
+
+    public void declineFollowerRequest(Participant requestingParticipant){
+        followerList.declineRequest(requestingParticipant, this);
+    }
+
+    public void removeFollowerRequest(Participant requestingParticipant){
         followerList.removeFollowRequest(requestingParticipant);
     }
+
+    // --- end Follower methods ---
+
+
+    // --- getters and setters
 
     public ArrayList<Participant> getPendingFollowing() {
         return followingList.getPending();
@@ -54,7 +76,7 @@ public class Participant extends User {
         return followingList.getFollowing();
     }
 
-    public ArrayList<Participant> getFollowerRequests() {
+    public ArrayList<Participant> getPendingFollowers() {
         return followerList.getPending();
     }
 
@@ -62,5 +84,5 @@ public class Participant extends User {
         return followerList.getFollowers();
     }
 
-
+    // --- end getters and setters
 }

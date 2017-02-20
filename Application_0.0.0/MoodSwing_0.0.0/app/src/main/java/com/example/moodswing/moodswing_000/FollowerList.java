@@ -30,7 +30,7 @@ public class FollowerList {
     }
 
     public void confirmRequest(Participant requestingParticipant, Participant receivingParticipant){
-        requestingParticipant.approveFollowRequest(receivingParticipant);
+        requestingParticipant.followRequestApproved(receivingParticipant);
         if(pending.contains(requestingParticipant)){
             pending.remove(requestingParticipant);
             if(followers.contains(requestingParticipant)){
@@ -47,7 +47,7 @@ public class FollowerList {
 
     public void declineRequest(Participant requestingParticipant, Participant receivingParticipant){
         requestingParticipant.cancelFollowRequest(receivingParticipant);
-        receivingParticipant.removeFollowRequest(requestingParticipant);
+        receivingParticipant.removeFollowerRequest(requestingParticipant);
     }
 
     public boolean removeFollowRequest(Participant receivingParticipant){
