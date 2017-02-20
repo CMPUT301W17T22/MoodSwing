@@ -6,4 +6,20 @@ package com.example.moodswing.moodswing_000;
 
 public abstract class User {
     protected String username;
+
+    public String getUsername() {
+        return username;
+    }
+
+    @Override
+    public boolean equals(Object otherObject){
+        if(this == otherObject){
+            return true;
+        }
+        if(!(otherObject instanceof User)){
+            return false;
+        }
+        User otherUser = (User) otherObject;
+        return(this.username == otherUser.username);
+    }
 }

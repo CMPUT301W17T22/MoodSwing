@@ -4,35 +4,36 @@ import java.security.InvalidParameterException;
 import java.util.ArrayList;
 
 /**
- * Created by Fred on 2017-02-18.
+ * Created by Fred on 2017-02-19.
  */
 
 public class FollowingList {
-    private ArrayList<Participant> pending = new ArrayList<Participant>();
-    private ArrayList<Participant> following = new ArrayList<Participant>();
+    private ArrayList<Participant> pending = new ArrayList<>();
+    private ArrayList<Participant> following = new ArrayList<>();
 
-    public FollowingList(){}
+    public FollowingList() {}
 
-    public void addParticipant(Participant participant){
-        if(pending.contains(participant) || following.contains(participant)){
+    public void followParticipant(Participant receivingParticipant, Participant requestingParticipant){
+        if(pending.contains(receivingParticipant) || following.contains(receivingParticipant)){
             throw new InvalidParameterException();
         }
-        //TODO: create new follow request
-        pending.add(participant);
+        receivingParticipant.requestFollow(requestingParticipant);
+        pending.add(receivingParticipant);
     }
 
-    public boolean removeParticipant(Participant participant){
-        return(pending.remove(participant) | following.remove(participant));
+    //TODO: rename this method.
+    public boolean removeParticipant(Participant receivingParticipant){
+        return(pending.remove(receivingParticipant) | following.remove(receivingParticipant));
     }
 
-    public void approveParticipant(Participant participant){
-        if(pending.contains(participant)){
-            pending.remove(participant);
-            if(following.contains(participant)){
+    public void approveFollowRequest(Participant receivingParticipant){
+        if(pending.contains(receivingParticipant)){
+            pending.remove(receivingParticipant);
+            if(following.contains(receivingParticipant)){
                 throw new InvalidParameterException();
             }
             else{
-                following.add(participant);
+                following.add(receivingParticipant);
             }
         }
         else{

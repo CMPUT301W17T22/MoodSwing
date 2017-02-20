@@ -1,7 +1,6 @@
 package com.example.moodswing.moodswing_000;
 
-import android.icu.text.MessagePattern;
-
+import java.security.InvalidParameterException;
 import java.util.ArrayList;
 
 /**
@@ -9,29 +8,59 @@ import java.util.ArrayList;
  */
 
 public class Participant extends User {
-    //TODO: refactor so that followingList is not public. Either add access methods or change OO implementation.
-    //These are the participants that this.participant is following
-    public FollowingList followingList = new FollowingList();
-    //These are the participants that are requesting to follow this.participant
-    private ArrayList<FollowRequest> followRequests = new ArrayList<FollowRequest>();
+    //TODO: rename methods to be more clear (requester vs receiver)
+    private FollowingList followingList = new FollowingList();
+    private FollowerList followerList = new FollowerList();
+
+    private ArrayList<MoodEvent> moodEvents = new ArrayList<>();
 
     public Participant(String username){
         this.username = username;
     }
 
+    public void followParticipant(Participant receivingParticipant){
+        followingList.followParticipant(receivingParticipant, this);
+    }
+
+    public void approveFollowRequest(Participant receivingParticipant){
+        followingList.approveFollowRequest(receivingParticipant);
+    }
+
+    public void cancelFollowRequest(Participant receivingParticipant){
+        followingList.removeParticipant(receivingParticipant);
+    }
+
+    public void confirmFollowerRequest(Participant requestingParticipant){
+        followerList.confirmRequest(requestingParticipant, this);
+    }
+
+    public void declineFollowRequest(Participant requestingParticipant){
+        followerList.declineRequest(requestingParticipant, this);
+    }
+
     public void requestFollow(Participant requestingParticipant){
-        followRequests.add(new FollowRequest(requestingParticipant, this));
+        followerList.createRequest(requestingParticipant, this);
     }
 
-    /*public void confirmFollowRequest(Participant participant){
-        followingList.approveParticipant(participant);
+    public void removeFollowRequest(Participant requestingParticipant){
+        followerList.removeFollowRequest(requestingParticipant);
     }
 
-    public void denyFollowRequest(Participant participant){
-        followingList.removeParticipant(participant);
+    public ArrayList<Participant> getPendingFollowing() {
+        return followingList.getPending();
     }
 
-    public void createFollowRequest(Participant participant){
-        followingList.addParticipant(participant);
-    }*/
+    public ArrayList<Participant> getFollowing() {
+        return followingList.getFollowing();
+    }
+
+    public ArrayList<Participant> getFollowerRequests() {
+        return followerList.getPending();
+    }
+
+    public ArrayList<Participant> getFollowers() {
+        return followerList.getFollowers();
+    }
+
+
 }

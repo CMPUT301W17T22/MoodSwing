@@ -21,9 +21,14 @@ public class MoodEvent {
     //TODO: finish handling of null (or empty) inputs
     public MoodEvent(EmotionalState emotionalState, String trigger, SocialSituation socialSituation,
                      String photoLocation, boolean saveLocation) {
-        this.emotionalState = emotionalState;
+        this.editMoodEvent(emotionalState, trigger, socialSituation, photoLocation, saveLocation);
         //automatically selects current date
         this.date = new Date();
+    }
+
+    public void editMoodEvent(EmotionalState emotionalState, String trigger, SocialSituation socialSituation,
+    String photoLocation, boolean saveLocation) {
+        this.emotionalState = emotionalState;
         if(trigger != null) {
             this.trigger = trigger;
         }
@@ -45,10 +50,6 @@ public class MoodEvent {
         return emotionalState;
     }
 
-    public void setEmotionalState(EmotionalState emotionalState) {
-        this.emotionalState = emotionalState;
-    }
-
     public Date getDate() {
         return date;
     }
@@ -57,31 +58,15 @@ public class MoodEvent {
         return trigger;
     }
 
-    public void setTrigger(String trigger) {
-        this.trigger = trigger;
-    }
-
     public SocialSituation getSocialSituation() {
         return socialSituation;
-    }
-
-    public void setSocialSituation(SocialSituation socialSituation) {
-        this.socialSituation = socialSituation;
     }
 
     public String getPhotoLocation() {
         return photoLocation;
     }
 
-    public void setPhotoLocation(String photoLocation) {
-        this.photoLocation = photoLocation;
-    }
-
     public Location getLocation() {
         return location;
-    }
-
-    public void setLocation(Location location) {
-        this.location = location;
     }
 }
