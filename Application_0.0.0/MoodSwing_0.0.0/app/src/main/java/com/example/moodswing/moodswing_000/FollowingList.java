@@ -7,9 +7,9 @@ import java.util.ArrayList;
  * Created by Fred on 2017-02-19.
  */
 
-public class FollowingList<Participant> {
-    private ArrayList<Participant> pending = new ArrayList<Participant>();
-    private ArrayList<Participant> following = new ArrayList<Participant>();
+public class FollowingList {
+    private ArrayList<Participant> pending = new ArrayList<>();
+    private ArrayList<Participant> following = new ArrayList<>();
 
     public FollowingList() {}
 
@@ -21,12 +21,9 @@ public class FollowingList<Participant> {
         pending.add(receivingParticipant);
     }
 
-    //TODO: rename the following 2 methods.
+    //TODO: rename this method.
     public boolean removeParticipant(Participant participant){
         return(pending.remove(participant) | following.remove(participant));
-    }
-    public boolean declineFollowRequest(Participant participant){
-        return removeParticipant(participant);
     }
 
     public void approveFollowRequest(Participant participant){
@@ -42,5 +39,13 @@ public class FollowingList<Participant> {
         else{
             throw new InvalidParameterException();
         }
+    }
+
+    public ArrayList<Participant> getPending() {
+        return pending;
+    }
+
+    public ArrayList<Participant> getFollowing() {
+        return following;
     }
 }

@@ -8,10 +8,9 @@ import java.util.ArrayList;
  */
 
 public class Participant extends User {
+    private FollowingList followingList = new FollowingList();
     //These are the participants that are requesting to follow this.participant
     private ArrayList<FollowRequest> followRequests = new ArrayList<>();
-    private ArrayList<Participant> pendingFollowing = new ArrayList<>();
-    private ArrayList<Participant> following = new ArrayList<>();
 
     private ArrayList<MoodEvent> moodEvents = new ArrayList<>();
 
@@ -33,43 +32,12 @@ public class Participant extends User {
         }
     }
 
-    public void followParticipant(Participant participant){
-        if(pendingFollowing.contains(participant) || following.contains(participant)){
-            throw new InvalidParameterException();
-        }
-        participant.requestFollow(this);
-        pendingFollowing.add(participant);
-    }
-
-    //TODO: rename the following 2 methods.
-    public boolean removeParticipant(Participant participant){
-        return(pendingFollowing.remove(participant) | following.remove(participant));
-    }
-    public boolean declineFollowRequest(Participant participant){
-        return removeParticipant(participant);
-    }
-
-    public void approveFollowRequest(Participant participant){
-        if(pendingFollowing.contains(participant)){
-            pendingFollowing.remove(participant);
-            if(following.contains(participant)){
-                throw new InvalidParameterException();
-            }
-            else{
-                following.add(participant);
-            }
-        }
-        else{
-            throw new InvalidParameterException();
-        }
-    }
-
     public ArrayList<Participant> getPendingFollowing() {
-        return pendingFollowing;
+        return followingList.getPending();
     }
 
     public ArrayList<Participant> getFollowing() {
-        return following;
+        return followingList.getFollowing();
     }
 
     public ArrayList<FollowRequest> getFollowRequests() {
