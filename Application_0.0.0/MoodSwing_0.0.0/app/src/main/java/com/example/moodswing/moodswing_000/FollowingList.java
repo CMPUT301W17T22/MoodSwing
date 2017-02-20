@@ -8,11 +8,12 @@ import java.util.ArrayList;
  */
 
 public class FollowingList {
-    //TODO: remove any references to Participant that redirect straight here.
     private ArrayList<Participant> pending = new ArrayList<>();
     private ArrayList<Participant> following = new ArrayList<>();
 
+
     public FollowingList() {}
+
 
     public void followParticipant(Participant receivingParticipant, Participant requestingParticipant){
         if(pending.contains(receivingParticipant) || following.contains(receivingParticipant)){
@@ -22,14 +23,11 @@ public class FollowingList {
         pending.add(receivingParticipant);
     }
 
-    //TODO: rename this method.
-    public boolean removeParticipant(Participant receivingParticipant){
-        return(pending.remove(receivingParticipant) | following.remove(receivingParticipant));
-    }
-
-    public void approveFollowRequest(Participant receivingParticipant){
+    //called from FollowerList (via Participant)
+    public void followRequestApproved(Participant receivingParticipant){
         if(pending.contains(receivingParticipant)){
             pending.remove(receivingParticipant);
+
             if(following.contains(receivingParticipant)){
                 throw new InvalidParameterException();
             }
@@ -42,6 +40,13 @@ public class FollowingList {
         }
     }
 
+    public boolean removeParticipant(Participant receivingParticipant){
+        return(pending.remove(receivingParticipant) | following.remove(receivingParticipant));
+    }
+
+
+    // --- getters and setters ---
+
     public ArrayList<Participant> getPending() {
         return pending;
     }
@@ -49,4 +54,6 @@ public class FollowingList {
     public ArrayList<Participant> getFollowing() {
         return following;
     }
+
+    // --- end getters and setters ---
 }
