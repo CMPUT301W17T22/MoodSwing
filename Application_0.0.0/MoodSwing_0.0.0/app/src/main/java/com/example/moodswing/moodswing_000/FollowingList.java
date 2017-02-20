@@ -8,6 +8,7 @@ import java.util.ArrayList;
  */
 
 public class FollowingList {
+    //TODO: remove any references to Participant that redirect straight here.
     private ArrayList<Participant> pending = new ArrayList<>();
     private ArrayList<Participant> following = new ArrayList<>();
 
