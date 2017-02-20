@@ -33,6 +33,17 @@ public class FollowingUnitTest {
         assertEquals(participant1.getFollowing().get(0), participant2);
     }
 
+    @Test
+    public void testDeclineFollowRequestRequester(){
+        Participant participant1 = new Participant("participant1");
+        Participant participant2 = new Participant("participant2");
+
+        participant1.followParticipant(participant2);
+        participant2.getFollowRequests().get(0).declineRequest();
+        assertTrue(participant1.getPendingFollowing().isEmpty());
+        assertTrue(participant1.getFollowing().isEmpty());
+    }
+
 
     @Test
     public void testFollowRequestReceiver(){
@@ -44,6 +55,16 @@ public class FollowingUnitTest {
         assertTrue(participant2.getFollowRequests().get(0).equals(new FollowRequest(participant1, participant2)));
 
         participant2.getFollowRequests().get(0).confirmRequest();
+        assertTrue(participant2.getFollowRequests().isEmpty());
+    }
+
+    @Test
+    public void testDeclineFollowRequestReceiver(){
+        Participant participant1 = new Participant("participant1");
+        Participant participant2 = new Participant("participant2");
+
+        participant1.followParticipant(participant2);
+        participant2.getFollowRequests().get(0).declineRequest();
         assertTrue(participant2.getFollowRequests().isEmpty());
     }
 }

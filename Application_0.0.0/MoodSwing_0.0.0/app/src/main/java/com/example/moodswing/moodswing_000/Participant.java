@@ -26,6 +26,14 @@ public class Participant extends User {
         followingList.approveFollowRequest(receivingParticipant);
     }
 
+    public void declineFollowRequest(Participant requestingParticipant){
+        for(FollowRequest followRequest : followRequests){
+            if(followRequest.getRequestingParticipant().equals(requestingParticipant)){
+                followRequest.declineRequest();
+            }
+        }
+    }
+
     public void requestFollow(Participant requestingParticipant){
         followRequests.add(new FollowRequest(requestingParticipant, this));
     }
