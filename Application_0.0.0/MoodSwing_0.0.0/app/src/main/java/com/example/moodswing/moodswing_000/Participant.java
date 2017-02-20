@@ -18,6 +18,14 @@ public class Participant extends User {
         this.username = username;
     }
 
+    public void followParticipant(Participant receivingParticipant){
+        followingList.followParticipant(receivingParticipant, this);
+    }
+
+    public void approveFollowRequest(Participant receivingParticipant){
+        followingList.approveFollowRequest(receivingParticipant);
+    }
+
     public void requestFollow(Participant requestingParticipant){
         followRequests.add(new FollowRequest(requestingParticipant, this));
     }

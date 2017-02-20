@@ -22,18 +22,18 @@ public class FollowingList {
     }
 
     //TODO: rename this method.
-    public boolean removeParticipant(Participant participant){
-        return(pending.remove(participant) | following.remove(participant));
+    public boolean removeParticipant(Participant receivingParticipant){
+        return(pending.remove(receivingParticipant) | following.remove(receivingParticipant));
     }
 
-    public void approveFollowRequest(Participant participant){
-        if(pending.contains(participant)){
-            pending.remove(participant);
-            if(following.contains(participant)){
+    public void approveFollowRequest(Participant receivingParticipant){
+        if(pending.contains(receivingParticipant)){
+            pending.remove(receivingParticipant);
+            if(following.contains(receivingParticipant)){
                 throw new InvalidParameterException();
             }
             else{
-                following.add(participant);
+                following.add(receivingParticipant);
             }
         }
         else{

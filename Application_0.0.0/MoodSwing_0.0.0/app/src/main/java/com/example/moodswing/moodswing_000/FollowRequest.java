@@ -19,7 +19,8 @@ public class FollowRequest {
     }
 
     public void declineRequest(){
-        requestingParticipant.declineFollowRequest(receivingParticipant);
+        //TODO: something is wrong here.
+        requestingParticipant.removeFollowRequest(receivingParticipant);
         receivingParticipant.removeFollowRequest(receivingParticipant);
     }
 
