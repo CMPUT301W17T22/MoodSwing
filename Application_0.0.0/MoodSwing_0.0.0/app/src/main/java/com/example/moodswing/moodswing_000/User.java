@@ -16,7 +16,7 @@ public abstract class User {
         if(this == otherObject){
             return true;
         }
-        if(!(otherObject instanceof FollowRequest)){
+        if(!(otherObject instanceof User)){
             return false;
         }
         User otherUser = (User) otherObject;

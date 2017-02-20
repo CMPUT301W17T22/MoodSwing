@@ -45,7 +45,7 @@ public class FollowRequest {
             return false;
         }
         FollowRequest otherFollowRequest = (FollowRequest) otherObject;
-        return(this.getReceivingParticipant().equals(otherFollowRequest.getReceivingParticipant().getUsername())
-                && this.getRequestingParticipant().equals(otherFollowRequest.getRequestingParticipant().getUsername()));
+        return(this.receivingParticipant.equals(otherFollowRequest.receivingParticipant)
+                && this.requestingParticipant.equals(otherFollowRequest.requestingParticipant));
     }
 }
