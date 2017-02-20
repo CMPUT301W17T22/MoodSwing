@@ -23,21 +23,21 @@ public class FollowerList {
     }
 
     public void createRequest(Participant requestingParticipant, Participant receivingParticipant){
-        if(pending.contains(receivingParticipant) || followers.contains(receivingParticipant)){
+        if(pending.contains(requestingParticipant) || followers.contains(requestingParticipant)){
             throw new InvalidParameterException();
         }
-        pending.add(receivingParticipant);
+        pending.add(requestingParticipant);
     }
 
     public void confirmRequest(Participant requestingParticipant, Participant receivingParticipant){
         requestingParticipant.approveFollowRequest(receivingParticipant);
-        if(pending.contains(receivingParticipant)){
-            pending.remove(receivingParticipant);
-            if(followers.contains(receivingParticipant)){
+        if(pending.contains(requestingParticipant)){
+            pending.remove(requestingParticipant);
+            if(followers.contains(requestingParticipant)){
                 throw new InvalidParameterException();
             }
             else{
-                followers.add(receivingParticipant);
+                followers.add(requestingParticipant);
             }
         }
         else{
@@ -47,7 +47,7 @@ public class FollowerList {
 
     public void declineRequest(Participant requestingParticipant, Participant receivingParticipant){
         requestingParticipant.cancelFollowRequest(receivingParticipant);
-        receivingParticipant.removeFollowRequest(receivingParticipant);
+        receivingParticipant.removeFollowRequest(requestingParticipant);
     }
 
     public boolean removeFollowRequest(Participant receivingParticipant){
