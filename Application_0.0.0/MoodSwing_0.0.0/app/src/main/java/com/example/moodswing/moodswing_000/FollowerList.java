@@ -22,11 +22,10 @@ public class FollowerList {
         return pending;
     }
 
-    public void createRequest(Participant receivingParticipant, Participant requestingParticipant){
+    public void createRequest(Participant requestingParticipant, Participant receivingParticipant){
         if(pending.contains(receivingParticipant) || followers.contains(receivingParticipant)){
             throw new InvalidParameterException();
         }
-        receivingParticipant.requestFollow(requestingParticipant);
         pending.add(receivingParticipant);
     }
 

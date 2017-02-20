@@ -30,6 +30,14 @@ public class Participant extends User {
         followingList.removeParticipant(receivingParticipant);
     }
 
+    public void createFollowerRequest(Participant requestingParticipant){
+        followerList.createRequest(requestingParticipant, this);
+    }
+
+    public void confirmFollowerRequest(Participant requestingParticipant){
+        followerList.confirmRequest(requestingParticipant, this);
+    }
+
     public void declineFollowRequest(Participant requestingParticipant){
         followerList.declineRequest(requestingParticipant, this);
     }

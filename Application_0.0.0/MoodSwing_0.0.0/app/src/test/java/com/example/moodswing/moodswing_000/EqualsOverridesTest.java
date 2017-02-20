@@ -15,13 +15,4 @@ public class EqualsOverridesTest {
         User user2 = new Participant("username1");
         assertTrue(user1.equals(user2));
     }
-
-    @Test
-    public void testFollowRequestEquals(){
-        Participant participant1 = new Participant("1");
-        Participant participant2 = new Participant("2");
-        FollowRequest followRequest1 = new FollowRequest(participant1, participant2);
-        FollowRequest followRequest2 = new FollowRequest(participant1, participant2);
-        assertTrue(followRequest1.equals(followRequest2));
-    }
 }
