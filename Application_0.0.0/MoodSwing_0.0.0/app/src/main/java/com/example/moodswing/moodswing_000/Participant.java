@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class Participant extends User {
     //TODO: rename methods to be more clear (requester vs receiver)
     private FollowingList followingList = new FollowingList();
-    //These are the participants that are requesting to follow this.participant
+    private FollowerList followerList = new FollowerList();
     private ArrayList<FollowRequest> followRequests = new ArrayList<>();
 
     private ArrayList<MoodEvent> moodEvents = new ArrayList<>();
