@@ -9,9 +9,11 @@ import java.util.ArrayList;
 
 public class Participant extends User {
     //These are the participants that are requesting to follow this.participant
-    private ArrayList<FollowRequest> followRequests = new ArrayList<FollowRequest>();
-    private ArrayList<Participant> pendingFollowing = new ArrayList<Participant>();
-    private ArrayList<Participant> following = new ArrayList<Participant>();
+    private ArrayList<FollowRequest> followRequests = new ArrayList<>();
+    private ArrayList<Participant> pendingFollowing = new ArrayList<>();
+    private ArrayList<Participant> following = new ArrayList<>();
+
+    private ArrayList<MoodEvent> moodEvents = new ArrayList<>();
 
     public Participant(String username){
         this.username = username;
