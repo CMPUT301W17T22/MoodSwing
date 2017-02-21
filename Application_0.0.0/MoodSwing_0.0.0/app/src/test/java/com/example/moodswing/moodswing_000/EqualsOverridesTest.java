@@ -13,6 +13,7 @@ public class EqualsOverridesTest {
     public void testUserEquals(){
         User user1 = new Participant("username1");
         User user2 = new Participant("username1");
+        //assertFalse(user1.equals(user2));
         assertTrue(user1.equals(user2));
     }
 }
