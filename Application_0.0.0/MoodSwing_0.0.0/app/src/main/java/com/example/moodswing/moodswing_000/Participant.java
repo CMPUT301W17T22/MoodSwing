@@ -34,6 +34,7 @@ public class Participant extends User {
         followingList.followParticipant(receivingParticipant, this);
     }
 
+    //called from other.followerList
     public void followRequestApproved(Participant receivingParticipant){
         followingList.followRequestApproved(receivingParticipant);
     }
@@ -47,6 +48,7 @@ public class Participant extends User {
 
     // --- Follower methods ---
 
+    //called from other.followingList
     public void createFollowerRequest(Participant requestingParticipant){
         followerList.createRequest(requestingParticipant);
     }
@@ -78,6 +80,10 @@ public class Participant extends User {
 
     public ArrayList<Participant> getFollowers() {
         return followerList.getFollowers();
+    }
+
+    public ArrayList<MoodEvent> getMoodEvents() {
+        return moodEvents;
     }
 
     // --- end getters and setters

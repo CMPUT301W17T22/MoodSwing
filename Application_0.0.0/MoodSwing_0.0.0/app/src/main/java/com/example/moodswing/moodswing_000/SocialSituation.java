@@ -1,25 +1,23 @@
 package com.example.moodswing.moodswing_000;
 
-import android.media.Image;
-
 /**
  * Created by Fred on 2017-02-18.
  */
 
 public class SocialSituation {
     private String description;
-    private String iconLocation;
+    private String iconName;
 
-    public SocialSituation(String description, String icon){
+    public SocialSituation(String description, String iconName){
         this.description = description;
-        this.iconLocation = icon;
+        this.iconName = iconName;
     }
 
     public String getDescription() {
         return description;
     }
 
-    public String getIcon() {
-        return iconLocation;
+    public String getIconName() {
+        return iconName;
     }
 }
