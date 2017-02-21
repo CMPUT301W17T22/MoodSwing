@@ -84,16 +84,23 @@ public class FollowingUnitTest {
 
     }
 
-//    @Test
-//    public void testDeclineFollowRequestReceiver(){
-//        Participant participant1 = new Participant("participant1");
-//        Participant participant2 = new Participant("participant2");
-//
-//        participant1.followParticipant(participant2);
-//        assertFalse(participant2.getPendingFollowers().isEmpty());
-//
-//        participant2.declineFollowerRequest(participant1);
-//        assertTrue(participant2.getPendingFollowers().isEmpty());
-//        assertTrue(participant2.getFollowers().isEmpty());
-//    }
+    @Test
+    public void testDeclineFollowRequestReceiver(){
+        Participant participant1 = new Participant("participant1");
+        Participant participant2 = new Participant("participant2");
+
+        // similar tests as testFollowRequestReceiver for follow
+        participant1.followParticipant(participant2);
+        assertFalse(participant2.getPendingFollowers().isEmpty());
+        assertTrue(participant2.getFollowers().isEmpty());
+
+        // make sure declineFollowerRequest removes from participant 2
+        participant2.declineFollowerRequest(participant1);
+        assertTrue(participant2.getPendingFollowers().isEmpty());
+        assertTrue(participant2.getFollowers().isEmpty());
+
+        // make sure participant1 feels effect of 2's decline
+        assertTrue(participant1.getPendingFollowing().isEmpty());
+        assertTrue(participant1.getFollowing().isEmpty());
+    }
 }
