@@ -2,6 +2,7 @@ package com.example.moodswing.moodswing_000;
 
 import android.graphics.Color;
 import android.media.Image;
+import android.test.ActivityInstrumentationTestCase2;
 
 import org.junit.Test;
 
