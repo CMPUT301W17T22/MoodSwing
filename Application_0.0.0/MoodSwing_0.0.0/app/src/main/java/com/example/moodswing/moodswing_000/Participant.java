@@ -10,7 +10,7 @@ public class Participant extends User {
     private FollowingList followingList = new FollowingList();
     private FollowerList followerList = new FollowerList();
 
-    private ArrayList<MoodEvent> moodEvents = new ArrayList<>();
+    private ArrayList<MoodEvent> moodHistory = new ArrayList<>();
 
 
     public Participant(String username){
@@ -22,7 +22,7 @@ public class Participant extends User {
 
     public void addMoodEvent(EmotionalState emotionalState, String trigger, SocialSituation socialSituation,
                              String photoLocation, boolean saveLocation) {
-        moodEvents.add(new MoodEvent(emotionalState, trigger, socialSituation, photoLocation, saveLocation));
+        moodHistory.add(new MoodEvent(emotionalState, trigger, socialSituation, photoLocation, saveLocation));
     }
 
     // --- end MoodEvent methods
@@ -83,7 +83,7 @@ public class Participant extends User {
     }
 
     public ArrayList<MoodEvent> getMoodEvents() {
-        return moodEvents;
+        return moodHistory;
     }
 
     // --- end getters and setters
