@@ -17,14 +17,26 @@ import static org.junit.Assert.*;
 public class EmotionalStateTest {
     @Test
     public void testEmotionalState(){
-        String happy = "was happy";
+        String happy = "was happy"; // real value
+        String happy_fake = "isn't happy"; // plug into test for false result
+
         String imageLocation = "somewhere";
+        String imageLocation_fake = "somewhere wrong";
+
         int color = Color.BLACK;
+        int color_fake = 111;
 
         EmotionalState emotionalState = new EmotionalState(happy, imageLocation, color);
 
         assertEquals(emotionalState.getDescription(), happy);
-        //assertEquals(emotionalState.getEmoticon(), imageLocation);
+        assertFalse(emotionalState.getDescription() == happy_fake);
+
+        assertEquals(emotionalState.getImageLocation(), imageLocation);
+        assertFalse(emotionalState.getImageLocation() == imageLocation_fake);
+
         assertEquals(emotionalState.getColor(), color);
+        assertFalse(emotionalState.getColor() == color_fake);
+
+
     }
 }
