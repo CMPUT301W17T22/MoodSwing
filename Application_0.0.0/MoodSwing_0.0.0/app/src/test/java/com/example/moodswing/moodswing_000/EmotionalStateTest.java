@@ -8,13 +8,15 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
+ * Test of The EmotionalState Class that is set by a user to a Mood Event to dictate the emotion to be tagged
+ * with that Mood Event.
  * Created by Fred on 2017-02-18.
  */
 
 public class EmotionalStateTest {
     @Test
     public void testEmotionalState(){
-        String happy = "I am happy";
+        String happy = "was happy";
         String imageLocation = "somewhere";
         int color = Color.BLACK;
 
