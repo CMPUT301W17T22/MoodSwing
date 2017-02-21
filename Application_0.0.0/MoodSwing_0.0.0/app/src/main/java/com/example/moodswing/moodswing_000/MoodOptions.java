@@ -2,8 +2,6 @@ package com.example.moodswing.moodswing_000;
 
 import android.graphics.Color;
 
-import java.util.ArrayList;
-
 /**
  * Created by Fred on 2017-02-18.
  */
@@ -18,13 +16,13 @@ public class MoodOptions {
         emotionalStates[1] = new EmotionalState("confusion", "somewhere", Color.BLUE);
         emotionalStates[2] = new EmotionalState("disgust", "somewhere", Color.CYAN);
         emotionalStates[3] = new EmotionalState("fear", "somewhere", Color.GRAY);
-        emotionalStates[4] = new EmotionalState("happiness", "somewhere", Color.GREEN);
-        emotionalStates[5] = new EmotionalState("sadness", "somewhere", Color.MAGENTA);
+        emotionalStates[4] = new EmotionalState("happiness", "@/drawable/emoticonHappy", Color.GREEN);
+        emotionalStates[5] = new EmotionalState("sadness", "@/drawable/emoticonSad", Color.MAGENTA);
         emotionalStates[6] = new EmotionalState("shame", "somewhere", Color.RED);
-        emotionalStates[7] = new EmotionalState("surprise", "somewhere", Color.YELLOW);
+        emotionalStates[7] = new EmotionalState("surprise", "@/drawable/emoticonSurprised", Color.YELLOW);
 
-        socialSituations[0] = new SocialSituation("alone", "somewhere");
-        socialSituations[1] = new SocialSituation("crowd", "somewhere");
-        socialSituations[2] = new SocialSituation("party", "somewhere");
+        socialSituations[0] = new SocialSituation("alone", "@/drawable/socialSituationAlone");
+        socialSituations[1] = new SocialSituation("crowd", "@/drawable/socialSituationCrowd");
+        socialSituations[2] = new SocialSituation("party", "@/drawable/socialSituationParty");
     }
 }
