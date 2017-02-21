@@ -1,5 +1,7 @@
 package com.example.moodswing.moodswing_000;
 
+import android.location.Location;
+
 import java.util.ArrayList;
 
 /**
@@ -14,6 +16,7 @@ public class Participant extends User {
 
 
     public Participant(String username){
+
         this.username = username;
     }
 
@@ -21,8 +24,8 @@ public class Participant extends User {
     // --- MoodEvent methods
 
     public void addMoodEvent(EmotionalState emotionalState, String trigger, SocialSituation socialSituation,
-                             String photoLocation, boolean saveLocation) {
-        moodHistory.add(new MoodEvent(emotionalState, trigger, socialSituation, photoLocation, saveLocation));
+                             String photoLocation, Location location) {
+        moodHistory.add(new MoodEvent(username ,emotionalState, trigger, socialSituation, photoLocation, location));
     }
 
     // --- end MoodEvent methods
