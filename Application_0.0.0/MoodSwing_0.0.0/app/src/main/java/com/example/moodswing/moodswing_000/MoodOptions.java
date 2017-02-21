@@ -16,13 +16,13 @@ public class MoodOptions {
         emotionalStates[1] = new EmotionalState("confusion", "somewhere", Color.BLUE);
         emotionalStates[2] = new EmotionalState("disgust", "somewhere", Color.CYAN);
         emotionalStates[3] = new EmotionalState("fear", "somewhere", Color.GRAY);
-        emotionalStates[4] = new EmotionalState("happiness", "@/drawable/emoticonHappy", Color.GREEN);
-        emotionalStates[5] = new EmotionalState("sadness", "@/drawable/emoticonSad", Color.MAGENTA);
+        emotionalStates[4] = new EmotionalState("happiness", "emoticonHappy", Color.GREEN);
+        emotionalStates[5] = new EmotionalState("sadness", "emoticonSad", Color.MAGENTA);
         emotionalStates[6] = new EmotionalState("shame", "somewhere", Color.RED);
-        emotionalStates[7] = new EmotionalState("surprise", "@/drawable/emoticonSurprised", Color.YELLOW);
+        emotionalStates[7] = new EmotionalState("surprise", "emoticonSurprised", Color.YELLOW);
 
-        socialSituations[0] = new SocialSituation("alone", "@/drawable/socialSituationAlone");
-        socialSituations[1] = new SocialSituation("crowd", "@/drawable/socialSituationCrowd");
-        socialSituations[2] = new SocialSituation("party", "@/drawable/socialSituationParty");
+        socialSituations[0] = new SocialSituation("alone", "socialSituationAlone");
+        socialSituations[1] = new SocialSituation("crowd", "socialSituationCrowd");
+        socialSituations[2] = new SocialSituation("party", "socialSituationParty");
     }
 }
