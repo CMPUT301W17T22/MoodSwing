@@ -9,7 +9,7 @@ import java.util.Date;
 
 import static org.junit.Assert.*;
 
-/**
+/**test class for MoodEvent
  * Created by Fred on 2017-02-18.
  */
 
@@ -17,13 +17,16 @@ public class MoodEventUnitTest {
     //TODO: finish
     @Test
     public void testBasicMoodEvent(){
+
+        String trigger = "trigger";
+        Date date = new Date();
         EmotionalState emotionalState = new EmotionalState("happy","somewhere", Color.BLACK);
-        MoodEvent moodEvent = new MoodEvent(emotionalState, null, null, null, false);
+        MoodEvent moodEvent = new MoodEvent("username1",emotionalState, trigger, null, null, null);
 
         assertEquals(moodEvent.getEmotionalState(), emotionalState);
-        //This might not work?
-        assertEquals(moodEvent.getDate(), new Date());
-        assertEquals(moodEvent.getTrigger(), null);
+        assertEquals(moodEvent.getOriginalposter(), "username1");
+        assertEquals(moodEvent.getDate(), date);
+        assertEquals(moodEvent.getTrigger(), trigger);
         assertEquals(moodEvent.getSocialSituation(), null);
         assertEquals(moodEvent.getPhotoLocation(), null);
         assertEquals(moodEvent.getLocation(), null);
@@ -31,15 +34,17 @@ public class MoodEventUnitTest {
 
     @Test
     public void testAdvancedMoodEvent(){
+        String postername = "username";
         EmotionalState emotionalState = new EmotionalState("happy","somewhere", Color.BLACK);
         String trigger = "trigger";
         SocialSituation socialSituation = new SocialSituation("so popular", "somewhere");
         String photoLoaction = "somewhere else";
-        //TODO: add location, pass as parameter, and test
-        MoodEvent moodEvent = new MoodEvent(emotionalState, trigger, socialSituation, photoLoaction, true);
+        Date date = new Date();
+
+        MoodEvent moodEvent = new MoodEvent(postername, emotionalState, trigger, socialSituation, photoLoaction, null);
 
         assertEquals(moodEvent.getEmotionalState(), emotionalState);
-        //TODO: test date
+        assertEquals(moodEvent.getDate(), date);
         assertEquals(moodEvent.getTrigger(), trigger);
         assertEquals(moodEvent.getSocialSituation(), socialSituation);
         assertEquals(moodEvent.getPhotoLocation(), photoLoaction);
