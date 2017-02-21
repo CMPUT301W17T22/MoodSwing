@@ -28,4 +28,13 @@ public class MoodOptions {
         socialSituations[1] = new SocialSituation("crowd", "socialsituationcrowd");
         socialSituations[2] = new SocialSituation("party", "socialsituationparty");
     }
+
+    public EmotionalState getEmotionalState(int index){
+        return emotionalStates[index];
+
+    }
+
+    public SocialSituation getSocialSituation(int index){
+        return socialSituations[index];
+    }
 }

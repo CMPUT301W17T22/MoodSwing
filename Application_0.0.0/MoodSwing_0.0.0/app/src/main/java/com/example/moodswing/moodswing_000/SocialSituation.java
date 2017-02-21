@@ -14,10 +14,12 @@ public class SocialSituation {
     }
 
     public String getDescription() {
+
         return description;
     }
 
     public String getIconName() {
+
         return iconName;
     }
 }

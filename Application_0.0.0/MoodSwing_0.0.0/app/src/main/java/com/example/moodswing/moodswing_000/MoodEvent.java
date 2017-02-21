@@ -38,6 +38,8 @@ public class MoodEvent {
     public void editMoodEvent(EmotionalState emotionalState, String trigger, SocialSituation socialSituation,
     String photoLocation, Location location) {
         this.setDate(new Date());
+        //emotionalstate and socialsituation will be picked from a scroller list
+        //depending on which one is picked it will return an int which corresponds to the correct option in the list in the MoodOptions lists.
         this.setEmotionalState(emotionalState);
         this.setTrigger(trigger);
         this.setSocialSituation(socialSituation);

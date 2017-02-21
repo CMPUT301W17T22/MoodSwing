@@ -52,4 +52,24 @@ public class MoodEventUnitTest {
         assertEquals(moodEvent.getPhotoLocation(), photoLoaction);
         assertEquals(moodEvent.getLocation(), null);
     }
+    //this test implements grabbing the EmotionalState and SocialSituation from the MoodOptions list.
+    @Test
+    public void testFullMoodEvent(){
+        MoodOptions moodOptions = new MoodOptions();
+        String username = "bbest";
+        String trigger = "trigger";
+        SocialSituation socialSituation = moodOptions.getSocialSituation(0);
+        EmotionalState emotionalState = moodOptions.getEmotionalState(0);
+        String photolocation = "photolocation";
+
+        //SocialSituation ssituationcompare = new SocialSituation("alone", "socialsituationalone");
+       // EmotionalState emotioncompare = new EmotionalState("anger", "somewhere", Color.BLACK);
+
+
+        MoodEvent moodEvent = new MoodEvent(username, emotionalState,trigger, socialSituation, photolocation, null);
+        assertEquals(moodEvent.getSocialSituation(),socialSituation);
+        assertEquals(moodEvent.getEmotionalState(),emotionalState);
+
+    }
+
 }
