@@ -24,6 +24,7 @@ public class FollowingList {
     }
 
     //called from FollowerList (via Participant)
+
     public void followRequestApproved(Participant receivingParticipant){
         if(pending.contains(receivingParticipant)){
             pending.remove(receivingParticipant);
