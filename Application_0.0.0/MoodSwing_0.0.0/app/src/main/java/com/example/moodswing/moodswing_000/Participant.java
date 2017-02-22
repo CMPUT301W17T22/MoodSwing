@@ -5,7 +5,14 @@ import android.location.Location;
 import java.util.ArrayList;
 
 /**
- * Created by Fred on 2017-02-18.
+ * A Participant is an end user of the app and is identified by their username.
+ *
+ * @author Fred
+ * @version 2017-02-18
+ * @see User
+ * @see MoodEvent
+ * @see FollowingList
+ * @see FollowerList
  */
 
 public class Participant extends User {

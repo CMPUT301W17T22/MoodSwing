@@ -1,7 +1,6 @@
 package com.example.moodswing.moodswing_000;
 
 import android.graphics.Color;
-import android.location.Location;
 
 import org.junit.Test;
 
@@ -24,7 +23,7 @@ public class MoodEventUnitTest {
         MoodEvent moodEvent = new MoodEvent("username1",emotionalState, trigger, null, null, null);
 
         assertEquals(moodEvent.getEmotionalState(), emotionalState);
-        assertEquals(moodEvent.getOriginalposter(), "username1");
+        assertEquals(moodEvent.getOriginalPoster(), "username1");
         //Assertion of proper date cannot be used because the variable date is created and stamped but then the date created for the
         //new MoodEvent is automatically made during construction so it will be slightly different. I have confidence it storing properly.
         //assertEquals(moodEvent.getDate(), date);
@@ -62,7 +61,7 @@ public class MoodEventUnitTest {
         EmotionalState emotionalState = moodOptions.getEmotionalState(0);
         String photolocation = "photolocation";
 
-        //SocialSituation ssituationcompare = new SocialSituation("alone", "socialsituationalone");
+        //SocialSituation ssituationcompare = new SocialSituation("alone", "social_situation_alone");
        // EmotionalState emotioncompare = new EmotionalState("anger", "somewhere", Color.BLACK);
 
 

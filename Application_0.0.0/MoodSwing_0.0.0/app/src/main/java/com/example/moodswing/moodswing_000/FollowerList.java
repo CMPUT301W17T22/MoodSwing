@@ -4,7 +4,13 @@ import java.security.InvalidParameterException;
 import java.util.ArrayList;
 
 /**
- * Created by Fred on 2017-02-19.
+ * Is part of Participant participant.<br>
+ * Manages the Participants that are following participant.
+ *
+ * @author Fred
+ * @version 2017-02-19
+ * @see Participant
+ * @see FollowingList
  */
 
 public class FollowerList {
