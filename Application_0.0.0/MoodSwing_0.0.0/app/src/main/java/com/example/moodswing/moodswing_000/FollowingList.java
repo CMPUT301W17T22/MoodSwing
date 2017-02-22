@@ -29,8 +29,12 @@ public class FollowingList {
         pending.add(receivingParticipant);
     }
 
-    //called from FollowerList (via Participant)
-
+    /**
+     * DO NOT call explicitly.<br>
+     * Should only be called from receivingParticipant's FollowerList.
+     *
+     * @param receivingParticipant
+     */
     public void followRequestApproved(Participant receivingParticipant){
         if(pending.contains(receivingParticipant)){
             pending.remove(receivingParticipant);

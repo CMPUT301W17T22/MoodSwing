@@ -21,7 +21,12 @@ public class FollowerList {
     public FollowerList(){}
 
 
-    //called from FollowingList (via Participant)
+    /**
+     * DO NOT call explicitly.<br>
+     * This method should only be called from requestingParticipant's FollowingList.
+     *
+     * @param requestingParticipant
+     */
     public void createRequest(Participant requestingParticipant){
         if(pending.contains(requestingParticipant) || followers.contains(requestingParticipant)){
             throw new InvalidParameterException();
