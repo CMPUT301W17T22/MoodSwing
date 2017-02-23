@@ -14,7 +14,7 @@ public class FollowingList {
 
     public FollowingList() {}
 
-
+    // attempt to follow another participant
     public void followParticipant(Participant receivingParticipant, Participant requestingParticipant){
         if(pending.contains(receivingParticipant) || following.contains(receivingParticipant)){
             throw new InvalidParameterException();
@@ -24,7 +24,7 @@ public class FollowingList {
     }
 
     //called from FollowerList (via Participant)
-
+    // requesting participant has their request approved
     public void followRequestApproved(Participant receivingParticipant){
         if(pending.contains(receivingParticipant)){
             pending.remove(receivingParticipant);
@@ -40,7 +40,7 @@ public class FollowingList {
             throw new InvalidParameterException();
         }
     }
-
+    // requesting participant has their request denied
     public boolean removeParticipant(Participant receivingParticipant){
         return(pending.remove(receivingParticipant) | following.remove(receivingParticipant));
     }

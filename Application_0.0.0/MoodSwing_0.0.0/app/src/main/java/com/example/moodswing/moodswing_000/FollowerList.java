@@ -23,6 +23,7 @@ public class FollowerList {
         pending.add(requestingParticipant);
     }
 
+    // receiving participant accepts requesting participant's request
     public void approveRequest(Participant requestingParticipant, Participant receivingParticipant){
         if(pending.contains(requestingParticipant)){
             pending.remove(requestingParticipant);
@@ -39,6 +40,7 @@ public class FollowerList {
         }
     }
 
+    // receiving participant declines requesting participant's request
     public void declineRequest(Participant requestingParticipant, Participant receivingParticipant){
         requestingParticipant.followRequestDeclined(receivingParticipant);
         removeFollowRequest(requestingParticipant);
