@@ -57,5 +57,5 @@ public class FollowingUnitTest {
         assertTrue(participant1.getFollowing().isEmpty());
     }
 
-    
+
 }
