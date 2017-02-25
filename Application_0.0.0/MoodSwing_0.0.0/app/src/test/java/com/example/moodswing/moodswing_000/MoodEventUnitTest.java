@@ -51,6 +51,8 @@ public class MoodEventUnitTest {
         assertEquals(moodEvent.getPhotoLocation(), photoLoaction);
         assertEquals(moodEvent.getLocation(), null);
     }
+
+    //TODO: redundant?
     //this test implements grabbing the EmotionalState and SocialSituation from the MoodOptions list.
     @Test
     public void testFullMoodEvent(){

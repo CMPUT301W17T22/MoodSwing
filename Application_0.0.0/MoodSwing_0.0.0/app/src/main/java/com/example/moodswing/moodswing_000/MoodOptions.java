@@ -3,12 +3,16 @@ package com.example.moodswing.moodswing_000;
 import android.graphics.Color;
 
 /**
- * Created by Fred on 2017-02-18.
+ * DO NOT USE
+ *
+ * This will likely end up being implemented in a sub-class or inside a controller.
+ * This is just a shell class. I wanted to write this code down
+ * but the code will end up implemented elsewhere.
+ *
+ * @author Fred
+ * @version 2017-02-18
+ * @deprecated
  */
-
-//This will likely end up being implemented in a sub-class or inside a controller.
-//This is just a shell class. I wanted to write this code down
-// but the code will end up implemented elsewhere.
 public class MoodOptions {
     private EmotionalState emotionalStates[] = new EmotionalState[8];
     private SocialSituation socialSituations[] = new SocialSituation[3];
