@@ -50,7 +50,7 @@ public class Participant extends User {
     }
 
     public void followRequestDeclined(Participant receivingParticipant){
-        followingList.removeParticipant(receivingParticipant);
+        followingList.followRequestDenied(receivingParticipant);
     }
 
     // --- end Following methods ---

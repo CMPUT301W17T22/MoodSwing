@@ -5,8 +5,8 @@ import java.util.ArrayList;
 
 /**
  * Is part of Participant participant.<br>
- * Manages the Participants that are following participant.
- *
+ * A list of participants that follow the user.
+ *A list of pending follow request from other participants.
  * @author Fred
  * @version 2017-02-19
  * @see Participant
@@ -24,6 +24,7 @@ public class FollowerList {
     /**
      * DO NOT call explicitly.<br>
      * This method should only be called from requestingParticipant's FollowingList.
+     * Adds a request to this users pending list.
      *
      * @param requestingParticipant
      */
@@ -58,6 +59,7 @@ public class FollowerList {
     }
 
     //TODO: should this also remove from followers? (including rename)
+    // used with declineRequest to remove a follow request person
     public boolean removeFollowRequest(Participant receivingParticipant){
         return(pending.remove(receivingParticipant));
     }
