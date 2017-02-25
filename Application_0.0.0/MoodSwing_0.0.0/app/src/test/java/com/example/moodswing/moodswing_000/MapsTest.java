@@ -1,6 +1,10 @@
 package com.example.moodswing.moodswing_000;
 
+import android.graphics.Color;
+
 import org.junit.Test;
+
+import java.util.Date;
 
 import static org.junit.Assert.*;
 
@@ -17,6 +21,8 @@ public class MapsTest {
      */
     @Test
     public void testMoodEventMarker(){
-
+        String trigger = "trigger";
+        EmotionalState emotionalState = new EmotionalState("happy","somewhere", Color.BLACK);
+        MoodEvent moodEvent = new MoodEvent("username1",emotionalState, trigger, null, null, null);
     }
 }

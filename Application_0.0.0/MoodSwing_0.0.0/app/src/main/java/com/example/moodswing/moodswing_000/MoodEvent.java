@@ -2,6 +2,8 @@ package com.example.moodswing.moodswing_000;
 
 import android.location.Location;
 
+import com.google.android.gms.maps.model.LatLng;
+
 import java.util.Date;
 
 /**A MoodEvent is an object that is posted to certain feeds. It contains the posting participant's username,
@@ -23,12 +25,12 @@ public class MoodEvent {
     private String trigger;
     private SocialSituation socialSituation;
     private String photoLocation;
-    private Location location;
+    private LatLng location;
 
     //pass null for unused parameters
     //TODO: finish handling of null (or empty) inputs
     public MoodEvent(String posterUsername, EmotionalState emotionalState, String trigger, SocialSituation socialSituation,
-                     String photoLocation, Location location) {
+                     String photoLocation, LatLng location) {
         //initializes attributes form the arguments in the constructor.
         this.originalPoster = posterUsername;
         this.emotionalState = emotionalState;
@@ -42,7 +44,7 @@ public class MoodEvent {
 
     //Edit MoodEvent Method, uses setters to replace attributes
     public void editMoodEvent(EmotionalState emotionalState, String trigger, SocialSituation socialSituation,
-    String photoLocation, Location location) {
+    String photoLocation, LatLng location) {
         this.setDate(new Date());
         //emotionalState and socialSituation will be picked from a scroller list
         //depending on which one is picked it will return an int which corresponds to the correct option in the list in the MoodOptions lists.
@@ -100,11 +102,11 @@ public class MoodEvent {
         return photoLocation;
     }
 
-    public void setLocation(Location location) {
+    public void setLocation(LatLng location) {
         this.location = location;
     }
 
-    public Location getLocation() {
+    public LatLng getLocation() {
         return location;
     }
 }
