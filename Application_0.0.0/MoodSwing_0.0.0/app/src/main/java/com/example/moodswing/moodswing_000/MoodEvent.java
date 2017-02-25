@@ -44,7 +44,7 @@ public class MoodEvent {
 
     //Edit MoodEvent Method, uses setters to replace attributes
     public void editMoodEvent(EmotionalState emotionalState, String trigger, SocialSituation socialSituation,
-    String photoLocation, LatLng location) {
+    String photoLocation) {
         this.setDate(new Date());
         //emotionalState and socialSituation will be picked from a scroller list
         //depending on which one is picked it will return an int which corresponds to the correct option in the list in the MoodOptions lists.
@@ -52,7 +52,6 @@ public class MoodEvent {
         this.setTrigger(trigger);
         this.setSocialSituation(socialSituation);
         this.setPhotoLocation(photoLocation);
-        this.setLocation(location);
     }
 
 

@@ -16,7 +16,6 @@ public class MoodEventUnitTest {
     //TODO: finish
     @Test
     public void testBasicMoodEvent(){
-
         String trigger = "trigger";
         Date date = new Date();
         EmotionalState emotionalState = new EmotionalState("happy","somewhere", Color.BLACK);
@@ -24,6 +23,7 @@ public class MoodEventUnitTest {
 
         assertEquals(moodEvent.getEmotionalState(), emotionalState);
         assertEquals(moodEvent.getOriginalPoster(), "username1");
+        ///TODO: test date by value (less than and greater than)
         //Assertion of proper date cannot be used because the variable date is created and stamped but then the date created for the
         //new MoodEvent is automatically made during construction so it will be slightly different. I have confidence it storing properly.
         //assertEquals(moodEvent.getDate(), date);
@@ -49,6 +49,35 @@ public class MoodEventUnitTest {
         assertEquals(moodEvent.getTrigger(), trigger);
         assertEquals(moodEvent.getSocialSituation(), socialSituation);
         assertEquals(moodEvent.getPhotoLocation(), photoLoaction);
+        //TODO: use latlng
+        assertEquals(moodEvent.getLocation(), null);
+    }
+
+    @Test
+    public void testEditingMoodEvent(){
+        //TODO: finish
+        String trigger = "trigger";
+        Date date = new Date();
+        EmotionalState emotionalState = new EmotionalState("happy","somewhere", Color.BLACK);
+        MoodEvent moodEvent = new MoodEvent("username1",emotionalState, trigger, null, null, null);
+
+        EmotionalState emotionalState2 = new EmotionalState("happy","somewhere", Color.BLACK);
+        String trigger2 = "trigger";
+        SocialSituation socialSituation2 = new SocialSituation("so popular", "somewhere");
+        String photoLoaction2 = "somewhere else";
+
+        assertNotEquals(moodEvent.getEmotionalState(), emotionalState2);
+        assertNotEquals(moodEvent.getTrigger(), trigger2);
+        assertNotEquals(moodEvent.getSocialSituation(), socialSituation2);
+        assertNotEquals(moodEvent.getPhotoLocation(), photoLoaction2);
+        assertNotEquals(moodEvent.getLocation(), null);
+
+        moodEvent.editMoodEvent(emotionalState2, trigger2, socialSituation2, photoLoaction2);
+
+        assertEquals(moodEvent.getEmotionalState(), emotionalState2);
+        assertEquals(moodEvent.getTrigger(), trigger2);
+        assertEquals(moodEvent.getSocialSituation(), socialSituation2);
+        assertEquals(moodEvent.getPhotoLocation(), photoLoaction2);
         assertEquals(moodEvent.getLocation(), null);
     }
 
