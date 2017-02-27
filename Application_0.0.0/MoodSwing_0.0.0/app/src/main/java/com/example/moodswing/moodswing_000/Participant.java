@@ -2,6 +2,8 @@ package com.example.moodswing.moodswing_000;
 
 import android.location.Location;
 
+import com.google.android.gms.maps.model.LatLng;
+
 import java.util.ArrayList;
 
 /**
@@ -31,7 +33,7 @@ public class Participant extends User {
     // --- MoodEvent methods
 
     public void addMoodEvent(EmotionalState emotionalState, String trigger, SocialSituation socialSituation,
-                             String photoLocation, Location location) {
+                             String photoLocation, LatLng location) {
         moodHistory.add(new MoodEvent(username ,emotionalState, trigger, socialSituation, photoLocation, location));
     }
 

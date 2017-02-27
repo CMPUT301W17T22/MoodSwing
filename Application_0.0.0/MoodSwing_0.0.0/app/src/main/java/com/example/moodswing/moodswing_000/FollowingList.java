@@ -28,11 +28,7 @@ public class FollowingList {
         receivingParticipant.createFollowerRequest(requestingParticipant);
         pending.add(receivingParticipant);
     }
-
-
-    //called from FollowerList (via Participant)
-    // requesting participant has their request approved
-
+    
     /**
      * DO NOT call explicitly.<br>
      * Should only be called from receivingParticipant's FollowerList.
