@@ -1,7 +1,11 @@
 package com.example.moodswing.moodswing_000;
 
 /**
- * Created by Fred on 2017-02-18.
+ * Contains the information associated with a pre-defined social situation.
+ *
+ * @author Fred
+ * @version 2017-02-18
+ * @see Participant
  */
 
 public class SocialSituation {
@@ -14,10 +18,12 @@ public class SocialSituation {
     }
 
     public String getDescription() {
+
         return description;
     }
 
     public String getIconName() {
+
         return iconName;
     }
 }

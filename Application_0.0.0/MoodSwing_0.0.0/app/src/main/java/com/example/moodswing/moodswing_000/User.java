@@ -1,7 +1,11 @@
 package com.example.moodswing.moodswing_000;
 
 /**
- * Created by Fred on 2017-02-18.
+ * A person who uses the app, identified by their username.
+ *
+ * @author Fred
+ * @version 2017-02-18
+ * @see Participant
  */
 
 public abstract class User {
@@ -11,6 +15,12 @@ public abstract class User {
         return username;
     }
 
+    /**
+     * Compares Users using their unique usernames
+     *
+     * @param otherObject
+     * @return whether or not the usernames are the same
+     */
     @Override
     public boolean equals(Object otherObject){
         if(this == otherObject){

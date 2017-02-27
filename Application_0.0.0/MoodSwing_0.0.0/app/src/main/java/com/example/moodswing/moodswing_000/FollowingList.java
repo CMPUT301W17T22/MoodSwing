@@ -4,7 +4,13 @@ import java.security.InvalidParameterException;
 import java.util.ArrayList;
 
 /**
- * Created by Fred on 2017-02-19.
+ * Is part of Participant <code>participant</code>.<br>
+ * Manages the Participants that <code>participant</code> is following.
+ *
+ * @author Fred
+ * @version 2017-02-19
+ * @see Participant
+ * @see FollowerList
  */
 
 public class FollowingList {
@@ -14,7 +20,7 @@ public class FollowingList {
 
     public FollowingList() {}
 
-
+    // attempt to follow another participant
     public void followParticipant(Participant receivingParticipant, Participant requestingParticipant){
         if(pending.contains(receivingParticipant) || following.contains(receivingParticipant)){
             throw new InvalidParameterException();
@@ -22,8 +28,13 @@ public class FollowingList {
         receivingParticipant.createFollowerRequest(requestingParticipant);
         pending.add(receivingParticipant);
     }
-
-    //called from FollowerList (via Participant)
+    
+    /**
+     * DO NOT call explicitly.<br>
+     * Should only be called from receivingParticipant's FollowerList.
+     *
+     * @param receivingParticipant
+     */
     public void followRequestApproved(Participant receivingParticipant){
         if(pending.contains(receivingParticipant)){
             pending.remove(receivingParticipant);
@@ -39,8 +50,9 @@ public class FollowingList {
             throw new InvalidParameterException();
         }
     }
-
-    public boolean removeParticipant(Participant receivingParticipant){
+    // requesting participant has their request denied
+    //
+    public boolean followRequestDenied(Participant receivingParticipant){
         return(pending.remove(receivingParticipant) | following.remove(receivingParticipant));
     }
 

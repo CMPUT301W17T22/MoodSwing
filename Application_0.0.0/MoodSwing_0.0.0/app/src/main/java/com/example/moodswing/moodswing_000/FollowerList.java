@@ -4,7 +4,13 @@ import java.security.InvalidParameterException;
 import java.util.ArrayList;
 
 /**
- * Created by Fred on 2017-02-19.
+ * Is part of Participant participant.<br>
+ * A list of participants that follow the user.
+ *A list of pending follow request from other participants.
+ * @author Fred
+ * @version 2017-02-19
+ * @see Participant
+ * @see FollowingList
  */
 
 public class FollowerList {
@@ -15,7 +21,13 @@ public class FollowerList {
     public FollowerList(){}
 
 
-    //called from FollowingList (via Participant)
+    /**
+     * DO NOT call explicitly.<br>
+     * This method should only be called from requestingParticipant's FollowingList.
+     * Adds a request to this users pending list.
+     *
+     * @param requestingParticipant
+     */
     public void createRequest(Participant requestingParticipant){
         if(pending.contains(requestingParticipant) || followers.contains(requestingParticipant)){
             throw new InvalidParameterException();
@@ -23,6 +35,7 @@ public class FollowerList {
         pending.add(requestingParticipant);
     }
 
+    // receiving participant accepts requesting participant's request
     public void approveRequest(Participant requestingParticipant, Participant receivingParticipant){
         if(pending.contains(requestingParticipant)){
             pending.remove(requestingParticipant);
@@ -39,12 +52,14 @@ public class FollowerList {
         }
     }
 
+    // receiving participant declines requesting participant's request
     public void declineRequest(Participant requestingParticipant, Participant receivingParticipant){
         requestingParticipant.followRequestDeclined(receivingParticipant);
         removeFollowRequest(requestingParticipant);
     }
 
     //TODO: should this also remove from followers? (including rename)
+    // used with declineRequest to remove a follow request person
     public boolean removeFollowRequest(Participant receivingParticipant){
         return(pending.remove(receivingParticipant));
     }
