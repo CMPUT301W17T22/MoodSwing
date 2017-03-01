@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">MoodSwing_0.0.0</string>
     <string name="title_activity_maps">Map</string>
+    <string name="welcome_text">Welcome to MoodSwing! Please login below.</string>
+    <string name="login">login</string>
+    <string name="login_hint">username</string>
 </resources>
