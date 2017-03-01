@@ -8,6 +8,9 @@ package com.example.moodswing.moodswing_000;
  */
 
 public class ElasticSearchController implements MSController {
+    MoodSwing ms = null;
+
+    public ElasticSearchController(MoodSwing ms) { this.ms = ms; }
 
     /**
      * Updates participant information on ElasticSearch.
