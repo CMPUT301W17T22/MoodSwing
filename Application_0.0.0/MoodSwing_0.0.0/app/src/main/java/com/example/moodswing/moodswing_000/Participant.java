@@ -6,6 +6,8 @@ import com.google.android.gms.maps.model.LatLng;
 
 import java.util.ArrayList;
 
+import io.searchbox.annotations.JestId;
+
 /**
  * A Participant is an end user of the app and is identified by their username.
  *
@@ -18,17 +20,21 @@ import java.util.ArrayList;
  */
 
 public class Participant extends User {
+
+    /**
+     * This id is used in ElasticSearch and Jest to identify a Participants document.
+     */
+    @JestId
+    private String id;
+
     private FollowingList followingList = new FollowingList();
     private FollowerList followerList = new FollowerList();
 
     private ArrayList<MoodEvent> moodHistory = new ArrayList<>();
 
-
-    public Participant(String username){
-
+    public Participant(String username) {
         this.username = username;
     }
-
 
     // --- MoodEvent methods
 
@@ -54,7 +60,6 @@ public class Participant extends User {
     public void followRequestDeclined(Participant receivingParticipant){
         followingList.followRequestDenied(receivingParticipant);
     }
-
     // --- end Following methods ---
 
 
@@ -77,6 +82,10 @@ public class Participant extends User {
 
 
     // --- getters and setters
+
+    public String getId() { return id; }
+
+    public void setId(String id) { this.id = id; }
 
     public ArrayList<Participant> getPendingFollowing() {
         return followingList.getPending();

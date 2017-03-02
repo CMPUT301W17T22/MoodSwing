@@ -24,15 +24,22 @@ public class MoodSwing extends MSModel<MSView> {
      */
     public Participant mainParticipant;
 
+
     /**
-     * Creates a new participant for the MoodSwing app. This is used when logging in and the
-     * username entered is correct but not found.
+     * Adds the mainParticipant for the MoodSwing app to ElasticSearch. This is used when logging
+     * in and the username entered is correct but not found.
      *
      * This will initialize the participant with the entered username, and post it to
      * ElasticSearch.
      */
-    public void newParticipant() {
+    public void newParticipantByUsername(String username) {
 
+        // Get ElasticSearchController.
+        ElasticSearchController elasticSearchController =
+                MoodSwingApplication.getElasticSearchController();
+
+        mainParticipant = new Participant(username);
+        elasticSearchController.newParticipantByParticipant(mainParticipant);
     }
 
     /**
@@ -49,7 +56,7 @@ public class MoodSwing extends MSModel<MSView> {
         // Get Participant from ElasticSearchController and load it into mainParticipant.
         mainParticipant = elasticSearchController.getParticipantByUsername(username);
 
-        // Then update the Views.
+        // Then notify the Views that they need to update their information.
         notifyViews();
     }
 

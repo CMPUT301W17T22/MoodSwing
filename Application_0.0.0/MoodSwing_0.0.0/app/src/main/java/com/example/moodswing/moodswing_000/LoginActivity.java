@@ -66,6 +66,7 @@ public class LoginActivity extends AppCompatActivity implements MSView<MoodSwing
      * @return boolean value that informs if the user's information was loaded properly.
      */
     public boolean loadUser() {
+        // Get the entered username from the EditText.
         EditText usernameEditText = (EditText) findViewById(R.id.usernameEditText);
         String username = usernameEditText.getText().toString();
 
@@ -78,6 +79,13 @@ public class LoginActivity extends AppCompatActivity implements MSView<MoodSwing
 
             // Have the main Model class fetch the user's information.
             moodSwing.getParticipantByUsername(username);
+
+            // moodSwing's mainParticipant should have their information if the username
+            // has been entered before. If their username has not been entered,
+            // moodSwing's mainParticipant's username will be null.
+            if (moodSwing.mainParticipant.username == null) {
+                moodSwing.newParticipantByUsername(username);
+            }
 
             // Continue.
             return true;
