@@ -28,7 +28,7 @@
         android:layout_gravity="center"
         android:inputType="textPersonName"
         android:background="@drawable/login_edittext_shape"
-        android:id="@+id/username"
+        android:id="@+id/usernameEditText"
         />
 
     <Space

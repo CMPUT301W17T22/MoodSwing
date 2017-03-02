@@ -34,7 +34,7 @@ public class MoodSwingApplication extends Application {
      * Get ElasticSearchController. Returns the ElasticSearchController to the Model.
      */
     transient private static ElasticSearchController elasticSearchController = null;
-    static ElasticSearchController elasticSearchController() {
+    static ElasticSearchController getElasticSearchController() {
         if (elasticSearchController == null) {
             elasticSearchController = new ElasticSearchController(getMoodSwing());
         }

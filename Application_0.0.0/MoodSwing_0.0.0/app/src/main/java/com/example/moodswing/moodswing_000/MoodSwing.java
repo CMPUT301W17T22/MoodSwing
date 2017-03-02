@@ -36,13 +36,18 @@ public class MoodSwing extends MSModel<MSView> {
     }
 
     /**
-     * Loads information about the main participant (mood history, follower list
-     * following list) into the mainParticipant, the followingfrom ElasticSearch if online.
+     * Loads a Participant by username from ElasticSearch.
      *
      * This will be used when first logging in as a participant.
      */
-    public void loadInfo() {
-        // Load information from online.
+    public void getParticipantByUsername(String username) {
+
+        // Get ElasticSearchController.
+        ElasticSearchController elasticSearchController =
+                MoodSwingApplication.getElasticSearchController();
+
+        // Get Participant from ElasticSearchController and load it into mainParticipant.
+        mainParticipant = elasticSearchController.getParticipantByUsername(username);
 
         // Then update the Views.
         notifyViews();
@@ -55,7 +60,7 @@ public class MoodSwing extends MSModel<MSView> {
      * This will be used when the main participant edits a mood event, creates a new mood event,
      * accepts/declines a follower request, sends out a new follow request, etc.
      */
-    public void saveOnline() {
+    public void saveParticipant() {
 
     }
 
