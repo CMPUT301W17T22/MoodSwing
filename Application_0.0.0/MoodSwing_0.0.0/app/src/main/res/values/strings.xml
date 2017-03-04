@@ -4,4 +4,7 @@
     <string name="welcome_text">Welcome to MoodSwing! Please login below.</string>
     <string name="login">login</string>
     <string name="login_hint">username</string>
+    <string name="moodswing">MoodSwing</string>
+    <string name="followers_following"><![CDATA[Followers & Following]]></string>
+    <string name="home">Home</string>
 </resources>
