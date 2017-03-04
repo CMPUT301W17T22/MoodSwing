@@ -49,7 +49,7 @@ public class Participant extends User {
         followingList.approvePending(receivingParticipant);
     }
 
-    public void followRequestDenied(Participant receivingParticipant){
+    public void followRequestDeclined(Participant receivingParticipant){
         followingList.removeParticipant(receivingParticipant);
     }
 
@@ -69,7 +69,7 @@ public class Participant extends User {
     }
 
     public void declineFollowerRequest(Participant requestingParticipant){
-        requestingParticipant.followRequestDenied(this);
+        requestingParticipant.followRequestDeclined(this);
         followerList.removeParticipant(requestingParticipant);
     }
 
