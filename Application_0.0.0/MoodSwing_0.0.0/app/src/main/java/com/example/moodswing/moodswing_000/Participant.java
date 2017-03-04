@@ -11,8 +11,7 @@ import java.util.ArrayList;
  * @version 2017-02-18
  * @see User
  * @see MoodEvent
- * @see FollowingList
- * @see FollowerList
+ * @see ApprovalList
  */
 
 public class Participant extends User {
