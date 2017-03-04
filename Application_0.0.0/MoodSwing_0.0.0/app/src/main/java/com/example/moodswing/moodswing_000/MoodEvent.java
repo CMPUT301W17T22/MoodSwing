@@ -1,8 +1,11 @@
 package com.example.moodswing.moodswing_000;
 
-import android.location.Location;
-
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.Date;
 
@@ -24,34 +27,51 @@ public class MoodEvent {
     private Date date;
     private String trigger;
     private SocialSituation socialSituation;
-    private String photoLocation;
     private LatLng location;
+    private BitmapDescriptor photo;
+    private BitmapDescriptor icon;
 
     //pass null for unused parameters
     //TODO: finish handling of null (or empty) inputs
     public MoodEvent(String posterUsername, EmotionalState emotionalState, String trigger, SocialSituation socialSituation,
-                     String photoLocation, LatLng location) {
-        //initializes attributes form the arguments in the constructor.
+                     String photoLocation, String iconLocation, LatLng location) {
         this.originalPoster = posterUsername;
-        this.emotionalState = emotionalState;
-        this.trigger = trigger;
-        this.socialSituation = socialSituation;
-        this.photoLocation = photoLocation;
         this.location = location;
-        //automatically selects current date
-        this.date = new Date();
+        editMoodEvent(emotionalState, trigger, socialSituation, iconLocation, photoLocation);
     }
 
     //Edit MoodEvent Method, uses setters to replace attributes
     public void editMoodEvent(EmotionalState emotionalState, String trigger, SocialSituation socialSituation,
-    String photoLocation) {
+            String iconLocation, String photoLocation) {
+        //automatically selects current date
         this.setDate(new Date());
         //emotionalState and socialSituation will be picked from a scroller list
         //depending on which one is picked it will return an int which corresponds to the correct option in the list in the MoodOptions lists.
-        this.setEmotionalState(emotionalState);
-        this.setTrigger(trigger);
-        this.setSocialSituation(socialSituation);
-        this.setPhotoLocation(photoLocation);
+        this.emotionalState = emotionalState;
+        this.trigger = trigger;
+        this.socialSituation = socialSituation;
+        this.icon = BitmapDescriptorFactory.fromAsset(iconLocation);
+        this.photo = BitmapDescriptorFactory.fromFile(photoLocation);
+    }
+
+
+    /**
+     * Creates Marker for map based on emoticon and position.
+     *
+     * @return Marker corresponding to this MoodEvent
+     * @return null if no position
+     */
+    public Marker getMapMarker(GoogleMap googleMap){
+        if(location == null){
+            return null;
+        }
+
+        Marker marker = googleMap.addMarker(new MarkerOptions()
+                .position(location)
+                .title(emotionalState.getDescription())
+                .icon(icon));
+
+        return marker;
     }
 
 
@@ -91,14 +111,6 @@ public class MoodEvent {
 
     public SocialSituation getSocialSituation() {
         return socialSituation;
-    }
-
-    public void setPhotoLocation(String photoLocation) {
-        this.photoLocation = photoLocation;
-    }
-
-    public String getPhotoLocation() {
-        return photoLocation;
     }
 
     public void setLocation(LatLng location) {
