@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * Created by fred on 03/03/2017.
  */
 
-public abstract class ApprovalList {
+public class ApprovalList {
     private ArrayList<Participant> pending = new ArrayList<>();
     private ArrayList<Participant> confirmed = new ArrayList<>();
 
