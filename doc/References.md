@@ -2,7 +2,7 @@
 - **Overridding .equals() -** http://www.geeksforgeeks.org/overriding-equals-method-in-java/
     - Grab date: 19-02-2017
 - **Overriding .hashCode() -** http://www.mkyong.com/java/java-how-to-overrides-equals-and-hashcode/
-    - grab date: 2017-03-03
+    - grab date: 03-03-2017
 
 ## APIs:
 
