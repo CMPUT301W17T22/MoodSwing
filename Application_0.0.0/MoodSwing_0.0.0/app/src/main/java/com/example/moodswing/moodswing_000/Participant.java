@@ -1,7 +1,5 @@
 package com.example.moodswing.moodswing_000;
 
-import android.location.Location;
-
 import com.google.android.gms.maps.model.LatLng;
 
 import java.util.ArrayList;
@@ -18,8 +16,8 @@ import java.util.ArrayList;
  */
 
 public class Participant extends User {
-    private FollowingList followingList = new FollowingList();
-    private FollowerList followerList = new FollowerList();
+    private ApprovalList followingList = new ApprovalList();
+    private ApprovalList followerList = new ApprovalList();
 
     private ArrayList<MoodEvent> moodHistory = new ArrayList<>();
 
@@ -43,16 +41,18 @@ public class Participant extends User {
     // --- Following methods ---
 
     public void followParticipant(Participant receivingParticipant){
-        followingList.followParticipant(receivingParticipant, this);
+        followingList.newPendingParticipant(receivingParticipant);
+        receivingParticipant.createFollowerRequest(this);
     }
 
     //called from other.followerList
     public void followRequestApproved(Participant receivingParticipant){
-        followingList.followRequestApproved(receivingParticipant);
+        followingList.confirmPending(receivingParticipant);
     }
 
-    public void followRequestDeclined(Participant receivingParticipant){
-        followingList.followRequestDenied(receivingParticipant);
+    //TODO: rename
+    public void removeParticipant(Participant receivingParticipant){
+        followingList.removeParticipant(receivingParticipant);
     }
 
     // --- end Following methods ---
@@ -62,15 +62,21 @@ public class Participant extends User {
 
     //called from other.followingList
     public void createFollowerRequest(Participant requestingParticipant){
-        followerList.createRequest(requestingParticipant);
+        followerList.newPendingParticipant(requestingParticipant);
     }
 
     public void approveFollowerRequest(Participant requestingParticipant){
-        followerList.approveRequest(requestingParticipant, this);
+        requestingParticipant.followRequestApproved(this);
+        followerList.confirmPending(requestingParticipant);
     }
 
     public void declineFollowerRequest(Participant requestingParticipant){
-        followerList.declineRequest(requestingParticipant, this);
+        requestingParticipant.removeParticipant(this);
+        followerList.removeParticipant(requestingParticipant);
+    }
+
+    public void blockFollowerRequest(Participant requestingParticipant){
+        followerList.removeParticipant(requestingParticipant);
     }
 
     // --- end Follower methods ---
@@ -83,7 +89,7 @@ public class Participant extends User {
     }
 
     public ArrayList<Participant> getFollowing() {
-        return followingList.getFollowing();
+        return followingList.getConfirmed();
     }
 
     public ArrayList<Participant> getPendingFollowers() {
@@ -91,7 +97,7 @@ public class Participant extends User {
     }
 
     public ArrayList<Participant> getFollowers() {
-        return followerList.getFollowers();
+        return followerList.getConfirmed();
     }
 
     public ArrayList<MoodEvent> getMoodEvents() {

@@ -13,7 +13,7 @@ public class ApprovalList {
 
     public ApprovalList(){}
 
-    public void newPending(Participant participant, Participant otherParticipant){
+    public void newPendingParticipant(Participant otherParticipant){
         if(pending.contains(otherParticipant) || confirmed.contains(otherParticipant)){
             throw new InvalidParameterException();
         }
