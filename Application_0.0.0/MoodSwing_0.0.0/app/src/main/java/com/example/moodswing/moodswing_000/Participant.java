@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * A Participant is an end user of the app and is identified by their username.
  *
  * @author Fred
- * @version 2017-02-18
+ * @version 2017-03-03
  * @see User
  * @see MoodEvent
  * @see ApprovalList
@@ -44,13 +44,17 @@ public class Participant extends User {
         receivingParticipant.createFollowerRequest(this);
     }
 
-    //called from other.followerList
+    /**
+     * DO NOT call explicitly. Should only be called by receivingParticipant
+     *
+     * @param receivingParticipant
+     */
     public void followRequestApproved(Participant receivingParticipant){
         followingList.approvePending(receivingParticipant);
     }
 
     public void followRequestDeclined(Participant receivingParticipant){
-        followingList.removeParticipant(receivingParticipant);
+        followingList.remove(receivingParticipant);
     }
 
     // --- end Following methods ---
@@ -58,7 +62,11 @@ public class Participant extends User {
 
     // --- Follower methods ---
 
-    //called from other.followingList
+    /**
+     * DO NOT call explicitly. Should only be called by requestingParticipant
+     *
+     * @param requestingParticipant
+     */
     public void createFollowerRequest(Participant requestingParticipant){
         followerList.newPendingParticipant(requestingParticipant);
     }
@@ -70,11 +78,11 @@ public class Participant extends User {
 
     public void declineFollowerRequest(Participant requestingParticipant){
         requestingParticipant.followRequestDeclined(this);
-        followerList.removeParticipant(requestingParticipant);
+        followerList.remove(requestingParticipant);
     }
 
     public void blockFollowerRequest(Participant requestingParticipant){
-        followerList.removeParticipant(requestingParticipant);
+        followerList.remove(requestingParticipant);
     }
 
     // --- end Follower methods ---

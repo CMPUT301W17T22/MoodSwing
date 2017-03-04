@@ -4,7 +4,15 @@ import java.security.InvalidParameterException;
 import java.util.ArrayList;
 
 /**
- * Created by fred on 03/03/2017.
+ * This class contains two lists of Participants.
+ * Participants are initially added as "pending".
+ * After approval, Participants are promoted to "approved".
+ *
+ * This list is part-of Participant (implemented twice).
+ *
+ * @author Fred
+ * @version 2017-03-03
+ * @see Participant
  */
 
 public class ApprovalList {
@@ -36,7 +44,13 @@ public class ApprovalList {
         }
     }
 
-    public boolean removeParticipant(Participant otherParticipant){
+    /**
+     * Removes pending and approved Participants
+     *
+     * @param otherParticipant
+     * @return true if removal successful
+     */
+    public boolean remove(Participant otherParticipant){
         return(pending.remove(otherParticipant) | approved.remove(otherParticipant));
     }
 
