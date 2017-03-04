@@ -32,4 +32,18 @@ public abstract class User {
         User otherUser = (User) otherObject;
         return(this.username == otherUser.username);
     }
+
+    /**
+     * based on code from:
+     * http://www.mkyong.com/java/java-how-to-overrides-equals-and-hashcode/
+     * grab date: 2017-03-03
+     *
+     * @return hash code
+     */
+    @Override
+    public int hashCode(){
+        int hash = 17;
+        hash = 31 * hash + username.hashCode();
+        return hash;
+    }
 }
