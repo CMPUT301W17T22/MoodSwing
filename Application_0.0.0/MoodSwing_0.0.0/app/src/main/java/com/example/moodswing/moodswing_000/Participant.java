@@ -47,11 +47,10 @@ public class Participant extends User {
 
     //called from other.followerList
     public void followRequestApproved(Participant receivingParticipant){
-        followingList.confirmPending(receivingParticipant);
+        followingList.approvePending(receivingParticipant);
     }
 
-    //TODO: rename
-    public void removeParticipant(Participant receivingParticipant){
+    public void followRequestDenied(Participant receivingParticipant){
         followingList.removeParticipant(receivingParticipant);
     }
 
@@ -67,11 +66,11 @@ public class Participant extends User {
 
     public void approveFollowerRequest(Participant requestingParticipant){
         requestingParticipant.followRequestApproved(this);
-        followerList.confirmPending(requestingParticipant);
+        followerList.approvePending(requestingParticipant);
     }
 
     public void declineFollowerRequest(Participant requestingParticipant){
-        requestingParticipant.removeParticipant(this);
+        requestingParticipant.followRequestDenied(this);
         followerList.removeParticipant(requestingParticipant);
     }
 
@@ -89,7 +88,7 @@ public class Participant extends User {
     }
 
     public ArrayList<Participant> getFollowing() {
-        return followingList.getConfirmed();
+        return followingList.getApproved();
     }
 
     public ArrayList<Participant> getPendingFollowers() {
@@ -97,7 +96,7 @@ public class Participant extends User {
     }
 
     public ArrayList<Participant> getFollowers() {
-        return followerList.getConfirmed();
+        return followerList.getApproved();
     }
 
     public ArrayList<MoodEvent> getMoodEvents() {

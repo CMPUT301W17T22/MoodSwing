@@ -9,26 +9,26 @@ import java.util.ArrayList;
 
 public class ApprovalList {
     private ArrayList<Participant> pending = new ArrayList<>();
-    private ArrayList<Participant> confirmed = new ArrayList<>();
+    private ArrayList<Participant> approved = new ArrayList<>();
 
     public ApprovalList(){}
 
     public void newPendingParticipant(Participant otherParticipant){
-        if(pending.contains(otherParticipant) || confirmed.contains(otherParticipant)){
+        if(pending.contains(otherParticipant) || approved.contains(otherParticipant)){
             throw new InvalidParameterException();
         }
         pending.add(otherParticipant);
     }
 
-    public void confirmPending(Participant otherParticipant){
+    public void approvePending(Participant otherParticipant){
         if(pending.contains(otherParticipant)){
             pending.remove(otherParticipant);
 
-            if(confirmed.contains(otherParticipant)){
+            if(approved.contains(otherParticipant)){
                 throw new InvalidParameterException();
             }
             else{
-                confirmed.add(otherParticipant);
+                approved.add(otherParticipant);
             }
         }
         else{
@@ -37,7 +37,7 @@ public class ApprovalList {
     }
 
     public boolean removeParticipant(Participant otherParticipant){
-        return(pending.remove(otherParticipant) | confirmed.remove(otherParticipant));
+        return(pending.remove(otherParticipant) | approved.remove(otherParticipant));
     }
 
     // --- getters and setters ---
@@ -46,8 +46,8 @@ public class ApprovalList {
         return pending;
     }
 
-    public ArrayList<Participant> getConfirmed() {
-        return confirmed;
+    public ArrayList<Participant> getApproved() {
+        return approved;
     }
 
     // --- end getters and setters ---
