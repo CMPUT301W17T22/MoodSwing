@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+        <item android:id="@+id/homeToolBarButton"
+            android:title="@string/home"
+            app:showAsAction="never"
+            android:enabled="true" />
+
+        <item android:title="@string/followers_following"
+            android:id="@+id/FollowToolBarButton"
+            android:enabled="true" />
+
+
+</menu>

@@ -4,6 +4,8 @@ import com.google.android.gms.maps.model.LatLng;
 
 import java.util.ArrayList;
 
+import io.searchbox.annotations.JestId;
+
 /**
  * A Participant is an end user of the app and is identified by their username.
  *
@@ -15,23 +17,26 @@ import java.util.ArrayList;
  */
 
 public class Participant extends User {
+    /**
+     * This id is used in ElasticSearch and Jest to identify a Participants document.
+     */
+    @JestId
+    private String id;
+
     private ApprovalList followingList = new ApprovalList();
     private ApprovalList followerList = new ApprovalList();
 
     private ArrayList<MoodEvent> moodHistory = new ArrayList<>();
 
-
-    public Participant(String username){
-
+    public Participant(String username) {
         this.username = username;
     }
-
 
     // --- MoodEvent methods
 
     public void addMoodEvent(EmotionalState emotionalState, String trigger, SocialSituation socialSituation,
-                             String photoLocation, LatLng location) {
-        moodHistory.add(new MoodEvent(username ,emotionalState, trigger, socialSituation, photoLocation, location));
+                             String photoLocation, String iconLocation, LatLng location) {
+        moodHistory.add(new MoodEvent(username ,emotionalState, trigger, socialSituation, photoLocation, iconLocation, location));
     }
 
     // --- end MoodEvent methods
@@ -56,7 +61,6 @@ public class Participant extends User {
     public void followRequestDeclined(Participant receivingParticipant){
         followingList.remove(receivingParticipant);
     }
-
     // --- end Following methods ---
 
 
@@ -89,6 +93,10 @@ public class Participant extends User {
 
 
     // --- getters and setters
+
+    public String getId() { return id; }
+
+    public void setId(String id) { this.id = id; }
 
     public ArrayList<Participant> getPendingFollowing() {
         return followingList.getPending();
