@@ -21,7 +21,6 @@ public class MoodEventController implements MSController {
                 moodEvent.getTrigger(),
                 moodEvent.getSocialSituation(),
                 moodEvent.getPhotoLocation(),
-                moodEvent.getIconLocation(),
                 moodEvent.getLocation());
     }
 

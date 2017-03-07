@@ -28,19 +28,13 @@ public class MoodEvent {
     private String trigger;
     private SocialSituation socialSituation;
     private LatLng location;
-
-
-
-    private String photoLocation;
-    private String iconLocation;
     private BitmapDescriptor photo;
     private BitmapDescriptor icon;
 
     //pass null for unused parameters
     //TODO: finish handling of null (or empty) inputs
-    public MoodEvent(String posterUsername, EmotionalState emotionalState, String trigger,
-                     SocialSituation socialSituation,  String photoLocation, String iconLocation,
-                     LatLng location) {
+    public MoodEvent(String posterUsername, EmotionalState emotionalState, String trigger, SocialSituation socialSituation,
+                     String photoLocation, String iconLocation, LatLng location) {
         this.originalPoster = posterUsername;
         this.location = location;
         editMoodEvent(emotionalState, trigger, socialSituation, iconLocation, photoLocation);
@@ -81,7 +75,7 @@ public class MoodEvent {
     }
 
 
-    // Getter and Setter methods for attributes.
+    //Getter and Setter methods for attributes.
 
     public String getOriginalPoster(){
         return originalPoster;
@@ -126,12 +120,4 @@ public class MoodEvent {
     public LatLng getLocation() {
         return location;
     }
-
-    public String getPhotoLocation() { return photoLocation; }
-
-    public void setPhotoLocation(String photoLocation) { this.photoLocation = photoLocation; }
-
-    public String getIconLocation() { return iconLocation; }
-
-    public void setIconLocation(String iconLocation) { this.iconLocation = iconLocation; }
 }

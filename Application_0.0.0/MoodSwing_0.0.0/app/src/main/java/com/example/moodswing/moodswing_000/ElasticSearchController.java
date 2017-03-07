@@ -129,7 +129,7 @@ public class ElasticSearchController implements MSController {
 
             // Build ElasticSearch search.
             Search search = new Search.Builder(username)
-                    .addIndex("cmput301w17t22")
+                    .addIndex("MoodSwing")
                     .addType("Participant")
                     .build();
 
@@ -179,7 +179,7 @@ public class ElasticSearchController implements MSController {
             for (Participant participant : participants) {
                 // Instantiate the index we are going to add the document too.
                 Index index = new Index.Builder(participant)
-                        .index("cmput301w17t22")
+                        .index("MoodSwing")
                         .type("Participant")
                         .build();
 
