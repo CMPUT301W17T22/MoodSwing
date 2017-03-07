@@ -34,9 +34,19 @@ public class Participant extends User {
 
     // --- MoodEvent methods
 
+    /**
+     * Method to add a new mood event to the participant's mood history.
+     * @param emotionalState
+     * @param trigger
+     * @param socialSituation
+     * @param photoLocation
+     * @param iconLocation
+     * @param location
+     */
     public void addMoodEvent(EmotionalState emotionalState, String trigger, SocialSituation socialSituation,
                              String photoLocation, String iconLocation, LatLng location) {
-        moodHistory.add(new MoodEvent(username ,emotionalState, trigger, socialSituation, photoLocation, iconLocation, location));
+        moodHistory.add(new MoodEvent(username, emotionalState, trigger,
+                socialSituation, photoLocation, iconLocation, location));
     }
 
     // --- end MoodEvent methods

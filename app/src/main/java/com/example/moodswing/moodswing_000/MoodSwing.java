@@ -32,7 +32,7 @@ public class MoodSwing extends MSModel<MSView> {
      * This will initialize the participant with the entered username, and post it to
      * ElasticSearch.
      */
-    public void newParticipantByUsername(String username) {
+    public void newMainParticipantByUsername(String username) {
 
         // Get ElasticSearchController.
         ElasticSearchController elasticSearchController =
@@ -43,11 +43,11 @@ public class MoodSwing extends MSModel<MSView> {
     }
 
     /**
-     * Loads a Participant by username from ElasticSearch.
+     * Loads a Participant by username from ElasticSearch into the mainParticipant.
      *
      * This will be used when first logging in as a participant.
      */
-    public void getParticipantByUsername(String username) {
+    public void getMainParticipantByUsername(String username) {
 
         // Get ElasticSearchController.
         ElasticSearchController elasticSearchController =
