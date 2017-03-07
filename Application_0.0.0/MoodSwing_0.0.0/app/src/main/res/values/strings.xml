@@ -7,4 +7,6 @@
     <string name="moodswing">MoodSwing</string>
     <string name="followers_following"><![CDATA[Followers & Following]]></string>
     <string name="home">Home</string>
+    <string name="new_mood_event">New Mood Event</string>
+    <string name="mood_history">View Mood History</string>
 </resources>

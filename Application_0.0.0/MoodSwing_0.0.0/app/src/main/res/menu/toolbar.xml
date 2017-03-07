@@ -7,9 +7,19 @@
             app:showAsAction="never"
             android:enabled="true" />
 
-        <item android:title="@string/followers_following"
-            android:id="@+id/FollowToolBarButton"
+        <item android:id="@+id/FollowToolBarButton"
+            android:title="@string/followers_following"
+            app:showAsAction="never"
             android:enabled="true" />
 
+        <item android:id="@+id/newMoodEventToolBarButton"
+            android:title="@string/new_mood_event"
+            app:showAsAction="never"
+            android:enabled="true" />
 
+        <item android:id="@+id/moodHistoryToolBarButton"
+            android:title="@string/mood_history"
+            app:showAsAction="never"
+            android:enabled="true" />
+        
 </menu>
