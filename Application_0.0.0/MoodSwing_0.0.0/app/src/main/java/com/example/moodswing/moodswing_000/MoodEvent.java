@@ -28,6 +28,11 @@ public class MoodEvent {
     private String trigger;
     private SocialSituation socialSituation;
     private LatLng location;
+    private String photoLocation;
+
+
+
+    private String iconLocation;
     private BitmapDescriptor photo;
     private BitmapDescriptor icon;
 
@@ -112,6 +117,16 @@ public class MoodEvent {
     public SocialSituation getSocialSituation() {
         return socialSituation;
     }
+
+    public String getPhotoLocation() { return photoLocation; }
+
+    public void setPhotoLocation(String photoLocation) { this.photoLocation = photoLocation; }
+
+    public String getIconLocation() { return iconLocation; }
+
+    public void setIconLocation(String iconLocation) { this.iconLocation = iconLocation; }
+
+    public void setOriginalPoster(String originalPoster) { this.originalPoster = originalPoster; }
 
     public void setLocation(LatLng location) {
         this.location = location;
