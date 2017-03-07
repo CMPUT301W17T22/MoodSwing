@@ -14,18 +14,17 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="MoodSwing"
-
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".MainActivity"
+        <activity
+            android:name=".MainActivity"
             android:label="MoodSwing">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -46,8 +45,9 @@
 
         <activity
             android:name=".MapsActivity"
-            android:label="@string/title_activity_maps"
-            android:exported="true"></activity>
+            android:exported="true"
+            android:label="@string/title_activity_maps" />
+        <activity android:name=".NewMoodEventActivity"></activity>
     </application>
 
 </manifest>

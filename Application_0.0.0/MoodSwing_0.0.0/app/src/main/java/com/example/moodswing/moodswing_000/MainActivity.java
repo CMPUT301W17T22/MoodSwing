@@ -10,6 +10,7 @@ import android.view.MenuItem;
  * Hexadecimal color codes:
  * dark magenta: #66023C
  * background: e0b0ff
+ *
  */
 public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>  {
 
