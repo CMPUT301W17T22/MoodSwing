@@ -3,6 +3,7 @@ package com.ualberta.cmput301w17t22.moodswing;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.google.gson.Gson;
 import com.searchly.jestdroid.DroidClientConfig;
 import com.searchly.jestdroid.JestClientFactory;
 import com.searchly.jestdroid.JestDroidClient;
@@ -129,7 +130,7 @@ public class ElasticSearchController implements MSController {
 
             // Build ElasticSearch search.
             Search search = new Search.Builder(username)
-                    .addIndex("MoodSwing")
+                    .addIndex("cmput301w17t22")
                     .addType("Participant")
                     .build();
 
@@ -177,9 +178,16 @@ public class ElasticSearchController implements MSController {
 
             // Add all participants in participants.
             for (Participant participant : participants) {
-                // Instantiate the index we are going to add the document too.
-                Index index = new Index.Builder(participant)
-                        .index("MoodSwing")
+
+                Gson gson = new Gson();
+
+                String participantJson = gson.toJson(participant);
+                Log.i("ERROR", participantJson);
+
+
+                // Create the index that the Jest droid client will execute on.
+                Index index = new Index.Builder(participantJson)
+                        .index("cmput301w17t22")
                         .type("Participant")
                         .build();
 

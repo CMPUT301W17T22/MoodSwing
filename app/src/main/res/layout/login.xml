@@ -21,15 +21,14 @@
         android:layout_height="20dp" />
 
     <EditText
-        android:hint="@string/login_hint"
-        android:paddingLeft="8dp"
+        android:id="@+id/usernameEditText"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:inputType="textPersonName"
         android:background="@drawable/login_edittext_shape"
-        android:id="@+id/usernameEditText"
-        />
+        android:hint="@string/login_hint"
+        android:inputType="textPersonName"
+        android:paddingLeft="8dp" />
 
     <Space
         android:layout_width="match_parent"
