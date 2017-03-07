@@ -23,7 +23,6 @@ public class MapsTest {
     public void testMoodEventMarker(){
         String trigger = "trigger";
         EmotionalState emotionalState = new EmotionalState("happy","somewhere", Color.BLACK);
-
         MoodEvent moodEvent = new MoodEvent("username1",emotionalState, trigger, null, null, null, null);
     }
 }

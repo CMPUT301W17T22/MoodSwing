@@ -47,7 +47,12 @@
             android:name=".MapsActivity"
             android:exported="true"
             android:label="@string/title_activity_maps" />
+<<<<<<< HEAD
         <activity android:name=".NewMoodEventActivity"></activity>
+=======
+        <activity android:name=".NewMoodEventActivity" />
+        <activity android:name=".MoodHistoryActivity"></activity>
+>>>>>>> 7e449f012b78f5777615dad6b1bc6b2127ede4fd
     </application>
 
 </manifest>

@@ -10,6 +10,7 @@ import android.os.Bundle;
  *     proper working features to this before I make the XML very
  *     pretty.
  */
+
 public class NewMoodEventActivity extends AppCompatActivity {
 
     @Override
@@ -19,5 +20,7 @@ public class NewMoodEventActivity extends AppCompatActivity {
     }
 
 
+
     // goes to main mood feed page when finished
+
 }
