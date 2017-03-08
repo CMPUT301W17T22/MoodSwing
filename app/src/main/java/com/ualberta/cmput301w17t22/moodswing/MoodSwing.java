@@ -1,5 +1,7 @@
 package com.ualberta.cmput301w17t22.moodswing;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 
 /**
@@ -38,8 +40,11 @@ public class MoodSwing extends MSModel<MSView> {
         ElasticSearchController elasticSearchController =
                 MoodSwingApplication.getElasticSearchController();
 
-        mainParticipant = new Participant(username);
-        elasticSearchController.newParticipantByParticipant(mainParticipant);
+        // Create a new participant and add it to ElasticSearch.
+        mainParticipant = elasticSearchController.newParticipantByUsername(username);
+
+        // Notify Views so they update their information.
+        notifyViews();
     }
 
     /**

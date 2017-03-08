@@ -1,6 +1,7 @@
 package com.ualberta.cmput301w17t22.moodswing;
 
 import android.os.AsyncTask;
+import android.os.Parcel;
 import android.util.Log;
 
 import com.google.gson.Gson;
@@ -91,17 +92,25 @@ public class ElasticSearchController implements MSController {
      * Function to add a participant to ElasticSearch/Jest.
      * Calls on and executes the addParticipantTask.
      *
-     * @param participant The participant to add to ElasticSearch/Jest.
+     * @param username The participant's username to add to ElasticSearch/Jest.
      */
-    public void newParticipantByParticipant(Participant participant) {
+    public Participant newParticipantByUsername(String username) {
+
+        // Create null participant.
+        Participant participant = new Participant(null);
 
         // Initialize the task.
-        AddParticipantTask addParticipantTask = new AddParticipantTask();
+        AddParticipantByUsernameTask addParticipantByUsernameTask = new AddParticipantByUsernameTask();
 
         // Add the participant.
-        addParticipantTask.execute(participant);
-
-        // TODO: Verify that the participant is added.
+        addParticipantByUsernameTask.execute(username);
+        try {
+           participant = addParticipantByUsernameTask.get();
+        } catch (Exception e) {
+            Log.i("ERROR", "Something went wrong when getting the" +
+                    " new participant from the AsyncTask.");
+        }
+        return participant;
     }
 
     /**
@@ -165,51 +174,56 @@ public class ElasticSearchController implements MSController {
      * AsyncTask that adds a new participant to ElasticSearch. Taken from CMPUT301 ElasticSearch
      * LonelyTwitter Jest Lab.
      *
-     * Currently should work for adding multiple participants.
+     * Works only for adding a single participant.
      *
-     * Calling execute(Participant ... participants) on an instance of AddParticipantByUsernameTask
-     * will add a document for the given participant.
+     * Calling execute(Participan participant) on an instance of AddParticipantByUsernameTask
+     * will add a document for the given participant return that participant with its proper
+     * Jest id.
      */
-    public static class AddParticipantTask extends AsyncTask<Participant, Void, Void> {
+    public static class AddParticipantByUsernameTask extends AsyncTask<String, Void, Participant> {
         @Override
-        protected Void doInBackground(Participant ... participants) {
+        protected Participant doInBackground(String ... params) {
             // Always verify the ElasticSearch config first.
             verifyConfig();
 
-            // Add all participants in participants.
-            for (Participant participant : participants) {
+            // Grab the username from the params and create the participant.
+            String username = params[0];
+            Participant participant = new Participant(username);
 
-                Gson gson = new Gson();
+            Gson gson = new Gson();
 
-                String participantJson = gson.toJson(participant);
-                Log.i("ERROR", participantJson);
+            String participantJson = gson.toJson(participant);
+            Log.i("ERROR", participantJson);
 
 
-                // Create the index that the Jest droid client will execute on.
-                Index index = new Index.Builder(participantJson)
-                        .index("cmput301w17t22")
-                        .type("Participant")
-                        .build();
+            // Create the index that the Jest droid client will execute on.
+            Index index = new Index.Builder(participantJson)
+                    .index("cmput301w17t22")
+                    .type("Participant")
+                    .build();
 
-                // Try to post the participant.
-                try {
-                    DocumentResult result = client.execute(index);
+            // Try to post the participant.
+            try {
+                DocumentResult result = client.execute(index);
 
-                    if (result.isSucceeded()) {
-                        // Result is good, update the participant's information to include
-                        // the ElasticSearch id.
-                        participant.setId(result.getId());
+                if (result.isSucceeded()) {
+                    // Result is good, update the participant's information to include
+                    // the ElasticSearch id.
+                    participant.setId(result.getId());
+                    Log.i("ERROR", participant.getId());
 
-                    } else {
-                        // ElasticSearch is unable to add the participant.
-                        Log.i("ERROR", "ElasticSearch was unable to add the participant.");
-                    }
-                } catch (IOException e) {
-                    Log.i("ERROR", "Something went wrong when adding a participant by" +
-                            " username to ElasticSearch.");
+                } else {
+                    // ElasticSearch is unable to add the participant.
+                    Log.i("ERROR", "ElasticSearch was unable to add the participant.");
                 }
+            } catch (IOException e) {
+                Log.i("ERROR", "Something went wrong when adding a participant by" +
+                        " username to ElasticSearch.");
             }
-            return null;
+            return participant;
         }
     }
+
+
 }
+

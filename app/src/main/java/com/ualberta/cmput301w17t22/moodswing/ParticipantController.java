@@ -1,5 +1,7 @@
 package com.ualberta.cmput301w17t22.moodswing;
 
+import android.util.Log;
+
 /**
  * Participant Controller.
  *
@@ -33,6 +35,10 @@ public class ParticipantController implements MSController {
         // moodSwing's mainParticipant's username will be null.
         if (moodSwing.mainParticipant.username == null) {
             moodSwing.newMainParticipantByUsername(username);
+            if (moodSwing.mainParticipant.getUsername() == null) {
+                Log.i("ERROR", "Unable to create new participant by username.");
+            }
+
         }
     }
 }
