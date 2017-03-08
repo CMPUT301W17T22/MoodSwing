@@ -1,0 +1,144 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/src/main/AndroidManifest.xml:2:1-53:12
+	package
+		ADDED from /Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/src/main/AndroidManifest.xml:3:5-52
+		INJECTED from /Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/src/main/AndroidManifest.xml:2:11-69
+	android:versionCode
+		INJECTED from /Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/src/main/AndroidManifest.xml
+uses-permission#android.permission.ACCESS_FINE_LOCATION
+ADDED from /Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/src/main/AndroidManifest.xml:10:5-79
+	android:name
+		ADDED from /Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/src/main/AndroidManifest.xml:10:22-76
+uses-permission#android.permission.INTERNET
+ADDED from /Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/src/main/AndroidManifest.xml:11:5-67
+MERGED from [com.google.android.gms:play-services-maps:10.2.0] /Users/PeterWeckend/.android/build-cache/ecb4a1f20e0daf80ed68170700dc75690a958555/output/AndroidManifest.xml:20:5-66
+	android:name
+		ADDED from /Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/src/main/AndroidManifest.xml:11:22-64
+application
+ADDED from /Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/src/main/AndroidManifest.xml:13:5-51:19
+MERGED from [com.android.support:appcompat-v7:25.2.0] /Users/PeterWeckend/.android/build-cache/bce1e8d7708deb639b578b1fdbd4f09ff3fe7531/output/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:animated-vector-drawable:25.2.0] /Users/PeterWeckend/.android/build-cache/ca40a06690e5c512333452a8adf3ad48b061ca4a/output/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-vector-drawable:25.2.0] /Users/PeterWeckend/.android/build-cache/34d155593ffd787731ba0f61e35af20f66d14fc7/output/AndroidManifest.xml:23:5-20
+MERGED from [com.google.android.gms:play-services-maps:10.2.0] /Users/PeterWeckend/.android/build-cache/ecb4a1f20e0daf80ed68170700dc75690a958555/output/AndroidManifest.xml:24:5-19
+MERGED from [com.google.android.gms:play-services-base:10.2.0] /Users/PeterWeckend/.android/build-cache/d7350be4b00c090efaa02f0ffbc246a03362dcd9/output/AndroidManifest.xml:18:5-20:19
+MERGED from [com.google.android.gms:play-services-tasks:10.2.0] /Users/PeterWeckend/.android/build-cache/b84f196871b2ca3bbbfc9a6d5b8b39be0f810e8c/output/AndroidManifest.xml:4:5-19
+MERGED from [com.google.android.gms:play-services-basement:10.2.0] /Users/PeterWeckend/.android/build-cache/0eb62f6a4fe27e8e5b311ef968fb9da7b442d1f2/output/AndroidManifest.xml:19:5-21:19
+MERGED from [com.android.support:support-v4:25.2.0] /Users/PeterWeckend/.android/build-cache/3b0072e4d209d2bf5ae626e06a043ff65afd4ab7/output/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-fragment:25.2.0] /Users/PeterWeckend/.android/build-cache/ae7f6d00eb8171fbce92571f771619bb93ee7b17/output/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-media-compat:25.2.0] /Users/PeterWeckend/.android/build-cache/1618f20990f75a0a93a5627d00a965cc7ee9241a/output/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-core-ui:25.2.0] /Users/PeterWeckend/.android/build-cache/d7c26260e984663e019b309d723275770518c5a7/output/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-core-utils:25.2.0] /Users/PeterWeckend/.android/build-cache/f0c691136ccaa2da64c0ac3bed02807ad4d43afb/output/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-compat:25.2.0] /Users/PeterWeckend/.android/build-cache/2e0258a5903aeac7135bc94fcf9bcd1c947b0fbb/output/AndroidManifest.xml:25:5-20
+	android:label
+		ADDED from /Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/src/main/AndroidManifest.xml:16:9-34
+	android:supportsRtl
+		ADDED from /Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/src/main/AndroidManifest.xml:17:9-35
+	android:allowBackup
+		ADDED from /Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/src/main/AndroidManifest.xml:14:9-35
+	android:icon
+		ADDED from /Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/src/main/AndroidManifest.xml:15:9-43
+	android:theme
+		ADDED from /Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/src/main/AndroidManifest.xml:18:9-40
+activity#com.ualberta.cmput301w17t22.moodswing.LoginActivity
+ADDED from /Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/src/main/AndroidManifest.xml:19:9-24:20
+	android:name
+		ADDED from /Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/src/main/AndroidManifest.xml:19:19-48
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from /Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/src/main/AndroidManifest.xml:20:13-23:29
+action#android.intent.action.MAIN
+ADDED from /Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/src/main/AndroidManifest.xml:21:17-69
+	android:name
+		ADDED from /Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/src/main/AndroidManifest.xml:21:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/src/main/AndroidManifest.xml:22:17-77
+	android:name
+		ADDED from /Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/src/main/AndroidManifest.xml:22:27-74
+activity#com.ualberta.cmput301w17t22.moodswing.MainActivity
+ADDED from /Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/src/main/AndroidManifest.xml:25:9-31:20
+	android:label
+		ADDED from /Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/src/main/AndroidManifest.xml:27:13-38
+	android:name
+		ADDED from /Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/src/main/AndroidManifest.xml:26:13-41
+intent-filter#android.intent.action.VIEW
+ADDED from /Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/src/main/AndroidManifest.xml:28:13-30:29
+action#android.intent.action.VIEW
+ADDED from /Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/src/main/AndroidManifest.xml:29:17-69
+	android:name
+		ADDED from /Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/src/main/AndroidManifest.xml:29:25-66
+meta-data#com.google.android.geo.API_KEY
+ADDED from /Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/src/main/AndroidManifest.xml:41:9-43:55
+	android:value
+		ADDED from /Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/src/main/AndroidManifest.xml:43:13-52
+	android:name
+		ADDED from /Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/src/main/AndroidManifest.xml:42:13-58
+activity#com.ualberta.cmput301w17t22.moodswing.MapsActivity
+ADDED from /Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/src/main/AndroidManifest.xml:45:9-48:59
+	android:label
+		ADDED from /Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/src/main/AndroidManifest.xml:48:13-56
+	android:exported
+		ADDED from /Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/src/main/AndroidManifest.xml:47:13-36
+	android:name
+		ADDED from /Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/src/main/AndroidManifest.xml:46:13-41
+activity#com.ualberta.cmput301w17t22.moodswing.NewMoodEventActivity
+ADDED from /Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/src/main/AndroidManifest.xml:49:9-58
+	android:name
+		ADDED from /Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/src/main/AndroidManifest.xml:49:19-55
+activity#com.ualberta.cmput301w17t22.moodswing.MoodHistoryActivity
+ADDED from /Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/src/main/AndroidManifest.xml:50:9-66
+	android:name
+		ADDED from /Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/src/main/AndroidManifest.xml:50:19-54
+uses-sdk
+INJECTED from /Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+MERGED from [com.android.support:appcompat-v7:25.2.0] /Users/PeterWeckend/.android/build-cache/bce1e8d7708deb639b578b1fdbd4f09ff3fe7531/output/AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:animated-vector-drawable:25.2.0] /Users/PeterWeckend/.android/build-cache/ca40a06690e5c512333452a8adf3ad48b061ca4a/output/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:25.2.0] /Users/PeterWeckend/.android/build-cache/34d155593ffd787731ba0f61e35af20f66d14fc7/output/AndroidManifest.xml:21:5-43
+MERGED from [com.google.android.gms:play-services-maps:10.2.0] /Users/PeterWeckend/.android/build-cache/ecb4a1f20e0daf80ed68170700dc75690a958555/output/AndroidManifest.xml:23:5-43
+MERGED from [com.google.android.gms:play-services-base:10.2.0] /Users/PeterWeckend/.android/build-cache/d7350be4b00c090efaa02f0ffbc246a03362dcd9/output/AndroidManifest.xml:17:5-43
+MERGED from [com.google.android.gms:play-services-tasks:10.2.0] /Users/PeterWeckend/.android/build-cache/b84f196871b2ca3bbbfc9a6d5b8b39be0f810e8c/output/AndroidManifest.xml:3:5-43
+MERGED from [com.google.android.gms:play-services-basement:10.2.0] /Users/PeterWeckend/.android/build-cache/0eb62f6a4fe27e8e5b311ef968fb9da7b442d1f2/output/AndroidManifest.xml:17:5-43
+MERGED from [com.android.support:support-v4:25.2.0] /Users/PeterWeckend/.android/build-cache/3b0072e4d209d2bf5ae626e06a043ff65afd4ab7/output/AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-fragment:25.2.0] /Users/PeterWeckend/.android/build-cache/ae7f6d00eb8171fbce92571f771619bb93ee7b17/output/AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-media-compat:25.2.0] /Users/PeterWeckend/.android/build-cache/1618f20990f75a0a93a5627d00a965cc7ee9241a/output/AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-core-ui:25.2.0] /Users/PeterWeckend/.android/build-cache/d7c26260e984663e019b309d723275770518c5a7/output/AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-core-utils:25.2.0] /Users/PeterWeckend/.android/build-cache/f0c691136ccaa2da64c0ac3bed02807ad4d43afb/output/AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:support-compat:25.2.0] /Users/PeterWeckend/.android/build-cache/2e0258a5903aeac7135bc94fcf9bcd1c947b0fbb/output/AndroidManifest.xml:21:5-23:58
+	tools:overrideLibrary
+		ADDED from [com.android.support:appcompat-v7:25.2.0] /Users/PeterWeckend/.android/build-cache/bce1e8d7708deb639b578b1fdbd4f09ff3fe7531/output/AndroidManifest.xml:23:9-75
+	android:targetSdkVersion
+		INJECTED from /Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/src/main/AndroidManifest.xml
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from [com.google.android.gms:play-services-maps:10.2.0] /Users/PeterWeckend/.android/build-cache/ecb4a1f20e0daf80ed68170700dc75690a958555/output/AndroidManifest.xml:19:5-78
+	android:name
+		ADDED from [com.google.android.gms:play-services-maps:10.2.0] /Users/PeterWeckend/.android/build-cache/ecb4a1f20e0daf80ed68170700dc75690a958555/output/AndroidManifest.xml:19:22-76
+uses-feature#0x00020000
+ADDED from [com.google.android.gms:play-services-maps:10.2.0] /Users/PeterWeckend/.android/build-cache/ecb4a1f20e0daf80ed68170700dc75690a958555/output/AndroidManifest.xml:21:5-77
+	android:glEsVersion
+		ADDED from [com.google.android.gms:play-services-maps:10.2.0] /Users/PeterWeckend/.android/build-cache/ecb4a1f20e0daf80ed68170700dc75690a958555/output/AndroidManifest.xml:21:19-51
+	android:required
+		ADDED from [com.google.android.gms:play-services-maps:10.2.0] /Users/PeterWeckend/.android/build-cache/ecb4a1f20e0daf80ed68170700dc75690a958555/output/AndroidManifest.xml:21:52-75
+activity#com.google.android.gms.common.api.GoogleApiActivity
+ADDED from [com.google.android.gms:play-services-base:10.2.0] /Users/PeterWeckend/.android/build-cache/d7350be4b00c090efaa02f0ffbc246a03362dcd9/output/AndroidManifest.xml:19:9-172
+	android:exported
+		ADDED from [com.google.android.gms:play-services-base:10.2.0] /Users/PeterWeckend/.android/build-cache/d7350be4b00c090efaa02f0ffbc246a03362dcd9/output/AndroidManifest.xml:19:146-170
+	android:theme
+		ADDED from [com.google.android.gms:play-services-base:10.2.0] /Users/PeterWeckend/.android/build-cache/d7350be4b00c090efaa02f0ffbc246a03362dcd9/output/AndroidManifest.xml:19:86-145
+	android:name
+		ADDED from [com.google.android.gms:play-services-base:10.2.0] /Users/PeterWeckend/.android/build-cache/d7350be4b00c090efaa02f0ffbc246a03362dcd9/output/AndroidManifest.xml:19:19-85
+meta-data#com.google.android.gms.version
+ADDED from [com.google.android.gms:play-services-basement:10.2.0] /Users/PeterWeckend/.android/build-cache/0eb62f6a4fe27e8e5b311ef968fb9da7b442d1f2/output/AndroidManifest.xml:20:9-121
+	android:value
+		ADDED from [com.google.android.gms:play-services-basement:10.2.0] /Users/PeterWeckend/.android/build-cache/0eb62f6a4fe27e8e5b311ef968fb9da7b442d1f2/output/AndroidManifest.xml:20:66-119
+	android:name
+		ADDED from [com.google.android.gms:play-services-basement:10.2.0] /Users/PeterWeckend/.android/build-cache/0eb62f6a4fe27e8e5b311ef968fb9da7b442d1f2/output/AndroidManifest.xml:20:20-65
