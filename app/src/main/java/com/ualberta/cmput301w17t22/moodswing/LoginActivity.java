@@ -35,6 +35,8 @@ public class LoginActivity extends AppCompatActivity implements MSView<MoodSwing
 
         // Initialize button.
         Button loginButton = (Button) findViewById(R.id.loginButton);
+        // signUpButton does nothing for now.
+        Button signUpButton = (Button) findViewById(R.id.signUpButton);
 
         // Add this view to the MoodSwingApplication.
         MoodSwing ms = MoodSwingApplication.getMoodSwing();

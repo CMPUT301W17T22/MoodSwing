@@ -13,8 +13,8 @@
         android:id="@+id/emotionalStateTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="8dp"
-        android:text="Emotional State:"
+        android:paddingStart="8dp"
+        android:text="@string/emotionalstate"
         android:textColor="#000"
         android:textSize="16sp" />
 
@@ -29,7 +29,7 @@
             android:id="@+id/emotionalStateSpinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            />
     </RelativeLayout>
 
 
@@ -42,8 +42,8 @@
         android:id="@+id/socialSituationTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="8dp"
-        android:text="Social Situation:"
+        android:paddingStart="8dp"
+        android:text="@string/socialsituation"
         android:textColor="#000"
         android:textSize="16sp" />
 
@@ -58,9 +58,9 @@
             android:id="@+id/socialSituationSpinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
 
-            android:layout_weight="1" />
+            />
     </RelativeLayout>
 
 
@@ -73,8 +73,8 @@
         android:id="@+id/triggerTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="8dp"
-        android:text="Triggers:"
+        android:paddingStart="8dp"
+        android:text="@string/triggers"
         android:textColor="#000"
         android:textSize="16sp" />
 
@@ -93,8 +93,8 @@
         android:id="@+id/triggersSizeTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="8dp"
-        android:text="(max. 20 chars. or 3 words.)" />
+        android:paddingStart="8dp"
+        android:text="@string/trigger_max_message" />
 
     <Space
         android:layout_width="match_parent"
@@ -105,8 +105,8 @@
         android:id="@+id/photoTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="8dp"
-        android:text="Photo"
+        android:paddingStart="8dp"
+        android:text="@string/photo"
         android:textColor="#000"
         android:textSize="16sp" />
 
@@ -119,7 +119,7 @@
             android:id="@+id/photoEditText"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
             android:layout_weight="1"
             android:background="#fff"
             android:ems="10"
@@ -129,11 +129,11 @@
             android:id="@+id/photoUploadButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="8dp"
+            android:layout_marginEnd="8dp"
             android:layout_weight="1"
             android:background="#66023C"
             android:elevation="0dp"
-            android:text="Upload"
+            android:text="@string/upload"
             android:textColor="#fff"
             android:textSize="16dp" />
     </LinearLayout>
@@ -142,8 +142,8 @@
         android:id="@+id/photoSizeTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="8dp"
-        android:text="(max. size 65536 bytes)" />
+        android:paddingStart="8dp"
+        android:text="@string/photo_max_message" />
 
     <Space
         android:layout_width="match_parent"
@@ -157,7 +157,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_weight="0.03"
-        android:text="Add Curent Location" />
+        android:text="@string/addlocation" />
 
     <Space
         android:layout_width="match_parent"
@@ -170,9 +170,9 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:layout_weight="0.03"
+        android:layout_weight="0.04"
         android:background="#66023C"
-        android:text="Post"
+        android:text="@string/post"
         android:textColor="#fff"
         android:textSize="20sp"
         android:textStyle="bold" />
