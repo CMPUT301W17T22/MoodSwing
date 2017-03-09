@@ -7,7 +7,7 @@
             app:showAsAction="never"
             android:enabled="true" />
 
-        <item android:id="@+id/FollowToolBarButton"
+        <item android:id="@+id/followToolBarButton"
             android:title="@string/followers_following"
             app:showAsAction="never"
             android:enabled="true" />

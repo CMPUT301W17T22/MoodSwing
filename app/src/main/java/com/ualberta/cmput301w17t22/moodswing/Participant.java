@@ -32,17 +32,26 @@ public class Participant extends User {
         this.username = username;
     }
 
-    // --- MoodEvent methods
+    // --- START: MoodEvent methods
 
     public void addMoodEvent(EmotionalState emotionalState, String trigger, SocialSituation socialSituation,
                              String photoLocation, String iconLocation, LatLng location) {
         moodHistory.add(new MoodEvent(username ,emotionalState, trigger, socialSituation, photoLocation, iconLocation, location));
     }
 
-    // --- end MoodEvent methods
+    /**
+     * Returns the most recent mood event of this participant.
+     * @return Most recent mood event of this participant.
+     */
+    public MoodEvent getMostRecentMoodEvent() {
+        // Last element of moodHistory is the most recent.
+        return moodHistory.get(moodHistory.size() - 1);
+    }
+
+    // --- END: MoodEvent methods
 
 
-    // --- Following methods ---
+    // --- START: Following methods ---
 
     public void followParticipant(Participant receivingParticipant){
         followingList.newPendingParticipant(receivingParticipant);
@@ -61,10 +70,11 @@ public class Participant extends User {
     public void followRequestDeclined(Participant receivingParticipant){
         followingList.remove(receivingParticipant);
     }
-    // --- end Following methods ---
+
+    // --- END: Following methods ---
 
 
-    // --- Follower methods ---
+    // --- START: Follower methods ---
 
     /**
      * DO NOT call explicitly. Should only be called by requestingParticipant
@@ -89,10 +99,10 @@ public class Participant extends User {
         followerList.remove(requestingParticipant);
     }
 
-    // --- end Follower methods ---
+    // --- END: Follower methods ---
 
 
-    // --- getters and setters
+    // --- START: Getters and Setters
 
     public String getId() { return id; }
 
@@ -118,5 +128,5 @@ public class Participant extends User {
         return moodHistory;
     }
 
-    // --- end getters and setters
+    // --- END: Getters and Setters
 }

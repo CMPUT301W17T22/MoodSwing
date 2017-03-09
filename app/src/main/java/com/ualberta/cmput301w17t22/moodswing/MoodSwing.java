@@ -19,13 +19,12 @@ public class MoodSwing extends MSModel<MSView> {
      * Either the mood history or the mood feed / mood map.
      * Will be filled with MoodEvents once the user chooses to view the history/feed/map.
      */
-    public ArrayList<MoodEvent> moodList;
+    private ArrayList<MoodEvent> moodList;
 
     /**
      * The main participant. The current user of the app from the Android device.
      */
-    public Participant mainParticipant;
-
+    private Participant mainParticipant;
 
     /**
      * Adds the mainParticipant for the MoodSwing app to ElasticSearch. This is used when logging
@@ -52,7 +51,7 @@ public class MoodSwing extends MSModel<MSView> {
      *
      * This will be used when first logging in as a participant.
      */
-    public void getMainParticipantByUsername(String username) {
+    public void loadMainParticipantByUsername(String username) {
 
         // Get ElasticSearchController.
         ElasticSearchController elasticSearchController =
@@ -86,6 +85,20 @@ public class MoodSwing extends MSModel<MSView> {
     public void saveLocal() {
 
     }
+
+    // --- START: Getters and Setters
+
+    public ArrayList<MoodEvent> getMoodList() { return moodList; }
+
+    public void setMoodList(ArrayList<MoodEvent> moodList) { this.moodList = moodList; }
+
+    public Participant getMainParticipant() { return mainParticipant; }
+
+    public void setMainParticipant(Participant mainParticipant) {
+        this.mainParticipant = mainParticipant;
+    }
+
+    // --- END: Getters and Setters
 
     MoodSwing() { super(); }
 }

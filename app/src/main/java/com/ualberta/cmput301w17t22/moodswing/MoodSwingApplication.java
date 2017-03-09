@@ -42,14 +42,14 @@ public class MoodSwingApplication extends Application {
     }
 
     /**
-     * Get ParticipantController. Returns the ParticipantController to a View.
+     * Get MoodSwingController. Returns the MoodSwingController to a View.
      */
-    transient  private  static  ParticipantController participantController = null;
-    static ParticipantController getParticipantController() {
-        if (participantController == null) {
-            participantController = new ParticipantController(getMoodSwing());
+    transient  private  static MoodSwingController moodSwingController = null;
+    static MoodSwingController getMoodSwingController() {
+        if (moodSwingController == null) {
+            moodSwingController = new MoodSwingController(getMoodSwing());
         }
-        return participantController;
+        return moodSwingController;
     }
 
 }

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 /**
  * Hexadecimal color codes:
@@ -14,22 +15,40 @@ import android.view.MenuItem;
  */
 public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>  {
 
+    /**
+     * Called on opening of activity for the first time.
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Toolbar myToolbar = (Toolbar) findViewById(R.id.MainToolBar);
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.mainToolBar);
 
         setSupportActionBar(myToolbar);
        // getSupportActionBar().setTitle("MoodSwing");
 
+        // Load main participant information. First getting the moodSwingController,
+        // then setting the mainParticipant.
+        MoodSwingController moodSwingController =
+                MoodSwingApplication.getMoodSwingController();
+
+        Participant mainParticipant = moodSwingController.getMainParticipant();
+
+        // Right now just the username and id.
+        TextView welcomeText = (TextView)findViewById(R.id.mainWelcomeText);
+        welcomeText.setText("Welcome user \"" + mainParticipant.getUsername() +
+                "\" with ID \"" + mainParticipant.getId() + "\"");
     }
 
+    /**
+     * Inflates the menu; connects the toolbar.xml to the toolbar in activity_main.xml.
+     * @param menu
+     * @return
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
-        //Inflates menu if it is present, I think this might be the connecting method from the
-        // toolbar.xml to the activity_main.xml
         getMenuInflater().inflate(R.menu.toolbar,menu);
         return true;
     }
@@ -46,7 +65,7 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
 
                 return true;
 
-            case R.id.FollowToolBarButton:
+            case R.id.followToolBarButton:
                 // User chose the "Follower & Following" action, should navigate to the follower/following activity
 
                 // There's no FollowerFollowingActivity yet so the below two lines are just commented.

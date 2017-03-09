@@ -134,11 +134,19 @@ public class ElasticSearchController implements MSController {
             String username = parameters[0];
 
             // Initialize participant to be gotten from ElasticSearch.
-            // TODO: Make sure there is some sort of null participant constructor.
             Participant participant = new Participant(null);
 
-            // Build ElasticSearch search.
-            Search search = new Search.Builder(username)
+            // Create the query string. We do a match search on username.
+            String query = "{\n" +
+                    "    \"query\": {\n" +
+                    "        \"match\" : {\n" +
+                    "            \"username\" : \"" + username + "\"\n" +
+                    "        }\n" +
+                    "    }\n" +
+                    "}";
+
+            // Build Jest/ElasticSearch search.
+            Search search = new Search.Builder(query)
                     .addIndex("cmput301w17t22")
                     .addType("Participant")
                     .build();
@@ -156,10 +164,7 @@ public class ElasticSearchController implements MSController {
                     // No participant with given username found.
                     // This isn't a bad thing, this log just helps us track down
                     // the case when no user is found.
-
-                    // TODO: In this case, a new document should be made on ElasticSearch for the
-                    // participant.
-                    Log.i("ERROR", "No participant with given username found.");
+                    Log.i("MoodSwing", "No participant with given username found.");
                 }
             } catch (IOException e) {
                 // TODO: Deal with IOException.
@@ -193,8 +198,6 @@ public class ElasticSearchController implements MSController {
             Gson gson = new Gson();
 
             String participantJson = gson.toJson(participant);
-            Log.i("ERROR", participantJson);
-
 
             // Create the index that the Jest droid client will execute on.
             Index index = new Index.Builder(participantJson)
@@ -210,7 +213,6 @@ public class ElasticSearchController implements MSController {
                     // Result is good, update the participant's information to include
                     // the ElasticSearch id.
                     participant.setId(result.getId());
-                    Log.i("ERROR", participant.getId());
 
                 } else {
                     // ElasticSearch is unable to add the participant.

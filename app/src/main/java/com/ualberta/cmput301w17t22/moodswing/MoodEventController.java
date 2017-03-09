@@ -17,7 +17,7 @@ public class MoodEventController implements MSController {
      * mood event.
      */
     public void addMoodEvent(MoodEvent moodEvent) {
-        ms.mainParticipant.addMoodEvent(moodEvent.getEmotionalState(),
+        ms.getMainParticipant().addMoodEvent(moodEvent.getEmotionalState(),
                 moodEvent.getTrigger(),
                 moodEvent.getSocialSituation(),
                 moodEvent.getPhotoLocation(),

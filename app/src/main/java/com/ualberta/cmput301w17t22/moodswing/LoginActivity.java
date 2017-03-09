@@ -75,14 +75,14 @@ public class LoginActivity extends AppCompatActivity implements MSView<MoodSwing
         // Username is required to be entered.
         if (!username.isEmpty() && !username.trim().equals("")) {
 
-            // Fetch the ParticipantController and have it get the main participant
+            // Fetch the MoodSwingController and have it get the main participant
             // by username.
-            ParticipantController participantController =
-                    MoodSwingApplication.getParticipantController();
+            MoodSwingController moodSwingController =
+                    MoodSwingApplication.getMoodSwingController();
 
             // If the username for the desired participant is not in ElasticSearch,
             // a new participant will be added to ElasticSearch.
-            participantController.getMainParticipantByUsername(username);
+            moodSwingController.loadMainParticipantByUsername(username);
 
             // Continue.
             return true;
