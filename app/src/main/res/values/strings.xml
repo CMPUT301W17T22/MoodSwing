@@ -22,4 +22,15 @@
     <string name="photo_max_message">(max. size 65536 bytes)</string>
     <string name="addlocation">Add Current Location</string>
 
+    <string-array name="mood_array">
+        <item>Anger</item>
+        <item>Confusion</item>
+        <item>Disgust</item>
+        <item>Fear</item>
+        <item>Happiness</item>
+        <item>Sadness</item>
+        <item>Shame</item>
+        <item>Surprise</item>
+    </string-array>
+
 </resources>
