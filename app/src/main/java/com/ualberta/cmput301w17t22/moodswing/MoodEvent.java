@@ -41,8 +41,15 @@ public class MoodEvent {
     public MoodEvent(String posterUsername, EmotionalState emotionalState, String trigger, SocialSituation socialSituation,
                      String photoLocation, String iconLocation, LatLng location) {
         this.originalPoster = posterUsername;
+        // I changed this here because I wanted to test if ElasticSearch was working, and the map
+        // stuff wasn't working. The 5 lines below this should be deleted and just the
+        // editMoodEvent() line below should be uncommented when the map stuff works properly.
+        this.setDate(new Date());
         this.location = location;
-        editMoodEvent(emotionalState, trigger, socialSituation, iconLocation, photoLocation);
+        this.emotionalState = emotionalState;
+        this.trigger = trigger;
+        this.socialSituation = socialSituation;
+        //editMoodEvent(emotionalState, trigger, socialSituation, iconLocation, photoLocation);
     }
 
     //Edit MoodEvent Method, uses setters to replace attributes
@@ -79,6 +86,17 @@ public class MoodEvent {
         return marker;
     }
 
+    /**
+     * To string method for printing to listviews.
+     * @return
+     */
+    public String toString() {
+        return "Original Poster: " + this.getOriginalPoster() +
+                "\nEmotional State: " + this.getEmotionalState().toString() +
+                "\nDate: " + this.getDate().toString() +
+                "\nTrigger: " + this.getTrigger() +
+                "\nSocial Situation: " + this.getSocialSituation().toString();
+    }
 
     //Getter and Setter methods for attributes.
 

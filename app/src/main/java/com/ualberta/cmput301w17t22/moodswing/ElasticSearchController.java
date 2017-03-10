@@ -100,7 +100,8 @@ public class ElasticSearchController implements MSController {
         Participant participant = new Participant(null);
 
         // Initialize the task.
-        AddParticipantByUsernameTask addParticipantByUsernameTask = new AddParticipantByUsernameTask();
+        AddParticipantByUsernameTask addParticipantByUsernameTask =
+                new AddParticipantByUsernameTask();
 
         // Add the participant.
         addParticipantByUsernameTask.execute(username);
@@ -111,6 +112,19 @@ public class ElasticSearchController implements MSController {
                     " new participant from the AsyncTask.");
         }
         return participant;
+    }
+
+    /**
+     * Updates a given participant on elastic search.
+     * @param participant The participant to update.
+     */
+    public void updateParticipantByParticipant(Participant participant) {
+        // Get the task.
+        UpdateParticipantByParticipantTask updateParticipantByParticipantTask =
+                new UpdateParticipantByParticipantTask();
+
+        // Execute the task.
+        updateParticipantByParticipantTask.execute(participant);
     }
 
     /**
@@ -223,6 +237,49 @@ public class ElasticSearchController implements MSController {
                         " username to ElasticSearch.");
             }
             return participant;
+        }
+    }
+
+    public static class UpdateParticipantByParticipantTask extends AsyncTask<Participant, Void, Void> {
+        @Override
+        protected Void doInBackground(Participant ... participants) {
+            // Verify the ElasticSearch config.
+            verifyConfig();
+
+            // Grab the participant.
+            Participant participant = participants[0];
+
+            // Convert to Json
+            Gson gson = new Gson();
+            String participantJson = gson.toJson(participant);
+
+            // Grab ElasticSearch id.
+            String id = participant.getId();
+
+            // Create the index that the Jest droid client will execute on.
+            Index index = new Index.Builder(participantJson)
+                    .index("cmput301w17t22")
+                    .type("Participant")
+                    .id(id)
+                    .build();
+
+            // Try to update the participant.
+            try {
+                DocumentResult result = client.execute(index);
+
+                if (result.isSucceeded()) {
+                    // Result is good.
+                    Log.i("MoodSwing", "Participant " + participant.getUsername() +
+                            " successfully updated.");
+                } else {
+                    // ElasticSearch is unable to add the participant.
+                    Log.i("ERROR", "ElasticSearch was unable to add the participant.");
+                }
+            } catch (IOException e) {
+                Log.i("ERROR", "Something went wrong when adding a participant by" +
+                        " username to ElasticSearch.");
+            }
+            return null;
         }
     }
 

@@ -17,13 +17,9 @@ public class SocialSituation {
         this.iconName = iconName;
     }
 
-    public String getDescription() {
+    public String getDescription() { return description; }
 
-        return description;
-    }
+    public String getIconName() { return iconName; }
 
-    public String getIconName() {
-
-        return iconName;
-    }
+    public String toString() { return this.getDescription(); }
 }

@@ -30,4 +30,6 @@ public class EmotionalState {
     public int getColor(){
         return color;
     }
+
+    public String toString() { return this.getDescription(); }
 }

@@ -52,4 +52,25 @@ public class MoodSwingApplication extends Application {
         return moodSwingController;
     }
 
+    /**
+     * Get EmotionalStateController. Returns the EmotionalStateController to a View.
+     */
+    transient  private  static EmotionalStateController emotionalStateController = null;
+    static EmotionalStateController getEmotionalStateController() {
+        if (emotionalStateController == null) {
+            emotionalStateController = new EmotionalStateController(getMoodSwing());
+        }
+        return emotionalStateController;
+    }
+
+    /**
+     * Get SocialSituationController. Returns the SocialSituationController to a View.
+     */
+    transient private  static  SocialSituationController socialSituationController = null;
+    static SocialSituationController getSocialSituationController() {
+        if (socialSituationController == null) {
+            socialSituationController = new SocialSituationController(getMoodSwing());
+        }
+        return socialSituationController;
+    }
 }

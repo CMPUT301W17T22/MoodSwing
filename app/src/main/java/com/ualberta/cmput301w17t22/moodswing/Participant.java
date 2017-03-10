@@ -34,9 +34,20 @@ public class Participant extends User {
 
     // --- START: MoodEvent methods
 
-    public void addMoodEvent(EmotionalState emotionalState, String trigger, SocialSituation socialSituation,
-                             String photoLocation, String iconLocation, LatLng location) {
-        moodHistory.add(new MoodEvent(username ,emotionalState, trigger, socialSituation, photoLocation, iconLocation, location));
+    public void addMoodEvent(EmotionalState emotionalState,
+                             String trigger,
+                             SocialSituation socialSituation,
+                             String photoLocation,
+                             String iconLocation,
+                             LatLng location) {
+        moodHistory.add(new MoodEvent(username,
+                emotionalState,
+                trigger,
+                socialSituation,
+                photoLocation,
+                iconLocation,
+                location));
+
     }
 
     /**
@@ -124,7 +135,7 @@ public class Participant extends User {
         return followerList.getApproved();
     }
 
-    public ArrayList<MoodEvent> getMoodEvents() {
+    public ArrayList<MoodEvent> getMoodHistory() {
         return moodHistory;
     }
 

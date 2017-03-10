@@ -2,6 +2,8 @@ package com.ualberta.cmput301w17t22.moodswing;
 
 import android.util.Log;
 
+import com.google.android.gms.maps.model.LatLng;
+
 import java.util.ArrayList;
 
 /**
@@ -65,14 +67,51 @@ public class MoodSwing extends MSModel<MSView> {
     }
 
     /**
+     * Add a new mood event to the main participant's mood history.
+     * @param emotionalState
+     * @param trigger
+     * @param socialSituation
+     * @param photoLocation
+     * @param iconLocation
+     * @param location
+     */
+    public void addMoodEventToMainParticipant(EmotionalState emotionalState,
+                             String trigger,
+                             SocialSituation socialSituation,
+                             String photoLocation,
+                             String iconLocation,
+                             LatLng location) {
+
+        // Add the mood event to the main participant.
+        getMainParticipant().addMoodEvent(
+                emotionalState,
+                trigger,
+                socialSituation,
+                photoLocation,
+                iconLocation,
+                location);
+
+        // Post change to ElasticSearch.
+        saveMainParticipant();
+
+        // Notify all the views of the new information.
+        notifyViews();
+    }
+
+    /**
      * Saves the main participant information (mood history, follower list, following list)
      * to ElasticSearch if online.
      *
      * This will be used when the main participant edits a mood event, creates a new mood event,
      * accepts/declines a follower request, sends out a new follow request, etc.
      */
-    public void saveParticipant() {
+    public void saveMainParticipant() {
+        // Get ElasticSearchController.
+        ElasticSearchController elasticSearchController =
+                MoodSwingApplication.getElasticSearchController();
 
+        // Update the main participant on ElasticSearch.
+        elasticSearchController.updateParticipantByParticipant(mainParticipant);
     }
 
     /**
