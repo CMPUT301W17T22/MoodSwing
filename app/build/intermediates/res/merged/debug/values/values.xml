@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
     <string-array name="mood_array">
+        <item/>
         <item>Anger</item>
         <item>Confusion</item>
         <item>Disgust</item>
@@ -9,6 +10,12 @@
         <item>Sadness</item>
         <item>Shame</item>
         <item>Surprise</item>
+    </string-array>
+    <string-array name="socialSituation_array">
+        <item/>
+        <item>Alone</item>
+        <item>Crowd</item>
+        <item>Party</item>
     </string-array>
     <attr format="reference" name="drawerArrowStyle"/>
     <attr format="dimension" name="height"/>
@@ -432,7 +439,10 @@
     <string name="home">Home</string>
     <string name="login">login</string>
     <string name="login_hint">username</string>
+    <string name="login_welcome_text">Welcome to MoodSwing! Please login below.</string>
+    <string name="main_welcome_text">Welcome (USERNAME and ID)!</string>
     <string name="mood_history">View Mood History</string>
+    <string name="mood_prompt">Choose your emotional state</string>
     <string name="moodswing">MoodSwing</string>
     <string name="new_mood_event">New Mood Event</string>
     <string name="photo">Photo:</string>
@@ -440,13 +450,13 @@
     <string name="post">Post</string>
     <string name="search_menu_title">Search</string>
     <string name="signup">Sign Up</string>
+    <string name="socialSituation_prompt">Choose your social situation</string>
     <string name="socialsituation">Social Situation:</string>
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="title_activity_maps">Map</string>
     <string name="trigger_max_message">(max. 20 chars. or 3 words.)</string>
     <string name="triggers">Triggers:</string>
     <string name="upload">Upload</string>
-    <string name="welcome_text">Welcome to MoodSwing! Please login below.</string>
     <style name="AlertDialog.AppCompat" parent="Base.AlertDialog.AppCompat"/>
     <style name="AlertDialog.AppCompat.Light" parent="Base.AlertDialog.AppCompat.Light"/>
     <style name="Animation.AppCompat.Dialog" parent="Base.Animation.AppCompat.Dialog"/>

@@ -29,6 +29,9 @@
             android:id="@+id/emotionalStateSpinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:entries="@array/mood_array"
+            android:prompt="@string/mood_prompt"
+            android:popupBackground="#fff"
             />
     </RelativeLayout>
 
@@ -59,7 +62,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-
+            android:entries="@array/socialSituation_array"
+            android:prompt="@string/socialSituation_prompt"
+            android:popupBackground="#fff"
             />
     </RelativeLayout>
 

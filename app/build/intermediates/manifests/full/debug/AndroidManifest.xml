@@ -62,6 +62,12 @@
             android:label="@string/title_activity_maps" />
         <activity android:name="com.ualberta.cmput301w17t22.moodswing.NewMoodEventActivity" />
         <activity android:name="com.ualberta.cmput301w17t22.moodswing.MoodHistoryActivity" />
+
+        <!-- For using camera in mood events -->
+        <uses-feature
+            android:name="android.hardware.camera"
+            android:required="true" />
+
         <activity
             android:name="com.google.android.gms.common.api.GoogleApiActivity"
             android:exported="false"

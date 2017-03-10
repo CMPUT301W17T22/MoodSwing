@@ -48,6 +48,10 @@
             android:label="@string/title_activity_maps" />
         <activity android:name=".NewMoodEventActivity" />
         <activity android:name=".MoodHistoryActivity"></activity>
+
+        <!-- For using camera in mood events -->
+        <uses-feature android:name="android.hardware.camera"
+            android:required="true" />
     </application>
 
 </manifest>

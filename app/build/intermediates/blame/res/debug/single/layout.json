@@ -1,11 +1,11 @@
 [
     {
-        "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/layout/abc_screen_toolbar.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/bce1e8d7708deb639b578b1fdbd4f09ff3fe7531/output/res/layout/abc_screen_toolbar.xml"
-    },
-    {
         "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/layout/abc_action_mode_close_item_material.xml",
         "source": "/Users/PeterWeckend/.android/build-cache/bce1e8d7708deb639b578b1fdbd4f09ff3fe7531/output/res/layout/abc_action_mode_close_item_material.xml"
+    },
+    {
+        "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/layout/abc_screen_toolbar.xml",
+        "source": "/Users/PeterWeckend/.android/build-cache/bce1e8d7708deb639b578b1fdbd4f09ff3fe7531/output/res/layout/abc_screen_toolbar.xml"
     },
     {
         "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/layout/notification_template_media_custom.xml",

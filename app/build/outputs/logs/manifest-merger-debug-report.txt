@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/src/main/AndroidManifest.xml:2:1-53:12
+ADDED from /Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/src/main/AndroidManifest.xml:2:1-57:12
 	package
 		ADDED from /Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/src/main/AndroidManifest.xml:3:5-52
 		INJECTED from /Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/src/main/AndroidManifest.xml
@@ -23,7 +23,7 @@ MERGED from [com.google.android.gms:play-services-maps:10.2.0] /Users/PeterWecke
 	android:name
 		ADDED from /Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/src/main/AndroidManifest.xml:11:22-64
 application
-ADDED from /Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/src/main/AndroidManifest.xml:13:5-51:19
+ADDED from /Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/src/main/AndroidManifest.xml:13:5-55:19
 MERGED from [com.android.support:appcompat-v7:25.2.0] /Users/PeterWeckend/.android/build-cache/bce1e8d7708deb639b578b1fdbd4f09ff3fe7531/output/AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:animated-vector-drawable:25.2.0] /Users/PeterWeckend/.android/build-cache/ca40a06690e5c512333452a8adf3ad48b061ca4a/output/AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:support-vector-drawable:25.2.0] /Users/PeterWeckend/.android/build-cache/34d155593ffd787731ba0f61e35af20f66d14fc7/output/AndroidManifest.xml:23:5-20
@@ -95,6 +95,12 @@ activity#com.ualberta.cmput301w17t22.moodswing.MoodHistoryActivity
 ADDED from /Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/src/main/AndroidManifest.xml:50:9-66
 	android:name
 		ADDED from /Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/src/main/AndroidManifest.xml:50:19-54
+uses-feature#android.hardware.camera
+ADDED from /Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/src/main/AndroidManifest.xml:53:9-54:39
+	android:required
+		ADDED from /Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/src/main/AndroidManifest.xml:54:13-36
+	android:name
+		ADDED from /Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/src/main/AndroidManifest.xml:53:23-61
 uses-sdk
 INJECTED from /Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.android.support:appcompat-v7:25.2.0] /Users/PeterWeckend/.android/build-cache/bce1e8d7708deb639b578b1fdbd4f09ff3fe7531/output/AndroidManifest.xml:21:5-23:78

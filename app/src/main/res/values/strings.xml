@@ -23,7 +23,9 @@
     <string name="photo_max_message">(max. size 65536 bytes)</string>
     <string name="addlocation">Add Current Location</string>
 
+    <!-- for spinners -->
     <string-array name="mood_array">
+        <item></item>
         <item>Anger</item>
         <item>Confusion</item>
         <item>Disgust</item>
@@ -33,5 +35,18 @@
         <item>Shame</item>
         <item>Surprise</item>
     </string-array>
+
+    <string name="mood_prompt">Choose your emotional state</string>
+
+    <string-array name="socialSituation_array">
+        <item></item>
+        <item>Alone</item>
+        <item>Crowd</item>
+        <item>Party</item>
+    </string-array>
+
+    <string name="socialSituation_prompt">Choose your social situation</string>
+
+
 
 </resources>
