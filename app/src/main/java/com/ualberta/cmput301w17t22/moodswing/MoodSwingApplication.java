@@ -3,6 +3,8 @@ package com.ualberta.cmput301w17t22.moodswing;
 import android.app.Application;
 
 /**
+ * This Application class handles our singletons; the main model class, and the controllers.
+ *
  * Created by nyitrai on 2/26/2017.
  */
 
@@ -17,17 +19,6 @@ public class MoodSwingApplication extends Application {
             moodSwing = new MoodSwing();
         }
         return moodSwing;
-    }
-
-    /**
-     * Get MoodEventController. Returns the MoodEventController to the Model.
-     */
-    transient private static MoodEventController moodEventController = null;
-    static MoodEventController getMoodEventController() {
-        if (moodEventController == null) {
-            moodEventController = new MoodEventController(getMoodSwing());
-        }
-        return moodEventController;
     }
 
     /**
@@ -52,25 +43,4 @@ public class MoodSwingApplication extends Application {
         return moodSwingController;
     }
 
-    /**
-     * Get EmotionalStateController. Returns the EmotionalStateController to a View.
-     */
-    transient  private  static EmotionalStateController emotionalStateController = null;
-    static EmotionalStateController getEmotionalStateController() {
-        if (emotionalStateController == null) {
-            emotionalStateController = new EmotionalStateController(getMoodSwing());
-        }
-        return emotionalStateController;
-    }
-
-    /**
-     * Get SocialSituationController. Returns the SocialSituationController to a View.
-     */
-    transient private  static  SocialSituationController socialSituationController = null;
-    static SocialSituationController getSocialSituationController() {
-        if (socialSituationController == null) {
-            socialSituationController = new SocialSituationController(getMoodSwing());
-        }
-        return socialSituationController;
-    }
 }

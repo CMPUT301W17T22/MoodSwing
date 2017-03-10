@@ -42,7 +42,7 @@ public class MoodSwing extends MSModel<MSView> {
                 MoodSwingApplication.getElasticSearchController();
 
         // Create a new participant and add it to ElasticSearch.
-        mainParticipant = elasticSearchController.newParticipantByUsername(username);
+        this.setMainParticipant(elasticSearchController.newParticipantByUsername(username));
 
         // Notify Views so they update their information.
         notifyViews();
@@ -60,7 +60,7 @@ public class MoodSwing extends MSModel<MSView> {
                 MoodSwingApplication.getElasticSearchController();
 
         // Get Participant from ElasticSearchController and load it into mainParticipant.
-        mainParticipant = elasticSearchController.getParticipantByUsername(username);
+        this.setMainParticipant(elasticSearchController.getParticipantByUsername(username));
 
         // Then notify the Views that they need to update their information.
         notifyViews();

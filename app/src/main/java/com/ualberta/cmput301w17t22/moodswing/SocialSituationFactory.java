@@ -3,17 +3,12 @@ package com.ualberta.cmput301w17t22.moodswing;
 import android.util.Log;
 
 /**
- * Controller for initializing and dealing with SocialSituations.
- * This Controller currently does not interact with the Model, but just has a function
- * for creating SocialSituations by name, which is useful to the View.
+ * Factory class to create Social Situations based on their type "Alone", "Crowd", or "Party".
  *
  * Created by nyitrai on 3/10/2017.
  */
 
-public class SocialSituationController implements MSController {
-
-    MoodSwing ms = null;
-    public SocialSituationController(MoodSwing ms) { this.ms = ms; }
+public class SocialSituationFactory {
 
     public SocialSituation createSocialSituationByName(String socialSituationName) {
         SocialSituation socialSituation;
@@ -24,11 +19,11 @@ public class SocialSituationController implements MSController {
                 break;
 
             case "Crowd":
-                socialSituation = new SocialSituation("Alone", "AloneIconName");
+                socialSituation = new SocialSituation("Crowd", "CrowdIconName");
                 break;
 
             case "Party":
-                socialSituation = new SocialSituation("Alone", "AloneIconName");
+                socialSituation = new SocialSituation("Party", "CrowdIconName");
                 break;
 
             default:

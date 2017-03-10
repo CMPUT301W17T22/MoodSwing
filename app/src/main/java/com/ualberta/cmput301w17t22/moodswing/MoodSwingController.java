@@ -2,6 +2,8 @@ package com.ualberta.cmput301w17t22.moodswing;
 
 import android.util.Log;
 
+import com.google.android.gms.maps.model.LatLng;
+
 /**
  * Mood Swing Controller.
  *
@@ -38,6 +40,33 @@ public class MoodSwingController implements MSController {
             }
         }
 
+    }
+
+    /**
+     * Add's a new mood event to the mainParticipant.
+     * @param emotionalState Required. The emotional state of the mood event.
+     * @param trigger Less than 3 words or 20 chars. The trigger for the mood event.
+     * @param socialSituation Optional. The social situation of the mood event.
+     * @param photoLocation Optional. A string for the location of the photo.
+     * @param iconLocation Optional.
+     * @param location Automatically set to the location the mood event was created.
+     */
+    public void addMoodEventToMainParticipant(EmotionalState emotionalState,
+                             String trigger,
+                             SocialSituation socialSituation,
+                             String photoLocation,
+                             String iconLocation,
+                             LatLng location) {
+
+        ms.addMoodEventToMainParticipant(
+                emotionalState,
+                trigger,
+                socialSituation,
+                photoLocation,
+                iconLocation,
+                location);
+
+        ms.notifyViews();
     }
 
     /**

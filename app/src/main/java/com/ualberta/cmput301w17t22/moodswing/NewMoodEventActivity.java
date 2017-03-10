@@ -77,10 +77,6 @@ public class NewMoodEventActivity extends AppCompatActivity {
 
                 // Post the Mood Event, and inform the user you are doing so.
                 else {
-                    // Get MoodEvent Controller.
-                    MoodEventController moodEventController =
-                            MoodSwingApplication.getMoodEventController();
-
                     // Get EmotionalState.
                     EmotionalState emotionalState = getEmotionalState();
 
@@ -97,8 +93,12 @@ public class NewMoodEventActivity extends AppCompatActivity {
                         location = getLocation();
                     }
 
+                    // Get MoodSwingController.
+                    MoodSwingController moodSwingController =
+                            MoodSwingApplication.getMoodSwingController();
+
                     // Add the mood event to the main participant.
-                    moodEventController.addMoodEvent(
+                    moodSwingController.addMoodEventToMainParticipant(
                             emotionalState,
                             trigger,
                             socialSituation,
@@ -173,12 +173,11 @@ public class NewMoodEventActivity extends AppCompatActivity {
     public EmotionalState getEmotionalState() {
         final Spinner emotionalStateSpinner = (Spinner) findViewById(R.id.emotionalStateSpinner);
 
-        // Get EmotionalState Controller to create an emotional state object.
-        EmotionalStateController emotionalStateController =
-                MoodSwingApplication.getEmotionalStateController();
+        // Get EmotionalStateFactory to create an emotional state object.
+        EmotionalStateFactory emotionalStateFactory = new EmotionalStateFactory();
 
-        // Create the EmotionalState by the string selected and return it.
-        return emotionalStateController.createEmotionalStateByName(
+        // Create the EmotionalState by the string selected on the spinner and return it.
+        return emotionalStateFactory.createEmotionalStateByName(
                 String.valueOf(emotionalStateSpinner.getSelectedItem()));
     }
 
@@ -189,12 +188,11 @@ public class NewMoodEventActivity extends AppCompatActivity {
     public SocialSituation getSocialSituation() {
         final Spinner socialSituationSpinner = (Spinner) findViewById(R.id.socialSituationSpinner);
 
-        // Get Social Situation Controller to create a social situation object.
-        SocialSituationController socialSituationController =
-                MoodSwingApplication.getSocialSituationController();
+        // Get Social Situation Factory to create a social situation object.
+        SocialSituationFactory socialSituationFactory = new SocialSituationFactory();
 
         // Create social situation by the string entered and return it.
-        return socialSituationController.createSocialSituationByName(
+        return socialSituationFactory.createSocialSituationByName(
                 String.valueOf(socialSituationSpinner.getSelectedItem()));
     }
 

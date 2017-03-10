@@ -3,17 +3,12 @@ package com.ualberta.cmput301w17t22.moodswing;
 import android.util.Log;
 
 /**
- * Controller for initializing and dealing with EmotionalStates.
- * This Controller currently does not interact with the Model, but just has a function
- * for creating EmotionalStates by name, which is useful to the View.
+ * Factory class for construction EmotionalStates based on their description "Angry" "Sadness", etc.
  *
  * Created by nyitrai on 3/10/2017.
  */
 
-public class EmotionalStateController implements MSController {
-
-    MoodSwing ms = null;
-    public EmotionalStateController(MoodSwing ms) { this.ms = ms; }
+public class EmotionalStateFactory {
 
     /**
      * Constructs an EmotionalState from the name of the state. i.e. "Anger", "Sadness", etc.
@@ -37,32 +32,32 @@ public class EmotionalStateController implements MSController {
 
             case "Disgust":
                 color = 3;
-                emotionalState = new EmotionalState("Anger", "AngerImageLocation", color);
+                emotionalState = new EmotionalState("Disgust", "AngerImageLocation", color);
                 break;
 
             case "Fear":
                 color = 4;
-                emotionalState = new EmotionalState("Anger", "AngerImageLocation", color);
+                emotionalState = new EmotionalState("Fear", "AngerImageLocation", color);
                 break;
 
             case "Happiness":
                 color = 5;
-                emotionalState = new EmotionalState("Anger", "AngerImageLocation", color);
+                emotionalState = new EmotionalState("Happiness", "AngerImageLocation", color);
                 break;
 
             case "Sadness":
                 color = 6;
-                emotionalState = new EmotionalState("Anger", "AngerImageLocation", color);
+                emotionalState = new EmotionalState("Sadness", "AngerImageLocation", color);
                 break;
 
             case "Shame":
                 color = 7;
-                emotionalState = new EmotionalState("Anger", "AngerImageLocation", color);
+                emotionalState = new EmotionalState("Shame", "AngerImageLocation", color);
                 break;
 
             case "Surprise":
                 color = 8;
-                emotionalState = new EmotionalState("Anger", "AngerImageLocation", color);
+                emotionalState = new EmotionalState("Surprise", "AngerImageLocation", color);
                 break;
 
             default:

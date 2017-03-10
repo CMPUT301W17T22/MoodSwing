@@ -30,8 +30,6 @@ public class MoodEvent {
     private LatLng location;
     private String photoLocation;
 
-
-
     private String iconLocation;
     private BitmapDescriptor photo;
     private BitmapDescriptor icon;
