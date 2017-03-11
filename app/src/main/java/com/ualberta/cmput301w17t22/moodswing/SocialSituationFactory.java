@@ -26,6 +26,10 @@ public class SocialSituationFactory {
                 socialSituation = new SocialSituation("Party", "CrowdIconName");
                 break;
 
+            case "":
+                socialSituation = new SocialSituation("", "NoIconName");
+                break;
+
             default:
                 Log.i("ERROR", "Invalid name for Social Situation: " + socialSituationName);
                 throw new IllegalArgumentException(

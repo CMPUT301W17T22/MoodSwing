@@ -1,7 +1,15 @@
 package com.ualberta.cmput301w17t22.moodswing;
 
+import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.provider.MediaStore;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +19,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.maps.model.LatLng;
 
 import java.util.Date;
@@ -198,10 +207,19 @@ public class NewMoodEventActivity extends AppCompatActivity {
 
     /**
      * Gets the LatLng location from the android device.
+
      * @return The current / last known location as a LatLng
      */
     public LatLng getLocation() {
         // TODO: I have no clue how to do this.
+
+        GPSTracker gps = new GPSTracker(this);
+        if (gps.canGetLocation()){
+            double lat = gps.getLatitude();
+            double lon = gps.getLongitude();
+
+            return new LatLng(lat,lon);
+        }
         return null;
     }
 
