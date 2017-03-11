@@ -19,68 +19,76 @@
         android:id="@+id/usernameTextView_ViewMoodEventActivity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
         android:text="username"
         android:textColor="@color/black"
-        android:textSize="30sp" />
+        android:textSize="18sp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="14dp" />
 
     <TextView
         android:id="@+id/emotionalStateTextView_ViewMoodEventActivity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/usernameTextView_ViewMoodEventActivity"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="35dp"
         android:text="emotionalState"
-        android:textAllCaps="true"
-        android:textSize="18sp" />
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:layout_below="@+id/usernameTextView_ViewMoodEventActivity"
+        android:layout_toEndOf="@+id/becauseOf" />
 
     <ImageView
         android:id="@+id/emotionalStateImageView_ViewMoodEventActivity"
-        android:layout_width="30sp"
-        android:layout_height="30sp"
-        android:layout_marginStart="26dp"
+        android:layout_width="50sp"
+        android:layout_height="50sp"
+        android:layout_marginStart="30dp"
         app:srcCompat="@drawable/emoticon_happiness"
-        android:layout_alignBottom="@+id/emotionalStateTextView_ViewMoodEventActivity"
+        android:layout_marginBottom="11dp"
+        android:layout_above="@+id/becauseOf"
         android:layout_toEndOf="@+id/emotionalStateTextView_ViewMoodEventActivity" />
 
     <TextView
         android:id="@+id/triggerTextView_ViewMoodEventActivity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="28dp"
         android:text="trigger"
-        android:textSize="24sp"
+        android:textColor="@color/black"
+        android:textSize="18sp"
         android:layout_below="@+id/emotionalStateTextView_ViewMoodEventActivity"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@+id/becauseOf" />
 
     <TextView
         android:id="@+id/socialSituationTextView_ViewMoodEventActivity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
+        android:layout_marginTop="25dp"
+        android:text="socialSituation"
+        android:textColor="@color/black"
+        android:textSize="18sp"
         android:layout_below="@+id/triggerTextView_ViewMoodEventActivity"
-        android:layout_marginTop="17dp"
-        android:text="socialSituation" />
+        android:layout_alignParentStart="true"
+        android:layout_alignEnd="@+id/emotionalStateTextView_ViewMoodEventActivity" />
 
     <ImageView
         android:id="@+id/socialSituationImageView_ViewMoodEventActivity"
-        android:layout_width="30sp"
-        android:layout_height="30sp"
+        android:layout_width="50sp"
+        android:layout_height="50sp"
         android:cropToPadding="false"
         app:srcCompat="@drawable/social_situation_alone"
-        android:layout_alignTop="@+id/socialSituationTextView_ViewMoodEventActivity"
+        android:layout_marginTop="12dp"
+        android:layout_below="@+id/triggerTextView_ViewMoodEventActivity"
         android:layout_alignStart="@+id/emotionalStateImageView_ViewMoodEventActivity" />
 
     <ImageView
         android:id="@+id/imageImageView_ViewMoodEventActivity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
         app:srcCompat="@drawable/common_google_signin_btn_icon_dark"
         android:layout_below="@+id/socialSituationImageView_ViewMoodEventActivity"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentStart="true" />
 
     <com.google.android.gms.maps.MapView
         android:id="@+id/mapView"
@@ -88,6 +96,26 @@
         android:layout_height="200sp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true" />
+
+    <TextView
+        android:id="@+id/wasFeeling"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="was feeling"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:layout_above="@+id/triggerTextView_ViewMoodEventActivity"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:id="@+id/becauseOf"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/triggerTextView_ViewMoodEventActivity"
+        android:layout_alignParentStart="true"
+        android:text="Because of "
+        android:textColor="@color/black"
+        android:textSize="18sp" />
 
 </RelativeLayout>
 

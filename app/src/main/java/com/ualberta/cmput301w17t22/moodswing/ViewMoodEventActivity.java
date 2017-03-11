@@ -3,6 +3,7 @@ package com.ualberta.cmput301w17t22.moodswing;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -83,6 +84,37 @@ public class ViewMoodEventActivity extends AppCompatActivity {
                         "Invalid Emotional State");
         }
 
+        // Set the image for the appropriate social situation.
+        switch (moodEvent.getSocialSituation().getDescription()) {
+            case "Alone":
+                socialSituationTextView.setText("While alone");
+                socialSituationImageView.setImageDrawable(
+                        getDrawable(R.drawable.social_situation_alone));
+                break;
+
+            case "Crowd":
+                socialSituationTextView.setText("While in a crowd");
+                socialSituationImageView.setImageDrawable(
+                        getDrawable(R.drawable.social_situation_crowd));
+                break;
+
+            case "Party":
+                socialSituationTextView.setText("While in a party");
+                socialSituationImageView.setImageDrawable(
+                        getDrawable(R.drawable.social_situation_party));
+                break;
+
+            case "":
+                socialSituationTextView.setText("");
+                // No social situation was entered, so make the image invisible.
+                socialSituationImageView.setVisibility(View.INVISIBLE);
+                break;
+
+            default:
+                Log.i("ERROR", "Invalid Social Situation while displaying image.");
+                throw new IllegalArgumentException(
+                        "Invalid Social Situation while displaying image.");
+        }
 
 
 
