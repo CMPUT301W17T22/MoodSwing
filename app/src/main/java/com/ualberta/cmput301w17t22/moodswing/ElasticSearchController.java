@@ -1,10 +1,11 @@
 package com.ualberta.cmput301w17t22.moodswing;
 
 import android.os.AsyncTask;
-import android.os.Parcel;
 import android.util.Log;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import com.searchly.jestdroid.DroidClientConfig;
 import com.searchly.jestdroid.JestClientFactory;
 import com.searchly.jestdroid.JestDroidClient;
@@ -49,17 +50,6 @@ public class ElasticSearchController implements MSController {
 
         // Grab the client object.
         client = (JestDroidClient) factory.getObject();
-    }
-
-    /**
-     * Updates participant information on ElasticSearch by username.
-     *
-     * This is called when some change is made to the participant info (new mood event,
-     * edited mood event, change in following/follower list.)
-     * @param username The Participant to update's username.
-     */
-    public void updateParticipantByUsername(String username) {
-
     }
 
     /**
@@ -209,8 +199,11 @@ public class ElasticSearchController implements MSController {
             String username = params[0];
             Participant participant = new Participant(username);
 
-            Gson gson = new Gson();
-
+            // Need proper date format, so it doesn't get upset when trying to load the date.
+            Gson gson = new GsonBuilder()
+                    .setDateFormat("yyyy-MM-dd'T'HH:mm:ssZ")
+                    .create();
+            // Convert to Json.
             String participantJson = gson.toJson(participant);
 
             // Create the index that the Jest droid client will execute on.
@@ -249,8 +242,11 @@ public class ElasticSearchController implements MSController {
             // Grab the participant.
             Participant participant = participants[0];
 
-            // Convert to Json
-            Gson gson = new Gson();
+            // Need proper date format, so it doesn't get upset when trying to load the date.
+            Gson gson = new GsonBuilder()
+                    .setDateFormat("yyyy-MM-dd'T'HH:mm:ssZ")
+                    .create();
+            // Convert to Json.
             String participantJson = gson.toJson(participant);
 
             // Grab ElasticSearch id.
@@ -282,7 +278,6 @@ public class ElasticSearchController implements MSController {
             return null;
         }
     }
-
-
+    
 }
 
