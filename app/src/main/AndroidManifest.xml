@@ -19,6 +19,7 @@
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -47,11 +48,14 @@
             android:exported="true"
             android:label="@string/title_activity_maps" />
         <activity android:name=".NewMoodEventActivity" />
-        <activity android:name=".MoodHistoryActivity"></activity>
+        <activity android:name=".MoodHistoryActivity" />
 
         <!-- For using camera in mood events -->
-        <uses-feature android:name="android.hardware.camera"
+        <uses-feature
+            android:name="android.hardware.camera"
             android:required="true" />
+
+        <activity android:name=".ViewMoodEventActivity"></activity>
     </application>
 
 </manifest>
