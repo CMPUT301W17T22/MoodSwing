@@ -55,7 +55,8 @@
             android:name="android.hardware.camera"
             android:required="true" />
 
-        <activity android:name=".ViewMoodEventActivity"></activity>
+        <activity android:name=".ViewMoodEventActivity" />
+        <activity android:name=".EditMoodEventActivity"></activity>
     </application>
 
 </manifest>

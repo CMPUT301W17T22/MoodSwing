@@ -11,9 +11,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.ualberta.cmput301w17t22.moodswing.MainActivity"
-    android:scrollbars="vertical">
-
+    tools:context="com.ualberta.cmput301w17t22.moodswing.ViewMoodEventActivity">
 
     <TextView
         android:id="@+id/usernameTextView_ViewMoodEventActivity"
@@ -87,8 +85,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/common_google_signin_btn_icon_dark"
-        android:layout_below="@+id/socialSituationImageView_ViewMoodEventActivity"
-        android:layout_alignParentStart="true" />
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
 
     <com.google.android.gms.maps.MapView
         android:id="@+id/mapView"
@@ -116,6 +114,14 @@
         android:text="Because of "
         android:textColor="@color/black"
         android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/editMoodEventButton_ViewMoodEventActivity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:text="@string/edit" />
 
 </RelativeLayout>
 

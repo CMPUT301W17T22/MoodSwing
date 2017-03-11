@@ -1,14 +1,19 @@
 package com.ualberta.cmput301w17t22.moodswing;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
 
+/**
+ * Activity is launched when app user chooses to view a mood event.
+ */
 public class ViewMoodEventActivity extends AppCompatActivity {
 
     @Override
@@ -16,6 +21,7 @@ public class ViewMoodEventActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_mood_event);
 
+        // Initialize everything.
         TextView usernameTextView =
                 (TextView) findViewById(R.id.usernameTextView_ViewMoodEventActivity);
         TextView emotionalStateTextView =
@@ -32,11 +38,35 @@ public class ViewMoodEventActivity extends AppCompatActivity {
         ImageView imageImageView =
                 (ImageView) findViewById(R.id.imageImageView_ViewMoodEventActivity);
 
+        Button editMoodEventButton =
+                (Button) findViewById(R.id.editMoodEventButton_ViewMoodEventActivity);
 
         // Get the MoodEvent that is passed through from the ViewMoodHistoryActivity.
         String moodEventJson = getIntent().getStringExtra("moodEvent");
         Gson gson = new Gson();
-        MoodEvent moodEvent = gson.fromJson(moodEventJson, MoodEvent.class);
+        final MoodEvent moodEvent = gson.fromJson(moodEventJson, MoodEvent.class);
+
+        // Hide the button if they do not own the MoodEvent.
+        // Get the main participant.
+        Participant mainParticipant =
+                MoodSwingApplication.getMoodSwingController().getMainParticipant();
+        if (moodEvent.getOriginalPoster().equals(mainParticipant.getUsername())) {
+            editMoodEventButton.setVisibility(View.VISIBLE);
+        } else {
+            editMoodEventButton.setVisibility(View.GONE);
+        }
+
+        editMoodEventButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ViewMoodEventActivity.this, EditMoodEventActivity.class);
+                // Serialize the mood event, convert to json, and put extra on the intent.
+                intent.putExtra("moodEvent", (new Gson()).toJson(moodEvent));
+
+                // Launch the ViewMoodEventActivity.
+                startActivity(intent);
+            }
+        });
 
         // Load values from MoodEvent into the text fields.
         usernameTextView.setText(moodEvent.getOriginalPoster());

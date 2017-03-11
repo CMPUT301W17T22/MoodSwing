@@ -46,6 +46,7 @@
     </string-array>
 
     <string name="socialSituation_prompt">Choose your social situation</string>
+    <string name="edit">Edit</string>
 
 
 </resources>
