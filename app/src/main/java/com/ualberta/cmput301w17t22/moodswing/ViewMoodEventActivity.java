@@ -14,9 +14,18 @@ import com.google.gson.Gson;
 /**
  * Activity is launched when app user chooses to view a mood event.
  */
-public class ViewMoodEventActivity extends AppCompatActivity {
+public class ViewMoodEventActivity extends AppCompatActivity implements MSView<MoodSwing> {
 
     private int position;
+    TextView usernameTextView;
+    TextView emotionalStateTextView;
+    TextView socialSituationTextView;
+    TextView triggerTextView;
+    ImageView emotionalStateImageView;
+    ImageView socialSituationImageView;
+    ImageView imageImageView;
+    Button editMoodEventButton;
+    String moodEventJson;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,27 +36,31 @@ public class ViewMoodEventActivity extends AppCompatActivity {
         position = getIntent().getIntExtra("position", -2);
 
         // Initialize everything.
-        TextView usernameTextView =
+        usernameTextView =
                 (TextView) findViewById(R.id.usernameTextView_ViewMoodEventActivity);
-        TextView emotionalStateTextView =
+        emotionalStateTextView =
                 (TextView) findViewById(R.id.emotionalStateTextView_ViewMoodEventActivity);
-        TextView socialSituationTextView =
+        socialSituationTextView =
                 (TextView) findViewById(R.id.socialSituationTextView_ViewMoodEventActivity);
-        TextView triggerTextView =
+        triggerTextView =
                 (TextView) findViewById(R.id.triggerTextView_ViewMoodEventActivity);
 
-        ImageView emotionalStateImageView =
+        emotionalStateImageView =
                 (ImageView) findViewById(R.id.emotionalStateImageView_ViewMoodEventActivity);
-        ImageView socialSituationImageView =
+        socialSituationImageView =
                 (ImageView) findViewById(R.id.socialSituationImageView_ViewMoodEventActivity);
-        ImageView imageImageView =
+        imageImageView =
                 (ImageView) findViewById(R.id.imageImageView_ViewMoodEventActivity);
 
-        Button editMoodEventButton =
+        editMoodEventButton =
                 (Button) findViewById(R.id.editMoodEventButton_ViewMoodEventActivity);
+        moodEventJson = getIntent().getStringExtra("moodEvent");
+
+    }
+    protected void onStart(){
+        super.onStart();
 
         // Get the MoodEvent that is passed through from the ViewMoodHistoryActivity.
-        String moodEventJson = getIntent().getStringExtra("moodEvent");
         Gson gson = new Gson();
         final MoodEvent moodEvent = gson.fromJson(moodEventJson, MoodEvent.class);
 
@@ -70,7 +83,7 @@ public class ViewMoodEventActivity extends AppCompatActivity {
                 intent.putExtra("position", position);
 
                 // Launch the ViewMoodEventActivity.
-                startActivity(intent);
+                startActivityForResult(intent,1);
             }
         });
 
@@ -80,7 +93,7 @@ public class ViewMoodEventActivity extends AppCompatActivity {
         socialSituationTextView.setText(moodEvent.getSocialSituation().getDescription());
         triggerTextView.setText(moodEvent.getTrigger());
 
-        // Load valeus from MoodEvent into the images.
+        // Load values from MoodEvent into the images.
         switch (moodEvent.getEmotionalState().getDescription()) {
             case "Anger":
                 emotionalStateImageView.setImageDrawable(getDrawable(R.drawable.emoticon_anger));
@@ -153,6 +166,19 @@ public class ViewMoodEventActivity extends AppCompatActivity {
         }
 
 
+
+    }
+    public void onActivityResult(int requestCode, int resultCode, Intent data){
+        super.onActivityResult(requestCode,resultCode,data);
+        if(requestCode == 1){
+            if(resultCode == RESULT_OK){
+                moodEventJson = data.getStringExtra("moodEvent");
+            }
+        }
+
+    }
+
+    public void update(MoodSwing moodSwing){
 
     }
 }

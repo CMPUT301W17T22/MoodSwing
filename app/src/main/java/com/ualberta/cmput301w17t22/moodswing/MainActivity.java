@@ -98,5 +98,6 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
      */
     public void update(MoodSwing moodSwing) {
 
+
     }
 }

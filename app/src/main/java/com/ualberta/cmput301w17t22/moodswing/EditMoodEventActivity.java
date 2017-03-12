@@ -1,5 +1,6 @@
 package com.ualberta.cmput301w17t22.moodswing;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -174,7 +175,19 @@ public class EditMoodEventActivity extends AppCompatActivity {
                                     "\nSocial Situation: " + socialSituation.toString() +
                                     "\nTrigger: " + trigger,
                             Toast.LENGTH_SHORT).show();
+                    //Convert moodEvent back to Json to send back to ViewMoodEventActivity
+                    MoodEvent editedMoodEvent = new MoodEvent(
+                            moodEvent.getOriginalPoster(),
+                            date,
+                            emotionalState,
+                            trigger,
+                            socialSituation,
+                            location);
 
+                    //sending moodEvent back to ViewMoodEventActivity
+                    Intent intent = new Intent();
+                    intent.putExtra("moodEvent",(new Gson()).toJson(editedMoodEvent));
+                    setResult(RESULT_OK, intent);
                     finish();
                 }
             }
