@@ -4,10 +4,13 @@ import android.util.Log;
 
 /**
  * Factory class for construction EmotionalStates based on their description "Angry" "Sadness", etc.
- *
+ * <br></br><br></br>
+ * This class only really needs to exist if we have more information per EmotionalState than
+ * description, as we used to. As it is, this factory is unnecessary. We keep it in because we might
+ * include more information with an EmotionalState later on.
+ * <p/>
  * Created by nyitrai on 3/10/2017.
  */
-
 public class EmotionalStateFactory {
 
     /**

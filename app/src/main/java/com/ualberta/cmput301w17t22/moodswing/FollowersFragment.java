@@ -11,9 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.ualberta.cmput301w17t22.moodswing.dummy.DummyContent;
-import com.ualberta.cmput301w17t22.moodswing.dummy.DummyContent.DummyItem;
-
-import java.util.List;
 
 /**
  * A fragment representing a list of Items.

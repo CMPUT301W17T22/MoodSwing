@@ -9,11 +9,13 @@ import java.util.ArrayList;
  */
 
 public class MSModel<V extends MSView> {
+    /**
+     * The Model has an arraylist of Views (android activities) that it keeps track of,
+     * to notify about updates to the model.
+     */
     private ArrayList<V> views;
 
-    /**
-     * The Model has an array list of Views (android activities).
-     */
+    /** The Model has an array list of Views (android activities). */
     public MSModel() { views = new ArrayList<V>(); }
 
     /**
@@ -27,11 +29,13 @@ public class MSModel<V extends MSView> {
         }
     }
 
+    /** Add a View to the ArrayList views. */
     public void addView(V view) {
         if (!views.contains(view)) {
             views.add(view);
         }
     }
 
+    /** Delete a View from the ArrayList views. */
     public void deleteView(V view) {views.remove(view); }
 }

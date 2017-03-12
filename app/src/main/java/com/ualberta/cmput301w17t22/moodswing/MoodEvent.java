@@ -2,17 +2,17 @@ package com.ualberta.cmput301w17t22.moodswing;
 
 import android.util.Log;
 
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.model.BitmapDescriptor;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
-import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.Date;
 
-/**A MoodEvent is an object that is posted to certain feeds. It contains the posting participant's username,
- * emotional state, date, trigger(s), social situation, photolocation, location.
+/**
+ * A MoodEvent is an object that is posted to the MoodSwing app and displayed on certain feeds
+ * within it.
+ * <p/>
+ * A MoodEvent contains the posting participant's username, emotional state, the date the mood
+ * event was created, a short explanation trigger for the mood event, a social situation that
+ * contributed to the mood event, and the location of the mood event.
  *
  * @author Fred
  * @author bbest
@@ -22,29 +22,41 @@ import java.util.Date;
  */
 
 public class MoodEvent {
-    //TODO: most of these setters won't be used. Depending on implementation, a single getter may replace multiple getters.
-    //TODO: probably make setters private or revert to original form (approx. date 20-02-2017) - original form prevents duplication of code
+    /** The original poster of the MoodEvent's username. */
     private String originalPoster;
+
+    /** The emotional state of the mood event.
+     * @see EmotionalState */
     private EmotionalState emotionalState;
+
+    /** The date that the mood event was created. CAN NOT BE EDITED AFTER INITIALIZATION.*/
     private Date date;
+
+    /** A short explanation of what triggered the mood event. */
     private String trigger;
+
+    /** The social situation that contributed to the mood event.
+     * @see SocialSituation */
     private SocialSituation socialSituation;
+
+    /** The location that the mood event originally was entered at.
+     * CAN NOT BE EDITED AFTER INITIALIZATION.*/
     private LatLng location;
 
-//    private String photoLocation;
-//    private String iconLocation;
-//    private BitmapDescriptor photo;
-//    private BitmapDescriptor icon;
-
-    //pass null for unused parameters
-    //TODO: finish handling of null (or empty) inputs
+    /**
+     * Mood event constructor. Sets the attributes of this MoodEvent.
+     * @param posterUsername
+     * @param date
+     * @param emotionalState
+     * @param trigger
+     * @param socialSituation
+     * @param location
+     */
     public MoodEvent(String posterUsername,
                      Date date,
                      EmotionalState emotionalState,
                      String trigger,
                      SocialSituation socialSituation,
-                     // String photoLocation,
-                     // String iconLocation,
                      LatLng location) {
         this.originalPoster = posterUsername;
         this.date = date;
@@ -52,7 +64,7 @@ public class MoodEvent {
         this.trigger = trigger;
         this.socialSituation = socialSituation;
 
-        // Check for null location, set to 0 if its null.
+        // Check for null location, set to 0 if it is null.
         if (location == null) {
             this.location = new LatLng(0, 0);
         } else {
@@ -60,6 +72,11 @@ public class MoodEvent {
         }
     }
 
+    /**
+     * Android Studio generated equals method.
+     * @param o
+     * @return
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -77,9 +94,12 @@ public class MoodEvent {
         if (socialSituation != null ? !socialSituation.equals(moodEvent.socialSituation) : moodEvent.socialSituation != null)
             return false;
         return location != null ? location.equals(moodEvent.location) : moodEvent.location == null;
-
     }
 
+    /**
+     * Android Studio generated hashCode method.
+     * @return
+     */
     @Override
     public int hashCode() {
         int result = originalPoster.hashCode();
@@ -92,10 +112,10 @@ public class MoodEvent {
     }
 
     /**
-     * Edit MoodEvent method, uses setters to replace attributes.
-     * @param emotionalState
-     * @param trigger
-     * @param socialSituation
+     * Edit MoodEvent method, uses setters to replace the attributes that are editable.
+     * @param emotionalState The new emotional state of the mood event.
+     * @param trigger The new trigger of the mood event.
+     * @param socialSituation The new social situation of the mood event.
      */
     public void editMoodEvent(EmotionalState emotionalState,
                               String trigger,
@@ -103,13 +123,11 @@ public class MoodEvent {
         this.setEmotionalState(emotionalState);
         this.setTrigger(trigger);
         this.setSocialSituation(socialSituation);
-
-//        this.icon = BitmapDescriptorFactory.fromAsset(iconLocation);
-//        this.photo = BitmapDescriptorFactory.fromFile(photoLocation);
     }
 
     /**
-     * Creates Marker for map based on emoticon and position.
+     * Creates Marker for map based on emoticon and position. Things have changed, so this
+     * method will have to change a lot to work with how things work now.
      *
      * @return Marker corresponding to this MoodEvent
      * @return null if no position
@@ -128,7 +146,8 @@ public class MoodEvent {
 //    }
 
     /**
-     * Used to generate a deep copy of the mood event.
+     * Generates and returns a deep copy of this mood event.
+     * @return A deep copy of this mood event.
      */
     public MoodEvent getDeepCopy() {
         return new MoodEvent(this.getOriginalPoster(),
@@ -140,8 +159,8 @@ public class MoodEvent {
     }
 
     /**
-     * To string method for printing to listviews.
-     * @return
+     * To string method for printing.
+     * @return The nicely printed version of this mood event.
      */
     public String toString() {
         return "Original Poster: " + this.getOriginalPoster() +
@@ -152,7 +171,7 @@ public class MoodEvent {
                 "\nLocation: " + this.getLocation().toString();
     }
 
-    //Getter and Setter methods for attributes.
+    // --- START: Getters and Setters
 
     public String getOriginalPoster(){
         return originalPoster;
@@ -190,14 +209,6 @@ public class MoodEvent {
         return socialSituation;
     }
 
-//    public String getPhotoLocation() { return photoLocation; }
-//
-//    public void setPhotoLocation(String photoLocation) { this.photoLocation = photoLocation; }
-//
-//    public String getIconLocation() { return iconLocation; }
-//
-//    public void setIconLocation(String iconLocation) { this.iconLocation = iconLocation; }
-
     public void setOriginalPoster(String originalPoster) { this.originalPoster = originalPoster; }
 
     public void setLocation(LatLng location) {
@@ -207,4 +218,6 @@ public class MoodEvent {
     public LatLng getLocation() {
         return location;
     }
+
+    // --- END: Getters and Setters
 }

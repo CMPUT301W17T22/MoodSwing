@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -16,16 +15,15 @@ import android.widget.Toast;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.gson.Gson;
 
-import java.util.Date;
 import java.util.Objects;
 import java.util.regex.Pattern;
 
 /**
  * The Activity wherein the user edits a mood event via a very similar interface
  * to the NewMoodEventActivity. Much code is duplicated from NewMoodEventActivity.
- *
+ * <p/>
  * The user gets to this activity from the ViewMoodEventActivity and pressing the edit button there.
- *
+ * <p/>
  * The user is returned from this activity to the ViewMoodEventActivity after pressing the
  * edit button here.
  *
@@ -48,9 +46,12 @@ public class EditMoodEventActivity extends AppCompatActivity implements MSView<M
     /** The edit button object that confirms that the participant is done editing.*/
     Button editButton;
 
+    /** Checkbox that indicates if the user wants to add their current location.*/
+    CheckBox addCurrentLocationCheckBox;
+
     /**
      * Called when the EditMoodEventActivity is first created.
-     *
+     * <p/>
      * Here we grab the mood event from the ViewMoodEventActivity and its position,
      * initialize all the widgets on the activity,
      * @param savedInstanceState
@@ -65,19 +66,13 @@ public class EditMoodEventActivity extends AppCompatActivity implements MSView<M
         Gson gson = new Gson();
         final MoodEvent oldMoodEvent = gson.fromJson(moodEventJson, MoodEvent.class);
 
+
         // Receive the position of the mood event. -2 is the error code we use to detect
         // if this step went wrong. Position will be set to -2 if there is not position to get.
         position = getIntent().getIntExtra("position", -2);
 
-        // Initialize all the widgets in the activity.
-        emotionalStateSpinner =
-                (Spinner) findViewById(R.id.emotionalStateSpinner_EditMoodEventActivity);
-        triggerEditText =
-                (EditText) findViewById(R.id.triggerEditText_EditMoodEventActivity);
-        socialSituationSpinner =
-                (Spinner) findViewById(R.id.socialSituationSpinner_EditMoodEventActivity);
-        editButton =
-                (Button) findViewById(R.id.newMoodEventPostButton_EditMoodEventActivity);
+        // Initialize all widgets.
+        initialize();
 
         // Set the emotional state spinner to have the correct selection by getting the index
         // of the emotional state from the old mood event in the spinner.
@@ -91,6 +86,7 @@ public class EditMoodEventActivity extends AppCompatActivity implements MSView<M
 
         // Set the trigger appropriately.
         triggerEditText.setText(oldMoodEvent.getTrigger());
+
 
         // Edit button push. Confirms editing, proceeds to change mood event.
         editButton.setOnClickListener(new View.OnClickListener() {
@@ -121,7 +117,7 @@ public class EditMoodEventActivity extends AppCompatActivity implements MSView<M
 
                     // Get location if location box is checked, otherwise just use null.
                     LatLng location = null;
-                    if (includeLocationCheck()) {
+                    if (addCurrentLocationCheckBox.isChecked()) {
                         location = getLocation();
                     }
 
@@ -166,6 +162,7 @@ public class EditMoodEventActivity extends AppCompatActivity implements MSView<M
         });
     }
 
+
     /**
      * Function that informs the user nicely that an Emotional State is required.
      */
@@ -194,6 +191,7 @@ public class EditMoodEventActivity extends AppCompatActivity implements MSView<M
 
     /**
      * Simple function to grab the index of a string in a spinner.
+     * <p/>
      * Taken from http://www.mysamplecode.com/2012/11/android-spinner-set-selected-item-by-value.html
      * on 3/12/2017.
      * @param spinner The spinner with items to get the index of.
@@ -210,24 +208,12 @@ public class EditMoodEventActivity extends AppCompatActivity implements MSView<M
         return index;
     }
 
-    /**
-     * Returns true if addCurrentLocationCheckBox is checked, and false otherwise.
-     * @return The state of the addCurrentLocationCheckBox.
-     */
-    public boolean includeLocationCheck(){
-        CheckBox addCurentLocationCheckBox =
-                (CheckBox) findViewById(R.id.addCurentLocationCheckBox_EditMoodEventActivity);
-        return addCurentLocationCheckBox.isChecked();
-    }
-
 
     /**
      * Returns true if entered trigger is 3 words or less than 20 chars. Returns false otherwise.
      * @return Boolean indicating if the trigger was entered properly.
      */
     public boolean validTrigger(){
-        EditText triggerEditText =
-                (EditText)findViewById(R.id.triggerEditText_EditMoodEventActivity);
         String trigger = triggerEditText.getText().toString();
 
         int triggerLength = trigger.length();
@@ -242,9 +228,6 @@ public class EditMoodEventActivity extends AppCompatActivity implements MSView<M
      * @return The appropriate emotional state.
      */
     public EmotionalState getEmotionalState() {
-        final Spinner emotionalStateSpinner =
-                (Spinner) findViewById(R.id.emotionalStateSpinner_EditMoodEventActivity);
-
         // Get EmotionalStateFactory to create an emotional state object.
         EmotionalStateFactory emotionalStateFactory = new EmotionalStateFactory();
 
@@ -258,9 +241,6 @@ public class EditMoodEventActivity extends AppCompatActivity implements MSView<M
      * @return The appropriate social situation.
      */
     public SocialSituation getSocialSituation() {
-        final Spinner socialSituationSpinner =
-                (Spinner) findViewById(R.id.socialSituationSpinner_EditMoodEventActivity);
-
         // Get Social Situation Factory to create a social situation object.
         SocialSituationFactory socialSituationFactory = new SocialSituationFactory();
 
@@ -271,7 +251,6 @@ public class EditMoodEventActivity extends AppCompatActivity implements MSView<M
 
     /**
      * Gets the LatLng location from the android device.
-
      * @return The current / last known location as a LatLng
      */
     public LatLng getLocation() {
@@ -285,6 +264,24 @@ public class EditMoodEventActivity extends AppCompatActivity implements MSView<M
             return new LatLng(lat,lon);
         }
         return null;
+    }
+
+    public void initialize() {
+        // Initialize all the widgets in the activity.
+        emotionalStateSpinner =
+                (Spinner) findViewById(R.id.emotionalStateSpinner_EditMoodEventActivity);
+        socialSituationSpinner =
+                (Spinner) findViewById(R.id.socialSituationSpinner_EditMoodEventActivity);
+        triggerEditText =
+                (EditText) findViewById(R.id.triggerEditText_EditMoodEventActivity);
+        editButton =
+                (Button) findViewById(R.id.newMoodEventPostButton_EditMoodEventActivity);
+        addCurrentLocationCheckBox =
+                (CheckBox) findViewById(R.id.addCurentLocationCheckBox_EditMoodEventActivity);
+
+        // Add this View to the main Model class.
+        MoodSwingController moodSwingController = MoodSwingApplication.getMoodSwingController();
+        moodSwingController.addView(this);
     }
 
     /**

@@ -36,14 +36,16 @@ import static android.R.attr.data;
 
 /**
  * Activity that lets user add a new mood event to their mood history.
- * Layout TODO:
- * Increase spinner height
- *
+ * Layout TODO: Increase spinner height.
+ * <p/>
+ * Accessed from the MainActivity through the main toolbar.
+ * <p/>
+ * The following pages were used in building this activity.
  * http://programmerguru.com/android-tutorial/how-to-pick-image-from-gallery/
  * http://www.coderzheaven.com/2012/04/20/select-an-image-from-gallery-in-android-and-show-it-in-an-imageview/
  */
 
-public class NewMoodEventActivity extends AppCompatActivity {
+public class NewMoodEventActivity extends AppCompatActivity implements MSView<MoodSwing> {
     // need to add this view to moodswing application?
 
     // for camera
@@ -304,6 +306,18 @@ public class NewMoodEventActivity extends AppCompatActivity {
             return new LatLng(lat, lon);
         }
         return null;
+    }
+
+    public void initialize() {
+
+
+        // Add this View to the main Model class.
+        MoodSwingController moodSwingController = MoodSwingApplication.getMoodSwingController();
+        moodSwingController.addView(this);
+    }
+
+    public void update(MoodSwing moodSwing) {
+
     }
 
 }

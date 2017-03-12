@@ -15,6 +15,15 @@ import android.util.Log;
 
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 
+/**
+ * Code for this class taken completely from
+ * http://www.androidhive.info/2012/07/android-gps-location-manager-tutorial/
+ * on 3/11/2017.
+ * <p/>
+ * No reuse statement appears on the site or on the code, however, the terms of service of the
+ * site can be found at
+ * http://www.androidhive.info/terms-of-service/
+ */
 public class GPSTracker extends Service implements LocationListener {
 
     private final Context mContext;

@@ -20,6 +20,10 @@ public class MoodSwingController implements MSController {
     MoodSwing ms = null;
     public MoodSwingController(MoodSwing ms) { this.ms = ms; }
 
+    public void addView(MSView view) {
+        ms.addView(view);
+    }
+
     /**
      * Loads a participant into the Model's main participant given a username.
      * @param username
@@ -71,7 +75,7 @@ public class MoodSwingController implements MSController {
                                                String trigger,
                                                SocialSituation socialSituation,
                                                LatLng location) {
-        ms.editMoodEventToMainParticipant(
+        ms.editMoodEventToMainParticipantByPosition(
                 position,
                 date,
                 emotionalState,

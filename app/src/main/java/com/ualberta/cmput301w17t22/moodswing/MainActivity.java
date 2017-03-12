@@ -9,11 +9,24 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 /**
+ * The MainActivity of the MoodSwing app. This screen will display the map view of mood events,
+ * the mood feed, and have a floating toolbar to navigate the user to the other functionalities of
+ * the app.
+ * <p/>
  * Hexadecimal color codes:
  * dark magenta: #66023C
  * background: e0b0ff
  */
 public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>  {
+
+    /** The main toolbar of the app that lets users navigate to the other parts of the app. */
+    Toolbar mainToolbar;
+
+    /**
+     * The welcome text for the app. Currently displays the username and the Jest id. Used mainly
+     * for testing right now.
+     */
+    TextView welcomeText;
 
     /**
      * Called on opening of activity for the first time.
@@ -24,26 +37,26 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Toolbar myToolbar = (Toolbar) findViewById(R.id.mainToolBar);
+        // Initialize all the widgets of the app.
+        initialize();
 
-        setSupportActionBar(myToolbar);
-        // getSupportActionBar().setTitle("MoodSwing");
+        setSupportActionBar(mainToolbar);
 
-        // Load main participant information. First getting the moodSwingController,
-        // then setting the mainParticipant.
+        // Get MoodSwingController.
         MoodSwingController moodSwingController =
                 MoodSwingApplication.getMoodSwingController();
 
+        // Load MainParticipant.
         Participant mainParticipant = moodSwingController.getMainParticipant();
 
-        // Right now just the username and id.
-        TextView welcomeText = (TextView)findViewById(R.id.mainWelcomeText);
+        // Set the welcome text appropriately.
         welcomeText.setText("Welcome user \"" + mainParticipant.getUsername() +
                 "\" with ID \"" + mainParticipant.getId() + "\"");
     }
 
     /**
-     * Inflates the menu; connects the menu_main_activity.xmlctivity.xml to the menu_main_activity in activity_main.xml.
+     * Inflates the menu. Connects the menu_main_activity.xml to the
+     * menu_main_activity in activity_main.xml.
      * @param menu
      * @return
      */
@@ -66,7 +79,8 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
                 return true;
 
             case R.id.followToolBarButton:
-                // User chose the "Follower & Following" action, should navigate to the follower/following activity
+                // User chose the "Follower & Following" action, should navigate to the
+                // follower/following activity
                 intent = new Intent(MainActivity.this, MainFollowActivity.class);
                 startActivity(intent);
                 return true;
@@ -78,7 +92,8 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
                 return true;
 
             case R.id.moodHistoryToolBarButton:
-                // User chose the "View Mood History" item, should navigate to the MoodHistoryActivity.
+                // User chose the "View Mood History" item, should navigate to the
+                // MoodHistoryActivity.
                 intent = new Intent(MainActivity.this, MoodHistoryActivity.class);
                 startActivity(intent);
                 return true;
@@ -88,6 +103,18 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
                 // Invoke the superclass to handle it.
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    /**
+     * Initializes all the widgets for this activity.
+     */
+    public void initialize() {
+        mainToolbar = (Toolbar) findViewById(R.id.mainToolBar);
+        welcomeText = (TextView)findViewById(R.id.mainWelcomeText);
+
+        // Add this View to the main Model class.
+        MoodSwingController moodSwingController = MoodSwingApplication.getMoodSwingController();
+        moodSwingController.addView(this);
     }
 
     /**

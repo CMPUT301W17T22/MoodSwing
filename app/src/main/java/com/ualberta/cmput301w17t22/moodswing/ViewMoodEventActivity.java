@@ -129,7 +129,7 @@ public class ViewMoodEventActivity extends AppCompatActivity implements MSView<M
 
                         // Inform the user that the mood event was deleted.
                         Toast.makeText(ViewMoodEventActivity.this,
-                                "Mood Event deleted!\n",
+                                "Mood Event deleted!",
                                 Toast.LENGTH_SHORT).show();
 
                         finish();
@@ -249,6 +249,13 @@ public class ViewMoodEventActivity extends AppCompatActivity implements MSView<M
             }
         }
 
+    }
+
+    public void initialize(){
+
+        // Add this View to the main Model class.
+        MoodSwingController moodSwingController = MoodSwingApplication.getMoodSwingController();
+        moodSwingController.addView(this);
     }
 
     public void update(MoodSwing moodSwing){

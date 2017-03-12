@@ -194,6 +194,16 @@ public class MainFollowActivity extends AppCompatActivity implements MSView<Mood
         //do some stuff with the data
     }
 
+    /**
+     * I dont know how to structure this, so right now the initialize is empty.
+     */
+    public void initialize() {
+        // Add this View to the main Model class.
+        MoodSwingController moodSwingController = MoodSwingApplication.getMoodSwingController();
+        moodSwingController.addView(this);
+
+    }
+
     public void update(MoodSwing moodSwing) {
 
     }
