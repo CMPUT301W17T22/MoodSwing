@@ -126,9 +126,9 @@
         android:id="@+id/deleteMoodEventButton_ViewMoodEventActivity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignBottom="@id/editMoodEventButton_ViewMoodEventActivity"
-        android:text="Delete" />
+        android:text="Delete"
+        android:layout_alignParentTop="true"
+        android:layout_toStartOf="@+id/socialSituationImageView_ViewMoodEventActivity" />
 
 </RelativeLayout>
 

@@ -165,7 +165,7 @@ public class NewMoodEventActivity extends AppCompatActivity {
     }
 
     // once user has selected a photo from gallery using Upload button
-    // currently not working
+    // currently does not work on API 25
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
