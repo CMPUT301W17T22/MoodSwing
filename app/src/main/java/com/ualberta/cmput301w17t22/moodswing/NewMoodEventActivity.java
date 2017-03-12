@@ -1,19 +1,11 @@
 package com.ualberta.cmput301w17t22.moodswing;
 
-import android.Manifest;
-import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
-import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationManager;
 import android.net.Uri;
 import android.provider.MediaStore;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -25,20 +17,18 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.maps.model.LatLng;
 
 import java.util.Date;
 import java.util.Objects;
 import java.util.regex.Pattern;
 
-import static android.R.attr.data;
-
 /**
  * Activity that lets user add a new mood event to their mood history.
+ * <p/>
  * Layout TODO: Increase spinner height.
  * <p/>
- * Accessed from the MainActivity through the main toolbar.
+ * Accessed from the MainActivity through the main toolbar. Returns to the MainActivity when done.
  * <p/>
  * The following pages were used in building this activity.
  * http://programmerguru.com/android-tutorial/how-to-pick-image-from-gallery/
@@ -46,31 +36,45 @@ import static android.R.attr.data;
  */
 
 public class NewMoodEventActivity extends AppCompatActivity implements MSView<MoodSwing> {
-    // need to add this view to moodswing application?
-
     // for camera
     //static final int REQUEST_IMAGE_CAPTURE = 1;
 
-    // for photo selection
+    /** Used in photo selection. */
     private static int RESULT_LOAD_IMG = 1;
+
+    /** Used in photo selection. */
     String imgDecodableString;
+
+    /** The spinner that lets the participant select their social situation for the mood event.*/
+    Spinner socialSituationSpinner;
+
+    /** The spinner that lets the participant select their emotional state for the mood event.*/
+    Spinner emotionalStateSpinner;
+
+    /** The edit text where the user can enter their given reason for the mood event. */
+    EditText triggerEditText;
+
+    /** The checkbox that indicates if the user wants to attach their location to the mood event. */
+    CheckBox addCurrentLocationCheckBox;
+
+    /** Button that when pressed indicates the user is done creating their new mood event.*/
+    Button newMoodEventPostButton;
+
+    /** Button that triggers the app to allow the user to upload a photo. */
+    Button photoUploadButton;
+
+    /** Button that triggers the app to allow the user to capture a photo. */
+    Button photoCaptureButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_mood_event);
 
-        // going to just use pre-decided list of strings to represent moods and emotional states
-        // for now, its a lot easier than a dynamic list (like in MoodOptions) for now
-        // will have to change/update them if we end up changing the moods/states allowed
-        final Spinner socialSituationSpinner = (Spinner) findViewById(R.id.socialSituationSpinner);
-        final Spinner emotionalStateSpinner = (Spinner) findViewById(R.id.emotionalStateSpinner);
+        // Initialize all widgets for this activity and add this View to the main Model class.
+        initialize();
 
-        final Button newMoodEventPostButton = (Button) findViewById(R.id.newMoodEventPostButton);
-        Button photoUploadButton = (Button) findViewById(R.id.photoUploadButton);
-        Button photoCaptureButton = (Button) findViewById(R.id.photoCaptureButton);
-
-//        // use current date/time for MoodEvent
+        // Use current date/time for MoodEvent
         final Date moodDate = new Date();
 
         // photo upload press. Need a real device to test this on
@@ -98,26 +102,16 @@ public class NewMoodEventActivity extends AppCompatActivity implements MSView<Mo
         newMoodEventPostButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //validTrigger(v);
 
-                // Emotional state is required.
+                // Emotional state is required, check that it is entered.
+                // If it isn't, tell the user.
                 if (Objects.equals(String.valueOf(emotionalStateSpinner.getSelectedItem()),"")){
-
-                    // Show that the emotional state is required.
-                    TextView errorText = (TextView)emotionalStateSpinner.getSelectedView();
-                    errorText.setError("");
-                    errorText.setTextColor(Color.RED);
-                    errorText.setText("Emotional state is required!");
-
-                    Toast.makeText(NewMoodEventActivity.this,
-                            "Please enter an Emotional State.",
-                            Toast.LENGTH_SHORT).show();
+                    showEmotionalStateIsRequiredError();
                 }
-                // Check if the trigger is valid.
+
+                // Check if the trigger is valid. If it isn't, tell the user.
                 else if (!validTrigger()){
-                    Toast.makeText(NewMoodEventActivity.this,
-                            "Trigger length too long. \nMust be under 3 words and 20 chars.",
-                            Toast.LENGTH_SHORT).show();
+                    showTriggerInvalidError();
                 }
 
                 // Post the Mood Event, and inform the user you are doing so.
@@ -126,7 +120,6 @@ public class NewMoodEventActivity extends AppCompatActivity implements MSView<Mo
                     EmotionalState emotionalState = getEmotionalState();
 
                     // Get trigger.
-                    EditText triggerEditText = (EditText)findViewById(R.id.triggerEditText);
                     String trigger = triggerEditText.getText().toString();
 
                     // Get social situation.
@@ -134,7 +127,7 @@ public class NewMoodEventActivity extends AppCompatActivity implements MSView<Mo
 
                     // Get location if location box is checked, otherwise just use null.
                     LatLng location = null;
-                    if (includeLocationCheck()) {
+                    if (addCurrentLocationCheckBox.isChecked()) {
                         location = getLocation();
                     }
 
@@ -160,9 +153,20 @@ public class NewMoodEventActivity extends AppCompatActivity implements MSView<Mo
 
                     finish();
                 }
-
             }
         });
+    }
+
+    /**
+     * Called when the Activity is finish()'d or otherwise closes. Removes this View from the main
+     * Model's list of Views.
+     */
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        // Remove this View from the main Model class' list of Views.
+        MoodSwingController moodSwingController = MoodSwingApplication.getMoodSwingController();
+        moodSwingController.removeView(this);
     }
 
     // create and launch intent to view and select photo from gallery
@@ -229,17 +233,32 @@ public class NewMoodEventActivity extends AppCompatActivity implements MSView<Mo
 //        }
 //    }
 
+
     /**
-     * Returns true if addCurrentLocationCheckBox is checked, and false otherwise.
-     * @return The state of the addCurrentLocationCheckBox.
+     * Function that informs the user nicely that an Emotional State is required.
      */
-    public boolean includeLocationCheck(){
-        CheckBox addCurentLocationCheckBox = (CheckBox) findViewById(R.id.addCurentLocationCheckBox);
-        //            Toast.makeText(NewMoodEventActivity.this,
-//                    "Checked", Toast.LENGTH_LONG).show();
-        return addCurentLocationCheckBox.isChecked();
+    private void showEmotionalStateIsRequiredError() {
+        // Show that the emotional state is required.
+        TextView errorText = (TextView)emotionalStateSpinner.getSelectedView();
+        errorText.setError("");
+        errorText.setTextColor(Color.RED);
+        errorText.setText(getResources().getString(R.string.entry_required));
+
+        Toast.makeText(NewMoodEventActivity.this,
+                "Please enter an Emotional State.",
+                Toast.LENGTH_SHORT).show();
     }
 
+    /**
+     * Function that informs the user nicely that their trigger is invalid.
+     */
+    private void showTriggerInvalidError() {
+        triggerEditText.setError(getResources().getString(R.string.trigger_invalid));
+
+        Toast.makeText(NewMoodEventActivity.this,
+                "Trigger length too long. \nMust be under 3 words and 20 chars.",
+                Toast.LENGTH_SHORT).show();
+    }
 
     /**
      * Returns true if entered trigger is 3 words or less than 20 chars. Returns false otherwise.
@@ -253,11 +272,7 @@ public class NewMoodEventActivity extends AppCompatActivity implements MSView<Mo
         String[] triggerSplit = trigger.split(Pattern.quote(" "));
         int triggerSplitLength = triggerSplit.length;
 
-        // test output
-//        Toast.makeText(NewMoodEventActivity.this,
-//                Integer.toString(triggerSplitLength), Toast.LENGTH_SHORT).show();
-
-        return (triggerSplitLength <= 3 || triggerLength < 20);
+        return (triggerSplitLength <= 3 && triggerLength < 20);
     }
 
     /**
@@ -265,8 +280,6 @@ public class NewMoodEventActivity extends AppCompatActivity implements MSView<Mo
      * @return The appropriate emotional state.
      */
     public EmotionalState getEmotionalState() {
-        final Spinner emotionalStateSpinner = (Spinner) findViewById(R.id.emotionalStateSpinner);
-
         // Get EmotionalStateFactory to create an emotional state object.
         EmotionalStateFactory emotionalStateFactory = new EmotionalStateFactory();
 
@@ -280,8 +293,6 @@ public class NewMoodEventActivity extends AppCompatActivity implements MSView<Mo
      * @return The appropriate social situation.
      */
     public SocialSituation getSocialSituation() {
-        final Spinner socialSituationSpinner = (Spinner) findViewById(R.id.socialSituationSpinner);
-
         // Get Social Situation Factory to create a social situation object.
         SocialSituationFactory socialSituationFactory = new SocialSituationFactory();
 
@@ -308,8 +319,18 @@ public class NewMoodEventActivity extends AppCompatActivity implements MSView<Mo
         return null;
     }
 
+    /**
+     * Initializes all the widgets for this activity and adds this View to the main Model class.
+     */
     public void initialize() {
-
+        // Initialize all widgets.
+        socialSituationSpinner = (Spinner) findViewById(R.id.socialSituationSpinner);
+        emotionalStateSpinner = (Spinner) findViewById(R.id.emotionalStateSpinner);
+        newMoodEventPostButton = (Button) findViewById(R.id.newMoodEventPostButton);
+        photoUploadButton = (Button) findViewById(R.id.photoUploadButton);
+        photoCaptureButton = (Button) findViewById(R.id.photoCaptureButton);
+        triggerEditText = (EditText)findViewById(R.id.triggerEditText);
+        addCurrentLocationCheckBox = (CheckBox) findViewById(R.id.addCurentLocationCheckBox);
 
         // Add this View to the main Model class.
         MoodSwingController moodSwingController = MoodSwingApplication.getMoodSwingController();

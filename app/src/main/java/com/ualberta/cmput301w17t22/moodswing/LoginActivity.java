@@ -65,6 +65,18 @@ public class LoginActivity extends AppCompatActivity implements MSView<MoodSwing
     }
 
     /**
+     * Called when the Activity is finish()'d or otherwise closes. Removes this View from the main
+     * Model's list of Views.
+     */
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        // Remove this View from the main Model class' list of Views.
+        MoodSwingController moodSwingController = MoodSwingApplication.getMoodSwingController();
+        moodSwingController.removeView(this);
+    }
+
+    /**
      * Triggers the Model to load the Participant information given the entered username.
      * Called when user presses the activity_login button after entering their username.
      *

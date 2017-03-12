@@ -162,6 +162,17 @@ public class EditMoodEventActivity extends AppCompatActivity implements MSView<M
         });
     }
 
+    /**
+     * Called when the Activity is finish()'d or otherwise closes. Removes this View from the main
+     * Model's list of Views.
+     */
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        // Remove this View from the main Model class' list of Views.
+        MoodSwingController moodSwingController = MoodSwingApplication.getMoodSwingController();
+        moodSwingController.removeView(this);
+    }
 
     /**
      * Function that informs the user nicely that an Emotional State is required.
@@ -220,7 +231,7 @@ public class EditMoodEventActivity extends AppCompatActivity implements MSView<M
         String[] triggerSplit = trigger.split(Pattern.quote(" "));
         int triggerSplitLength = triggerSplit.length;
 
-        return (triggerSplitLength <= 3 || triggerLength < 20);
+        return (triggerSplitLength <= 3 && triggerLength < 20);
     }
 
     /**

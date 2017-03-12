@@ -55,6 +55,18 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
     }
 
     /**
+     * Called when the Activity is finish()'d or otherwise closes. Removes this View from the main
+     * Model's list of Views.
+     */
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        // Remove this View from the main Model class' list of Views.
+        MoodSwingController moodSwingController = MoodSwingApplication.getMoodSwingController();
+        moodSwingController.removeView(this);
+    }
+
+    /**
      * Inflates the menu. Connects the menu_main_activity.xml to the
      * menu_main_activity in activity_main.xml.
      * @param menu

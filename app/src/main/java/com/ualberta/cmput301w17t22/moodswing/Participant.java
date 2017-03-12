@@ -1,7 +1,5 @@
 package com.ualberta.cmput301w17t22.moodswing;
 
-import android.util.Log;
-
 import com.google.android.gms.maps.model.LatLng;
 
 import java.util.ArrayList;
@@ -10,7 +8,10 @@ import java.util.Date;
 import io.searchbox.annotations.JestId;
 
 /**
- * A Participant is an end user of the app and is identified by their username.
+ * A Participant is an end user of the app and is uniquely identified by their username.
+ * <p/>
+ * The Participant holds all the information about a user; all of their mood events, their
+ * followers, who they are following, etc.
  *
  * @author Fred
  * @version 2017-03-03
@@ -26,9 +27,13 @@ public class Participant extends User {
     @JestId
     private String id;
 
+    /** The list of other participants that this participant is following. */
     private ApprovalList followingList = new ApprovalList();
+
+    /** The list of other participants that are following this participant. */
     private ApprovalList followerList = new ApprovalList();
 
+    /** All of this participant's mood events in reverse chronological order. */
     private ArrayList<MoodEvent> moodHistory = new ArrayList<>();
 
     public Participant(String username) {
@@ -37,6 +42,14 @@ public class Participant extends User {
 
     // --- START: MoodEvent methods
 
+    /**
+     * Adds a mood event defined by the given parameters into the Participant's mood history.
+     * @param date
+     * @param emotionalState
+     * @param trigger
+     * @param socialSituation
+     * @param location
+     */
     public void addMoodEvent(Date date,
                              EmotionalState emotionalState,
                              String trigger,

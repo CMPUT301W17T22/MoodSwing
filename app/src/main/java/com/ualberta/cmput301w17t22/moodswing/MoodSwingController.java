@@ -24,6 +24,8 @@ public class MoodSwingController implements MSController {
         ms.addView(view);
     }
 
+    public void removeView(MSView view) { ms.removeView(view);}
+
     /**
      * Loads a participant into the Model's main participant given a username.
      * @param username

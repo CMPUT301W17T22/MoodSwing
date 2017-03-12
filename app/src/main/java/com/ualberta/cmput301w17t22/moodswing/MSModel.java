@@ -37,5 +37,5 @@ public class MSModel<V extends MSView> {
     }
 
     /** Delete a View from the ArrayList views. */
-    public void deleteView(V view) {views.remove(view); }
+    public void removeView(V view) {views.remove(view); }
 }

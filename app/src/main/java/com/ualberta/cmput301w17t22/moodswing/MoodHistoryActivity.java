@@ -67,6 +67,18 @@ public class MoodHistoryActivity extends AppCompatActivity implements MSView<Moo
         moodHistoryListView.setAdapter(moodHistoryAdapter);
     }
 
+    /**
+     * Called when the Activity is finish()'d or otherwise closes. Removes this View from the main
+     * Model's list of Views.
+     */
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        // Remove this View from the main Model class' list of Views.
+        MoodSwingController moodSwingController = MoodSwingApplication.getMoodSwingController();
+        moodSwingController.removeView(this);
+    }
+
     public void loadMainParticipant() {
         // Get the main Model and get the main participant.
         MoodSwingController moodSwingController = MoodSwingApplication.getMoodSwingController();
