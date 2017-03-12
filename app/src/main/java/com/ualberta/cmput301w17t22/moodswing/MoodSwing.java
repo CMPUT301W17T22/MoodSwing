@@ -5,6 +5,7 @@ import android.util.Log;
 import com.google.android.gms.maps.model.LatLng;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Main class for the Model portion of the MVC architecture.
@@ -71,30 +72,55 @@ public class MoodSwing extends MSModel<MSView> {
      * @param emotionalState
      * @param trigger
      * @param socialSituation
-     * @param photoLocation
-     * @param iconLocation
      * @param location
      */
-    public void addMoodEventToMainParticipant(EmotionalState emotionalState,
-                             String trigger,
-                             SocialSituation socialSituation,
-                             String photoLocation,
-                             String iconLocation,
-                             LatLng location) {
+    public void addMoodEventToMainParticipant(Date date,
+                                              EmotionalState emotionalState,
+                                              String trigger,
+                                              SocialSituation socialSituation,
+                                              LatLng location) {
 
         // Add the mood event to the main participant.
-        getMainParticipant().addMoodEvent(
+        getMainParticipant().addMoodEvent(date,
                 emotionalState,
                 trigger,
                 socialSituation,
-                photoLocation,
-                iconLocation,
                 location);
 
         // Post change to ElasticSearch.
         saveMainParticipant();
 
         // Notify all the views of the new information.
+        notifyViews();
+    }
+
+    /**
+     * Edit a specific mood event of the main participant.
+     * @param position
+     * @param date
+     * @param emotionalState
+     * @param trigger
+     * @param socialSituation
+     * @param location
+     */
+    public void editMoodEventToMainParticipant(int position,
+                                               Date date,
+                                               EmotionalState emotionalState,
+                                               String trigger,
+                                               SocialSituation socialSituation,
+                                               LatLng location) {
+        // Get the main participant to edit its mood event.
+        getMainParticipant().editMoodEvent(position,
+                date,
+                emotionalState,
+                trigger,
+                socialSituation,
+                location);
+
+        // Post the updated mood event to ElasticSearch.
+        updateMainParticipant();
+
+        // Notify the views.
         notifyViews();
     }
 
@@ -107,6 +133,15 @@ public class MoodSwing extends MSModel<MSView> {
      */
     public void saveMainParticipant() {
         // Get ElasticSearchController.
+        ElasticSearchController elasticSearchController =
+                MoodSwingApplication.getElasticSearchController();
+
+        // Update the main participant on ElasticSearch.
+        elasticSearchController.updateParticipantByParticipant(mainParticipant);
+    }
+
+    public void updateMainParticipant() {
+        //Get ElasticSearchController.
         ElasticSearchController elasticSearchController =
                 MoodSwingApplication.getElasticSearchController();
 

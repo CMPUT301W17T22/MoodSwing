@@ -104,4 +104,18 @@ public class MoodEventUnitTest {
 
     }
 
+    // Test equals of mood events.
+    @Test
+    public void testEqualsMoodEvents() {
+        String trigger = "trigger";
+        Date date = new Date();
+        SocialSituation socialSituation = new SocialSituation("so popular", "somewhere");
+        EmotionalState emotionalState = new EmotionalState("happy","somewhere", Color.BLACK);
+
+        MoodEvent moodEvent1 = new MoodEvent("username1", date, emotionalState, trigger, socialSituation, );
+        MoodEvent moodEvent2 = new MoodEvent("username1", date, emotionalState, trigger, socialSituation, );
+
+
+    }
+
 }

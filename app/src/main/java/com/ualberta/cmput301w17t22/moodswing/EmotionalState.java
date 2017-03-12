@@ -10,26 +10,32 @@ package com.ualberta.cmput301w17t22.moodswing;
 
 public class EmotionalState {
     private String description;
-    private String emoticonName;    // what does emoticon name do?
-    private String imageLocation;
-    private int color;
 
-    public EmotionalState(String description, String imageLocation, int color){
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        EmotionalState that = (EmotionalState) o;
+
+        if (!description.equals(that.description)) return false;
+        else return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = description.hashCode();
+        return result;
+    }
+
+    public EmotionalState(String description){
         this.description = description;
-        //this.emoticonName = emoticonName;
-        this.imageLocation = imageLocation;
-        this.color = color;
     }
 
     public String getDescription(){
         return description;
     }
-
-    public String getImageLocation() {return imageLocation;}
-
-    public int getColor(){
-        return color;
-    }
+    public void setDescription(String description) { this.description = description; }
 
     public String toString() { return this.getDescription(); }
 }

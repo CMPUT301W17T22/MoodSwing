@@ -3,6 +3,7 @@ package com.ualberta.cmput301w17t22.moodswing;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -39,6 +40,8 @@ public class MoodHistoryActivity extends AppCompatActivity implements MSView<Moo
 
                 // Serialize the mood event, convert to json, and put extra on the intent.
                 intent.putExtra("moodEvent", (new Gson()).toJson(moodEvent));
+                // Pass the position of the mood event through also.
+                intent.putExtra("position", position);
 
                 // Launch the ViewMoodEventActivity.
                 startActivity(intent);

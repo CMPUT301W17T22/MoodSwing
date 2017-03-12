@@ -46,7 +46,6 @@ public class NewMoodEventActivity extends AppCompatActivity {
         // going to just use pre-decided list of strings to represent moods and emotional states
         // for now, its a lot easier than a dynamic list (like in MoodOptions) for now
         // will have to change/update them if we end up changing the moods/states allowed
-        final Spinner socialSituationSpinner = (Spinner) findViewById(R.id.socialSituationSpinner);
         final Spinner emotionalStateSpinner = (Spinner) findViewById(R.id.emotionalStateSpinner);
 
         final Button newMoodEventPostButton = (Button) findViewById(R.id.newMoodEventPostButton);
@@ -107,13 +106,10 @@ public class NewMoodEventActivity extends AppCompatActivity {
                             MoodSwingApplication.getMoodSwingController();
 
                     // Add the mood event to the main participant.
-                    moodSwingController.addMoodEventToMainParticipant(
+                    moodSwingController.addMoodEventToMainParticipant(moodDate,
                             emotionalState,
                             trigger,
                             socialSituation,
-                            // Place holder values, not sure how this is going to work.
-                            "photoLocation",
-                            "iconLocation",
                             location);
 
                     // Toast to inform the user that the mood event was added.
@@ -131,7 +127,6 @@ public class NewMoodEventActivity extends AppCompatActivity {
             }
         });
     }
-
 
 
     // for taking a picture
@@ -218,13 +213,9 @@ public class NewMoodEventActivity extends AppCompatActivity {
             double lat = gps.getLatitude();
             double lon = gps.getLongitude();
 
-            return new LatLng(lat,lon);
+            return new LatLng(lat, lon);
         }
         return null;
     }
-
-
-
-
 
 }
