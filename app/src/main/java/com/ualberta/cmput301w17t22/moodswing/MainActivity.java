@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
         Toolbar myToolbar = (Toolbar) findViewById(R.id.mainToolBar);
 
         setSupportActionBar(myToolbar);
-       // getSupportActionBar().setTitle("MoodSwing");
+        // getSupportActionBar().setTitle("MoodSwing");
 
         // Load main participant information. First getting the moodSwingController,
         // then setting the mainParticipant.
@@ -43,13 +43,13 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
     }
 
     /**
-     * Inflates the menu; connects the toolbar.xml to the toolbar in activity_main.xml.
+     * Inflates the menu; connects the menu_main_activity.xmlctivity.xml to the menu_main_activity in activity_main.xml.
      * @param menu
      * @return
      */
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
-        getMenuInflater().inflate(R.menu.toolbar,menu);
+        getMenuInflater().inflate(R.menu.menu_main_activity,menu);
         return true;
     }
 
@@ -67,10 +67,8 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
 
             case R.id.followToolBarButton:
                 // User chose the "Follower & Following" action, should navigate to the follower/following activity
-
-                // There's no FollowerFollowingActivity yet so the below two lines are just commented.
-                //Intent intent = new Intent(MainActivity.this, FollowerFollowingActivity.class);
-                //startActivity(intent);
+                intent = new Intent(MainActivity.this, MainFollowActivity.class);
+                startActivity(intent);
                 return true;
 
             case R.id.newMoodEventToolBarButton:

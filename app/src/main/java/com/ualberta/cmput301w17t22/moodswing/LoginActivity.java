@@ -31,7 +31,7 @@ public class LoginActivity extends AppCompatActivity implements MSView<MoodSwing
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.login);
+        setContentView(R.layout.activity_login);
 
         // Initialize button.
         Button loginButton = (Button) findViewById(R.id.loginButton);
@@ -63,7 +63,7 @@ public class LoginActivity extends AppCompatActivity implements MSView<MoodSwing
 
     /**
      * Triggers the Model to load the Participant information given the entered username.
-     * Called when user presses the login button after entering their username.
+     * Called when user presses the activity_login button after entering their username.
      *
      * @return boolean value that informs if the user's information was loaded properly.
      */

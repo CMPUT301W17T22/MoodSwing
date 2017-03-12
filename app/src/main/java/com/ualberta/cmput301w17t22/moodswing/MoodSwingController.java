@@ -83,6 +83,14 @@ public class MoodSwingController implements MSController {
     }
 
     /**
+     * Delete's the MoodEvent at the given position in the main participants mood history.
+     * @param position The position of the MoodEvent in the main participants mood history.
+     */
+    public void deleteMoodEventFromMainParticipantByPosition(int position) {
+        ms.deleteMoodEventFromMainParticipantByPosition(position);
+    }
+
+    /**
      * Gets the main participant from the main Model class
      * @return The main participant.
      */

@@ -51,17 +51,23 @@ public class Participant extends User {
 
     }
 
-    public void editMoodEvent(int position,
-                              Date date,
-                              EmotionalState emotionalState,
-                              String trigger,
-                              SocialSituation socialSituation,
-                              LatLng location) {
+    /**
+     * Edit the mood event at the given position to be the new one passed in.
+     * @param position
+     * @param date
+     * @param emotionalState
+     * @param trigger
+     * @param socialSituation
+     * @param location
+     */
+    public void editMoodEventByPosition(int position,
+                                        Date date,
+                                        EmotionalState emotionalState,
+                                        String trigger,
+                                        SocialSituation socialSituation,
+                                        LatLng location) {
 
-        // Grab the index of the old mood event to preserve its place in the list.
-        for (Object object : moodHistory) {
-            Log.i("MoodSwing", object.toString());
-        }
+        // Remove the mood event at the given position.
         moodHistory.remove(position);
 
         // Add the edited mood event at the index of the old one.
@@ -71,6 +77,14 @@ public class Participant extends User {
                 trigger,
                 socialSituation,
                 location));
+    }
+
+    /**
+     * Remove the MoodEvent at the given position from this participant's mood history.
+     * @param position The given position to remove the mood event from.
+     */
+    public void deleteMoodEventByPosition(int position) {
+        moodHistory.remove(position);
     }
 
     /**

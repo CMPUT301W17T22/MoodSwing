@@ -57,7 +57,12 @@
             android:required="true" />
 
         <activity android:name=".ViewMoodEventActivity" />
-        <activity android:name=".EditMoodEventActivity"></activity>
+        <activity android:name=".EditMoodEventActivity" />
+        <activity android:name=".FollowActivity" />
+        <activity
+            android:name=".MainFollowActivity"
+            android:label="@string/title_activity_main_follow"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

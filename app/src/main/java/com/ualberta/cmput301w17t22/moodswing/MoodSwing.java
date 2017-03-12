@@ -1,7 +1,5 @@
 package com.ualberta.cmput301w17t22.moodswing;
 
-import android.util.Log;
-
 import com.google.android.gms.maps.model.LatLng;
 
 import java.util.ArrayList;
@@ -110,7 +108,7 @@ public class MoodSwing extends MSModel<MSView> {
                                                SocialSituation socialSituation,
                                                LatLng location) {
         // Get the main participant to edit its mood event.
-        getMainParticipant().editMoodEvent(position,
+        getMainParticipant().editMoodEventByPosition(position,
                 date,
                 emotionalState,
                 trigger,
@@ -121,6 +119,21 @@ public class MoodSwing extends MSModel<MSView> {
         updateMainParticipant();
 
         // Notify the views.
+        notifyViews();
+    }
+
+    /**
+     * Deletes the mood event at the given position from the MainParticipant and propagates
+     * the changes through to ElasticSearch and the views.
+     * @param position
+     */
+    public void deleteMoodEventFromMainParticipantByPosition(int position) {
+        getMainParticipant().deleteMoodEventByPosition(position);
+
+        // Post the updated participant to ElasticSearch.
+        updateMainParticipant();
+
+        // Notify all views of the change.
         notifyViews();
     }
 

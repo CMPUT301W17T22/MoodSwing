@@ -49,8 +49,6 @@ public class EditMoodEventActivity extends AppCompatActivity {
         final Button editButton =
                 (Button) findViewById(R.id.newMoodEventPostButton_EditMoodEventActivity);
 
-        // Grab a snapshot of the Mood
-
         // Grab the appropriate emotional state and set it to be selected in the spinner.
         switch (moodEvent.getEmotionalState().getDescription()) {
             case "Anger":
@@ -86,9 +84,9 @@ public class EditMoodEventActivity extends AppCompatActivity {
                 break;
 
             default:
-                Log.i("ERROR", "Invalid Emotional State when setting image.");
+                Log.i("ERROR", "Invalid Emotional State when editing mood event.");
                 throw new IllegalArgumentException(
-                        "Invalid Emotional State");
+                        "Invalid Emotional State when editing mood event.");
         }
 
         // Fill the social situation value appropriately.
@@ -110,9 +108,9 @@ public class EditMoodEventActivity extends AppCompatActivity {
                 break;
 
             default:
-                Log.i("ERROR", "Invalid Social Situation while displaying image.");
+                Log.i("ERROR", "Invalid Social Situation while editing a mood event.");
                 throw new IllegalArgumentException(
-                        "Invalid Social Situation while displaying image.");
+                        "Invalid Social Situation while editing a mood event.");
         }
 
         // Set the trigger appropriately.
@@ -175,7 +173,8 @@ public class EditMoodEventActivity extends AppCompatActivity {
                                     "\nSocial Situation: " + socialSituation.toString() +
                                     "\nTrigger: " + trigger,
                             Toast.LENGTH_SHORT).show();
-                    //Convert moodEvent back to Json to send back to ViewMoodEventActivity
+
+                    //Convert moodEvent back to Json to send back to ViewMoodEventActivity.
                     MoodEvent editedMoodEvent = new MoodEvent(
                             moodEvent.getOriginalPoster(),
                             date,
