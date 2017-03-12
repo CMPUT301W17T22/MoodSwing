@@ -2,6 +2,7 @@ package com.ualberta.cmput301w17t22.moodswing;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.net.Uri;
@@ -33,6 +34,7 @@ import java.util.regex.Pattern;
  * The following pages were used in building this activity.
  * http://programmerguru.com/android-tutorial/how-to-pick-image-from-gallery/
  * http://www.coderzheaven.com/2012/04/20/select-an-image-from-gallery-in-android-and-show-it-in-an-imageview/
+ * developer.android.com/training/camera/photobasics.html
  */
 
 public class NewMoodEventActivity extends AppCompatActivity implements MSView<MoodSwing> {
@@ -41,6 +43,7 @@ public class NewMoodEventActivity extends AppCompatActivity implements MSView<Mo
 
     /** Used in photo selection. */
     private static int RESULT_LOAD_IMG = 1;
+    private static int REQUEST_IMAGE_CAPTURE = 2;
 
     /** Used in photo selection. */
     String imgDecodableString;
@@ -94,7 +97,7 @@ public class NewMoodEventActivity extends AppCompatActivity implements MSView<Mo
         photoCaptureButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-
+                dispatchTakePictureIntent();
             }
         });
 
@@ -177,43 +180,74 @@ public class NewMoodEventActivity extends AppCompatActivity implements MSView<Mo
         startActivityForResult(i, RESULT_LOAD_IMG);
     }
 
+    // invoke intent to capture a photo
+    private void dispatchTakePictureIntent() {
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if (takePictureIntent.resolveActivity(getPackageManager()) != null){
+            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+        }
+    }
+
     // once user has selected a photo from gallery using Upload button
     // currently does not work on API 25
+    // can probably combine with other onActivityResult
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         try {
-            // When an Image is picked
-            if (requestCode == RESULT_LOAD_IMG && resultCode == RESULT_OK
-                    && null != data) {
-                // Get the Image from data
+            switch(requestCode) {
+                case (1):
+                {
+                    // When an Image is picked
+                    if (requestCode == RESULT_LOAD_IMG && resultCode == RESULT_OK
+                            && null != data) {
+                        // Get the Image from data
 
-                Uri selectedImage = data.getData();
-                String[] filePathColumn = { MediaStore.Images.Media.DATA };
+                        Uri selectedImage = data.getData();
+                        String[] filePathColumn = { MediaStore.Images.Media.DATA };
 
-                // Get the cursor
-                // this doesn't work
-                Cursor cursor = getContentResolver().query(selectedImage,
-                        filePathColumn, null, null, null);
+                        // Get the cursor
+                        // this doesn't work
+                        Cursor cursor = getContentResolver().query(selectedImage,
+                                filePathColumn, null, null, null);
 
-                // Move to first row
-                cursor.moveToFirst();
+                        // Move to first row
+                        cursor.moveToFirst();
 
-                int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-                imgDecodableString = cursor.getString(columnIndex);
-                cursor.close();
+                        int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+                        imgDecodableString = cursor.getString(columnIndex);
+                        cursor.close();
 
-                // get image view
-                ImageView imageView = (ImageView) findViewById(R.id.imageView_NewMoodEventActivity);
-                // Set the Image in ImageView after decoding the String
-                imageView.setImageBitmap(BitmapFactory
-                        .decodeFile(imgDecodableString));
+                        // get image view
+                        ImageView imageView = (ImageView) findViewById(R.id.imageView_NewMoodEventActivity);
+                        // Set the Image in ImageView after decoding the String
+                        imageView.setImageBitmap(BitmapFactory
+                                .decodeFile(imgDecodableString));
 
 
-            } else {
-                Toast.makeText(this, "You haven't picked an image",
-                        Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(this, "You haven't picked an image",
+                                Toast.LENGTH_LONG).show();
+                    }
+                }
+
+                case (2):
+                {
+                    // camera code here
+                    if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+                        Bundle extras = data.getExtras();
+                        Bitmap imageBitmap = (Bitmap) extras.get("data");
+                        // get image view
+                        ImageView imageView = (ImageView) findViewById(R.id.imageView_NewMoodEventActivity);
+                        imageView.setImageBitmap(imageBitmap);
+                    }
+
+
+
+                }
+                break;
             }
+
         } catch (Exception e) {
             Toast.makeText(this, "Something went wrong.", Toast.LENGTH_LONG)
                     .show();

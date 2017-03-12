@@ -32,6 +32,10 @@
         "source": "/Users/PeterWeckend/.android/build-cache/bce1e8d7708deb639b578b1fdbd4f09ff3fe7531/output/res/color-v23/abc_btn_colored_text_material.xml"
     },
     {
+        "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/color-v23/design_tint_password_toggle.xml",
+        "source": "/Users/PeterWeckend/.android/build-cache/eb961abbd6e14e0aab0f2126e4bcc17b36db89e3/output/res/color-v23/design_tint_password_toggle.xml"
+    },
+    {
         "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/color-v23/abc_tint_edittext.xml",
         "source": "/Users/PeterWeckend/.android/build-cache/bce1e8d7708deb639b578b1fdbd4f09ff3fe7531/output/res/color-v23/abc_tint_edittext.xml"
     },
