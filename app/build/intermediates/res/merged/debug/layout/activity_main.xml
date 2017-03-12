@@ -33,5 +33,6 @@
         android:layout_below="@+id/mainToolBar"
         android:layout_marginTop="16dp"
         android:text="@string/main_welcome_text" />
+
 </RelativeLayout>
 
