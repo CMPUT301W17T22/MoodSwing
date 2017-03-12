@@ -31,7 +31,7 @@ import java.util.regex.Pattern;
  * <p/>
  * Accessed from the MainActivity through the main toolbar. Returns to the MainActivity when done.
  * <p/>
- * The following pages were used in building this activity.
+ * The following pages were used in building this activity: (will be properly sourced later)
  * http://programmerguru.com/android-tutorial/how-to-pick-image-from-gallery/
  * http://www.coderzheaven.com/2012/04/20/select-an-image-from-gallery-in-android-and-show-it-in-an-imageview/
  * developer.android.com/training/camera/photobasics.html
@@ -188,15 +188,24 @@ public class NewMoodEventActivity extends AppCompatActivity implements MSView<Mo
         }
     }
 
-    // once user has selected a photo from gallery using Upload button
-    // currently does not work on API 25
-    // can probably combine with other onActivityResult
+
+    /**
+     * After user selects an image from gallery or takes a picture,
+     * grab image and display thumbnail.
+     * TODO:
+     * Attach image to MoodEvent
+     * Limit image size
+     * Find out why gallery image selection doesn't work on API 25
+     * @param requestCode onActivityResult uses this to know which intent finished
+     * @param resultCode = RESULT_OK if everything worked
+     * @param data is returned by the intent
+     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         try {
             switch(requestCode) {
-                case (1):
+                case (1):   // user picks image from gallery
                 {
                     // When an Image is picked
                     if (requestCode == RESULT_LOAD_IMG && resultCode == RESULT_OK
@@ -207,7 +216,6 @@ public class NewMoodEventActivity extends AppCompatActivity implements MSView<Mo
                         String[] filePathColumn = { MediaStore.Images.Media.DATA };
 
                         // Get the cursor
-                        // this doesn't work
                         Cursor cursor = getContentResolver().query(selectedImage,
                                 filePathColumn, null, null, null);
 
@@ -231,41 +239,24 @@ public class NewMoodEventActivity extends AppCompatActivity implements MSView<Mo
                     }
                 }
 
-                case (2):
+                case (2):   // user takes picture with camera
                 {
-                    // camera code here
                     if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
                         Bundle extras = data.getExtras();
                         Bitmap imageBitmap = (Bitmap) extras.get("data");
                         // get image view
                         ImageView imageView = (ImageView) findViewById(R.id.imageView_NewMoodEventActivity);
-                        imageView.setImageBitmap(imageBitmap);
+                        imageView.setImageBitmap(imageBitmap);  // display thumbnail
                     }
-
-
-
                 }
                 break;
             }
-
         } catch (Exception e) {
             Toast.makeText(this, "Something went wrong.", Toast.LENGTH_LONG)
                     .show();
         }
 
     }
-
-
-    // **Outdated for now
-    // for taking a picture
-    // https://github.com/DroidNinja/Android-FilePicker
-    // https://developer.android.com/training/camera/photobasics.html
-//    private void dispatchTakePictureIntent() {
-//        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-//        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
-//            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
-//        }
-//    }
 
 
     /**
