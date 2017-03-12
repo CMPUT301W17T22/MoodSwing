@@ -67,7 +67,7 @@ public class NewMoodEventActivity extends AppCompatActivity {
         Button photoCaptureButton = (Button) findViewById(R.id.photoCaptureButton);
 
 //        // use current date/time for MoodEvent
-//        final Date moodDate = new Date();
+        final Date moodDate = new Date();
 
         // photo upload press. Need a real device to test this on
         // https://developer.android.com/training/camera/photobasics.html
@@ -134,13 +134,10 @@ public class NewMoodEventActivity extends AppCompatActivity {
                             MoodSwingApplication.getMoodSwingController();
 
                     // Add the mood event to the main participant.
-                    moodSwingController.addMoodEventToMainParticipant(
+                    moodSwingController.addMoodEventToMainParticipant(moodDate,
                             emotionalState,
                             trigger,
                             socialSituation,
-                            // Place holder values, not sure how this is going to work.
-                            "photoLocation",
-                            "iconLocation",
                             location);
 
                     // Toast to inform the user that the mood event was added.
@@ -297,13 +294,9 @@ public class NewMoodEventActivity extends AppCompatActivity {
             double lat = gps.getLatitude();
             double lon = gps.getLongitude();
 
-            return new LatLng(lat,lon);
+            return new LatLng(lat, lon);
         }
         return null;
     }
-
-
-
-
 
 }

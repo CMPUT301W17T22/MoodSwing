@@ -10,16 +10,28 @@ package com.ualberta.cmput301w17t22.moodswing;
 
 public class SocialSituation {
     private String description;
-    private String iconName;
 
-    public SocialSituation(String description, String iconName){
+    public SocialSituation(String description){
         this.description = description;
-        this.iconName = iconName;
     }
 
     public String getDescription() { return description; }
 
-    public String getIconName() { return iconName; }
-
     public String toString() { return this.getDescription(); }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        SocialSituation that = (SocialSituation) o;
+
+        return description.equals(that.description);
+
+    }
+
+    @Override
+    public int hashCode() {
+        return description.hashCode();
+    }
 }

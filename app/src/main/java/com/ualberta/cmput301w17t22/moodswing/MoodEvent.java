@@ -1,5 +1,7 @@
 package com.ualberta.cmput301w17t22.moodswing;
 
+import android.util.Log;
+
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
@@ -28,42 +30,83 @@ public class MoodEvent {
     private String trigger;
     private SocialSituation socialSituation;
     private LatLng location;
-    private String photoLocation;
 
-    private String iconLocation;
-    private BitmapDescriptor photo;
-    private BitmapDescriptor icon;
+//    private String photoLocation;
+//    private String iconLocation;
+//    private BitmapDescriptor photo;
+//    private BitmapDescriptor icon;
 
     //pass null for unused parameters
     //TODO: finish handling of null (or empty) inputs
-    public MoodEvent(String posterUsername, EmotionalState emotionalState, String trigger, SocialSituation socialSituation,
-                     String photoLocation, String iconLocation, LatLng location) {
+    public MoodEvent(String posterUsername,
+                     Date date,
+                     EmotionalState emotionalState,
+                     String trigger,
+                     SocialSituation socialSituation,
+                     // String photoLocation,
+                     // String iconLocation,
+                     LatLng location) {
         this.originalPoster = posterUsername;
-        // I changed this here because I wanted to test if ElasticSearch was working, and the map
-        // stuff wasn't working. The 5 lines below this should be deleted and just the
-        // editMoodEvent() line below should be uncommented when the map stuff works properly.
-        this.setDate(new Date());
-        this.location = location;
+        this.date = date;
         this.emotionalState = emotionalState;
         this.trigger = trigger;
         this.socialSituation = socialSituation;
-        //editMoodEvent(emotionalState, trigger, socialSituation, iconLocation, photoLocation);
+
+        // Check for null location, set to 0 if its null.
+        if (location == null) {
+            this.location = new LatLng(0, 0);
+        } else {
+            this.location = location;
+        }
     }
 
-    //Edit MoodEvent Method, uses setters to replace attributes
-    public void editMoodEvent(EmotionalState emotionalState, String trigger, SocialSituation socialSituation,
-            String iconLocation, String photoLocation) {
-        //automatically selects current date
-        this.setDate(new Date());
-        //emotionalState and socialSituation will be picked from a scroller list
-        //depending on which one is picked it will return an int which corresponds to the correct option in the list in the MoodOptions lists.
-        this.emotionalState = emotionalState;
-        this.trigger = trigger;
-        this.socialSituation = socialSituation;
-        this.icon = BitmapDescriptorFactory.fromAsset(iconLocation);
-        this.photo = BitmapDescriptorFactory.fromFile(photoLocation);
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        MoodEvent moodEvent = (MoodEvent) o;
+
+        Log.i("MoodSwing", "Got here.");
+
+        if (!originalPoster.equals(moodEvent.originalPoster)) return false;
+        if (!emotionalState.equals(moodEvent.emotionalState)) return false;
+        if (!date.equals(moodEvent.date)) return false;
+        if (trigger != null ? !trigger.equals(moodEvent.trigger) : moodEvent.trigger != null)
+            return false;
+        if (socialSituation != null ? !socialSituation.equals(moodEvent.socialSituation) : moodEvent.socialSituation != null)
+            return false;
+        return location != null ? location.equals(moodEvent.location) : moodEvent.location == null;
+
     }
 
+    @Override
+    public int hashCode() {
+        int result = originalPoster.hashCode();
+        result = 31 * result + emotionalState.hashCode();
+        result = 31 * result + date.hashCode();
+        result = 31 * result + (trigger != null ? trigger.hashCode() : 0);
+        result = 31 * result + (socialSituation != null ? socialSituation.hashCode() : 0);
+        result = 31 * result + (location != null ? location.hashCode() : 0);
+        return result;
+    }
+
+    /**
+     * Edit MoodEvent method, uses setters to replace attributes.
+     * @param emotionalState
+     * @param trigger
+     * @param socialSituation
+     */
+    public void editMoodEvent(EmotionalState emotionalState,
+                              String trigger,
+                              SocialSituation socialSituation) {
+        this.setEmotionalState(emotionalState);
+        this.setTrigger(trigger);
+        this.setSocialSituation(socialSituation);
+
+//        this.icon = BitmapDescriptorFactory.fromAsset(iconLocation);
+//        this.photo = BitmapDescriptorFactory.fromFile(photoLocation);
+    }
 
     /**
      * Creates Marker for map based on emoticon and position.
@@ -71,17 +114,29 @@ public class MoodEvent {
      * @return Marker corresponding to this MoodEvent
      * @return null if no position
      */
-    public Marker getMapMarker(GoogleMap googleMap){
-        if(location == null){
-            return null;
-        }
+//    public Marker getMapMarker(GoogleMap googleMap){
+//        if(location == null){
+//            return null;
+//        }
+//
+//        Marker marker = googleMap.addMarker(new MarkerOptions()
+//                .position(location)
+//                .title(emotionalState.getDescription())
+//                .icon(icon));
+//
+//        return marker;
+//    }
 
-        Marker marker = googleMap.addMarker(new MarkerOptions()
-                .position(location)
-                .title(emotionalState.getDescription())
-                .icon(icon));
-
-        return marker;
+    /**
+     * Used to generate a deep copy of the mood event.
+     */
+    public MoodEvent getDeepCopy() {
+        return new MoodEvent(this.getOriginalPoster(),
+                this.getDate(),
+                this.getEmotionalState(),
+                this.getTrigger(),
+                this.getSocialSituation(),
+                this.getLocation());
     }
 
     /**
@@ -134,13 +189,13 @@ public class MoodEvent {
         return socialSituation;
     }
 
-    public String getPhotoLocation() { return photoLocation; }
-
-    public void setPhotoLocation(String photoLocation) { this.photoLocation = photoLocation; }
-
-    public String getIconLocation() { return iconLocation; }
-
-    public void setIconLocation(String iconLocation) { this.iconLocation = iconLocation; }
+//    public String getPhotoLocation() { return photoLocation; }
+//
+//    public void setPhotoLocation(String photoLocation) { this.photoLocation = photoLocation; }
+//
+//    public String getIconLocation() { return iconLocation; }
+//
+//    public void setIconLocation(String iconLocation) { this.iconLocation = iconLocation; }
 
     public void setOriginalPoster(String originalPoster) { this.originalPoster = originalPoster; }
 

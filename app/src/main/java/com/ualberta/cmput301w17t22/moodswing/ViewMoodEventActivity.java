@@ -16,10 +16,15 @@ import com.google.gson.Gson;
  */
 public class ViewMoodEventActivity extends AppCompatActivity {
 
+    private int position;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_mood_event);
+
+        // Position of MoodEvent in MoodHistory.
+        position = getIntent().getIntExtra("position", -2);
 
         // Initialize everything.
         TextView usernameTextView =
@@ -62,6 +67,7 @@ public class ViewMoodEventActivity extends AppCompatActivity {
                 Intent intent = new Intent(ViewMoodEventActivity.this, EditMoodEventActivity.class);
                 // Serialize the mood event, convert to json, and put extra on the intent.
                 intent.putExtra("moodEvent", (new Gson()).toJson(moodEvent));
+                intent.putExtra("position", position);
 
                 // Launch the ViewMoodEventActivity.
                 startActivity(intent);

@@ -1,8 +1,11 @@
 package com.ualberta.cmput301w17t22.moodswing;
 
+import android.util.Log;
+
 import com.google.android.gms.maps.model.LatLng;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import io.searchbox.annotations.JestId;
 
@@ -34,20 +37,40 @@ public class Participant extends User {
 
     // --- START: MoodEvent methods
 
-    public void addMoodEvent(EmotionalState emotionalState,
+    public void addMoodEvent(Date date,
+                             EmotionalState emotionalState,
                              String trigger,
                              SocialSituation socialSituation,
-                             String photoLocation,
-                             String iconLocation,
                              LatLng location) {
         moodHistory.add(new MoodEvent(username,
+                date,
                 emotionalState,
                 trigger,
                 socialSituation,
-                photoLocation,
-                iconLocation,
                 location));
 
+    }
+
+    public void editMoodEvent(int position,
+                              Date date,
+                              EmotionalState emotionalState,
+                              String trigger,
+                              SocialSituation socialSituation,
+                              LatLng location) {
+
+        // Grab the index of the old mood event to preserve its place in the list.
+        for (Object object : moodHistory) {
+            Log.i("MoodSwing", object.toString());
+        }
+        moodHistory.remove(position);
+
+        // Add the edited mood event at the index of the old one.
+        moodHistory.add(position, new MoodEvent(username,
+                date,
+                emotionalState,
+                trigger,
+                socialSituation,
+                location));
     }
 
     /**
