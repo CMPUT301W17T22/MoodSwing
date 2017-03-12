@@ -1,6 +1,8 @@
 package com.ualberta.cmput301w17t22.moodswing;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -26,7 +28,7 @@ public class ViewMoodEventActivity extends AppCompatActivity implements MSView<M
     ImageView imageImageView;
     Button editMoodEventButton;
     String moodEventJson;
-
+    Button deleteMoodEventButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +56,9 @@ public class ViewMoodEventActivity extends AppCompatActivity implements MSView<M
 
         editMoodEventButton =
                 (Button) findViewById(R.id.editMoodEventButton_ViewMoodEventActivity);
+        deleteMoodEventButton =
+                (Button) findViewById(R.id.deleteMoodEventButton_ViewMoodEventActivity);
+
         moodEventJson = getIntent().getStringExtra("moodEvent");
 
     }
@@ -87,6 +92,28 @@ public class ViewMoodEventActivity extends AppCompatActivity implements MSView<M
             }
         });
 
+        //Delete Button onClick Listener
+        deleteMoodEventButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick (View v) {
+                AlertDialog.Builder adb = new AlertDialog.Builder(ViewMoodEventActivity.this, R.style.DialogTheme);
+                adb.setMessage("Are you sure you want to delete this?");
+                adb.setCancelable(true);
+                adb.setPositiveButton("Confirm", new DialogInterface.OnClickListener(){
+                    @Override
+                    public void onClick(DialogInterface dialog, int which){
+
+                    }
+                });
+                adb.setNegativeButton("Cancel",new DialogInterface.OnClickListener(){
+                    @Override
+                    public void onClick(DialogInterface dialog, int which){
+
+                    }
+                });
+                adb.show();
+            }
+        });
         // Load values from MoodEvent into the text fields.
         usernameTextView.setText(moodEvent.getOriginalPoster());
         emotionalStateTextView.setText(moodEvent.getEmotionalState().getDescription());
