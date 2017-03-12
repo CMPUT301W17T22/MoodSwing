@@ -13,6 +13,8 @@
     <string name="home">Home</string>
     <string name="new_mood_event">New Mood Event</string>
     <string name="mood_history">View Mood History</string>
+    <string name="entry_required">Entry is required!</string>
+    <string name="trigger_invalid">Trigger length too long. Must be under 3 words and 20 chars."</string>
 
     <!-- New Mood Event Strings -->
     <string name="emotionalstate">Emotional State:</string>
@@ -48,9 +50,7 @@
     <string name="socialSituation_prompt">Choose your social situation</string>
     <string name="edit">Edit</string>
     <string name="capture">Take Photo</string>
-    <string name="title_activity_main_follow">MainFollowActivity</string>
-    <string name="action_settings">Settings</string>
-    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="title_activity_main_follow">Following and Followers</string>
 
 
 </resources>

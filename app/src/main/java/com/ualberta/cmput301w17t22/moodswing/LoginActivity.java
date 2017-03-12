@@ -88,7 +88,7 @@ public class LoginActivity extends AppCompatActivity implements MSView<MoodSwing
             return true;
         } else {
             // If no username is entered, refuse to continue.
-            usernameEditText.setError("Entry is required!");
+            usernameEditText.setError(getResources().getString(R.string.entry_required));
 
             // Wait for proper input.
             return false;

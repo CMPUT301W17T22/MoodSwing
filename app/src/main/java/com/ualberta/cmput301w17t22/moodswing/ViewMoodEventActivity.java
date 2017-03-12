@@ -209,12 +209,14 @@ public class ViewMoodEventActivity extends AppCompatActivity implements MSView<M
                 socialSituationTextView.setText("While in a crowd");
                 socialSituationImageView.setImageDrawable(
                         getDrawable(R.drawable.social_situation_crowd));
+                socialSituationImageView.setVisibility(View.VISIBLE);
                 break;
 
             case "Party":
                 socialSituationTextView.setText("While in a party");
                 socialSituationImageView.setImageDrawable(
                         getDrawable(R.drawable.social_situation_party));
+                socialSituationImageView.setVisibility(View.VISIBLE);
                 break;
 
             case "":

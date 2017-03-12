@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -21,6 +22,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -90,8 +92,6 @@ public class NewMoodEventActivity extends AppCompatActivity {
             }
         });
 
-
-
         // Occurs when you press "Post" button
         newMoodEventPostButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -100,6 +100,13 @@ public class NewMoodEventActivity extends AppCompatActivity {
 
                 // Emotional state is required.
                 if (Objects.equals(String.valueOf(emotionalStateSpinner.getSelectedItem()),"")){
+
+                    // Show that the emotional state is required.
+                    TextView errorText = (TextView)emotionalStateSpinner.getSelectedView();
+                    errorText.setError("");
+                    errorText.setTextColor(Color.RED);
+                    errorText.setText("Emotional state is required!");
+
                     Toast.makeText(NewMoodEventActivity.this,
                             "Please enter an Emotional State.",
                             Toast.LENGTH_SHORT).show();

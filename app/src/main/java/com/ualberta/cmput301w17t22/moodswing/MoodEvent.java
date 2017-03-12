@@ -148,7 +148,8 @@ public class MoodEvent {
                 "\nEmotional State: " + this.getEmotionalState().toString() +
                 "\nDate: " + this.getDate().toString() +
                 "\nTrigger: " + this.getTrigger() +
-                "\nSocial Situation: " + this.getSocialSituation().toString();
+                "\nSocial Situation: " + this.getSocialSituation().toString() +
+                "\nLocation: " + this.getLocation().toString();
     }
 
     //Getter and Setter methods for attributes.

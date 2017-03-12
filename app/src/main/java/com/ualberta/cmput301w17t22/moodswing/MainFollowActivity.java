@@ -124,7 +124,7 @@ public class MainFollowActivity extends AppCompatActivity implements MSView<Mood
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_main_follow, container, false);
             TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-            textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
+            //textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
             return rootView;
         }
     }

@@ -1,6 +1,7 @@
 package com.ualberta.cmput301w17t22.moodswing;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,6 +10,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.model.LatLng;
@@ -18,119 +20,92 @@ import java.util.Date;
 import java.util.Objects;
 import java.util.regex.Pattern;
 
-public class EditMoodEventActivity extends AppCompatActivity {
+/**
+ * The Activity wherein the user edits a mood event via a very similar interface
+ * to the NewMoodEventActivity. Much code is duplicated from NewMoodEventActivity.
+ *
+ * The user gets to this activity from the ViewMoodEventActivity and pressing the edit button there.
+ *
+ * The user is returned from this activity to the ViewMoodEventActivity after pressing the
+ * edit button here.
+ *
+ */
+public class EditMoodEventActivity extends AppCompatActivity implements MSView<MoodSwing> {
 
+    /** The position of the mood event in its mood history array list. Identical to its position
+     *  in chronological order in the mood history. */
     private int position;
 
+    /** The spinner that lets the participant select their emotional state for the mood event.*/
+    Spinner emotionalStateSpinner;
+
+    /** The spinner that lets the participant select their social situation for the mood event.*/
+    Spinner socialSituationSpinner;
+
+    /** The edit text object that holds the trigger test for the mood event.*/
+    EditText triggerEditText;
+
+    /** The edit button object that confirms that the participant is done editing.*/
+    Button editButton;
+
+    /**
+     * Called when the EditMoodEventActivity is first created.
+     *
+     * Here we grab the mood event from the ViewMoodEventActivity and its position,
+     * initialize all the widgets on the activity,
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_mood_event);
 
-        // receiving passed in moodEvent
+        // Receive the passed in mood event and convert it from Json.
         String moodEventJson = getIntent().getStringExtra("moodEvent");
         Gson gson = new Gson();
-        final MoodEvent moodEvent = gson.fromJson(moodEventJson, MoodEvent.class);
+        final MoodEvent oldMoodEvent = gson.fromJson(moodEventJson, MoodEvent.class);
 
-        // Recieve the position of the mood event.
-        Log.i("MoodSwing", String.valueOf(position));
+        // Receive the position of the mood event. -2 is the error code we use to detect
+        // if this step went wrong. Position will be set to -2 if there is not position to get.
         position = getIntent().getIntExtra("position", -2);
 
-        // Grab a snapshot of the MoodEvent so we know which one we are editing.
-        final MoodEvent oldMoodEvent = moodEvent.getDeepCopy();
-
         // Initialize all the widgets in the activity.
-        final Spinner emotionalStateSpinner =
+        emotionalStateSpinner =
                 (Spinner) findViewById(R.id.emotionalStateSpinner_EditMoodEventActivity);
-        final EditText triggerEditText =
+        triggerEditText =
                 (EditText) findViewById(R.id.triggerEditText_EditMoodEventActivity);
-        final Spinner socialSituationSpinner =
+        socialSituationSpinner =
                 (Spinner) findViewById(R.id.socialSituationSpinner_EditMoodEventActivity);
-        final Button editButton =
+        editButton =
                 (Button) findViewById(R.id.newMoodEventPostButton_EditMoodEventActivity);
 
-        // Grab the appropriate emotional state and set it to be selected in the spinner.
-        switch (moodEvent.getEmotionalState().getDescription()) {
-            case "Anger":
-                emotionalStateSpinner.setSelection(1);
-                break;
+        // Set the emotional state spinner to have the correct selection by getting the index
+        // of the emotional state from the old mood event in the spinner.
+        emotionalStateSpinner.setSelection(getSpinnerIndexOfString(emotionalStateSpinner,
+                oldMoodEvent.getEmotionalState().getDescription()));
 
-            case "Confusion":
-                emotionalStateSpinner.setSelection(2);
-                break;
-
-            case "Disgust":
-                emotionalStateSpinner.setSelection(3);
-                break;
-
-            case "Fear":
-                emotionalStateSpinner.setSelection(4);
-                break;
-
-            case "Happiness":
-                emotionalStateSpinner.setSelection(5);
-                break;
-
-            case "Sadness":
-                emotionalStateSpinner.setSelection(6);
-                break;
-
-            case "Shame":
-                emotionalStateSpinner.setSelection(7);
-                break;
-
-            case "Surprise":
-                emotionalStateSpinner.setSelection(8);
-                break;
-
-            default:
-                Log.i("ERROR", "Invalid Emotional State when editing mood event.");
-                throw new IllegalArgumentException(
-                        "Invalid Emotional State when editing mood event.");
-        }
-
-        // Fill the social situation value appropriately.
-        switch (moodEvent.getSocialSituation().getDescription()) {
-            case "Alone":
-                socialSituationSpinner.setSelection(1);
-                break;
-
-            case "Crowd":
-                socialSituationSpinner.setSelection(2);
-                break;
-
-            case "Party":
-                socialSituationSpinner.setSelection(3);
-                break;
-
-            case "":
-                socialSituationSpinner.setSelection(0);
-                break;
-
-            default:
-                Log.i("ERROR", "Invalid Social Situation while editing a mood event.");
-                throw new IllegalArgumentException(
-                        "Invalid Social Situation while editing a mood event.");
-        }
+        // Set the social situation spinner to have the correct selection by getting the index
+        // of the social situation from the old mood event in the spinner.
+        socialSituationSpinner.setSelection(getSpinnerIndexOfString(socialSituationSpinner,
+                oldMoodEvent.getSocialSituation().getDescription()));
 
         // Set the trigger appropriately.
-        triggerEditText.setText(moodEvent.getTrigger());
+        triggerEditText.setText(oldMoodEvent.getTrigger());
 
-        // Edit button push, post edited mood event to elasticsearch.
+        // Edit button push. Confirms editing, proceeds to change mood event.
         editButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Emotional state is required.
+
+                // Emotional state is required, check that it is entered.
+                // If it isn't, tell the user.
                 if (Objects.equals(String.valueOf(emotionalStateSpinner.getSelectedItem()),"")){
-                    Toast.makeText(EditMoodEventActivity.this,
-                            "Please enter an Emotional State.",
-                            Toast.LENGTH_SHORT).show();
+                    showEmotionalStateIsRequiredError();
                 }
-                // Check if the trigger is valid.
+
+                // Check if the trigger is valid. If it isn't, tell the user.
                 else if (!validTrigger()){
-                    Toast.makeText(EditMoodEventActivity.this,
-                            "Trigger length too long. \nMust be under 3 words and 20 chars.",
-                            Toast.LENGTH_SHORT).show();
+                    showTriggerInvalidError();
                 }
 
                 // Post the Mood Event, and inform the user you are doing so.
@@ -144,9 +119,6 @@ public class EditMoodEventActivity extends AppCompatActivity {
                     // Get social situation.
                     SocialSituation socialSituation = getSocialSituation();
 
-                    // Get the old date.
-                    Date date = oldMoodEvent.getDate();
-
                     // Get location if location box is checked, otherwise just use null.
                     LatLng location = null;
                     if (includeLocationCheck()) {
@@ -159,7 +131,7 @@ public class EditMoodEventActivity extends AppCompatActivity {
 
                     // Add the mood event to the main participant.
                     moodSwingController.editMoodEventToMainParticipant(position,
-                            date,
+                            oldMoodEvent.getDate(),
                             emotionalState,
                             trigger,
                             socialSituation,
@@ -176,8 +148,8 @@ public class EditMoodEventActivity extends AppCompatActivity {
 
                     //Convert moodEvent back to Json to send back to ViewMoodEventActivity.
                     MoodEvent editedMoodEvent = new MoodEvent(
-                            moodEvent.getOriginalPoster(),
-                            date,
+                            oldMoodEvent.getOriginalPoster(),
+                            oldMoodEvent.getDate(),
                             emotionalState,
                             trigger,
                             socialSituation,
@@ -187,10 +159,55 @@ public class EditMoodEventActivity extends AppCompatActivity {
                     Intent intent = new Intent();
                     intent.putExtra("moodEvent",(new Gson()).toJson(editedMoodEvent));
                     setResult(RESULT_OK, intent);
+
                     finish();
                 }
             }
         });
+    }
+
+    /**
+     * Function that informs the user nicely that an Emotional State is required.
+     */
+    private void showEmotionalStateIsRequiredError() {
+        // Show that the emotional state is required.
+        TextView errorText = (TextView)emotionalStateSpinner.getSelectedView();
+        errorText.setError("");
+        errorText.setTextColor(Color.RED);
+        errorText.setText(getResources().getString(R.string.entry_required));
+
+        Toast.makeText(EditMoodEventActivity.this,
+                "Please enter an Emotional State.",
+                Toast.LENGTH_SHORT).show();
+    }
+
+    /**
+     * Function that informs the user nicely that their trigger is invalid.
+     */
+    private void showTriggerInvalidError() {
+        triggerEditText.setError(getResources().getString(R.string.trigger_invalid));
+
+        Toast.makeText(EditMoodEventActivity.this,
+                "Trigger length too long. \nMust be under 3 words and 20 chars.",
+                Toast.LENGTH_SHORT).show();
+    }
+
+    /**
+     * Simple function to grab the index of a string in a spinner.
+     * Taken from http://www.mysamplecode.com/2012/11/android-spinner-set-selected-item-by-value.html
+     * on 3/12/2017.
+     * @param spinner The spinner with items to get the index of.
+     * @param string The string to look for in the spinner.
+     * @return The index of the string in the spinner.
+     */
+    private int getSpinnerIndexOfString(Spinner spinner, String string) {
+        int index = 0;
+        for (int i = 0; i < spinner.getCount(); i++) {
+            if (spinner.getItemAtPosition(i).equals(string)) {
+                index = i;
+            }
+        }
+        return index;
     }
 
     /**
@@ -200,8 +217,6 @@ public class EditMoodEventActivity extends AppCompatActivity {
     public boolean includeLocationCheck(){
         CheckBox addCurentLocationCheckBox =
                 (CheckBox) findViewById(R.id.addCurentLocationCheckBox_EditMoodEventActivity);
-        //            Toast.makeText(NewMoodEventActivity.this,
-//                    "Checked", Toast.LENGTH_LONG).show();
         return addCurentLocationCheckBox.isChecked();
     }
 
@@ -218,10 +233,6 @@ public class EditMoodEventActivity extends AppCompatActivity {
         int triggerLength = trigger.length();
         String[] triggerSplit = trigger.split(Pattern.quote(" "));
         int triggerSplitLength = triggerSplit.length;
-
-        // test output
-//        Toast.makeText(NewMoodEventActivity.this,
-//                Integer.toString(triggerSplitLength), Toast.LENGTH_SHORT).show();
 
         return (triggerSplitLength <= 3 || triggerLength < 20);
     }
@@ -264,7 +275,7 @@ public class EditMoodEventActivity extends AppCompatActivity {
      * @return The current / last known location as a LatLng
      */
     public LatLng getLocation() {
-        // TODO: I have no clue how to do this.
+        // TODO: I have no clue if this works.
 
         GPSTracker gps = new GPSTracker(this);
         if (gps.canGetLocation()){
@@ -274,6 +285,16 @@ public class EditMoodEventActivity extends AppCompatActivity {
             return new LatLng(lat,lon);
         }
         return null;
+    }
+
+    /**
+     * Update method from View superclass. Eventually want to have this pull the
+     * MoodEvent to be edited straight from the main Model class MoodSwing. So we don't have
+     * to deal with serializing and passing the mood events so much. For now, it sits empty.
+     * @param moodSwing
+     */
+    public void update(MoodSwing moodSwing) {
+
     }
 
 }
