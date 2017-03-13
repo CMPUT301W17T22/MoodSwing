@@ -210,7 +210,7 @@ public class ViewMoodEventActivity extends AppCompatActivity implements MSView<M
                         "Invalid Emotional State");
         }
 
-        // Set the image for the appropriate social situation.
+        // Set the image for the appropriate social situation. Currently only have 3 implemented.
         switch (moodEvent.getSocialSituation().getDescription()) {
             case "Alone":
                 socialSituationTextView.setText("While alone");

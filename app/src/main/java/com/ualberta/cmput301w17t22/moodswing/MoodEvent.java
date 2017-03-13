@@ -84,8 +84,6 @@ public class MoodEvent {
 
         MoodEvent moodEvent = (MoodEvent) o;
 
-        Log.i("MoodSwing", "Got here.");
-
         if (!originalPoster.equals(moodEvent.originalPoster)) return false;
         if (!emotionalState.equals(moodEvent.emotionalState)) return false;
         if (!date.equals(moodEvent.date)) return false;
@@ -113,6 +111,7 @@ public class MoodEvent {
 
     /**
      * Edit MoodEvent method, uses setters to replace the attributes that are editable.
+     * Date, original poster, and location are not editable.
      * @param emotionalState The new emotional state of the mood event.
      * @param trigger The new trigger of the mood event.
      * @param socialSituation The new social situation of the mood event.
