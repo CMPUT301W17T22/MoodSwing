@@ -39,9 +39,10 @@ public class NewMoodEventActivityTest extends ActivityInstrumentationTestCase2<L
     public void testNewMoodEvent(){
         // getting to NewMoodEvent
         solo.assertCurrentActivity("Wrong Activity!", LoginActivity.class);
-        solo.enterText((EditText) solo.getView(R.id.usernameEditText), "TedMosby");
+        solo.enterText((EditText) solo.getView(R.id.usernameEditText), "jose");
         solo.clickOnButton("login");
-        assertTrue(solo.waitForText("Welcome user \"tedmosby\""));
+        solo.waitForActivity("MainActivity");
+        assertTrue(solo.waitForText("Welcome user \"jose\""));
         solo.assertCurrentActivity("Wrong Activity!", MainActivity.class);
         // might be a way for this to work, but can't find out how yet
         //solo.clickOnActionBarItem(R.id.newMoodEventToolBarButton);
@@ -79,9 +80,10 @@ public class NewMoodEventActivityTest extends ActivityInstrumentationTestCase2<L
     public void testNewMoodEventMoodless(){
         // getting to NewMoodEvent
         solo.assertCurrentActivity("Wrong Activity!", LoginActivity.class);
-        solo.enterText((EditText) solo.getView(R.id.usernameEditText), "TedMosby");
+        solo.clearEditText((EditText) solo.getView(R.id.usernameEditText));
+        solo.enterText((EditText) solo.getView(R.id.usernameEditText), "Barney");
         solo.clickOnButton("login");
-        assertTrue(solo.waitForText("Welcome user \"tedmosby\""));
+        assertTrue(solo.waitForText("Welcome user \"Barney\""));
         solo.assertCurrentActivity("Wrong Activity!", MainActivity.class);
         // might be a way for this to work, but can't find out how yet
         //solo.clickOnActionBarItem(R.id.newMoodEventToolBarButton);
@@ -110,9 +112,10 @@ public class NewMoodEventActivityTest extends ActivityInstrumentationTestCase2<L
     public void testNewMoodEventTriggerLen(){
         // getting to NewMoodEvent
         solo.assertCurrentActivity("Wrong Activity!", LoginActivity.class);
-        solo.enterText((EditText) solo.getView(R.id.usernameEditText), "TedMosby");
+        solo.clearEditText((EditText) solo.getView(R.id.usernameEditText));
+        solo.enterText((EditText) solo.getView(R.id.usernameEditText), "Lily");
         solo.clickOnButton("login");
-        assertTrue(solo.waitForText("Welcome user \"tedmosby\""));
+        assertTrue(solo.waitForText("Welcome user \"Lily\""));
         solo.assertCurrentActivity("Wrong Activity!", MainActivity.class);
         // might be a way for this to work, but can't find out how yet
         //solo.clickOnActionBarItem(R.id.newMoodEventToolBarButton);

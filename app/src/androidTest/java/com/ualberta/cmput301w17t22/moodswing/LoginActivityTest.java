@@ -37,6 +37,7 @@ public class LoginActivityTest extends ActivityInstrumentationTestCase2<LoginAct
     public void testLogIn(){
 
         solo.assertCurrentActivity("Wrong Activity!", LoginActivity.class);
+        solo.clearEditText((EditText) solo.getView(R.id.usernameEditText));
         solo.enterText((EditText) solo.getView(R.id.usernameEditText), "TedMosby");
         solo.clickOnButton("login");
 
@@ -56,7 +57,7 @@ public class LoginActivityTest extends ActivityInstrumentationTestCase2<LoginAct
     public void testLogInNoInput(){
 
         solo.assertCurrentActivity("Wrong Activity!", LoginActivity.class);
-
+        solo.clearEditText((EditText) solo.getView(R.id.usernameEditText));
         solo.clickOnButton("login");
 
         assertTrue(solo.waitForText("Entry is required!"));
