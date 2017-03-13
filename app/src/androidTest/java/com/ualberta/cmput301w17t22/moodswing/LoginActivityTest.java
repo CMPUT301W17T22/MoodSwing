@@ -2,11 +2,14 @@ package com.ualberta.cmput301w17t22.moodswing;
 
 import android.app.Activity;
 import android.test.ActivityInstrumentationTestCase2;
+import android.widget.EditText;
+
 import junit.framework.TestCase;
 import com.robotium.solo.Solo;
 
 /**
  * Created by PeterWeckend on 2017-03-12.
+ *
  */
 
 public class LoginActivityTest extends ActivityInstrumentationTestCase2<LoginActivity> {
@@ -32,6 +35,35 @@ public class LoginActivityTest extends ActivityInstrumentationTestCase2<LoginAct
      * Does not follow assignment specifications for log in yet.
      */
     public void testLogIn(){
+
+        solo.assertCurrentActivity("Wrong Activity!", LoginActivity.class);
+        solo.enterText((EditText) solo.getView(R.id.usernameEditText), "TedMosby");
+        solo.clickOnButton("login");
+
+        assertTrue(solo.waitForText("Welcome user \"tedmosby\""));
+
+        // this command will come in handy
+        //solo.waitForActivity("MainActivity");
+
+        solo.assertCurrentActivity("Wrong Activity!", MainActivity.class);
+    }
+
+
+    /**
+     * Try logging in without entering username.
+     * Does not follow assignment specifications for log in yet.
+     */
+    public void testLogInNoInput(){
+
+        solo.assertCurrentActivity("Wrong Activity!", LoginActivity.class);
+
+        solo.clickOnButton("login");
+
+        assertTrue(solo.waitForText("Entry is required!"));
+
+        // this command will come in handy
+        //solo.waitForActivity("MainActivity");
+
         solo.assertCurrentActivity("Wrong Activity!", LoginActivity.class);
     }
 
