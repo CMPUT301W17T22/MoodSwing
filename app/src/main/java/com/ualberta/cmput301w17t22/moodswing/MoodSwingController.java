@@ -4,6 +4,8 @@ import android.util.Log;
 
 import com.google.android.gms.maps.model.LatLng;
 
+import java.util.Date;
+
 /**
  * Mood Swing Controller.
  *
@@ -17,6 +19,12 @@ public class MoodSwingController implements MSController {
     // Grab the main model class singleton.
     MoodSwing ms = null;
     public MoodSwingController(MoodSwing ms) { this.ms = ms; }
+
+    public void addView(MSView view) {
+        ms.addView(view);
+    }
+
+    public void removeView(MSView view) { ms.removeView(view);}
 
     /**
      * Loads a participant into the Model's main participant given a username.
@@ -39,7 +47,6 @@ public class MoodSwingController implements MSController {
                 Log.i("ERROR", "Unable to create new participant by username.");
             }
         }
-
     }
 
     /**
@@ -47,26 +54,46 @@ public class MoodSwingController implements MSController {
      * @param emotionalState Required. The emotional state of the mood event.
      * @param trigger Less than 3 words or 20 chars. The trigger for the mood event.
      * @param socialSituation Optional. The social situation of the mood event.
-     * @param photoLocation Optional. A string for the location of the photo.
-     * @param iconLocation Optional.
      * @param location Automatically set to the location the mood event was created.
      */
-    public void addMoodEventToMainParticipant(EmotionalState emotionalState,
-                             String trigger,
-                             SocialSituation socialSituation,
-                             String photoLocation,
-                             String iconLocation,
-                             LatLng location) {
+    public void addMoodEventToMainParticipant(Date date,
+                                              EmotionalState emotionalState,
+                                              String trigger,
+                                              SocialSituation socialSituation,
+                                              LatLng location) {
 
-        ms.addMoodEventToMainParticipant(
+        ms.addMoodEventToMainParticipant(date,
                 emotionalState,
                 trigger,
                 socialSituation,
-                photoLocation,
-                iconLocation,
                 location);
 
         ms.notifyViews();
+    }
+
+    public void editMoodEventToMainParticipant(int position,
+                                               Date date,
+                                               EmotionalState emotionalState,
+                                               String trigger,
+                                               SocialSituation socialSituation,
+                                               LatLng location) {
+        ms.editMoodEventToMainParticipantByPosition(
+                position,
+                date,
+                emotionalState,
+                trigger,
+                socialSituation,
+                location);
+
+        ms.notifyViews();
+    }
+
+    /**
+     * Delete's the MoodEvent at the given position in the main participants mood history.
+     * @param position The position of the MoodEvent in the main participants mood history.
+     */
+    public void deleteMoodEventFromMainParticipantByPosition(int position) {
+        ms.deleteMoodEventFromMainParticipantByPosition(position);
     }
 
     /**

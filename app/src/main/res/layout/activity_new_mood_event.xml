@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:weightSum="1">
@@ -61,11 +62,10 @@
             android:id="@+id/socialSituationSpinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
             android:entries="@array/socialSituation_array"
             android:prompt="@string/socialSituation_prompt"
             android:popupBackground="#fff"
-            />
+            android:layout_alignParentStart="true" />
     </RelativeLayout>
 
 
@@ -117,25 +117,38 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="38dp"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight="0.07">
 
-        <EditText
-            android:id="@+id/photoEditText"
+        <ImageView
+            android:id="@+id/imageView_NewMoodEventActivity"
+            android:layout_width="140dp"
+            android:layout_height="50dp"
+            android:adjustViewBounds="true"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:scaleType="centerInside"
+            app:srcCompat="@android:drawable/stat_sys_upload" />
+
+        <Button
+            android:id="@+id/photoCaptureButton"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginStart="8dp"
-            android:layout_weight="1"
-            android:background="#fff"
-            android:ems="10"
-            android:inputType="textPersonName" />
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:background="#66023C"
+            android:elevation="0dp"
+            android:text="@string/capture"
+            android:textColor="#fff"
+            android:textSize="16dp"
+            android:layout_weight="0.06" />
 
         <Button
             android:id="@+id/photoUploadButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
-            android:layout_weight="1"
+            android:layout_weight="0.03"
             android:background="#66023C"
             android:elevation="0dp"
             android:text="@string/upload"
@@ -148,7 +161,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingStart="8dp"
-        android:text="@string/photo_max_message" />
+        android:text="@string/photo_max_message"
+        android:textAlignment="textStart" />
 
     <Space
         android:layout_width="match_parent"
@@ -167,7 +181,7 @@
     <Space
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0.14" />
+        android:layout_weight="0.11" />
 
     <Button
         android:id="@+id/newMoodEventPostButton"

@@ -9,6 +9,11 @@
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-feature android:name="android.hardware.camera2.full"/>
+    <uses-feature android:name="android.hardware.camera"
+        android:required="true"/>
 
     <application
         android:allowBackup="true"
@@ -19,6 +24,7 @@
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -47,11 +53,20 @@
             android:exported="true"
             android:label="@string/title_activity_maps" />
         <activity android:name=".NewMoodEventActivity" />
-        <activity android:name=".MoodHistoryActivity"></activity>
+        <activity android:name=".MoodHistoryActivity" />
 
         <!-- For using camera in mood events -->
-        <uses-feature android:name="android.hardware.camera"
+        <uses-feature
+            android:name="android.hardware.camera"
             android:required="true" />
+
+        <activity android:name=".ViewMoodEventActivity" />
+        <activity android:name=".EditMoodEventActivity" />
+        <activity android:name=".FollowActivity" />
+        <activity
+            android:name=".MainFollowActivity"
+            android:label="@string/title_activity_main_follow"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

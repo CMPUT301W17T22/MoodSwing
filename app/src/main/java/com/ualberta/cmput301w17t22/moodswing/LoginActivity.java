@@ -11,7 +11,7 @@ import android.widget.EditText;
  * or after it has been closed and is being opened again. It serves the function of
  * checking if the user is logged in, if not, getting them to log in, fetching their information,
  * and continuing onto the MainActivity.
- *
+ * <p/>
  * This activity is one way only except for the case where the user chooses to log out of the app.
  * Created by nyitrai on 3/1/2017.
  */
@@ -19,28 +19,33 @@ import android.widget.EditText;
 public class LoginActivity extends AppCompatActivity implements MSView<MoodSwing> {
 
     /**
-     * This file is used for storing small information like the user's username that is
+     * This file will be used for storing small information like the user's username that is
      * only relevant to logging in.
      */
     private static final String FILENAME = "MoodSwing.sav";
 
+    /** Login button, when clicked, logs the user in with the username entered in the edittext. */
+    Button loginButton;
+
+    /** Sign up button, currently unused. Login button already creates a new user if none are found.*/
+    Button signUpButton;
+
+    /** The edit text where the user enters their username. */
+    EditText usernameEditText;
+
     /**
      * Triggered when the Activity first starts.
+     * <p/>
+     * In this we initialize buttons, and log the user in once the button is pushed.
      * @param savedInstanceState
      */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.login);
+        setContentView(R.layout.activity_login);
 
-        // Initialize button.
-        Button loginButton = (Button) findViewById(R.id.loginButton);
-        // signUpButton does nothing for now.
-        Button signUpButton = (Button) findViewById(R.id.signUpButton);
-
-        // Add this view to the MoodSwingApplication.
-        MoodSwing ms = MoodSwingApplication.getMoodSwing();
-        ms.addView(this);
+        // Initialize all widgets and add the view to the main model class.
+        initialize();
 
         // Login Button button press. Fetch user data from ElasticSearch,
         // if nothing is found, create user data.
@@ -55,15 +60,25 @@ public class LoginActivity extends AppCompatActivity implements MSView<MoodSwing
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                     startActivity(intent);
                 }
-
             }
         });
+    }
 
+    /**
+     * Called when the Activity is finish()'d or otherwise closes. Removes this View from the main
+     * Model's list of Views.
+     */
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        // Remove this View from the main Model class' list of Views.
+        MoodSwingController moodSwingController = MoodSwingApplication.getMoodSwingController();
+        moodSwingController.removeView(this);
     }
 
     /**
      * Triggers the Model to load the Participant information given the entered username.
-     * Called when user presses the login button after entering their username.
+     * Called when user presses the activity_login button after entering their username.
      *
      * @return boolean value that informs if the user's information was loaded properly.
      */
@@ -88,7 +103,7 @@ public class LoginActivity extends AppCompatActivity implements MSView<MoodSwing
             return true;
         } else {
             // If no username is entered, refuse to continue.
-            usernameEditText.setError("Entry is required!");
+            usernameEditText.setError(getResources().getString(R.string.entry_required));
 
             // Wait for proper input.
             return false;
@@ -97,12 +112,27 @@ public class LoginActivity extends AppCompatActivity implements MSView<MoodSwing
     }
 
     /**
-     * Should check whether the user is logged in or not. Called onStart.
+     * Should check whether the user is logged in or not. Called onStart. Not yet implemented.
      */
     public void checkLoggedIn() {
 
     }
 
+    /**
+     * Initialize all widgets of this activity.
+     */
+    public void initialize() {
+        // Initialize button.
+        loginButton = (Button) findViewById(R.id.loginButton);
+        // signUpButton does nothing for now.
+        signUpButton = (Button) findViewById(R.id.signUpButton);
+        // Initialize edit text.
+        usernameEditText = (EditText) findViewById(R.id.usernameEditText);
+
+        // Add this View to the main Model class.
+        MoodSwingController moodSwingController = MoodSwingApplication.getMoodSwingController();
+        moodSwingController.addView(this);
+    }
 
     /**
      * Update function for the View LoginActivity. There is nothing in this View to update,

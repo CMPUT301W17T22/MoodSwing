@@ -1,35 +1,62 @@
 package com.ualberta.cmput301w17t22.moodswing;
 
 /**
+ * An EmotionalState is the user entered emotional state of a MoodEvent.
+ * <p/>
  * Contains the information associated with a pre-defined emotional state.
+ * For now, this is only a description of the MoodEvent, we may expand this later.
+ * This and EmotionalStateFactory should be refactored.
  *
  * @author Fred
  * @version 2017-02-18
  * @see Participant
+ * @see MoodEvent
  */
 
 public class EmotionalState {
+    /**
+     * Description of the EmotionalState.
+     * This can be one of Anger, Confusion, Disgust, Fear, Happiness, Sadness, Shame, or Surprise.
+     */
     private String description;
-    private String emoticonName;    // what does emoticon name do?
-    private String imageLocation;
-    private int color;
 
-    public EmotionalState(String description, String imageLocation, int color){
+    /**
+     * Android studio generated equals function.
+     * @param o
+     * @return
+     */
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        EmotionalState that = (EmotionalState) o;
+
+        if (!description.equals(that.description)) return false;
+        else return true;
+    }
+
+    /**
+     * Android studio generated hashCode function.
+     * @return
+     */
+    @Override
+    public int hashCode() {
+        return description.hashCode();
+    }
+
+    // --- START: Getters and Setters
+
+    public EmotionalState(String description){
         this.description = description;
-        //this.emoticonName = emoticonName;
-        this.imageLocation = imageLocation;
-        this.color = color;
     }
 
     public String getDescription(){
         return description;
     }
-
-    public String getImageLocation() {return imageLocation;}
-
-    public int getColor(){
-        return color;
-    }
+    public void setDescription(String description) { this.description = description; }
 
     public String toString() { return this.getDescription(); }
+
+    // --- END: Getters and Setters
 }

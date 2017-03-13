@@ -4,10 +4,13 @@ import android.util.Log;
 
 /**
  * Factory class for construction EmotionalStates based on their description "Angry" "Sadness", etc.
- *
+ * <br></br><br></br>
+ * This class only really needs to exist if we have more information per EmotionalState than
+ * description, as we used to. As it is, this factory is unnecessary. We keep it in because we might
+ * include more information with an EmotionalState later on.
+ * <p/>
  * Created by nyitrai on 3/10/2017.
  */
-
 public class EmotionalStateFactory {
 
     /**
@@ -17,47 +20,38 @@ public class EmotionalStateFactory {
      */
     public EmotionalState createEmotionalStateByName(String emotionalStateName) {
         EmotionalState emotionalState;
-        int color;
 
         switch (emotionalStateName) {
             case "Anger":
-                color = 1;
-                emotionalState = new EmotionalState("Anger", "AngerImageLocation", color);
+                emotionalState = new EmotionalState("Anger");
                 break;
 
             case "Confusion":
-                color = 2;
-                emotionalState = new EmotionalState("Confusion", "ConfusionImageLocation", color);
+                emotionalState = new EmotionalState("Confusion");
                 break;
 
             case "Disgust":
-                color = 3;
-                emotionalState = new EmotionalState("Disgust", "AngerImageLocation", color);
+                emotionalState = new EmotionalState("Disgust");
                 break;
 
             case "Fear":
-                color = 4;
-                emotionalState = new EmotionalState("Fear", "AngerImageLocation", color);
+                emotionalState = new EmotionalState("Fear");
                 break;
 
             case "Happiness":
-                color = 5;
-                emotionalState = new EmotionalState("Happiness", "AngerImageLocation", color);
+                emotionalState = new EmotionalState("Happiness");
                 break;
 
             case "Sadness":
-                color = 6;
-                emotionalState = new EmotionalState("Sadness", "AngerImageLocation", color);
+                emotionalState = new EmotionalState("Sadness");
                 break;
 
             case "Shame":
-                color = 7;
-                emotionalState = new EmotionalState("Shame", "AngerImageLocation", color);
+                emotionalState = new EmotionalState("Shame");
                 break;
 
             case "Surprise":
-                color = 8;
-                emotionalState = new EmotionalState("Surprise", "AngerImageLocation", color);
+                emotionalState = new EmotionalState("Surprise");
                 break;
 
             default:

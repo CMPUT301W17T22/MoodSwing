@@ -3,11 +3,15 @@ package com.ualberta.cmput301w17t22.moodswing;
 import com.google.android.gms.maps.model.LatLng;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import io.searchbox.annotations.JestId;
 
 /**
- * A Participant is an end user of the app and is identified by their username.
+ * A Participant is an end user of the app and is uniquely identified by their username.
+ * <p/>
+ * The Participant holds all the information about a user; all of their mood events, their
+ * followers, who they are following, etc.
  *
  * @author Fred
  * @version 2017-03-03
@@ -23,9 +27,13 @@ public class Participant extends User {
     @JestId
     private String id;
 
+    /** The list of other participants that this participant is following. */
     private ApprovalList followingList = new ApprovalList();
+
+    /** The list of other participants that are following this participant. */
     private ApprovalList followerList = new ApprovalList();
 
+    /** All of this participant's mood events in reverse chronological order. */
     private ArrayList<MoodEvent> moodHistory = new ArrayList<>();
 
     public Participant(String username) {
@@ -34,20 +42,62 @@ public class Participant extends User {
 
     // --- START: MoodEvent methods
 
-    public void addMoodEvent(EmotionalState emotionalState,
+    /**
+     * Adds a mood event defined by the given parameters into the Participant's mood history.
+     * @param date
+     * @param emotionalState
+     * @param trigger
+     * @param socialSituation
+     * @param location
+     */
+    public void addMoodEvent(Date date,
+                             EmotionalState emotionalState,
                              String trigger,
                              SocialSituation socialSituation,
-                             String photoLocation,
-                             String iconLocation,
                              LatLng location) {
         moodHistory.add(new MoodEvent(username,
+                date,
                 emotionalState,
                 trigger,
                 socialSituation,
-                photoLocation,
-                iconLocation,
                 location));
 
+    }
+
+    /**
+     * Edit the mood event at the given position to be the new one passed in.
+     * @param position
+     * @param date
+     * @param emotionalState
+     * @param trigger
+     * @param socialSituation
+     * @param location
+     */
+    public void editMoodEventByPosition(int position,
+                                        Date date,
+                                        EmotionalState emotionalState,
+                                        String trigger,
+                                        SocialSituation socialSituation,
+                                        LatLng location) {
+
+        // Remove the mood event at the given position.
+        moodHistory.remove(position);
+
+        // Add the edited mood event at the index of the old one.
+        moodHistory.add(position, new MoodEvent(username,
+                date,
+                emotionalState,
+                trigger,
+                socialSituation,
+                location));
+    }
+
+    /**
+     * Remove the MoodEvent at the given position from this participant's mood history.
+     * @param position The given position to remove the mood event from.
+     */
+    public void deleteMoodEventByPosition(int position) {
+        moodHistory.remove(position);
     }
 
     /**

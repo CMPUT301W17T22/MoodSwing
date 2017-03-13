@@ -9,11 +9,24 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 /**
+ * The MainActivity of the MoodSwing app. This screen will display the map view of mood events,
+ * the mood feed, and have a floating toolbar to navigate the user to the other functionalities of
+ * the app.
+ * <p/>
  * Hexadecimal color codes:
  * dark magenta: #66023C
  * background: e0b0ff
  */
 public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>  {
+
+    /** The main toolbar of the app that lets users navigate to the other parts of the app. */
+    Toolbar mainToolbar;
+
+    /**
+     * The welcome text for the app. Currently displays the username and the Jest id. Used mainly
+     * for testing right now.
+     */
+    TextView welcomeText;
 
     /**
      * Called on opening of activity for the first time.
@@ -24,32 +37,44 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Toolbar myToolbar = (Toolbar) findViewById(R.id.mainToolBar);
+        // Initialize all the widgets of the app.
+        initialize();
 
-        setSupportActionBar(myToolbar);
-       // getSupportActionBar().setTitle("MoodSwing");
+        setSupportActionBar(mainToolbar);
 
-        // Load main participant information. First getting the moodSwingController,
-        // then setting the mainParticipant.
+        // Get MoodSwingController.
         MoodSwingController moodSwingController =
                 MoodSwingApplication.getMoodSwingController();
 
+        // Load MainParticipant.
         Participant mainParticipant = moodSwingController.getMainParticipant();
 
-        // Right now just the username and id.
-        TextView welcomeText = (TextView)findViewById(R.id.mainWelcomeText);
+        // Set the welcome text appropriately.
         welcomeText.setText("Welcome user \"" + mainParticipant.getUsername() +
                 "\" with ID \"" + mainParticipant.getId() + "\"");
     }
 
     /**
-     * Inflates the menu; connects the toolbar.xml to the toolbar in activity_main.xml.
+     * Called when the Activity is finish()'d or otherwise closes. Removes this View from the main
+     * Model's list of Views.
+     */
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        // Remove this View from the main Model class' list of Views.
+        MoodSwingController moodSwingController = MoodSwingApplication.getMoodSwingController();
+        moodSwingController.removeView(this);
+    }
+
+    /**
+     * Inflates the menu. Connects the menu_main_activity.xml to the
+     * menu_main_activity in activity_main.xml.
      * @param menu
      * @return
      */
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
-        getMenuInflater().inflate(R.menu.toolbar,menu);
+        getMenuInflater().inflate(R.menu.menu_main_activity,menu);
         return true;
     }
 
@@ -66,11 +91,10 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
                 return true;
 
             case R.id.followToolBarButton:
-                // User chose the "Follower & Following" action, should navigate to the follower/following activity
-
-                // There's no FollowerFollowingActivity yet so the below two lines are just commented.
-                //Intent intent = new Intent(MainActivity.this, FollowerFollowingActivity.class);
-                //startActivity(intent);
+                // User chose the "Follower & Following" action, should navigate to the
+                // follower/following activity
+                intent = new Intent(MainActivity.this, MainFollowActivity.class);
+                startActivity(intent);
                 return true;
 
             case R.id.newMoodEventToolBarButton:
@@ -80,7 +104,8 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
                 return true;
 
             case R.id.moodHistoryToolBarButton:
-                // User chose the "View Mood History" item, should navigate to the MoodHistoryActivity.
+                // User chose the "View Mood History" item, should navigate to the
+                // MoodHistoryActivity.
                 intent = new Intent(MainActivity.this, MoodHistoryActivity.class);
                 startActivity(intent);
                 return true;
@@ -93,10 +118,23 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
     }
 
     /**
+     * Initializes all the widgets for this activity.
+     */
+    public void initialize() {
+        mainToolbar = (Toolbar) findViewById(R.id.mainToolBar);
+        welcomeText = (TextView)findViewById(R.id.mainWelcomeText);
+
+        // Add this View to the main Model class.
+        MoodSwingController moodSwingController = MoodSwingApplication.getMoodSwingController();
+        moodSwingController.addView(this);
+    }
+
+    /**
      * This is called when the Model tells this View to update because of some change in the Model.
      * @param moodSwing
      */
     public void update(MoodSwing moodSwing) {
+
 
     }
 }

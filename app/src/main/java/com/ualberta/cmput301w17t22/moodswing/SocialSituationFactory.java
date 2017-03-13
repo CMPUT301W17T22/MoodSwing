@@ -15,15 +15,19 @@ public class SocialSituationFactory {
 
         switch (socialSituationName) {
             case "Alone":
-                socialSituation = new SocialSituation("Alone", "AloneIconName");
+                socialSituation = new SocialSituation("Alone");
                 break;
 
             case "Crowd":
-                socialSituation = new SocialSituation("Crowd", "CrowdIconName");
+                socialSituation = new SocialSituation("Crowd");
                 break;
 
             case "Party":
-                socialSituation = new SocialSituation("Party", "CrowdIconName");
+                socialSituation = new SocialSituation("Party");
+                break;
+
+            case "":
+                socialSituation = new SocialSituation("");
                 break;
 
             default:

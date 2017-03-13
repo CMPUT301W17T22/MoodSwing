@@ -19,8 +19,8 @@ import io.searchbox.core.SearchResult;
 
 /**
  * Main controller for interacting for ElasticSearch. This will post things to ElasticSearch
- * as well as download things from ElasticSearch. Mostly in the form of participants.
- *
+ * as well as download things from ElasticSearch, mostly in the form of participants.
+ * <p/>
  * Created by nyitrai on 2/26/2017.
  */
 
@@ -37,7 +37,7 @@ public class ElasticSearchController implements MSController {
     private static JestDroidClient client;
 
     /**
-     * Construct a Jest client using a factory.
+     * Construct a Jest client using a factory that points to the correct server.
      */
     public static void verifyConfig() {
         // We use the CMPUT301 ElasticSearch server.
@@ -81,7 +81,6 @@ public class ElasticSearchController implements MSController {
     /**
      * Function to add a participant to ElasticSearch/Jest.
      * Calls on and executes the addParticipantTask.
-     *
      * @param username The participant's username to add to ElasticSearch/Jest.
      */
     public Participant newParticipantByUsername(String username) {
@@ -120,11 +119,9 @@ public class ElasticSearchController implements MSController {
     /**
      * AsyncTask that gets participants from ElasticSearch. Taken from CMPUT301 ElasticSearch
      * LonelyTwitter Jest Lab.
-     *
-     * Currently intended only to grab one username at a time.
-     * We might be able to expand on this later, and it'll probably be useful to do so for the
-     * following/follower lists we need to grab participants for.
-     *
+     * <p/>
+     * Works only for grabbing one participant at a time.
+     * <p/>
      * Calling execute(String username) on an instance of GetParticipantByUsernameTask
      * will search for documents under the username argument.
      */
@@ -182,10 +179,10 @@ public class ElasticSearchController implements MSController {
     /**
      * AsyncTask that adds a new participant to ElasticSearch. Taken from CMPUT301 ElasticSearch
      * LonelyTwitter Jest Lab.
-     *
+     * <p/>
      * Works only for adding a single participant.
-     *
-     * Calling execute(Participan participant) on an instance of AddParticipantByUsernameTask
+     * <p/>
+     * Calling execute(Participant participant) on an instance of AddParticipantByUsernameTask
      * will add a document for the given participant return that participant with its proper
      * Jest id.
      */
@@ -233,6 +230,18 @@ public class ElasticSearchController implements MSController {
         }
     }
 
+    /**
+     * AsyncTask that updates a participant on ElasticSearch. Only handles full updating, not
+     * partial updating. This means that the participant to update is removed and replaced with the
+     * updated version of itself, not that individual parts of the participant to update are
+     * changed.
+     * <p/>
+     * Works only for one participant at a time.
+     * <p/>
+     * Calling execute(Participant participant) on an instance of
+     * UpdateParticipantByParticipantTask will whole update the document for that participant
+     * on ElasticSearch.
+     */
     public static class UpdateParticipantByParticipantTask extends AsyncTask<Participant, Void, Void> {
         @Override
         protected Void doInBackground(Participant ... participants) {

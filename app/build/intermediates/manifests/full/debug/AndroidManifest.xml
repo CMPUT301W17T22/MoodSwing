@@ -5,7 +5,7 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="24"
+        android:minSdkVersion="21"
         android:targetSdkVersion="25" />
 
     <!--
@@ -15,6 +15,13 @@
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature android:name="android.hardware.camera2.full" />
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
 
     <!-- Include required permissions for Google Maps API to run. -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -68,6 +75,13 @@
             android:name="android.hardware.camera"
             android:required="true" />
 
+        <activity android:name="com.ualberta.cmput301w17t22.moodswing.ViewMoodEventActivity" />
+        <activity android:name="com.ualberta.cmput301w17t22.moodswing.EditMoodEventActivity" />
+        <activity android:name="com.ualberta.cmput301w17t22.moodswing.FollowActivity" />
+        <activity
+            android:name="com.ualberta.cmput301w17t22.moodswing.MainFollowActivity"
+            android:label="@string/title_activity_main_follow"
+            android:theme="@style/AppTheme" />
         <activity
             android:name="com.google.android.gms.common.api.GoogleApiActivity"
             android:exported="false"

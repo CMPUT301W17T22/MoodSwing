@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:weightSum="1">
@@ -61,11 +62,10 @@
             android:id="@+id/socialSituationSpinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
             android:entries="@array/socialSituation_array"
             android:prompt="@string/socialSituation_prompt"
             android:popupBackground="#fff"
-            />
+            android:layout_alignParentStart="true" />
     </RelativeLayout>
 
 
@@ -120,22 +120,31 @@
         android:layout_height="38dp"
         android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/photoEditText"
+        <ImageView
+            android:id="@+id/imageView_NewMoodEventActivity"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginStart="8dp"
-            android:layout_weight="1"
-            android:background="#fff"
-            android:ems="10"
-            android:inputType="textPersonName" />
+            android:layout_height="wrap_content"
+            android:layout_weight="0.12"
+            app:srcCompat="@drawable/common_google_signin_btn_icon_light_normal" />
+
+        <Button
+            android:id="@+id/photoCaptureButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:background="#66023C"
+            android:elevation="0dp"
+            android:text="@string/capture"
+            android:textColor="#fff"
+            android:textSize="16dp"
+            android:layout_weight="0.17" />
 
         <Button
             android:id="@+id/photoUploadButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
-            android:layout_weight="1"
+            android:layout_weight="0.40"
             android:background="#66023C"
             android:elevation="0dp"
             android:text="@string/upload"
