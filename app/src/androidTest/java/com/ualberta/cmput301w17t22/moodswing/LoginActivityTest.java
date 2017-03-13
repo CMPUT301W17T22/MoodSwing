@@ -9,7 +9,8 @@ import com.robotium.solo.Solo;
 
 /**
  * Created by PeterWeckend on 2017-03-12.
- *
+ * Does not follow assignment specifications for log in yet,
+ * but works with our current app build.
  */
 
 public class LoginActivityTest extends ActivityInstrumentationTestCase2<LoginActivity> {
@@ -32,7 +33,8 @@ public class LoginActivityTest extends ActivityInstrumentationTestCase2<LoginAct
 
     /**
      * Try logging in.
-     * Does not follow assignment specifications for log in yet.
+     * Does not follow assignment specifications for log in yet,
+     * but works with our current app build.
      */
     public void testLogIn(){
 

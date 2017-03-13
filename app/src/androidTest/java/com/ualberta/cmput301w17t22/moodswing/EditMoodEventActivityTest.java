@@ -10,7 +10,9 @@ import com.robotium.solo.Solo;
 
 /**
  * Created by PeterWeckend on 2017-03-12.
- * Run from Login because a user needs to log in for app to work
+ * Run from Login because a user needs to log in for app to work.
+ * Intent testing the editing of a Mood Event.
+ * All created Mood Events are deleted after testing.
  */
 
 public class EditMoodEventActivityTest extends ActivityInstrumentationTestCase2<LoginActivity> {
@@ -33,10 +35,8 @@ public class EditMoodEventActivityTest extends ActivityInstrumentationTestCase2<
 
     /**
      * Try editing mood.
-     * A bit long (especially to navigate to the history after making an event),
-     * and because accounts save their history, it'll be searching through a pile
-     * of already existing moodevents with the same descriptions, which is messy,
-     * but for now it's the best I can think of.
+     * Begins from login (to navitage to the history after making an event),
+     * and because accounts save their history.
      */
     public void testEditMoodEvent(){
         // creating a new mood event
@@ -97,11 +97,9 @@ public class EditMoodEventActivityTest extends ActivityInstrumentationTestCase2<
 
 
     /**
-     * Try editing mood but no mood chosen.
-     * A bit long (especially to navigate to the history after making an event),
-     * and because accounts save their history, it'll be searching through a pile
-     * of already existing moodevents with the same descriptions, which is messy,
-     * but for now it's the best I can think of.
+     * Try editing mood but no mood chosen. Check for error message.
+     * Begins from login (to navitage to the history after making an event),
+     * and because accounts save their history.
      */
     public void testEditMoodEventMoodless(){
         // creating a new mood event
@@ -153,8 +151,8 @@ public class EditMoodEventActivityTest extends ActivityInstrumentationTestCase2<
         assertTrue(solo.waitForText("Entry is required!"));
         solo.assertCurrentActivity("Wrong Activity!", EditMoodEventActivity.class);
 
-        solo.goBack();
         // cleanup
+        solo.goBack();
         solo.clickOnButton("Delete");
         solo.clickOnButton("Confirm");
         solo.waitForActivity("MoodHistoryActivity");

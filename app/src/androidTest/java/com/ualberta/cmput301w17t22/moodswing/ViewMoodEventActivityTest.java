@@ -11,7 +11,7 @@ import com.robotium.solo.Solo;
 /**
  * Created by PeterWeckend on 2017-03-12.
  * Run from Login because a user needs to log in for app to work
- * Also handles deleting a mood event.
+ * Also tests deleting of a mood event.
  */
 
 public class ViewMoodEventActivityTest extends ActivityInstrumentationTestCase2<LoginActivity> {
@@ -33,11 +33,9 @@ public class ViewMoodEventActivityTest extends ActivityInstrumentationTestCase2<
 
 
     /**
-     * Try viewing mood.
-     * A bit long (especially to navigate to the history after making an event),
-     * and because accounts save their history, it'll be searching through a pile
-     * of already existing moodevents with the same descriptions, which is messy,
-     * but for now it's the best I can think of.
+     * Try viewing more details of mood after created.
+     * Begins from login (to navitage to the history after making an event),
+     * and because accounts save their history.
      */
     public void testViewMoodEvent(){
         // creating a new mood event
