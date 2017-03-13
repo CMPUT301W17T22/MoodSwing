@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.test.ActivityInstrumentationTestCase2;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Spinner;
 
 import junit.framework.TestCase;
@@ -39,10 +40,10 @@ public class NewMoodEventActivityTest extends ActivityInstrumentationTestCase2<L
     public void testNewMoodEvent(){
         // getting to NewMoodEvent
         solo.assertCurrentActivity("Wrong Activity!", LoginActivity.class);
-        solo.enterText((EditText) solo.getView(R.id.usernameEditText), "jose");
+        solo.enterText((EditText) solo.getView(R.id.usernameEditText), "intent103");
         solo.clickOnButton("login");
         solo.waitForActivity("MainActivity");
-        assertTrue(solo.waitForText("Welcome user \"jose\""));
+        assertTrue(solo.waitForText("Welcome user \"intent103\""));
         solo.assertCurrentActivity("Wrong Activity!", MainActivity.class);
         // might be a way for this to work, but can't find out how yet
         //solo.clickOnActionBarItem(R.id.newMoodEventToolBarButton);
@@ -70,6 +71,24 @@ public class NewMoodEventActivityTest extends ActivityInstrumentationTestCase2<L
         solo.waitForActivity("MainActivity");
 
         solo.assertCurrentActivity("Wrong Activity!", MainActivity.class);
+
+        // cleanup
+        // navigate to mood history
+        solo.clickOnMenuItem("View Mood History");
+        solo.assertCurrentActivity("Wrong Activity!", MoodHistoryActivity.class);
+        assertTrue(solo.waitForText("the finale sucked"));
+        // view mood details
+        solo.scrollToBottom();
+        ListView listView = (ListView)solo.getView(R.id.moodHistory);
+        View moodView = listView.getChildAt(listView.getAdapter().getCount()-1);
+        solo.clickLongOnView(moodView);
+        solo.waitForActivity("ViewMoodEventActivity");
+        solo.assertCurrentActivity("Wrong Activity!", ViewMoodEventActivity.class);
+        assertTrue(solo.waitForText("the finale sucked"));
+        // cleanup
+        solo.clickOnButton("Delete");
+        solo.clickOnButton("Confirm");
+        solo.waitForActivity("MoodHistoryActivity");
     }
 
 
@@ -81,9 +100,10 @@ public class NewMoodEventActivityTest extends ActivityInstrumentationTestCase2<L
         // getting to NewMoodEvent
         solo.assertCurrentActivity("Wrong Activity!", LoginActivity.class);
         solo.clearEditText((EditText) solo.getView(R.id.usernameEditText));
-        solo.enterText((EditText) solo.getView(R.id.usernameEditText), "Barney");
+        solo.enterText((EditText) solo.getView(R.id.usernameEditText), "intent104");
         solo.clickOnButton("login");
-        assertTrue(solo.waitForText("Welcome user \"Barney\""));
+        solo.waitForActivity("MainActivity");
+        assertTrue(solo.waitForText("Welcome user \"intent104\""));
         solo.assertCurrentActivity("Wrong Activity!", MainActivity.class);
         // might be a way for this to work, but can't find out how yet
         //solo.clickOnActionBarItem(R.id.newMoodEventToolBarButton);
@@ -113,9 +133,10 @@ public class NewMoodEventActivityTest extends ActivityInstrumentationTestCase2<L
         // getting to NewMoodEvent
         solo.assertCurrentActivity("Wrong Activity!", LoginActivity.class);
         solo.clearEditText((EditText) solo.getView(R.id.usernameEditText));
-        solo.enterText((EditText) solo.getView(R.id.usernameEditText), "Lily");
+        solo.enterText((EditText) solo.getView(R.id.usernameEditText), "intent105");
         solo.clickOnButton("login");
-        assertTrue(solo.waitForText("Welcome user \"Lily\""));
+        solo.waitForActivity("MainActivity");
+        assertTrue(solo.waitForText("Welcome user \"intent105\""));
         solo.assertCurrentActivity("Wrong Activity!", MainActivity.class);
         // might be a way for this to work, but can't find out how yet
         //solo.clickOnActionBarItem(R.id.newMoodEventToolBarButton);

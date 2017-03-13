@@ -38,10 +38,10 @@ public class LoginActivityTest extends ActivityInstrumentationTestCase2<LoginAct
 
         solo.assertCurrentActivity("Wrong Activity!", LoginActivity.class);
         solo.clearEditText((EditText) solo.getView(R.id.usernameEditText));
-        solo.enterText((EditText) solo.getView(R.id.usernameEditText), "TedMosby");
+        solo.enterText((EditText) solo.getView(R.id.usernameEditText), "intent106");
         solo.clickOnButton("login");
-
-        assertTrue(solo.waitForText("Welcome user \"tedmosby\""));
+        solo.waitForActivity("MainActivity");
+        assertTrue(solo.waitForText("Welcome user \"intent106\""));
 
         // this command will come in handy
         //solo.waitForActivity("MainActivity");
