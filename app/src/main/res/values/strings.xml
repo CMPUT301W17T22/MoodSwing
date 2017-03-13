@@ -1,0 +1,52 @@
+<resources>
+    <string name="app_name">MoodSwing_0.0.0</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="main_welcome_text">Welcome (USERNAME and ID)!</string>
+    <string name="login_welcome_text">Welcome to MoodSwing! Please login below.</string>
+    <string name="login">login</string>
+    <string name="signup">Sign Up</string>
+    <string name="post">Post</string>
+    <string name="upload">Upload</string>
+    <string name="login_hint">username</string>
+    <string name="moodswing">MoodSwing</string>
+    <string name="followers_following"><![CDATA[Followers & Following]]></string>
+    <string name="home">Home</string>
+    <string name="new_mood_event">New Mood Event</string>
+    <string name="mood_history">View Mood History</string>
+
+    <!-- New Mood Event Strings -->
+    <string name="emotionalstate">Emotional State:</string>
+    <string name="socialsituation">Social Situation:</string>
+    <string name="triggers">Triggers:</string>
+    <string name="photo">Photo:</string>
+    <string name="trigger_max_message">(max. 20 chars. or 3 words.)</string>
+    <string name="photo_max_message">(max. size 65536 bytes)</string>
+    <string name="addlocation">Add Current Location</string>
+
+    <!-- for spinners -->
+    <string-array name="mood_array">
+        <item></item>
+        <item>Anger</item>
+        <item>Confusion</item>
+        <item>Disgust</item>
+        <item>Fear</item>
+        <item>Happiness</item>
+        <item>Sadness</item>
+        <item>Shame</item>
+        <item>Surprise</item>
+    </string-array>
+
+    <string name="mood_prompt">Choose your emotional state</string>
+
+    <string-array name="socialSituation_array">
+        <item></item>
+        <item>Alone</item>
+        <item>Crowd</item>
+        <item>Party</item>
+    </string-array>
+
+    <string name="socialSituation_prompt">Choose your social situation</string>
+
+
+
+</resources>
