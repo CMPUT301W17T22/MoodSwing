@@ -117,7 +117,7 @@ public class ParticipantTest {
         LatLng location2 = new LatLng(0,1);
 
         assertTrue(participant1.getMoodHistory().isEmpty());    // moodhistory empty
-        // add mood event
+        // add mood events
         participant1.addMoodEvent(date, emotionalState, trigger, socialSituation, location);
         participant1.addMoodEvent(date2, emotionalState2, trigger2, socialSituation2, location2);
 

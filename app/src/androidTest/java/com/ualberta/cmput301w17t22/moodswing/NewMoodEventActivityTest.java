@@ -12,7 +12,8 @@ import com.robotium.solo.Solo;
 
 /**
  * Created by PeterWeckend on 2017-03-12.
- * Run from Login because a user needs to log in for app to work
+ * Run from Login because a user needs to log in for app to work.
+ * Deletes created Mood Event when finished.
  */
 
 public class NewMoodEventActivityTest extends ActivityInstrumentationTestCase2<LoginActivity> {
@@ -35,7 +36,7 @@ public class NewMoodEventActivityTest extends ActivityInstrumentationTestCase2<L
 
     /**
      * Try creating new mood event.
-     * No Photo yet.
+     * No Photo/location yet.
      */
     public void testNewMoodEvent(){
         // getting to NewMoodEvent
@@ -93,8 +94,8 @@ public class NewMoodEventActivityTest extends ActivityInstrumentationTestCase2<L
 
 
     /**
-     * Try creating new mood event without mood.
-     * No Photo yet.
+     * Try creating new mood event without mood event to catch error message.
+     * No Photo/location yet.
      */
     public void testNewMoodEventMoodless(){
         // getting to NewMoodEvent
@@ -126,8 +127,8 @@ public class NewMoodEventActivityTest extends ActivityInstrumentationTestCase2<L
 
 
     /**
-     * Try creating new mood event with incompatable triggers.
-     * No Photo yet.
+     * Try creating new mood event with incompatable triggers to catch error message.
+     * No Photo/location yet.
      */
     public void testNewMoodEventTriggerLen(){
         // getting to NewMoodEvent

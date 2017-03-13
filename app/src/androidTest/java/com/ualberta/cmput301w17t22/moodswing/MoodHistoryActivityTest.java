@@ -11,7 +11,10 @@ import com.robotium.solo.Solo;
 
 /**
  * Created by PeterWeckend on 2017-03-12.
- * Run from Login because a user needs to log in for app to work
+ * Run from Login because a user needs to log in for app to work.
+ * Intent testing viewing the Mood History a user and ensuring a newly
+ * created Mood Event shows up.
+ * All created Mood Events are deleted after testing.
  */
 
 public class MoodHistoryActivityTest extends ActivityInstrumentationTestCase2<LoginActivity> {
@@ -34,10 +37,8 @@ public class MoodHistoryActivityTest extends ActivityInstrumentationTestCase2<Lo
 
     /**
      * Try viewing mood history.
-     * A bit long (especially to navitage to the history after making an event),
-     * and because accounts save their history, it'll be searching through a pile
-     * of already existing moodevents with the same descriptions, which is messy,
-     * but for now it's the best I can think of.
+     * Begins from login (to navitage to the history after making an event),
+     * and because accounts save their history.
      */
     public void testViewMoodHistory(){
         // creating a new mood event
