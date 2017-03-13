@@ -13,7 +13,19 @@ package com.ualberta.cmput301w17t22.moodswing;
  * @see MoodEvent
  */
 
+// TODO: Refactor this and EmotionalStateFactory to instead be a factory method and include
+// image references.
+
 public class EmotionalState {
+
+    /**
+     * Constructor. Initializes the Emotional State's description.
+     * @param description
+     */
+    public EmotionalState(String description){
+        this.description = description;
+    }
+
     /**
      * Description of the EmotionalState.
      * This can be one of Anger, Confusion, Disgust, Fear, Happiness, Sadness, Shame, or Surprise.
@@ -46,10 +58,6 @@ public class EmotionalState {
     }
 
     // --- START: Getters and Setters
-
-    public EmotionalState(String description){
-        this.description = description;
-    }
 
     public String getDescription(){
         return description;

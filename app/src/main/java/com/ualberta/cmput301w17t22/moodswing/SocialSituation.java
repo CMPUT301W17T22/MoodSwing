@@ -11,6 +11,9 @@ package com.ualberta.cmput301w17t22.moodswing;
  * @see Participant
  */
 
+// TODO: Refactor this and SocialSituationFactory to instead be a factory method and include
+// image references.
+
 public class SocialSituation {
     /**
      * The description of the SocialSituation, can be one of
@@ -23,6 +26,8 @@ public class SocialSituation {
     }
 
     public String getDescription() { return description; }
+
+    public void setDescription(String description) { this.description = description; }
 
     public String toString() { return this.getDescription(); }
 

@@ -2,122 +2,217 @@ package com.ualberta.cmput301w17t22.moodswing;
 
 import android.graphics.Color;
 
+import com.google.android.gms.maps.model.LatLng;
+
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
-/**test class for MoodEvent
+/** Unit Test class for MoodEvent
  * Created by Fred on 2017-02-18.
- * These unit tests might not work anymore with the changes made on 3/11.
- * Commenting out unit tests until they're fixed.
+ *
  */
 
 public class MoodEventUnitTest {
-    //TODO: finish
-//    @Test
-//    public void testBasicMoodEvent(){
-//        String trigger = "trigger";
-//        Date date = new Date();
-//        EmotionalState emotionalState = new EmotionalState("happy","somewhere", Color.BLACK);
-//        MoodEvent moodEvent = new MoodEvent("username1",emotionalState, trigger, null, null, null, null);
-//
-//        assertEquals(moodEvent.getEmotionalState(), emotionalState);
-//        assertEquals(moodEvent.getOriginalPoster(), "username1");
-//        ///TODO: test date by value (less than and greater than)
-//        //TODO: test photo and icon
-//        //Assertion of proper date cannot be used because the variable date is created and stamped but then the date created for the
-//        //new MoodEvent is automatically made during construction so it will be slightly different. I have confidence it storing properly.
-//        //assertEquals(moodEvent.getDate(), date);
-//        assertEquals(moodEvent.getTrigger(), trigger);
-//        assertEquals(moodEvent.getSocialSituation(), null);
-//        assertEquals(moodEvent.getLocation(), null);
-//    }
-//
-//    @Test
-//    public void testAdvancedMoodEvent(){
-//        //TODO: test icon and photo
-//        String postername = "username";
-//        EmotionalState emotionalState = new EmotionalState("happy","somewhere", Color.BLACK);
-//        String trigger = "trigger";
-//        SocialSituation socialSituation = new SocialSituation("so popular", "somewhere");
-//        String photoLoaction = "somewhere else";
-//        Date date = new Date();
-//
-//        MoodEvent moodEvent = new MoodEvent(postername, emotionalState, trigger, socialSituation, photoLoaction, null, null);
-//
-//        assertEquals(moodEvent.getEmotionalState(), emotionalState);
-//        assertEquals(moodEvent.getDate(), date);
-//        assertEquals(moodEvent.getTrigger(), trigger);
-//        assertEquals(moodEvent.getSocialSituation(), socialSituation);
-//        //TODO: use latlng
-//        assertEquals(moodEvent.getLocation(), null);
-//    }
-//
-//    @Test
-//    public void testEditingMoodEvent(){
-//        //TODO: finish
-//        String trigger = "trigger";
-//        Date date = new Date();
-//
-//        EmotionalState emotionalState = new EmotionalState("happy","somewhere", Color.BLACK);
-//        MoodEvent moodEvent = new MoodEvent("username1",emotionalState, trigger, null, null, null, null);
-//
-//        EmotionalState emotionalState2 = new EmotionalState("happy","somewhere", Color.BLACK);
-//        String trigger2 = "trigger2";
-//        SocialSituation socialSituation2 = new SocialSituation("so popular", "somewhere");
-//        String photoLoaction2 = "somewhere else";
-//
-//        assertNotEquals(moodEvent.getEmotionalState(), emotionalState2);
-//        assertNotEquals(moodEvent.getTrigger(), trigger2);
-//        assertNotEquals(moodEvent.getSocialSituation(), socialSituation2);
-//        //assertNotEquals(moodEvent.getPhotoLocation(), photoLoaction2);
-//       // assertNotEquals(moodEvent.getLocation(), null);
-//
-//        moodEvent.editMoodEvent(emotionalState2, trigger2, socialSituation2, null, photoLoaction2);
-//
-//        assertEquals(moodEvent.getEmotionalState(), emotionalState2);
-//        assertEquals(moodEvent.getTrigger(), trigger2);
-//        assertEquals(moodEvent.getSocialSituation(), socialSituation2);
-//        //assertEquals(moodEvent.getPhotoLocation(), photoLoaction2);
-//        assertEquals(moodEvent.getLocation(), null);
-//    }
-//
-//    //TODO: redundant?
-//    //this test implements grabbing the EmotionalState and SocialSituation from the MoodOptions list.
-//    @Test
-//    public void testFullMoodEvent(){
-//        MoodOptions moodOptions = new MoodOptions();
-//        String username = "bbest";
-//        String trigger = "trigger";
-//        SocialSituation socialSituation = moodOptions.getSocialSituation(0);
-//        EmotionalState emotionalState = moodOptions.getEmotionalState(0);
-//        String photolocation = "photolocation";
 
-        //SocialSituation ssituationcompare = new SocialSituation("alone", "social_situation_alone");
-       // EmotionalState emotioncompare = new EmotionalState("anger", "somewhere", Color.BLACK);
+    /** Testing basic MoodEvent creation. */
+    @Test
+    public void testBasicMoodEvent(){
 
+        // Create the MoodEvent.
+        String username = "username";
+        String trigger = "trigger";
+        Date date = new Date();
+        EmotionalState emotionalState =
+                new EmotionalStateFactory().createEmotionalStateByName("Happiness");
+        SocialSituation socialSituation =
+                new SocialSituationFactory().createSocialSituationByName("Alone");
+        LatLng location = new LatLng(1, 1);
 
-//        MoodEvent moodEvent = new MoodEvent(username, emotionalState,trigger, socialSituation, photolocation, null, null);
-//        assertEquals(moodEvent.getSocialSituation(),socialSituation);
-//        assertEquals(moodEvent.getEmotionalState(),emotionalState);
-//
-//    }
-//
-//    // Test equals of mood events.
-//    @Test
-//    public void testEqualsMoodEvents() {
-//        String trigger = "trigger";
-//        Date date = new Date();
-//        SocialSituation socialSituation = new SocialSituation("so popular", "somewhere");
-//        EmotionalState emotionalState = new EmotionalState("happy","somewhere", Color.BLACK);
-//
-//        MoodEvent moodEvent1 = new MoodEvent("username1", date, emotionalState, trigger, socialSituation, );
-//        MoodEvent moodEvent2 = new MoodEvent("username1", date, emotionalState, trigger, socialSituation, );
-//
-//
-//    }
+        MoodEvent moodEvent = new MoodEvent(username,
+                date,
+                emotionalState,
+                trigger,
+                socialSituation,
+                location);
 
+        // Test getters.
+        assertEquals(moodEvent.getEmotionalState(), emotionalState);
+        assertEquals(moodEvent.getOriginalPoster(), username);
+        assertEquals(moodEvent.getSocialSituation(), socialSituation);
+        assertEquals(moodEvent.getLocation(), location);
+        assertEquals(moodEvent.getDate(), date);
+        assertEquals(moodEvent.getTrigger(), trigger);
+
+        // Test the more complicated attributes.
+        assertEquals(moodEvent.getEmotionalState().getDescription(),
+                emotionalState.getDescription());
+        assertEquals(moodEvent.getSocialSituation().getDescription(),
+                socialSituation.getDescription());
+    }
+
+    /** Test partially empty MoodEvents. */
+    @Test
+    public void testPartialMoodEvent() {
+        String username = "username";
+        String trigger = "trigger";
+        Date date = new Date();
+        EmotionalState emotionalState =
+                new EmotionalStateFactory().createEmotionalStateByName("Happiness");
+        SocialSituation socialSituation =
+                new SocialSituationFactory().createSocialSituationByName("Alone");
+        LatLng location = new LatLng(1, 1);
+
+        MoodEvent moodEvent1 = new MoodEvent(username,
+                date,
+                emotionalState,
+                null,
+                null,
+                location);
+
+        MoodEvent moodEvent2 = new MoodEvent(username,
+                date,
+                emotionalState,
+                null,
+                socialSituation,
+                location);
+
+        MoodEvent moodEvent3 = new MoodEvent(username,
+                date,
+                emotionalState,
+                trigger,
+                null,
+                location);
+
+        MoodEvent moodEvent4 = new MoodEvent(username,
+                date,
+                emotionalState,
+                trigger,
+                socialSituation,
+                null);
+
+        MoodEvent moodEvent5 = new MoodEvent(username,
+                date,
+                emotionalState,
+                null,
+                socialSituation,
+                null);
+
+        MoodEvent moodEvent6 = new MoodEvent(username,
+                date,
+                emotionalState,
+                trigger,
+                null,
+                null);
+
+        MoodEvent moodEvent7 = new MoodEvent(username,
+                date,
+                emotionalState,
+                null,
+                null,
+                null);
+
+        // Test empty getters and setters.
+        assertEquals(moodEvent1.getEmotionalState(), emotionalState);
+        assertEquals(moodEvent1.getOriginalPoster(), username);
+        assertEquals(moodEvent1.getSocialSituation(), null);
+        assertEquals(moodEvent1.getLocation(), location);
+        assertEquals(moodEvent1.getDate(), date);
+        assertEquals(moodEvent1.getTrigger(), null);
+
+        assertEquals(moodEvent2.getEmotionalState(), emotionalState);
+        assertEquals(moodEvent2.getOriginalPoster(), username);
+        assertEquals(moodEvent2.getSocialSituation(), socialSituation);
+        assertEquals(moodEvent2.getLocation(), location);
+        assertEquals(moodEvent2.getDate(), date);
+        assertEquals(moodEvent2.getTrigger(), null);
+
+        assertEquals(moodEvent3.getEmotionalState(), emotionalState);
+        assertEquals(moodEvent3.getOriginalPoster(), username);
+        assertEquals(moodEvent3.getSocialSituation(), null);
+        assertEquals(moodEvent3.getLocation(), location);
+        assertEquals(moodEvent3.getDate(), date);
+        assertEquals(moodEvent3.getTrigger(), trigger);
+
+        assertEquals(moodEvent4.getEmotionalState(), emotionalState);
+        assertEquals(moodEvent4.getOriginalPoster(), username);
+        assertEquals(moodEvent4.getSocialSituation(), socialSituation);
+        assertEquals(moodEvent4.getLocation(), new LatLng(0,0));
+        assertEquals(moodEvent4.getDate(), date);
+        assertEquals(moodEvent4.getTrigger(), trigger);
+
+        assertEquals(moodEvent5.getEmotionalState(), emotionalState);
+        assertEquals(moodEvent5.getOriginalPoster(), username);
+        assertEquals(moodEvent5.getSocialSituation(), socialSituation);
+        assertEquals(moodEvent5.getLocation(), new LatLng(0,0));
+        assertEquals(moodEvent5.getDate(), date);
+        assertEquals(moodEvent5.getTrigger(), null);
+
+        assertEquals(moodEvent6.getEmotionalState(), emotionalState);
+        assertEquals(moodEvent6.getOriginalPoster(), username);
+        assertEquals(moodEvent6.getSocialSituation(), null);
+        assertEquals(moodEvent6.getLocation(), new LatLng(0,0));
+        assertEquals(moodEvent6.getDate(), date);
+        assertEquals(moodEvent6.getTrigger(), trigger);
+
+        assertEquals(moodEvent7.getEmotionalState(), emotionalState);
+        assertEquals(moodEvent7.getOriginalPoster(), username);
+        assertEquals(moodEvent7.getSocialSituation(), null);
+        assertEquals(moodEvent7.getLocation(), new LatLng(0,0));
+        assertEquals(moodEvent7.getDate(), date);
+        assertEquals(moodEvent7.getTrigger(), null);
+    }
+
+    /** Test the editing methods of MoodEvent. */
+    @Test
+    public void testEditingMoodEvent(){
+
+        String username = "username";
+        String trigger1 = "trigger";
+        String trigger2 = "trigger2";
+        Date date = new Date();
+        EmotionalState emotionalState1 =
+                new EmotionalStateFactory().createEmotionalStateByName("Happiness");
+        EmotionalState emotionalState2 =
+                new EmotionalStateFactory().createEmotionalStateByName("Sadness");
+        SocialSituation socialSituation1 =
+                new SocialSituationFactory().createSocialSituationByName("Alone");
+        SocialSituation socialSituation2 =
+                new SocialSituationFactory().createSocialSituationByName("Crowd");
+        LatLng location = new LatLng(0, 0);
+
+        // Create the mood events.
+        MoodEvent moodEvent1 =
+                new MoodEvent(username, date, emotionalState1, trigger1, socialSituation1, location);
+        MoodEvent moodEvent2 =
+                new MoodEvent(username, date, emotionalState2, trigger2, socialSituation2, location);
+
+        // Check they are initially different.
+        assertNotEquals(moodEvent1, moodEvent2);
+        assertNotEquals(moodEvent1.getSocialSituation(), moodEvent2.getSocialSituation());
+        assertNotEquals(moodEvent1.getTrigger(), moodEvent2.getTrigger());
+        assertNotEquals(moodEvent1.getEmotionalState(), moodEvent2.getEmotionalState());
+
+        // Edit the first mood event.
+        moodEvent1.editMoodEvent(emotionalState2, trigger2, socialSituation2);
+
+        // Now they should be equal.
+        assertEquals(moodEvent1, moodEvent2);
+        assertEquals(moodEvent1.getSocialSituation(), moodEvent2.getSocialSituation());
+        assertEquals(moodEvent1.getTrigger(), moodEvent2.getTrigger());
+        assertEquals(moodEvent1.getEmotionalState(), moodEvent2.getEmotionalState());
+
+        // Edit the second mood event.
+        moodEvent1.editMoodEvent(emotionalState1, null, null);
+
+        // Check they are different now.
+        assertNotEquals(moodEvent1, moodEvent2);
+        assertNotEquals(moodEvent1.getSocialSituation(), moodEvent2.getSocialSituation());
+        assertNotEquals(moodEvent1.getTrigger(), moodEvent2.getTrigger());
+        assertNotEquals(moodEvent1.getEmotionalState(), moodEvent2.getEmotionalState());
+    }
 }
