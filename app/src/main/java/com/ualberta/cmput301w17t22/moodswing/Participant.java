@@ -1,9 +1,12 @@
 package com.ualberta.cmput301w17t22.moodswing;
 
+import android.util.Log;
+
 import com.google.android.gms.maps.model.LatLng;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.InputMismatchException;
 
 import io.searchbox.annotations.JestId;
 
@@ -43,53 +46,29 @@ public class Participant extends User {
     // --- START: MoodEvent methods
 
     /**
-     * Adds a mood event defined by the given parameters into the Participant's mood history.
-     * @param date
-     * @param emotionalState
-     * @param trigger
-     * @param socialSituation
-     * @param location
+     * Adds a mood event defined into the Participant's mood history.
      */
-    public void addMoodEvent(Date date,
-                             EmotionalState emotionalState,
-                             String trigger,
-                             SocialSituation socialSituation,
-                             LatLng location) {
-        moodHistory.add(new MoodEvent(username,
-                date,
-                emotionalState,
-                trigger,
-                socialSituation,
-                location));
-
+    public void addMoodEvent(MoodEvent moodEvent) {
+        if (!moodEvent.getOriginalPoster().equals(this.getUsername())) {
+            Log.i("ERROR","Attempted to add MoodEvent to a different Participant than the " +
+                    "Participant who created the MoodEvent.");
+            throw new IllegalArgumentException();
+        } else {
+            moodHistory.add(moodEvent);
+        }
     }
 
     /**
      * Edit the mood event at the given position to be the new one passed in.
      * @param position
-     * @param date
-     * @param emotionalState
-     * @param trigger
-     * @param socialSituation
-     * @param location
      */
-    public void editMoodEventByPosition(int position,
-                                        Date date,
-                                        EmotionalState emotionalState,
-                                        String trigger,
-                                        SocialSituation socialSituation,
-                                        LatLng location) {
+    public void editMoodEventByPosition(int position, MoodEvent moodEvent) {
 
         // Remove the mood event at the given position.
         moodHistory.remove(position);
 
         // Add the edited mood event at the index of the old one.
-        moodHistory.add(position, new MoodEvent(username,
-                date,
-                emotionalState,
-                trigger,
-                socialSituation,
-                location));
+        moodHistory.add(position, moodEvent);
     }
 
     /**

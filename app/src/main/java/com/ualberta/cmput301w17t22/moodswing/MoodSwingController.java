@@ -50,40 +50,22 @@ public class MoodSwingController implements MSController {
     }
 
     /**
-     * Add's a new mood event to the mainParticipant.
-     * @param emotionalState Required. The emotional state of the mood event.
-     * @param trigger Less than 3 words or 20 chars. The trigger for the mood event.
-     * @param socialSituation Optional. The social situation of the mood event.
-     * @param location Automatically set to the location the mood event was created.
+     * Adds a new mood event to the mainParticipant.
      */
-    public void addMoodEventToMainParticipant(Date date,
-                                              EmotionalState emotionalState,
-                                              String trigger,
-                                              SocialSituation socialSituation,
-                                              LatLng location) {
+    public void addMoodEventToMainParticipant(MoodEvent moodEvent) {
 
-        ms.addMoodEventToMainParticipant(date,
-                emotionalState,
-                trigger,
-                socialSituation,
-                location);
+        ms.addMoodEventToMainParticipant(moodEvent);
 
         ms.notifyViews();
     }
 
-    public void editMoodEventToMainParticipant(int position,
-                                               Date date,
-                                               EmotionalState emotionalState,
-                                               String trigger,
-                                               SocialSituation socialSituation,
-                                               LatLng location) {
-        ms.editMoodEventToMainParticipantByPosition(
-                position,
-                date,
-                emotionalState,
-                trigger,
-                socialSituation,
-                location);
+    /**
+     * Edits a mood event of the mainParticipant's given the position of the mood event
+     * and the updated mood event.
+     */
+    public void editMoodEventToMainParticipant(int position, MoodEvent moodEvent) {
+
+        ms.editMoodEventToMainParticipantByPosition(position, moodEvent);
 
         ms.notifyViews();
     }

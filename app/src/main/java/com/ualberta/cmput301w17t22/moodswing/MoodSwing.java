@@ -65,18 +65,10 @@ public class MoodSwing extends MSModel<MSView> {
     /**
      * Add a new mood event to the main participant's mood history.
      */
-    public void addMoodEventToMainParticipant(Date date,
-                                              EmotionalState emotionalState,
-                                              String trigger,
-                                              SocialSituation socialSituation,
-                                              LatLng location) {
+    public void addMoodEventToMainParticipant(MoodEvent moodEvent) {
 
         // Add the mood event to the main participant.
-        getMainParticipant().addMoodEvent(date,
-                emotionalState,
-                trigger,
-                socialSituation,
-                location);
+        getMainParticipant().addMoodEvent(moodEvent);
 
         // Post change to ElasticSearch.
         saveMainParticipant();
@@ -88,19 +80,10 @@ public class MoodSwing extends MSModel<MSView> {
     /**
      * Edit a specific mood event of the main participant.
      */
-    public void editMoodEventToMainParticipantByPosition(int position,
-                                                         Date date,
-                                                         EmotionalState emotionalState,
-                                                         String trigger,
-                                                         SocialSituation socialSituation,
-                                                         LatLng location) {
+    public void editMoodEventToMainParticipantByPosition(int position, MoodEvent moodEvent) {
+
         // Get the main participant to edit its mood event.
-        getMainParticipant().editMoodEventByPosition(position,
-                date,
-                emotionalState,
-                trigger,
-                socialSituation,
-                location);
+        getMainParticipant().editMoodEventByPosition(position, moodEvent);
 
         // Post the updated mood event to ElasticSearch.
         saveMainParticipant();
