@@ -55,7 +55,7 @@ public class EditMoodEventActivityTest extends ActivityInstrumentationTestCase2<
         solo.assertCurrentActivity("Wrong Activity!", NewMoodEventActivity.class);
         // should press Happiness
         solo.pressSpinnerItem(0,5);
-        // should press Party
+        // should press With Two To Several People
         solo.pressSpinnerItem(1,3);
         solo.clearEditText((EditText) solo.getView(R.id.triggerEditText));
         solo.enterText((EditText) solo.getView(R.id.triggerEditText), "fortune");
@@ -80,7 +80,7 @@ public class EditMoodEventActivityTest extends ActivityInstrumentationTestCase2<
         solo.waitForActivity("EditMoodEventActivity");
         solo.assertCurrentActivity("Wrong Activity!", EditMoodEventActivity.class);
         // should press Anger
-        solo.pressSpinnerItem(0,-4);
+        solo.pressSpinnerItem(0,1);
         solo.clearEditText((EditText) solo.getView(R.id.triggerEditText_EditMoodEventActivity));
         solo.enterText((EditText) solo.getView(R.id.triggerEditText_EditMoodEventActivity), "hangover");
         solo.clickOnButton("Edit");
@@ -158,8 +158,6 @@ public class EditMoodEventActivityTest extends ActivityInstrumentationTestCase2<
         solo.waitForActivity("MoodHistoryActivity");
 
     }
-
-
 
     @Override
     public void tearDown() throws Exception {

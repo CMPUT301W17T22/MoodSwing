@@ -2,9 +2,7 @@ package com.ualberta.cmput301w17t22.moodswing;
 
 import android.util.Log;
 
-import com.google.android.gms.maps.model.LatLng;
-
-import java.util.Date;
+import java.util.ArrayList;
 
 /**
  * Mood Swing Controller.
@@ -83,4 +81,39 @@ public class MoodSwingController implements MSController {
      * @return The main participant.
      */
     public Participant getMainParticipant() { return ms.getMainParticipant(); }
+
+    public void setMoodFeed(ArrayList<MoodEvent> moodFeed) { ms.setMoodFeed(moodFeed); }
+
+    public ArrayList<MoodEvent> getMoodFeed() { return ms.getMoodFeed(); }
+
+    /** Get the position of the currently being viewed or edited mood event in the main
+     * participant's mood history.
+     * @return The position of the current mood event in the mood history list.
+     */
+    public int getMoodHistoryPosition() { return ms.getMoodHistoryPosition(); }
+
+    /**
+     * Report the position of the currently being viewed or edited mood event in the main
+     * participant's mood history to the main model class.
+     * @param moodHistoryPosition The position of the current mood event in the mood history list.
+     */
+    public void setMoodHistoryPosition(int moodHistoryPosition) {
+        ms.setMoodHistoryPosition(moodHistoryPosition);
+    }
+
+    /**
+     * Get the position of the currently being viewed or edited mood event in the main
+     * model class's mood feed.
+     * @return The position of the current mood event in the mood feed.
+     */
+    public int getMoodFeedPosition() { return ms.getMoodFeedPosition(); }
+
+    /**
+     * Report the position of the currently being viewed or edited mood event in the main model
+     * class's mood feed to the main model class.
+     * @param moodFeedPosition The position of the current mood event in the mood feed.
+     */
+    public void setMoodFeedPosition(int moodFeedPosition) {
+        ms.setMoodFeedPosition(moodFeedPosition);
+    }
 }

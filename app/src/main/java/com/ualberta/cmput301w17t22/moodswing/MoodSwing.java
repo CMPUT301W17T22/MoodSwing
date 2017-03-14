@@ -1,9 +1,8 @@
 package com.ualberta.cmput301w17t22.moodswing;
 
-import com.google.android.gms.maps.model.LatLng;
+import android.util.Log;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 /**
  * Main class for the Model portion of the MVC architecture.
@@ -19,10 +18,18 @@ public class MoodSwing extends MSModel<MSView> {
      * Either the mood history or the mood feed / mood map.
      * Will be filled with MoodEvents once the user chooses to view the history/feed/map.
      */
-    private ArrayList<MoodEvent> moodList;
+    private ArrayList<MoodEvent> moodFeed;
 
     /** The main participant. The current user of the app from the Android device. */
     private Participant mainParticipant;
+
+    /** The position of the currently being viewed or edited mood event in the main participants
+     * mood history.
+     */
+    private int moodHistoryPosition;
+
+    /** The position of the currently being viewed mood event in the mood list. */
+    private int moodFeedPosition;
 
     /**
      * Adds the mainParticipant for the MoodSwing app to ElasticSearch. This is used when logging
@@ -136,14 +143,37 @@ public class MoodSwing extends MSModel<MSView> {
 
     // --- START: Getters and Setters
 
-    public ArrayList<MoodEvent> getMoodList() { return moodList; }
+    public ArrayList<MoodEvent> getMoodFeed() { return moodFeed; }
 
-    public void setMoodList(ArrayList<MoodEvent> moodList) { this.moodList = moodList; }
+    public void setMoodFeed(ArrayList<MoodEvent> moodFeed) { this.moodFeed = moodFeed; }
 
     public Participant getMainParticipant() { return mainParticipant; }
 
     public void setMainParticipant(Participant mainParticipant) {
         this.mainParticipant = mainParticipant;
+    }
+
+    /** Getter method for the moodHistoryPosition variable with some extra handling. If the
+     * mood event currently being viewed is deleted, the moodHistoryPosition is set to -1 so
+     * as to prevent it from being viewed elsewhere somehow.
+     */
+    public int getMoodHistoryPosition() {
+        if (moodHistoryPosition == -1) {
+            Log.i("ERROR", "Position of MoodEvent in MoodHistory not found");
+            throw new IllegalArgumentException();
+        } else {
+            return moodHistoryPosition;
+        }
+    }
+
+    public void setMoodHistoryPosition(int moodHistoryPosition) {
+        this.moodHistoryPosition = moodHistoryPosition;
+    }
+
+    public int getMoodFeedPosition() {  return moodFeedPosition; }
+
+    public void setMoodFeedPosition(int moodFeedPosition) {
+        this.moodFeedPosition = moodFeedPosition;
     }
 
     // --- END: Getters and Setters

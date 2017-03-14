@@ -130,13 +130,7 @@ public class ViewMoodEventActivityTest extends ActivityInstrumentationTestCase2<
         solo.waitForActivity("MoodHistoryActivity");
         solo.assertCurrentActivity("Wrong Activity!", MoodHistoryActivity.class);
         assertFalse(solo.waitForText("figgis"));
-
-
     }
-
-
-
-
 
     @Override
     public void tearDown() throws Exception {

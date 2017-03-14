@@ -25,6 +25,7 @@ public class SocialSituationFactory {
                 break;
 
             case "With One Other Person":
+                //TODO: This icon is currently the same as the alone icon. We need a new icon.
                 socialSituation = new SocialSituation("With One Other Person",
                         R.drawable.social_situation_with_one_other_person,
                         View.VISIBLE);
@@ -43,7 +44,9 @@ public class SocialSituationFactory {
                 break;
 
             case "":
-                socialSituation = new SocialSituation("", 0, View.INVISIBLE);
+                socialSituation = new SocialSituation("",
+                        R.drawable.social_situation_alone,
+                        View.INVISIBLE);
                 break;
 
             default:
