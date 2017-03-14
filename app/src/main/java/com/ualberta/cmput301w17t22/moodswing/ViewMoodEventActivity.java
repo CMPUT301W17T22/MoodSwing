@@ -164,85 +164,27 @@ public class ViewMoodEventActivity extends AppCompatActivity implements MSView<M
             }
         });
 
-        // Load values from MoodEvent into the text fields.
+        // Load values from MoodEvent into the simple text fields.
         usernameTextView.setText(moodEvent.getOriginalPoster());
-        emotionalStateTextView.setText(moodEvent.getEmotionalState().getDescription());
-        socialSituationTextView.setText(moodEvent.getSocialSituation().getDescription());
         triggerTextView.setText(moodEvent.getTrigger());
 
-        // Load values from MoodEvent into the images.
-        switch (moodEvent.getEmotionalState().getDescription()) {
-            case "Anger":
-                emotionalStateImageView.setImageDrawable(getDrawable(R.drawable.emoticon_anger));
-                break;
+        // Set the image and text for the appropriate Mood Event.
+        emotionalStateTextView.setText(moodEvent.getEmotionalState().getDescription());
+        emotionalStateImageView.setImageDrawable(getDrawable(
+                moodEvent.getEmotionalState().getDrawableId()));
 
-            case "Confusion":
-                emotionalStateImageView.setImageDrawable(getDrawable(R.drawable.emoticon_confusion));
-                break;
+        // Set the image and text for the appropriate social situation.
+        socialSituationTextView.setText(moodEvent.getSocialSituation().getDescription());
+        socialSituationImageView.setImageDrawable(getDrawable(
+                moodEvent.getSocialSituation().getDrawableId()));
 
-            case "Disgust":
-                emotionalStateImageView.setImageDrawable(getDrawable(R.drawable.emoticon_disgust));
-                break;
+        // Disable the inspection for the visibility resource type, so that we can pass in
+        // a variable for the visibility. Taken from
+        // http://stackoverflow.com/questions/26139115/not-able-to-dynamically-set-the-setvisibility-parameter
+        // on 3/13/2017.
 
-            case "Fear":
-                emotionalStateImageView.setImageDrawable(getDrawable(R.drawable.emoticon_fear));
-                break;
-
-            case "Happiness":
-                emotionalStateImageView.setImageDrawable(getDrawable(R.drawable.emoticon_happiness));
-                break;
-
-            case "Sadness":
-                emotionalStateImageView.setImageDrawable(getDrawable(R.drawable.emoticon_sadness));
-                break;
-
-            case "Shame":
-                emotionalStateImageView.setImageDrawable(getDrawable(R.drawable.emoticon_shame));
-                break;
-
-            case "Surprise":
-                emotionalStateImageView.setImageDrawable(getDrawable(R.drawable.emoticon_surprise));
-                break;
-
-            default:
-                Log.i("ERROR", "Invalid Emotional State when setting image.");
-                throw new IllegalArgumentException(
-                        "Invalid Emotional State");
-        }
-
-        // Set the image for the appropriate social situation. Currently only have 3 implemented.
-        switch (moodEvent.getSocialSituation().getDescription()) {
-            case "Alone":
-                socialSituationTextView.setText("While alone");
-                socialSituationImageView.setImageDrawable(
-                        getDrawable(R.drawable.social_situation_alone));
-                break;
-
-            case "Crowd":
-                socialSituationTextView.setText("While in a crowd");
-                socialSituationImageView.setImageDrawable(
-                        getDrawable(R.drawable.social_situation_crowd));
-                socialSituationImageView.setVisibility(View.VISIBLE);
-                break;
-
-            case "Party":
-                socialSituationTextView.setText("While in a party");
-                socialSituationImageView.setImageDrawable(
-                        getDrawable(R.drawable.social_situation_party));
-                socialSituationImageView.setVisibility(View.VISIBLE);
-                break;
-
-            case "":
-                socialSituationTextView.setText("");
-                // No social situation was entered, so make the image invisible.
-                socialSituationImageView.setVisibility(View.INVISIBLE);
-                break;
-
-            default:
-                Log.i("ERROR", "Invalid Social Situation while displaying image.");
-                throw new IllegalArgumentException(
-                        "Invalid Social Situation while displaying image.");
-        }
+        //noinspection ResourceType
+        socialSituationImageView.setVisibility(moodEvent.getSocialSituation().getVisibility());
     }
 
     /**

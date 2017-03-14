@@ -30,7 +30,7 @@
             android:id="@+id/emotionalStateSpinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:entries="@array/mood_array"
+            android:entries="@array/emotionalState_array"
             android:prompt="@string/mood_prompt"
             android:popupBackground="#fff"
             />

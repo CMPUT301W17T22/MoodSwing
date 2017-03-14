@@ -4,16 +4,10 @@ import android.util.Log;
 
 /**
  * Factory class for construction EmotionalStates based on their description "Angry" "Sadness", etc.
- * <br></br><br></br>
- * This class only really needs to exist if we have more information per EmotionalState than
- * description, as we used to. As it is, this factory is unnecessary. We keep it in because we might
- * include more information with an EmotionalState later on.
+ * Initializes the class to have an appropriate description and drawable id.
  * <p/>
  * Created by nyitrai on 3/10/2017.
  */
-
-// TODO: Refactor EmotionalState and this to instead be a factory method and include
-// image references.
 
 public class EmotionalStateFactory {
 
@@ -27,35 +21,35 @@ public class EmotionalStateFactory {
 
         switch (emotionalStateName) {
             case "Anger":
-                emotionalState = new EmotionalState("Anger");
+                emotionalState = new EmotionalState("Anger", R.drawable.emoticon_anger);
                 break;
 
             case "Confusion":
-                emotionalState = new EmotionalState("Confusion");
+                emotionalState = new EmotionalState("Confusion", R.drawable.emoticon_confusion);
                 break;
 
             case "Disgust":
-                emotionalState = new EmotionalState("Disgust");
+                emotionalState = new EmotionalState("Disgust", R.drawable.emoticon_disgust);
                 break;
 
             case "Fear":
-                emotionalState = new EmotionalState("Fear");
+                emotionalState = new EmotionalState("Fear", R.drawable.emoticon_fear);
                 break;
 
             case "Happiness":
-                emotionalState = new EmotionalState("Happiness");
+                emotionalState = new EmotionalState("Happiness", R.drawable.emoticon_happiness);
                 break;
 
             case "Sadness":
-                emotionalState = new EmotionalState("Sadness");
+                emotionalState = new EmotionalState("Sadness", R.drawable.emoticon_sadness);
                 break;
 
             case "Shame":
-                emotionalState = new EmotionalState("Shame");
+                emotionalState = new EmotionalState("Shame", R.drawable.emoticon_shame);
                 break;
 
             case "Surprise":
-                emotionalState = new EmotionalState("Surprise");
+                emotionalState = new EmotionalState("Surprise", R.drawable.emoticon_surprise);
                 break;
 
             default:

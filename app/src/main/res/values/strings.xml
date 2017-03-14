@@ -27,7 +27,7 @@
     <string name="addlocation">Add Current Location</string>
 
     <!-- for spinners -->
-    <string-array name="mood_array">
+    <string-array name="emotionalState_array">
         <item></item>
         <item>Anger</item>
         <item>Confusion</item>
@@ -44,8 +44,9 @@
     <string-array name="socialSituation_array">
         <item></item>
         <item>Alone</item>
-        <item>Crowd</item>
-        <item>Party</item>
+        <item>With One Other Person</item>
+        <item>With Two To Several People</item>
+        <item>With A Crowd</item>
     </string-array>
 
     <string name="socialSituation_prompt">Choose your social situation</string>
