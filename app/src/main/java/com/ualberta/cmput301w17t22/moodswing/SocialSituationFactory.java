@@ -8,6 +8,9 @@ import android.util.Log;
  * Created by nyitrai on 3/10/2017.
  */
 
+// TODO: Refactor SocialSituation and this to instead be a factory method and include
+// image references.
+
 public class SocialSituationFactory {
 
     public SocialSituation createSocialSituationByName(String socialSituationName) {

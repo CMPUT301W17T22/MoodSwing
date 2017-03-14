@@ -117,15 +117,19 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="38dp"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight="0.07">
 
         <ImageView
             android:id="@+id/imageView_NewMoodEventActivity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.12"
-            app:srcCompat="@drawable/common_google_signin_btn_icon_light_normal" />
+            android:layout_width="140dp"
+            android:layout_height="50dp"
+            android:adjustViewBounds="true"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:scaleType="centerInside"
+            app:srcCompat="@android:drawable/stat_sys_upload" />
 
         <Button
             android:id="@+id/photoCaptureButton"
@@ -137,14 +141,14 @@
             android:text="@string/capture"
             android:textColor="#fff"
             android:textSize="16dp"
-            android:layout_weight="0.17" />
+            android:layout_weight="0.06" />
 
         <Button
             android:id="@+id/photoUploadButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
-            android:layout_weight="0.40"
+            android:layout_weight="0.03"
             android:background="#66023C"
             android:elevation="0dp"
             android:text="@string/upload"
@@ -157,7 +161,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingStart="8dp"
-        android:text="@string/photo_max_message" />
+        android:text="@string/photo_max_message"
+        android:textAlignment="textStart" />
 
     <Space
         android:layout_width="match_parent"
@@ -176,7 +181,7 @@
     <Space
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0.14" />
+        android:layout_weight="0.11" />
 
     <Button
         android:id="@+id/newMoodEventPostButton"

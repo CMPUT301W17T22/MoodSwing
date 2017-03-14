@@ -31,10 +31,12 @@ import java.util.regex.Pattern;
  * <p/>
  * Accessed from the MainActivity through the main toolbar. Returns to the MainActivity when done.
  * <p/>
- * The following pages were used in building this activity: (will be properly sourced later)
+ * The following pages and code were used and adapted in building this activity on 3/10-3/12:
  * http://programmerguru.com/android-tutorial/how-to-pick-image-from-gallery/
- * http://www.coderzheaven.com/2012/04/20/select-an-image-from-gallery-in-android-and-show-it-in-an-imageview/
+ * coderzheaven.com/2012/04/20/select-an-image-from-gallery-in-android-and-show-it-in-an-imageview/
  * developer.android.com/training/camera/photobasics.html
+ *
+ * More details of used pages/code are in appropriate sections below.
  */
 
 public class NewMoodEventActivity extends AppCompatActivity implements MSView<MoodSwing> {
@@ -172,7 +174,17 @@ public class NewMoodEventActivity extends AppCompatActivity implements MSView<Mo
         moodSwingController.removeView(this);
     }
 
-    // create and launch intent to view and select photo from gallery
+
+    /**
+     * Create and launch intent to view and select photo from gallery.
+     *
+     * Uses code sourced from below sites on 3/11-3/12:
+     * http://programmerguru.com/android-tutorial/how-to-pick-image-from-gallery/
+     * coderzheaven.com/2012/04/20/
+     *      select-an-image-from-gallery-in-android-and-show-it-in-an-imageview/
+     *
+     * @param v the view we use
+     */
     public void uploadGalleryImage(View v){
         Intent i = new Intent(Intent.ACTION_PICK,
                 android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
@@ -181,6 +193,12 @@ public class NewMoodEventActivity extends AppCompatActivity implements MSView<Mo
     }
 
     // invoke intent to capture a photo
+
+    /**
+     * Invoke intent to capture a photo.
+     * Uses code from below site on 03/12:
+     * developer.android.com/training/camera/photobasics.html
+     */
     private void dispatchTakePictureIntent() {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         if (takePictureIntent.resolveActivity(getPackageManager()) != null){
@@ -192,6 +210,13 @@ public class NewMoodEventActivity extends AppCompatActivity implements MSView<Mo
     /**
      * After user selects an image from gallery or takes a picture,
      * grab image and display thumbnail.
+     *
+     * Uses code adapted from the following sites on 03/11.
+     * http://programmerguru.com/android-tutorial/how-to-pick-image-from-gallery/
+     * coderzheaven.com/2012/04/20/
+     *      select-an-image-from-gallery-in-android-and-show-it-in-an-imageview/
+     * developer.android.com/training/camera/photobasics.html
+     *
      * TODO:
      * Attach image to MoodEvent
      * Limit image size
@@ -227,7 +252,8 @@ public class NewMoodEventActivity extends AppCompatActivity implements MSView<Mo
                         cursor.close();
 
                         // get image view
-                        ImageView imageView = (ImageView) findViewById(R.id.imageView_NewMoodEventActivity);
+                        ImageView imageView = (ImageView)
+                                findViewById(R.id.imageView_NewMoodEventActivity);
                         // Set the Image in ImageView after decoding the String
                         imageView.setImageBitmap(BitmapFactory
                                 .decodeFile(imgDecodableString));
@@ -245,7 +271,8 @@ public class NewMoodEventActivity extends AppCompatActivity implements MSView<Mo
                         Bundle extras = data.getExtras();
                         Bitmap imageBitmap = (Bitmap) extras.get("data");
                         // get image view
-                        ImageView imageView = (ImageView) findViewById(R.id.imageView_NewMoodEventActivity);
+                        ImageView imageView =
+                                (ImageView) findViewById(R.id.imageView_NewMoodEventActivity);
                         imageView.setImageBitmap(imageBitmap);  // display thumbnail
                     }
                 }
