@@ -53,6 +53,7 @@
     <string name="edit">Edit</string>
     <string name="capture">Take Photo</string>
     <string name="title_activity_main_follow">Following and Followers</string>
+    <string name="moodhistory">MoodHistory</string>
 
 
 </resources>
