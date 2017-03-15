@@ -68,16 +68,18 @@ public class FollowingController implements MSController {
      * Approves a pending request for a participant to follow the mainParticipant.
      * @return
      */
-    public boolean approveRequest(){
+    public boolean approveRequest(Participant participant){
 
+        mainParticipant.approveFollowerRequest(participant);
         return true;
     }
     /**
      * Declines a pending request for a participant to follow the .
      * @return
      */
-    public boolean declineRequest(){
+    public boolean declineRequest(Participant participant){
 
+        mainParticipant.declineFollowerRequest(participant);
         return true;
     }
 
