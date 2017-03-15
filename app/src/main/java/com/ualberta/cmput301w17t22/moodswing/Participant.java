@@ -98,6 +98,12 @@ public class Participant extends User {
         receivingParticipant.createFollowerRequest(this);
     }
 
+    public void unfollowParticipant(Participant receivingParticipant){
+
+        followingList.remove(receivingParticipant);
+
+    }
+
     /**
      * DO NOT call explicitly. Should only be called by receivingParticipant
      *
@@ -109,6 +115,10 @@ public class Participant extends User {
 
     public void followRequestDeclined(Participant receivingParticipant){
         followingList.remove(receivingParticipant);
+    }
+
+    public void unfollowedEvent(Participant receivingParticipant){
+        followerList.remove(receivingParticipant);
     }
 
     // --- END: Following methods ---
@@ -123,6 +133,10 @@ public class Participant extends User {
      */
     public void createFollowerRequest(Participant requestingParticipant){
         followerList.newPendingParticipant(requestingParticipant);
+    }
+
+    public void createUnfollowEvent(Participant requestingParticipant){
+        requestingParticipant.unfollowedEvent(this);
     }
 
     public void approveFollowerRequest(Participant requestingParticipant){

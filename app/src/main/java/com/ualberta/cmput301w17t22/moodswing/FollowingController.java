@@ -37,7 +37,9 @@ public class FollowingController implements MSController {
 
         Participant newFollowedParticipant = elasticSearchController.getParticipantByUsername(participant);
 
+
         mainParticipant.followParticipant(newFollowedParticipant);
+        mainParticipant.createFollowerRequest(newFollowedParticipant);
 
         //not sure if update is necessary?
         elasticSearchController.updateParticipantByParticipant(mainParticipant);
@@ -45,15 +47,21 @@ public class FollowingController implements MSController {
 
     /**
      * This method removes a participant from the mainParticipants FollowingList.
-     * @param participant
+     * Secondly it calls createUnfollowEvent() which sends an unfollow indicator to the
+     * receivingparticipant to invoke unfollowEvent to remove this participant form their
+     * followerList.
+     * @param receivingparticipant
      */
-    //TODO:Implement body
-    /* might be need take in a index from the ListView from which the item was clicked
-       to make it easier to remove from the list.
-    */
-    public void unfollowParticipant(Participant participant){
+    //TODO:Need to create a new type of request that tells the receiving participant to remove
 
+    public void unfollowParticipant(Participant receivingparticipant){
 
+        mainParticipant.unfollowParticipant(receivingparticipant);
+
+        mainParticipant.createUnfollowEvent(receivingparticipant);
+
+        //not sure if update is necessary?
+        elasticSearchController.updateParticipantByParticipant(mainParticipant);
     }
 
     /**
