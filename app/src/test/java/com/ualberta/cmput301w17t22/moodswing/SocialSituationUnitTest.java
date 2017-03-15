@@ -1,5 +1,7 @@
 package com.ualberta.cmput301w17t22.moodswing;
 
+import android.view.View;
+
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -22,7 +24,7 @@ public class SocialSituationUnitTest {
         String alone_also = "Alone";
 
         // Create the social situation object,
-        SocialSituation socialSituation = new SocialSituation(alone);
+        SocialSituation socialSituation = new SocialSituation(alone, R.drawable.social_situation_alone, View.VISIBLE);
 
         // Test that the string is actually the description of the social situation.
         assertEquals(socialSituation.getDescription(), alone);

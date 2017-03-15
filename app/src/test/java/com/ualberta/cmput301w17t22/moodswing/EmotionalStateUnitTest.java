@@ -21,7 +21,7 @@ public class EmotionalStateUnitTest {
         String happiness_also = "Happiness";
 
         // Create the emotionalState object.
-        EmotionalState emotionalState = new EmotionalState(happiness);
+        EmotionalState emotionalState = new EmotionalState(happiness, R.drawable.emoticon_happiness);
 
         // Test that the string is actually the description of the emotional state.
         assertEquals(emotionalState.getDescription(), happiness);
