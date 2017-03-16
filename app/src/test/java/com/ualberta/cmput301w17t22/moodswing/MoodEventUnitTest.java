@@ -182,7 +182,7 @@ public class MoodEventUnitTest {
         SocialSituation socialSituation1 =
                 new SocialSituationFactory().createSocialSituationByName("Alone");
         SocialSituation socialSituation2 =
-                new SocialSituationFactory().createSocialSituationByName("Crowd");
+                new SocialSituationFactory().createSocialSituationByName("With A Crowd");
         LatLng location = new LatLng(0, 0);
 
         // Create the mood events.
