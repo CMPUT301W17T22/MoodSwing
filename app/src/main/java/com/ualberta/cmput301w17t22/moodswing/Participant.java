@@ -101,7 +101,11 @@ public class Participant extends User {
     public void unfollowParticipant(Participant receivingParticipant){
 
         followingList.remove(receivingParticipant);
+    }
 
+    public void cancelFollowRequest(Participant receivingParticipant){
+        followingList.remove(receivingParticipant);
+        receivingParticipant.followerList.remove(this);
     }
 
     /**
@@ -149,6 +153,10 @@ public class Participant extends User {
         followerList.remove(requestingParticipant);
     }
 
+    //Should make a blocked list that holds all the blocked Participants
+    //When a follow request is made we check to see if the sending participant is in this list
+    //If so it removes the request and triggers a notifying method
+    // back that tells the sender they are blocked
     public void blockFollowerRequest(Participant requestingParticipant){
         followerList.remove(requestingParticipant);
     }

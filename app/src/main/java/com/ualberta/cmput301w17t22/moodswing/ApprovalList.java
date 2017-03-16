@@ -34,8 +34,8 @@ public class ApprovalList {
     }
 
     /**
-     * Method takes in participant that wants to follow the mainParticipant and approves their
-     * pending request.
+     * Checks to see if the participant is on the pending list of the ApprovalList and if they
+     * are remove them from it and add them to the approved list.
      * @param otherParticipant
      */
     public void approvePending(Participant otherParticipant){
