@@ -143,7 +143,7 @@ public class Participant extends User {
     public void unfollowedEvent(Participant receivingParticipant){
         followerList.remove(receivingParticipant);
     }
-    
+
     // --- END: Following methods ---
 
 

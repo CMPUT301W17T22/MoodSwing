@@ -83,6 +83,15 @@ public class FollowingController implements MSController {
         return true;
     }
 
+    /**
+     * The controller will invoke the blockParticipant method from the main participant.
+     * @param participant
+     * @return
+     */
+    public boolean blockParticipant(Participant participant){
+        mainParticipant.blockParticipant(participant);
+        return true;
+    }
 
 
 }
