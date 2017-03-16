@@ -36,6 +36,9 @@ public class Participant extends User {
     /** The list of other participants that are following this participant. */
     private ApprovalList followerList = new ApprovalList();
 
+    /**The list of participants being blocked from sending further follow request. */
+    private ArrayList<Participant> blockList = new ArrayList<Participant>();
+
     /** All of this participant's mood events in reverse chronological order. */
     private ArrayList<MoodEvent> moodHistory = new ArrayList<>();
 
@@ -94,8 +97,12 @@ public class Participant extends User {
     // --- START: Following methods ---
 
     public void followParticipant(Participant receivingParticipant){
-        followingList.newPendingParticipant(receivingParticipant);
-        receivingParticipant.createFollowerRequest(this);
+        if(receivingParticipant.blockList.contains(this)){
+
+        }else {
+            followingList.newPendingParticipant(receivingParticipant);
+            receivingParticipant.createFollowerRequest(this);
+        }
     }
 
     public void unfollowParticipant(Participant receivingParticipant){
@@ -106,6 +113,18 @@ public class Participant extends User {
     public void cancelFollowRequest(Participant receivingParticipant){
         followingList.remove(receivingParticipant);
         receivingParticipant.followerList.remove(this);
+    }
+
+    public void blockParticipant(Participant recevingParticipant){
+        if (this.blockList.contains(recevingParticipant)) {
+        }else{
+            blockList.add(recevingParticipant);
+        }
+
+    }
+
+    public void unblockParticipant(Participant unblockee){
+        this.blockList.remove(unblockee);
     }
 
     /**
@@ -124,7 +143,7 @@ public class Participant extends User {
     public void unfollowedEvent(Participant receivingParticipant){
         followerList.remove(receivingParticipant);
     }
-
+    
     // --- END: Following methods ---
 
 
@@ -136,7 +155,11 @@ public class Participant extends User {
      * @param requestingParticipant
      */
     public void createFollowerRequest(Participant requestingParticipant){
-        followerList.newPendingParticipant(requestingParticipant);
+        if(this.blockList.contains(requestingParticipant)){
+
+        }else {
+            followerList.newPendingParticipant(requestingParticipant);
+        }
     }
 
     public void createUnfollowEvent(Participant requestingParticipant){
@@ -153,12 +176,9 @@ public class Participant extends User {
         followerList.remove(requestingParticipant);
     }
 
-    //Should make a blocked list that holds all the blocked Participants
-    //When a follow request is made we check to see if the sending participant is in this list
-    //If so it removes the request and triggers a notifying method
-    // back that tells the sender they are blocked
     public void blockFollowerRequest(Participant requestingParticipant){
         followerList.remove(requestingParticipant);
+        this.blockParticipant(requestingParticipant);
     }
 
     // --- END: Follower methods ---
