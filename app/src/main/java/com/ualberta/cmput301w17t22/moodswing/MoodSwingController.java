@@ -2,9 +2,7 @@ package com.ualberta.cmput301w17t22.moodswing;
 
 import android.util.Log;
 
-import com.google.android.gms.maps.model.LatLng;
-
-import java.util.Date;
+import java.util.ArrayList;
 
 /**
  * Mood Swing Controller.
@@ -50,40 +48,22 @@ public class MoodSwingController implements MSController {
     }
 
     /**
-     * Add's a new mood event to the mainParticipant.
-     * @param emotionalState Required. The emotional state of the mood event.
-     * @param trigger Less than 3 words or 20 chars. The trigger for the mood event.
-     * @param socialSituation Optional. The social situation of the mood event.
-     * @param location Automatically set to the location the mood event was created.
+     * Adds a new mood event to the mainParticipant.
      */
-    public void addMoodEventToMainParticipant(Date date,
-                                              EmotionalState emotionalState,
-                                              String trigger,
-                                              SocialSituation socialSituation,
-                                              LatLng location) {
+    public void addMoodEventToMainParticipant(MoodEvent moodEvent) {
 
-        ms.addMoodEventToMainParticipant(date,
-                emotionalState,
-                trigger,
-                socialSituation,
-                location);
+        ms.addMoodEventToMainParticipant(moodEvent);
 
         ms.notifyViews();
     }
 
-    public void editMoodEventToMainParticipant(int position,
-                                               Date date,
-                                               EmotionalState emotionalState,
-                                               String trigger,
-                                               SocialSituation socialSituation,
-                                               LatLng location) {
-        ms.editMoodEventToMainParticipantByPosition(
-                position,
-                date,
-                emotionalState,
-                trigger,
-                socialSituation,
-                location);
+    /**
+     * Edits a mood event of the mainParticipant's given the position of the mood event
+     * and the updated mood event.
+     */
+    public void editMoodEventToMainParticipant(int position, MoodEvent moodEvent) {
+
+        ms.editMoodEventToMainParticipantByPosition(position, moodEvent);
 
         ms.notifyViews();
     }
@@ -101,4 +81,39 @@ public class MoodSwingController implements MSController {
      * @return The main participant.
      */
     public Participant getMainParticipant() { return ms.getMainParticipant(); }
+
+    public void setMoodFeed(ArrayList<MoodEvent> moodFeed) { ms.setMoodFeed(moodFeed); }
+
+    public ArrayList<MoodEvent> getMoodFeed() { return ms.getMoodFeed(); }
+
+    /** Get the position of the currently being viewed or edited mood event in the main
+     * participant's mood history.
+     * @return The position of the current mood event in the mood history list.
+     */
+    public int getMoodHistoryPosition() { return ms.getMoodHistoryPosition(); }
+
+    /**
+     * Report the position of the currently being viewed or edited mood event in the main
+     * participant's mood history to the main model class.
+     * @param moodHistoryPosition The position of the current mood event in the mood history list.
+     */
+    public void setMoodHistoryPosition(int moodHistoryPosition) {
+        ms.setMoodHistoryPosition(moodHistoryPosition);
+    }
+
+    /**
+     * Get the position of the currently being viewed or edited mood event in the main
+     * model class's mood feed.
+     * @return The position of the current mood event in the mood feed.
+     */
+    public int getMoodFeedPosition() { return ms.getMoodFeedPosition(); }
+
+    /**
+     * Report the position of the currently being viewed or edited mood event in the main model
+     * class's mood feed to the main model class.
+     * @param moodFeedPosition The position of the current mood event in the mood feed.
+     */
+    public void setMoodFeedPosition(int moodFeedPosition) {
+        ms.setMoodFeedPosition(moodFeedPosition);
+    }
 }

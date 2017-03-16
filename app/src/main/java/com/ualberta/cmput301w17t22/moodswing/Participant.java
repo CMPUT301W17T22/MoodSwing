@@ -1,9 +1,12 @@
 package com.ualberta.cmput301w17t22.moodswing;
 
+import android.util.Log;
+
 import com.google.android.gms.maps.model.LatLng;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.InputMismatchException;
 
 import io.searchbox.annotations.JestId;
 
@@ -33,6 +36,9 @@ public class Participant extends User {
     /** The list of other participants that are following this participant. */
     private ApprovalList followerList = new ApprovalList();
 
+    /**The list of participants being blocked from sending further follow request. */
+    private ArrayList<Participant> blockList = new ArrayList<Participant>();
+
     /** All of this participant's mood events in reverse chronological order. */
     private ArrayList<MoodEvent> moodHistory = new ArrayList<>();
 
@@ -43,53 +49,29 @@ public class Participant extends User {
     // --- START: MoodEvent methods
 
     /**
-     * Adds a mood event defined by the given parameters into the Participant's mood history.
-     * @param date
-     * @param emotionalState
-     * @param trigger
-     * @param socialSituation
-     * @param location
+     * Adds a mood event defined into the Participant's mood history.
      */
-    public void addMoodEvent(Date date,
-                             EmotionalState emotionalState,
-                             String trigger,
-                             SocialSituation socialSituation,
-                             LatLng location) {
-        moodHistory.add(new MoodEvent(username,
-                date,
-                emotionalState,
-                trigger,
-                socialSituation,
-                location));
-
+    public void addMoodEvent(MoodEvent moodEvent) {
+        if (!moodEvent.getOriginalPoster().equals(this.getUsername())) {
+            Log.i("ERROR","Attempted to add MoodEvent to a different Participant than the " +
+                    "Participant who created the MoodEvent.");
+            throw new IllegalArgumentException();
+        } else {
+            moodHistory.add(moodEvent);
+        }
     }
 
     /**
      * Edit the mood event at the given position to be the new one passed in.
      * @param position
-     * @param date
-     * @param emotionalState
-     * @param trigger
-     * @param socialSituation
-     * @param location
      */
-    public void editMoodEventByPosition(int position,
-                                        Date date,
-                                        EmotionalState emotionalState,
-                                        String trigger,
-                                        SocialSituation socialSituation,
-                                        LatLng location) {
+    public void editMoodEventByPosition(int position, MoodEvent moodEvent) {
 
         // Remove the mood event at the given position.
         moodHistory.remove(position);
 
         // Add the edited mood event at the index of the old one.
-        moodHistory.add(position, new MoodEvent(username,
-                date,
-                emotionalState,
-                trigger,
-                socialSituation,
-                location));
+        moodHistory.add(position, moodEvent);
     }
 
     /**
@@ -115,8 +97,34 @@ public class Participant extends User {
     // --- START: Following methods ---
 
     public void followParticipant(Participant receivingParticipant){
-        followingList.newPendingParticipant(receivingParticipant);
-        receivingParticipant.createFollowerRequest(this);
+        if(receivingParticipant.blockList.contains(this)){
+
+        }else {
+            followingList.newPendingParticipant(receivingParticipant);
+            receivingParticipant.createFollowerRequest(this);
+        }
+    }
+
+    public void unfollowParticipant(Participant receivingParticipant){
+
+        followingList.remove(receivingParticipant);
+    }
+
+    public void cancelFollowRequest(Participant receivingParticipant){
+        followingList.remove(receivingParticipant);
+        receivingParticipant.followerList.remove(this);
+    }
+
+    public void blockParticipant(Participant recevingParticipant){
+        if (this.blockList.contains(recevingParticipant)) {
+        }else{
+            blockList.add(recevingParticipant);
+        }
+
+    }
+
+    public void unblockParticipant(Participant unblockee){
+        this.blockList.remove(unblockee);
     }
 
     /**
@@ -132,6 +140,10 @@ public class Participant extends User {
         followingList.remove(receivingParticipant);
     }
 
+    public void unfollowedEvent(Participant receivingParticipant){
+        followerList.remove(receivingParticipant);
+    }
+
     // --- END: Following methods ---
 
 
@@ -143,7 +155,15 @@ public class Participant extends User {
      * @param requestingParticipant
      */
     public void createFollowerRequest(Participant requestingParticipant){
-        followerList.newPendingParticipant(requestingParticipant);
+        if(this.blockList.contains(requestingParticipant)){
+
+        }else {
+            followerList.newPendingParticipant(requestingParticipant);
+        }
+    }
+
+    public void createUnfollowEvent(Participant requestingParticipant){
+        requestingParticipant.unfollowedEvent(this);
     }
 
     public void approveFollowerRequest(Participant requestingParticipant){
@@ -158,6 +178,7 @@ public class Participant extends User {
 
     public void blockFollowerRequest(Participant requestingParticipant){
         followerList.remove(requestingParticipant);
+        this.blockParticipant(requestingParticipant);
     }
 
     // --- END: Follower methods ---

@@ -1,5 +1,7 @@
 package com.ualberta.cmput301w17t22.moodswing;
 
+import android.graphics.drawable.Drawable;
+
 /**
  * An EmotionalState is the user entered emotional state of a MoodEvent.
  * <p/>
@@ -19,11 +21,12 @@ package com.ualberta.cmput301w17t22.moodswing;
 public class EmotionalState {
 
     /**
-     * Constructor. Initializes the Emotional State's description.
+     * Constructor. Initializes the Emotional State's description and drawable id.
      * @param description
      */
-    public EmotionalState(String description){
+    public EmotionalState(String description, int drawableId){
         this.description = description;
+        this.drawableId = drawableId;
     }
 
     /**
@@ -33,10 +36,11 @@ public class EmotionalState {
     private String description;
 
     /**
-     * Android studio generated equals function.
-     * @param o
-     * @return
+     * Drawable id for emoticon relevant to the emotional state.
      */
+    private int drawableId;
+
+    /** Android Studio generated equals function. */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -44,17 +48,16 @@ public class EmotionalState {
 
         EmotionalState that = (EmotionalState) o;
 
-        if (!description.equals(that.description)) return false;
-        else return true;
-    }
+        if (drawableId != that.drawableId) return false;
+        return description.equals(that.description);
 
-    /**
-     * Android studio generated hashCode function.
-     * @return
-     */
+    }
+    /** Android Studio generated hashCode function. */
     @Override
     public int hashCode() {
-        return description.hashCode();
+        int result = description.hashCode();
+        result = 31 * result + drawableId;
+        return result;
     }
 
     // --- START: Getters and Setters
@@ -63,6 +66,9 @@ public class EmotionalState {
         return description;
     }
     public void setDescription(String description) { this.description = description; }
+
+    public int getDrawableId() { return drawableId; }
+    public void setDrawableId(int drawableId) { this.drawableId = drawableId; }
 
     public String toString() { return this.getDescription(); }
 

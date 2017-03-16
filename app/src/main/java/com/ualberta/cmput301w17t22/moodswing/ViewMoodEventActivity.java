@@ -2,6 +2,8 @@ package com.ualberta.cmput301w17t22.moodswing;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,10 +14,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.gson.Gson;
 
 /**
- * Activity is launched when app user chooses to view a mood event.
+ * Activity is launched when app user chooses to view a mood event. Launched from both
+ * MoodHistoryActivity to view a mood event in the mood history, and from MainActivity, to view
+ * a mood event in the mood feed.
  */
 public class ViewMoodEventActivity extends AppCompatActivity implements MSView<MoodSwing> {
 
@@ -46,11 +49,18 @@ public class ViewMoodEventActivity extends AppCompatActivity implements MSView<M
     /** The edit button that allows the user to edit the mood event if it is their own. */
     Button editMoodEventButton;
 
-    /** The Json that contains the mood event that is being viewed. */
-    String moodEventJson;
-
     /** The button that allows the user to delete the mood event if it is their own. */
     Button deleteMoodEventButton;
+
+    /** The mainParticipant (current user) of the app. */
+    Participant mainParticipant;
+
+    /** The mood event currently being viewed.*/
+    MoodEvent moodEvent;
+
+    /** Boolean we use to check onDestroy whether the mood event being viewed was chosen to be
+     * deleted. */
+    boolean delete;
 
     /** Called when the activity is first created.
      * In this, we get the position of the mood event, get the mood event itself, and initialize
@@ -61,14 +71,11 @@ public class ViewMoodEventActivity extends AppCompatActivity implements MSView<M
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_mood_event);
 
-        // Get the position of the MoodEvent in the MoodHistory from the ViewMoodHistoryActivity.
-        position = getIntent().getIntExtra("position", -2);
+        // Always initialize delete to equal false when viewing a mood event for the first time.
+        delete = false;
 
         // Initialize all the widgets, and add this View to the main Model class.
         initialize();
-
-        // Grab the mood event.
-        moodEventJson = getIntent().getStringExtra("moodEvent");
     }
 
     /**
@@ -79,14 +86,12 @@ public class ViewMoodEventActivity extends AppCompatActivity implements MSView<M
     protected void onStart(){
         super.onStart();
 
-        // Get the MoodEvent that is passed through from the ViewMoodHistoryActivity.
-        Gson gson = new Gson();
-        final MoodEvent moodEvent = gson.fromJson(moodEventJson, MoodEvent.class);
+        // Load the mood event based on the position stored in the main model class's
+        // moodHistoryPosition variable.
+        loadFromMoodSwing();
 
-        // Hide the button if they do not own the MoodEvent.
-        // Get the main participant.
-        Participant mainParticipant =
-                MoodSwingApplication.getMoodSwingController().getMainParticipant();
+        // Load the values from the mood event being viewed into the widgets of the activity.
+        loadFromMoodEvent();
 
         // Check if the user own's this mood event, and dissapear or appear the edit and
         // delete buttons appropriately.
@@ -98,18 +103,14 @@ public class ViewMoodEventActivity extends AppCompatActivity implements MSView<M
             deleteMoodEventButton.setVisibility(View.GONE);
         }
 
-        // Edit button press, starts the EditMoodEventActivity with the mood event currently
-        // being viewed.
+        // Edit button press, starts the EditMoodEventActivity.
         editMoodEventButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ViewMoodEventActivity.this, EditMoodEventActivity.class);
-                // Serialize the mood event, convert to json, and put extra on the intent.
-                intent.putExtra("moodEvent", (new Gson()).toJson(moodEvent));
-                intent.putExtra("position", position);
 
                 // Launch the ViewMoodEventActivity.
-                startActivityForResult(intent,1);
+                Intent intent = new Intent(ViewMoodEventActivity.this, EditMoodEventActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -124,27 +125,15 @@ public class ViewMoodEventActivity extends AppCompatActivity implements MSView<M
 
                 // Set the message and the title.
                 adb.setMessage("Are you sure you want to delete this Mood Event?")
-                        .setTitle("Delete Mood Event")
+                        .setTitle("Delete Mood Event?")
                         .setCancelable(true);
 
                 // Create the positive button for the alert dialog.
                 adb.setPositiveButton("Confirm", new DialogInterface.OnClickListener(){
                     @Override
                     public void onClick(DialogInterface dialog, int which){
-                        // Delete the mood event.
-
-                        // Get the MoodSwingController to delete the MoodEvent.
-                        MoodSwingController moodSwingController =
-                                MoodSwingApplication.getMoodSwingController();
-
-                        // Delete the mood event by passing in the position.
-                        moodSwingController.deleteMoodEventFromMainParticipantByPosition(position);
-
-                        // Inform the user that the mood event was deleted.
-                        Toast.makeText(ViewMoodEventActivity.this,
-                                "Mood Event deleted!",
-                                Toast.LENGTH_SHORT).show();
-
+                        // Set delete to true and close the activity.
+                        delete = true;
                         finish();
                     }
                 });
@@ -163,86 +152,6 @@ public class ViewMoodEventActivity extends AppCompatActivity implements MSView<M
                 dialog.show();
             }
         });
-
-        // Load values from MoodEvent into the text fields.
-        usernameTextView.setText(moodEvent.getOriginalPoster());
-        emotionalStateTextView.setText(moodEvent.getEmotionalState().getDescription());
-        socialSituationTextView.setText(moodEvent.getSocialSituation().getDescription());
-        triggerTextView.setText(moodEvent.getTrigger());
-
-        // Load values from MoodEvent into the images.
-        switch (moodEvent.getEmotionalState().getDescription()) {
-            case "Anger":
-                emotionalStateImageView.setImageDrawable(getDrawable(R.drawable.emoticon_anger));
-                break;
-
-            case "Confusion":
-                emotionalStateImageView.setImageDrawable(getDrawable(R.drawable.emoticon_confusion));
-                break;
-
-            case "Disgust":
-                emotionalStateImageView.setImageDrawable(getDrawable(R.drawable.emoticon_disgust));
-                break;
-
-            case "Fear":
-                emotionalStateImageView.setImageDrawable(getDrawable(R.drawable.emoticon_fear));
-                break;
-
-            case "Happiness":
-                emotionalStateImageView.setImageDrawable(getDrawable(R.drawable.emoticon_happiness));
-                break;
-
-            case "Sadness":
-                emotionalStateImageView.setImageDrawable(getDrawable(R.drawable.emoticon_sadness));
-                break;
-
-            case "Shame":
-                emotionalStateImageView.setImageDrawable(getDrawable(R.drawable.emoticon_shame));
-                break;
-
-            case "Surprise":
-                emotionalStateImageView.setImageDrawable(getDrawable(R.drawable.emoticon_surprise));
-                break;
-
-            default:
-                Log.i("ERROR", "Invalid Emotional State when setting image.");
-                throw new IllegalArgumentException(
-                        "Invalid Emotional State");
-        }
-
-        // Set the image for the appropriate social situation. Currently only have 3 implemented.
-        switch (moodEvent.getSocialSituation().getDescription()) {
-            case "Alone":
-                socialSituationTextView.setText("While alone");
-                socialSituationImageView.setImageDrawable(
-                        getDrawable(R.drawable.social_situation_alone));
-                break;
-
-            case "Crowd":
-                socialSituationTextView.setText("While in a crowd");
-                socialSituationImageView.setImageDrawable(
-                        getDrawable(R.drawable.social_situation_crowd));
-                socialSituationImageView.setVisibility(View.VISIBLE);
-                break;
-
-            case "Party":
-                socialSituationTextView.setText("While in a party");
-                socialSituationImageView.setImageDrawable(
-                        getDrawable(R.drawable.social_situation_party));
-                socialSituationImageView.setVisibility(View.VISIBLE);
-                break;
-
-            case "":
-                socialSituationTextView.setText("");
-                // No social situation was entered, so make the image invisible.
-                socialSituationImageView.setVisibility(View.INVISIBLE);
-                break;
-
-            default:
-                Log.i("ERROR", "Invalid Social Situation while displaying image.");
-                throw new IllegalArgumentException(
-                        "Invalid Social Situation while displaying image.");
-        }
     }
 
     /**
@@ -255,23 +164,71 @@ public class ViewMoodEventActivity extends AppCompatActivity implements MSView<M
         // Remove this View from the main Model class' list of Views.
         MoodSwingController moodSwingController = MoodSwingApplication.getMoodSwingController();
         moodSwingController.removeView(this);
+
+        // Delete the mood event if delete is true.
+        if (delete) {
+            // Delete the mood event.
+            moodSwingController.deleteMoodEventFromMainParticipantByPosition(position);
+            // Inform the user that the mood event was deleted.
+            Toast.makeText(ViewMoodEventActivity.this,
+                    "Mood Event deleted!",
+                    Toast.LENGTH_SHORT).show();
+        }
     }
 
     /**
-     * When returning from the EditMoodEventActivity, get the changed information and properly
-     * display it.
-     * @param requestCode
-     * @param resultCode
-     * @param data
+     * Function that loads the needed information for viewing the mood event from the
+     * main model class MoodSwing.
      */
-    public void onActivityResult(int requestCode, int resultCode, Intent data){
-        super.onActivityResult(requestCode,resultCode,data);
-        if(requestCode == 1){
-            if(resultCode == RESULT_OK){
-                // All we have to do is change the moodEventJson that we load from in the onStart.
-                moodEventJson = data.getStringExtra("moodEvent");
-            }
+    private void loadFromMoodSwing() {
+        // Get the moodSwingController from the application class.
+        MoodSwingController moodSwingController = MoodSwingApplication.getMoodSwingController();
+
+        // Get the main participant from the model.
+        mainParticipant = moodSwingController.getMainParticipant();
+
+        // If this activity was launched from the MoodHistoryActivity, get the position
+        // and mood event from there.
+
+        if (getIntent().getStringExtra("MoodListType").equals("MoodHistory")) {
+            position = moodSwingController.getMoodHistoryPosition();
+            moodEvent = mainParticipant.getMoodHistory().get(position);
+            Log.i("MoodSwing", String.valueOf(moodEvent.getEmotionalState().getDrawableId()));
+
+            // If this activity was launched from the MainActivity, get the position
+            // and mood event from the mood feed instead.
+        } else if (getIntent().getStringExtra("MoodListType").equals("MoodFeed")) {
+            position = moodSwingController.getMoodFeedPosition();
+            moodEvent = moodSwingController.getMoodFeed().get(position);
         }
+    }
+
+    /**
+     * Loads the values from the mood event being viewed into the widgets of the activity.
+     */
+    private void loadFromMoodEvent() {
+        Log.i("MoodSwing", String.valueOf(moodEvent.getEmotionalState().getDrawableId()));
+        // Load values from MoodEvent into the simple text fields.
+        usernameTextView.setText(moodEvent.getOriginalPoster());
+        triggerTextView.setText(moodEvent.getTrigger());
+
+        // Set the image and text for the appropriate Mood Event.
+        emotionalStateTextView.setText(moodEvent.getEmotionalState().getDescription());
+        emotionalStateImageView.setImageDrawable(getDrawable(
+                moodEvent.getEmotionalState().getDrawableId()));
+
+        // Set the image and text for the appropriate social situation.
+        socialSituationTextView.setText(moodEvent.getSocialSituation().getDescription());
+        socialSituationImageView.setImageDrawable(getDrawable(
+                moodEvent.getSocialSituation().getDrawableId()));
+
+        // Disable the inspection for the visibility resource type, so that we can pass in
+        // a variable for the visibility. Taken from
+        // http://stackoverflow.com/questions/26139115/not-able-to-dynamically-set-the-setvisibility-parameter
+        // on 3/13/2017.
+        //noinspection ResourceType
+        socialSituationImageView.setVisibility(moodEvent.getSocialSituation().getVisibility());
+
     }
 
     /**
@@ -309,7 +266,11 @@ public class ViewMoodEventActivity extends AppCompatActivity implements MSView<M
         moodSwingController.addView(this);
     }
 
+    /**
+     * Refreshes this view to display current information.
+     */
     public void update(MoodSwing moodSwing){
-
+        loadFromMoodSwing();
+        loadFromMoodEvent();
     }
 }

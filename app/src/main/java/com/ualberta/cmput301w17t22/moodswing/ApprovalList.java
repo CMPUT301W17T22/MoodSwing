@@ -21,6 +21,11 @@ public class ApprovalList {
 
     public ApprovalList(){}
 
+    /**
+     * Method takes in a participant that the mainParticipant wants to follow and has just sent
+     * a request to.
+     * @param otherParticipant
+     */
     public void newPendingParticipant(Participant otherParticipant){
         if(pending.contains(otherParticipant) || approved.contains(otherParticipant)){
             throw new InvalidParameterException();
@@ -28,6 +33,11 @@ public class ApprovalList {
         pending.add(otherParticipant);
     }
 
+    /**
+     * Checks to see if the participant is on the pending list of the ApprovalList and if they
+     * are remove them from it and add them to the approved list.
+     * @param otherParticipant
+     */
     public void approvePending(Participant otherParticipant){
         if(pending.contains(otherParticipant)){
             pending.remove(otherParticipant);

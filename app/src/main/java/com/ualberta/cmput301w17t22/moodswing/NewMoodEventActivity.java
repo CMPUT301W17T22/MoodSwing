@@ -141,11 +141,13 @@ public class NewMoodEventActivity extends AppCompatActivity implements MSView<Mo
                             MoodSwingApplication.getMoodSwingController();
 
                     // Add the mood event to the main participant.
-                    moodSwingController.addMoodEventToMainParticipant(moodDate,
+                    moodSwingController.addMoodEventToMainParticipant(new MoodEvent(
+                            moodSwingController.getMainParticipant().getUsername(),
+                            moodDate,
                             emotionalState,
                             trigger,
                             socialSituation,
-                            location);
+                            location));
 
                     // Toast to inform the user that the mood event was added.
                     Toast.makeText(NewMoodEventActivity.this,

@@ -14,23 +14,25 @@ import android.graphics.Color;
  * @deprecated
  */
 public class MoodOptions {
+    private EmotionalStateFactory emotionalStateFactory = new EmotionalStateFactory();
+    private SocialSituationFactory socialSituationFactory = new SocialSituationFactory();
     private EmotionalState emotionalStates[] = new EmotionalState[8];
-    private SocialSituation socialSituations[] = new SocialSituation[3];
+    private SocialSituation socialSituations[] = new SocialSituation[4];
 
     public MoodOptions(){   // array of emotional states
-        // location = emotional state (emotion, imagename, color)
-        emotionalStates[0] = new EmotionalState("anger");
-        emotionalStates[1] = new EmotionalState("confusion");
-        emotionalStates[2] = new EmotionalState("disgust");
-        emotionalStates[3] = new EmotionalState("fear");
-        emotionalStates[4] = new EmotionalState("happiness");
-        emotionalStates[5] = new EmotionalState("sadness");
-        emotionalStates[6] = new EmotionalState("shame");
-        emotionalStates[7] = new EmotionalState("surprise");
+        emotionalStates[0] = emotionalStateFactory.createEmotionalStateByName("Anger");
+        emotionalStates[1] = emotionalStateFactory.createEmotionalStateByName("Confusion");
+        emotionalStates[2] = emotionalStateFactory.createEmotionalStateByName("Disgust");
+        emotionalStates[3] = emotionalStateFactory.createEmotionalStateByName("Fear");
+        emotionalStates[4] = emotionalStateFactory.createEmotionalStateByName("Happiness");
+        emotionalStates[5] = emotionalStateFactory.createEmotionalStateByName("Sadness");
+        emotionalStates[6] = emotionalStateFactory.createEmotionalStateByName("Shame");
+        emotionalStates[7] = emotionalStateFactory.createEmotionalStateByName("Surprise");
 
-        socialSituations[0] = new SocialSituation("alone");
-        socialSituations[1] = new SocialSituation("crowd");
-        socialSituations[2] = new SocialSituation("party");
+        socialSituations[0] = socialSituationFactory.createSocialSituationByName("Alone");
+        socialSituations[1] = socialSituationFactory.createSocialSituationByName("With One Other Person");
+        socialSituations[2] = socialSituationFactory.createSocialSituationByName("With Two To Several People");
+        socialSituations[3] = socialSituationFactory.createSocialSituationByName("With A Crowd");
     }
 
     public EmotionalState getEmotionalState(int index){

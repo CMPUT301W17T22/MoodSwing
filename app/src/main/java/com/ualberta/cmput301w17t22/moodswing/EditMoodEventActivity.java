@@ -34,6 +34,9 @@ public class EditMoodEventActivity extends AppCompatActivity implements MSView<M
      *  in chronological order in the mood history. */
     private int position;
 
+    /** The mood event being edited as it first arrived to this Activity.*/
+    MoodEvent oldMoodEvent;
+
     /** The spinner that lets the participant select their emotional state for the mood event.*/
     Spinner emotionalStateSpinner;
 
@@ -61,32 +64,14 @@ public class EditMoodEventActivity extends AppCompatActivity implements MSView<M
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_mood_event);
 
-        // Receive the passed in mood event and convert it from Json.
-        String moodEventJson = getIntent().getStringExtra("moodEvent");
-        Gson gson = new Gson();
-        final MoodEvent oldMoodEvent = gson.fromJson(moodEventJson, MoodEvent.class);
-
-
-        // Receive the position of the mood event. -2 is the error code we use to detect
-        // if this step went wrong. Position will be set to -2 if there is not position to get.
-        position = getIntent().getIntExtra("position", -2);
-
         // Initialize all widgets.
         initialize();
 
-        // Set the emotional state spinner to have the correct selection by getting the index
-        // of the emotional state from the old mood event in the spinner.
-        emotionalStateSpinner.setSelection(getSpinnerIndexOfString(emotionalStateSpinner,
-                oldMoodEvent.getEmotionalState().getDescription()));
+        // Load the mood event information including position in mood history from mood swing.
+        loadFromMoodSwing();
 
-        // Set the social situation spinner to have the correct selection by getting the index
-        // of the social situation from the old mood event in the spinner.
-        socialSituationSpinner.setSelection(getSpinnerIndexOfString(socialSituationSpinner,
-                oldMoodEvent.getSocialSituation().getDescription()));
-
-        // Set the trigger appropriately.
-        triggerEditText.setText(oldMoodEvent.getTrigger());
-
+        // Load the mood event information into the widgets of the app.
+        loadFromOldMoodEvent();
 
         // Edit button push. Confirms editing, proceeds to change mood event.
         editButton.setOnClickListener(new View.OnClickListener() {
@@ -95,7 +80,7 @@ public class EditMoodEventActivity extends AppCompatActivity implements MSView<M
 
                 // Emotional state is required, check that it is entered.
                 // If it isn't, tell the user.
-                if (Objects.equals(String.valueOf(emotionalStateSpinner.getSelectedItem()),"")){
+                if (Objects.equals(String.valueOf(emotionalStateSpinner.getSelectedItem()), "")){
                     showEmotionalStateIsRequiredError();
                 }
 
@@ -104,7 +89,7 @@ public class EditMoodEventActivity extends AppCompatActivity implements MSView<M
                     showTriggerInvalidError();
                 }
 
-                // Post the Mood Event, and inform the user you are doing so.
+                // Post the updated Mood Event, and inform the user you are doing so.
                 else {
                     // Get EmotionalState.
                     EmotionalState emotionalState = getEmotionalState();
@@ -125,13 +110,14 @@ public class EditMoodEventActivity extends AppCompatActivity implements MSView<M
                     MoodSwingController moodSwingController =
                             MoodSwingApplication.getMoodSwingController();
 
-                    // Add the mood event to the main participant.
-                    moodSwingController.editMoodEventToMainParticipant(position,
+                    // Edit the mood event to the main participant.
+                    moodSwingController.editMoodEventToMainParticipant(position, new MoodEvent(
+                            oldMoodEvent.getOriginalPoster(),
                             oldMoodEvent.getDate(),
                             emotionalState,
                             trigger,
                             socialSituation,
-                            location);
+                            location));
 
                     // Toast to inform the user that the mood event was added.
                     Toast.makeText(EditMoodEventActivity.this,
@@ -141,20 +127,6 @@ public class EditMoodEventActivity extends AppCompatActivity implements MSView<M
                                     "\nSocial Situation: " + socialSituation.toString() +
                                     "\nTrigger: " + trigger,
                             Toast.LENGTH_SHORT).show();
-
-                    //Convert moodEvent back to Json to send back to ViewMoodEventActivity.
-                    MoodEvent editedMoodEvent = new MoodEvent(
-                            oldMoodEvent.getOriginalPoster(),
-                            oldMoodEvent.getDate(),
-                            emotionalState,
-                            trigger,
-                            socialSituation,
-                            location);
-
-                    //sending moodEvent back to ViewMoodEventActivity
-                    Intent intent = new Intent();
-                    intent.putExtra("moodEvent",(new Gson()).toJson(editedMoodEvent));
-                    setResult(RESULT_OK, intent);
 
                     finish();
                 }
@@ -172,6 +144,35 @@ public class EditMoodEventActivity extends AppCompatActivity implements MSView<M
         // Remove this View from the main Model class' list of Views.
         MoodSwingController moodSwingController = MoodSwingApplication.getMoodSwingController();
         moodSwingController.removeView(this);
+    }
+
+    /** Load the mood event and the position of the mood event in the main participant's mood
+     * history from MoodSwing.
+     */
+    private void loadFromMoodSwing() {
+        // Get the moodSwingController from the application class.
+        MoodSwingController moodSwingController = MoodSwingApplication.getMoodSwingController();
+
+        position = moodSwingController.getMoodHistoryPosition();
+        oldMoodEvent = moodSwingController.getMainParticipant().getMoodHistory().get(position);
+    }
+
+    /**
+     * Load the values from the loaded mood event into the widgets of the activity.
+     */
+    private void loadFromOldMoodEvent() {
+        // Set the emotional state spinner to have the correct selection by getting the index
+        // of the emotional state from the old mood event in the spinner.
+        emotionalStateSpinner.setSelection(getSpinnerIndexOfString(emotionalStateSpinner,
+                oldMoodEvent.getEmotionalState().getDescription()));
+
+        // Set the social situation spinner to have the correct selection by getting the index
+        // of the social situation from the old mood event in the spinner.
+        socialSituationSpinner.setSelection(getSpinnerIndexOfString(socialSituationSpinner,
+                oldMoodEvent.getSocialSituation().getDescription()));
+
+        // Set the trigger appropriately.
+        triggerEditText.setText(oldMoodEvent.getTrigger());
     }
 
     /**

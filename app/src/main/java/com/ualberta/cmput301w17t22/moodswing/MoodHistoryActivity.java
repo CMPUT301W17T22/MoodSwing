@@ -42,17 +42,17 @@ public class MoodHistoryActivity extends AppCompatActivity implements MSView<Moo
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                // Get the Mood Event from the mood history list.
-                MoodEvent moodEvent = moodHistory.get(position);
+                // Get the MoodSwingController.
+                MoodSwingController moodSwingController =
+                        MoodSwingApplication.getMoodSwingController();
 
-                Intent intent = new Intent(MoodHistoryActivity.this, ViewMoodEventActivity.class);
-
-                // Serialize the mood event, convert to json, and put extra on the intent.
-                intent.putExtra("moodEvent", (new Gson()).toJson(moodEvent));
-                // Pass the position of the mood event through also.
-                intent.putExtra("position", position);
+                // Report the position of the mood event being viewed to the main model.
+                moodSwingController.setMoodHistoryPosition(position);
 
                 // Launch the ViewMoodEventActivity.
+                Intent intent = new Intent(MoodHistoryActivity.this, ViewMoodEventActivity.class);
+                // Tell the view mood event activity we are coming from the mood history.
+                intent.putExtra("MoodListType", "MoodHistory");
                 startActivity(intent);
             }
         });
@@ -60,7 +60,9 @@ public class MoodHistoryActivity extends AppCompatActivity implements MSView<Moo
 
     protected void onStart() {
         super.onStart();
-        loadMainParticipant();
+
+        // Load information on the main participant from MoodSwing.
+        loadMoodSwing();
 
         // Initialize array adapter.
         moodHistoryAdapter = new ArrayAdapter<MoodEvent>(this, R.layout.mood_event, moodHistory);
@@ -79,15 +81,20 @@ public class MoodHistoryActivity extends AppCompatActivity implements MSView<Moo
         moodSwingController.removeView(this);
     }
 
-    public void loadMainParticipant() {
-        // Get the main Model and get the main participant.
+    /**
+     * Load the main participant from the main model class MoodSwing, and set the current moodList
+     * to be the main participant's moodhistory.
+     */
+    public void loadMoodSwing() {
+        // Get the main Model and get the main participant, and the main participant's mood history.
         MoodSwingController moodSwingController = MoodSwingApplication.getMoodSwingController();
+
         mainParticipant = moodSwingController.getMainParticipant();
         moodHistory = mainParticipant.getMoodHistory();
     }
 
     /**
-     * Initialize all widgets for this Activity.
+     * Initialize all widgets for this Activity, and add this view to the main model class.
      */
     public void initialize() {
         moodHistoryListView  = (ListView) findViewById(R.id.moodHistory);
@@ -102,6 +109,6 @@ public class MoodHistoryActivity extends AppCompatActivity implements MSView<Moo
      * @param moodSwing
      */
     public void update(MoodSwing moodSwing) {
-        loadMainParticipant();
+        loadMoodSwing();
     }
 }
