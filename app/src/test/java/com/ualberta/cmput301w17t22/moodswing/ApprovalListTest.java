@@ -29,6 +29,15 @@ public class ApprovalListTest {
 
     @Test
     public void approvePendingTest(){
+        Participant receivingParticipant = new Participant("Jimmy");
+        Participant sendingParticipant = new Participant("Johnny");
+
+        assertTrue(receivingParticipant.getPendingFollowers().isEmpty());
+        assertTrue(receivingParticipant.getPendingFollowing().isEmpty());
+
+        sendingParticipant.followParticipant(receivingParticipant);
+
+        
 
     }
 

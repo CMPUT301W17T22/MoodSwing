@@ -113,21 +113,25 @@ public class ParticipantTest {
         // initializing
         Participant participant1 = new Participant("participant1");
         Date date = new Date();
-        EmotionalState emotionalState = new EmotionalState("my emo state");
+        EmotionalState emotionalState = new EmotionalState("my emo state", R.drawable.emoticon_happiness);
         String trigger = "my trigger";
-        SocialSituation socialSituation = new SocialSituation("my soc state");
+        SocialSituation socialSituation = new SocialSituation("my soc state", R.drawable.social_situation_alone, View.VISIBLE);
         LatLng location = new LatLng(0,0);
 
         Date date2 = new Date();
-        EmotionalState emotionalState2 = new EmotionalState("my emo state2");
+        EmotionalState emotionalState2 = new EmotionalState("my emo state2", R.drawable.emoticon_anger);
         String trigger2 = "my trigger2";
-        SocialSituation socialSituation2 = new SocialSituation("my soc state2");
+        SocialSituation socialSituation2 = new SocialSituation("my soc state2", R.drawable.social_situation_with_a_crowd, View.VISIBLE);
         LatLng location2 = new LatLng(0,1);
 
+
+        MoodEvent moodEvent1 = new MoodEvent(participant1.getUsername(), date,emotionalState, trigger, socialSituation, location);
+        MoodEvent moodEvent2 = new MoodEvent(participant1.getUsername(),date2,emotionalState2,trigger2,socialSituation2,location2);
+
         assertTrue(participant1.getMoodHistory().isEmpty());    // moodhistory empty
-        // add mood events
-        participant1.addMoodEvent(date, emotionalState, trigger, socialSituation, location);
-        participant1.addMoodEvent(date2, emotionalState2, trigger2, socialSituation2, location2);
+        // add mood event
+        participant1.addMoodEvent(moodEvent1);
+        participant1.addMoodEvent(moodEvent2);
 
         // delete first mood event
         participant1.deleteMoodEventByPosition(0);
@@ -152,21 +156,26 @@ public class ParticipantTest {
         // initializing
         Participant participant1 = new Participant("participant1");
         Date date = new Date();
-        EmotionalState emotionalState = new EmotionalState("my emo state");
+        EmotionalState emotionalState = new EmotionalState("my emo state", R.drawable.emoticon_happiness);
         String trigger = "my trigger";
-        SocialSituation socialSituation = new SocialSituation("my soc state");
+        SocialSituation socialSituation = new SocialSituation("my soc state", R.drawable.social_situation_alone, View.VISIBLE);
         LatLng location = new LatLng(0,0);
 
         Date date2 = new Date();
-        EmotionalState emotionalState2 = new EmotionalState("my emo state2");
+        EmotionalState emotionalState2 = new EmotionalState("my emo state2", R.drawable.emoticon_anger);
         String trigger2 = "my trigger2";
-        SocialSituation socialSituation2 = new SocialSituation("my soc state2");
+        SocialSituation socialSituation2 = new SocialSituation("my soc state2", R.drawable.social_situation_with_a_crowd, View.VISIBLE);
         LatLng location2 = new LatLng(0,1);
+
+
+
+        MoodEvent moodEvent1 = new MoodEvent(participant1.getUsername(), date,emotionalState, trigger, socialSituation, location);
+        MoodEvent moodEvent2 = new MoodEvent(participant1.getUsername(),date2,emotionalState2,trigger2,socialSituation2,location2);
 
         assertTrue(participant1.getMoodHistory().isEmpty());    // moodhistory empty
         // add mood event
-        participant1.addMoodEvent(date, emotionalState, trigger, socialSituation, location);
-        participant1.addMoodEvent(date2, emotionalState2, trigger2, socialSituation2, location2);
+        participant1.addMoodEvent(moodEvent1);
+        participant1.addMoodEvent(moodEvent2);
 
         // getmostrecentmoodevent grabs mood event #2
         assertTrue(participant1.getMostRecentMoodEvent().getTrigger().equals(trigger2));
