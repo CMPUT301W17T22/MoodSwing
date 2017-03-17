@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -52,6 +53,8 @@ public class EditMoodEventActivity extends AppCompatActivity implements MSView<M
     /** Checkbox that indicates if the user wants to add their current location.*/
     CheckBox addCurrentLocationCheckBox;
 
+    /**Get the ImageView */
+    ImageView imageView;
     /**
      * Called when the EditMoodEventActivity is first created.
      * <p/>
@@ -106,6 +109,13 @@ public class EditMoodEventActivity extends AppCompatActivity implements MSView<M
                         location = getLocation();
                     }
 
+                    //Get image to attach to Mood Event,
+                    // if they didn't add an ImageView then it puts null
+//                    ImageView imageView = (ImageView) findViewById(R.id.imageView_NewMoodEventActivity);
+//                    if(imageView.getDrawable() == null) {
+//                        imageView = null;
+//                    }
+
                     // Get MoodSwingController.
                     MoodSwingController moodSwingController =
                             MoodSwingApplication.getMoodSwingController();
@@ -117,7 +127,8 @@ public class EditMoodEventActivity extends AppCompatActivity implements MSView<M
                             emotionalState,
                             trigger,
                             socialSituation,
-                            location));
+                            location,
+                            null));
 
                     // Toast to inform the user that the mood event was added.
                     Toast.makeText(EditMoodEventActivity.this,
@@ -173,6 +184,9 @@ public class EditMoodEventActivity extends AppCompatActivity implements MSView<M
 
         // Set the trigger appropriately.
         triggerEditText.setText(oldMoodEvent.getTrigger());
+
+        //Set the Image from the old mood event.
+        imageView = oldMoodEvent.getImage();
     }
 
     /**
@@ -290,6 +304,8 @@ public class EditMoodEventActivity extends AppCompatActivity implements MSView<M
                 (Button) findViewById(R.id.newMoodEventPostButton_EditMoodEventActivity);
         addCurrentLocationCheckBox =
                 (CheckBox) findViewById(R.id.addCurentLocationCheckBox_EditMoodEventActivity);
+        //imageView =
+          //      (ImageView) findViewById(R.id.imageImageView_EditMoodEventActivity);
 
         // Add this View to the main Model class.
         MoodSwingController moodSwingController = MoodSwingApplication.getMoodSwingController();

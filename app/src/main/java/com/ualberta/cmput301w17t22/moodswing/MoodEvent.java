@@ -1,6 +1,8 @@
 package com.ualberta.cmput301w17t22.moodswing;
 
+import android.media.Image;
 import android.util.Log;
+import android.widget.ImageView;
 
 import com.google.android.gms.maps.model.LatLng;
 
@@ -43,6 +45,10 @@ public class MoodEvent {
      * CAN NOT BE EDITED AFTER INITIALIZATION.*/
     private LatLng location;
 
+    /**The image that can be attached to the mood event. This can be added by taking a picture
+     * or selecting one from the phones gallery */
+    private ImageView image;
+
     /**
      * Mood event constructor. Sets the attributes of this MoodEvent.
      * @param posterUsername
@@ -57,13 +63,13 @@ public class MoodEvent {
                      EmotionalState emotionalState,
                      String trigger,
                      SocialSituation socialSituation,
-                     LatLng location) {
+                     LatLng location, ImageView importImage) {
         this.originalPoster = posterUsername;
         this.date = date;
         this.emotionalState = emotionalState;
         this.trigger = trigger;
         this.socialSituation = socialSituation;
-
+        this.image = importImage;
         // Check for null location, set to 0 if it is null.
         if (location == null) {
             this.location = new LatLng(0, 0);
@@ -91,6 +97,7 @@ public class MoodEvent {
             return false;
         if (socialSituation != null ? !socialSituation.equals(moodEvent.socialSituation) : moodEvent.socialSituation != null)
             return false;
+        if(image != null ? !image.equals(moodEvent.image) : moodEvent.image != null) return false;
         return location != null ? location.equals(moodEvent.location) : moodEvent.location == null;
     }
 
@@ -105,6 +112,7 @@ public class MoodEvent {
         result = 31 * result + date.hashCode();
         result = 31 * result + (trigger != null ? trigger.hashCode() : 0);
         result = 31 * result + (socialSituation != null ? socialSituation.hashCode() : 0);
+        result = 31 * result + (image != null ? image.hashCode() : 0);
         result = 31 * result + (location != null ? location.hashCode() : 0);
         return result;
     }
@@ -118,10 +126,12 @@ public class MoodEvent {
      */
     public void editMoodEvent(EmotionalState emotionalState,
                               String trigger,
-                              SocialSituation socialSituation) {
+                              SocialSituation socialSituation,
+                              ImageView image) {
         this.setEmotionalState(emotionalState);
         this.setTrigger(trigger);
         this.setSocialSituation(socialSituation);
+        this.setImage(image);
     }
 
     /**
@@ -154,7 +164,8 @@ public class MoodEvent {
                 this.getEmotionalState(),
                 this.getTrigger(),
                 this.getSocialSituation(),
-                this.getLocation());
+                this.getLocation(),
+                this.getImage());
     }
 
     /**
@@ -217,6 +228,10 @@ public class MoodEvent {
     public LatLng getLocation() {
         return location;
     }
+
+    public ImageView getImage() { return image; }
+
+    public void setImage(ImageView image) { this.image = image; }
 
     // --- END: Getters and Setters
 }

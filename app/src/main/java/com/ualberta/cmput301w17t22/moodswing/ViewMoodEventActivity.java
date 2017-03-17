@@ -229,6 +229,9 @@ public class ViewMoodEventActivity extends AppCompatActivity implements MSView<M
         //noinspection ResourceType
         socialSituationImageView.setVisibility(moodEvent.getSocialSituation().getVisibility());
 
+        //Set the image from the MoodEvent image into the view.
+        imageImageView.setVisibility(moodEvent.getImage().getVisibility());
+
     }
 
     /**

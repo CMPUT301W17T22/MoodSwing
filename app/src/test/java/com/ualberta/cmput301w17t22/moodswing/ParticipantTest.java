@@ -32,7 +32,7 @@ public class ParticipantTest {
         String trigger = "my trigger";
         SocialSituation socialSituation = new SocialSituation("my soc state", R.drawable.social_situation_alone, View.VISIBLE);
         LatLng location = new LatLng(0,0);
-        MoodEvent moodEvent = new MoodEvent(participant1.getUsername(),date,emotionalState,trigger,socialSituation,location);
+        MoodEvent moodEvent = new MoodEvent(participant1.getUsername(),date,emotionalState,trigger,socialSituation,location, null);
 
         // moodhistory empty
         assertTrue(participant1.getMoodHistory().isEmpty());
@@ -76,9 +76,9 @@ public class ParticipantTest {
         SocialSituation socialSituation3 = new SocialSituation("my soc state3", R.drawable.social_situation_with_one_other_person, View.VISIBLE);
         LatLng location3 = new LatLng(0,2);
 
-        MoodEvent moodEvent1 = new MoodEvent(participant1.getUsername(), date,emotionalState, trigger, socialSituation, location);
-        MoodEvent moodEvent2 = new MoodEvent(participant1.getUsername(),date2,emotionalState2,trigger2,socialSituation2,location2);
-        MoodEvent moodEvent3 = new MoodEvent(participant1.getUsername(),date3,emotionalState3,trigger3,socialSituation3,location3);
+        MoodEvent moodEvent1 = new MoodEvent(participant1.getUsername(), date,emotionalState, trigger, socialSituation, location, null);
+        MoodEvent moodEvent2 = new MoodEvent(participant1.getUsername(),date2,emotionalState2,trigger2,socialSituation2,location2, null);
+        MoodEvent moodEvent3 = new MoodEvent(participant1.getUsername(),date3,emotionalState3,trigger3,socialSituation3,location3, null);
 
         assertTrue(participant1.getMoodHistory().isEmpty());    // moodhistory empty
         // add mood event
@@ -125,8 +125,8 @@ public class ParticipantTest {
         LatLng location2 = new LatLng(0,1);
 
 
-        MoodEvent moodEvent1 = new MoodEvent(participant1.getUsername(), date,emotionalState, trigger, socialSituation, location);
-        MoodEvent moodEvent2 = new MoodEvent(participant1.getUsername(),date2,emotionalState2,trigger2,socialSituation2,location2);
+        MoodEvent moodEvent1 = new MoodEvent(participant1.getUsername(), date,emotionalState, trigger, socialSituation, location, null);
+        MoodEvent moodEvent2 = new MoodEvent(participant1.getUsername(),date2,emotionalState2,trigger2,socialSituation2,location2, null);
 
         assertTrue(participant1.getMoodHistory().isEmpty());    // moodhistory empty
         // add mood event
@@ -169,8 +169,8 @@ public class ParticipantTest {
 
 
 
-        MoodEvent moodEvent1 = new MoodEvent(participant1.getUsername(), date,emotionalState, trigger, socialSituation, location);
-        MoodEvent moodEvent2 = new MoodEvent(participant1.getUsername(),date2,emotionalState2,trigger2,socialSituation2,location2);
+        MoodEvent moodEvent1 = new MoodEvent(participant1.getUsername(), date,emotionalState, trigger, socialSituation, location, null);
+        MoodEvent moodEvent2 = new MoodEvent(participant1.getUsername(),date2,emotionalState2,trigger2,socialSituation2,location2, null);
 
         assertTrue(participant1.getMoodHistory().isEmpty());    // moodhistory empty
         // add mood event

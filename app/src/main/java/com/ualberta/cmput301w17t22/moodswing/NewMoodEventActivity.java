@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.media.Image;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
@@ -23,6 +24,8 @@ import com.google.android.gms.maps.model.LatLng;
 import java.util.Date;
 import java.util.Objects;
 import java.util.regex.Pattern;
+
+import static com.ualberta.cmput301w17t22.moodswing.R.id.image;
 
 /**
  * Activity that lets user add a new mood event to their mood history.
@@ -135,6 +138,14 @@ public class NewMoodEventActivity extends AppCompatActivity implements MSView<Mo
                     if (addCurrentLocationCheckBox.isChecked()) {
                         location = getLocation();
                     }
+                    //Get image to attach to Mood Event,
+                    // if they didn't add an ImageView then it puts null
+                    ImageView imageView = (ImageView) findViewById(R.id.imageView_NewMoodEventActivity);
+                    if(imageView.getDrawable() == null) {
+                        imageView = null;
+                    }
+
+
 
                     // Get MoodSwingController.
                     MoodSwingController moodSwingController =
@@ -147,7 +158,8 @@ public class NewMoodEventActivity extends AppCompatActivity implements MSView<Mo
                             emotionalState,
                             trigger,
                             socialSituation,
-                            location));
+                            location,
+                            imageView));
 
                     // Toast to inform the user that the mood event was added.
                     Toast.makeText(NewMoodEventActivity.this,
@@ -371,6 +383,12 @@ public class NewMoodEventActivity extends AppCompatActivity implements MSView<Mo
             return new LatLng(lat, lon);
         }
         return null;
+    }
+    /** Gets the image from the image view*/
+    public ImageView getImage() {
+        ImageView imageView = (ImageView) findViewById(R.id.imageView_NewMoodEventActivity);
+
+        return imageView;
     }
 
     /**

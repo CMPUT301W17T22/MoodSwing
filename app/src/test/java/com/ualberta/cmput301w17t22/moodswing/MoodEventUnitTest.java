@@ -38,7 +38,7 @@ public class MoodEventUnitTest {
                 emotionalState,
                 trigger,
                 socialSituation,
-                location);
+                location, null);
 
         // Test getters.
         assertEquals(moodEvent.getEmotionalState(), emotionalState);
@@ -72,27 +72,31 @@ public class MoodEventUnitTest {
                 emotionalState,
                 null,
                 null,
-                location);
+                location,
+                null);
 
         MoodEvent moodEvent2 = new MoodEvent(username,
                 date,
                 emotionalState,
                 null,
                 socialSituation,
-                location);
+                location,
+                null);
 
         MoodEvent moodEvent3 = new MoodEvent(username,
                 date,
                 emotionalState,
                 trigger,
                 null,
-                location);
+                location,
+                null);
 
         MoodEvent moodEvent4 = new MoodEvent(username,
                 date,
                 emotionalState,
                 trigger,
                 socialSituation,
+                null,
                 null);
 
         MoodEvent moodEvent5 = new MoodEvent(username,
@@ -100,6 +104,7 @@ public class MoodEventUnitTest {
                 emotionalState,
                 null,
                 socialSituation,
+                null,
                 null);
 
         MoodEvent moodEvent6 = new MoodEvent(username,
@@ -107,11 +112,13 @@ public class MoodEventUnitTest {
                 emotionalState,
                 trigger,
                 null,
+                null,
                 null);
 
         MoodEvent moodEvent7 = new MoodEvent(username,
                 date,
                 emotionalState,
+                null,
                 null,
                 null,
                 null);
@@ -187,9 +194,9 @@ public class MoodEventUnitTest {
 
         // Create the mood events.
         MoodEvent moodEvent1 =
-                new MoodEvent(username, date, emotionalState1, trigger1, socialSituation1, location);
+                new MoodEvent(username, date, emotionalState1, trigger1, socialSituation1, location,null);
         MoodEvent moodEvent2 =
-                new MoodEvent(username, date, emotionalState2, trigger2, socialSituation2, location);
+                new MoodEvent(username, date, emotionalState2, trigger2, socialSituation2, location, null);
 
         // Check they are initially different.
         assertNotEquals(moodEvent1, moodEvent2);
@@ -198,7 +205,7 @@ public class MoodEventUnitTest {
         assertNotEquals(moodEvent1.getEmotionalState(), moodEvent2.getEmotionalState());
 
         // Edit the first mood event.
-        moodEvent1.editMoodEvent(emotionalState2, trigger2, socialSituation2);
+        moodEvent1.editMoodEvent(emotionalState2, trigger2, socialSituation2, null);
 
         // Now they should be equal.
         assertEquals(moodEvent1, moodEvent2);
@@ -207,7 +214,7 @@ public class MoodEventUnitTest {
         assertEquals(moodEvent1.getEmotionalState(), moodEvent2.getEmotionalState());
 
         // Edit the second mood event.
-        moodEvent1.editMoodEvent(emotionalState1, null, null);
+        moodEvent1.editMoodEvent(emotionalState1, null, null, null);
 
         // Check they are different now.
         assertNotEquals(moodEvent1, moodEvent2);
