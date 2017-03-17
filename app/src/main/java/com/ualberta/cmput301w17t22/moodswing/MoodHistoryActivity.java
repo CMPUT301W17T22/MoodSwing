@@ -65,8 +65,15 @@ public class MoodHistoryActivity extends AppCompatActivity implements MSView<Moo
         loadMoodSwing();
 
         // Initialize array adapter.
+        //TODO: Change layout of items so we can display icons to indicate Social Siituation...
+        //TODO:... if image is present and if location is present. This will be copied for mood feed...
+        //TODO:...but instead the list content will be other peoples mood events.
+        //http://stackoverflow.com/questions/8554443/custom-list-item-to-listview-android
+        //accessed March 17th 2017
         moodHistoryAdapter = new ArrayAdapter<MoodEvent>(this, R.layout.mood_event, moodHistory);
+
         moodHistoryListView.setAdapter(moodHistoryAdapter);
+
     }
 
     /**
