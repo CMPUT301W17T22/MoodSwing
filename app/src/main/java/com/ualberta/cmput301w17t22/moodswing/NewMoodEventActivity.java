@@ -74,6 +74,7 @@ public class NewMoodEventActivity extends AppCompatActivity implements MSView<Mo
     /** Button that triggers the app to allow the user to capture a photo. */
     Button photoCaptureButton;
 
+    ImageView imageView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -138,12 +139,12 @@ public class NewMoodEventActivity extends AppCompatActivity implements MSView<Mo
                     if (addCurrentLocationCheckBox.isChecked()) {
                         location = getLocation();
                     }
-                    //Get image to attach to Mood Event,
-                    // if they didn't add an ImageView then it puts null
-                    ImageView imageView = (ImageView) findViewById(R.id.imageView_NewMoodEventActivity);
-                    if(imageView.getDrawable() == null) {
-                        imageView = null;
-                    }
+//                    //Get image to attach to Mood Event,
+//                    // if they didn't add an ImageView then it puts null
+//                    ImageView imageView = (ImageView) findViewById(R.id.imageView_NewMoodEventActivity);
+//                    if(imageView.getDrawable() == null) {
+//                        imageView = null;
+//                    }
 
 
 
@@ -159,7 +160,7 @@ public class NewMoodEventActivity extends AppCompatActivity implements MSView<Mo
                             trigger,
                             socialSituation,
                             location,
-                            imageView));
+                            null));
 
                     // Toast to inform the user that the mood event was added.
                     Toast.makeText(NewMoodEventActivity.this,
@@ -385,11 +386,11 @@ public class NewMoodEventActivity extends AppCompatActivity implements MSView<Mo
         return null;
     }
     /** Gets the image from the image view*/
-    public ImageView getImage() {
-        ImageView imageView = (ImageView) findViewById(R.id.imageView_NewMoodEventActivity);
-
-        return imageView;
-    }
+//    public ImageView getImage() {
+//        ImageView imageView = (ImageView) findViewById(R.id.imageView_NewMoodEventActivity);
+//
+//        return imageView;
+//    }
 
     /**
      * Initializes all the widgets for this activity and adds this View to the main Model class.
@@ -403,6 +404,8 @@ public class NewMoodEventActivity extends AppCompatActivity implements MSView<Mo
         photoCaptureButton = (Button) findViewById(R.id.photoCaptureButton);
         triggerEditText = (EditText)findViewById(R.id.triggerEditText);
         addCurrentLocationCheckBox = (CheckBox) findViewById(R.id.addCurentLocationCheckBox);
+        //imageView = (ImageView) findViewById(R.id.imageView_NewMoodEventActivity);
+
 
         // Add this View to the main Model class.
         MoodSwingController moodSwingController = MoodSwingApplication.getMoodSwingController();
