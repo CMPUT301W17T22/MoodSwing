@@ -1,5 +1,6 @@
 package com.ualberta.cmput301w17t22.moodswing;
 
+import android.graphics.Bitmap;
 import android.media.Image;
 import android.util.Log;
 import android.widget.ImageView;
@@ -47,7 +48,7 @@ public class MoodEvent {
 
     /**The image that can be attached to the mood event. This can be added by taking a picture
      * or selecting one from the phones gallery */
-    private ImageView image;
+    private Bitmap image;
 
     /**
      * Mood event constructor. Sets the attributes of this MoodEvent.
@@ -63,7 +64,7 @@ public class MoodEvent {
                      EmotionalState emotionalState,
                      String trigger,
                      SocialSituation socialSituation,
-                     LatLng location, ImageView importImage) {
+                     LatLng location, Bitmap importImage) {
         this.originalPoster = posterUsername;
         this.date = date;
         this.emotionalState = emotionalState;
@@ -97,7 +98,7 @@ public class MoodEvent {
             return false;
         if (socialSituation != null ? !socialSituation.equals(moodEvent.socialSituation) : moodEvent.socialSituation != null)
             return false;
-        if(image != null ? !image.equals(moodEvent.image) : moodEvent.image != null) return false;
+       // if(image != null ? !image.equals(moodEvent.image) : moodEvent.image != null) return false;
         return location != null ? location.equals(moodEvent.location) : moodEvent.location == null;
     }
 
@@ -112,7 +113,7 @@ public class MoodEvent {
         result = 31 * result + date.hashCode();
         result = 31 * result + (trigger != null ? trigger.hashCode() : 0);
         result = 31 * result + (socialSituation != null ? socialSituation.hashCode() : 0);
-        result = 31 * result + (image != null ? image.hashCode() : 0);
+        //result = 31 * result + (image != null ? image.hashCode() : 0);
         result = 31 * result + (location != null ? location.hashCode() : 0);
         return result;
     }
@@ -127,7 +128,7 @@ public class MoodEvent {
     public void editMoodEvent(EmotionalState emotionalState,
                               String trigger,
                               SocialSituation socialSituation,
-                              ImageView image) {
+                              Bitmap image) {
         this.setEmotionalState(emotionalState);
         this.setTrigger(trigger);
         this.setSocialSituation(socialSituation);
@@ -229,9 +230,9 @@ public class MoodEvent {
         return location;
     }
 
-    public ImageView getImage() { return image; }
+    public Bitmap getImage() { return image; }
 
-    public void setImage(ImageView image) { this.image = image; }
+    public void setImage(Bitmap image) { this.image = image; }
 
     // --- END: Getters and Setters
 }

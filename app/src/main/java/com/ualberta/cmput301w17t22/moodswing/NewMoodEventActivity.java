@@ -74,7 +74,7 @@ public class NewMoodEventActivity extends AppCompatActivity implements MSView<Mo
     /** Button that triggers the app to allow the user to capture a photo. */
     Button photoCaptureButton;
 
-    ImageView imageView;
+    Bitmap imageView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
