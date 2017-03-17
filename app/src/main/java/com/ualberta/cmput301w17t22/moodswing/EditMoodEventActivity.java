@@ -1,6 +1,7 @@
 package com.ualberta.cmput301w17t22.moodswing;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -54,7 +55,7 @@ public class EditMoodEventActivity extends AppCompatActivity implements MSView<M
     CheckBox addCurrentLocationCheckBox;
 
     /**Get the ImageView */
-    ImageView imageView;
+    Bitmap imageView;
     /**
      * Called when the EditMoodEventActivity is first created.
      * <p/>
