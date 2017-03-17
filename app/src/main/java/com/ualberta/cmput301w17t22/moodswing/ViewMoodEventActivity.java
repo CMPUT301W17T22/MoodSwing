@@ -62,6 +62,42 @@ public class ViewMoodEventActivity extends AppCompatActivity implements MSView<M
      * deleted. */
     boolean delete;
 
+    /**
+     * Initialize all the widgets for the Activity, and add this View to the main Model's list of
+     * Views.
+     */
+    public void initialize(){
+
+        // Initialize the text views.
+        usernameTextView =
+                (TextView) findViewById(R.id.usernameTextView_ViewMoodEventActivity);
+        emotionalStateTextView =
+                (TextView) findViewById(R.id.emotionalStateTextView_ViewMoodEventActivity);
+        socialSituationTextView =
+                (TextView) findViewById(R.id.socialSituationTextView_ViewMoodEventActivity);
+        triggerTextView =
+                (TextView) findViewById(R.id.triggerTextView_ViewMoodEventActivity);
+
+        // Initialize the image views.
+        emotionalStateImageView =
+                (ImageView) findViewById(R.id.emotionalStateImageView_ViewMoodEventActivity);
+        socialSituationImageView =
+                (ImageView) findViewById(R.id.socialSituationImageView_ViewMoodEventActivity);
+        imageImageView =
+                (ImageView) findViewById(R.id.imageImageView_ViewMoodEventActivity);
+        if(moodEvent.getImage() != null) {
+            imageImageView.setImageBitmap(moodEvent.getImage());
+        }
+        // Initialize the buttons.
+        editMoodEventButton =
+                (Button) findViewById(R.id.editMoodEventButton_ViewMoodEventActivity);
+        deleteMoodEventButton =
+                (Button) findViewById(R.id.deleteMoodEventButton_ViewMoodEventActivity);
+
+        // Add this View to the main Model class.
+        MoodSwingController moodSwingController = MoodSwingApplication.getMoodSwingController();
+        moodSwingController.addView(this);
+    }
     /** Called when the activity is first created.
      * In this, we get the position of the mood event, get the mood event itself, and initialize
      * all of the widgets.
@@ -234,41 +270,7 @@ public class ViewMoodEventActivity extends AppCompatActivity implements MSView<M
 
     }
 
-    /**
-     * Initialize all the widgets for the Activity, and add this View to the main Model's list of
-     * Views.
-     */
-    public void initialize(){
 
-        // Initialize the text views.
-        usernameTextView =
-                (TextView) findViewById(R.id.usernameTextView_ViewMoodEventActivity);
-        emotionalStateTextView =
-                (TextView) findViewById(R.id.emotionalStateTextView_ViewMoodEventActivity);
-        socialSituationTextView =
-                (TextView) findViewById(R.id.socialSituationTextView_ViewMoodEventActivity);
-        triggerTextView =
-                (TextView) findViewById(R.id.triggerTextView_ViewMoodEventActivity);
-
-        // Initialize the image views.
-        emotionalStateImageView =
-                (ImageView) findViewById(R.id.emotionalStateImageView_ViewMoodEventActivity);
-        socialSituationImageView =
-                (ImageView) findViewById(R.id.socialSituationImageView_ViewMoodEventActivity);
-        imageImageView =
-                (ImageView) findViewById(R.id.imageImageView_ViewMoodEventActivity);
-        imageImageView.setImageBitmap(moodEvent.getImage());
-
-        // Initialize the buttons.
-        editMoodEventButton =
-                (Button) findViewById(R.id.editMoodEventButton_ViewMoodEventActivity);
-        deleteMoodEventButton =
-                (Button) findViewById(R.id.deleteMoodEventButton_ViewMoodEventActivity);
-
-        // Add this View to the main Model class.
-        MoodSwingController moodSwingController = MoodSwingApplication.getMoodSwingController();
-        moodSwingController.addView(this);
-    }
 
     /**
      * Refreshes this view to display current information.

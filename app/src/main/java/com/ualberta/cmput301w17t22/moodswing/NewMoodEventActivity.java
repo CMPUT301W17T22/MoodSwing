@@ -74,7 +74,7 @@ public class NewMoodEventActivity extends AppCompatActivity implements MSView<Mo
     /** Button that triggers the app to allow the user to capture a photo. */
     Button photoCaptureButton;
 
-    Bitmap image;
+    Bitmap image =null;
 
     /**
      * Initializes all the widgets for this activity and adds this View to the main Model class.
@@ -159,13 +159,6 @@ public class NewMoodEventActivity extends AppCompatActivity implements MSView<Mo
                     if (addCurrentLocationCheckBox.isChecked()) {
                         location = getLocation();
                     }
-//                    //Get image to attach to Mood Event,
-//                    // if they didn't add an ImageView then it puts null
-//                    ImageView imageView = (ImageView) findViewById(R.id.imageView_NewMoodEventActivity);
-//                    if(imageView.getDrawable() == null) {
-//                        imageView = null;
-//                    }
-
 
 
                     // Get MoodSwingController.
