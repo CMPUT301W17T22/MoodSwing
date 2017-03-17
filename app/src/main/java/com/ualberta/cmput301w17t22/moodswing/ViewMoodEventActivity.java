@@ -257,6 +257,7 @@ public class ViewMoodEventActivity extends AppCompatActivity implements MSView<M
                 (ImageView) findViewById(R.id.socialSituationImageView_ViewMoodEventActivity);
         imageImageView =
                 (ImageView) findViewById(R.id.imageImageView_ViewMoodEventActivity);
+        imageImageView.setImageBitmap(moodEvent.getImage());
 
         // Initialize the buttons.
         editMoodEventButton =
