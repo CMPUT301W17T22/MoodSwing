@@ -30,7 +30,7 @@ public final class R {
         public static final int design_appbar_state_list_animator=0x7f060000;
     }
     public static final class array {
-        public static final int mood_array=0x7f0d0000;
+        public static final int emotionalState_array=0x7f0d0000;
         public static final int socialSituation_array=0x7f0d0001;
     }
     public static final class attr {
@@ -3351,13 +3351,13 @@ containing a value of this type.
         public static final int abc_textfield_search_material=0x7f020051;
         public static final int abc_vector_test=0x7f020052;
         public static final int avd_hide_password=0x7f020053;
-        public static final int avd_hide_password_1=0x7f020089;
-        public static final int avd_hide_password_2=0x7f02008a;
-        public static final int avd_hide_password_3=0x7f02008b;
+        public static final int avd_hide_password_1=0x7f02008a;
+        public static final int avd_hide_password_2=0x7f02008b;
+        public static final int avd_hide_password_3=0x7f02008c;
         public static final int avd_show_password=0x7f020054;
-        public static final int avd_show_password_1=0x7f02008c;
-        public static final int avd_show_password_2=0x7f02008d;
-        public static final int avd_show_password_3=0x7f02008e;
+        public static final int avd_show_password_1=0x7f02008d;
+        public static final int avd_show_password_2=0x7f02008e;
+        public static final int avd_show_password_3=0x7f02008f;
         public static final int common_full_open_on_phone=0x7f020055;
         public static final int common_google_signin_btn_icon_dark=0x7f020056;
         public static final int common_google_signin_btn_icon_dark_focused=0x7f020057;
@@ -3403,13 +3403,14 @@ containing a value of this type.
         public static final int notification_bg_normal=0x7f02007f;
         public static final int notification_bg_normal_pressed=0x7f020080;
         public static final int notification_icon_background=0x7f020081;
-        public static final int notification_template_icon_bg=0x7f020087;
-        public static final int notification_template_icon_low_bg=0x7f020088;
+        public static final int notification_template_icon_bg=0x7f020088;
+        public static final int notification_template_icon_low_bg=0x7f020089;
         public static final int notification_tile_bg=0x7f020082;
         public static final int notify_panel_notification_icon_bg=0x7f020083;
         public static final int social_situation_alone=0x7f020084;
-        public static final int social_situation_crowd=0x7f020085;
-        public static final int social_situation_party=0x7f020086;
+        public static final int social_situation_with_a_crowd=0x7f020085;
+        public static final int social_situation_with_one_other_person=0x7f020086;
+        public static final int social_situation_with_two_to_several_people=0x7f020087;
     }
     public static final class id {
         public static final int action0=0x7f0e00d0;
@@ -3812,27 +3813,28 @@ containing a value of this type.
         public static final int main_welcome_text=0x7f070042;
         public static final int mood_history=0x7f070043;
         public static final int mood_prompt=0x7f070044;
-        public static final int moodswing=0x7f070045;
-        public static final int new_mood_event=0x7f070046;
-        public static final int password_toggle_content_description=0x7f070047;
-        public static final int path_password_eye=0x7f070048;
-        public static final int path_password_eye_mask_strike_through=0x7f070049;
-        public static final int path_password_eye_mask_visible=0x7f07004a;
-        public static final int path_password_strike_through=0x7f07004b;
-        public static final int photo=0x7f07004c;
-        public static final int photo_max_message=0x7f07004d;
-        public static final int post=0x7f07004e;
+        public static final int moodhistory=0x7f070045;
+        public static final int moodswing=0x7f070046;
+        public static final int new_mood_event=0x7f070047;
+        public static final int password_toggle_content_description=0x7f070048;
+        public static final int path_password_eye=0x7f070049;
+        public static final int path_password_eye_mask_strike_through=0x7f07004a;
+        public static final int path_password_eye_mask_visible=0x7f07004b;
+        public static final int path_password_strike_through=0x7f07004c;
+        public static final int photo=0x7f07004d;
+        public static final int photo_max_message=0x7f07004e;
+        public static final int post=0x7f07004f;
         public static final int search_menu_title=0x7f070024;
-        public static final int signup=0x7f07004f;
-        public static final int socialSituation_prompt=0x7f070050;
-        public static final int socialsituation=0x7f070051;
+        public static final int signup=0x7f070050;
+        public static final int socialSituation_prompt=0x7f070051;
+        public static final int socialsituation=0x7f070052;
         public static final int status_bar_notification_info_overflow=0x7f070025;
-        public static final int title_activity_main_follow=0x7f070052;
-        public static final int title_activity_maps=0x7f070053;
-        public static final int trigger_invalid=0x7f070054;
-        public static final int trigger_max_message=0x7f070055;
-        public static final int triggers=0x7f070056;
-        public static final int upload=0x7f070057;
+        public static final int title_activity_main_follow=0x7f070053;
+        public static final int title_activity_maps=0x7f070054;
+        public static final int trigger_invalid=0x7f070055;
+        public static final int trigger_max_message=0x7f070056;
+        public static final int triggers=0x7f070057;
+        public static final int upload=0x7f070058;
     }
     public static final class style {
         public static final int AlertDialog_AppCompat=0x7f0900a1;
