@@ -5,11 +5,10 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
-import android.media.Image;
 import android.net.Uri;
+import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -19,13 +18,12 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.maps.model.LatLng;
 
 import java.util.Date;
 import java.util.Objects;
 import java.util.regex.Pattern;
-
-import static com.ualberta.cmput301w17t22.moodswing.R.id.image;
 
 /**
  * Activity that lets user add a new mood event to their mood history.
@@ -95,6 +93,24 @@ public class NewMoodEventActivity extends AppCompatActivity implements MSView<Mo
         moodSwingController.addView(this);
     }
 
+    /**
+     * for GPS
+     * https://developer.android.com/training/location/retrieve-current.html
+     */
+    protected void onStart() {
+        mGoogleApiClient.connect();
+        super.onStart();
+    }
+
+    /**
+     * for GPS
+     * https://developer.android.com/training/location/retrieve-current.html
+     */
+    protected void onStop() {
+        mGoogleApiClient.disconnect();
+        super.onStop();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -102,6 +118,23 @@ public class NewMoodEventActivity extends AppCompatActivity implements MSView<Mo
 
         // Initialize all widgets for this activity and add this View to the main Model class.
         initialize();
+
+        /**
+         * https://developers.google.com/android/guides/api-client#Starting
+         */
+        GoogleApiClient mGoogleApiClient = new GoogleApiClient.Builder(this)
+                .enableAutoManage(this /* FragmentActivity */,
+                        this /* OnConnectionFailedListener */)
+                .build();
+
+        // Create an instance of GoogleAPIClient.
+        if (mGoogleApiClient == null) {
+            mGoogleApiClient = new GoogleApiClient.Builder(this)
+                    .addConnectionCallbacks(this)
+                    .addOnConnectionFailedListener(this)
+                    .addApi(LocationServices.API)
+                    .build();
+        }
 
         // Use current date/time for MoodEvent
         final Date moodDate = new Date();
