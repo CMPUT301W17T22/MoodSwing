@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:2:1-72:12
+ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:2:1-73:12
 	package
 		ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:3:5-52
 		INJECTED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml
@@ -17,31 +17,35 @@ uses-permission#android.permission.ACCESS_FINE_LOCATION
 ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:10:5-79
 	android:name
 		ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:10:22-76
+uses-permission#android.permission.ACCESS_COARSE_LOCATION
+ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:11:5-80
+	android:name
+		ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:11:22-78
 uses-permission#android.permission.INTERNET
-ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:11:5-67
+ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:12:5-67
 MERGED from [com.google.android.gms:play-services-maps:10.2.0] C:\Users\fred\.android\build-cache\3826c767f9b7343dc9740ae3438ed0b7d8c0bb0a\output\AndroidManifest.xml:20:5-66
 	android:name
-		ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:11:22-64
+		ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:12:22-64
 uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
-ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:12:5-81
+ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:13:5-81
 	android:name
-		ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:12:22-78
+		ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:13:22-78
 uses-permission#android.permission.CAMERA
-ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:13:5-64
+ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:14:5-64
 	android:name
-		ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:13:22-62
+		ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:14:22-62
 uses-feature#android.hardware.camera2.full
-ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:14:5-65
+ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:15:5-65
 	android:name
-		ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:14:19-63
+		ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:15:19-63
 uses-feature#android.hardware.camera
-ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:15:5-16:34
+ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:16:5-17:34
 	android:required
-		ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:16:9-32
+		ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:17:9-32
 	android:name
-		ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:15:19-57
+		ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:16:19-57
 application
-ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:18:5-70:19
+ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:19:5-71:19
 MERGED from [com.google.android.gms:play-services-maps:10.2.0] C:\Users\fred\.android\build-cache\3826c767f9b7343dc9740ae3438ed0b7d8c0bb0a\output\AndroidManifest.xml:24:5-19
 MERGED from [com.google.android.gms:play-services-base:10.2.0] C:\Users\fred\.android\build-cache\85f91bee56933bded0e8bb241e8d55d94a91fdb7\output\AndroidManifest.xml:18:5-20:19
 MERGED from [com.google.android.gms:play-services-tasks:10.2.0] C:\Users\fred\.android\build-cache\fefb6019dd3d0c4b345ce2f92e340d2a9bf612c8\output\AndroidManifest.xml:4:5-19
@@ -59,83 +63,83 @@ MERGED from [com.android.support:support-core-utils:25.2.0] C:\Users\fred\.andro
 MERGED from [com.android.support:support-core-ui:25.2.0] C:\Users\fred\.android\build-cache\c63249ea601649f5deb22a2da3fb1d34ad5efd00\output\AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:support-compat:25.2.0] C:\Users\fred\.android\build-cache\7dc6f7e41ce9ad96535833fff8a85ed4bbfa5cf0\output\AndroidManifest.xml:25:5-20
 	android:label
-		ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:21:9-34
+		ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:22:9-34
 	android:supportsRtl
-		ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:22:9-35
+		ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:23:9-35
 	android:allowBackup
-		ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:19:9-35
+		ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:20:9-35
 	android:icon
-		ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:20:9-43
+		ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:21:9-43
 	android:theme
-		ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:23:9-40
+		ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:24:9-40
 activity#com.ualberta.cmput301w17t22.moodswing.LoginActivity
-ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:24:9-30:20
+ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:25:9-31:20
 	android:name
-		ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:24:19-48
+		ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:25:19-48
 intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
-ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:25:13-29:29
+ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:26:13-30:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:26:17-69
+ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:27:17-69
 	android:name
-		ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:26:25-66
+		ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:27:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:28:17-77
+ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:29:17-77
 	android:name
-		ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:28:27-74
+		ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:29:27-74
 activity#com.ualberta.cmput301w17t22.moodswing.MainActivity
-ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:31:9-37:20
+ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:32:9-38:20
 	android:label
-		ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:33:13-38
+		ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:34:13-38
 	android:name
-		ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:32:13-41
+		ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:33:13-41
 intent-filter#android.intent.action.VIEW
-ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:34:13-36:29
+ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:35:13-37:29
 action#android.intent.action.VIEW
-ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:35:17-69
+ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:36:17-69
 	android:name
-		ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:35:25-66
+		ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:36:25-66
 meta-data#com.google.android.geo.API_KEY
-ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:47:9-49:55
+ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:48:9-50:55
 	android:value
-		ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:49:13-52
+		ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:50:13-52
 	android:name
-		ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:48:13-58
+		ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:49:13-58
 activity#com.ualberta.cmput301w17t22.moodswing.MapsActivity
-ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:51:9-54:59
+ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:52:9-55:59
 	android:label
-		ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:54:13-56
+		ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:55:13-56
 	android:exported
-		ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:53:13-36
+		ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:54:13-36
 	android:name
-		ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:52:13-41
+		ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:53:13-41
 activity#com.ualberta.cmput301w17t22.moodswing.NewMoodEventActivity
-ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:55:9-58
+ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:56:9-58
 	android:name
-		ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:55:19-55
+		ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:56:19-55
 activity#com.ualberta.cmput301w17t22.moodswing.MoodHistoryActivity
-ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:56:9-57
+ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:57:9-57
 	android:name
-		ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:56:19-54
+		ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:57:19-54
 activity#com.ualberta.cmput301w17t22.moodswing.ViewMoodEventActivity
-ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:63:9-59
-	android:name
-		ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:63:19-56
-activity#com.ualberta.cmput301w17t22.moodswing.EditMoodEventActivity
 ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:64:9-59
 	android:name
 		ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:64:19-56
+activity#com.ualberta.cmput301w17t22.moodswing.EditMoodEventActivity
+ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:65:9-59
+	android:name
+		ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:65:19-56
 activity#com.ualberta.cmput301w17t22.moodswing.FollowActivity
-ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:65:9-52
+ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:66:9-52
 	android:name
-		ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:65:19-49
+		ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:66:19-49
 activity#com.ualberta.cmput301w17t22.moodswing.MainFollowActivity
-ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:66:9-69:56
+ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:67:9-70:56
 	android:label
-		ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:68:13-63
+		ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:69:13-63
 	android:theme
-		ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:69:13-44
+		ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:70:13-44
 	android:name
-		ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:67:13-47
+		ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:68:13-47
 uses-sdk
 INJECTED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.google.android.gms:play-services-maps:10.2.0] C:\Users\fred\.android\build-cache\3826c767f9b7343dc9740ae3438ed0b7d8c0bb0a\output\AndroidManifest.xml:23:5-43
