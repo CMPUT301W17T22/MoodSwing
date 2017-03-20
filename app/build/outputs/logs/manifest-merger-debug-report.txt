@@ -47,6 +47,7 @@ ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:16:5-17:34
 application
 ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:19:5-71:19
 MERGED from [com.google.android.gms:play-services-maps:10.2.0] C:\Users\fred\.android\build-cache\3826c767f9b7343dc9740ae3438ed0b7d8c0bb0a\output\AndroidManifest.xml:24:5-19
+MERGED from [com.google.android.gms:play-services-location:10.2.0] C:\Users\fred\.android\build-cache\3cf445578caf3e0c0c16fd6a393051c5258f1c33\output\AndroidManifest.xml:4:5-19
 MERGED from [com.google.android.gms:play-services-base:10.2.0] C:\Users\fred\.android\build-cache\85f91bee56933bded0e8bb241e8d55d94a91fdb7\output\AndroidManifest.xml:18:5-20:19
 MERGED from [com.google.android.gms:play-services-tasks:10.2.0] C:\Users\fred\.android\build-cache\fefb6019dd3d0c4b345ce2f92e340d2a9bf612c8\output\AndroidManifest.xml:4:5-19
 MERGED from [com.google.android.gms:play-services-basement:10.2.0] C:\Users\fred\.android\build-cache\2d4c3d320d50a701fbc2b74d928539ff1e4cdc1b\output\AndroidManifest.xml:19:5-21:19
@@ -143,6 +144,7 @@ ADDED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml:67:9-70:56
 uses-sdk
 INJECTED from C:\Users\fred\MoodSwing\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.google.android.gms:play-services-maps:10.2.0] C:\Users\fred\.android\build-cache\3826c767f9b7343dc9740ae3438ed0b7d8c0bb0a\output\AndroidManifest.xml:23:5-43
+MERGED from [com.google.android.gms:play-services-location:10.2.0] C:\Users\fred\.android\build-cache\3cf445578caf3e0c0c16fd6a393051c5258f1c33\output\AndroidManifest.xml:3:5-43
 MERGED from [com.google.android.gms:play-services-base:10.2.0] C:\Users\fred\.android\build-cache\85f91bee56933bded0e8bb241e8d55d94a91fdb7\output\AndroidManifest.xml:17:5-43
 MERGED from [com.google.android.gms:play-services-tasks:10.2.0] C:\Users\fred\.android\build-cache\fefb6019dd3d0c4b345ce2f92e340d2a9bf612c8\output\AndroidManifest.xml:3:5-43
 MERGED from [com.google.android.gms:play-services-basement:10.2.0] C:\Users\fred\.android\build-cache\2d4c3d320d50a701fbc2b74d928539ff1e4cdc1b\output\AndroidManifest.xml:17:5-43

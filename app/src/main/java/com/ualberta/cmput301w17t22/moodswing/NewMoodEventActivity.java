@@ -18,8 +18,13 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.location.LocationListener;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationServices;
 
 import java.util.Date;
 import java.util.Objects;
@@ -40,9 +45,16 @@ import java.util.regex.Pattern;
  * More details of used pages/code are in appropriate sections below.
  */
 
-public class NewMoodEventActivity extends AppCompatActivity implements MSView<MoodSwing> {
+public class NewMoodEventActivity extends AppCompatActivity implements MSView<MoodSwing>, LocationListener {
     // for camera
     //static final int REQUEST_IMAGE_CAPTURE = 1;
+
+    /**
+     * location stuff
+     * https://examples.javacodegeeks.com/android/android-location-api-using-google-play-services-example/
+     */
+    private GoogleApiClient mGoogleApiClient;
+    private LocationRequest mLocationRequest;
 
     /** Used in photo selection. */
     private static int RESULT_LOAD_IMG = 1;
@@ -93,24 +105,6 @@ public class NewMoodEventActivity extends AppCompatActivity implements MSView<Mo
         moodSwingController.addView(this);
     }
 
-    /**
-     * for GPS
-     * https://developer.android.com/training/location/retrieve-current.html
-     */
-    protected void onStart() {
-        mGoogleApiClient.connect();
-        super.onStart();
-    }
-
-    /**
-     * for GPS
-     * https://developer.android.com/training/location/retrieve-current.html
-     */
-    protected void onStop() {
-        mGoogleApiClient.disconnect();
-        super.onStop();
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -118,23 +112,6 @@ public class NewMoodEventActivity extends AppCompatActivity implements MSView<Mo
 
         // Initialize all widgets for this activity and add this View to the main Model class.
         initialize();
-
-        /**
-         * https://developers.google.com/android/guides/api-client#Starting
-         */
-        GoogleApiClient mGoogleApiClient = new GoogleApiClient.Builder(this)
-                .enableAutoManage(this /* FragmentActivity */,
-                        this /* OnConnectionFailedListener */)
-                .build();
-
-        // Create an instance of GoogleAPIClient.
-        if (mGoogleApiClient == null) {
-            mGoogleApiClient = new GoogleApiClient.Builder(this)
-                    .addConnectionCallbacks(this)
-                    .addOnConnectionFailedListener(this)
-                    .addApi(LocationServices.API)
-                    .build();
-        }
 
         // Use current date/time for MoodEvent
         final Date moodDate = new Date();
