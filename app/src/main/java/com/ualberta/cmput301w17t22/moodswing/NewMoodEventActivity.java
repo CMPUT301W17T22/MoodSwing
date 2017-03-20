@@ -21,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
@@ -62,6 +63,7 @@ public class NewMoodEventActivity extends AppCompatActivity implements MSView<Mo
     /** Used in photo selection. */
     private static int RESULT_LOAD_IMG = 1;
     private static int REQUEST_IMAGE_CAPTURE = 2;
+    private final static int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
 
     /** Used in photo selection. */
     String imgDecodableString;
@@ -120,10 +122,10 @@ public class NewMoodEventActivity extends AppCompatActivity implements MSView<Mo
          * location stuff
          * https://examples.javacodegeeks.com/android/android-location-api-using-google-play-services-example/
          */
-        /*if(checkPlayServices()){
+        if(checkPlayServices()){
             startFusedLocation();
             registerRequestUpdate(this);
-        }*/
+        }
         startFusedLocation();
         registerRequestUpdate(this);
 
@@ -325,25 +327,26 @@ public class NewMoodEventActivity extends AppCompatActivity implements MSView<Mo
         super.onStop();
     }
 
-    // https://examples.javacodegeeks.com/android/android-location-api-using-google-play-services-example/
-    /*private boolean checkPlayServices(){
-        int resultCode = GooglePlayServicesUtil.isGooglePlayServicesAvailable(this);
-        googlePlayServicesUtil.isGooglePlayServicesAvailable(this);
-        if (resultCode != ConnectionResult.SUCCESS) {
-            if (GooglePlayServicesUtil.isUserRecoverableError(resultCode)) {
-                Toast.makeText(getApplicationContext(),
-                        "This device is supported. Please download google play services", Toast.LENGTH_LONG)
-                        .show();
-            } else {
-                Toast.makeText(getApplicationContext(),
-                        "This device is not supported.", Toast.LENGTH_LONG)
-                        .show();
-                finish();
+    /**
+     * http://stackoverflow.com/questions/31016722/googleplayservicesutil-vs-googleapiavailability
+     * James and Alexander Farber
+     * @return
+     */
+    private boolean checkPlayServices() {
+        GoogleApiAvailability googleAPI = GoogleApiAvailability.getInstance();
+        int result = googleAPI.isGooglePlayServicesAvailable(this);
+        if(result != ConnectionResult.SUCCESS) {
+            //TODO: make this a toast notification
+            //see https://examples.javacodegeeks.com/android/android-location-api-using-google-play-services-example/
+            if(googleAPI.isUserResolvableError(result)) {
+                googleAPI.getErrorDialog(this, result, PLAY_SERVICES_RESOLUTION_REQUEST).show();
             }
+
             return false;
         }
+
         return true;
-    }*/
+    }
 
 
 

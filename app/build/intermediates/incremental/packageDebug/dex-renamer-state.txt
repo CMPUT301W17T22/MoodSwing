@@ -1,4 +1,4 @@
-#Sun Mar 19 18:15:52 MDT 2017
+#Sun Mar 19 19:50:58 MDT 2017
 base.0=C\:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_23286c68afd7258d527f93eb8725a789c92d83cd
 renamed.1=classes2.dex
 renamed.0=classes.dex

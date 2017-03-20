@@ -14,7 +14,6 @@
         location permissions for the 'MyLocation' functionality.
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
@@ -78,7 +77,6 @@
 
         <activity android:name="com.ualberta.cmput301w17t22.moodswing.ViewMoodEventActivity" />
         <activity android:name="com.ualberta.cmput301w17t22.moodswing.EditMoodEventActivity" />
-        <activity android:name="com.ualberta.cmput301w17t22.moodswing.FollowActivity" />
         <activity
             android:name="com.ualberta.cmput301w17t22.moodswing.MainFollowActivity"
             android:label="@string/title_activity_main_follow"

@@ -8,7 +8,6 @@
         location permissions for the 'MyLocation' functionality.
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA"/>
@@ -63,7 +62,6 @@
 
         <activity android:name=".ViewMoodEventActivity" />
         <activity android:name=".EditMoodEventActivity" />
-        <activity android:name=".FollowActivity" />
         <activity
             android:name=".MainFollowActivity"
             android:label="@string/title_activity_main_follow"
