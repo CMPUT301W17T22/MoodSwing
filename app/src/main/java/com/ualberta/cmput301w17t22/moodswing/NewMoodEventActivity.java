@@ -102,7 +102,7 @@ public class NewMoodEventActivity extends AppCompatActivity implements MSView<Mo
         photoUploadButton = (Button) findViewById(R.id.photoUploadButton);
         photoCaptureButton = (Button) findViewById(R.id.photoCaptureButton);
         triggerEditText = (EditText)findViewById(R.id.triggerEditText);
-        addCurrentLocationCheckBox = (CheckBox) findViewById(R.id.addCurentLocationCheckBox);
+        addCurrentLocationCheckBox = (CheckBox) findViewById(R.id.addCurrentLocationCheckBox);
 
 
         // Add this View to the main Model class.
@@ -126,8 +126,6 @@ public class NewMoodEventActivity extends AppCompatActivity implements MSView<Mo
             startFusedLocation();
             registerRequestUpdate(this);
         }
-        startFusedLocation();
-        registerRequestUpdate(this);
 
 
         // Use current date/time for MoodEvent
@@ -338,6 +336,7 @@ public class NewMoodEventActivity extends AppCompatActivity implements MSView<Mo
         if(result != ConnectionResult.SUCCESS) {
             //TODO: make this a toast notification
             //see https://examples.javacodegeeks.com/android/android-location-api-using-google-play-services-example/
+            //TODO: disable checkbox
             if(googleAPI.isUserResolvableError(result)) {
                 googleAPI.getErrorDialog(this, result, PLAY_SERVICES_RESOLUTION_REQUEST).show();
             }

@@ -831,8 +831,8 @@ int id activity_chooser_view_content 0x7f0e0055
 int id activity_main 0x7f0e0096
 int id activity_mood_history 0x7f0e00a0
 int id add 0x7f0e0026
-int id addCurentLocationCheckBox 0x7f0e00af
 int id addCurentLocationCheckBox_EditMoodEventActivity 0x7f0e008f
+int id addCurrentLocationCheckBox 0x7f0e00af
 int id adjust_height 0x7f0e0041
 int id adjust_width 0x7f0e0042
 int id alertTitle 0x7f0e0069

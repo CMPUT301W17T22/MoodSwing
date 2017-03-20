@@ -8,12 +8,12 @@
         "source": "C:\\Users\\PeterWeckend\\.android\\build-cache\\bce1e8d7708deb639b578b1fdbd4f09ff3fe7531\\output\\res\\drawable\\abc_vector_test.xml"
     },
     {
-        "merged": "C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\cast_expanded_controller_seekbar_thumb.xml",
-        "source": "C:\\Users\\fred\\.android\\build-cache\\01e7c14ada5d7beefa345d9f202b6be13661224c\\output\\res\\drawable\\cast_expanded_controller_seekbar_thumb.xml"
-    },
-    {
         "merged": "C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ic_clear_material.xml",
         "source": "C:\\Users\\fred\\.android\\build-cache\\a987e0752e8a3c33a80e6f25858c5aa9a1461541\\output\\res\\drawable\\abc_ic_clear_material.xml"
+    },
+    {
+        "merged": "C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\cast_expanded_controller_seekbar_thumb.xml",
+        "source": "C:\\Users\\fred\\.android\\build-cache\\01e7c14ada5d7beefa345d9f202b6be13661224c\\output\\res\\drawable\\cast_expanded_controller_seekbar_thumb.xml"
     },
     {
         "merged": "C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\common_google_signin_btn_icon_dark.xml",
@@ -56,12 +56,12 @@
         "source": "C:\\Users\\fred\\.android\\build-cache\\eeec2f660f5b369a09be69bc611d9e12abdf3eff\\output\\res\\drawable\\mr_ic_close_dark.xml"
     },
     {
-        "merged": "C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\cast_ic_mini_controller_skip_next.xml",
-        "source": "C:\\Users\\fred\\.android\\build-cache\\01e7c14ada5d7beefa345d9f202b6be13661224c\\output\\res\\drawable\\cast_ic_mini_controller_skip_next.xml"
-    },
-    {
         "merged": "C:\\Users\\PeterWeckend\\Documents\\Files\\2016-2017\\CMPUT301\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ic_ab_back_material.xml",
         "source": "C:\\Users\\PeterWeckend\\.android\\build-cache\\bce1e8d7708deb639b578b1fdbd4f09ff3fe7531\\output\\res\\drawable\\abc_ic_ab_back_material.xml"
+    },
+    {
+        "merged": "C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\cast_ic_mini_controller_skip_next.xml",
+        "source": "C:\\Users\\fred\\.android\\build-cache\\01e7c14ada5d7beefa345d9f202b6be13661224c\\output\\res\\drawable\\cast_ic_mini_controller_skip_next.xml"
     },
     {
         "merged": "C:\\Users\\PeterWeckend\\Documents\\Files\\2016-2017\\CMPUT301\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\social_situation_alone.png",
@@ -100,12 +100,12 @@
         "source": "C:\\Users\\fred\\.android\\build-cache\\eeec2f660f5b369a09be69bc611d9e12abdf3eff\\output\\res\\drawable\\ic_expand.xml"
     },
     {
-        "merged": "C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\mr_ic_cast_light.xml",
-        "source": "C:\\Users\\fred\\.android\\build-cache\\eeec2f660f5b369a09be69bc611d9e12abdf3eff\\output\\res\\drawable\\mr_ic_cast_light.xml"
-    },
-    {
         "merged": "C:\\Users\\PeterWeckend\\Documents\\Files\\2016-2017\\CMPUT301\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ratingbar_indicator_material.xml",
         "source": "C:\\Users\\PeterWeckend\\.android\\build-cache\\bce1e8d7708deb639b578b1fdbd4f09ff3fe7531\\output\\res\\drawable\\abc_ratingbar_indicator_material.xml"
+    },
+    {
+        "merged": "C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\mr_ic_cast_light.xml",
+        "source": "C:\\Users\\fred\\.android\\build-cache\\eeec2f660f5b369a09be69bc611d9e12abdf3eff\\output\\res\\drawable\\mr_ic_cast_light.xml"
     },
     {
         "merged": "C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\common_google_signin_btn_text_light_focused.xml",
@@ -140,12 +140,12 @@
         "source": "C:\\Users\\fred\\.android\\build-cache\\85f91bee56933bded0e8bb241e8d55d94a91fdb7\\output\\res\\drawable\\common_google_signin_btn_text_dark_focused.xml"
     },
     {
-        "merged": "C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\cast_ic_mini_controller_mute.xml",
-        "source": "C:\\Users\\fred\\.android\\build-cache\\01e7c14ada5d7beefa345d9f202b6be13661224c\\output\\res\\drawable\\cast_ic_mini_controller_mute.xml"
-    },
-    {
         "merged": "C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\cast_mini_controller_gradient_light.xml",
         "source": "C:\\Users\\fred\\.android\\build-cache\\01e7c14ada5d7beefa345d9f202b6be13661224c\\output\\res\\drawable\\cast_mini_controller_gradient_light.xml"
+    },
+    {
+        "merged": "C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\cast_ic_mini_controller_mute.xml",
+        "source": "C:\\Users\\fred\\.android\\build-cache\\01e7c14ada5d7beefa345d9f202b6be13661224c\\output\\res\\drawable\\cast_ic_mini_controller_mute.xml"
     },
     {
         "merged": "C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\cast_ic_expanded_controller_mute.xml",
@@ -236,16 +236,16 @@
         "source": "C:\\Users\\fred\\.android\\build-cache\\a987e0752e8a3c33a80e6f25858c5aa9a1461541\\output\\res\\drawable\\abc_switch_thumb_material.xml"
     },
     {
-        "merged": "C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\cast_ic_notification_forward10.xml",
-        "source": "C:\\Users\\fred\\.android\\build-cache\\01e7c14ada5d7beefa345d9f202b6be13661224c\\output\\res\\drawable\\cast_ic_notification_forward10.xml"
+        "merged": "C:\\Users\\PeterWeckend\\Documents\\Files\\2016-2017\\CMPUT301\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\navigation_empty_icon.xml",
+        "source": "C:\\Users\\PeterWeckend\\.android\\build-cache\\eb961abbd6e14e0aab0f2126e4bcc17b36db89e3\\output\\res\\drawable\\navigation_empty_icon.xml"
     },
     {
         "merged": "C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\cast_ic_mini_controller_forward30.xml",
         "source": "C:\\Users\\fred\\.android\\build-cache\\01e7c14ada5d7beefa345d9f202b6be13661224c\\output\\res\\drawable\\cast_ic_mini_controller_forward30.xml"
     },
     {
-        "merged": "C:\\Users\\PeterWeckend\\Documents\\Files\\2016-2017\\CMPUT301\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\navigation_empty_icon.xml",
-        "source": "C:\\Users\\PeterWeckend\\.android\\build-cache\\eb961abbd6e14e0aab0f2126e4bcc17b36db89e3\\output\\res\\drawable\\navigation_empty_icon.xml"
+        "merged": "C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\cast_ic_notification_forward10.xml",
+        "source": "C:\\Users\\fred\\.android\\build-cache\\01e7c14ada5d7beefa345d9f202b6be13661224c\\output\\res\\drawable\\cast_ic_notification_forward10.xml"
     },
     {
         "merged": "C:\\Users\\PeterWeckend\\Documents\\Files\\2016-2017\\CMPUT301\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_list_selector_background_transition_holo_dark.xml",

@@ -3436,8 +3436,8 @@ containing a value of this type.
         public static final int activity_main=0x7f0e0096;
         public static final int activity_mood_history=0x7f0e00a0;
         public static final int add=0x7f0e0026;
-        public static final int addCurentLocationCheckBox=0x7f0e00af;
         public static final int addCurentLocationCheckBox_EditMoodEventActivity=0x7f0e008f;
+        public static final int addCurrentLocationCheckBox=0x7f0e00af;
         public static final int adjust_height=0x7f0e0041;
         public static final int adjust_width=0x7f0e0042;
         public static final int alertTitle=0x7f0e0069;
