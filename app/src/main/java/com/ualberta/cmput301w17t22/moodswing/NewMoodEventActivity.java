@@ -21,7 +21,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
@@ -121,10 +120,12 @@ public class NewMoodEventActivity extends AppCompatActivity implements MSView<Mo
          * location stuff
          * https://examples.javacodegeeks.com/android/android-location-api-using-google-play-services-example/
          */
-        if(checkPlayServices()){
+        /*if(checkPlayServices()){
             startFusedLocation();
             registerRequestUpdate(this);
-        }
+        }*/
+        startFusedLocation();
+        registerRequestUpdate(this);
 
 
         // Use current date/time for MoodEvent
@@ -181,7 +182,7 @@ public class NewMoodEventActivity extends AppCompatActivity implements MSView<Mo
                     // Get location if location box is checked, otherwise just use null.
                     LatLng location = null;
                     if (addCurrentLocationCheckBox.isChecked()) {
-                        location = getLocation();
+                        location = new LatLng(fusedLatitude, fusedLongitude);
                     }
 //                    //Get image to attach to Mood Event,
 //                    // if they didn't add an ImageView then it puts null
@@ -325,9 +326,9 @@ public class NewMoodEventActivity extends AppCompatActivity implements MSView<Mo
     }
 
     // https://examples.javacodegeeks.com/android/android-location-api-using-google-play-services-example/
-    private boolean checkPlayServices(){
-        int resultCode = GooglePlayServicesUtil
-                .isGooglePlayServicesAvailable(this);
+    /*private boolean checkPlayServices(){
+        int resultCode = GooglePlayServicesUtil.isGooglePlayServicesAvailable(this);
+        googlePlayServicesUtil.isGooglePlayServicesAvailable(this);
         if (resultCode != ConnectionResult.SUCCESS) {
             if (GooglePlayServicesUtil.isUserRecoverableError(resultCode)) {
                 Toast.makeText(getApplicationContext(),
@@ -342,7 +343,7 @@ public class NewMoodEventActivity extends AppCompatActivity implements MSView<Mo
             return false;
         }
         return true;
-    }
+    }*/
 
 
 
@@ -549,8 +550,9 @@ public class NewMoodEventActivity extends AppCompatActivity implements MSView<Mo
      * Gets the LatLng location from the android device.
 
      * @return The current / last known location as a LatLng
+     * @deprecated
      */
-    public LatLng getLocation() {
+    /*public LatLng getLocation() {
         // TODO: I have no clue how to do this.
 
         GPSTracker gps = new GPSTracker(this);
@@ -561,7 +563,7 @@ public class NewMoodEventActivity extends AppCompatActivity implements MSView<Mo
             return new LatLng(lat, lon);
         }
         return null;
-    }
+    }*/
     /** Gets the image from the image view*/
     public Bitmap getImage() {
 
