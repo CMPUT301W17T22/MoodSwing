@@ -5,8 +5,10 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -21,10 +23,10 @@ import android.widget.Toast;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.maps.model.LatLng;
 
 import java.util.Date;
 import java.util.Objects;
@@ -55,6 +57,8 @@ public class NewMoodEventActivity extends AppCompatActivity implements MSView<Mo
      */
     private GoogleApiClient mGoogleApiClient;
     private LocationRequest mLocationRequest;
+    private double fusedLatitude = 0.0;
+    private  double fusedLongitude = 0.0;
 
     /** Used in photo selection. */
     private static int RESULT_LOAD_IMG = 1;
@@ -112,6 +116,16 @@ public class NewMoodEventActivity extends AppCompatActivity implements MSView<Mo
 
         // Initialize all widgets for this activity and add this View to the main Model class.
         initialize();
+
+        /**
+         * location stuff
+         * https://examples.javacodegeeks.com/android/android-location-api-using-google-play-services-example/
+         */
+        if(checkPlayServices()){
+            startFusedLocation();
+            registerRequestUpdate(this);
+        }
+
 
         // Use current date/time for MoodEvent
         final Date moodDate = new Date();
@@ -206,6 +220,138 @@ public class NewMoodEventActivity extends AppCompatActivity implements MSView<Mo
             }
         });
     }
+
+
+    /**
+     * location stuff
+     * https://examples.javacodegeeks.com/android/android-location-api-using-google-play-services-example/
+     */
+    public void startFusedLocation() {
+        if (mGoogleApiClient == null) {
+            mGoogleApiClient = new GoogleApiClient.Builder(this).addApi(LocationServices.API)
+                    .addConnectionCallbacks(new GoogleApiClient.ConnectionCallbacks() {
+                        @Override
+                        public void onConnectionSuspended(int cause) {
+                        }
+
+                        @Override
+                        public void onConnected(Bundle connectionHint) {
+
+                        }
+                    }).addOnConnectionFailedListener(new GoogleApiClient.OnConnectionFailedListener() {
+
+                @Override
+                public void onConnectionFailed(ConnectionResult result) {
+
+                }
+            }).build();
+            mGoogleApiClient.connect();
+        } else {
+            mGoogleApiClient.connect();
+        }
+    }
+
+    public void stopFusedLocation() {
+        if (mGoogleApiClient != null) {
+            mGoogleApiClient.disconnect();
+        }
+    }
+
+    public void registerRequestUpdate(final LocationListener listener) {
+        mLocationRequest = LocationRequest.create();
+        mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+        mLocationRequest.setInterval(1000); // every second
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, mLocationRequest, listener);
+                } catch (SecurityException e) {
+                    e.printStackTrace();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    if (!isGoogleApiClientConnected()) {
+                        mGoogleApiClient.connect();
+                    }
+                    registerRequestUpdate(listener);
+                }
+            }
+        }, 1000);
+    }
+
+    public boolean isGoogleApiClientConnected() {
+        return mGoogleApiClient != null && mGoogleApiClient.isConnected();
+    }
+
+    @Override
+    public void onLocationChanged(Location location) {
+        setFusedLatitude(location.getLatitude());
+        setFusedLongitude(location.getLongitude());
+
+        Toast.makeText(getApplicationContext(), "NEW LOCATION RECEIVED", Toast.LENGTH_LONG).show();
+    }
+
+    public void setFusedLatitude(double lat) {
+        fusedLatitude = lat;
+    }
+
+    public void setFusedLongitude(double lon) {
+        fusedLongitude = lon;
+    }
+
+    public double getFusedLatitude() {
+        return fusedLatitude;
+    }
+
+    public double getFusedLongitude() {
+        return fusedLongitude;
+    }
+
+
+
+
+
+
+
+    /**
+     * location stuff
+     * https://examples.javacodegeeks.com/android/android-location-api-using-google-play-services-example/
+     */
+    @Override
+    protected void onStop(){
+        stopFusedLocation();
+        super.onStop();
+    }
+
+    // https://examples.javacodegeeks.com/android/android-location-api-using-google-play-services-example/
+    private boolean checkPlayServices(){
+        int resultCode = GooglePlayServicesUtil
+                .isGooglePlayServicesAvailable(this);
+        if (resultCode != ConnectionResult.SUCCESS) {
+            if (GooglePlayServicesUtil.isUserRecoverableError(resultCode)) {
+                Toast.makeText(getApplicationContext(),
+                        "This device is supported. Please download google play services", Toast.LENGTH_LONG)
+                        .show();
+            } else {
+                Toast.makeText(getApplicationContext(),
+                        "This device is not supported.", Toast.LENGTH_LONG)
+                        .show();
+                finish();
+            }
+            return false;
+        }
+        return true;
+    }
+
+
+
+
+
+
+
+
+
 
     /**
      * Called when the Activity is finish()'d or otherwise closes. Removes this View from the main
