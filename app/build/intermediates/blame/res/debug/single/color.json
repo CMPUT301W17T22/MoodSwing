@@ -4,16 +4,16 @@
         "source": "C:\\Users\\fred\\.android\\build-cache\\a987e0752e8a3c33a80e6f25858c5aa9a1461541\\output\\res\\color\\abc_tint_btn_checkable.xml"
     },
     {
-        "merged": "C:\\Users\\PeterWeckend\\Documents\\Files\\2016-2017\\CMPUT301\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_disable_only_material_light.xml",
-        "source": "C:\\Users\\PeterWeckend\\.android\\build-cache\\bce1e8d7708deb639b578b1fdbd4f09ff3fe7531\\output\\res\\color\\abc_primary_text_disable_only_material_light.xml"
+        "merged": "C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\color\\common_google_signin_btn_text_light.xml",
+        "source": "C:\\Users\\fred\\.android\\build-cache\\85f91bee56933bded0e8bb241e8d55d94a91fdb7\\output\\res\\color\\common_google_signin_btn_text_light.xml"
     },
     {
         "merged": "C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\color\\common_google_signin_btn_text_dark.xml",
         "source": "C:\\Users\\fred\\.android\\build-cache\\85f91bee56933bded0e8bb241e8d55d94a91fdb7\\output\\res\\color\\common_google_signin_btn_text_dark.xml"
     },
     {
-        "merged": "C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\color\\common_google_signin_btn_text_light.xml",
-        "source": "C:\\Users\\fred\\.android\\build-cache\\85f91bee56933bded0e8bb241e8d55d94a91fdb7\\output\\res\\color\\common_google_signin_btn_text_light.xml"
+        "merged": "C:\\Users\\PeterWeckend\\Documents\\Files\\2016-2017\\CMPUT301\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_disable_only_material_light.xml",
+        "source": "C:\\Users\\PeterWeckend\\.android\\build-cache\\bce1e8d7708deb639b578b1fdbd4f09ff3fe7531\\output\\res\\color\\abc_primary_text_disable_only_material_light.xml"
     },
     {
         "merged": "C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_disable_only_material_dark.xml",

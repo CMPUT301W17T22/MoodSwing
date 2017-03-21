@@ -8,16 +8,16 @@
         "source": "C:\\Users\\fred\\.android\\build-cache\\a987e0752e8a3c33a80e6f25858c5aa9a1461541\\output\\res\\color-v23\\abc_tint_default.xml"
     },
     {
+        "merged": "C:\\Users\\PeterWeckend\\Documents\\Files\\2016-2017\\CMPUT301\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_tint_spinner.xml",
+        "source": "C:\\Users\\PeterWeckend\\.android\\build-cache\\bce1e8d7708deb639b578b1fdbd4f09ff3fe7531\\output\\res\\color-v23\\abc_tint_spinner.xml"
+    },
+    {
+        "merged": "C:\\Users\\PeterWeckend\\Documents\\Files\\2016-2017\\CMPUT301\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_tint_switch_track.xml",
+        "source": "C:\\Users\\PeterWeckend\\.android\\build-cache\\bce1e8d7708deb639b578b1fdbd4f09ff3fe7531\\output\\res\\color-v23\\abc_tint_switch_track.xml"
+    },
+    {
         "merged": "C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\color-v23\\design_tint_password_toggle.xml",
         "source": "C:\\Users\\fred\\.android\\build-cache\\8a6305c6c9cf45ea4e7250a5d1077f87e2894639\\output\\res\\color-v23\\design_tint_password_toggle.xml"
-    },
-    {
-        "merged": "C:\\Users\\PeterWeckend\\Documents\\Files\\2016-2017\\CMPUT301\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_tint_default.xml",
-        "source": "C:\\Users\\PeterWeckend\\.android\\build-cache\\bce1e8d7708deb639b578b1fdbd4f09ff3fe7531\\output\\res\\color-v23\\abc_tint_default.xml"
-    },
-    {
-        "merged": "C:\\Users\\PeterWeckend\\Documents\\Files\\2016-2017\\CMPUT301\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\color-v23\\design_tint_password_toggle.xml",
-        "source": "C:\\Users\\PeterWeckend\\.android\\build-cache\\eb961abbd6e14e0aab0f2126e4bcc17b36db89e3\\output\\res\\color-v23\\design_tint_password_toggle.xml"
     },
     {
         "merged": "C:\\Users\\PeterWeckend\\Documents\\Files\\2016-2017\\CMPUT301\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_btn_colored_borderless_text_material.xml",
@@ -28,16 +28,28 @@
         "source": "C:\\Users\\fred\\.android\\build-cache\\a987e0752e8a3c33a80e6f25858c5aa9a1461541\\output\\res\\color-v23\\abc_color_highlight_material.xml"
     },
     {
-        "merged": "C:\\Users\\PeterWeckend\\Documents\\Files\\2016-2017\\CMPUT301\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_tint_seek_thumb.xml",
-        "source": "C:\\Users\\PeterWeckend\\.android\\build-cache\\bce1e8d7708deb639b578b1fdbd4f09ff3fe7531\\output\\res\\color-v23\\abc_tint_seek_thumb.xml"
+        "merged": "C:\\Users\\PeterWeckend\\Documents\\Files\\2016-2017\\CMPUT301\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_tint_default.xml",
+        "source": "C:\\Users\\PeterWeckend\\.android\\build-cache\\bce1e8d7708deb639b578b1fdbd4f09ff3fe7531\\output\\res\\color-v23\\abc_tint_default.xml"
     },
     {
         "merged": "C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_tint_edittext.xml",
         "source": "C:\\Users\\fred\\.android\\build-cache\\a987e0752e8a3c33a80e6f25858c5aa9a1461541\\output\\res\\color-v23\\abc_tint_edittext.xml"
     },
     {
+        "merged": "C:\\Users\\PeterWeckend\\Documents\\Files\\2016-2017\\CMPUT301\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\color-v23\\design_tint_password_toggle.xml",
+        "source": "C:\\Users\\PeterWeckend\\.android\\build-cache\\eb961abbd6e14e0aab0f2126e4bcc17b36db89e3\\output\\res\\color-v23\\design_tint_password_toggle.xml"
+    },
+    {
+        "merged": "C:\\Users\\PeterWeckend\\Documents\\Files\\2016-2017\\CMPUT301\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_tint_seek_thumb.xml",
+        "source": "C:\\Users\\PeterWeckend\\.android\\build-cache\\bce1e8d7708deb639b578b1fdbd4f09ff3fe7531\\output\\res\\color-v23\\abc_tint_seek_thumb.xml"
+    },
+    {
         "merged": "C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_btn_colored_text_material.xml",
         "source": "C:\\Users\\fred\\.android\\build-cache\\a987e0752e8a3c33a80e6f25858c5aa9a1461541\\output\\res\\color-v23\\abc_btn_colored_text_material.xml"
+    },
+    {
+        "merged": "C:\\Users\\PeterWeckend\\Documents\\Files\\2016-2017\\CMPUT301\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_tint_edittext.xml",
+        "source": "C:\\Users\\PeterWeckend\\.android\\build-cache\\bce1e8d7708deb639b578b1fdbd4f09ff3fe7531\\output\\res\\color-v23\\abc_tint_edittext.xml"
     },
     {
         "merged": "C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_tint_switch_track.xml",
@@ -56,24 +68,12 @@
         "source": "C:\\Users\\fred\\.android\\build-cache\\a987e0752e8a3c33a80e6f25858c5aa9a1461541\\output\\res\\color-v23\\abc_btn_colored_borderless_text_material.xml"
     },
     {
-        "merged": "C:\\Users\\PeterWeckend\\Documents\\Files\\2016-2017\\CMPUT301\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_tint_spinner.xml",
-        "source": "C:\\Users\\PeterWeckend\\.android\\build-cache\\bce1e8d7708deb639b578b1fdbd4f09ff3fe7531\\output\\res\\color-v23\\abc_tint_spinner.xml"
-    },
-    {
-        "merged": "C:\\Users\\PeterWeckend\\Documents\\Files\\2016-2017\\CMPUT301\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_tint_edittext.xml",
-        "source": "C:\\Users\\PeterWeckend\\.android\\build-cache\\bce1e8d7708deb639b578b1fdbd4f09ff3fe7531\\output\\res\\color-v23\\abc_tint_edittext.xml"
-    },
-    {
-        "merged": "C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_tint_seek_thumb.xml",
-        "source": "C:\\Users\\fred\\.android\\build-cache\\a987e0752e8a3c33a80e6f25858c5aa9a1461541\\output\\res\\color-v23\\abc_tint_seek_thumb.xml"
-    },
-    {
         "merged": "C:\\Users\\PeterWeckend\\Documents\\Files\\2016-2017\\CMPUT301\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_btn_colored_text_material.xml",
         "source": "C:\\Users\\PeterWeckend\\.android\\build-cache\\bce1e8d7708deb639b578b1fdbd4f09ff3fe7531\\output\\res\\color-v23\\abc_btn_colored_text_material.xml"
     },
     {
-        "merged": "C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_tint_switch_thumb.xml",
-        "source": "C:\\Users\\fred\\.android\\build-cache\\a987e0752e8a3c33a80e6f25858c5aa9a1461541\\output\\res\\color-v23\\abc_tint_switch_thumb.xml"
+        "merged": "C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_tint_seek_thumb.xml",
+        "source": "C:\\Users\\fred\\.android\\build-cache\\a987e0752e8a3c33a80e6f25858c5aa9a1461541\\output\\res\\color-v23\\abc_tint_seek_thumb.xml"
     },
     {
         "merged": "C:\\Users\\PeterWeckend\\Documents\\Files\\2016-2017\\CMPUT301\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_tint_switch_thumb.xml",
@@ -84,7 +84,7 @@
         "source": "C:\\Users\\PeterWeckend\\.android\\build-cache\\bce1e8d7708deb639b578b1fdbd4f09ff3fe7531\\output\\res\\color-v23\\abc_color_highlight_material.xml"
     },
     {
-        "merged": "C:\\Users\\PeterWeckend\\Documents\\Files\\2016-2017\\CMPUT301\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_tint_switch_track.xml",
-        "source": "C:\\Users\\PeterWeckend\\.android\\build-cache\\bce1e8d7708deb639b578b1fdbd4f09ff3fe7531\\output\\res\\color-v23\\abc_tint_switch_track.xml"
+        "merged": "C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_tint_switch_thumb.xml",
+        "source": "C:\\Users\\fred\\.android\\build-cache\\a987e0752e8a3c33a80e6f25858c5aa9a1461541\\output\\res\\color-v23\\abc_tint_switch_thumb.xml"
     }
 ]

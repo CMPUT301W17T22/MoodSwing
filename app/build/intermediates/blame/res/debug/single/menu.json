@@ -4,16 +4,16 @@
         "source": "C:\\Users\\PeterWeckend\\Documents\\Files\\2016-2017\\CMPUT301\\MoodSwing\\app\\src\\main\\res\\menu\\toolbar.xml"
     },
     {
-        "merged": "C:\\Users\\PeterWeckend\\Documents\\Files\\2016-2017\\CMPUT301\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_main_follow.xml",
-        "source": "C:\\Users\\PeterWeckend\\Documents\\Files\\2016-2017\\CMPUT301\\MoodSwing\\app\\src\\main\\res\\menu\\menu_main_follow.xml"
-    },
-    {
         "merged": "C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_main_activity.xml",
         "source": "C:\\Users\\fred\\MoodSwing\\app\\src\\main\\res\\menu\\menu_main_activity.xml"
     },
     {
         "merged": "C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_main_follow.xml",
         "source": "C:\\Users\\fred\\MoodSwing\\app\\src\\main\\res\\menu\\menu_main_follow.xml"
+    },
+    {
+        "merged": "C:\\Users\\PeterWeckend\\Documents\\Files\\2016-2017\\CMPUT301\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_main_follow.xml",
+        "source": "C:\\Users\\PeterWeckend\\Documents\\Files\\2016-2017\\CMPUT301\\MoodSwing\\app\\src\\main\\res\\menu\\menu_main_follow.xml"
     },
     {
         "merged": "C:\\Users\\PeterWeckend\\Documents\\Files\\2016-2017\\CMPUT301\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_main_activity.xml",

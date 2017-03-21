@@ -4,8 +4,8 @@
         "source": "C:\\Users\\fred\\.android\\build-cache\\a987e0752e8a3c33a80e6f25858c5aa9a1461541\\output\\res\\layout-v11\\notification_template_big_media_narrow.xml"
     },
     {
-        "merged": "C:\\Users\\PeterWeckend\\Documents\\Files\\2016-2017\\CMPUT301\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout-v11\\notification_template_big_media.xml",
-        "source": "C:\\Users\\PeterWeckend\\.android\\build-cache\\bce1e8d7708deb639b578b1fdbd4f09ff3fe7531\\output\\res\\layout-v11\\notification_template_big_media.xml"
+        "merged": "C:\\Users\\PeterWeckend\\Documents\\Files\\2016-2017\\CMPUT301\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout-v11\\notification_template_big_media_custom.xml",
+        "source": "C:\\Users\\PeterWeckend\\.android\\build-cache\\bce1e8d7708deb639b578b1fdbd4f09ff3fe7531\\output\\res\\layout-v11\\notification_template_big_media_custom.xml"
     },
     {
         "merged": "C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout-v11\\notification_media_cancel_action.xml",
@@ -16,20 +16,24 @@
         "source": "C:\\Users\\fred\\.android\\build-cache\\a987e0752e8a3c33a80e6f25858c5aa9a1461541\\output\\res\\layout-v11\\notification_template_big_media.xml"
     },
     {
-        "merged": "C:\\Users\\PeterWeckend\\Documents\\Files\\2016-2017\\CMPUT301\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout-v11\\notification_template_big_media_narrow.xml",
-        "source": "C:\\Users\\PeterWeckend\\.android\\build-cache\\bce1e8d7708deb639b578b1fdbd4f09ff3fe7531\\output\\res\\layout-v11\\notification_template_big_media_narrow.xml"
+        "merged": "C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout-v11\\notification_template_big_media_narrow_custom.xml",
+        "source": "C:\\Users\\fred\\.android\\build-cache\\a987e0752e8a3c33a80e6f25858c5aa9a1461541\\output\\res\\layout-v11\\notification_template_big_media_narrow_custom.xml"
     },
     {
         "merged": "C:\\Users\\PeterWeckend\\Documents\\Files\\2016-2017\\CMPUT301\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout-v11\\notification_media_action.xml",
         "source": "C:\\Users\\PeterWeckend\\.android\\build-cache\\bce1e8d7708deb639b578b1fdbd4f09ff3fe7531\\output\\res\\layout-v11\\notification_media_action.xml"
     },
     {
-        "merged": "C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout-v11\\notification_template_big_media_narrow_custom.xml",
-        "source": "C:\\Users\\fred\\.android\\build-cache\\a987e0752e8a3c33a80e6f25858c5aa9a1461541\\output\\res\\layout-v11\\notification_template_big_media_narrow_custom.xml"
-    },
-    {
         "merged": "C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout-v11\\notification_template_big_media_custom.xml",
         "source": "C:\\Users\\fred\\.android\\build-cache\\a987e0752e8a3c33a80e6f25858c5aa9a1461541\\output\\res\\layout-v11\\notification_template_big_media_custom.xml"
+    },
+    {
+        "merged": "C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout-v11\\notification_media_action.xml",
+        "source": "C:\\Users\\fred\\.android\\build-cache\\a987e0752e8a3c33a80e6f25858c5aa9a1461541\\output\\res\\layout-v11\\notification_media_action.xml"
+    },
+    {
+        "merged": "C:\\Users\\PeterWeckend\\Documents\\Files\\2016-2017\\CMPUT301\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout-v11\\notification_template_big_media_narrow.xml",
+        "source": "C:\\Users\\PeterWeckend\\.android\\build-cache\\bce1e8d7708deb639b578b1fdbd4f09ff3fe7531\\output\\res\\layout-v11\\notification_template_big_media_narrow.xml"
     },
     {
         "merged": "C:\\Users\\PeterWeckend\\Documents\\Files\\2016-2017\\CMPUT301\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout-v11\\notification_media_cancel_action.xml",
@@ -40,11 +44,7 @@
         "source": "C:\\Users\\PeterWeckend\\.android\\build-cache\\bce1e8d7708deb639b578b1fdbd4f09ff3fe7531\\output\\res\\layout-v11\\notification_template_big_media_narrow_custom.xml"
     },
     {
-        "merged": "C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout-v11\\notification_media_action.xml",
-        "source": "C:\\Users\\fred\\.android\\build-cache\\a987e0752e8a3c33a80e6f25858c5aa9a1461541\\output\\res\\layout-v11\\notification_media_action.xml"
-    },
-    {
-        "merged": "C:\\Users\\PeterWeckend\\Documents\\Files\\2016-2017\\CMPUT301\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout-v11\\notification_template_big_media_custom.xml",
-        "source": "C:\\Users\\PeterWeckend\\.android\\build-cache\\bce1e8d7708deb639b578b1fdbd4f09ff3fe7531\\output\\res\\layout-v11\\notification_template_big_media_custom.xml"
+        "merged": "C:\\Users\\PeterWeckend\\Documents\\Files\\2016-2017\\CMPUT301\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout-v11\\notification_template_big_media.xml",
+        "source": "C:\\Users\\PeterWeckend\\.android\\build-cache\\bce1e8d7708deb639b578b1fdbd4f09ff3fe7531\\output\\res\\layout-v11\\notification_template_big_media.xml"
     }
 ]
