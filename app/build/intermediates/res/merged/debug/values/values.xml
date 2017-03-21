@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2" xmlns:ns2="http://schemas.android.com/tools">
-    <string-array name="mood_array">
+    <string-array name="emotionalState_array">
         <item/>
         <item>Anger</item>
         <item>Confusion</item>
@@ -14,8 +14,9 @@
     <string-array name="socialSituation_array">
         <item/>
         <item>Alone</item>
-        <item>Crowd</item>
-        <item>Party</item>
+        <item>With One Other Person</item>
+        <item>With Two To Several People</item>
+        <item>With A Crowd</item>
     </string-array>
     <attr format="reference" name="constraintSet"/>
     <attr format="reference" name="drawerArrowStyle"/>
@@ -781,6 +782,7 @@
     <string name="main_welcome_text">Welcome (USERNAME and ID)!</string>
     <string name="mood_history">View Mood History</string>
     <string name="mood_prompt">Choose your emotional state</string>
+    <string name="moodhistory">MoodHistory</string>
     <string name="moodswing">MoodSwing</string>
     <string name="new_mood_event">New Mood Event</string>
     <string name="password_toggle_content_description">Toggle password visibility</string>

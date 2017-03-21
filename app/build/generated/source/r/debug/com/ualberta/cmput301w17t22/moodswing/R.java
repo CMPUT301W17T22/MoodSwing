@@ -30,7 +30,7 @@ public final class R {
         public static final int design_appbar_state_list_animator=0x7f060000;
     }
     public static final class array {
-        public static final int mood_array=0x7f0d0000;
+        public static final int emotionalState_array=0x7f0d0000;
         public static final int socialSituation_array=0x7f0d0001;
     }
     public static final class attr {
@@ -3351,13 +3351,13 @@ containing a value of this type.
         public static final int abc_textfield_search_material=0x7f020051;
         public static final int abc_vector_test=0x7f020052;
         public static final int avd_hide_password=0x7f020053;
-        public static final int avd_hide_password_1=0x7f020089;
-        public static final int avd_hide_password_2=0x7f02008a;
-        public static final int avd_hide_password_3=0x7f02008b;
+        public static final int avd_hide_password_1=0x7f02008a;
+        public static final int avd_hide_password_2=0x7f02008b;
+        public static final int avd_hide_password_3=0x7f02008c;
         public static final int avd_show_password=0x7f020054;
-        public static final int avd_show_password_1=0x7f02008c;
-        public static final int avd_show_password_2=0x7f02008d;
-        public static final int avd_show_password_3=0x7f02008e;
+        public static final int avd_show_password_1=0x7f02008d;
+        public static final int avd_show_password_2=0x7f02008e;
+        public static final int avd_show_password_3=0x7f02008f;
         public static final int common_full_open_on_phone=0x7f020055;
         public static final int common_google_signin_btn_icon_dark=0x7f020056;
         public static final int common_google_signin_btn_icon_dark_focused=0x7f020057;
@@ -3403,13 +3403,14 @@ containing a value of this type.
         public static final int notification_bg_normal=0x7f02007f;
         public static final int notification_bg_normal_pressed=0x7f020080;
         public static final int notification_icon_background=0x7f020081;
-        public static final int notification_template_icon_bg=0x7f020087;
-        public static final int notification_template_icon_low_bg=0x7f020088;
+        public static final int notification_template_icon_bg=0x7f020088;
+        public static final int notification_template_icon_low_bg=0x7f020089;
         public static final int notification_tile_bg=0x7f020082;
         public static final int notify_panel_notification_icon_bg=0x7f020083;
         public static final int social_situation_alone=0x7f020084;
-        public static final int social_situation_crowd=0x7f020085;
-        public static final int social_situation_party=0x7f020086;
+        public static final int social_situation_with_a_crowd=0x7f020085;
+        public static final int social_situation_with_one_other_person=0x7f020086;
+        public static final int social_situation_with_two_to_several_people=0x7f020087;
     }
     public static final class id {
         public static final int action0=0x7f0e00d0;
@@ -3443,7 +3444,7 @@ containing a value of this type.
         public static final int all=0x7f0e0014;
         public static final int always=0x7f0e0046;
         public static final int appLogoTextView=0x7f0e0091;
-        public static final int appbar=0x7f0e009c;
+        public static final int appbar=0x7f0e009d;
         public static final int auto=0x7f0e002d;
         public static final int basic=0x7f0e0015;
         public static final int becauseOf=0x7f0e00b3;
@@ -3460,7 +3461,7 @@ containing a value of this type.
         public static final int clip_horizontal=0x7f0e003a;
         public static final int clip_vertical=0x7f0e003b;
         public static final int collapseActionView=0x7f0e0047;
-        public static final int container=0x7f0e009a;
+        public static final int container=0x7f0e009b;
         public static final int content=0x7f0e00ca;
         public static final int contentPanel=0x7f0e005f;
         public static final int custom=0x7f0e0066;
@@ -3490,13 +3491,13 @@ containing a value of this type.
         public static final int exitUntilCollapsed=0x7f0e0023;
         public static final int expand_activities_button=0x7f0e0056;
         public static final int expanded_menu=0x7f0e006b;
-        public static final int fab=0x7f0e009b;
+        public static final int fab=0x7f0e009c;
         public static final int fill=0x7f0e003c;
         public static final int fill_horizontal=0x7f0e003d;
         public static final int fill_vertical=0x7f0e0033;
         public static final int fixed=0x7f0e0050;
         public static final int followToolBarButton=0x7f0e00e7;
-        public static final int followToolbar=0x7f0e009d;
+        public static final int followToolbar=0x7f0e009e;
         public static final int home=0x7f0e0004;
         public static final int homeAsUp=0x7f0e001c;
         public static final int homeToolBarButton=0x7f0e00e6;
@@ -3522,8 +3523,8 @@ containing a value of this type.
         public static final int loginButton=0x7f0e0094;
         public static final int mainToolBar=0x7f0e0097;
         public static final int mainWelcomeText=0x7f0e0098;
-        public static final int main_content=0x7f0e0099;
-        public static final int map=0x7f0e009f;
+        public static final int main_content=0x7f0e009a;
+        public static final int map=0x7f0e0099;
         public static final int mapView=0x7f0e00b9;
         public static final int masked=0x7f0e00e5;
         public static final int media_actions=0x7f0e00d3;
@@ -3608,7 +3609,7 @@ containing a value of this type.
         public static final int submenuarrow=0x7f0e006f;
         public static final int submit_area=0x7f0e0080;
         public static final int tabMode=0x7f0e001a;
-        public static final int tabs=0x7f0e009e;
+        public static final int tabs=0x7f0e009f;
         public static final int terrain=0x7f0e0045;
         public static final int text=0x7f0e00e2;
         public static final int text2=0x7f0e00e0;
@@ -3812,27 +3813,28 @@ containing a value of this type.
         public static final int main_welcome_text=0x7f070042;
         public static final int mood_history=0x7f070043;
         public static final int mood_prompt=0x7f070044;
-        public static final int moodswing=0x7f070045;
-        public static final int new_mood_event=0x7f070046;
-        public static final int password_toggle_content_description=0x7f070047;
-        public static final int path_password_eye=0x7f070048;
-        public static final int path_password_eye_mask_strike_through=0x7f070049;
-        public static final int path_password_eye_mask_visible=0x7f07004a;
-        public static final int path_password_strike_through=0x7f07004b;
-        public static final int photo=0x7f07004c;
-        public static final int photo_max_message=0x7f07004d;
-        public static final int post=0x7f07004e;
+        public static final int moodhistory=0x7f070045;
+        public static final int moodswing=0x7f070046;
+        public static final int new_mood_event=0x7f070047;
+        public static final int password_toggle_content_description=0x7f070048;
+        public static final int path_password_eye=0x7f070049;
+        public static final int path_password_eye_mask_strike_through=0x7f07004a;
+        public static final int path_password_eye_mask_visible=0x7f07004b;
+        public static final int path_password_strike_through=0x7f07004c;
+        public static final int photo=0x7f07004d;
+        public static final int photo_max_message=0x7f07004e;
+        public static final int post=0x7f07004f;
         public static final int search_menu_title=0x7f070024;
-        public static final int signup=0x7f07004f;
-        public static final int socialSituation_prompt=0x7f070050;
-        public static final int socialsituation=0x7f070051;
+        public static final int signup=0x7f070050;
+        public static final int socialSituation_prompt=0x7f070051;
+        public static final int socialsituation=0x7f070052;
         public static final int status_bar_notification_info_overflow=0x7f070025;
-        public static final int title_activity_main_follow=0x7f070052;
-        public static final int title_activity_maps=0x7f070053;
-        public static final int trigger_invalid=0x7f070054;
-        public static final int trigger_max_message=0x7f070055;
-        public static final int triggers=0x7f070056;
-        public static final int upload=0x7f070057;
+        public static final int title_activity_main_follow=0x7f070053;
+        public static final int title_activity_maps=0x7f070054;
+        public static final int trigger_invalid=0x7f070055;
+        public static final int trigger_max_message=0x7f070056;
+        public static final int triggers=0x7f070057;
+        public static final int upload=0x7f070058;
     }
     public static final class style {
         public static final int AlertDialog_AppCompat=0x7f0900a1;

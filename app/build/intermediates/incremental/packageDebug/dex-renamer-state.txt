@@ -1,4 +1,7 @@
-#Sun Mar 12 17:25:50 MDT 2017
-base.0=/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/transforms/dex/debug/folders/1000/1f/main
+#Mon Mar 20 21:16:30 MDT 2017
+base.0=C\:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_23286c68afd7258d527f93eb8725a789c92d83cd
+renamed.1=classes2.dex
 renamed.0=classes.dex
-file.0=/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/transforms/dex/debug/folders/1000/1f/main/classes.dex
+file.1=C\:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_ac3dff4a147d596aa739ffe08d6f0168b96ecb59\\classes.dex
+base.1=C\:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_ac3dff4a147d596aa739ffe08d6f0168b96ecb59
+file.0=C\:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_23286c68afd7258d527f93eb8725a789c92d83cd\\classes.dex
