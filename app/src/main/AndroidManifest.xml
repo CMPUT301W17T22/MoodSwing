@@ -8,6 +8,7 @@
         location permissions for the 'MyLocation' functionality.
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA"/>
@@ -66,6 +67,7 @@
             android:name=".MainFollowActivity"
             android:label="@string/title_activity_main_follow"
             android:theme="@style/AppTheme"></activity>
+        <service android:name=".LocationService" android:process=":location_service" />
     </application>
 
 </manifest>
