@@ -1,13 +1,18 @@
 package com.ualberta.cmput301w17t22.moodswing;
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.location.Location;
+import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -46,6 +51,7 @@ public class NewMoodEventActivity extends AppCompatActivity implements MSView<Mo
     /** Used in photo selection. */
     private static int RESULT_LOAD_IMG = 1;
     private static int REQUEST_IMAGE_CAPTURE = 2;
+
 
     /** Used in photo selection. */
     String imgDecodableString;
@@ -135,6 +141,7 @@ public class NewMoodEventActivity extends AppCompatActivity implements MSView<Mo
         // Initialize all widgets for this activity and add this View to the main Model class.
         initialize();
 
+        LocationManager locationManager;
         startService(new Intent(this, LocationService.class));
 
         // Use current date/time for MoodEvent
@@ -435,11 +442,15 @@ public class NewMoodEventActivity extends AppCompatActivity implements MSView<Mo
         if (gps.canGetLocation()){
             //double lat = gps.getLatitude();
             //double lon = gps.getLongitude();
-            //getLastLocation();
-            double lat = gps.getLatitude();
-            double lon = gps.getLongitude();
 
-            return new LatLng(lat, lon);
+            if ( ContextCompat.checkSelfPermission( this, android.Manifest.permission.ACCESS_COARSE_LOCATION ) != PackageManager.PERMISSION_GRANTED ) {
+
+                ActivityCompat.requestPermissions( this, new String[] {  android.Manifest.permission.ACCESS_COARSE_LOCATION  },
+                        LocationService.MY_PERMISSION_ACCESS_COARSE_LOCATION );
+            }
+
+            Location location = mLocationManager.getLastKnownLocation();
+            return new LatLng(location.getLatitude(), location.getLongitude());
         }
         return null;
     }

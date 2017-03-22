@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.location.Location;
 import android.location.LocationManager;
-import android.os.Binder;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.util.Log;
@@ -19,6 +18,8 @@ public class LocationService extends Service
     private LocationManager mLocationManager = null;
     private static final int LOCATION_INTERVAL = 1000;
     private static final float LOCATION_DISTANCE = 10f;
+    //TODO: is this number correct?
+    public static final int MY_PERMISSION_ACCESS_COARSE_LOCATION = 11;
 
     private class LocationListener implements android.location.LocationListener
     {
@@ -98,6 +99,10 @@ public class LocationService extends Service
         } catch (IllegalArgumentException ex) {
             Log.d(TAG, "gps provider does not exist " + ex.getMessage());
         }
+
+        Intent intent = new Intent();
+        intent.setAction(BROADCAST_ACTION);
+        sendBroadcast(intent);
     }
 
     @Override
@@ -120,13 +125,6 @@ public class LocationService extends Service
         Log.e(TAG, "initializeLocationManager");
         if (mLocationManager == null) {
             mLocationManager = (LocationManager) getApplicationContext().getSystemService(Context.LOCATION_SERVICE);
-        }
-    }
-
-    // http://www.truiton.com/2014/11/bound-service-example-android/
-    public class LocationBinder extends Binder {
-        LocationService getService() {
-            return LocationService.this;
         }
     }
 }
