@@ -5,11 +5,10 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
-import android.media.Image;
 import android.net.Uri;
+import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -24,8 +23,6 @@ import com.google.android.gms.maps.model.LatLng;
 import java.util.Date;
 import java.util.Objects;
 import java.util.regex.Pattern;
-
-import static com.ualberta.cmput301w17t22.moodswing.R.id.image;
 
 /**
  * Activity that lets user add a new mood event to their mood history.
@@ -95,6 +92,41 @@ public class NewMoodEventActivity extends AppCompatActivity implements MSView<Mo
         moodSwingController.addView(this);
     }
 
+    /*LocationService mBoundService;
+    boolean mServiceBound = false;
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Intent intent = new Intent(this, LocationService.class);
+        startService(intent);
+        bindService(intent, mServiceConnection, Context.BIND_AUTO_CREATE);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (mServiceBound) {
+            unbindService(mServiceConnection);
+            mServiceBound = false;
+        }
+    }
+
+    private ServiceConnection mServiceConnection = new ServiceConnection() {
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+            mServiceBound = false;
+        }
+
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            LocationService.LocationBinder myBinder = (LocationService.LocationBinder) service;
+            mBoundService = myBinder.getService();
+            mServiceBound = true;
+        }
+    };*/
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -102,6 +134,8 @@ public class NewMoodEventActivity extends AppCompatActivity implements MSView<Mo
 
         // Initialize all widgets for this activity and add this View to the main Model class.
         initialize();
+
+        startService(new Intent(this, LocationService.class));
 
         // Use current date/time for MoodEvent
         final Date moodDate = new Date();
@@ -399,6 +433,9 @@ public class NewMoodEventActivity extends AppCompatActivity implements MSView<Mo
 
         GPSTracker gps = new GPSTracker(this);
         if (gps.canGetLocation()){
+            //double lat = gps.getLatitude();
+            //double lon = gps.getLongitude();
+            //getLastLocation();
             double lat = gps.getLatitude();
             double lon = gps.getLongitude();
 
