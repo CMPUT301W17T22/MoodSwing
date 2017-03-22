@@ -36,8 +36,8 @@ public class Participant extends User {
     /** The list of other participants that are following this participant. */
     private ApprovalList followerList = new ApprovalList();
 
-    /**The list of participants being blocked from sending further follow request. */
-    private ArrayList<Participant> blockList = new ArrayList<Participant>();
+    /** The list of participants being blocked from sending further follow requests. */
+    private ArrayList<Participant> blockList = new ArrayList<>();
 
     /** All of this participant's mood events in reverse chronological order. */
     private ArrayList<MoodEvent> moodHistory = new ArrayList<>();
@@ -96,10 +96,24 @@ public class Participant extends User {
 
     // --- START: Following methods ---
 
-    public void followParticipant(Participant receivingParticipant){
-        if(receivingParticipant.blockList.contains(this)){
+    public void followParticipant(Participant receivingParticipant) {
+        Boolean sendFollowRequest = false;
 
-        }else {
+        // If the receivingParticipant's blocklist is uninitialized, send the follow request.
+        if (receivingParticipant.blockList == null ) {
+            sendFollowRequest = true;
+
+            // If the receivingParticipant's blockList is empty, send the follow request.
+        } else if (receivingParticipant.blockList.isEmpty()){
+            sendFollowRequest = true;
+
+            // If this participant is not in the receiving participant's blocklist,
+            // send the follow request.
+        } else if (!receivingParticipant.blockList.contains(this)) {
+            sendFollowRequest = true;
+        }
+
+        if (sendFollowRequest) {
             followingList.newPendingParticipant(receivingParticipant);
             receivingParticipant.createFollowerRequest(this);
         }
@@ -155,9 +169,23 @@ public class Participant extends User {
      * @param requestingParticipant
      */
     public void createFollowerRequest(Participant requestingParticipant){
-        if(this.blockList.contains(requestingParticipant)){
+        Boolean createFollowRequest = false;
 
-        }else {
+        // If the blocklist is uninitialized, create the follow request.
+        if (this.blockList == null ) {
+            createFollowRequest = true;
+
+            // If the blockList is empty, create the follow request.
+        } else if (this.blockList.isEmpty()){
+            createFollowRequest = true;
+
+            // If the requestingParticipant is not in the blocklist,
+            // send the follow request.
+        } else if (!this.blockList.contains(requestingParticipant)) {
+            createFollowRequest = true;
+        }
+
+        if (createFollowRequest) {
             followerList.newPendingParticipant(requestingParticipant);
         }
     }

@@ -10,20 +10,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.ualberta.cmput301w17t22.moodswing.dummy.DummyContent;
-import com.ualberta.cmput301w17t22.moodswing.dummy.DummyContent.DummyItem;
-
 /**
  * A fragment representing a list of Items.
  * <p/>
  * Activities containing this fragment MUST implement the {@link OnListFragmentInteractionListener}
  * interface.
  */
-public class RequestsFragment extends Fragment {
+public class FollowersRequestFragment extends Fragment {
 
-    // TODO: Customize parameter argument names
     private static final String ARG_COLUMN_COUNT = "column-count";
-    // TODO: Customize parameters
     private int mColumnCount = 1;
     private OnListFragmentInteractionListener mListener;
 
@@ -31,13 +26,13 @@ public class RequestsFragment extends Fragment {
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
      */
-    public RequestsFragment() {
+    public FollowersRequestFragment() {
     }
 
     // TODO: Customize parameter initialization
     @SuppressWarnings("unused")
-    public static RequestsFragment newInstance(int columnCount) {
-        RequestsFragment fragment = new RequestsFragment();
+    public static FollowersRequestFragment newInstance(int columnCount) {
+        FollowersRequestFragment fragment = new FollowersRequestFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_COLUMN_COUNT, columnCount);
         fragment.setArguments(args);
@@ -56,7 +51,7 @@ public class RequestsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_request_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_followers_request_list, container, false);
 
         // Set the adapter
         if (view instanceof RecyclerView) {
@@ -67,7 +62,14 @@ public class RequestsFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new MyRequestRecyclerViewAdapter(DummyContent.ITEMS, mListener));
+            // Get main model class controller.
+            MoodSwingController moodSwingController =
+                    MoodSwingApplication.getMoodSwingController();
+
+            // Get main participant, get pending followers.
+            recyclerView.setAdapter(new FollowersRequestRecyclerViewAdapter(
+                    moodSwingController.getMainParticipant().getPendingFollowers(),
+                    mListener));
         }
         return view;
     }

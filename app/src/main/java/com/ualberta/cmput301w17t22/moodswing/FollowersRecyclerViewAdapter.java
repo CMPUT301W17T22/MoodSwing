@@ -6,22 +6,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.ualberta.cmput301w17t22.moodswing.OnListFragmentInteractionListener;
-import com.ualberta.cmput301w17t22.moodswing.dummy.DummyContent.DummyItem;
-
 import java.util.List;
 
 /**
- * {@link RecyclerView.Adapter} that can display a {@link DummyItem} and makes a call to the
+ * {@link RecyclerView.Adapter} that can display a {@link Participant} and makes a call to the
  * specified {@link OnListFragmentInteractionListener}.
  * TODO: Replace the implementation with code for your data type.
  */
-public class MyFollowingRecyclerViewAdapter extends RecyclerView.Adapter<MyFollowingRecyclerViewAdapter.ViewHolder> {
+public class FollowersRecyclerViewAdapter extends RecyclerView.Adapter<FollowersRecyclerViewAdapter.ViewHolder> {
 
-    private final List<DummyItem> mValues;
+    private final List<Participant> mValues;
     private final OnListFragmentInteractionListener mListener;
 
-    public MyFollowingRecyclerViewAdapter(List<DummyItem> items, OnListFragmentInteractionListener listener) {
+    public FollowersRecyclerViewAdapter(List<Participant> items, OnListFragmentInteractionListener listener) {
         mValues = items;
         mListener = listener;
     }
@@ -29,15 +26,15 @@ public class MyFollowingRecyclerViewAdapter extends RecyclerView.Adapter<MyFollo
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.fragment_following, parent, false);
+                .inflate(R.layout.fragment_followers, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
-        holder.mIdView.setText(mValues.get(position).id);
-        holder.mContentView.setText(mValues.get(position).content);
+        holder.mIdView.setText(mValues.get(position).getId());
+        holder.mContentView.setText(mValues.get(position).getUsername());
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,7 +57,7 @@ public class MyFollowingRecyclerViewAdapter extends RecyclerView.Adapter<MyFollo
         public final View mView;
         public final TextView mIdView;
         public final TextView mContentView;
-        public DummyItem mItem;
+        public Participant mItem;
 
         public ViewHolder(View view) {
             super(view);

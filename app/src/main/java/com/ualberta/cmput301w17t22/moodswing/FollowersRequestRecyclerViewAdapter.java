@@ -6,22 +6,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.ualberta.cmput301w17t22.moodswing.OnListFragmentInteractionListener;
 import com.ualberta.cmput301w17t22.moodswing.dummy.DummyContent.DummyItem;
 
 import java.util.List;
 
-/**
+/** TODO: Javadocs.
  * {@link RecyclerView.Adapter} that can display a {@link DummyItem} and makes a call to the
  * specified {@link OnListFragmentInteractionListener}.
- * TODO: Replace the implementation with code for your data type.
  */
-public class MyRequestRecyclerViewAdapter extends RecyclerView.Adapter<MyRequestRecyclerViewAdapter.ViewHolder> {
+public class FollowersRequestRecyclerViewAdapter extends RecyclerView.Adapter<FollowersRequestRecyclerViewAdapter.ViewHolder> {
 
-    private final List<DummyItem> mValues;
+    private final List<Participant> mValues;
     private final OnListFragmentInteractionListener mListener;
 
-    public MyRequestRecyclerViewAdapter(List<DummyItem> items, OnListFragmentInteractionListener listener) {
+    public FollowersRequestRecyclerViewAdapter(List<Participant> items, OnListFragmentInteractionListener listener) {
         mValues = items;
         mListener = listener;
     }
@@ -29,15 +27,15 @@ public class MyRequestRecyclerViewAdapter extends RecyclerView.Adapter<MyRequest
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.fragment_request, parent, false);
+                .inflate(R.layout.fragment_followers_request, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
-        holder.mIdView.setText(mValues.get(position).id);
-        holder.mContentView.setText(mValues.get(position).content);
+        holder.mIdView.setText(mValues.get(position).getId());
+        holder.mContentView.setText(mValues.get(position).getUsername());
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,7 +58,7 @@ public class MyRequestRecyclerViewAdapter extends RecyclerView.Adapter<MyRequest
         public final View mView;
         public final TextView mIdView;
         public final TextView mContentView;
-        public DummyItem mItem;
+        public Participant mItem;
 
         public ViewHolder(View view) {
             super(view);

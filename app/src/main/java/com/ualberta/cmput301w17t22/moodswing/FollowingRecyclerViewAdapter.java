@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.ualberta.cmput301w17t22.moodswing.OnListFragmentInteractionListener;
 import com.ualberta.cmput301w17t22.moodswing.dummy.DummyContent.DummyItem;
 
 import java.util.List;
@@ -16,12 +15,12 @@ import java.util.List;
  * specified {@link OnListFragmentInteractionListener}.
  * TODO: Replace the implementation with code for your data type.
  */
-public class MyFollowerRecyclerViewAdapter extends RecyclerView.Adapter<MyFollowerRecyclerViewAdapter.ViewHolder> {
+public class FollowingRecyclerViewAdapter extends RecyclerView.Adapter<FollowingRecyclerViewAdapter.ViewHolder> {
 
-    private final List<DummyItem> mValues;
+    private final List<Participant> mValues;
     private final OnListFragmentInteractionListener mListener;
 
-    public MyFollowerRecyclerViewAdapter(List<DummyItem> items, OnListFragmentInteractionListener listener) {
+    public FollowingRecyclerViewAdapter(List<Participant> items, OnListFragmentInteractionListener listener) {
         mValues = items;
         mListener = listener;
     }
@@ -29,15 +28,15 @@ public class MyFollowerRecyclerViewAdapter extends RecyclerView.Adapter<MyFollow
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.fragment_followers, parent, false);
+                .inflate(R.layout.fragment_following, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
-        holder.mIdView.setText(mValues.get(position).id);
-        holder.mContentView.setText(mValues.get(position).content);
+        holder.mIdView.setText(mValues.get(position).getId());
+        holder.mContentView.setText(mValues.get(position).getUsername());
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,7 +59,7 @@ public class MyFollowerRecyclerViewAdapter extends RecyclerView.Adapter<MyFollow
         public final View mView;
         public final TextView mIdView;
         public final TextView mContentView;
-        public DummyItem mItem;
+        public Participant mItem;
 
         public ViewHolder(View view) {
             super(view);
