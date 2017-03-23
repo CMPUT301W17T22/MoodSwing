@@ -41,14 +41,10 @@ public class ApprovalList {
      */
     public void approvePending(Participant otherParticipant){
         if(pending.contains(otherParticipant.getUsername())){
-            pending.remove(otherParticipant.getUsername());
 
-            if(approved.contains(otherParticipant.getUsername())){
-                throw new InvalidParameterException();
-            }
-            else{
-                approved.add(otherParticipant.getUsername());
-            }
+            pending.remove(otherParticipant.getUsername());
+            approved.add(otherParticipant.getUsername());
+
         }
         else{
             throw new InvalidParameterException();

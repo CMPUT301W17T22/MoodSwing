@@ -43,4 +43,14 @@ public class MoodSwingApplication extends Application {
         return moodSwingController;
     }
 
+    /**
+     * Get FollowingController. Returns the FollowingController to a View.
+     */
+    transient private static FollowingController followingController = null;
+    static FollowingController getFollowingController(){
+        if(followingController == null){
+            followingController = new FollowingController(getMoodSwing());
+        }
+        return followingController;
+    }
 }

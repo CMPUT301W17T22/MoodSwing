@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.ualberta.cmput301w17t22.moodswing.dummy.DummyContent.DummyItem;
@@ -46,6 +47,30 @@ public class FollowersRequestRecyclerViewAdapter extends RecyclerView.Adapter<Fo
                 }
             }
         });
+        holder.denyButton.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v){
+                Participant receivingParticipant =
+                        MoodSwingApplication.getElasticSearchController().
+                                getParticipantByUsername(holder.mContentView.getText().toString());
+                FollowingController followingController =
+                        MoodSwingApplication.getFollowingController();
+                followingController.declineRequest(receivingParticipant);
+            }
+        });
+        holder.approveButton.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v){
+                Participant receivingParticipant =
+                        MoodSwingApplication.getElasticSearchController().
+                                getParticipantByUsername(holder.mContentView.getText().toString());
+                FollowingController followingController =
+                        MoodSwingApplication.getFollowingController();
+                followingController.approveRequest(receivingParticipant);
+            }
+        });
     }
 
     @Override
@@ -56,12 +81,16 @@ public class FollowersRequestRecyclerViewAdapter extends RecyclerView.Adapter<Fo
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
         public final TextView mContentView;
+        public final Button approveButton;
+        public final Button denyButton;
         public String mItem;
 
         public ViewHolder(View view) {
             super(view);
             mView = view;
             mContentView = (TextView) view.findViewById(R.id.content);
+            approveButton = (Button) view.findViewById(R.id.ApproveFollowerButton);
+            denyButton = (Button) view.findViewById(R.id.DenyFollowerButton);
         }
 
         @Override
