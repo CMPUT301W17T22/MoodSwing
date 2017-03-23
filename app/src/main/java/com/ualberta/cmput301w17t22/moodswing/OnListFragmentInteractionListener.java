@@ -12,5 +12,5 @@ import com.ualberta.cmput301w17t22.moodswing.dummy.DummyContent;
  */
 
 public interface OnListFragmentInteractionListener {
-    void onListFragmentInteraction(Participant participant);
+    void onListFragmentInteraction(String username);
 }

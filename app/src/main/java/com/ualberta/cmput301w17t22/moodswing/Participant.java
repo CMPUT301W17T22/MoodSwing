@@ -37,7 +37,7 @@ public class Participant extends User {
     private ApprovalList followerList = new ApprovalList();
 
     /** The list of participants being blocked from sending further follow requests. */
-    private ArrayList<Participant> blockList = new ArrayList<>();
+    private ArrayList<String> blockList = new ArrayList<>();
 
     /** All of this participant's mood events in reverse chronological order. */
     private ArrayList<MoodEvent> moodHistory = new ArrayList<>();
@@ -109,7 +109,7 @@ public class Participant extends User {
 
             // If this participant is not in the receiving participant's blocklist,
             // send the follow request.
-        } else if (!receivingParticipant.blockList.contains(this)) {
+        } else if (!receivingParticipant.blockList.contains(this.getUsername())) {
             sendFollowRequest = true;
         }
 
@@ -130,9 +130,9 @@ public class Participant extends User {
     }
 
     public void blockParticipant(Participant recevingParticipant){
-        if (this.blockList.contains(recevingParticipant)) {
+        if (this.blockList.contains(recevingParticipant.getUsername())) {
         }else{
-            blockList.add(recevingParticipant);
+            blockList.add(recevingParticipant.getUsername());
         }
 
     }
@@ -181,7 +181,7 @@ public class Participant extends User {
 
             // If the requestingParticipant is not in the blocklist,
             // send the follow request.
-        } else if (!this.blockList.contains(requestingParticipant)) {
+        } else if (!this.blockList.contains(requestingParticipant.getUsername())) {
             createFollowRequest = true;
         }
 
@@ -218,19 +218,19 @@ public class Participant extends User {
 
     public void setId(String id) { this.id = id; }
 
-    public ArrayList<Participant> getPendingFollowing() {
+    public ArrayList<String> getPendingFollowing() {
         return followingList.getPending();
     }
 
-    public ArrayList<Participant> getFollowing() {
+    public ArrayList<String> getFollowing() {
         return followingList.getApproved();
     }
 
-    public ArrayList<Participant> getPendingFollowers() {
+    public ArrayList<String> getPendingFollowers() {
         return followerList.getPending();
     }
 
-    public ArrayList<Participant> getFollowers() {
+    public ArrayList<String> getFollowers() {
         return followerList.getApproved();
     }
 

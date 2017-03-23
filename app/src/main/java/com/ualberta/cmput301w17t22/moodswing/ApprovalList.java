@@ -16,8 +16,8 @@ import java.util.ArrayList;
  */
 
 public class ApprovalList {
-    private ArrayList<Participant> pending = new ArrayList<>();
-    private ArrayList<Participant> approved = new ArrayList<>();
+    private ArrayList<String> pending = new ArrayList<>();
+    private ArrayList<String> approved = new ArrayList<>();
 
     public ApprovalList(){}
 
@@ -27,10 +27,11 @@ public class ApprovalList {
      * @param otherParticipant
      */
     public void newPendingParticipant(Participant otherParticipant){
-        if(pending.contains(otherParticipant) || approved.contains(otherParticipant)){
+        if(pending.contains(otherParticipant.getUsername()) || approved.contains(otherParticipant.getUsername())){
             throw new InvalidParameterException();
+        } else {
+            pending.add(otherParticipant.getUsername());
         }
-        pending.add(otherParticipant);
     }
 
     /**
@@ -39,14 +40,14 @@ public class ApprovalList {
      * @param otherParticipant
      */
     public void approvePending(Participant otherParticipant){
-        if(pending.contains(otherParticipant)){
-            pending.remove(otherParticipant);
+        if(pending.contains(otherParticipant.getUsername())){
+            pending.remove(otherParticipant.getUsername());
 
-            if(approved.contains(otherParticipant)){
+            if(approved.contains(otherParticipant.getUsername())){
                 throw new InvalidParameterException();
             }
             else{
-                approved.add(otherParticipant);
+                approved.add(otherParticipant.getUsername());
             }
         }
         else{
@@ -61,16 +62,16 @@ public class ApprovalList {
      * @return true if removal successful
      */
     public boolean remove(Participant otherParticipant){
-        return(pending.remove(otherParticipant) | approved.remove(otherParticipant));
+        return(pending.remove(otherParticipant.getUsername()) | approved.remove(otherParticipant.getUsername()));
     }
 
     // --- getters and setters ---
 
-    public ArrayList<Participant> getPending() {
+    public ArrayList<String> getPending() {
         return pending;
     }
 
-    public ArrayList<Participant> getApproved() {
+    public ArrayList<String> getApproved() {
         return approved;
     }
 

@@ -15,10 +15,10 @@ import java.util.List;
  */
 public class FollowersRecyclerViewAdapter extends RecyclerView.Adapter<FollowersRecyclerViewAdapter.ViewHolder> {
 
-    private final List<Participant> mValues;
+    private final List<String> mValues;
     private final OnListFragmentInteractionListener mListener;
 
-    public FollowersRecyclerViewAdapter(List<Participant> items, OnListFragmentInteractionListener listener) {
+    public FollowersRecyclerViewAdapter(List<String> items, OnListFragmentInteractionListener listener) {
         mValues = items;
         mListener = listener;
     }
@@ -33,8 +33,8 @@ public class FollowersRecyclerViewAdapter extends RecyclerView.Adapter<Followers
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
-        holder.mIdView.setText(mValues.get(position).getId());
-        holder.mContentView.setText(mValues.get(position).getUsername());
+        holder.mIdView.setText(mValues.get(position));
+        holder.mContentView.setText(mValues.get(position));
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,7 +57,7 @@ public class FollowersRecyclerViewAdapter extends RecyclerView.Adapter<Followers
         public final View mView;
         public final TextView mIdView;
         public final TextView mContentView;
-        public Participant mItem;
+        public String mItem;
 
         public ViewHolder(View view) {
             super(view);

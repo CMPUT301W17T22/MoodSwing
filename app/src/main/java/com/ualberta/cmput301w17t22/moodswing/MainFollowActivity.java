@@ -65,7 +65,6 @@ public class MainFollowActivity extends AppCompatActivity implements MSView<Mood
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
 
-        // TODO: We can use this as our add a new follower button.
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -232,7 +231,7 @@ public class MainFollowActivity extends AppCompatActivity implements MSView<Mood
      * on 3.12.2017.
      */
     @Override
-    public void onListFragmentInteraction(Participant participant) {
+    public void onListFragmentInteraction(String username) {
         //do some stuff with the data
     }
 
