@@ -111,6 +111,9 @@ public class Participant extends User {
             // send the follow request.
         } else if (!receivingParticipant.blockList.contains(this.getUsername())) {
             sendFollowRequest = true;
+        } else if(this.followerList.getPending().contains(receivingParticipant.getUsername()) ||
+                this.followingList.getPending().contains(receivingParticipant.getUsername())){
+
         }
 
         if (sendFollowRequest) {
