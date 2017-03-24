@@ -248,6 +248,7 @@ public class ViewMoodEventActivity extends AppCompatActivity implements MSView<M
 
         // Set the image and text for the appropriate Mood Event.
         emotionalStateTextView.setText(moodEvent.getEmotionalState().getDescription());
+
         emotionalStateImageView.setImageDrawable(getDrawable(
                 moodEvent.getEmotionalState().getDrawableId()));
 
