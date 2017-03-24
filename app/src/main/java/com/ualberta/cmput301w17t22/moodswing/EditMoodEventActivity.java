@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.gson.Gson;
 
+import java.io.ByteArrayOutputStream;
 import java.util.Objects;
 import java.util.regex.Pattern;
 
@@ -55,7 +56,7 @@ public class EditMoodEventActivity extends AppCompatActivity implements MSView<M
     CheckBox addCurrentLocationCheckBox;
 
     /**Get the ImageView */
-    Bitmap image;
+    ByteArrayOutputStream image;
 
     public void initialize() {
         // Initialize all the widgets in the activity.
@@ -209,7 +210,7 @@ public class EditMoodEventActivity extends AppCompatActivity implements MSView<M
         triggerEditText.setText(oldMoodEvent.getTrigger());
 
         //Set the Image from the old mood event.
-        image = oldMoodEvent.getImage();
+        //image = oldMoodEvent.getImage();
     }
 
     /**

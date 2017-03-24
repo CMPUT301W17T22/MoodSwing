@@ -21,6 +21,8 @@ import android.widget.Toast;
 
 import com.google.android.gms.maps.model.LatLng;
 
+import java.io.ByteArrayOutputStream;
+import java.io.OutputStream;
 import java.util.Date;
 import java.util.Objects;
 import java.util.regex.Pattern;
@@ -49,6 +51,7 @@ public class NewMoodEventActivity extends AppCompatActivity implements MSView<Mo
     /** Used in photo selection. */
     private static int RESULT_LOAD_IMG = 1;
     private static int REQUEST_IMAGE_CAPTURE = 2;
+    private static int COMPRESSION_AMOUNT = 16;
 
     /** Used in photo selection. */
     String imgDecodableString;
@@ -74,7 +77,7 @@ public class NewMoodEventActivity extends AppCompatActivity implements MSView<Mo
     /** Button that triggers the app to allow the user to capture a photo. */
     Button photoCaptureButton;
 
-    Bitmap image = null;
+    ByteArrayOutputStream image = null;
 
     /**
      * Initializes all the widgets for this activity and adds this View to the main Model class.
@@ -287,6 +290,12 @@ public class NewMoodEventActivity extends AppCompatActivity implements MSView<Mo
                         imageView.setImageBitmap(BitmapFactory
                                 .decodeFile(imgDecodableString));
 
+                        //image = BitmapFactory.decodeFile(imgDecodableString);
+                        Bitmap imageBitmap = BitmapFactory.decodeFile(imgDecodableString);
+                        ByteArrayOutputStream out = new ByteArrayOutputStream();
+                        imageBitmap.compress(Bitmap.CompressFormat.JPEG, COMPRESSION_AMOUNT, out);
+                        image = out;
+
 
                     } else {
                         Toast.makeText(this, "You haven't picked an image",
@@ -299,7 +308,12 @@ public class NewMoodEventActivity extends AppCompatActivity implements MSView<Mo
                     if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
                         Bundle extras = data.getExtras();
                         Bitmap imageBitmap = (Bitmap) extras.get("data");
-                        image = imageBitmap;
+                        ByteArrayOutputStream out = new ByteArrayOutputStream();
+                        imageBitmap.compress(Bitmap.CompressFormat.JPEG, COMPRESSION_AMOUNT, out);
+                        image = out;
+                        //image = imageBitmap;
+
+
                         // get image view
                         ImageView imageView =
                                 (ImageView) findViewById(R.id.imageView_NewMoodEventActivity);
@@ -401,7 +415,7 @@ public class NewMoodEventActivity extends AppCompatActivity implements MSView<Mo
         return null;
     }
     /** Gets the image from the image view*/
-    public Bitmap getImage() {
+    public ByteArrayOutputStream getImage() {
 
         return image;
     }
