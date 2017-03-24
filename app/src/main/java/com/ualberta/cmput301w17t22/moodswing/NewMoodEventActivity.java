@@ -10,6 +10,7 @@ import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -79,6 +80,9 @@ public class NewMoodEventActivity extends AppCompatActivity implements MSView<Mo
 
     ByteArrayOutputStream image = null;
 
+    /** The toolbar, shows the title. */
+    Toolbar newMoodToolbar;
+
     /**
      * Initializes all the widgets for this activity and adds this View to the main Model class.
      */
@@ -96,6 +100,9 @@ public class NewMoodEventActivity extends AppCompatActivity implements MSView<Mo
         // Add this View to the main Model class.
         MoodSwingController moodSwingController = MoodSwingApplication.getMoodSwingController();
         moodSwingController.addView(this);
+
+        newMoodToolbar = (Toolbar) findViewById(R.id.newMoodToolbar);
+        newMoodToolbar.setTitle("New Mood Event");
     }
 
     @Override

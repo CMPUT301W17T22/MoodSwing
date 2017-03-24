@@ -122,6 +122,7 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
      */
     public void initialize() {
         mainToolbar = (Toolbar) findViewById(R.id.mainToolBar);
+        mainToolbar.setTitle("");
         welcomeText = (TextView)findViewById(R.id.mainWelcomeText);
 
         // Add this View to the main Model class.

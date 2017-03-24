@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -45,7 +46,8 @@ public class EditMoodEventActivity extends AppCompatActivity implements MSView<M
     /** Used in photo selection. */
     String imgDecodableString;
 
-
+    /** The toolbar, shows the title. */
+    Toolbar editMoodToolbar;
 
 
     /** The position of the mood event in its mood history array list. Identical to its position
@@ -76,7 +78,6 @@ public class EditMoodEventActivity extends AppCompatActivity implements MSView<M
 
 
 
-
     ImageView imageView;
 
     /**Get the ImageView */
@@ -104,6 +105,10 @@ public class EditMoodEventActivity extends AppCompatActivity implements MSView<M
         // Add this View to the main Model class.
         MoodSwingController moodSwingController = MoodSwingApplication.getMoodSwingController();
         moodSwingController.addView(this);
+
+
+        editMoodToolbar = (Toolbar) findViewById(R.id.editMoodToolbar);
+        editMoodToolbar.setTitle("Edit Mood Event");
     }
 
     /**

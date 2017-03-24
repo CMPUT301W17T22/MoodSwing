@@ -3,6 +3,7 @@ package com.ualberta.cmput301w17t22.moodswing;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -30,6 +31,10 @@ public class MoodHistoryActivity extends AppCompatActivity implements MSView<Moo
     /** The main participant's mood history, an ArrayList of their MoodEvents */
     private ArrayList<MoodEvent> moodHistory;
 
+
+    /** The main toolbar of the app that lets users navigate to the other parts of the app. */
+    Toolbar mainToolbar2;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +42,8 @@ public class MoodHistoryActivity extends AppCompatActivity implements MSView<Moo
 
         // Initialize all widgets for this activity.
         initialize();
+
+        setSupportActionBar(mainToolbar2);
 
         moodHistoryListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -104,6 +111,8 @@ public class MoodHistoryActivity extends AppCompatActivity implements MSView<Moo
      * Initialize all widgets for this Activity, and add this view to the main model class.
      */
     public void initialize() {
+        mainToolbar2 = (Toolbar) findViewById(R.id.mainToolBar2);
+        mainToolbar2.setTitle("Mood History");
         moodHistoryListView  = (ListView) findViewById(R.id.moodHistory);
 
         // Add this View to the main Model class.
