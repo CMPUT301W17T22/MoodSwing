@@ -220,6 +220,9 @@ public class MoodEvent {
     }
 
     public Bitmap getImage() {
+        if (image == null) {
+            return null;
+        }
         Bitmap newimage = BitmapFactory.decodeByteArray(image.toByteArray(), 0, image.size());
         return newimage; }
 
