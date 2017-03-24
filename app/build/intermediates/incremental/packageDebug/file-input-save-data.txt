@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Thu Mar 23 19:22:38 MDT 2017
+#Thu Mar 23 19:28:01 MDT 2017
 210.set=ANDROID_RESOURCE
 282.file=/afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/build/intermediates/res/resources-debug.ap_/res/layout/design_menu_item_action_area.xml
 14.set=ANDROID_RESOURCE
