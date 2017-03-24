@@ -223,7 +223,8 @@ public class MoodEvent {
         Bitmap newimage = BitmapFactory.decodeByteArray(image.toByteArray(), 0, image.size());
         return newimage; }
 
-    public void setImage(ByteArrayOutputStream image) { this.image = image; }
+    public void setImage(ByteArrayOutputStream image) {
+        this.image = image; }
 
     // --- END: Getters and Setters
 }
