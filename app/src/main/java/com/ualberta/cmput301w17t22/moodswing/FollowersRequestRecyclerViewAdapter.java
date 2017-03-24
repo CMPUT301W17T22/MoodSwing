@@ -1,5 +1,6 @@
 package com.ualberta.cmput301w17t22.moodswing;
 
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -51,24 +52,49 @@ public class FollowersRequestRecyclerViewAdapter extends RecyclerView.Adapter<Fo
 
             @Override
             public void onClick(View v){
-                Participant receivingParticipant =
-                        MoodSwingApplication.getElasticSearchController().
-                                getParticipantByUsername(holder.mContentView.getText().toString());
+
+                // Get the elastic search controller.
+                ElasticSearchController elasticSearchController =
+                        MoodSwingApplication.getElasticSearchController();
+
+                // Retrieve the receivingParticipant from ElasticSearch given the username.
+                Participant receivingParticipant = elasticSearchController
+                                .getParticipantByUsername(holder.mContentView.getText().toString());
+
+                // Get the following controller.
                 FollowingController followingController =
                         MoodSwingApplication.getFollowingController();
+
+                // Decline the request using the following controller.
                 followingController.declineRequest(receivingParticipant);
+
+                // Notify the change of data.
+                notifyDataSetChanged();
             }
         });
+
         holder.approveButton.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View v){
-                Participant receivingParticipant =
-                        MoodSwingApplication.getElasticSearchController().
-                                getParticipantByUsername(holder.mContentView.getText().toString());
+
+                // Get the elastic search controller.
+                ElasticSearchController elasticSearchController =
+                        MoodSwingApplication.getElasticSearchController();
+
+                // Retrieve the receivingParticipant from ElasticSearch given the username.
+                Participant receivingParticipant = elasticSearchController
+                        .getParticipantByUsername(holder.mContentView.getText().toString());
+
+                // Get the following controller.
                 FollowingController followingController =
                         MoodSwingApplication.getFollowingController();
+
+                // Use the following controller to approve the request.
                 followingController.approveRequest(receivingParticipant);
+
+                // Notify the change of data.
+                notifyDataSetChanged();
             }
         });
     }

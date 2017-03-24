@@ -132,16 +132,15 @@ public class Participant extends User {
         receivingParticipant.followerList.remove(this);
     }
 
-    public void blockParticipant(Participant recevingParticipant){
-        if (this.blockList.contains(recevingParticipant.getUsername())) {
-        }else{
-            blockList.add(recevingParticipant.getUsername());
+    public void blockParticipant(String participantUsername){
+        if (this.blockList.contains(participantUsername)) {
+        } else {
+            blockList.add(participantUsername);
         }
-
     }
 
-    public void unblockParticipant(Participant unblockee){
-        this.blockList.remove(unblockee);
+    public void unblockParticipant(String participantUsername){
+        this.blockList.remove(participantUsername);
     }
 
     /**
@@ -209,7 +208,7 @@ public class Participant extends User {
 
     public void blockFollowerRequest(Participant requestingParticipant){
         followerList.remove(requestingParticipant);
-        this.blockParticipant(requestingParticipant);
+        this.blockParticipant(requestingParticipant.getUsername());
     }
 
     // --- END: Follower methods ---

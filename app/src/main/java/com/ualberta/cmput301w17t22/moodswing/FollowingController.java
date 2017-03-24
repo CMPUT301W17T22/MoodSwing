@@ -35,8 +35,8 @@ public class FollowingController implements MSController {
     //TODO: Implement error handle when the string entered is not an existing participant
     public void followParticipant(String participant){
 
-        Participant newFollowedParticipant = elasticSearchController.getParticipantByUsername(participant);
-
+        Participant newFollowedParticipant =
+                elasticSearchController.getParticipantByUsername(participant);
 
         mainParticipant.followParticipant(newFollowedParticipant);
         mainParticipant.createFollowerRequest(newFollowedParticipant);
@@ -56,11 +56,11 @@ public class FollowingController implements MSController {
 
     public void unfollowParticipant(Participant receivingparticipant){
 
+        // Unfollow the participant.
         mainParticipant.unfollowParticipant(receivingparticipant);
-
         mainParticipant.createUnfollowEvent(receivingparticipant);
 
-        //not sure if update is necessary?
+        // Update elasticsearch.
         elasticSearchController.updateParticipantByParticipant(mainParticipant);
     }
 
@@ -70,7 +70,12 @@ public class FollowingController implements MSController {
      */
     public boolean approveRequest(Participant participant){
 
+        // Approve the request.
         mainParticipant.approveFollowerRequest(participant);
+
+        // Update elastic search.
+        elasticSearchController.updateParticipantByParticipant(mainParticipant);
+        elasticSearchController.updateParticipantByParticipant(participant);
         return true;
     }
     /**
@@ -79,18 +84,36 @@ public class FollowingController implements MSController {
      */
     public boolean declineRequest(Participant participant){
 
+        // Decline the request.
         mainParticipant.declineFollowerRequest(participant);
+
+        // Update elastic search.
+        elasticSearchController.updateParticipantByParticipant(mainParticipant);
+        elasticSearchController.updateParticipantByParticipant(participant);
         return true;
     }
 
     /**
      * The controller will invoke the blockParticipant method from the main participant.
-     * @param participant
+     * @param participantUsername The participant to block's username.
      * @return
      */
-    public boolean blockParticipant(Participant participant){
-        mainParticipant.blockParticipant(participant);
-        return true;
+    public boolean blockParticipant(String participantUsername){
+
+        boolean blockStatus = false;
+
+        // Check if the participant we want to block actually exists.
+        if (elasticSearchController.getParticipantByUsername(participantUsername) != null) {
+
+            // Block the participant.
+            mainParticipant.blockParticipant(participantUsername);
+
+            // Update elastic search.
+            elasticSearchController.updateParticipantByParticipant(mainParticipant);
+
+            blockStatus = true;
+        }
+        return blockStatus;
     }
 
 

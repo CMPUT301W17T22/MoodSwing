@@ -31,6 +31,11 @@ public class MainFollowActivity extends AppCompatActivity implements MSView<Mood
      */
     Boolean requestStatus;
 
+    /**
+     * blockStatus is true
+     */
+    Boolean blockStatus;
+
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -156,11 +161,65 @@ public class MainFollowActivity extends AppCompatActivity implements MSView<Mood
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
 
+        // Handle action bar item clicks.
+        if (item.getItemId() == R.id.blockUserButton) {
+
+            // Create dialog box for blocking a user.
+            AlertDialog.Builder adb =
+                    new AlertDialog.Builder(MainFollowActivity.this, R.style.DialogTheme);
+
+            // Create edittext to take user input.
+            final EditText usernameToBlockEditText = new EditText(MainFollowActivity.this);
+
+            // Set the message, the title, and the edittext.
+            adb.setMessage("Enter the username of the user you would like to block: ")
+                    .setTitle("Block A User")
+                    .setCancelable(true)
+                    .setView(usernameToBlockEditText);
+
+            // Create the positive button for the alert dialog.
+            adb.setPositiveButton("Block User", new DialogInterface.OnClickListener(){
+                @Override
+                public void onClick(DialogInterface dialog, int which){
+                    // Get edittext value.
+                    String usernameToBlock = usernameToBlockEditText.getText().toString();
+
+                    // Get FollowingController.
+                    FollowingController followingController =
+                            MoodSwingApplication.getFollowingController();
+
+                    // Send the follow request. requestStatus is true if the request went
+                    // through, and false if no user with the given username was found.
+                    blockStatus = followingController.blockParticipant(usernameToBlock);
+
+                    if (blockStatus) {
+                        Toast.makeText(MainFollowActivity.this,
+                                "User blocked successfully!",
+                                Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(MainFollowActivity.this,
+                                "No user with given username found.",
+                                Toast.LENGTH_SHORT).show();
+                    }
+
+                    dialog.cancel();
+                }
+            });
+
+            // Create the negative button for the alert dialog.
+            adb.setNegativeButton("Cancel", new DialogInterface.OnClickListener(){
+                @Override
+                public void onClick(DialogInterface dialog, int which){
+                    // Do nothing, cancel the dialog box.
+                    dialog.cancel();
+                }
+            });
+
+            // Build and show the dialog box.
+            AlertDialog dialog = adb.create();
+            dialog.show();
+        }
         return super.onOptionsItemSelected(item);
     }
 

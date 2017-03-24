@@ -23,6 +23,11 @@ public class FollowersRequestFragment extends Fragment {
     private OnListFragmentInteractionListener mListener;
 
     /**
+     * The adapter for the information from the Model class MoodSwing.
+     */
+    private RecyclerView.Adapter adapter;
+
+    /**
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
      */
@@ -62,14 +67,12 @@ public class FollowersRequestFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            // Get main model class controller.
-            MoodSwingController moodSwingController =
-                    MoodSwingApplication.getMoodSwingController();
 
-            // Get main participant, get pending followers.
-            recyclerView.setAdapter(new FollowersRequestRecyclerViewAdapter(
-                    moodSwingController.getMainParticipant().getPendingFollowers(),
-                    mListener));
+            // Get the adapter.
+            adapter = getAdapter();
+
+            // Set the adapter.
+            recyclerView.setAdapter(adapter);
         }
         return view;
     }
@@ -91,4 +94,28 @@ public class FollowersRequestFragment extends Fragment {
         super.onDetach();
         mListener = null;
     }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        // Refresh the adapter.
+        adapter = getAdapter();
+    }
+
+    /**
+     * Class to get adapter from MoodSwing model class.
+     * @return
+     */
+    public RecyclerView.Adapter getAdapter() {
+        // Get MoodSwingController.
+        MoodSwingController moodSwingController =
+                MoodSwingApplication.getMoodSwingController();
+
+        // Create and return adapter.
+        return new FollowersRequestRecyclerViewAdapter(
+                moodSwingController.getMainParticipant().getPendingFollowers(),
+                mListener);
+    }
+
 }

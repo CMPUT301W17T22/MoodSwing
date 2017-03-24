@@ -55,5 +55,7 @@
     <string name="title_activity_main_follow">Following and Followers</string>
     <string name="moodhistory">MoodHistory</string>
 
+    <string name="block_user">Block User</string>
+
 
 </resources>
