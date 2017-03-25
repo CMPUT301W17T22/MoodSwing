@@ -36,6 +36,7 @@ public class ViewMoodEventActivity extends AppCompatActivity implements MSView<M
 
     /** TextView that holds the mood event's trigger text. */
     TextView triggerTextView;
+    TextView triggerPrefixTextView;
 
     /** ImageView that holds the appropriate image for the emotional state. */
     ImageView emotionalStateImageView;
@@ -77,6 +78,9 @@ public class ViewMoodEventActivity extends AppCompatActivity implements MSView<M
                 (TextView) findViewById(R.id.socialSituationTextView_ViewMoodEventActivity);
         triggerTextView =
                 (TextView) findViewById(R.id.triggerTextView_ViewMoodEventActivity);
+
+        triggerPrefixTextView =
+                (TextView) findViewById(R.id.triggerPrefixTextView);
 
         // Initialize the image views.
         emotionalStateImageView =
@@ -244,18 +248,62 @@ public class ViewMoodEventActivity extends AppCompatActivity implements MSView<M
         Log.i("MoodSwing", String.valueOf(moodEvent.getEmotionalState().getDrawableId()));
         // Load values from MoodEvent into the simple text fields.
         usernameTextView.setText(moodEvent.getOriginalPoster());
-        triggerTextView.setText(moodEvent.getTrigger());
+
+        if (moodEvent.getTrigger() == "") {
+            triggerTextView.setVisibility(View.GONE);
+            triggerPrefixTextView.setVisibility(View.GONE);
+        } else {
+            triggerTextView.setText(moodEvent.getTrigger());
+            //triggerTextView.setTextColor(getResources().getColor(R.color.colorPrimary));
+        }
+
 
         // Set the image and text for the appropriate Mood Event.
         emotionalStateTextView.setText(moodEvent.getEmotionalState().getDescription());
+        switch (moodEvent.getEmotionalState().getDescription()) {
+            case "Anger":
+                emotionalStateTextView.setTextColor(getResources().getColor(R.color.angry));
+                break;
+            case "Sadness":
+                emotionalStateTextView.setTextColor(getResources().getColor(R.color.sad));
+                break;
+            case "Disgust":
+                emotionalStateTextView.setTextColor(getResources().getColor(R.color.disgusted));
+                break;
+            case "Shame":
+                emotionalStateTextView.setTextColor(getResources().getColor(R.color.ashamed));
+                break;
+            case "Happiness":
+                emotionalStateTextView.setTextColor(getResources().getColor(R.color.happy));
+                break;
+            case "Surprise":
+                emotionalStateTextView.setTextColor(getResources().getColor(R.color.surprised));
+                break;
+            case "Confusion":
+                emotionalStateTextView.setTextColor(getResources().getColor(R.color.confused));
+                break;
+            case "Fear":
+                emotionalStateTextView.setTextColor(getResources().getColor(R.color.fearful));
+                break;
+            default:
+                emotionalStateTextView.setTextColor(getResources().getColor(R.color.white));
+                break;
+        }
+
 
         emotionalStateImageView.setImageDrawable(getDrawable(
                 moodEvent.getEmotionalState().getDrawableId()));
 
         // Set the image and text for the appropriate social situation.
-        socialSituationTextView.setText(moodEvent.getSocialSituation().getDescription());
-        socialSituationImageView.setImageDrawable(getDrawable(
-                moodEvent.getSocialSituation().getDrawableId()));
+        if (moodEvent.getSocialSituation().getDescription() == null){
+            socialSituationTextView.setVisibility(View.GONE);
+            socialSituationImageView.setVisibility(View.GONE);
+        } else {
+            socialSituationTextView.setText(moodEvent.getSocialSituation().getDescription());
+            socialSituationImageView.setImageDrawable(getDrawable(
+                    moodEvent.getSocialSituation().getDrawableId()));
+        }
+
 
         // Disable the inspection for the visibility resource type, so that we can pass in
         // a variable for the visibility. Taken from
@@ -281,4 +329,5 @@ public class ViewMoodEventActivity extends AppCompatActivity implements MSView<M
         loadFromMoodSwing();
         loadFromMoodEvent();
     }
+
 }
