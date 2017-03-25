@@ -220,6 +220,10 @@ public class Participant extends User {
 
     public void setId(String id) { this.id = id; }
 
+    public ArrayList<String> getBlockList() { return blockList; }
+
+    public void setBlockList(ArrayList<String> blockList) { this.blockList = blockList; }
+
     public ArrayList<String> getPendingFollowing() {
         return followingList.getPending();
     }

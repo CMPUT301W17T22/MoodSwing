@@ -67,7 +67,7 @@ public class FollowingRequestFragment extends Fragment {
                     MoodSwingApplication.getMoodSwingController();
 
             // Get main participant, get following.
-            recyclerView.setAdapter(new FollowingRecyclerViewAdapter(
+            recyclerView.setAdapter(new FollowingRequestRecyclerViewAdapter(
                     moodSwingController.getMainParticipant().getPendingFollowing(),
                     mListener));
         }

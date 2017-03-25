@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="horizontal">
@@ -9,24 +10,29 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/text_margin"
-        android:textAppearance="?attr/textAppearanceListItem" />
+        android:layout_centerVertical="true"
+        android:textAppearance="@style/Usernames" />
 
-    <Space
-        android:layout_width="108dp"
-        android:layout_height="20dp"
-        android:layout_weight="1" />
-
-    <Button
+    <ImageButton
         android:id="@+id/ApproveFollowerButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:background="@android:drawable/checkbox_on_background" />
+        android:layout_gravity="end"
+        android:layout_centerVertical="true"
+        app:srcCompat="@drawable/ic_done_black_24dp"
+        android:background="@null"
+        android:layout_marginEnd="32dp"
+        android:layout_toStartOf="@+id/DenyFollowerButton" />
 
-    <Button
+    <ImageButton
         android:id="@+id/DenyFollowerButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:background="@android:drawable/btn_dialog" />
-</LinearLayout>
+        android:layout_gravity="end"
+        android:layout_centerVertical="true"
+        app:srcCompat="@drawable/ic_block_black_24dp"
+        android:background="@null"
+        android:layout_marginEnd="32dp"
+        android:layout_alignParentEnd="true" />
+
+</RelativeLayout>

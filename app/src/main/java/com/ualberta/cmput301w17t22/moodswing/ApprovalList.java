@@ -39,14 +39,13 @@ public class ApprovalList {
      * are remove them from it and add them to the approved list.
      * @param otherParticipant
      */
-    public void approvePending(Participant otherParticipant){
-        if(pending.contains(otherParticipant.getUsername())){
+    public void approvePending(Participant otherParticipant) {
+        if (pending.contains(otherParticipant.getUsername())) {
 
             pending.remove(otherParticipant.getUsername());
             approved.add(otherParticipant.getUsername());
 
-        }
-        else{
+        } else {
             throw new InvalidParameterException();
         }
     }
@@ -57,8 +56,9 @@ public class ApprovalList {
      * @param otherParticipant
      * @return true if removal successful
      */
-    public boolean remove(Participant otherParticipant){
-        return(pending.remove(otherParticipant.getUsername()) | approved.remove(otherParticipant.getUsername()));
+    public boolean remove(Participant otherParticipant) {
+        return (pending.remove(otherParticipant.getUsername()) |
+                approved.remove(otherParticipant.getUsername()));
     }
 
     // --- getters and setters ---

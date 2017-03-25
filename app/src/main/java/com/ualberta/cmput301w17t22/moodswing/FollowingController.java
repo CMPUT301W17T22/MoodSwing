@@ -41,27 +41,43 @@ public class FollowingController implements MSController {
         mainParticipant.followParticipant(newFollowedParticipant);
         mainParticipant.createFollowerRequest(newFollowedParticipant);
 
-        //not sure if update is necessary?
+        // Update elastic search.
         elasticSearchController.updateParticipantByParticipant(mainParticipant);
     }
 
     /**
      * This method removes a participant from the mainParticipants FollowingList.
      * Secondly it calls createUnfollowEvent() which sends an unfollow indicator to the
-     * receivingparticipant to invoke unfollowEvent to remove this participant form their
+     * receivingParticipant to invoke unfollowEvent to remove this participant form their
      * followerList.
-     * @param receivingparticipant
+     * @param receivingParticipant
      */
     //TODO:Need to create a new type of request that tells the receiving participant to remove
 
-    public void unfollowParticipant(Participant receivingparticipant){
+    public void unfollowParticipant(Participant receivingParticipant){
 
         // Unfollow the participant.
-        mainParticipant.unfollowParticipant(receivingparticipant);
-        mainParticipant.createUnfollowEvent(receivingparticipant);
+        mainParticipant.unfollowParticipant(receivingParticipant);
+        mainParticipant.createUnfollowEvent(receivingParticipant);
 
         // Update elasticsearch.
         elasticSearchController.updateParticipantByParticipant(mainParticipant);
+        elasticSearchController.updateParticipantByParticipant(receivingParticipant);
+    }
+
+    /**
+     * This method gets the given participant to stop following the main participant.
+     * @param participant
+     */
+    public void stopParticipant(Participant participant) {
+
+        // Get the participant to stop following you.
+        participant.unfollowParticipant(mainParticipant);
+        participant.createUnfollowEvent(mainParticipant);
+
+        // Update elasticsearch.
+        elasticSearchController.updateParticipantByParticipant(mainParticipant);
+        elasticSearchController.updateParticipantByParticipant(participant);
     }
 
     /**
@@ -94,7 +110,21 @@ public class FollowingController implements MSController {
     }
 
     /**
-     * The controller will invoke the blockParticipant method from the main participant.
+     * Cancels the mainParticipant's follow request to the given participant.
+     * @param participant
+     */
+    public void cancelRequest(Participant participant) {
+
+        // Cancel the request.
+        mainParticipant.cancelFollowRequest(participant);
+
+        // Update elastic search.
+        elasticSearchController.updateParticipantByParticipant(mainParticipant);
+        elasticSearchController.updateParticipantByParticipant(participant);
+    }
+
+    /**
+     * The controller invokes the blockParticipant method from the main participant.
      * @param participantUsername The participant to block's username.
      * @return
      */
@@ -114,6 +144,16 @@ public class FollowingController implements MSController {
             blockStatus = true;
         }
         return blockStatus;
+    }
+
+    /**
+     * The controller invokes the unblockParticipant method from the main participant.
+     */
+    public void unblockParticipant(String participantUsername) {
+        mainParticipant.unblockParticipant(participantUsername);
+
+        // Update elastic search.
+        elasticSearchController.updateParticipantByParticipant(mainParticipant);
     }
 
 

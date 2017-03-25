@@ -1,9 +1,13 @@
 package com.ualberta.cmput301w17t22.moodswing;
 
+import android.content.DialogInterface;
+import android.media.Image;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.util.List;
@@ -45,6 +49,66 @@ public class FollowersRecyclerViewAdapter extends RecyclerView.Adapter<Followers
                 }
             }
         });
+
+        holder.stopFollowerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Launch the dialog box that takes care of stopping the user from following you.
+                launchStopFollowerDialog(holder, v);
+            }
+        });
+    }
+
+    public void launchStopFollowerDialog(ViewHolder holder, View v) {
+
+        // Get the username to stop from following you.
+        final String usernameToStop = holder.mContentView.getText().toString();
+
+        // Create dialog box for unfollowing a user.
+        AlertDialog.Builder adb =
+                new AlertDialog.Builder(v.getRootView().getContext(), R.style.DialogTheme);
+
+        // Set the message and the title.
+        adb.setMessage("Are you sure you want to stop " + usernameToStop + " from following you?")
+                .setTitle("Stop A User From Following You")
+                .setCancelable(true);
+
+        // Go through with the stopping of following.
+        adb.setPositiveButton("Stop", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // Get the elastic search controller.
+                ElasticSearchController elasticSearchController =
+                        MoodSwingApplication.getElasticSearchController();
+
+                // Retrieve the participantToStop from ElasticSearch given the username.
+                Participant participantToStop = elasticSearchController
+                        .getParticipantByUsername(usernameToStop);
+
+                // Get the following controller.
+                FollowingController followingController =
+                        MoodSwingApplication.getFollowingController();
+
+                // Decline the request using the following controller.
+                followingController.stopParticipant(participantToStop);
+
+                // Notify the change of data.
+                notifyDataSetChanged();
+            }
+        });
+
+        // Create the negative button for the alert dialog.
+        adb.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // Do nothing, cancel the dialog box.
+                dialog.cancel();
+            }
+        });
+
+        // Build and show the dialog box.
+        AlertDialog dialog = adb.create();
+        dialog.show();
     }
 
     @Override
@@ -55,12 +119,14 @@ public class FollowersRecyclerViewAdapter extends RecyclerView.Adapter<Followers
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
         public final TextView mContentView;
+        public final ImageButton stopFollowerButton;
         public String mItem;
 
         public ViewHolder(View view) {
             super(view);
             mView = view;
             mContentView = (TextView) view.findViewById(R.id.content);
+            stopFollowerButton = (ImageButton) view.findViewById(R.id.stopFollowerButton);
         }
 
         @Override

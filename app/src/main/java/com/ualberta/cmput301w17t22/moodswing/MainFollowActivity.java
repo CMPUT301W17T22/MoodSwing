@@ -1,6 +1,7 @@
 package com.ualberta.cmput301w17t22.moodswing;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
@@ -16,7 +17,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 /**
@@ -71,65 +74,12 @@ public class MainFollowActivity extends AppCompatActivity implements MSView<Mood
         tabLayout.setupWithViewPager(mViewPager);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+
+        // FAB OnClick.
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                // Create dialog box for following a new user.
-                AlertDialog.Builder adb =
-                        new AlertDialog.Builder(MainFollowActivity.this, R.style.DialogTheme);
-
-                // Create edittext to take user input.
-                final EditText usernameToFollowEditText = new EditText(MainFollowActivity.this);
-
-                // Set the message, the title, and the edittext.
-                adb.setMessage("Enter the username of the user you would like to follow: ")
-                        .setTitle("Request To Follow A New User")
-                        .setCancelable(true)
-                        .setView(usernameToFollowEditText);
-
-                // Create the positive button for the alert dialog.
-                adb.setPositiveButton("Send Follow Request", new DialogInterface.OnClickListener(){
-                    @Override
-                    public void onClick(DialogInterface dialog, int which){
-                        // Get edittext value.
-                        String usernameToFollow = usernameToFollowEditText.getText().toString();
-
-                        // Get MoodSwingController.
-                        MoodSwingController moodSwingController =
-                                MoodSwingApplication.getMoodSwingController();
-
-                        // Send the follow request. requestStatus is true if the request went
-                        // through, and false if no user with the given username was found.
-                        requestStatus = moodSwingController
-                                .sendFollowRequestFromMainParticipantToUsername(usernameToFollow);
-
-                        if (requestStatus) {
-                            Toast.makeText(MainFollowActivity.this,
-                                    "Request successfully sent!",
-                                    Toast.LENGTH_SHORT).show();
-                        } else {
-                            Toast.makeText(MainFollowActivity.this,
-                                    "No user with given username found.",
-                                    Toast.LENGTH_SHORT).show();
-                        }
-
-                        dialog.cancel();
-                    }
-                });
-
-                // Create the negative button for the alert dialog.
-                adb.setNegativeButton("Cancel", new DialogInterface.OnClickListener(){
-                    @Override
-                    public void onClick(DialogInterface dialog, int which){
-                        // Do nothing, cancel the dialog box.
-                        dialog.cancel();
-                    }
-                });
-
-                // Build and show the dialog box.
-                AlertDialog dialog = adb.create();
-                dialog.show();
+                launchFollowNewUserDialog();
             }
         });
 
@@ -147,6 +97,89 @@ public class MainFollowActivity extends AppCompatActivity implements MSView<Mood
         moodSwingController.removeView(this);
     }
 
+    /**
+     * Launches the dialog box that handles the following of a new user.
+     */
+    public void launchFollowNewUserDialog() {
+        // Create dialog box for following a new user.
+        AlertDialog.Builder adb =
+                new AlertDialog.Builder(MainFollowActivity.this, R.style.DialogTheme);
+
+        // Method for displaying an edittext nicely in an alertdialog adapted from
+        // http://stackoverflow.com/questions/27774414/add-bigger-margin-to-edittext-in-android-alertdialog
+        // on 3/25/2017.
+
+        // Create edittext to take user input.
+        final EditText usernameToFollowEditText = new EditText(MainFollowActivity.this);
+        // Set custom edittext shape.
+        usernameToFollowEditText.setBackgroundResource(R.drawable.dialog_edittext_shape);
+        // Set some padding from the left.
+        usernameToFollowEditText.setPadding(16, 0, 0, 0);
+
+        // Create a container for the edittext.
+        LinearLayout usernameToFollowEditTextContainer = new LinearLayout(MainFollowActivity.this);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT);
+        // Set the margins for the edittext.
+        params.leftMargin = getResources().getDimensionPixelSize(R.dimen.dialog_margin);
+        params.rightMargin = getResources().getDimensionPixelSize(R.dimen.dialog_margin);
+
+        // Set the parameters to the edittext and add it to the container.
+        usernameToFollowEditText.setLayoutParams(params);
+        usernameToFollowEditTextContainer.addView(usernameToFollowEditText);
+
+        // Set the message, the title, and the edittext container.
+        adb.setMessage("Enter the username of the user you would like to follow: ")
+                .setTitle("Request To Follow A New User")
+                .setCancelable(true)
+                .setView(usernameToFollowEditTextContainer);
+
+        // Create the positive button for the alert dialog.
+        adb.setPositiveButton("Send Follow Request", new DialogInterface.OnClickListener(){
+            @Override
+            public void onClick(DialogInterface dialog, int which){
+                // Get edittext value.
+                String usernameToFollow = usernameToFollowEditText.getText().toString();
+
+                // Get MoodSwingController.
+                MoodSwingController moodSwingController =
+                        MoodSwingApplication.getMoodSwingController();
+
+                // Send the follow request. requestStatus is true if the request went
+                // through, and false if no user with the given username was found.
+                requestStatus = moodSwingController
+                        .sendFollowRequestFromMainParticipantToUsername(usernameToFollow);
+
+                if (requestStatus) {
+                    Toast.makeText(MainFollowActivity.this,
+                            "Request successfully sent!",
+                            Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(MainFollowActivity.this,
+                            "No user with given username found.",
+                            Toast.LENGTH_SHORT).show();
+                }
+
+                mSectionsPagerAdapter.notifyDataSetChanged();
+                dialog.cancel();
+            }
+        });
+
+        // Create the negative button for the alert dialog.
+        adb.setNegativeButton("Cancel", new DialogInterface.OnClickListener(){
+            @Override
+            public void onClick(DialogInterface dialog, int which){
+                // Do nothing, cancel the dialog box.
+                dialog.cancel();
+            }
+        });
+
+        // Build and show the dialog box.
+        AlertDialog dialog = adb.create();
+        dialog.show();
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -161,64 +194,14 @@ public class MainFollowActivity extends AppCompatActivity implements MSView<Mood
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        Intent intent;
 
         // Handle action bar item clicks.
         if (item.getItemId() == R.id.blockUserButton) {
-
-            // Create dialog box for blocking a user.
-            AlertDialog.Builder adb =
-                    new AlertDialog.Builder(MainFollowActivity.this, R.style.DialogTheme);
-
-            // Create edittext to take user input.
-            final EditText usernameToBlockEditText = new EditText(MainFollowActivity.this);
-
-            // Set the message, the title, and the edittext.
-            adb.setMessage("Enter the username of the user you would like to block: ")
-                    .setTitle("Block A User")
-                    .setCancelable(true)
-                    .setView(usernameToBlockEditText);
-
-            // Create the positive button for the alert dialog.
-            adb.setPositiveButton("Block User", new DialogInterface.OnClickListener(){
-                @Override
-                public void onClick(DialogInterface dialog, int which){
-                    // Get edittext value.
-                    String usernameToBlock = usernameToBlockEditText.getText().toString();
-
-                    // Get FollowingController.
-                    FollowingController followingController =
-                            MoodSwingApplication.getFollowingController();
-
-                    // Send the follow request. requestStatus is true if the request went
-                    // through, and false if no user with the given username was found.
-                    blockStatus = followingController.blockParticipant(usernameToBlock);
-
-                    if (blockStatus) {
-                        Toast.makeText(MainFollowActivity.this,
-                                "User blocked successfully!",
-                                Toast.LENGTH_SHORT).show();
-                    } else {
-                        Toast.makeText(MainFollowActivity.this,
-                                "No user with given username found.",
-                                Toast.LENGTH_SHORT).show();
-                    }
-
-                    dialog.cancel();
-                }
-            });
-
-            // Create the negative button for the alert dialog.
-            adb.setNegativeButton("Cancel", new DialogInterface.OnClickListener(){
-                @Override
-                public void onClick(DialogInterface dialog, int which){
-                    // Do nothing, cancel the dialog box.
-                    dialog.cancel();
-                }
-            });
-
-            // Build and show the dialog box.
-            AlertDialog dialog = adb.create();
-            dialog.show();
+            // User chose the "Block User" item, should navigate to the
+            // BlockUserActivity.
+            intent = new Intent(MainFollowActivity.this, BlockUserActivity.class);
+            startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
     }
@@ -265,7 +248,7 @@ public class MainFollowActivity extends AppCompatActivity implements MSView<Mood
 
         @Override
         public int getCount() {
-            // Show 3 total pages.
+            // Show 4 total pages.
             return 4;
         }
 
