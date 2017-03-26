@@ -13,8 +13,7 @@
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
-        app:titleTextColor="@color/white" 
-        android:id="@+id/textView"
+        app:titleTextColor="@color/white"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true" />
 
