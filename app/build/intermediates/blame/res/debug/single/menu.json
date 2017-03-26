@@ -4,6 +4,10 @@
         "source": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/src/main/res/menu/menu_main_follow.xml"
     },
     {
+        "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/menu/menu_mood_history.xml",
+        "source": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/src/main/res/menu/menu_mood_history.xml"
+    },
+    {
         "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/menu/menu_main_activity.xml",
         "source": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/src/main/res/menu/menu_main_activity.xml"
     },

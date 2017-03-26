@@ -4,12 +4,16 @@
         "source": "/Users/PeterWeckend/.android/build-cache/d7350be4b00c090efaa02f0ffbc246a03362dcd9/output/res/drawable/common_google_signin_btn_icon_light.xml"
     },
     {
+        "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/drawable/social_situation_with_two_to_several_people.png",
+        "source": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/src/main/res/drawable/social_situation_with_two_to_several_people.png"
+    },
+    {
         "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/drawable/emoticon_sadness.png",
         "source": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/src/main/res/drawable/emoticon_sadness.png"
     },
     {
         "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/drawable/design_fab_background.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/eb961abbd6e14e0aab0f2126e4bcc17b36db89e3/output/res/drawable/design_fab_background.xml"
+        "source": "/Users/PeterWeckend/.android/build-cache/14356d65f3209c87f8a7fe0d695b0c8cfc0e24f0/output/res/drawable/design_fab_background.xml"
     },
     {
         "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/drawable/common_google_signin_btn_icon_dark_normal.xml",
@@ -17,7 +21,11 @@
     },
     {
         "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/drawable/abc_text_cursor_material.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/bce1e8d7708deb639b578b1fdbd4f09ff3fe7531/output/res/drawable/abc_text_cursor_material.xml"
+        "source": "/Users/PeterWeckend/.android/build-cache/3b7b1f04ee66bb6e8f3a110c8f3ce86dc592946a/output/res/drawable/abc_text_cursor_material.xml"
+    },
+    {
+        "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/drawable/social_situation_with_a_crowd.png",
+        "source": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/src/main/res/drawable/social_situation_with_a_crowd.png"
     },
     {
         "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/drawable/common_google_signin_btn_text_disabled.xml",
@@ -25,7 +33,7 @@
     },
     {
         "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/drawable/design_snackbar_background.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/eb961abbd6e14e0aab0f2126e4bcc17b36db89e3/output/res/drawable/design_snackbar_background.xml"
+        "source": "/Users/PeterWeckend/.android/build-cache/14356d65f3209c87f8a7fe0d695b0c8cfc0e24f0/output/res/drawable/design_snackbar_background.xml"
     },
     {
         "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/drawable/social_situation_alone.png",
@@ -33,23 +41,23 @@
     },
     {
         "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/drawable/abc_switch_thumb_material.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/bce1e8d7708deb639b578b1fdbd4f09ff3fe7531/output/res/drawable/abc_switch_thumb_material.xml"
+        "source": "/Users/PeterWeckend/.android/build-cache/3b7b1f04ee66bb6e8f3a110c8f3ce86dc592946a/output/res/drawable/abc_switch_thumb_material.xml"
     },
     {
         "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/drawable/abc_ic_arrow_drop_right_black_24dp.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/bce1e8d7708deb639b578b1fdbd4f09ff3fe7531/output/res/drawable/abc_ic_arrow_drop_right_black_24dp.xml"
+        "source": "/Users/PeterWeckend/.android/build-cache/3b7b1f04ee66bb6e8f3a110c8f3ce86dc592946a/output/res/drawable/abc_ic_arrow_drop_right_black_24dp.xml"
     },
     {
         "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/drawable/abc_item_background_holo_light.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/bce1e8d7708deb639b578b1fdbd4f09ff3fe7531/output/res/drawable/abc_item_background_holo_light.xml"
+        "source": "/Users/PeterWeckend/.android/build-cache/3b7b1f04ee66bb6e8f3a110c8f3ce86dc592946a/output/res/drawable/abc_item_background_holo_light.xml"
     },
     {
         "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/drawable/abc_list_selector_background_transition_holo_light.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/bce1e8d7708deb639b578b1fdbd4f09ff3fe7531/output/res/drawable/abc_list_selector_background_transition_holo_light.xml"
+        "source": "/Users/PeterWeckend/.android/build-cache/3b7b1f04ee66bb6e8f3a110c8f3ce86dc592946a/output/res/drawable/abc_list_selector_background_transition_holo_light.xml"
     },
     {
         "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/drawable/abc_seekbar_thumb_material.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/bce1e8d7708deb639b578b1fdbd4f09ff3fe7531/output/res/drawable/abc_seekbar_thumb_material.xml"
+        "source": "/Users/PeterWeckend/.android/build-cache/3b7b1f04ee66bb6e8f3a110c8f3ce86dc592946a/output/res/drawable/abc_seekbar_thumb_material.xml"
     },
     {
         "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/drawable/emoticon_anger.png",
@@ -65,15 +73,15 @@
     },
     {
         "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/drawable/abc_spinner_textfield_background_material.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/bce1e8d7708deb639b578b1fdbd4f09ff3fe7531/output/res/drawable/abc_spinner_textfield_background_material.xml"
+        "source": "/Users/PeterWeckend/.android/build-cache/3b7b1f04ee66bb6e8f3a110c8f3ce86dc592946a/output/res/drawable/abc_spinner_textfield_background_material.xml"
     },
     {
         "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/drawable/abc_textfield_search_material.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/bce1e8d7708deb639b578b1fdbd4f09ff3fe7531/output/res/drawable/abc_textfield_search_material.xml"
+        "source": "/Users/PeterWeckend/.android/build-cache/3b7b1f04ee66bb6e8f3a110c8f3ce86dc592946a/output/res/drawable/abc_textfield_search_material.xml"
     },
     {
         "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/drawable/notification_bg_low.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/bce1e8d7708deb639b578b1fdbd4f09ff3fe7531/output/res/drawable/notification_bg_low.xml"
+        "source": "/Users/PeterWeckend/.android/build-cache/3b7b1f04ee66bb6e8f3a110c8f3ce86dc592946a/output/res/drawable/notification_bg_low.xml"
     },
     {
         "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/drawable/common_google_signin_btn_icon_dark.xml",
@@ -81,7 +89,7 @@
     },
     {
         "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/drawable/abc_btn_borderless_material.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/bce1e8d7708deb639b578b1fdbd4f09ff3fe7531/output/res/drawable/abc_btn_borderless_material.xml"
+        "source": "/Users/PeterWeckend/.android/build-cache/3b7b1f04ee66bb6e8f3a110c8f3ce86dc592946a/output/res/drawable/abc_btn_borderless_material.xml"
     },
     {
         "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/drawable/login_edittext_shape.xml",
@@ -93,23 +101,23 @@
     },
     {
         "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/drawable/notification_icon_background.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/bce1e8d7708deb639b578b1fdbd4f09ff3fe7531/output/res/drawable/notification_icon_background.xml"
+        "source": "/Users/PeterWeckend/.android/build-cache/3b7b1f04ee66bb6e8f3a110c8f3ce86dc592946a/output/res/drawable/notification_icon_background.xml"
     },
     {
         "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/drawable/abc_ic_menu_overflow_material.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/bce1e8d7708deb639b578b1fdbd4f09ff3fe7531/output/res/drawable/abc_ic_menu_overflow_material.xml"
+        "source": "/Users/PeterWeckend/.android/build-cache/3b7b1f04ee66bb6e8f3a110c8f3ce86dc592946a/output/res/drawable/abc_ic_menu_overflow_material.xml"
     },
     {
         "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/drawable/abc_ratingbar_indicator_material.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/bce1e8d7708deb639b578b1fdbd4f09ff3fe7531/output/res/drawable/abc_ratingbar_indicator_material.xml"
+        "source": "/Users/PeterWeckend/.android/build-cache/3b7b1f04ee66bb6e8f3a110c8f3ce86dc592946a/output/res/drawable/abc_ratingbar_indicator_material.xml"
     },
     {
         "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/drawable/abc_btn_default_mtrl_shape.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/bce1e8d7708deb639b578b1fdbd4f09ff3fe7531/output/res/drawable/abc_btn_default_mtrl_shape.xml"
+        "source": "/Users/PeterWeckend/.android/build-cache/3b7b1f04ee66bb6e8f3a110c8f3ce86dc592946a/output/res/drawable/abc_btn_default_mtrl_shape.xml"
     },
     {
         "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/drawable/abc_ic_ab_back_material.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/bce1e8d7708deb639b578b1fdbd4f09ff3fe7531/output/res/drawable/abc_ic_ab_back_material.xml"
+        "source": "/Users/PeterWeckend/.android/build-cache/3b7b1f04ee66bb6e8f3a110c8f3ce86dc592946a/output/res/drawable/abc_ic_ab_back_material.xml"
     },
     {
         "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/drawable/common_google_signin_btn_icon_light_normal.xml",
@@ -117,19 +125,23 @@
     },
     {
         "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/drawable/abc_cab_background_top_material.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/bce1e8d7708deb639b578b1fdbd4f09ff3fe7531/output/res/drawable/abc_cab_background_top_material.xml"
+        "source": "/Users/PeterWeckend/.android/build-cache/3b7b1f04ee66bb6e8f3a110c8f3ce86dc592946a/output/res/drawable/abc_cab_background_top_material.xml"
     },
     {
         "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/drawable/abc_cab_background_internal_bg.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/bce1e8d7708deb639b578b1fdbd4f09ff3fe7531/output/res/drawable/abc_cab_background_internal_bg.xml"
+        "source": "/Users/PeterWeckend/.android/build-cache/3b7b1f04ee66bb6e8f3a110c8f3ce86dc592946a/output/res/drawable/abc_cab_background_internal_bg.xml"
     },
     {
         "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/drawable/common_google_signin_btn_text_light_focused.xml",
         "source": "/Users/PeterWeckend/.android/build-cache/d7350be4b00c090efaa02f0ffbc246a03362dcd9/output/res/drawable/common_google_signin_btn_text_light_focused.xml"
     },
     {
+        "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/drawable/social_situation_with_one_other_person.png",
+        "source": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/src/main/res/drawable/social_situation_with_one_other_person.png"
+    },
+    {
         "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/drawable/abc_list_selector_background_transition_holo_dark.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/bce1e8d7708deb639b578b1fdbd4f09ff3fe7531/output/res/drawable/abc_list_selector_background_transition_holo_dark.xml"
+        "source": "/Users/PeterWeckend/.android/build-cache/3b7b1f04ee66bb6e8f3a110c8f3ce86dc592946a/output/res/drawable/abc_list_selector_background_transition_holo_dark.xml"
     },
     {
         "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/drawable/emoticon_surprise.png",
@@ -137,7 +149,7 @@
     },
     {
         "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/drawable/abc_seekbar_tick_mark_material.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/bce1e8d7708deb639b578b1fdbd4f09ff3fe7531/output/res/drawable/abc_seekbar_tick_mark_material.xml"
+        "source": "/Users/PeterWeckend/.android/build-cache/3b7b1f04ee66bb6e8f3a110c8f3ce86dc592946a/output/res/drawable/abc_seekbar_tick_mark_material.xml"
     },
     {
         "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/drawable/common_google_signin_btn_icon_light_focused.xml",
@@ -149,7 +161,7 @@
     },
     {
         "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/drawable/notification_bg.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/bce1e8d7708deb639b578b1fdbd4f09ff3fe7531/output/res/drawable/notification_bg.xml"
+        "source": "/Users/PeterWeckend/.android/build-cache/3b7b1f04ee66bb6e8f3a110c8f3ce86dc592946a/output/res/drawable/notification_bg.xml"
     },
     {
         "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/drawable/social_situation_party.png",
@@ -161,15 +173,15 @@
     },
     {
         "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/drawable/abc_ic_voice_search_api_material.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/bce1e8d7708deb639b578b1fdbd4f09ff3fe7531/output/res/drawable/abc_ic_voice_search_api_material.xml"
+        "source": "/Users/PeterWeckend/.android/build-cache/3b7b1f04ee66bb6e8f3a110c8f3ce86dc592946a/output/res/drawable/abc_ic_voice_search_api_material.xml"
     },
     {
         "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/drawable/abc_ic_clear_material.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/bce1e8d7708deb639b578b1fdbd4f09ff3fe7531/output/res/drawable/abc_ic_clear_material.xml"
+        "source": "/Users/PeterWeckend/.android/build-cache/3b7b1f04ee66bb6e8f3a110c8f3ce86dc592946a/output/res/drawable/abc_ic_clear_material.xml"
     },
     {
         "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/drawable/abc_dialog_material_background.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/bce1e8d7708deb639b578b1fdbd4f09ff3fe7531/output/res/drawable/abc_dialog_material_background.xml"
+        "source": "/Users/PeterWeckend/.android/build-cache/3b7b1f04ee66bb6e8f3a110c8f3ce86dc592946a/output/res/drawable/abc_dialog_material_background.xml"
     },
     {
         "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/drawable/common_google_signin_btn_icon_dark_focused.xml",
@@ -177,7 +189,7 @@
     },
     {
         "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/drawable/abc_vector_test.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/bce1e8d7708deb639b578b1fdbd4f09ff3fe7531/output/res/drawable/abc_vector_test.xml"
+        "source": "/Users/PeterWeckend/.android/build-cache/3b7b1f04ee66bb6e8f3a110c8f3ce86dc592946a/output/res/drawable/abc_vector_test.xml"
     },
     {
         "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/drawable/common_google_signin_btn_icon_disabled.xml",
@@ -185,19 +197,19 @@
     },
     {
         "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/drawable/abc_ratingbar_small_material.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/bce1e8d7708deb639b578b1fdbd4f09ff3fe7531/output/res/drawable/abc_ratingbar_small_material.xml"
+        "source": "/Users/PeterWeckend/.android/build-cache/3b7b1f04ee66bb6e8f3a110c8f3ce86dc592946a/output/res/drawable/abc_ratingbar_small_material.xml"
     },
     {
         "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/drawable/abc_btn_check_material.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/bce1e8d7708deb639b578b1fdbd4f09ff3fe7531/output/res/drawable/abc_btn_check_material.xml"
+        "source": "/Users/PeterWeckend/.android/build-cache/3b7b1f04ee66bb6e8f3a110c8f3ce86dc592946a/output/res/drawable/abc_btn_check_material.xml"
     },
     {
         "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/drawable/abc_tab_indicator_material.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/bce1e8d7708deb639b578b1fdbd4f09ff3fe7531/output/res/drawable/abc_tab_indicator_material.xml"
+        "source": "/Users/PeterWeckend/.android/build-cache/3b7b1f04ee66bb6e8f3a110c8f3ce86dc592946a/output/res/drawable/abc_tab_indicator_material.xml"
     },
     {
         "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/drawable/abc_item_background_holo_dark.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/bce1e8d7708deb639b578b1fdbd4f09ff3fe7531/output/res/drawable/abc_item_background_holo_dark.xml"
+        "source": "/Users/PeterWeckend/.android/build-cache/3b7b1f04ee66bb6e8f3a110c8f3ce86dc592946a/output/res/drawable/abc_item_background_holo_dark.xml"
     },
     {
         "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/drawable/common_google_signin_btn_text_dark_focused.xml",
@@ -225,7 +237,7 @@
     },
     {
         "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/drawable/notification_tile_bg.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/bce1e8d7708deb639b578b1fdbd4f09ff3fe7531/output/res/drawable/notification_tile_bg.xml"
+        "source": "/Users/PeterWeckend/.android/build-cache/3b7b1f04ee66bb6e8f3a110c8f3ce86dc592946a/output/res/drawable/notification_tile_bg.xml"
     },
     {
         "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/drawable/emoticon_shame.png",
@@ -233,11 +245,11 @@
     },
     {
         "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/drawable/abc_ic_search_api_material.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/bce1e8d7708deb639b578b1fdbd4f09ff3fe7531/output/res/drawable/abc_ic_search_api_material.xml"
+        "source": "/Users/PeterWeckend/.android/build-cache/3b7b1f04ee66bb6e8f3a110c8f3ce86dc592946a/output/res/drawable/abc_ic_search_api_material.xml"
     },
     {
         "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/drawable/abc_list_selector_holo_dark.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/bce1e8d7708deb639b578b1fdbd4f09ff3fe7531/output/res/drawable/abc_list_selector_holo_dark.xml"
+        "source": "/Users/PeterWeckend/.android/build-cache/3b7b1f04ee66bb6e8f3a110c8f3ce86dc592946a/output/res/drawable/abc_list_selector_holo_dark.xml"
     },
     {
         "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/drawable/emoticon_confusion.png",
@@ -245,7 +257,7 @@
     },
     {
         "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/drawable/abc_seekbar_track_material.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/bce1e8d7708deb639b578b1fdbd4f09ff3fe7531/output/res/drawable/abc_seekbar_track_material.xml"
+        "source": "/Users/PeterWeckend/.android/build-cache/3b7b1f04ee66bb6e8f3a110c8f3ce86dc592946a/output/res/drawable/abc_seekbar_track_material.xml"
     },
     {
         "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/drawable/common_google_signin_btn_text_light_normal.xml",
@@ -253,22 +265,22 @@
     },
     {
         "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/drawable/abc_btn_radio_material.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/bce1e8d7708deb639b578b1fdbd4f09ff3fe7531/output/res/drawable/abc_btn_radio_material.xml"
+        "source": "/Users/PeterWeckend/.android/build-cache/3b7b1f04ee66bb6e8f3a110c8f3ce86dc592946a/output/res/drawable/abc_btn_radio_material.xml"
     },
     {
         "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/drawable/abc_ic_go_search_api_material.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/bce1e8d7708deb639b578b1fdbd4f09ff3fe7531/output/res/drawable/abc_ic_go_search_api_material.xml"
+        "source": "/Users/PeterWeckend/.android/build-cache/3b7b1f04ee66bb6e8f3a110c8f3ce86dc592946a/output/res/drawable/abc_ic_go_search_api_material.xml"
     },
     {
         "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/drawable/abc_list_selector_holo_light.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/bce1e8d7708deb639b578b1fdbd4f09ff3fe7531/output/res/drawable/abc_list_selector_holo_light.xml"
+        "source": "/Users/PeterWeckend/.android/build-cache/3b7b1f04ee66bb6e8f3a110c8f3ce86dc592946a/output/res/drawable/abc_list_selector_holo_light.xml"
     },
     {
         "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/drawable/abc_ratingbar_material.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/bce1e8d7708deb639b578b1fdbd4f09ff3fe7531/output/res/drawable/abc_ratingbar_material.xml"
+        "source": "/Users/PeterWeckend/.android/build-cache/3b7b1f04ee66bb6e8f3a110c8f3ce86dc592946a/output/res/drawable/abc_ratingbar_material.xml"
     },
     {
         "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/drawable/navigation_empty_icon.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/eb961abbd6e14e0aab0f2126e4bcc17b36db89e3/output/res/drawable/navigation_empty_icon.xml"
+        "source": "/Users/PeterWeckend/.android/build-cache/14356d65f3209c87f8a7fe0d695b0c8cfc0e24f0/output/res/drawable/navigation_empty_icon.xml"
     }
 ]
