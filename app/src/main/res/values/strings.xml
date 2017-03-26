@@ -61,6 +61,7 @@
     <string name="not_blocking_text">You are currently not blocking any users.</string>
     <string name="no_followers_text">You currently have no followers!</string>
     <string name="no_follow_requests_text">You currently have no one requesting to follow you.</string>
+    <string name="you_were_feeling">You were feeling</string>
 
 
 </resources>

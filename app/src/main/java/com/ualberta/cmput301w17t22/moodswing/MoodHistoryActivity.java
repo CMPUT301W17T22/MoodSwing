@@ -23,7 +23,7 @@ public class MoodHistoryActivity extends AppCompatActivity implements MSView<Moo
     private ListView moodHistoryListView;
 
     /** The ArrayAdapter for the MoodHistoryListView. */
-    private ArrayAdapter<MoodEvent> moodHistoryAdapter;
+    private MoodEventAdapter moodHistoryAdapter;
 
     /** The main participant, the current logged in user of the app. */
     private Participant mainParticipant;
@@ -80,7 +80,7 @@ public class MoodHistoryActivity extends AppCompatActivity implements MSView<Moo
         //TODO:...but instead the list content will be other peoples mood events.
         //http://stackoverflow.com/questions/8554443/custom-list-item-to-listview-android
         //accessed March 17th 2017
-        moodHistoryAdapter = new ArrayAdapter<MoodEvent>(this, R.layout.mood_event, moodHistory);
+        moodHistoryAdapter = new MoodEventAdapter(this, moodHistory);
 
         moodHistoryListView.setAdapter(moodHistoryAdapter);
 
@@ -110,7 +110,7 @@ public class MoodHistoryActivity extends AppCompatActivity implements MSView<Moo
         moodHistory = mainParticipant.getMoodHistory();
 
         // Initialize array adapter.
-        moodHistoryAdapter = new ArrayAdapter<MoodEvent>(this, R.layout.mood_event, moodHistory);
+        moodHistoryAdapter = new MoodEventAdapter(this, moodHistory);
         moodHistoryListView.setAdapter(moodHistoryAdapter);
     }
 
