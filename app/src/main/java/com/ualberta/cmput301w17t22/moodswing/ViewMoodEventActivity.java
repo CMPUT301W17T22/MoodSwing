@@ -249,11 +249,13 @@ public class ViewMoodEventActivity extends AppCompatActivity implements MSView<M
         // Load values from MoodEvent into the simple text fields.
         usernameTextView.setText(moodEvent.getOriginalPoster());
 
-        if (moodEvent.getTrigger() == "") {
+        if (moodEvent.getTrigger().length() == 0) {
+            //Toast.makeText(ViewMoodEventActivity.this, "empty", Toast.LENGTH_SHORT).show();
             triggerTextView.setVisibility(View.GONE);
             triggerPrefixTextView.setVisibility(View.GONE);
         } else {
             triggerTextView.setText(moodEvent.getTrigger());
+            //Toast.makeText(ViewMoodEventActivity.this, moodEvent.getTrigger(), Toast.LENGTH_SHORT).show();
             //triggerTextView.setTextColor(getResources().getColor(R.color.colorPrimary));
         }
 
@@ -290,9 +292,14 @@ public class ViewMoodEventActivity extends AppCompatActivity implements MSView<M
                 break;
         }
 
+        if (moodEvent.getImage() == null) {
+//            Toast.makeText(ViewMoodEventActivity.this, "empty", Toast.LENGTH_SHORT).show();
+            emotionalStateImageView.setVisibility(View.GONE);
+        } else {
+            emotionalStateImageView.setImageDrawable(getDrawable(
+                    moodEvent.getEmotionalState().getDrawableId()));
+        }
 
-        emotionalStateImageView.setImageDrawable(getDrawable(
-                moodEvent.getEmotionalState().getDrawableId()));
 
         // Set the image and text for the appropriate social situation.
         if (moodEvent.getSocialSituation().getDescription() == null){
