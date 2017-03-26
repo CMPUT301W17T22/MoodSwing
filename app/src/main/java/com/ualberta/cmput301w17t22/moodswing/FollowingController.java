@@ -14,7 +14,7 @@ public class FollowingController implements MSController {
 
     public FollowingController(MoodSwing ms) {
 
-        elasticSearchController = new ElasticSearchController(ms);
+        elasticSearchController = MoodSwingApplication.getElasticSearchController();
 
         // Get MoodSwingController.
         MoodSwingController moodSwingController =
