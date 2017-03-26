@@ -1,12 +1,28 @@
 package com.ualberta.cmput301w17t22.moodswing;
 
+import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import android.content.pm.PackageManager;
+import android.location.Criteria;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 /**
  * The MainActivity of the MoodSwing app. This screen will display the map view of mood events,
@@ -17,7 +33,7 @@ import android.widget.TextView;
  * dark magenta: #66023C
  * background: e0b0ff
  */
-public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>  {
+public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>, LocationListener, OnMapReadyCallback {
 
     /** The main toolbar of the app that lets users navigate to the other parts of the app. */
     Toolbar mainToolbar;
@@ -27,6 +43,12 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
      * for testing right now.
      */
     TextView welcomeText;
+
+
+    private GoogleMap mMap;
+    LocationManager lm;
+    Location l;
+    String provider;
 
     /**
      * Called on opening of activity for the first time.
@@ -40,6 +62,8 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
         // Initialize all the widgets of the app.
         initialize();
 
+        Log.i("debugMaps","main activity working");
+
         setSupportActionBar(mainToolbar);
 
         // Get MoodSwingController.
@@ -52,6 +76,56 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
         // Set the welcome text appropriately.
         welcomeText.setText("Welcome user \"" + mainParticipant.getUsername() +
                 "\" with ID \"" + mainParticipant.getId() + "\"");
+
+
+
+
+        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
+
+        //get location service
+        lm = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+        Criteria c = new Criteria();
+        //criteria object will select best service based on
+        //Accuracy, power consumption, response, bearing and monetary cost
+        //set false to use best service otherwise it will select the default Sim network
+        //and give the location based on sim network
+        //now it will first check satellite than Internet than Sim network location
+        provider = lm.getBestProvider(c, false);
+        //now you have best provider
+        //get location
+        // http://stackoverflow.com/questions/32491960/android-check-permission-for-locationmanager
+        /*if ( ContextCompat.checkSelfPermission( this, android.Manifest.permission.ACCESS_COARSE_LOCATION ) != PackageManager.PERMISSION_GRANTED ) {
+            //TODO: actually ask permission
+            //TODO: fix '8'
+            ActivityCompat.requestPermissions( this, new String[] {  android.Manifest.permission.ACCESS_COARSE_LOCATION  },
+                    8 );
+        }*/
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+        l = lm.getLastKnownLocation(provider);
+        if(l!=null)
+        {
+            //get latitude and longitude of the location
+            double lng=l.getLongitude();
+            double lat=l.getLatitude();
+            //TODO: update map based on location
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(lat, lng)));
+        }
+        else
+        {
+            //TODO: indicate no provider
+            Log.i("debugMaps","no provider");
+        }
     }
 
     /**
@@ -136,5 +210,52 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
     public void update(MoodSwing moodSwing) {
 
 
+    }
+
+
+
+    /**
+     * Manipulates the map once available.
+     * This callback is triggered when the map is ready to be used.
+     * This is where we can add markers or lines, add listeners or move the camera. In this case,
+     * we just add a marker near Sydney, Australia.
+     * If Google Play services is not installed on the device, the user will be prompted to install
+     * it inside the SupportMapFragment. This method will only be triggered once the user has
+     * installed Google Play services and returned to the app.
+     */
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        mMap = googleMap;
+
+        // Add a marker in Sydney and move the camera
+        LatLng sydney = new LatLng(-34, 151);
+        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+    }
+
+    //If you want location on changing place also than use below method
+    //otherwise remove all below methods and don't implement location listener
+    @Override
+    public void onLocationChanged(Location arg0)
+    {
+        double lng=l.getLongitude();
+        double lat=l.getLatitude();
+        //TODO: update map based on location
+        mMap.addMarker(new MarkerOptions().position(new LatLng(lat, lng)).title("new marker"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(lat, lng)));
+    }
+
+    @Override
+    public void onProviderDisabled(String arg0) {
+        // TODO Auto-generated method stub
+    }
+    @Override
+    public void onProviderEnabled(String arg0) {
+        // TODO Auto-generated method stub
+    }
+
+    @Override
+    public void onStatusChanged(String arg0, int arg1, Bundle arg2) {
+        // TODO Auto-generated method stub
     }
 }

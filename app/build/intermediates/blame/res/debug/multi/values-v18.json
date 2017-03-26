@@ -1,6 +1,6 @@
 [
     {
-        "outputFile": "/afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/C:\\Users\\PeterWeckend\\Documents\\Files\\2016-2017\\CMPUT301\\MoodSwing\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v18\\values-v18.xml",
+        "outputFile": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v18\\values-v18.xml",
         "map": [
             {
                 "to": {
@@ -11,7 +11,7 @@
                     "endOffset": 99
                 },
                 "from": {
-                    "file": "/afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/C:\\Users\\PeterWeckend\\.android\\build-cache\\bce1e8d7708deb639b578b1fdbd4f09ff3fe7531\\output\\res\\values-v18\\values-v18.xml",
+                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\fred\\.android\\build-cache\\a987e0752e8a3c33a80e6f25858c5aa9a1461541\\output\\res\\values-v18\\values-v18.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,
@@ -24,7 +24,7 @@
         ]
     },
     {
-        "outputFile": "/afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v18/values-v18.xml",
+        "outputFile": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v18\\values-v18.xml",
         "map": [
             {
                 "to": {
@@ -35,7 +35,7 @@
                     "endOffset": 99
                 },
                 "from": {
-                    "file": "/afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/e46c339567afbf7b5732dbe8e4b6a0ce76443ea9/output/res/values-v18/values-v18.xml",
+                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\.android\\build-cache\\e46c339567afbf7b5732dbe8e4b6a0ce76443ea9\\output\\res\\values-v18\\values-v18.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,
@@ -48,7 +48,7 @@
         ]
     },
     {
-        "outputFile": "/afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v18\\values-v18.xml",
+        "outputFile": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\Documents\\Files\\2016-2017\\CMPUT301\\MoodSwing\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v18\\values-v18.xml",
         "map": [
             {
                 "to": {
@@ -59,7 +59,31 @@
                     "endOffset": 99
                 },
                 "from": {
-                    "file": "/afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/C:\\Users\\fred\\.android\\build-cache\\a987e0752e8a3c33a80e6f25858c5aa9a1461541\\output\\res\\values-v18\\values-v18.xml",
+                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\bce1e8d7708deb639b578b1fdbd4f09ff3fe7531\\output\\res\\values-v18\\values-v18.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 48,
+                        "endOffset": 99
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "outputFile": "C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v18\\values-v18.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 48,
+                    "endOffset": 99
+                },
+                "from": {
+                    "file": "C:\\Users\\fred\\.android\\build-cache\\a987e0752e8a3c33a80e6f25858c5aa9a1461541\\output\\res\\values-v18\\values-v18.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,

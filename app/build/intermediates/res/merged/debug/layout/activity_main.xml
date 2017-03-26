@@ -34,7 +34,7 @@
         android:layout_marginTop="16dp"
         android:text="@string/main_welcome_text" />
 
-    <fragment
+    <!-- <fragment
         class ="com.google.android.gms.maps.MapFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -42,9 +42,8 @@
         android:layout_below="@+id/mainWelcomeText"
         android:layout_alignParentStart="true"
         tools:layout="@layout/activity_main"
-        android:id ="@+id/map"/>
+        android:id ="@+id/map"/> -->
 
-    <!--
     <fragment xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:map="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
@@ -52,7 +51,7 @@
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="com.ualberta.cmput301w17t22.moodswing.MapsActivity" /> -->
+        tools:context="com.ualberta.cmput301w17t22.moodswing.MapsFragment" />
 
 </RelativeLayout>
 
