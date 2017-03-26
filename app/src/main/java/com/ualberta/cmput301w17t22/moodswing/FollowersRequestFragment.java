@@ -16,23 +16,28 @@ import android.view.ViewGroup;
  * Activities containing this fragment MUST implement the {@link OnListFragmentInteractionListener}
  * interface.
  */
-public class FollowersFragment extends Fragment {
+public class FollowersRequestFragment extends Fragment {
 
     private static final String ARG_COLUMN_COUNT = "column-count";
     private int mColumnCount = 1;
     private OnListFragmentInteractionListener mListener;
 
     /**
+     * The adapter for the information from the Model class MoodSwing.
+     */
+    private RecyclerView.Adapter adapter;
+
+    /**
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
      */
-    public FollowersFragment() {
+    public FollowersRequestFragment() {
     }
 
     // TODO: Customize parameter initialization
     @SuppressWarnings("unused")
-    public static FollowersFragment newInstance(int columnCount) {
-        FollowersFragment fragment = new FollowersFragment();
+    public static FollowersRequestFragment newInstance(int columnCount) {
+        FollowersRequestFragment fragment = new FollowersRequestFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_COLUMN_COUNT, columnCount);
         fragment.setArguments(args);
@@ -51,7 +56,7 @@ public class FollowersFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_followers_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_followers_request_list, container, false);
 
         // Set the adapter
         if (view instanceof RecyclerView) {
@@ -63,14 +68,11 @@ public class FollowersFragment extends Fragment {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
 
-            // Get main model class controller.
-            MoodSwingController moodSwingController =
-                    MoodSwingApplication.getMoodSwingController();
+            // Get the adapter.
+            adapter = getAdapter();
 
-            // Get main participant, get followers.
-            recyclerView.setAdapter(new FollowersRecyclerViewAdapter(
-                    moodSwingController.getMainParticipant().getFollowers(),
-                    mListener));
+            // Set the adapter.
+            recyclerView.setAdapter(adapter);
         }
         return view;
     }
@@ -92,4 +94,28 @@ public class FollowersFragment extends Fragment {
         super.onDetach();
         mListener = null;
     }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        // Refresh the adapter.
+        adapter = getAdapter();
+    }
+
+    /**
+     * Class to get adapter from MoodSwing model class.
+     * @return
+     */
+    public RecyclerView.Adapter getAdapter() {
+        // Get MoodSwingController.
+        MoodSwingController moodSwingController =
+                MoodSwingApplication.getMoodSwingController();
+
+        // Create and return adapter.
+        return new FollowersRequestRecyclerViewAdapter(
+                moodSwingController.getMainParticipant().getPendingFollowers(),
+                mListener);
+    }
+
 }
