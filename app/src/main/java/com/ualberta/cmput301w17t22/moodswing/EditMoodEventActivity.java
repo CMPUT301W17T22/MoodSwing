@@ -1,15 +1,10 @@
 package com.ualberta.cmput301w17t22.moodswing;
 
 import android.content.Intent;
-import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
-import android.net.Uri;
-import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -22,7 +17,6 @@ import android.widget.Toast;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.gson.Gson;
 
-import java.io.ByteArrayOutputStream;
 import java.util.Objects;
 import java.util.regex.Pattern;
 
@@ -37,18 +31,6 @@ import java.util.regex.Pattern;
  *
  */
 public class EditMoodEventActivity extends AppCompatActivity implements MSView<MoodSwing> {
-
-    /** Used in photo selection. */
-    private static int RESULT_LOAD_IMG = 1;
-    private static int REQUEST_IMAGE_CAPTURE = 2;
-    private static int COMPRESSION_AMOUNT = 16;
-
-    /** Used in photo selection. */
-    String imgDecodableString;
-
-    /** The toolbar, shows the title. */
-    Toolbar editMoodToolbar;
-
 
     /** The position of the mood event in its mood history array list. Identical to its position
      *  in chronological order in the mood history. */
@@ -72,16 +54,8 @@ public class EditMoodEventActivity extends AppCompatActivity implements MSView<M
     /** Checkbox that indicates if the user wants to add their current location.*/
     CheckBox addCurrentLocationCheckBox;
 
-    Button photoUploadButton;
-
-    Button photoCaptureButton;
-
-
-
-    ImageView imageView;
-
     /**Get the ImageView */
-    ByteArrayOutputStream image = null;
+    Bitmap image;
 
     public void initialize() {
         // Initialize all the widgets in the activity.
@@ -93,22 +67,14 @@ public class EditMoodEventActivity extends AppCompatActivity implements MSView<M
                 (EditText) findViewById(R.id.triggerEditText_EditMoodEventActivity);
         editButton =
                 (Button) findViewById(R.id.newMoodEventPostButton_EditMoodEventActivity);
-        photoUploadButton =
-                (Button) findViewById(R.id.photoUploadButton_EditMoodEventActivity);
-        photoCaptureButton =
-                (Button) findViewById(R.id.photoCaptureButton_EditMoodEventActivity);
         addCurrentLocationCheckBox =
                 (CheckBox) findViewById(R.id.addCurentLocationCheckBox_EditMoodEventActivity);
-        imageView =
-             (ImageView) findViewById(R.id.imageView_EditMoodEventActivity);
+       // ImageView imageView =
+       //      (ImageView) findViewById(R.id.imageImageView_EditMoodEventActivity);
 
         // Add this View to the main Model class.
         MoodSwingController moodSwingController = MoodSwingApplication.getMoodSwingController();
         moodSwingController.addView(this);
-
-
-        editMoodToolbar = (Toolbar) findViewById(R.id.editMoodToolbar);
-        editMoodToolbar.setTitle("Edit Mood Event");
     }
 
     /**
@@ -132,29 +98,6 @@ public class EditMoodEventActivity extends AppCompatActivity implements MSView<M
 
         // Load the mood event information into the widgets of the app.
         loadFromOldMoodEvent();
-
-
-        // photo upload press. Need a real device to test this on
-        // https://developer.android.com/training/camera/photobasics.html
-        photoUploadButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                // **Outdated for now
-                // take photo, need to check on real device
-                //dispatchTakePictureIntent();
-                uploadGalleryImage(v);
-
-            }
-        });
-
-        // on photo capture press. Will open the camera to take a picture
-        photoCaptureButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                dispatchTakePictureIntent();
-            }
-        });
-
 
         // Edit button push. Confirms editing, proceeds to change mood event.
         editButton.setOnClickListener(new View.OnClickListener() {
@@ -189,6 +132,12 @@ public class EditMoodEventActivity extends AppCompatActivity implements MSView<M
                         location = getLocation();
                     }
 
+                    //Get image to attach to Mood Event,
+                    // if they didn't add an ImageView then it puts null
+//                    ImageView imageView = (ImageView) findViewById(R.id.imageView_NewMoodEventActivity);
+//                    if(imageView.getDrawable() == null) {
+//                        imageView = null;
+//                    }
 
                     // Get MoodSwingController.
                     MoodSwingController moodSwingController =
@@ -260,10 +209,7 @@ public class EditMoodEventActivity extends AppCompatActivity implements MSView<M
         triggerEditText.setText(oldMoodEvent.getTrigger());
 
         //Set the Image from the old mood event.
-        //image = oldMoodEvent.getImage();
-        if(oldMoodEvent.getImage() != null) {
-            imageView.setImageBitmap(oldMoodEvent.getImage());
-        }
+        image = oldMoodEvent.getImage();
     }
 
     /**
@@ -368,132 +314,6 @@ public class EditMoodEventActivity extends AppCompatActivity implements MSView<M
         }
         return null;
     }
-
-
-    /**
-     * Create and launch intent to view and select photo from gallery.
-     *
-     * Uses code sourced from below sites on 3/11-3/12:
-     * http://programmerguru.com/android-tutorial/how-to-pick-image-from-gallery/
-     * coderzheaven.com/2012/04/20/
-     *      select-an-image-from-gallery-in-android-and-show-it-in-an-imageview/
-     *
-     * @param v the view we use
-     */
-    public void uploadGalleryImage(View v){
-        Intent i = new Intent(Intent.ACTION_PICK,
-                android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        // Start the Intent
-        startActivityForResult(i, RESULT_LOAD_IMG);
-    }
-
-    // invoke intent to capture a photo
-
-    /**
-     * Invoke intent to capture a photo.
-     * Uses code from below site on 03/12:
-     * developer.android.com/training/camera/photobasics.html
-     */
-    private void dispatchTakePictureIntent() {
-        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        if (takePictureIntent.resolveActivity(getPackageManager()) != null){
-            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
-        }
-    }
-
-
-
-    /**
-     * After user selects an image from gallery or takes a picture,
-     * grab image and display thumbnail.
-     *
-     * Uses code adapted from the following sites on 03/11.
-     * http://programmerguru.com/android-tutorial/how-to-pick-image-from-gallery/
-     * coderzheaven.com/2012/04/20/
-     *      select-an-image-from-gallery-in-android-and-show-it-in-an-imageview/
-     * developer.android.com/training/camera/photobasics.html
-     *
-     * TODO:
-     * Attach image to MoodEvent
-     * Limit image size
-     * Find out why gallery image selection doesn't work on API 25
-     * @param requestCode onActivityResult uses this to know which intent finished
-     * @param resultCode = RESULT_OK if everything worked
-     * @param data is returned by the intent
-     */
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        try {
-            switch(requestCode) {
-                case (1):   // user picks image from gallery
-                {
-                    // When an Image is picked
-                    if (requestCode == RESULT_LOAD_IMG && resultCode == RESULT_OK
-                            && null != data) {
-                        // Get the Image from data
-
-                        Uri selectedImage = data.getData();
-                        String[] filePathColumn = { MediaStore.Images.Media.DATA };
-
-                        // Get the cursor
-                        Cursor cursor = getContentResolver().query(selectedImage,
-                                filePathColumn, null, null, null);
-
-                        // Move to first row
-                        cursor.moveToFirst();
-
-                        int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-                        imgDecodableString = cursor.getString(columnIndex);
-                        cursor.close();
-
-                        // get image view
-                        ImageView imageView = (ImageView)
-                                findViewById(R.id.imageView_EditMoodEventActivity);
-                        // Set the Image in ImageView after decoding the String
-                        imageView.setImageBitmap(BitmapFactory
-                                .decodeFile(imgDecodableString));
-
-                        //image = BitmapFactory.decodeFile(imgDecodableString);
-                        Bitmap imageBitmap = BitmapFactory.decodeFile(imgDecodableString);
-                        ByteArrayOutputStream out = new ByteArrayOutputStream();
-                        imageBitmap.compress(Bitmap.CompressFormat.JPEG, COMPRESSION_AMOUNT, out);
-                        image = out;
-
-
-                    } else {
-                        Toast.makeText(this, "You haven't picked an image",
-                                Toast.LENGTH_LONG).show();
-                    }
-                }
-
-                case (2):   // user takes picture with camera
-                {
-                    if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-                        Bundle extras = data.getExtras();
-                        Bitmap imageBitmap = (Bitmap) extras.get("data");
-                        ByteArrayOutputStream out = new ByteArrayOutputStream();
-                        imageBitmap.compress(Bitmap.CompressFormat.JPEG, COMPRESSION_AMOUNT, out);
-                        image = out;
-
-
-
-                        // get image view
-                        ImageView imageView =
-                                (ImageView) findViewById(R.id.imageView_EditMoodEventActivity);
-                        imageView.setImageBitmap(imageBitmap);  // display thumbnail
-                    }
-                }
-                break;
-            }
-        } catch (Exception e) {
-            Toast.makeText(this, "Something went wrong.", Toast.LENGTH_LONG)
-                    .show();
-        }
-
-    }
-
-
 
 
     /**
