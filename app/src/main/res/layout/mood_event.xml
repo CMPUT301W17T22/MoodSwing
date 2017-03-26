@@ -70,7 +70,7 @@
         android:id="@+id/LocationIndicator_MoodHistory"
         android:layout_width="25dp"
         android:layout_height="25dp"
+        app:srcCompat="@android:drawable/ic_menu_mylocation"
         android:layout_alignTop="@+id/ImageIndicator_MoodHistory"
-        android:layout_toStartOf="@+id/ImageIndicator_MoodHistory"
-        app:srcCompat="@android:drawable/ic_menu_mylocation" />
+        android:layout_toStartOf="@+id/ImageIndicator_MoodHistory" />
 </RelativeLayout>

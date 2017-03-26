@@ -6,7 +6,12 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
 import android.widget.TextView;
+
+import java.util.ArrayList;
 
 /**
  * The MainActivity of the MoodSwing app. This screen will display the map view of mood events,
@@ -28,6 +33,17 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
      */
     TextView welcomeText;
 
+    private Participant mainParticipant;
+    /**
+     *
+     */
+    private MoodEventAdapter moodFeedAdapter;
+
+    private ListView moodFeedListView;
+
+    ArrayList<MoodEvent> moodFeedEvents;
+
+    ElasticSearchController elasticSearchController;
     /**
      * Called on opening of activity for the first time.
      * @param savedInstanceState
@@ -45,6 +61,8 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
         // Get MoodSwingController.
         MoodSwingController moodSwingController =
                 MoodSwingApplication.getMoodSwingController();
+        elasticSearchController =
+                MoodSwingApplication.getElasticSearchController();
 
         // Load MainParticipant.
         Participant mainParticipant = moodSwingController.getMainParticipant();
@@ -52,8 +70,37 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
         // Set the welcome text appropriately.
         welcomeText.setText("Welcome user \"" + mainParticipant.getUsername() +
                 "\" with ID \"" + mainParticipant.getId() + "\"");
+
+        moodFeedListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                // Get the MoodSwingController.
+                MoodSwingController moodSwingController =
+                        MoodSwingApplication.getMoodSwingController();
+
+                // Report the position of the mood event being viewed to the main model.
+                moodSwingController.setMoodHistoryPosition(position);
+
+                // Launch the ViewMoodEventActivity.
+                Intent intent = new Intent(MainActivity.this, ViewMoodEventActivity.class);
+                // Tell the view mood event activity we are coming from the mood history.
+                intent.putExtra("MoodListType", "MoodFeed");
+                startActivity(intent);
+            }
+        });
     }
 
+    @Override
+    protected void onStart(){
+        super.onStart();
+
+        loadMoodSwing();
+
+        moodFeedAdapter = new MoodEventAdapter(this, moodFeedEvents);
+
+        moodFeedListView.setAdapter(moodFeedAdapter);
+    }
     /**
      * Called when the Activity is finish()'d or otherwise closes. Removes this View from the main
      * Model's list of Views.
@@ -135,6 +182,22 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
         // Add this View to the main Model class.
         MoodSwingController moodSwingController = MoodSwingApplication.getMoodSwingController();
         moodSwingController.addView(this);
+    }
+    public void loadMoodSwing() {
+        // Get the main Model and get the main participant, and the main participant's mood history.
+        MoodSwingController moodSwingController = MoodSwingApplication.getMoodSwingController();
+
+        mainParticipant = moodSwingController.getMainParticipant();
+        ArrayList<String> mainParticipantFollowingList = mainParticipant.getFollowing();
+        int i;
+         for(i =0; i < mainParticipantFollowingList.size(); i++){
+             Participant followingParticipant = elasticSearchController.getParticipantByUsername(mainParticipantFollowingList.get(i));
+             moodFeedEvents.add(followingParticipant.getMostRecentMoodEvent());
+         }
+
+        // Initialize array adapter.
+        moodFeedAdapter = new MoodEventAdapter(this, moodFeedEvents);
+        moodFeedListView.setAdapter(moodFeedAdapter);
     }
 
     /**

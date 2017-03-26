@@ -13,6 +13,8 @@ import com.google.android.gms.maps.model.LatLng;
 import java.util.ArrayList;
 
 /** Adapter to display mood events in list views properly
+ * https://www.youtube.com/watch?v=nOdSARCVYic
+ * accessed March 26th
  * Created by bbest on 26/03/17.
  */
 
@@ -88,7 +90,7 @@ public class MoodEventAdapter extends ArrayAdapter<MoodEvent> {
 
         //Sets trigger
         if(moodEvent.getTrigger().isEmpty()){
-            triggerTextView.setVisibility(View.GONE);
+            triggerTextView.setVisibility(View.INVISIBLE);
         }else{
             triggerTextView.setVisibility(View.VISIBLE);
             triggerTextView.setText("Reason(s): " + moodEvent.getTrigger());
@@ -99,7 +101,7 @@ public class MoodEventAdapter extends ArrayAdapter<MoodEvent> {
 
         //Social situation
         if(moodEvent.getSocialSituation().getDescription() == null){
-            socialSituationImageView.setVisibility(View.GONE);
+            socialSituationImageView.setVisibility(View.INVISIBLE);
         } else {
             socialSituationImageView.setVisibility(View.VISIBLE);
             socialSituationImageView.setImageDrawable(getContext().getDrawable(moodEvent.getSocialSituation().getDrawableId()));
@@ -107,15 +109,15 @@ public class MoodEventAdapter extends ArrayAdapter<MoodEvent> {
 
         //Location Indicator
         LatLng latLng = new LatLng(0,0);
-        if(moodEvent.getLocation() == latLng){
-            locationIndicatorImageView.setVisibility(View.GONE);
+        if(moodEvent.getLocation().equals(latLng)){
+            locationIndicatorImageView.setVisibility(View.INVISIBLE);
         }else{
             locationIndicatorImageView.setVisibility(View.VISIBLE);
         }
 
         //Image indicator
         if(moodEvent.getImage() == null){
-            imageIndicatorImageView.setVisibility(View.GONE);
+            imageIndicatorImageView.setVisibility(View.INVISIBLE);
         } else{
             imageIndicatorImageView.setVisibility(View.VISIBLE);
         }

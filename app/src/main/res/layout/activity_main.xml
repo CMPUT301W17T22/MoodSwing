@@ -37,4 +37,10 @@
         android:layout_below="@+id/mainToolBar"
         android:layout_marginTop="16dp"
         android:text="@string/main_welcome_text" />
+
+    <ListView
+        android:id="@+id/MoodFeedListView"
+        android:layout_width="match_parent"
+        android:layout_height="285dp"
+        android:nestedScrollingEnabled="true" />
 </LinearLayout>
