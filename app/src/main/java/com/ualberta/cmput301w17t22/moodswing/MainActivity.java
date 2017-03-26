@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
                         MoodSwingApplication.getMoodSwingController();
 
                 // Report the position of the mood event being viewed to the main model.
-                moodSwingController.setMoodHistoryPosition(position);
+                moodSwingController.setMoodFeedPosition(position);
 
                 // Launch the ViewMoodEventActivity.
                 Intent intent = new Intent(MainActivity.this, ViewMoodEventActivity.class);
@@ -178,6 +178,8 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
         mainToolbar = (Toolbar) findViewById(R.id.mainToolBar);
         mainToolbar.setTitle("");
         welcomeText = (TextView)findViewById(R.id.mainWelcomeText);
+        moodFeedListView  = (ListView) findViewById(R.id.MoodFeedListView);
+
 
         // Add this View to the main Model class.
         MoodSwingController moodSwingController = MoodSwingApplication.getMoodSwingController();
@@ -190,11 +192,16 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
         mainParticipant = moodSwingController.getMainParticipant();
         ArrayList<String> mainParticipantFollowingList = mainParticipant.getFollowing();
         int i;
-         for(i =0; i < mainParticipantFollowingList.size(); i++){
+        int size =0 ;
+        if(mainParticipantFollowingList.isEmpty() == false){
+            size = mainParticipantFollowingList.size();
+        }
+
+         for(i =0; i < size ; i++){
              Participant followingParticipant = elasticSearchController.getParticipantByUsername(mainParticipantFollowingList.get(i));
              moodFeedEvents.add(followingParticipant.getMostRecentMoodEvent());
          }
-
+        moodSwingController.setMoodFeed(moodFeedEvents);
         // Initialize array adapter.
         moodFeedAdapter = new MoodEventAdapter(this, moodFeedEvents);
         moodFeedListView.setAdapter(moodFeedAdapter);
