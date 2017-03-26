@@ -1,5 +1,7 @@
 package com.ualberta.cmput301w17t22.moodswing;
 
+import com.ualberta.cmput301w17t22.moodswing.dummy.DummyContent;
+
 /**
  * Idea taken from
  * http://stackoverflow.com/questions/30762861/how-to-handle-multiple-fragment-interaction-listeners-in-one-activity-properly
@@ -10,5 +12,5 @@ package com.ualberta.cmput301w17t22.moodswing;
  */
 
 public interface OnListFragmentInteractionListener {
-    void onListFragmentInteraction(String username);
+    void onListFragmentInteraction(DummyContent.DummyItem dummyItem);
 }

@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 
 /** The LoginActivity is what is loaded when the app is opened for the first time
  * or after it has been closed and is being opened again. It serves the function of
@@ -33,6 +34,8 @@ public class LoginActivity extends AppCompatActivity implements MSView<MoodSwing
     /** The edit text where the user enters their username. */
     EditText usernameEditText;
 
+    public ProgressBar loginProgress;
+
     /**
      * Triggered when the Activity first starts.
      * <p/>
@@ -43,6 +46,8 @@ public class LoginActivity extends AppCompatActivity implements MSView<MoodSwing
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        loginProgress = (ProgressBar) findViewById(R.id.loginProgress);
+        loginProgress.setVisibility(View.GONE);
 
         // Initialize all widgets and add the view to the main model class.
         initialize();
@@ -52,6 +57,7 @@ public class LoginActivity extends AppCompatActivity implements MSView<MoodSwing
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                loginProgress.setVisibility(View.VISIBLE);
                 // Load the user into the main Model class.
                 boolean loadOK = loadUser();
 
@@ -62,6 +68,13 @@ public class LoginActivity extends AppCompatActivity implements MSView<MoodSwing
                 }
             }
         });
+    }
+
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+        loginProgress.setVisibility(View.GONE);
     }
 
     /**

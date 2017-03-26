@@ -74,21 +74,6 @@ public class MoodSwingController implements MSController {
      */
     public void deleteMoodEventFromMainParticipantByPosition(int position) {
         ms.deleteMoodEventFromMainParticipantByPosition(position);
-
-        ms.notifyViews();
-    }
-
-    /**
-     * Sends a follow request from the main participant to the given username.
-     * @param username The username of the MoodSwing user that the main participant wants to follow.
-     * @return Returns true if a user by that username was found, false otherwise.
-     */
-    public Boolean sendFollowRequestFromMainParticipantToUsername(String username) {
-        Boolean requestStatus = ms.sendFollowRequestFromMainParticipantToUsername(username);
-
-        ms.notifyViews();
-
-        return requestStatus;
     }
 
     /**

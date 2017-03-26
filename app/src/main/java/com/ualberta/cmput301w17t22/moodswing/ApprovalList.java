@@ -16,8 +16,8 @@ import java.util.ArrayList;
  */
 
 public class ApprovalList {
-    private ArrayList<String> pending = new ArrayList<>();
-    private ArrayList<String> approved = new ArrayList<>();
+    private ArrayList<Participant> pending = new ArrayList<>();
+    private ArrayList<Participant> approved = new ArrayList<>();
 
     public ApprovalList(){}
 
@@ -27,11 +27,10 @@ public class ApprovalList {
      * @param otherParticipant
      */
     public void newPendingParticipant(Participant otherParticipant){
-        if(pending.contains(otherParticipant.getUsername()) || approved.contains(otherParticipant.getUsername())){
+        if(pending.contains(otherParticipant) || approved.contains(otherParticipant)){
             throw new InvalidParameterException();
-        } else {
-            pending.add(otherParticipant.getUsername());
         }
+        pending.add(otherParticipant);
     }
 
     /**
@@ -39,13 +38,18 @@ public class ApprovalList {
      * are remove them from it and add them to the approved list.
      * @param otherParticipant
      */
-    public void approvePending(Participant otherParticipant) {
-        if (pending.contains(otherParticipant.getUsername())) {
+    public void approvePending(Participant otherParticipant){
+        if(pending.contains(otherParticipant)){
+            pending.remove(otherParticipant);
 
-            pending.remove(otherParticipant.getUsername());
-            approved.add(otherParticipant.getUsername());
-
-        } else {
+            if(approved.contains(otherParticipant)){
+                throw new InvalidParameterException();
+            }
+            else{
+                approved.add(otherParticipant);
+            }
+        }
+        else{
             throw new InvalidParameterException();
         }
     }
@@ -56,18 +60,17 @@ public class ApprovalList {
      * @param otherParticipant
      * @return true if removal successful
      */
-    public boolean remove(Participant otherParticipant) {
-        return (pending.remove(otherParticipant.getUsername()) |
-                approved.remove(otherParticipant.getUsername()));
+    public boolean remove(Participant otherParticipant){
+        return(pending.remove(otherParticipant) | approved.remove(otherParticipant));
     }
 
     // --- getters and setters ---
 
-    public ArrayList<String> getPending() {
+    public ArrayList<Participant> getPending() {
         return pending;
     }
 
-    public ArrayList<String> getApproved() {
+    public ArrayList<Participant> getApproved() {
         return approved;
     }
 

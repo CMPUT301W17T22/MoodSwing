@@ -20,20 +20,15 @@ public class MoodSwing extends MSModel<MSView> {
      */
     private ArrayList<MoodEvent> moodFeed;
 
-    /**
-     * The main participant. The current user of the app from the Android device.
-     */
+    /** The main participant. The current user of the app from the Android device. */
     private Participant mainParticipant;
 
-    /**
-     * The position of the currently being viewed or edited mood event in the main participants
+    /** The position of the currently being viewed or edited mood event in the main participants
      * mood history.
      */
     private int moodHistoryPosition;
 
-    /**
-     * The position of the currently being viewed mood event in the mood list.
-     */
+    /** The position of the currently being viewed mood event in the mood list. */
     private int moodFeedPosition;
 
     /**
@@ -107,7 +102,6 @@ public class MoodSwing extends MSModel<MSView> {
     /**
      * Deletes the mood event at the given position from the MainParticipant and propagates
      * the changes through to ElasticSearch and the views.
-     *
      * @param position The position of the mood event in the main participant's mood history.
      */
     public void deleteMoodEventFromMainParticipantByPosition(int position) {
@@ -118,40 +112,6 @@ public class MoodSwing extends MSModel<MSView> {
 
         // Notify all views of the change.
         notifyViews();
-    }
-
-    /**
-     * Sends a follow request from the main participant to the given MoodSwing user
-     * according to the provided username.
-     *
-     * @param username The username to send the request to.
-     */
-    public boolean sendFollowRequestFromMainParticipantToUsername(String username) {
-        // Get the ElasticSearchController.
-        ElasticSearchController elasticSearchController =
-                MoodSwingApplication.getElasticSearchController();
-
-        // Get the participant that we are sending the follower request to.
-        Participant participantToFollow =
-                elasticSearchController.getParticipantByUsername(username);
-
-        // If the participant is found by the given username, send the follow request.
-        if (participantToFollow != null) {
-            // Send the follow request.
-            mainParticipant.followParticipant(participantToFollow);
-
-            // Update both participants.
-            elasticSearchController.updateParticipantByParticipant(mainParticipant);
-            elasticSearchController.updateParticipantByParticipant(participantToFollow);
-
-            notifyViews();
-            return true;
-        } else {
-            // Return that no user was found.
-            notifyViews();
-            return false;
-        }
-
     }
 
     /**
