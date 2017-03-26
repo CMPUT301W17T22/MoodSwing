@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
      */
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
-        getMenuInflater().inflate(R.menu.menu_main_activity, menu);
+        getMenuInflater().inflate(R.menu.menu_main_activity,menu);
         return true;
     }
 
@@ -110,13 +110,6 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
                 startActivity(intent);
                 return true;
 
-            case R.id.blockUserToolBarButton:
-                // User chose the "Block User" item, should navigate to the
-                // BlockUserActivity.
-                intent = new Intent(MainActivity.this, BlockUserActivity.class);
-                startActivity(intent);
-                return true;
-
             default:
                 // If we got here, the user's action was not recognized.
                 // Invoke the superclass to handle it.
@@ -129,6 +122,7 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
      */
     public void initialize() {
         mainToolbar = (Toolbar) findViewById(R.id.mainToolBar);
+        mainToolbar.setTitle("");
         welcomeText = (TextView)findViewById(R.id.mainWelcomeText);
 
         // Add this View to the main Model class.

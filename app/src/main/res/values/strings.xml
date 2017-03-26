@@ -55,12 +55,5 @@
     <string name="title_activity_main_follow">Following and Followers</string>
     <string name="moodhistory">MoodHistory</string>
 
-    <string name="block_user">Blocked Users</string>
-    <string name="block_user_welcome_text">Block User Welcome Text</string>
-    <string name="title_activity_block_user">Blocked Users</string>
-    <string name="not_blocking_text">You are currently not blocking any users.</string>
-    <string name="no_followers_text">You currently have no followers!</string>
-    <string name="no_follow_requests_text">You currently have no one requesting to follow you.</string>
-
 
 </resources>
