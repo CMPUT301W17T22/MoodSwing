@@ -65,11 +65,14 @@ public class MoodHistoryActivity extends AppCompatActivity implements MSView<Moo
         });
     }
 
+    /** onStart, load the information about the main participant from the Model. */
+    @Override
     protected void onStart() {
         super.onStart();
 
         // Load information on the main participant from MoodSwing.
         loadMoodSwing();
+
 
         // Initialize array adapter.
         //TODO: Change layout of items so we can display icons to indicate Social Siituation...
@@ -105,6 +108,10 @@ public class MoodHistoryActivity extends AppCompatActivity implements MSView<Moo
 
         mainParticipant = moodSwingController.getMainParticipant();
         moodHistory = mainParticipant.getMoodHistory();
+
+        // Initialize array adapter.
+        moodHistoryAdapter = new ArrayAdapter<MoodEvent>(this, R.layout.mood_event, moodHistory);
+        moodHistoryListView.setAdapter(moodHistoryAdapter);
     }
 
     /**

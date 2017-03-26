@@ -162,7 +162,9 @@ public class ElasticSearchController implements MSController {
                     participant = result.getSourceAsObject(Participant.class);
                 }
                 else {
-                    // No participant with given username found.
+                    // No participant with given username found. In this case, the participant
+                    // returned is the null participant.
+
                     // This isn't a bad thing, this log just helps us track down
                     // the case when no user is found.
                     Log.i("MoodSwing", "No participant with given username found.");
