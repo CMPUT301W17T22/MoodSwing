@@ -1,12 +1,14 @@
 package com.ualberta.cmput301w17t22.moodswing;
 
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.media.Image;
 import android.util.Log;
 import android.widget.ImageView;
 
 import com.google.android.gms.maps.model.LatLng;
 
+import java.io.ByteArrayOutputStream;
 import java.util.Date;
 
 /**
@@ -48,7 +50,7 @@ public class MoodEvent {
 
     /**The image that can be attached to the mood event. This can be added by taking a picture
      * or selecting one from the phones gallery */
-    private Bitmap image;
+    private ByteArrayOutputStream image;
 
     /**
      * Mood event constructor. Sets the attributes of this MoodEvent.
@@ -64,7 +66,7 @@ public class MoodEvent {
                      EmotionalState emotionalState,
                      String trigger,
                      SocialSituation socialSituation,
-                     LatLng location, Bitmap importImage) {
+                     LatLng location, ByteArrayOutputStream importImage) {
         this.originalPoster = posterUsername;
         this.date = date;
         this.emotionalState = emotionalState;
@@ -128,7 +130,7 @@ public class MoodEvent {
     public void editMoodEvent(EmotionalState emotionalState,
                               String trigger,
                               SocialSituation socialSituation,
-                              Bitmap image) {
+                              ByteArrayOutputStream image) {
         this.setEmotionalState(emotionalState);
         this.setTrigger(trigger);
         this.setSocialSituation(socialSituation);
@@ -155,19 +157,6 @@ public class MoodEvent {
 //        return marker;
 //    }
 
-    /**
-     * Generates and returns a deep copy of this mood event.
-     * @return A deep copy of this mood event.
-     */
-    public MoodEvent getDeepCopy() {
-        return new MoodEvent(this.getOriginalPoster(),
-                this.getDate(),
-                this.getEmotionalState(),
-                this.getTrigger(),
-                this.getSocialSituation(),
-                this.getLocation(),
-                this.getImage());
-    }
 
     /**
      * To string method for printing.
@@ -230,9 +219,15 @@ public class MoodEvent {
         return location;
     }
 
-    public Bitmap getImage() { return image; }
+    public Bitmap getImage() {
+        if (image == null) {
+            return null;
+        }
+        Bitmap newimage = BitmapFactory.decodeByteArray(image.toByteArray(), 0, image.size());
+        return newimage; }
 
-    public void setImage(Bitmap image) { this.image = image; }
+    public void setImage(ByteArrayOutputStream image) {
+        this.image = image; }
 
     // --- END: Getters and Setters
 }
