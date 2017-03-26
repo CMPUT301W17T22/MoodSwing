@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
      */
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
-        getMenuInflater().inflate(R.menu.menu_main_activity,menu);
+        getMenuInflater().inflate(R.menu.menu_main_activity, menu);
         return true;
     }
 
@@ -107,6 +107,13 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
                 // User chose the "View Mood History" item, should navigate to the
                 // MoodHistoryActivity.
                 intent = new Intent(MainActivity.this, MoodHistoryActivity.class);
+                startActivity(intent);
+                return true;
+
+            case R.id.blockUserToolBarButton:
+                // User chose the "Block User" item, should navigate to the
+                // BlockUserActivity.
+                intent = new Intent(MainActivity.this, BlockUserActivity.class);
                 startActivity(intent);
                 return true;
 
