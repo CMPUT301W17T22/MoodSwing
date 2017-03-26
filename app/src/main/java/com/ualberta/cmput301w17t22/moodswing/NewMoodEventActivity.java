@@ -10,7 +10,6 @@ import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -22,8 +21,6 @@ import android.widget.Toast;
 
 import com.google.android.gms.maps.model.LatLng;
 
-import java.io.ByteArrayOutputStream;
-import java.io.OutputStream;
 import java.util.Date;
 import java.util.Objects;
 import java.util.regex.Pattern;
@@ -52,7 +49,6 @@ public class NewMoodEventActivity extends AppCompatActivity implements MSView<Mo
     /** Used in photo selection. */
     private static int RESULT_LOAD_IMG = 1;
     private static int REQUEST_IMAGE_CAPTURE = 2;
-    private static int COMPRESSION_AMOUNT = 16;
 
     /** Used in photo selection. */
     String imgDecodableString;
@@ -78,10 +74,7 @@ public class NewMoodEventActivity extends AppCompatActivity implements MSView<Mo
     /** Button that triggers the app to allow the user to capture a photo. */
     Button photoCaptureButton;
 
-    ByteArrayOutputStream image = null;
-
-    /** The toolbar, shows the title. */
-    Toolbar newMoodToolbar;
+    Bitmap image;
 
     /**
      * Initializes all the widgets for this activity and adds this View to the main Model class.
@@ -100,9 +93,6 @@ public class NewMoodEventActivity extends AppCompatActivity implements MSView<Mo
         // Add this View to the main Model class.
         MoodSwingController moodSwingController = MoodSwingApplication.getMoodSwingController();
         moodSwingController.addView(this);
-
-        newMoodToolbar = (Toolbar) findViewById(R.id.newMoodToolbar);
-        newMoodToolbar.setTitle("New Mood Event");
     }
 
     @Override
@@ -169,8 +159,14 @@ public class NewMoodEventActivity extends AppCompatActivity implements MSView<Mo
                     if (addCurrentLocationCheckBox.isChecked()) {
                         location = getLocation();
                     }
-                    //Image is initialized as null so it does not need to be set. If an image was
-                    //taken or attached then it will already be in the image variable.
+//                    //Get image to attach to Mood Event,
+//                    // if they didn't add an ImageView then it puts null
+//                    ImageView imageView = (ImageView) findViewById(R.id.imageView_NewMoodEventActivity);
+//                    if(imageView.getDrawable() == null) {
+//                        imageView = null;
+//                    }
+
+
 
                     // Get MoodSwingController.
                     MoodSwingController moodSwingController =
@@ -297,12 +293,6 @@ public class NewMoodEventActivity extends AppCompatActivity implements MSView<Mo
                         imageView.setImageBitmap(BitmapFactory
                                 .decodeFile(imgDecodableString));
 
-                        //image = BitmapFactory.decodeFile(imgDecodableString);
-                        Bitmap imageBitmap = BitmapFactory.decodeFile(imgDecodableString);
-                        ByteArrayOutputStream out = new ByteArrayOutputStream();
-                        imageBitmap.compress(Bitmap.CompressFormat.JPEG, COMPRESSION_AMOUNT, out);
-                        image = out;
-
 
                     } else {
                         Toast.makeText(this, "You haven't picked an image",
@@ -315,12 +305,7 @@ public class NewMoodEventActivity extends AppCompatActivity implements MSView<Mo
                     if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
                         Bundle extras = data.getExtras();
                         Bitmap imageBitmap = (Bitmap) extras.get("data");
-                        ByteArrayOutputStream out = new ByteArrayOutputStream();
-                        imageBitmap.compress(Bitmap.CompressFormat.JPEG, COMPRESSION_AMOUNT, out);
-                        image = out;
-                        //image = imageBitmap;
-
-
+                        image = imageBitmap;
                         // get image view
                         ImageView imageView =
                                 (ImageView) findViewById(R.id.imageView_NewMoodEventActivity);
@@ -422,7 +407,7 @@ public class NewMoodEventActivity extends AppCompatActivity implements MSView<Mo
         return null;
     }
     /** Gets the image from the image view*/
-    public ByteArrayOutputStream getImage() {
+    public Bitmap getImage() {
 
         return image;
     }

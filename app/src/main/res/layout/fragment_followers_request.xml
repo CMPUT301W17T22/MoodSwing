@@ -14,13 +14,25 @@
         android:textAppearance="@style/Usernames" />
 
     <ImageButton
-        android:id="@+id/stopFollowerButton"
+        android:id="@+id/ApproveFollowerButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="end"
         android:layout_centerVertical="true"
-        app:srcCompat="@drawable/ic_undo_black_24dp"
+        app:srcCompat="@drawable/ic_done_black_24dp"
         android:background="@null"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="32dp" />
+        android:layout_marginEnd="32dp"
+        android:layout_toStartOf="@+id/DenyFollowerButton" />
+
+    <ImageButton
+        android:id="@+id/DenyFollowerButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_centerVertical="true"
+        app:srcCompat="@drawable/ic_block_black_24dp"
+        android:background="@null"
+        android:layout_marginEnd="32dp"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>
