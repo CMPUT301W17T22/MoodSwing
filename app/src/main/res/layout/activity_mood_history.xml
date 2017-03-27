@@ -9,14 +9,38 @@
     <android.support.v7.widget.Toolbar
         android:id="@+id/mainToolBar2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_alignParentTop="true"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:titleTextColor="@color/white">
+
+        <TextView
+            android:id="@+id/toolbar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="cursive"
+            android:text="@string/moodswing"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+    </android.support.v7.widget.Toolbar>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0.3dp" />
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/filterToolbar_MoodHIstory"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
-        app:titleTextColor="@color/white"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
+        app:title="@string/moodhistorytitle"
+        app:titleTextColor="@color/white" />
 
     <ListView
         android:id="@+id/moodHistory"

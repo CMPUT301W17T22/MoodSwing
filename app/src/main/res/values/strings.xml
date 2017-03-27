@@ -53,7 +53,8 @@
     <string name="edit">Edit</string>
     <string name="capture">Take Photo</string>
     <string name="title_activity_main_follow">Following and Followers</string>
-    <string name="moodhistory">MoodHistory</string>
+    <string name="moodhistorytitle">Mood Event History</string>
+    <string name="moodfeedtitle">Mood Event Feed</string>
 
     <string name="block_user">Blocked Users</string>
     <string name="block_user_welcome_text">Block User Welcome Text</string>
@@ -62,6 +63,10 @@
     <string name="no_followers_text">You currently have no followers!</string>
     <string name="no_follow_requests_text">You currently have no one requesting to follow you.</string>
     <string name="you_were_feeling">You were feeling</string>
+
+    <string name="recentFilter">Recent Week</string>
+    <string name="emotionFilter">By Emotion</string>
+    <string name="triggerFilter">By Trigger</string>
 
 
 </resources>
