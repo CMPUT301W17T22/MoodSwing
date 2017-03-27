@@ -173,7 +173,7 @@ public class MoodHistoryActivity extends AppCompatActivity implements MSView<Moo
      */
     public void initialize() {
         mainToolbar2 = (Toolbar) findViewById(R.id.mainToolBar2);
-        mainToolbar2.setTitle("Mood History");
+        mainToolbar2.setTitle("");
         moodHistoryListView  = (ListView) findViewById(R.id.moodHistory);
         emptyMoodHistory = (TextView) findViewById(R.id.emptyMoodHistory);
         // Add this View to the main Model class.
