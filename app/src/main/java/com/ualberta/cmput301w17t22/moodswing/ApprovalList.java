@@ -22,8 +22,9 @@ public class ApprovalList {
     public ApprovalList(){}
 
     /**
-     * Method takes in a participant that the mainParticipant wants to follow and has just sent
-     * a request to.
+     * Method takes in a participant that the mainParticipant needs to add to the pending list.
+     * If the participant is already in the pending or approved lists then an exception is thrown.
+     * Otherwise it adds that participants username to the pending list.
      * @param otherParticipant
      */
     public void newPendingParticipant(Participant otherParticipant){
@@ -62,11 +63,12 @@ public class ApprovalList {
     }
 
     // --- getters and setters ---
-
+    /**Returns the username of participants in the pending list. */
     public ArrayList<String> getPending() {
         return pending;
     }
 
+    /**Returns the username of participants in the approved list. */
     public ArrayList<String> getApproved() {
         return approved;
     }

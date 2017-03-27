@@ -80,7 +80,7 @@ public class MoodEvent {
             this.location = location;
         }
     }
-
+    //TODO: Regenerate equals method to include image and location.
     /**
      * Android Studio generated equals method.
      * @param o
@@ -185,10 +185,6 @@ public class MoodEvent {
         return emotionalState;
     }
 
-    public void setDate(Date date){
-        this.date = date;
-    }
-
     public Date getDate() {
         return date;
     }
@@ -209,7 +205,6 @@ public class MoodEvent {
         return socialSituation;
     }
 
-    public void setOriginalPoster(String originalPoster) { this.originalPoster = originalPoster; }
 
     public void setLocation(LatLng location) {
         this.location = location;
@@ -219,6 +214,8 @@ public class MoodEvent {
         return location;
     }
 
+    /**Compresses the ByteArrayOutputStream into a byte size restricted Bitmap and returns the
+     * image Bitmap*/
     public Bitmap getImage() {
         if (image == null) {
             return null;

@@ -221,10 +221,10 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
              }
          }
          // add our own most recent mood event
-        //Log.d("help", mainParticipant.getMostRecentMoodEvent().getEmotionalState().getDescription());
+        //Log.d("help", mainParticipant.getMostRecentMoodEvent().getSpinnerEmotionalState().getDescription());
         if(mainParticipant.getMostRecentMoodEvent() != null){
             moodFeedEvents.add(mainParticipant.getMostRecentMoodEvent());
-            //Log.d("help", mainParticipant.getMostRecentMoodEvent().getEmotionalState().getDescription());
+            //Log.d("help", mainParticipant.getMostRecentMoodEvent().getSpinnerEmotionalState().getDescription());
         }
 
 

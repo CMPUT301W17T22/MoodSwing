@@ -16,6 +16,7 @@ import java.util.ArrayList;
  * https://www.youtube.com/watch?v=nOdSARCVYic
  * accessed March 26th
  * Created by bbest on 26/03/17.
+ * @author bbest
  */
 
 public class MoodEventAdapter extends ArrayAdapter<MoodEvent> {
