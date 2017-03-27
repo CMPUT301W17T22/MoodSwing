@@ -205,12 +205,33 @@ public class ViewMoodEventActivity extends AppCompatActivity implements MSView<M
 
         // Delete the mood event if delete is true.
         if (delete) {
-            // Delete the mood event.
-            moodSwingController.deleteMoodEventFromMainParticipantByPosition(position);
-            // Inform the user that the mood event was deleted.
-            Toast.makeText(ViewMoodEventActivity.this,
-                    "Mood Event deleted!",
-                    Toast.LENGTH_SHORT).show();
+            // check if you're deleting from mood feed or mood history
+
+            // if the event is from mood history, proceed deleting as normal
+            if (getIntent().getStringExtra("MoodListType").equals("MoodHistory")) {
+                // Delete the mood event.
+                moodSwingController.deleteMoodEventFromMainParticipantByPosition(position);
+                // Inform the user that the mood event was deleted.
+                Toast.makeText(ViewMoodEventActivity.this,
+                        "Mood Event deleted!",
+                        Toast.LENGTH_SHORT).show();
+
+            // If this activity was launched from the MainActivity, automatically
+            // delete most recent mood event
+            } else if (getIntent().getStringExtra("MoodListType").equals("MoodFeed")) {
+                // find the most recent mood event
+                //Log.d("help", String.valueOf(mainParticipant.getMoodHistory().size()));
+                // Delete the mood event.
+                position = mainParticipant.getMoodHistory().size() - 1;
+                moodSwingController.deleteMoodEventFromMainParticipantByPosition(position);
+                // Inform the user that the mood event was deleted.
+                Toast.makeText(ViewMoodEventActivity.this,
+                        "Mood Event deleted!",
+                        Toast.LENGTH_SHORT).show();
+            }
+
+
+
         }
     }
 

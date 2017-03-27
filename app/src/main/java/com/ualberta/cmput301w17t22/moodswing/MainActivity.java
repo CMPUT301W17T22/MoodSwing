@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -39,9 +40,10 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
      */
     private MoodEventAdapter moodFeedAdapter;
 
+    // listview that holds the mood feed
     private ListView moodFeedListView;
 
-    ArrayList<MoodEvent> moodFeedEvents;
+    ArrayList<MoodEvent> moodFeedEvents = new ArrayList<MoodEvent>();
 
     ElasticSearchController elasticSearchController;
     /**
@@ -80,6 +82,7 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
                         MoodSwingApplication.getMoodSwingController();
 
                 // Report the position of the mood event being viewed to the main model.
+                //Log.d("help", String.valueOf(position));
                 moodSwingController.setMoodFeedPosition(position);
 
                 // Launch the ViewMoodEventActivity.
@@ -187,20 +190,32 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
     }
     public void loadMoodSwing() {
         // Get the main Model and get the main participant, and the main participant's mood history.
+        moodFeedEvents.clear();
         MoodSwingController moodSwingController = MoodSwingApplication.getMoodSwingController();
 
         mainParticipant = moodSwingController.getMainParticipant();
         ArrayList<String> mainParticipantFollowingList = mainParticipant.getFollowing();
+
         int i;
         int size =0 ;
         if(mainParticipantFollowingList.isEmpty() == false){
             size = mainParticipantFollowingList.size();
         }
-
+        // add most recent mood event of all those we're following
          for(i =0; i < size ; i++){
              Participant followingParticipant = elasticSearchController.getParticipantByUsername(mainParticipantFollowingList.get(i));
-             moodFeedEvents.add(followingParticipant.getMostRecentMoodEvent());
+             if(followingParticipant.getMostRecentMoodEvent() != null){
+                 // make sure the followed person as at least one mood event
+                 moodFeedEvents.add(followingParticipant.getMostRecentMoodEvent());
+             }
          }
+         // add our own most recent mood event
+        //Log.d("help", mainParticipant.getMostRecentMoodEvent().getEmotionalState().getDescription());
+        if(mainParticipant.getMostRecentMoodEvent() != null){
+            moodFeedEvents.add(mainParticipant.getMostRecentMoodEvent());
+            //Log.d("help", mainParticipant.getMostRecentMoodEvent().getEmotionalState().getDescription());
+        }
+
         moodSwingController.setMoodFeed(moodFeedEvents);
         // Initialize array adapter.
         moodFeedAdapter = new MoodEventAdapter(this, moodFeedEvents);
@@ -212,7 +227,6 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
      * @param moodSwing
      */
     public void update(MoodSwing moodSwing) {
-
-
+        loadMoodSwing();
     }
 }

@@ -88,7 +88,11 @@ public class Participant extends User {
      */
     public MoodEvent getMostRecentMoodEvent() {
         // Last element of moodHistory is the most recent.
-        return moodHistory.get(moodHistory.size() - 1);
+        if (moodHistory.size() >= 1) {
+            return moodHistory.get(moodHistory.size() - 1);
+        } else {
+            return null;
+        }
     }
 
     // --- END: MoodEvent methods

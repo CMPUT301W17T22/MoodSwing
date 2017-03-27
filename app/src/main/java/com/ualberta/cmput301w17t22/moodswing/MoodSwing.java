@@ -210,7 +210,8 @@ public class MoodSwing extends MSModel<MSView> {
         this.moodHistoryPosition = moodHistoryPosition;
     }
 
-    public int getMoodFeedPosition() {  return moodFeedPosition; }
+    public int getMoodFeedPosition() {
+        return moodFeedPosition; }
 
     public void setMoodFeedPosition(int moodFeedPosition) {
         this.moodFeedPosition = moodFeedPosition;
