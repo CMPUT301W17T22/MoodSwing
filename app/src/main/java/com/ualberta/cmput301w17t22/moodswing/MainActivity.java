@@ -1,6 +1,7 @@
 package com.ualberta.cmput301w17t22.moodswing;
 
 import android.content.Intent;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -11,6 +12,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -41,6 +44,9 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
      *
      */
     private MoodEventAdapter moodFeedAdapter;
+
+    // displays text when MoodFeed is empty
+    TextView emptyFeed;
 
     // listview that holds the mood feed
     private ListView moodFeedListView;
@@ -75,6 +81,8 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
         welcomeText.setText("Welcome user \"" + mainParticipant.getUsername() +
                 "\" with ID \"" + mainParticipant.getId() + "\"");
 
+
+
         moodFeedListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -95,6 +103,7 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
             }
         });
     }
+
 
     @Override
     protected void onStart(){
@@ -184,7 +193,7 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
         mainToolbar.setTitle("");
         welcomeText = (TextView)findViewById(R.id.mainWelcomeText);
         moodFeedListView  = (ListView) findViewById(R.id.MoodFeedListView);
-
+        emptyFeed = (TextView) findViewById(R.id.emptyMoodFeed);
 
         // Add this View to the main Model class.
         MoodSwingController moodSwingController = MoodSwingApplication.getMoodSwingController();
@@ -226,8 +235,10 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
             }
         });
         moodSwingController.setMoodFeed(moodFeedEvents);
+
         // Initialize array adapter.
         moodFeedAdapter = new MoodEventAdapter(this, moodFeedEvents);
+        moodFeedListView.setEmptyView(findViewById(R.id.emptyMoodFeed));
         moodFeedListView.setAdapter(moodFeedAdapter);
     }
 

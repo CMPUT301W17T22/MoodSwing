@@ -131,14 +131,14 @@ public class ViewMoodEventActivity extends AppCompatActivity implements MSView<M
         // Load the values from the mood event being viewed into the widgets of the activity.
         loadFromMoodEvent();
 
-        // Check if the user own's this mood event, and dissapear or appear the edit and
+        // Check if the user own's this mood event, and disappear or appear the edit and
         // delete buttons appropriately.
         if (moodEvent.getOriginalPoster().equals(mainParticipant.getUsername())) {
             editMoodEventButton.setVisibility(View.VISIBLE);
             deleteMoodEventButton.setVisibility(View.VISIBLE);
         } else {
-            editMoodEventButton.setVisibility(View.GONE);
-            deleteMoodEventButton.setVisibility(View.GONE);
+            editMoodEventButton.setVisibility(View.INVISIBLE);
+            deleteMoodEventButton.setVisibility(View.INVISIBLE);
         }
 
         // Edit button press, starts the EditMoodEventActivity.

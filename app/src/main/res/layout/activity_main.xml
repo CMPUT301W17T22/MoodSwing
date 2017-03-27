@@ -48,4 +48,14 @@
         android:layout_marginRight="3dp"
         android:nestedScrollingEnabled="true"
         />
+
+    <TextView
+        android:id="@+id/emptyMoodFeed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="Your MoodFeed is empty."
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:visibility="gone" />
 </LinearLayout>
