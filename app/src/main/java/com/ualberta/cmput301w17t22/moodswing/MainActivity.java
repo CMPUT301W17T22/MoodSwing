@@ -13,6 +13,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 /**
  * The MainActivity of the MoodSwing app. This screen will display the map view of mood events,
@@ -216,6 +218,13 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
             //Log.d("help", mainParticipant.getMostRecentMoodEvent().getEmotionalState().getDescription());
         }
 
+
+        Collections.sort(moodFeedEvents, new Comparator<MoodEvent>() {
+            @Override
+            public int compare(MoodEvent o1, MoodEvent o2) {
+                return o2.getDate().compareTo(o1.getDate());
+            }
+        });
         moodSwingController.setMoodFeed(moodFeedEvents);
         // Initialize array adapter.
         moodFeedAdapter = new MoodEventAdapter(this, moodFeedEvents);
