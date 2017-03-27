@@ -5,13 +5,19 @@ import android.util.Log;
 /** Controller for handling a FollowingList of participants that the mainParticipant follows.
  * <p/>
  * Created by nyitrai on 3/1/2017.
+ * @author bbest
  */
 
 public class FollowingController implements MSController {
+
+    //Declaration of necessary objects.
     MoodSwing ms = null;
     ElasticSearchController elasticSearchController;
     Participant mainParticipant;
 
+    /** Constructor for FollowingController used to initiate following and follower actions.
+     * As well blocking actions.
+     * @param ms */
     public FollowingController(MoodSwing ms) {
 
         elasticSearchController = MoodSwingApplication.getElasticSearchController();
@@ -37,8 +43,9 @@ public class FollowingController implements MSController {
 
         Participant newFollowedParticipant =
                 elasticSearchController.getParticipantByUsername(participant);
-
+        //follow the participant
         mainParticipant.followParticipant(newFollowedParticipant);
+        //Send a follow request to the participant
         mainParticipant.createFollowerRequest(newFollowedParticipant);
 
         // Update elastic search.
@@ -52,7 +59,7 @@ public class FollowingController implements MSController {
      * followerList.
      * @param receivingParticipant
      */
-    //TODO:Need to create a new type of request that tells the receiving participant to remove
+    //TODO:Need to create a new type of request that tells the receiving participant to remove?
 
     public void unfollowParticipant(Participant receivingParticipant){
 

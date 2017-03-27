@@ -20,7 +20,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.model.LatLng;
-import com.google.gson.Gson;
 
 import java.io.ByteArrayOutputStream;
 import java.util.Objects;
@@ -40,7 +39,9 @@ public class EditMoodEventActivity extends AppCompatActivity implements MSView<M
 
     /** Used in photo selection. */
     private static int RESULT_LOAD_IMG = 1;
+    /** Used in photo selection. */
     private static int REQUEST_IMAGE_CAPTURE = 2;
+    /** Used in photo selection. */
     private static int COMPRESSION_AMOUNT = 16;
 
     /** Used in photo selection. */
@@ -72,33 +73,43 @@ public class EditMoodEventActivity extends AppCompatActivity implements MSView<M
     /** Checkbox that indicates if the user wants to add their current location.*/
     CheckBox addCurrentLocationCheckBox;
 
+    /**Button used to trigger the gallery option to upload a photo. */
     Button photoUploadButton;
 
+    /**Button used to trigger the camera on the phone to take a picture and attach it to the Mood Event */
     Button photoCaptureButton;
 
 
-
+    /**Image View used to display the chosen image. */
     ImageView imageView;
 
     /**Get the ImageView */
     ByteArrayOutputStream image = null;
 
+    /**Initialize all the Views or Widgets in the Activity  */
     public void initialize() {
-        // Initialize all the widgets in the activity.
+
         emotionalStateSpinner =
                 (Spinner) findViewById(R.id.emotionalStateSpinner_EditMoodEventActivity);
+
         socialSituationSpinner =
                 (Spinner) findViewById(R.id.socialSituationSpinner_EditMoodEventActivity);
+
         triggerEditText =
                 (EditText) findViewById(R.id.triggerEditText_EditMoodEventActivity);
+
         editButton =
                 (Button) findViewById(R.id.newMoodEventPostButton_EditMoodEventActivity);
+
         photoUploadButton =
                 (Button) findViewById(R.id.photoUploadButton_EditMoodEventActivity);
+
         photoCaptureButton =
                 (Button) findViewById(R.id.photoCaptureButton_EditMoodEventActivity);
+
         addCurrentLocationCheckBox =
                 (CheckBox) findViewById(R.id.addCurentLocationCheckBox_EditMoodEventActivity);
+
         imageView =
              (ImageView) findViewById(R.id.imageView_EditMoodEventActivity);
 
@@ -175,18 +186,18 @@ public class EditMoodEventActivity extends AppCompatActivity implements MSView<M
                 // Post the updated Mood Event, and inform the user you are doing so.
                 else {
                     // Get EmotionalState.
-                    EmotionalState emotionalState = getEmotionalState();
+                    EmotionalState emotionalState = getSpinnerEmotionalState();
 
                     // Get trigger.
                     String trigger = triggerEditText.getText().toString();
 
                     // Get social situation.
-                    SocialSituation socialSituation = getSocialSituation();
+                    SocialSituation socialSituation = getSpinnerSocialSituation();
 
                     // Get location if location box is checked, otherwise just use null.
                     LatLng location = null;
                     if (addCurrentLocationCheckBox.isChecked()) {
-                        location = getLocation();
+                        location = getDeviceLocation();
                     }
 
 
@@ -330,7 +341,7 @@ public class EditMoodEventActivity extends AppCompatActivity implements MSView<M
      * Gets the EmotionalState from the emotionalStateSpinner.
      * @return The appropriate emotional state.
      */
-    public EmotionalState getEmotionalState() {
+    public EmotionalState getSpinnerEmotionalState() {
         // Get EmotionalStateFactory to create an emotional state object.
         EmotionalStateFactory emotionalStateFactory = new EmotionalStateFactory();
 
@@ -343,7 +354,7 @@ public class EditMoodEventActivity extends AppCompatActivity implements MSView<M
      * Gets the SocialSituation from the socialSituationSpinner.
      * @return The appropriate social situation.
      */
-    public SocialSituation getSocialSituation() {
+    public SocialSituation getSpinnerSocialSituation() {
         // Get Social Situation Factory to create a social situation object.
         SocialSituationFactory socialSituationFactory = new SocialSituationFactory();
 
@@ -356,7 +367,7 @@ public class EditMoodEventActivity extends AppCompatActivity implements MSView<M
      * Gets the LatLng location from the android device.
      * @return The current / last known location as a LatLng
      */
-    public LatLng getLocation() {
+    public LatLng getDeviceLocation() {
         // TODO: I have no clue if this works.
 
         GPSTracker gps = new GPSTracker(this);
@@ -412,11 +423,6 @@ public class EditMoodEventActivity extends AppCompatActivity implements MSView<M
      * coderzheaven.com/2012/04/20/
      *      select-an-image-from-gallery-in-android-and-show-it-in-an-imageview/
      * developer.android.com/training/camera/photobasics.html
-     *
-     * TODO:
-     * Attach image to MoodEvent
-     * Limit image size
-     * Find out why gallery image selection doesn't work on API 25
      * @param requestCode onActivityResult uses this to know which intent finished
      * @param resultCode = RESULT_OK if everything worked
      * @param data is returned by the intent

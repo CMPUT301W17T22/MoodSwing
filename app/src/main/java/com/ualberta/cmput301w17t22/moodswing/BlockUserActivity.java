@@ -121,8 +121,10 @@ public class BlockUserActivity extends AppCompatActivity implements MSView<MoodS
 
         // Create edittext to take user input.
         final EditText usernameToBlockEditText = new EditText(BlockUserActivity.this);
+
         // Set custom edittext shape.
         usernameToBlockEditText.setBackgroundResource(R.drawable.dialog_edittext_shape);
+
         // Set some padding from the left.
         usernameToBlockEditText.setPadding(16, 0, 0, 0);
 
@@ -131,6 +133,7 @@ public class BlockUserActivity extends AppCompatActivity implements MSView<MoodS
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT);
+
         // Set the margins for the edittext.
         params.leftMargin = getResources().getDimensionPixelSize(R.dimen.dialog_margin);
         params.rightMargin = getResources().getDimensionPixelSize(R.dimen.dialog_margin);
@@ -273,7 +276,7 @@ public class BlockUserActivity extends AppCompatActivity implements MSView<MoodS
     }
 
     /**
-     * Checks if the blocklist is empty. If it is empty, set the notBlockingTextView to be visible,
+     * Checks if the block list is empty. If it is empty, set the notBlockingTextView to be visible,
      * otherwise, set it to be invisible.
      */
     public void setNotBlockingText() {

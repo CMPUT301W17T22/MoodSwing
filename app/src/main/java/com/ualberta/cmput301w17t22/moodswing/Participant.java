@@ -100,6 +100,14 @@ public class Participant extends User {
 
     // --- START: Following methods ---
 
+        /**Follow a participant by:
+         * Checking if the sending participant is in their block list.
+         * Checks to see if the sending participant has already sent a follow request to that participant.
+         * Checks to see if the sending participant is already following the participant.
+         * Successfully follows a participant by:
+         * Adding the participant to the sending participants pending on the followingList.
+         * Creates a follower request that is sent to the receiving participant.
+         * @param receivingParticipant */
     public void followParticipant(Participant receivingParticipant) {
         Boolean sendFollowRequest = false;
 
@@ -125,41 +133,53 @@ public class Participant extends User {
             receivingParticipant.createFollowerRequest(this);
         }
     }
-
+    /**Removes the participant from the main participants from our followingList, and sends a
+     * unfollowedEvent to the receiving participant to remove the main participant
+     * from their followerList.
+     * @param receivingParticipant */
     public void unfollowParticipant(Participant receivingParticipant){
 
         followingList.remove(receivingParticipant);
+        receivingParticipant.createUnfollowEvent(this);
     }
-
+    /**Remove a pending following request from the main participant and corresponding
+     * follower request from the receiving participant.
+     * @param receivingParticipant */
     public void cancelFollowRequest(Participant receivingParticipant){
         followingList.remove(receivingParticipant);
         receivingParticipant.followerList.remove(this);
     }
-
+    /**Adds the participant username to the main participants block list, unless they are already in it.
+     * @param participantUsername  */
     public void blockParticipant(String participantUsername){
         if (this.blockList.contains(participantUsername)) {
         } else {
             blockList.add(participantUsername);
         }
     }
-
+    /**Removes the participant username from the main Participants block list. */
     public void unblockParticipant(String participantUsername){
         this.blockList.remove(participantUsername);
     }
 
-    /**
-     * DO NOT call explicitly. Should only be called by receivingParticipant
-     *
+
+     //DO NOT call explicitly. Should only be called by receivingParticipant
+    /**Event that is received indicating the main participants follow request was approved so
+     * the pending following request is moved to the approved list in followingList.
      * @param receivingParticipant
      */
     public void followRequestApproved(Participant receivingParticipant){
         followingList.approvePending(receivingParticipant);
     }
-
+    /**Event that is received indicating the main participants follow request was declined so
+     * the pending following request is removed from followingList.
+     * @param receivingParticipant
+     */
     public void followRequestDeclined(Participant receivingParticipant){
         followingList.remove(receivingParticipant);
     }
-
+    /**Event received indicating that the main participant has been unfollowed. The corresponding
+     * follower is removed from the main participants follower list. */
     public void unfollowedEvent(Participant receivingParticipant){
         followerList.remove(receivingParticipant);
     }
@@ -169,9 +189,10 @@ public class Participant extends User {
 
     // --- START: Follower methods ---
 
-    /**
-     * DO NOT call explicitly. Should only be called by requestingParticipant
-     *
+
+     // DO NOT call explicitly. Should only be called by requestingParticipant
+     /**Creates a request object received from a participant, if that participant is not in our block
+      * list, that adds them to the main participants pending followers.
      * @param requestingParticipant
      */
     public void createFollowerRequest(Participant requestingParticipant){
@@ -195,21 +216,27 @@ public class Participant extends User {
             followerList.newPendingParticipant(requestingParticipant);
         }
     }
-
+    /**Create an unfollow event to inform the requesting participant that they are being unfollowed.
+     * @param requestingParticipant  */
     public void createUnfollowEvent(Participant requestingParticipant){
         requestingParticipant.unfollowedEvent(this);
     }
-
+    /**Approves a pending follower request and sends a followRequestApproved(this) event
+     * to the participant in order to let them know to update their list.
+     * @param requestingParticipant */
     public void approveFollowerRequest(Participant requestingParticipant){
         requestingParticipant.followRequestApproved(this);
         followerList.approvePending(requestingParticipant);
     }
-
+    /**Declines a follower request by removing it from the followerList and sends a
+     * followRequestDeclined(this) to the participant to indicate their request has been denied.
+     * @param requestingParticipant */
     public void declineFollowerRequest(Participant requestingParticipant){
         requestingParticipant.followRequestDeclined(this);
         followerList.remove(requestingParticipant);
     }
 
+    //TODO: Check to see if we need this?
     public void blockFollowerRequest(Participant requestingParticipant){
         followerList.remove(requestingParticipant);
         this.blockParticipant(requestingParticipant.getUsername());
@@ -225,8 +252,6 @@ public class Participant extends User {
     public void setId(String id) { this.id = id; }
 
     public ArrayList<String> getBlockList() { return blockList; }
-
-    public void setBlockList(ArrayList<String> blockList) { this.blockList = blockList; }
 
     public ArrayList<String> getPendingFollowing() {
         return followingList.getPending();
