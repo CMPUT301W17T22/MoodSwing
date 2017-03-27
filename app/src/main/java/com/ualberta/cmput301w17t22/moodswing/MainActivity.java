@@ -1,17 +1,31 @@
 package com.ualberta.cmput301w17t22.moodswing;
 
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.text.InputType;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RadioButton;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
@@ -53,7 +67,17 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
 
     ArrayList<MoodEvent> moodFeedEvents = new ArrayList<MoodEvent>();
 
+    Spinner filterSpinner;
+
     ElasticSearchController elasticSearchController;
+
+    ArrayList<String> filter_strings = new ArrayList<>();
+
+    // The trigger word that the user will search for in filter
+    private String triggerWord = "";
+
+
+
     /**
      * Called on opening of activity for the first time.
      * @param savedInstanceState
@@ -83,6 +107,7 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
 
 
 
+
         moodFeedListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -102,6 +127,8 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
                 startActivity(intent);
             }
         });
+
+
     }
 
 
@@ -114,6 +141,112 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
         moodFeedAdapter = new MoodEventAdapter(this, moodFeedEvents);
 
         moodFeedListView.setAdapter(moodFeedAdapter);
+
+
+        // handles when a different thing is selected in filter spinner
+        // place in onStart deliberately to minimize calls to setOnItemSelectedListener
+        // This will always call when the spinner is initialized.
+        filterSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                //Toast.makeText(MainActivity.this, filter_strings.get(position)+"selected", Toast.LENGTH_SHORT);
+                String selected = filterSpinner.getSelectedItem().toString();
+
+                switch (selected) {
+                    case "No Filter":       // no filter selected
+                        Toast.makeText(MainActivity.this, selected, Toast.LENGTH_SHORT).show();
+
+                        // remove filters
+                        break;
+                    case "Recent Week":     // sort by recent week
+                        // to add some sort of maker when Recent Week selected. Remove on other options
+                        //filter_strings.set(filter_strings.indexOf("Recent Week"), "Recent Week*");
+
+                        // filter by recent week here
+                        break;
+                    case "By Emotion":      // sort by emotion
+                        Dialog dialog = new Dialog(MainActivity.this);
+                        dialog.setContentView(R.layout.emotional_state_dialogue_box);
+                        dialog.setTitle("This is my custom dialog box");
+                        dialog.setCancelable(true);
+                        // there are a lot of settings, for dialog, check them all out!
+                        // set up radiobutton
+                        RadioButton happinessRB = (RadioButton) dialog.findViewById(R.id.happinessRadioButton);
+                        RadioButton angerRB = (RadioButton) dialog.findViewById(R.id.angerRadioButton);
+                        RadioButton disgustRB = (RadioButton) dialog.findViewById(R.id.disgustRadioButton);
+                        RadioButton confusionRB = (RadioButton) dialog.findViewById(R.id.confusionRadioButton);
+                        RadioButton fearRB = (RadioButton) dialog.findViewById(R.id.fearRadioButton);
+                        RadioButton sadnessRB = (RadioButton) dialog.findViewById(R.id.sadnessRadioButton);
+                        RadioButton shameRB = (RadioButton) dialog.findViewById(R.id.shameRadioButton);
+                        RadioButton surpriseRB = (RadioButton) dialog.findViewById(R.id.surpriseRadioButton);
+
+                        // now that the dialog is set up, it's time to show it
+                        dialog.show();
+
+                        break;
+                    default:                // sort by trigger
+                        // from http://stackoverflow.com/questions/10903754/input-text-dialog-android on 3/27
+                        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this, R.style.DialogTheme);
+
+
+                        // Method for displaying an edittext nicely in an alertdialog adapted from
+                        // http://stackoverflow.com/questions/27774414/add-bigger-margin-to-edittext-in-android-alertdialog
+                        // on 3/25/2017.
+
+                        // Create edittext to take user input.
+                        final EditText triggerEditText = new EditText(MainActivity.this);
+                        // Set custom edittext shape.
+                        triggerEditText.setBackgroundResource(R.drawable.dialog_edittext_shape);
+                        // Set some padding from the left.
+                        triggerEditText.setPadding(6, 0, 6, 0);
+
+                        // Create a container for the edittext.
+                        LinearLayout triggerEditTextContainer = new LinearLayout(MainActivity.this);
+                        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                                ViewGroup.LayoutParams.MATCH_PARENT,
+                                ViewGroup.LayoutParams.WRAP_CONTENT);
+                        // Set the margins for the edittext.
+                        params.leftMargin = getResources().getDimensionPixelSize(R.dimen.dialog_margin);
+                        params.rightMargin = getResources().getDimensionPixelSize(R.dimen.dialog_margin);
+
+                        // Set the parameters to the edittext and add it to the container.
+                        triggerEditText.setLayoutParams(params);
+                        triggerEditTextContainer.addView(triggerEditText);
+
+                        builder.setTitle("Enter Trigger Word:")
+                                .setMessage("(max one word)")
+                                .setCancelable(true)
+                                .setView(triggerEditTextContainer);
+
+
+                        // Set up the buttons
+                        builder.setPositiveButton("Filter", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                triggerWord = triggerEditText.getText().toString();
+                            }
+                        });
+                        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.cancel();
+                            }
+                        });
+
+                        builder.show();
+
+
+                        break;
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                Toast.makeText(MainActivity.this, "nothing selected", Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
     /**
      * Called when the Activity is finish()'d or otherwise closes. Removes this View from the main
@@ -138,6 +271,9 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
         getMenuInflater().inflate(R.menu.menu_main_activity, menu);
         return true;
     }
+
+
+
 
     /**
      * This method handles clicks on menu items from the overflow menu.
@@ -194,6 +330,18 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
         welcomeText = (TextView)findViewById(R.id.mainWelcomeText);
         moodFeedListView  = (ListView) findViewById(R.id.MoodFeedListView);
         emptyFeed = (TextView) findViewById(R.id.emptyMoodFeed);
+        filterSpinner = (Spinner) findViewById(R.id.filterSpinnerMoodFeed);
+
+        // these will populate the filter spinner
+
+        filter_strings.add("No Filter");
+        filter_strings.add("Recent Week");
+        filter_strings.add("By Emotion");
+        filter_strings.add("By Trigger");
+
+        // for our custom spinner options and settings
+        ArrayAdapter<String> filteradapter = new ArrayAdapter<String>(this, R.layout.filter_spinner, filter_strings);
+        filterSpinner.setAdapter(filteradapter);
 
         // Add this View to the main Model class.
         MoodSwingController moodSwingController = MoodSwingApplication.getMoodSwingController();

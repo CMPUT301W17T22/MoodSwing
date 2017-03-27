@@ -40,16 +40,28 @@
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
-        app:titleTextColor="@color/white">
+        app:titleTextColor="@color/white"
+        android:weightSum="1">
 
         <TextView
             android:id="@+id/filterTitleMoodFeed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1.64"
             android:fontFamily="sans-serif"
             android:text="@string/moodfeedtitle"
             android:textColor="@color/white"
             android:textSize="18sp" />
+
+        <Spinner
+            android:id="@+id/filterSpinnerMoodFeed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:gravity="right"
+            android:popupBackground="@color/white"
+            android:textAlignment="gravity"
+            android:theme="@style/AppTheme" />
     </android.support.v7.widget.Toolbar>
 
     <TextView
@@ -81,4 +93,8 @@
         android:textAlignment="center"
         android:textSize="18sp"
         android:visibility="gone" />
+
+
+
+
 </LinearLayout>
