@@ -13,12 +13,11 @@
         android:layout_alignParentTop="true"
         android:background="?attr/colorPrimary"
         android:elevation="4dp"
-        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        app:titleTextColor="@color/white">
+        android:theme="@style/AppTheme"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
         <TextView
-            android:id="@+id/toolbar_title"
+            android:id="@+id/toolbarTitleMoodHistory"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="cursive"
@@ -33,14 +32,23 @@
         android:layout_height="0.3dp" />
 
     <android.support.v7.widget.Toolbar
-        android:id="@+id/filterToolbar_MoodHIstory"
+        android:id="@+id/filterToolbar_MoodHistory"
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
-        app:title="@string/moodhistorytitle"
-        app:titleTextColor="@color/white" />
+        app:titleTextColor="@color/white">
+
+        <TextView
+            android:id="@+id/filterTitleMoodHistory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:text="@string/moodhistorytitle"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+    </android.support.v7.widget.Toolbar>
 
     <ListView
         android:id="@+id/moodHistory"
@@ -55,10 +63,10 @@
         android:id="@+id/emptyMoodHistory"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="200dp"
         android:text="Your MoodHistory is empty."
         android:textAlignment="center"
-        android:textSize="24sp"
+        android:textSize="18sp"
         android:visibility="gone" />
 
 
