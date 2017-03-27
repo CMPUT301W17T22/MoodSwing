@@ -4,6 +4,7 @@
     android:layout_height="wrap_content"
     android:textAppearance="@style/Usernames"
     android:gravity="center"
-    android:minHeight="48dp">
+    android:minHeight="48dp"
+    android:background="@color/white">
 
 </TextView>
