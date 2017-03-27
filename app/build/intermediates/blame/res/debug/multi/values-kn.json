@@ -1,5 +1,333 @@
 [
     {
+        "outputFile": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\Documents\\Files\\2016-2017\\CMPUT301\\MoodSwing\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-kn\\values-kn.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 105,
+                    "endColumn": 112,
+                    "endOffset": 213
+                },
+                "from": {
+                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\d7350be4b00c090efaa02f0ffbc246a03362dcd9\\output\\res\\values-kn\\values.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 0,
+                        "startOffset": 283,
+                        "endColumn": 108,
+                        "endOffset": 391
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 218,
+                    "endColumn": 201,
+                    "endOffset": 415
+                },
+                "from": {
+                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\d7350be4b00c090efaa02f0ffbc246a03362dcd9\\output\\res\\values-kn\\values.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 0,
+                        "startOffset": 392,
+                        "endColumn": 201,
+                        "endOffset": 593
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 420,
+                    "endColumn": 134,
+                    "endOffset": 550
+                },
+                "from": {
+                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\d7350be4b00c090efaa02f0ffbc246a03362dcd9\\output\\res\\values-kn\\values.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 0,
+                        "startOffset": 594,
+                        "endColumn": 130,
+                        "endOffset": 724
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 5,
+                    "startColumn": 4,
+                    "startOffset": 555,
+                    "endColumn": 109,
+                    "endOffset": 660
+                },
+                "from": {
+                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\d7350be4b00c090efaa02f0ffbc246a03362dcd9\\output\\res\\values-kn\\values.xml",
+                    "position": {
+                        "startLine": 7,
+                        "startColumn": 0,
+                        "startOffset": 725,
+                        "endColumn": 105,
+                        "endOffset": 830
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 6,
+                    "startColumn": 4,
+                    "startOffset": 665,
+                    "endColumn": 201,
+                    "endOffset": 862
+                },
+                "from": {
+                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\d7350be4b00c090efaa02f0ffbc246a03362dcd9\\output\\res\\values-kn\\values.xml",
+                    "position": {
+                        "startLine": 8,
+                        "startColumn": 0,
+                        "startOffset": 831,
+                        "endColumn": 201,
+                        "endOffset": 1032
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 7,
+                    "startColumn": 4,
+                    "startOffset": 867,
+                    "endColumn": 130,
+                    "endOffset": 993
+                },
+                "from": {
+                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\d7350be4b00c090efaa02f0ffbc246a03362dcd9\\output\\res\\values-kn\\values.xml",
+                    "position": {
+                        "startLine": 9,
+                        "startColumn": 0,
+                        "startOffset": 1033,
+                        "endColumn": 126,
+                        "endOffset": 1159
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 8,
+                    "startColumn": 4,
+                    "startOffset": 998,
+                    "endColumn": 127,
+                    "endOffset": 1121
+                },
+                "from": {
+                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\d7350be4b00c090efaa02f0ffbc246a03362dcd9\\output\\res\\values-kn\\values.xml",
+                    "position": {
+                        "startLine": 10,
+                        "startColumn": 0,
+                        "startOffset": 1160,
+                        "endColumn": 123,
+                        "endOffset": 1283
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 9,
+                    "startColumn": 4,
+                    "startOffset": 1126,
+                    "endColumn": 204,
+                    "endOffset": 1326
+                },
+                "from": {
+                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\0eb62f6a4fe27e8e5b311ef968fb9da7b442d1f2\\output\\res\\values-kn\\values.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 0,
+                        "startOffset": 285,
+                        "endColumn": 204,
+                        "endOffset": 489
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 10,
+                    "startColumn": 4,
+                    "startOffset": 1331,
+                    "endColumn": 208,
+                    "endOffset": 1535
+                },
+                "from": {
+                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\d7350be4b00c090efaa02f0ffbc246a03362dcd9\\output\\res\\values-kn\\values.xml",
+                    "position": {
+                        "startLine": 11,
+                        "startColumn": 0,
+                        "startOffset": 1284,
+                        "endColumn": 208,
+                        "endOffset": 1492
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 11,
+                    "startColumn": 4,
+                    "startOffset": 1540,
+                    "endColumn": 114,
+                    "endOffset": 1650
+                },
+                "from": {
+                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\d7350be4b00c090efaa02f0ffbc246a03362dcd9\\output\\res\\values-kn\\values.xml",
+                    "position": {
+                        "startLine": 12,
+                        "startColumn": 0,
+                        "startOffset": 1493,
+                        "endColumn": 110,
+                        "endOffset": 1603
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 12,
+                    "startColumn": 4,
+                    "startOffset": 1655,
+                    "endColumn": 190,
+                    "endOffset": 1841
+                },
+                "from": {
+                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\d7350be4b00c090efaa02f0ffbc246a03362dcd9\\output\\res\\values-kn\\values.xml",
+                    "position": {
+                        "startLine": 13,
+                        "startColumn": 0,
+                        "startOffset": 1604,
+                        "endColumn": 190,
+                        "endOffset": 1794
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 13,
+                    "startColumn": 4,
+                    "startOffset": 1846,
+                    "endColumn": 136,
+                    "endOffset": 1978
+                },
+                "from": {
+                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\d7350be4b00c090efaa02f0ffbc246a03362dcd9\\output\\res\\values-kn\\values.xml",
+                    "position": {
+                        "startLine": 14,
+                        "startColumn": 0,
+                        "startOffset": 1795,
+                        "endColumn": 132,
+                        "endOffset": 1927
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 14,
+                    "startColumn": 4,
+                    "startOffset": 1983,
+                    "endColumn": 203,
+                    "endOffset": 2182
+                },
+                "from": {
+                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\d7350be4b00c090efaa02f0ffbc246a03362dcd9\\output\\res\\values-kn\\values.xml",
+                    "position": {
+                        "startLine": 15,
+                        "startColumn": 0,
+                        "startOffset": 1928,
+                        "endColumn": 203,
+                        "endOffset": 2131
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 15,
+                    "startColumn": 4,
+                    "startOffset": 2187,
+                    "endColumn": 186,
+                    "endOffset": 2369
+                },
+                "from": {
+                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\d7350be4b00c090efaa02f0ffbc246a03362dcd9\\output\\res\\values-kn\\values.xml",
+                    "position": {
+                        "startLine": 16,
+                        "startColumn": 0,
+                        "startOffset": 2132,
+                        "endColumn": 182,
+                        "endOffset": 2314
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 16,
+                    "startColumn": 4,
+                    "startOffset": 2374,
+                    "endColumn": 98,
+                    "endOffset": 2468
+                },
+                "from": {
+                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\d7350be4b00c090efaa02f0ffbc246a03362dcd9\\output\\res\\values-kn\\values.xml",
+                    "position": {
+                        "startLine": 17,
+                        "startColumn": 0,
+                        "startOffset": 2315,
+                        "endColumn": 94,
+                        "endOffset": 2409
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 17,
+                    "startColumn": 4,
+                    "startOffset": 2473,
+                    "endColumn": 92,
+                    "endOffset": 2561
+                },
+                "from": {
+                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\d7350be4b00c090efaa02f0ffbc246a03362dcd9\\output\\res\\values-kn\\values.xml",
+                    "position": {
+                        "startLine": 18,
+                        "startColumn": 0,
+                        "startOffset": 2410,
+                        "endColumn": 88,
+                        "endOffset": 2498
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 18,
+                    "startColumn": 4,
+                    "startOffset": 2566,
+                    "endColumn": 113,
+                    "endOffset": 2675
+                },
+                "from": {
+                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\d7350be4b00c090efaa02f0ffbc246a03362dcd9\\output\\res\\values-kn\\values.xml",
+                    "position": {
+                        "startLine": 19,
+                        "startColumn": 0,
+                        "startOffset": 2499,
+                        "endColumn": 109,
+                        "endOffset": 2608
+                    }
+                }
+            }
+        ]
+    },
+    {
         "outputFile": "C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-kn\\values-kn.xml",
         "map": [
             {
@@ -328,7 +656,7 @@
         ]
     },
     {
-        "outputFile": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\Documents\\Files\\2016-2017\\CMPUT301\\MoodSwing\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-kn\\values-kn.xml",
+        "outputFile": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-kn\\values-kn.xml",
         "map": [
             {
                 "to": {
@@ -339,7 +667,7 @@
                     "endOffset": 213
                 },
                 "from": {
-                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\d7350be4b00c090efaa02f0ffbc246a03362dcd9\\output\\res\\values-kn\\values.xml",
+                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\fred\\.android\\build-cache\\85f91bee56933bded0e8bb241e8d55d94a91fdb7\\output\\res\\values-kn\\values.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 0,
@@ -358,7 +686,7 @@
                     "endOffset": 415
                 },
                 "from": {
-                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\d7350be4b00c090efaa02f0ffbc246a03362dcd9\\output\\res\\values-kn\\values.xml",
+                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\fred\\.android\\build-cache\\85f91bee56933bded0e8bb241e8d55d94a91fdb7\\output\\res\\values-kn\\values.xml",
                     "position": {
                         "startLine": 5,
                         "startColumn": 0,
@@ -377,7 +705,7 @@
                     "endOffset": 550
                 },
                 "from": {
-                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\d7350be4b00c090efaa02f0ffbc246a03362dcd9\\output\\res\\values-kn\\values.xml",
+                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\fred\\.android\\build-cache\\85f91bee56933bded0e8bb241e8d55d94a91fdb7\\output\\res\\values-kn\\values.xml",
                     "position": {
                         "startLine": 6,
                         "startColumn": 0,
@@ -396,7 +724,7 @@
                     "endOffset": 660
                 },
                 "from": {
-                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\d7350be4b00c090efaa02f0ffbc246a03362dcd9\\output\\res\\values-kn\\values.xml",
+                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\fred\\.android\\build-cache\\85f91bee56933bded0e8bb241e8d55d94a91fdb7\\output\\res\\values-kn\\values.xml",
                     "position": {
                         "startLine": 7,
                         "startColumn": 0,
@@ -415,7 +743,7 @@
                     "endOffset": 862
                 },
                 "from": {
-                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\d7350be4b00c090efaa02f0ffbc246a03362dcd9\\output\\res\\values-kn\\values.xml",
+                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\fred\\.android\\build-cache\\85f91bee56933bded0e8bb241e8d55d94a91fdb7\\output\\res\\values-kn\\values.xml",
                     "position": {
                         "startLine": 8,
                         "startColumn": 0,
@@ -434,7 +762,7 @@
                     "endOffset": 993
                 },
                 "from": {
-                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\d7350be4b00c090efaa02f0ffbc246a03362dcd9\\output\\res\\values-kn\\values.xml",
+                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\fred\\.android\\build-cache\\85f91bee56933bded0e8bb241e8d55d94a91fdb7\\output\\res\\values-kn\\values.xml",
                     "position": {
                         "startLine": 9,
                         "startColumn": 0,
@@ -453,7 +781,7 @@
                     "endOffset": 1121
                 },
                 "from": {
-                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\d7350be4b00c090efaa02f0ffbc246a03362dcd9\\output\\res\\values-kn\\values.xml",
+                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\fred\\.android\\build-cache\\85f91bee56933bded0e8bb241e8d55d94a91fdb7\\output\\res\\values-kn\\values.xml",
                     "position": {
                         "startLine": 10,
                         "startColumn": 0,
@@ -472,7 +800,7 @@
                     "endOffset": 1326
                 },
                 "from": {
-                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\0eb62f6a4fe27e8e5b311ef968fb9da7b442d1f2\\output\\res\\values-kn\\values.xml",
+                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\fred\\.android\\build-cache\\2d4c3d320d50a701fbc2b74d928539ff1e4cdc1b\\output\\res\\values-kn\\values.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 0,
@@ -491,7 +819,7 @@
                     "endOffset": 1535
                 },
                 "from": {
-                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\d7350be4b00c090efaa02f0ffbc246a03362dcd9\\output\\res\\values-kn\\values.xml",
+                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\fred\\.android\\build-cache\\85f91bee56933bded0e8bb241e8d55d94a91fdb7\\output\\res\\values-kn\\values.xml",
                     "position": {
                         "startLine": 11,
                         "startColumn": 0,
@@ -510,7 +838,7 @@
                     "endOffset": 1650
                 },
                 "from": {
-                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\d7350be4b00c090efaa02f0ffbc246a03362dcd9\\output\\res\\values-kn\\values.xml",
+                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\fred\\.android\\build-cache\\85f91bee56933bded0e8bb241e8d55d94a91fdb7\\output\\res\\values-kn\\values.xml",
                     "position": {
                         "startLine": 12,
                         "startColumn": 0,
@@ -529,7 +857,7 @@
                     "endOffset": 1841
                 },
                 "from": {
-                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\d7350be4b00c090efaa02f0ffbc246a03362dcd9\\output\\res\\values-kn\\values.xml",
+                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\fred\\.android\\build-cache\\85f91bee56933bded0e8bb241e8d55d94a91fdb7\\output\\res\\values-kn\\values.xml",
                     "position": {
                         "startLine": 13,
                         "startColumn": 0,
@@ -548,7 +876,7 @@
                     "endOffset": 1978
                 },
                 "from": {
-                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\d7350be4b00c090efaa02f0ffbc246a03362dcd9\\output\\res\\values-kn\\values.xml",
+                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\fred\\.android\\build-cache\\85f91bee56933bded0e8bb241e8d55d94a91fdb7\\output\\res\\values-kn\\values.xml",
                     "position": {
                         "startLine": 14,
                         "startColumn": 0,
@@ -567,7 +895,7 @@
                     "endOffset": 2182
                 },
                 "from": {
-                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\d7350be4b00c090efaa02f0ffbc246a03362dcd9\\output\\res\\values-kn\\values.xml",
+                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\fred\\.android\\build-cache\\85f91bee56933bded0e8bb241e8d55d94a91fdb7\\output\\res\\values-kn\\values.xml",
                     "position": {
                         "startLine": 15,
                         "startColumn": 0,
@@ -586,7 +914,7 @@
                     "endOffset": 2369
                 },
                 "from": {
-                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\d7350be4b00c090efaa02f0ffbc246a03362dcd9\\output\\res\\values-kn\\values.xml",
+                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\fred\\.android\\build-cache\\85f91bee56933bded0e8bb241e8d55d94a91fdb7\\output\\res\\values-kn\\values.xml",
                     "position": {
                         "startLine": 16,
                         "startColumn": 0,
@@ -605,7 +933,7 @@
                     "endOffset": 2468
                 },
                 "from": {
-                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\d7350be4b00c090efaa02f0ffbc246a03362dcd9\\output\\res\\values-kn\\values.xml",
+                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\fred\\.android\\build-cache\\85f91bee56933bded0e8bb241e8d55d94a91fdb7\\output\\res\\values-kn\\values.xml",
                     "position": {
                         "startLine": 17,
                         "startColumn": 0,
@@ -624,7 +952,7 @@
                     "endOffset": 2561
                 },
                 "from": {
-                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\d7350be4b00c090efaa02f0ffbc246a03362dcd9\\output\\res\\values-kn\\values.xml",
+                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\fred\\.android\\build-cache\\85f91bee56933bded0e8bb241e8d55d94a91fdb7\\output\\res\\values-kn\\values.xml",
                     "position": {
                         "startLine": 18,
                         "startColumn": 0,
@@ -643,7 +971,7 @@
                     "endOffset": 2675
                 },
                 "from": {
-                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\d7350be4b00c090efaa02f0ffbc246a03362dcd9\\output\\res\\values-kn\\values.xml",
+                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\fred\\.android\\build-cache\\85f91bee56933bded0e8bb241e8d55d94a91fdb7\\output\\res\\values-kn\\values.xml",
                     "position": {
                         "startLine": 19,
                         "startColumn": 0,
@@ -984,7 +1312,7 @@
         ]
     },
     {
-        "outputFile": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-kn\\values-kn.xml",
+        "outputFile": "C:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-kn\\values-kn.xml",
         "map": [
             {
                 "to": {
@@ -995,7 +1323,7 @@
                     "endOffset": 213
                 },
                 "from": {
-                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\fred\\.android\\build-cache\\85f91bee56933bded0e8bb241e8d55d94a91fdb7\\output\\res\\values-kn\\values.xml",
+                    "file": "C:\\Users\\Henry\\.android\\build-cache\\6cf6afa0ee6eedd374935ab043f0ccaeaa43ffc6\\output\\res\\values-kn\\values.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 0,
@@ -1014,7 +1342,7 @@
                     "endOffset": 415
                 },
                 "from": {
-                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\fred\\.android\\build-cache\\85f91bee56933bded0e8bb241e8d55d94a91fdb7\\output\\res\\values-kn\\values.xml",
+                    "file": "C:\\Users\\Henry\\.android\\build-cache\\6cf6afa0ee6eedd374935ab043f0ccaeaa43ffc6\\output\\res\\values-kn\\values.xml",
                     "position": {
                         "startLine": 5,
                         "startColumn": 0,
@@ -1033,7 +1361,7 @@
                     "endOffset": 550
                 },
                 "from": {
-                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\fred\\.android\\build-cache\\85f91bee56933bded0e8bb241e8d55d94a91fdb7\\output\\res\\values-kn\\values.xml",
+                    "file": "C:\\Users\\Henry\\.android\\build-cache\\6cf6afa0ee6eedd374935ab043f0ccaeaa43ffc6\\output\\res\\values-kn\\values.xml",
                     "position": {
                         "startLine": 6,
                         "startColumn": 0,
@@ -1052,7 +1380,7 @@
                     "endOffset": 660
                 },
                 "from": {
-                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\fred\\.android\\build-cache\\85f91bee56933bded0e8bb241e8d55d94a91fdb7\\output\\res\\values-kn\\values.xml",
+                    "file": "C:\\Users\\Henry\\.android\\build-cache\\6cf6afa0ee6eedd374935ab043f0ccaeaa43ffc6\\output\\res\\values-kn\\values.xml",
                     "position": {
                         "startLine": 7,
                         "startColumn": 0,
@@ -1071,7 +1399,7 @@
                     "endOffset": 862
                 },
                 "from": {
-                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\fred\\.android\\build-cache\\85f91bee56933bded0e8bb241e8d55d94a91fdb7\\output\\res\\values-kn\\values.xml",
+                    "file": "C:\\Users\\Henry\\.android\\build-cache\\6cf6afa0ee6eedd374935ab043f0ccaeaa43ffc6\\output\\res\\values-kn\\values.xml",
                     "position": {
                         "startLine": 8,
                         "startColumn": 0,
@@ -1090,7 +1418,7 @@
                     "endOffset": 993
                 },
                 "from": {
-                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\fred\\.android\\build-cache\\85f91bee56933bded0e8bb241e8d55d94a91fdb7\\output\\res\\values-kn\\values.xml",
+                    "file": "C:\\Users\\Henry\\.android\\build-cache\\6cf6afa0ee6eedd374935ab043f0ccaeaa43ffc6\\output\\res\\values-kn\\values.xml",
                     "position": {
                         "startLine": 9,
                         "startColumn": 0,
@@ -1109,7 +1437,7 @@
                     "endOffset": 1121
                 },
                 "from": {
-                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\fred\\.android\\build-cache\\85f91bee56933bded0e8bb241e8d55d94a91fdb7\\output\\res\\values-kn\\values.xml",
+                    "file": "C:\\Users\\Henry\\.android\\build-cache\\6cf6afa0ee6eedd374935ab043f0ccaeaa43ffc6\\output\\res\\values-kn\\values.xml",
                     "position": {
                         "startLine": 10,
                         "startColumn": 0,
@@ -1128,7 +1456,7 @@
                     "endOffset": 1326
                 },
                 "from": {
-                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\fred\\.android\\build-cache\\2d4c3d320d50a701fbc2b74d928539ff1e4cdc1b\\output\\res\\values-kn\\values.xml",
+                    "file": "C:\\Users\\Henry\\.android\\build-cache\\fed6091f865456106d4230738e3d9ab96b43a092\\output\\res\\values-kn\\values.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 0,
@@ -1147,7 +1475,7 @@
                     "endOffset": 1535
                 },
                 "from": {
-                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\fred\\.android\\build-cache\\85f91bee56933bded0e8bb241e8d55d94a91fdb7\\output\\res\\values-kn\\values.xml",
+                    "file": "C:\\Users\\Henry\\.android\\build-cache\\6cf6afa0ee6eedd374935ab043f0ccaeaa43ffc6\\output\\res\\values-kn\\values.xml",
                     "position": {
                         "startLine": 11,
                         "startColumn": 0,
@@ -1166,7 +1494,7 @@
                     "endOffset": 1650
                 },
                 "from": {
-                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\fred\\.android\\build-cache\\85f91bee56933bded0e8bb241e8d55d94a91fdb7\\output\\res\\values-kn\\values.xml",
+                    "file": "C:\\Users\\Henry\\.android\\build-cache\\6cf6afa0ee6eedd374935ab043f0ccaeaa43ffc6\\output\\res\\values-kn\\values.xml",
                     "position": {
                         "startLine": 12,
                         "startColumn": 0,
@@ -1185,7 +1513,7 @@
                     "endOffset": 1841
                 },
                 "from": {
-                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\fred\\.android\\build-cache\\85f91bee56933bded0e8bb241e8d55d94a91fdb7\\output\\res\\values-kn\\values.xml",
+                    "file": "C:\\Users\\Henry\\.android\\build-cache\\6cf6afa0ee6eedd374935ab043f0ccaeaa43ffc6\\output\\res\\values-kn\\values.xml",
                     "position": {
                         "startLine": 13,
                         "startColumn": 0,
@@ -1204,7 +1532,7 @@
                     "endOffset": 1978
                 },
                 "from": {
-                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\fred\\.android\\build-cache\\85f91bee56933bded0e8bb241e8d55d94a91fdb7\\output\\res\\values-kn\\values.xml",
+                    "file": "C:\\Users\\Henry\\.android\\build-cache\\6cf6afa0ee6eedd374935ab043f0ccaeaa43ffc6\\output\\res\\values-kn\\values.xml",
                     "position": {
                         "startLine": 14,
                         "startColumn": 0,
@@ -1223,7 +1551,7 @@
                     "endOffset": 2182
                 },
                 "from": {
-                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\fred\\.android\\build-cache\\85f91bee56933bded0e8bb241e8d55d94a91fdb7\\output\\res\\values-kn\\values.xml",
+                    "file": "C:\\Users\\Henry\\.android\\build-cache\\6cf6afa0ee6eedd374935ab043f0ccaeaa43ffc6\\output\\res\\values-kn\\values.xml",
                     "position": {
                         "startLine": 15,
                         "startColumn": 0,
@@ -1242,7 +1570,7 @@
                     "endOffset": 2369
                 },
                 "from": {
-                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\fred\\.android\\build-cache\\85f91bee56933bded0e8bb241e8d55d94a91fdb7\\output\\res\\values-kn\\values.xml",
+                    "file": "C:\\Users\\Henry\\.android\\build-cache\\6cf6afa0ee6eedd374935ab043f0ccaeaa43ffc6\\output\\res\\values-kn\\values.xml",
                     "position": {
                         "startLine": 16,
                         "startColumn": 0,
@@ -1261,7 +1589,7 @@
                     "endOffset": 2468
                 },
                 "from": {
-                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\fred\\.android\\build-cache\\85f91bee56933bded0e8bb241e8d55d94a91fdb7\\output\\res\\values-kn\\values.xml",
+                    "file": "C:\\Users\\Henry\\.android\\build-cache\\6cf6afa0ee6eedd374935ab043f0ccaeaa43ffc6\\output\\res\\values-kn\\values.xml",
                     "position": {
                         "startLine": 17,
                         "startColumn": 0,
@@ -1280,7 +1608,7 @@
                     "endOffset": 2561
                 },
                 "from": {
-                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\fred\\.android\\build-cache\\85f91bee56933bded0e8bb241e8d55d94a91fdb7\\output\\res\\values-kn\\values.xml",
+                    "file": "C:\\Users\\Henry\\.android\\build-cache\\6cf6afa0ee6eedd374935ab043f0ccaeaa43ffc6\\output\\res\\values-kn\\values.xml",
                     "position": {
                         "startLine": 18,
                         "startColumn": 0,
@@ -1299,7 +1627,7 @@
                     "endOffset": 2675
                 },
                 "from": {
-                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\fred\\.android\\build-cache\\85f91bee56933bded0e8bb241e8d55d94a91fdb7\\output\\res\\values-kn\\values.xml",
+                    "file": "C:\\Users\\Henry\\.android\\build-cache\\6cf6afa0ee6eedd374935ab043f0ccaeaa43ffc6\\output\\res\\values-kn\\values.xml",
                     "position": {
                         "startLine": 19,
                         "startColumn": 0,

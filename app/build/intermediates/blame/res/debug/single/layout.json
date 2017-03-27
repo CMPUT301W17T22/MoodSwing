@@ -1,11 +1,23 @@
 [
     {
+        "merged": "C:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_dialog_title_material.xml",
+        "source": "C:\\Users\\Henry\\.android\\build-cache\\632216b252a2de72069a29211c06a7f75a0a9a02\\output\\res\\layout\\abc_dialog_title_material.xml"
+    },
+    {
         "merged": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\Documents\\Files\\2016-2017\\CMPUT301\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_popup_menu_header_item_layout.xml",
         "source": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\bce1e8d7708deb639b578b1fdbd4f09ff3fe7531\\output\\res\\layout\\abc_popup_menu_header_item_layout.xml"
     },
     {
         "merged": "C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_alert_dialog_material.xml",
         "source": "C:\\Users\\fred\\.android\\build-cache\\a987e0752e8a3c33a80e6f25858c5aa9a1461541\\output\\res\\layout\\abc_alert_dialog_material.xml"
+    },
+    {
+        "merged": "C:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_popup_menu_item_layout.xml",
+        "source": "C:\\Users\\Henry\\.android\\build-cache\\632216b252a2de72069a29211c06a7f75a0a9a02\\output\\res\\layout\\abc_popup_menu_item_layout.xml"
+    },
+    {
+        "merged": "C:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_singlechoice_material.xml",
+        "source": "C:\\Users\\Henry\\.android\\build-cache\\632216b252a2de72069a29211c06a7f75a0a9a02\\output\\res\\layout\\select_dialog_singlechoice_material.xml"
     },
     {
         "merged": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_toolbar.xml",
@@ -20,6 +32,10 @@
         "source": "C:\\Users\\fred\\.android\\build-cache\\8a6305c6c9cf45ea4e7250a5d1077f87e2894639\\output\\res\\layout\\design_layout_tab_icon.xml"
     },
     {
+        "merged": "C:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\support_simple_spinner_dropdown_item.xml",
+        "source": "C:\\Users\\Henry\\.android\\build-cache\\632216b252a2de72069a29211c06a7f75a0a9a02\\output\\res\\layout\\support_simple_spinner_dropdown_item.xml"
+    },
+    {
         "merged": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_popup_menu_item_layout.xml",
         "source": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\.android\\build-cache\\e46c339567afbf7b5732dbe8e4b6a0ce76443ea9\\output\\res\\layout\\abc_popup_menu_item_layout.xml"
     },
@@ -28,12 +44,24 @@
         "source": "C:\\Users\\fred\\MoodSwing\\app\\src\\main\\res\\layout\\activity_mood_history.xml"
     },
     {
-        "merged": "C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_new_mood_event.xml",
-        "source": "C:\\Users\\fred\\MoodSwing\\app\\src\\main\\res\\layout\\activity_new_mood_event.xml"
+        "merged": "C:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item_subheader.xml",
+        "source": "C:\\Users\\Henry\\.android\\build-cache\\cc030c9c63d846e438e92d58d9389a23b17adaa3\\output\\res\\layout\\design_navigation_item_subheader.xml"
     },
     {
         "merged": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_alert_dialog_title_material.xml",
         "source": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\fred\\.android\\build-cache\\a987e0752e8a3c33a80e6f25858c5aa9a1461541\\output\\res\\layout\\abc_alert_dialog_title_material.xml"
+    },
+    {
+        "merged": "C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_new_mood_event.xml",
+        "source": "C:\\Users\\fred\\MoodSwing\\app\\src\\main\\res\\layout\\activity_new_mood_event.xml"
+    },
+    {
+        "merged": "C:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_part_time.xml",
+        "source": "C:\\Users\\Henry\\.android\\build-cache\\632216b252a2de72069a29211c06a7f75a0a9a02\\output\\res\\layout\\notification_template_part_time.xml"
+    },
+    {
+        "merged": "C:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_layout.xml",
+        "source": "C:\\Users\\Henry\\.android\\build-cache\\632216b252a2de72069a29211c06a7f75a0a9a02\\output\\res\\layout\\abc_list_menu_item_layout.xml"
     },
     {
         "merged": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_main_follow.xml",
@@ -68,8 +96,20 @@
         "source": "C:\\Users\\fred\\.android\\build-cache\\a987e0752e8a3c33a80e6f25858c5aa9a1461541\\output\\res\\layout\\abc_action_bar_view_list_nav_layout.xml"
     },
     {
+        "merged": "C:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_activity_chooser_view.xml",
+        "source": "C:\\Users\\Henry\\.android\\build-cache\\632216b252a2de72069a29211c06a7f75a0a9a02\\output\\res\\layout\\abc_activity_chooser_view.xml"
+    },
+    {
         "merged": "C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_bottom_sheet_dialog.xml",
         "source": "C:\\Users\\fred\\.android\\build-cache\\8a6305c6c9cf45ea4e7250a5d1077f87e2894639\\output\\res\\layout\\design_bottom_sheet_dialog.xml"
+    },
+    {
+        "merged": "C:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_lines_media.xml",
+        "source": "C:\\Users\\Henry\\.android\\build-cache\\632216b252a2de72069a29211c06a7f75a0a9a02\\output\\res\\layout\\notification_template_lines_media.xml"
+    },
+    {
+        "merged": "C:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_followers_list.xml",
+        "source": "C:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\src\\main\\res\\layout\\fragment_followers_list.xml"
     },
     {
         "merged": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item_header.xml",
@@ -84,16 +124,28 @@
         "source": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\.android\\build-cache\\e46c339567afbf7b5732dbe8e4b6a0ce76443ea9\\output\\res\\layout\\abc_action_mode_bar.xml"
     },
     {
-        "merged": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_view_mood_event.xml",
-        "source": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\app\\src\\main\\res\\layout\\activity_view_mood_event.xml"
+        "merged": "C:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_followers.xml",
+        "source": "C:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\src\\main\\res\\layout\\fragment_followers.xml"
     },
     {
         "merged": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_layout_snackbar_include.xml",
         "source": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\.android\\build-cache\\a86bab0bbd47e94309e40be5440bab8035448b43\\output\\res\\layout\\design_layout_snackbar_include.xml"
     },
     {
+        "merged": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_view_mood_event.xml",
+        "source": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\app\\src\\main\\res\\layout\\activity_view_mood_event.xml"
+    },
+    {
+        "merged": "C:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_login.xml",
+        "source": "C:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\src\\main\\res\\layout\\activity_login.xml"
+    },
+    {
         "merged": "C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_select_dialog_material.xml",
         "source": "C:\\Users\\fred\\.android\\build-cache\\a987e0752e8a3c33a80e6f25858c5aa9a1461541\\output\\res\\layout\\abc_select_dialog_material.xml"
+    },
+    {
+        "merged": "C:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_activity_chooser_view_list_item.xml",
+        "source": "C:\\Users\\Henry\\.android\\build-cache\\632216b252a2de72069a29211c06a7f75a0a9a02\\output\\res\\layout\\abc_activity_chooser_view_list_item.xml"
     },
     {
         "merged": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\Documents\\Files\\2016-2017\\CMPUT301\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_request_list.xml",
@@ -104,16 +156,20 @@
         "source": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\fred\\.android\\build-cache\\a987e0752e8a3c33a80e6f25858c5aa9a1461541\\output\\res\\layout\\abc_action_bar_view_list_nav_layout.xml"
     },
     {
-        "merged": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\Documents\\Files\\2016-2017\\CMPUT301\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_item_material.xml",
-        "source": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\bce1e8d7708deb639b578b1fdbd4f09ff3fe7531\\output\\res\\layout\\select_dialog_item_material.xml"
-    },
-    {
         "merged": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_mood_history.xml",
         "source": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\fred\\MoodSwing\\app\\src\\main\\res\\layout\\activity_mood_history.xml"
     },
     {
+        "merged": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\Documents\\Files\\2016-2017\\CMPUT301\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_item_material.xml",
+        "source": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\bce1e8d7708deb639b578b1fdbd4f09ff3fe7531\\output\\res\\layout\\select_dialog_item_material.xml"
+    },
+    {
         "merged": "C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_icon.xml",
         "source": "C:\\Users\\fred\\.android\\build-cache\\a987e0752e8a3c33a80e6f25858c5aa9a1461541\\output\\res\\layout\\abc_list_menu_item_icon.xml"
+    },
+    {
+        "merged": "C:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_mode_bar.xml",
+        "source": "C:\\Users\\Henry\\.android\\build-cache\\632216b252a2de72069a29211c06a7f75a0a9a02\\output\\res\\layout\\abc_action_mode_bar.xml"
     },
     {
         "merged": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\Documents\\Files\\2016-2017\\CMPUT301\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_following.xml",
@@ -158,6 +214,14 @@
     {
         "merged": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\Documents\\Files\\2016-2017\\CMPUT301\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_search_dropdown_item_icons_2line.xml",
         "source": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\bce1e8d7708deb639b578b1fdbd4f09ff3fe7531\\output\\res\\layout\\abc_search_dropdown_item_icons_2line.xml"
+    },
+    {
+        "merged": "C:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_maps.xml",
+        "source": "C:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\src\\main\\res\\layout\\activity_maps.xml"
+    },
+    {
+        "merged": "C:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_media_custom.xml",
+        "source": "C:\\Users\\Henry\\.android\\build-cache\\632216b252a2de72069a29211c06a7f75a0a9a02\\output\\res\\layout\\notification_template_media_custom.xml"
     },
     {
         "merged": "C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\support_simple_spinner_dropdown_item.xml",
@@ -244,8 +308,16 @@
         "source": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\.android\\build-cache\\e46c339567afbf7b5732dbe8e4b6a0ce76443ea9\\output\\res\\layout\\abc_action_menu_layout.xml"
     },
     {
+        "merged": "C:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_new_mood_event.xml",
+        "source": "C:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\src\\main\\res\\layout\\activity_new_mood_event.xml"
+    },
+    {
         "merged": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\mood_event.xml",
         "source": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\app\\src\\main\\res\\layout\\mood_event.xml"
+    },
+    {
+        "merged": "C:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_alert_dialog_button_bar_material.xml",
+        "source": "C:\\Users\\Henry\\.android\\build-cache\\632216b252a2de72069a29211c06a7f75a0a9a02\\output\\res\\layout\\abc_alert_dialog_button_bar_material.xml"
     },
     {
         "merged": "C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_menu_item_layout.xml",
@@ -268,8 +340,16 @@
         "source": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\.android\\build-cache\\e46c339567afbf7b5732dbe8e4b6a0ce76443ea9\\output\\res\\layout\\abc_screen_simple.xml"
     },
     {
+        "merged": "C:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_main_follow.xml",
+        "source": "C:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\src\\main\\res\\layout\\fragment_main_follow.xml"
+    },
+    {
         "merged": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_part_chronometer.xml",
         "source": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\fred\\.android\\build-cache\\a987e0752e8a3c33a80e6f25858c5aa9a1461541\\output\\res\\layout\\notification_template_part_chronometer.xml"
+    },
+    {
+        "merged": "C:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_item_material.xml",
+        "source": "C:\\Users\\Henry\\.android\\build-cache\\632216b252a2de72069a29211c06a7f75a0a9a02\\output\\res\\layout\\select_dialog_item_material.xml"
     },
     {
         "merged": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\Documents\\Files\\2016-2017\\CMPUT301\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item_subheader.xml",
@@ -304,6 +384,14 @@
         "source": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\fred\\MoodSwing\\app\\src\\main\\res\\layout\\activity_login.xml"
     },
     {
+        "merged": "C:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_layout_snackbar_include.xml",
+        "source": "C:\\Users\\Henry\\.android\\build-cache\\cc030c9c63d846e438e92d58d9389a23b17adaa3\\output\\res\\layout\\design_layout_snackbar_include.xml"
+    },
+    {
+        "merged": "C:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_menu.xml",
+        "source": "C:\\Users\\Henry\\.android\\build-cache\\cc030c9c63d846e438e92d58d9389a23b17adaa3\\output\\res\\layout\\design_navigation_menu.xml"
+    },
+    {
         "merged": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_mode_close_item_material.xml",
         "source": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\fred\\.android\\build-cache\\a987e0752e8a3c33a80e6f25858c5aa9a1461541\\output\\res\\layout\\abc_action_mode_close_item_material.xml"
     },
@@ -318,6 +406,10 @@
     {
         "merged": "C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_main_follow.xml",
         "source": "C:\\Users\\fred\\MoodSwing\\app\\src\\main\\res\\layout\\activity_main_follow.xml"
+    },
+    {
+        "merged": "C:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_mood_history.xml",
+        "source": "C:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\src\\main\\res\\layout\\activity_mood_history.xml"
     },
     {
         "merged": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_select_dialog_material.xml",
@@ -352,6 +444,14 @@
         "source": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\bce1e8d7708deb639b578b1fdbd4f09ff3fe7531\\output\\res\\layout\\abc_screen_simple_overlay_action_mode.xml"
     },
     {
+        "merged": "C:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_radio.xml",
+        "source": "C:\\Users\\Henry\\.android\\build-cache\\632216b252a2de72069a29211c06a7f75a0a9a02\\output\\res\\layout\\abc_list_menu_item_radio.xml"
+    },
+    {
+        "merged": "C:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_search_view.xml",
+        "source": "C:\\Users\\Henry\\.android\\build-cache\\632216b252a2de72069a29211c06a7f75a0a9a02\\output\\res\\layout\\abc_search_view.xml"
+    },
+    {
         "merged": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_alert_dialog_material.xml",
         "source": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\.android\\build-cache\\e46c339567afbf7b5732dbe8e4b6a0ce76443ea9\\output\\res\\layout\\abc_alert_dialog_material.xml"
     },
@@ -372,8 +472,16 @@
         "source": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\bce1e8d7708deb639b578b1fdbd4f09ff3fe7531\\output\\res\\layout\\select_dialog_singlechoice_material.xml"
     },
     {
+        "merged": "C:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_following_list.xml",
+        "source": "C:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\src\\main\\res\\layout\\fragment_following_list.xml"
+    },
+    {
         "merged": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_bottom_navigation_item.xml",
         "source": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\fred\\.android\\build-cache\\8a6305c6c9cf45ea4e7250a5d1077f87e2894639\\output\\res\\layout\\design_bottom_navigation_item.xml"
+    },
+    {
+        "merged": "C:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item.xml",
+        "source": "C:\\Users\\Henry\\.android\\build-cache\\cc030c9c63d846e438e92d58d9389a23b17adaa3\\output\\res\\layout\\design_navigation_item.xml"
     },
     {
         "merged": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\Documents\\Files\\2016-2017\\CMPUT301\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_followers_list.xml",
@@ -420,6 +528,10 @@
         "source": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\app\\src\\main\\res\\layout\\fragment_main_follow.xml"
     },
     {
+        "merged": "C:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_simple_overlay_action_mode.xml",
+        "source": "C:\\Users\\Henry\\.android\\build-cache\\632216b252a2de72069a29211c06a7f75a0a9a02\\output\\res\\layout\\abc_screen_simple_overlay_action_mode.xml"
+    },
+    {
         "merged": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\Documents\\Files\\2016-2017\\CMPUT301\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_text_input_password_icon.xml",
         "source": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\eb961abbd6e14e0aab0f2126e4bcc17b36db89e3\\output\\res\\layout\\design_text_input_password_icon.xml"
     },
@@ -456,6 +568,14 @@
         "source": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\fred\\.android\\build-cache\\a987e0752e8a3c33a80e6f25858c5aa9a1461541\\output\\res\\layout\\select_dialog_item_material.xml"
     },
     {
+        "merged": "C:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_icon.xml",
+        "source": "C:\\Users\\Henry\\.android\\build-cache\\632216b252a2de72069a29211c06a7f75a0a9a02\\output\\res\\layout\\abc_list_menu_item_icon.xml"
+    },
+    {
+        "merged": "C:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_simple.xml",
+        "source": "C:\\Users\\Henry\\.android\\build-cache\\632216b252a2de72069a29211c06a7f75a0a9a02\\output\\res\\layout\\abc_screen_simple.xml"
+    },
+    {
         "merged": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_layout_tab_text.xml",
         "source": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\.android\\build-cache\\a86bab0bbd47e94309e40be5440bab8035448b43\\output\\res\\layout\\design_layout_tab_text.xml"
     },
@@ -482,6 +602,14 @@
     {
         "merged": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\Documents\\Files\\2016-2017\\CMPUT301\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_part_chronometer.xml",
         "source": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\bce1e8d7708deb639b578b1fdbd4f09ff3fe7531\\output\\res\\layout\\notification_template_part_chronometer.xml"
+    },
+    {
+        "merged": "C:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_edit_mood_event.xml",
+        "source": "C:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\src\\main\\res\\layout\\activity_edit_mood_event.xml"
+    },
+    {
+        "merged": "C:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_view_list_nav_layout.xml",
+        "source": "C:\\Users\\Henry\\.android\\build-cache\\632216b252a2de72069a29211c06a7f75a0a9a02\\output\\res\\layout\\abc_action_bar_view_list_nav_layout.xml"
     },
     {
         "merged": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_layout_snackbar.xml",
@@ -528,8 +656,24 @@
         "source": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\.android\\build-cache\\e46c339567afbf7b5732dbe8e4b6a0ce76443ea9\\output\\res\\layout\\abc_list_menu_item_checkbox.xml"
     },
     {
+        "merged": "C:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_media.xml",
+        "source": "C:\\Users\\Henry\\.android\\build-cache\\632216b252a2de72069a29211c06a7f75a0a9a02\\output\\res\\layout\\notification_template_media.xml"
+    },
+    {
+        "merged": "C:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_search_dropdown_item_icons_2line.xml",
+        "source": "C:\\Users\\Henry\\.android\\build-cache\\632216b252a2de72069a29211c06a7f75a0a9a02\\output\\res\\layout\\abc_search_dropdown_item_icons_2line.xml"
+    },
+    {
         "merged": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item_header.xml",
         "source": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\fred\\.android\\build-cache\\8a6305c6c9cf45ea4e7250a5d1077f87e2894639\\output\\res\\layout\\design_navigation_item_header.xml"
+    },
+    {
+        "merged": "C:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_popup_menu_header_item_layout.xml",
+        "source": "C:\\Users\\Henry\\.android\\build-cache\\632216b252a2de72069a29211c06a7f75a0a9a02\\output\\res\\layout\\abc_popup_menu_header_item_layout.xml"
+    },
+    {
+        "merged": "C:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_alert_dialog_material.xml",
+        "source": "C:\\Users\\Henry\\.android\\build-cache\\632216b252a2de72069a29211c06a7f75a0a9a02\\output\\res\\layout\\abc_alert_dialog_material.xml"
     },
     {
         "merged": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_main.xml",
@@ -560,6 +704,10 @@
         "source": "C:\\Users\\fred\\.android\\build-cache\\8a6305c6c9cf45ea4e7250a5d1077f87e2894639\\output\\res\\layout\\design_navigation_menu_item.xml"
     },
     {
+        "merged": "C:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_part_chronometer.xml",
+        "source": "C:\\Users\\Henry\\.android\\build-cache\\632216b252a2de72069a29211c06a7f75a0a9a02\\output\\res\\layout\\notification_template_part_chronometer.xml"
+    },
+    {
         "merged": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_search_view.xml",
         "source": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\.android\\build-cache\\e46c339567afbf7b5732dbe8e4b6a0ce76443ea9\\output\\res\\layout\\abc_search_view.xml"
     },
@@ -578,6 +726,10 @@
     {
         "merged": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_radio.xml",
         "source": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\fred\\.android\\build-cache\\a987e0752e8a3c33a80e6f25858c5aa9a1461541\\output\\res\\layout\\abc_list_menu_item_radio.xml"
+    },
+    {
+        "merged": "C:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_checkbox.xml",
+        "source": "C:\\Users\\Henry\\.android\\build-cache\\632216b252a2de72069a29211c06a7f75a0a9a02\\output\\res\\layout\\abc_list_menu_item_checkbox.xml"
     },
     {
         "merged": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\Documents\\Files\\2016-2017\\CMPUT301\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_search_view.xml",
@@ -616,6 +768,10 @@
         "source": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\.android\\build-cache\\e46c339567afbf7b5732dbe8e4b6a0ce76443ea9\\output\\res\\layout\\abc_action_bar_up_container.xml"
     },
     {
+        "merged": "C:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_toolbar.xml",
+        "source": "C:\\Users\\Henry\\.android\\build-cache\\632216b252a2de72069a29211c06a7f75a0a9a02\\output\\res\\layout\\abc_screen_toolbar.xml"
+    },
+    {
         "merged": "C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_following_list.xml",
         "source": "C:\\Users\\fred\\MoodSwing\\app\\src\\main\\res\\layout\\fragment_following_list.xml"
     },
@@ -624,8 +780,16 @@
         "source": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\eb961abbd6e14e0aab0f2126e4bcc17b36db89e3\\output\\res\\layout\\design_navigation_item_header.xml"
     },
     {
+        "merged": "C:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\mood_event.xml",
+        "source": "C:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\src\\main\\res\\layout\\mood_event.xml"
+    },
+    {
         "merged": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\Documents\\Files\\2016-2017\\CMPUT301\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_main.xml",
         "source": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\Documents\\Files\\2016-2017\\CMPUT301\\MoodSwing\\app\\src\\main\\res\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_layout_snackbar.xml",
+        "source": "C:\\Users\\Henry\\.android\\build-cache\\cc030c9c63d846e438e92d58d9389a23b17adaa3\\output\\res\\layout\\design_layout_snackbar.xml"
     },
     {
         "merged": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_icon.xml",
@@ -664,8 +828,16 @@
         "source": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\bce1e8d7708deb639b578b1fdbd4f09ff3fe7531\\output\\res\\layout\\notification_template_part_time.xml"
     },
     {
+        "merged": "C:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_bottom_sheet_dialog.xml",
+        "source": "C:\\Users\\Henry\\.android\\build-cache\\cc030c9c63d846e438e92d58d9389a23b17adaa3\\output\\res\\layout\\design_bottom_sheet_dialog.xml"
+    },
+    {
         "merged": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_part_chronometer.xml",
         "source": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\.android\\build-cache\\e46c339567afbf7b5732dbe8e4b6a0ce76443ea9\\output\\res\\layout\\notification_template_part_chronometer.xml"
+    },
+    {
+        "merged": "C:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_text_input_password_icon.xml",
+        "source": "C:\\Users\\Henry\\.android\\build-cache\\cc030c9c63d846e438e92d58d9389a23b17adaa3\\output\\res\\layout\\design_text_input_password_icon.xml"
     },
     {
         "merged": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\Documents\\Files\\2016-2017\\CMPUT301\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_view_mood_event.xml",
@@ -680,12 +852,20 @@
         "source": "C:\\Users\\fred\\.android\\build-cache\\8a6305c6c9cf45ea4e7250a5d1077f87e2894639\\output\\res\\layout\\design_layout_tab_text.xml"
     },
     {
+        "merged": "C:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item_separator.xml",
+        "source": "C:\\Users\\Henry\\.android\\build-cache\\cc030c9c63d846e438e92d58d9389a23b17adaa3\\output\\res\\layout\\design_navigation_item_separator.xml"
+    },
+    {
         "merged": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_simple.xml",
         "source": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\fred\\.android\\build-cache\\a987e0752e8a3c33a80e6f25858c5aa9a1461541\\output\\res\\layout\\abc_screen_simple.xml"
     },
     {
         "merged": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\Documents\\Files\\2016-2017\\CMPUT301\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_dialog_title_material.xml",
         "source": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\bce1e8d7708deb639b578b1fdbd4f09ff3fe7531\\output\\res\\layout\\abc_dialog_title_material.xml"
+    },
+    {
+        "merged": "C:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_view_mood_event.xml",
+        "source": "C:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\src\\main\\res\\layout\\activity_view_mood_event.xml"
     },
     {
         "merged": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item.xml",
@@ -718,6 +898,14 @@
     {
         "merged": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_bottom_sheet_dialog.xml",
         "source": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\.android\\build-cache\\a86bab0bbd47e94309e40be5440bab8035448b43\\output\\res\\layout\\design_bottom_sheet_dialog.xml"
+    },
+    {
+        "merged": "C:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_request.xml",
+        "source": "C:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\src\\main\\res\\layout\\fragment_request.xml"
+    },
+    {
+        "merged": "C:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_main.xml",
+        "source": "C:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\src\\main\\res\\layout\\activity_main.xml"
     },
     {
         "merged": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_icon.xml",
@@ -756,6 +944,10 @@
         "source": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\bce1e8d7708deb639b578b1fdbd4f09ff3fe7531\\output\\res\\layout\\support_simple_spinner_dropdown_item.xml"
     },
     {
+        "merged": "C:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_main_follow.xml",
+        "source": "C:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\src\\main\\res\\layout\\activity_main_follow.xml"
+    },
+    {
         "merged": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\Documents\\Files\\2016-2017\\CMPUT301\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_icon.xml",
         "source": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\bce1e8d7708deb639b578b1fdbd4f09ff3fe7531\\output\\res\\layout\\abc_list_menu_item_icon.xml"
     },
@@ -770,6 +962,10 @@
     {
         "merged": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_search_dropdown_item_icons_2line.xml",
         "source": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\fred\\.android\\build-cache\\a987e0752e8a3c33a80e6f25858c5aa9a1461541\\output\\res\\layout\\abc_search_dropdown_item_icons_2line.xml"
+    },
+    {
+        "merged": "C:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_layout_tab_icon.xml",
+        "source": "C:\\Users\\Henry\\.android\\build-cache\\cc030c9c63d846e438e92d58d9389a23b17adaa3\\output\\res\\layout\\design_layout_tab_icon.xml"
     },
     {
         "merged": "C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_main.xml",
@@ -808,6 +1004,10 @@
         "source": "C:\\Users\\fred\\.android\\build-cache\\a987e0752e8a3c33a80e6f25858c5aa9a1461541\\output\\res\\layout\\notification_template_media_custom.xml"
     },
     {
+        "merged": "C:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_menu_layout.xml",
+        "source": "C:\\Users\\Henry\\.android\\build-cache\\632216b252a2de72069a29211c06a7f75a0a9a02\\output\\res\\layout\\abc_action_menu_layout.xml"
+    },
+    {
         "merged": "C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_activity_chooser_view_list_item.xml",
         "source": "C:\\Users\\fred\\.android\\build-cache\\a987e0752e8a3c33a80e6f25858c5aa9a1461541\\output\\res\\layout\\abc_activity_chooser_view_list_item.xml"
     },
@@ -824,8 +1024,20 @@
         "source": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\bce1e8d7708deb639b578b1fdbd4f09ff3fe7531\\output\\res\\layout\\abc_select_dialog_material.xml"
     },
     {
+        "merged": "C:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_up_container.xml",
+        "source": "C:\\Users\\Henry\\.android\\build-cache\\632216b252a2de72069a29211c06a7f75a0a9a02\\output\\res\\layout\\abc_action_bar_up_container.xml"
+    },
+    {
         "merged": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_up_container.xml",
         "source": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\fred\\.android\\build-cache\\a987e0752e8a3c33a80e6f25858c5aa9a1461541\\output\\res\\layout\\abc_action_bar_up_container.xml"
+    },
+    {
+        "merged": "C:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_select_dialog_material.xml",
+        "source": "C:\\Users\\Henry\\.android\\build-cache\\632216b252a2de72069a29211c06a7f75a0a9a02\\output\\res\\layout\\abc_select_dialog_material.xml"
+    },
+    {
+        "merged": "C:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_content_include.xml",
+        "source": "C:\\Users\\Henry\\.android\\build-cache\\632216b252a2de72069a29211c06a7f75a0a9a02\\output\\res\\layout\\abc_screen_content_include.xml"
     },
     {
         "merged": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_title_item.xml",
@@ -876,6 +1088,10 @@
         "source": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\fred\\MoodSwing\\app\\src\\main\\res\\layout\\mood_event.xml"
     },
     {
+        "merged": "C:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_multichoice_material.xml",
+        "source": "C:\\Users\\Henry\\.android\\build-cache\\632216b252a2de72069a29211c06a7f75a0a9a02\\output\\res\\layout\\select_dialog_multichoice_material.xml"
+    },
+    {
         "merged": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_followers_list.xml",
         "source": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\app\\src\\main\\res\\layout\\fragment_followers_list.xml"
     },
@@ -888,6 +1104,10 @@
         "source": "C:\\Users\\fred\\.android\\build-cache\\a987e0752e8a3c33a80e6f25858c5aa9a1461541\\output\\res\\layout\\notification_template_part_time.xml"
     },
     {
+        "merged": "C:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_layout_tab_text.xml",
+        "source": "C:\\Users\\Henry\\.android\\build-cache\\cc030c9c63d846e438e92d58d9389a23b17adaa3\\output\\res\\layout\\design_layout_tab_text.xml"
+    },
+    {
         "merged": "C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_view_mood_event.xml",
         "source": "C:\\Users\\fred\\MoodSwing\\app\\src\\main\\res\\layout\\activity_view_mood_event.xml"
     },
@@ -896,8 +1116,28 @@
         "source": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\fred\\.android\\build-cache\\a987e0752e8a3c33a80e6f25858c5aa9a1461541\\output\\res\\layout\\abc_alert_dialog_material.xml"
     },
     {
+        "merged": "C:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_expanded_menu_layout.xml",
+        "source": "C:\\Users\\Henry\\.android\\build-cache\\632216b252a2de72069a29211c06a7f75a0a9a02\\output\\res\\layout\\abc_expanded_menu_layout.xml"
+    },
+    {
         "merged": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_part_time.xml",
         "source": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\fred\\.android\\build-cache\\a987e0752e8a3c33a80e6f25858c5aa9a1461541\\output\\res\\layout\\notification_template_part_time.xml"
+    },
+    {
+        "merged": "C:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_menu_item_layout.xml",
+        "source": "C:\\Users\\Henry\\.android\\build-cache\\632216b252a2de72069a29211c06a7f75a0a9a02\\output\\res\\layout\\abc_action_menu_item_layout.xml"
+    },
+    {
+        "merged": "C:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_menu_item_action_area.xml",
+        "source": "C:\\Users\\Henry\\.android\\build-cache\\cc030c9c63d846e438e92d58d9389a23b17adaa3\\output\\res\\layout\\design_menu_item_action_area.xml"
+    },
+    {
+        "merged": "C:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_following.xml",
+        "source": "C:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\src\\main\\res\\layout\\fragment_following.xml"
+    },
+    {
+        "merged": "C:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_request_list.xml",
+        "source": "C:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\src\\main\\res\\layout\\fragment_request_list.xml"
     },
     {
         "merged": "C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item_subheader.xml",
@@ -920,6 +1160,10 @@
         "source": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\fred\\.android\\build-cache\\a987e0752e8a3c33a80e6f25858c5aa9a1461541\\output\\res\\layout\\abc_action_menu_layout.xml"
     },
     {
+        "merged": "C:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_alert_dialog_title_material.xml",
+        "source": "C:\\Users\\Henry\\.android\\build-cache\\632216b252a2de72069a29211c06a7f75a0a9a02\\output\\res\\layout\\abc_alert_dialog_title_material.xml"
+    },
+    {
         "merged": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\Documents\\Files\\2016-2017\\CMPUT301\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_checkbox.xml",
         "source": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\bce1e8d7708deb639b578b1fdbd4f09ff3fe7531\\output\\res\\layout\\abc_list_menu_item_checkbox.xml"
     },
@@ -938,6 +1182,10 @@
     {
         "merged": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_layout_tab_text.xml",
         "source": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\fred\\.android\\build-cache\\8a6305c6c9cf45ea4e7250a5d1077f87e2894639\\output\\res\\layout\\design_layout_tab_text.xml"
+    },
+    {
+        "merged": "C:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item_header.xml",
+        "source": "C:\\Users\\Henry\\.android\\build-cache\\cc030c9c63d846e438e92d58d9389a23b17adaa3\\output\\res\\layout\\design_navigation_item_header.xml"
     },
     {
         "merged": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\Documents\\Files\\2016-2017\\CMPUT301\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item_separator.xml",
@@ -980,6 +1228,10 @@
         "source": "C:\\Users\\fred\\.android\\build-cache\\8a6305c6c9cf45ea4e7250a5d1077f87e2894639\\output\\res\\layout\\design_menu_item_action_area.xml"
     },
     {
+        "merged": "C:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_mode_close_item_material.xml",
+        "source": "C:\\Users\\Henry\\.android\\build-cache\\632216b252a2de72069a29211c06a7f75a0a9a02\\output\\res\\layout\\abc_action_mode_close_item_material.xml"
+    },
+    {
         "merged": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_edit_mood_event.xml",
         "source": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\fred\\MoodSwing\\app\\src\\main\\res\\layout\\activity_edit_mood_event.xml"
     },
@@ -1000,6 +1252,10 @@
         "source": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\bce1e8d7708deb639b578b1fdbd4f09ff3fe7531\\output\\res\\layout\\abc_expanded_menu_layout.xml"
     },
     {
+        "merged": "C:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_title_item.xml",
+        "source": "C:\\Users\\Henry\\.android\\build-cache\\632216b252a2de72069a29211c06a7f75a0a9a02\\output\\res\\layout\\abc_action_bar_title_item.xml"
+    },
+    {
         "merged": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_multichoice_material.xml",
         "source": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\.android\\build-cache\\e46c339567afbf7b5732dbe8e4b6a0ce76443ea9\\output\\res\\layout\\select_dialog_multichoice_material.xml"
     },
@@ -1010,6 +1266,10 @@
     {
         "merged": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_menu_item.xml",
         "source": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\fred\\.android\\build-cache\\8a6305c6c9cf45ea4e7250a5d1077f87e2894639\\output\\res\\layout\\design_navigation_menu_item.xml"
+    },
+    {
+        "merged": "C:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_menu_item.xml",
+        "source": "C:\\Users\\Henry\\.android\\build-cache\\cc030c9c63d846e438e92d58d9389a23b17adaa3\\output\\res\\layout\\design_navigation_menu_item.xml"
     },
     {
         "merged": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\Documents\\Files\\2016-2017\\CMPUT301\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_bottom_sheet_dialog.xml",
@@ -1050,6 +1310,10 @@
     {
         "merged": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item_separator.xml",
         "source": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\fred\\.android\\build-cache\\8a6305c6c9cf45ea4e7250a5d1077f87e2894639\\output\\res\\layout\\design_navigation_item_separator.xml"
+    },
+    {
+        "merged": "C:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_bottom_navigation_item.xml",
+        "source": "C:\\Users\\Henry\\.android\\build-cache\\cc030c9c63d846e438e92d58d9389a23b17adaa3\\output\\res\\layout\\design_bottom_navigation_item.xml"
     },
     {
         "merged": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\Documents\\Files\\2016-2017\\CMPUT301\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_layout_tab_icon.xml",

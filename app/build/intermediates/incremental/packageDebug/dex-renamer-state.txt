@@ -1,7 +1,7 @@
-#Sun Mar 26 20:21:45 MDT 2017
-base.0=C\:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_23286c68afd7258d527f93eb8725a789c92d83cd
-renamed.1=classes2.dex
-renamed.0=classes.dex
-file.1=C\:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_ac3dff4a147d596aa739ffe08d6f0168b96ecb59\\classes.dex
-base.1=C\:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_ac3dff4a147d596aa739ffe08d6f0168b96ecb59
-file.0=C\:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_23286c68afd7258d527f93eb8725a789c92d83cd\\classes.dex
+#Sun Mar 26 20:41:03 MDT 2017
+base.0=C\:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_2bac41c9b5ede813bc072cdefdaeae0e5586f7af
+renamed.1=classes.dex
+renamed.0=classes2.dex
+file.1=C\:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_10bef79ccb5bf45f5b8c748281a8e036cbc9702a\\classes.dex
+base.1=C\:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_10bef79ccb5bf45f5b8c748281a8e036cbc9702a
+file.0=C\:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_2bac41c9b5ede813bc072cdefdaeae0e5586f7af\\classes.dex

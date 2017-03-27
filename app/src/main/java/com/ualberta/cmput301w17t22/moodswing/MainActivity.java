@@ -49,6 +49,8 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
     LocationManager lm;
     Location l;
     String provider;
+    double lng;
+    double lat;
     /*LocationListener locationListener = new LocationListener() {
         @Override
         public void onLocationChanged(Location location) {
@@ -148,8 +150,8 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
         if(l!=null)
         {
             //get latitude and longitude of the location
-            double lng=l.getLongitude();
-            double lat=l.getLatitude();
+                lng=l.getLongitude();
+                lat=l.getLatitude();
             //TODO: update map based on location
             //TODO: this creates null exception
             //mMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(lat, lng)));
@@ -206,7 +208,11 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
 
             case R.id.newMoodEventToolBarButton:
                 // User chose the "New Mood Event" item, should navigate the NewMoodEventActivity.
+                Bundle params = new Bundle();
+                params.putDouble("doubleLng", lng);
+                params.putDouble("doubleLat", lat);
                 intent = new Intent(MainActivity.this, NewMoodEventActivity.class);
+                intent.putExtras(params);
                 startActivity(intent);
                 return true;
 
@@ -260,12 +266,7 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        //TODO: add markers from mood feed
 
-        // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
     }
 
     //If you want location on changing place also than use below method
@@ -274,12 +275,16 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
     public void onLocationChanged(Location arg0)
     {
         l = arg0;
-        double lng=l.getLongitude();
-        double lat=l.getLatitude();
+         lng=l.getLongitude();
+          lat=l.getLatitude();
         //TODO: update map based on location
         mMap.addMarker(new MarkerOptions().position(new LatLng(lat, lng)).title("new marker"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(lat, lng)));
+
+
+
     }
+
 
     @Override
     public void onProviderDisabled(String arg0) {

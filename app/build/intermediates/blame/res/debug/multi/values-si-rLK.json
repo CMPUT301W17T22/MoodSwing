@@ -1,5 +1,409 @@
 [
     {
+        "outputFile": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\Documents\\Files\\2016-2017\\CMPUT301\\MoodSwing\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-si-rLK\\values-si-rLK.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 109,
+                    "endOffset": 160
+                },
+                "from": {
+                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\bce1e8d7708deb639b578b1fdbd4f09ff3fe7531\\output\\res\\values-si-rLK\\values-si-rLK.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 109,
+                        "endOffset": 160
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 165,
+                    "endColumn": 107,
+                    "endOffset": 268
+                },
+                "from": {
+                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\bce1e8d7708deb639b578b1fdbd4f09ff3fe7531\\output\\res\\values-si-rLK\\values-si-rLK.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 165,
+                        "endColumn": 107,
+                        "endOffset": 268
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 273,
+                    "endColumn": 122,
+                    "endOffset": 391
+                },
+                "from": {
+                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\bce1e8d7708deb639b578b1fdbd4f09ff3fe7531\\output\\res\\values-si-rLK\\values-si-rLK.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 273,
+                        "endColumn": 122,
+                        "endOffset": 391
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 5,
+                    "startColumn": 4,
+                    "startOffset": 396,
+                    "endColumn": 106,
+                    "endOffset": 498
+                },
+                "from": {
+                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\bce1e8d7708deb639b578b1fdbd4f09ff3fe7531\\output\\res\\values-si-rLK\\values-si-rLK.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 396,
+                        "endColumn": 106,
+                        "endOffset": 498
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 6,
+                    "startColumn": 4,
+                    "startOffset": 503,
+                    "endColumn": 106,
+                    "endOffset": 605
+                },
+                "from": {
+                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\bce1e8d7708deb639b578b1fdbd4f09ff3fe7531\\output\\res\\values-si-rLK\\values-si-rLK.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 503,
+                        "endColumn": 106,
+                        "endOffset": 605
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 7,
+                    "startColumn": 4,
+                    "startOffset": 610,
+                    "endColumn": 87,
+                    "endOffset": 693
+                },
+                "from": {
+                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\bce1e8d7708deb639b578b1fdbd4f09ff3fe7531\\output\\res\\values-si-rLK\\values-si-rLK.xml",
+                    "position": {
+                        "startLine": 7,
+                        "startColumn": 4,
+                        "startOffset": 610,
+                        "endColumn": 87,
+                        "endOffset": 693
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 8,
+                    "startColumn": 4,
+                    "startOffset": 698,
+                    "endColumn": 104,
+                    "endOffset": 798
+                },
+                "from": {
+                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\bce1e8d7708deb639b578b1fdbd4f09ff3fe7531\\output\\res\\values-si-rLK\\values-si-rLK.xml",
+                    "position": {
+                        "startLine": 8,
+                        "startColumn": 4,
+                        "startOffset": 698,
+                        "endColumn": 104,
+                        "endOffset": 798
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 9,
+                    "startColumn": 4,
+                    "startOffset": 803,
+                    "endColumn": 115,
+                    "endOffset": 914
+                },
+                "from": {
+                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\bce1e8d7708deb639b578b1fdbd4f09ff3fe7531\\output\\res\\values-si-rLK\\values-si-rLK.xml",
+                    "position": {
+                        "startLine": 9,
+                        "startColumn": 4,
+                        "startOffset": 803,
+                        "endColumn": 115,
+                        "endOffset": 914
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 10,
+                    "startColumn": 4,
+                    "startOffset": 919,
+                    "endColumn": 88,
+                    "endOffset": 1003
+                },
+                "from": {
+                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\bce1e8d7708deb639b578b1fdbd4f09ff3fe7531\\output\\res\\values-si-rLK\\values-si-rLK.xml",
+                    "position": {
+                        "startLine": 10,
+                        "startColumn": 4,
+                        "startOffset": 919,
+                        "endColumn": 88,
+                        "endOffset": 1003
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 11,
+                    "startColumn": 4,
+                    "startOffset": 1008,
+                    "endColumn": 86,
+                    "endOffset": 1090
+                },
+                "from": {
+                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\bce1e8d7708deb639b578b1fdbd4f09ff3fe7531\\output\\res\\values-si-rLK\\values-si-rLK.xml",
+                    "position": {
+                        "startLine": 11,
+                        "startColumn": 4,
+                        "startOffset": 1008,
+                        "endColumn": 86,
+                        "endOffset": 1090
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 12,
+                    "startColumn": 4,
+                    "startOffset": 1095,
+                    "endColumn": 83,
+                    "endOffset": 1174
+                },
+                "from": {
+                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\bce1e8d7708deb639b578b1fdbd4f09ff3fe7531\\output\\res\\values-si-rLK\\values-si-rLK.xml",
+                    "position": {
+                        "startLine": 12,
+                        "startColumn": 4,
+                        "startOffset": 1095,
+                        "endColumn": 83,
+                        "endOffset": 1174
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 13,
+                    "startColumn": 4,
+                    "startOffset": 1179,
+                    "endColumn": 108,
+                    "endOffset": 1283
+                },
+                "from": {
+                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\bce1e8d7708deb639b578b1fdbd4f09ff3fe7531\\output\\res\\values-si-rLK\\values-si-rLK.xml",
+                    "position": {
+                        "startLine": 13,
+                        "startColumn": 4,
+                        "startOffset": 1179,
+                        "endColumn": 108,
+                        "endOffset": 1283
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 14,
+                    "startColumn": 4,
+                    "startOffset": 1288,
+                    "endColumn": 104,
+                    "endOffset": 1388
+                },
+                "from": {
+                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\bce1e8d7708deb639b578b1fdbd4f09ff3fe7531\\output\\res\\values-si-rLK\\values-si-rLK.xml",
+                    "position": {
+                        "startLine": 14,
+                        "startColumn": 4,
+                        "startOffset": 1288,
+                        "endColumn": 104,
+                        "endOffset": 1388
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 15,
+                    "startColumn": 4,
+                    "startOffset": 1393,
+                    "endColumn": 97,
+                    "endOffset": 1486
+                },
+                "from": {
+                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\bce1e8d7708deb639b578b1fdbd4f09ff3fe7531\\output\\res\\values-si-rLK\\values-si-rLK.xml",
+                    "position": {
+                        "startLine": 15,
+                        "startColumn": 4,
+                        "startOffset": 1393,
+                        "endColumn": 97,
+                        "endOffset": 1486
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 16,
+                    "startColumn": 4,
+                    "startOffset": 1491,
+                    "endColumn": 109,
+                    "endOffset": 1596
+                },
+                "from": {
+                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\bce1e8d7708deb639b578b1fdbd4f09ff3fe7531\\output\\res\\values-si-rLK\\values-si-rLK.xml",
+                    "position": {
+                        "startLine": 16,
+                        "startColumn": 4,
+                        "startOffset": 1491,
+                        "endColumn": 109,
+                        "endOffset": 1596
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 17,
+                    "startColumn": 4,
+                    "startOffset": 1601,
+                    "endColumn": 98,
+                    "endOffset": 1695
+                },
+                "from": {
+                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\bce1e8d7708deb639b578b1fdbd4f09ff3fe7531\\output\\res\\values-si-rLK\\values-si-rLK.xml",
+                    "position": {
+                        "startLine": 17,
+                        "startColumn": 4,
+                        "startOffset": 1601,
+                        "endColumn": 98,
+                        "endOffset": 1695
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 18,
+                    "startColumn": 4,
+                    "startOffset": 1700,
+                    "endColumn": 105,
+                    "endOffset": 1801
+                },
+                "from": {
+                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\bce1e8d7708deb639b578b1fdbd4f09ff3fe7531\\output\\res\\values-si-rLK\\values-si-rLK.xml",
+                    "position": {
+                        "startLine": 18,
+                        "startColumn": 4,
+                        "startOffset": 1700,
+                        "endColumn": 105,
+                        "endOffset": 1801
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 19,
+                    "startColumn": 4,
+                    "startOffset": 1806,
+                    "endColumn": 120,
+                    "endOffset": 1922
+                },
+                "from": {
+                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\bce1e8d7708deb639b578b1fdbd4f09ff3fe7531\\output\\res\\values-si-rLK\\values-si-rLK.xml",
+                    "position": {
+                        "startLine": 19,
+                        "startColumn": 4,
+                        "startOffset": 1806,
+                        "endColumn": 120,
+                        "endOffset": 1922
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 20,
+                    "startColumn": 4,
+                    "startOffset": 1927,
+                    "endColumn": 98,
+                    "endOffset": 2021
+                },
+                "from": {
+                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\bce1e8d7708deb639b578b1fdbd4f09ff3fe7531\\output\\res\\values-si-rLK\\values-si-rLK.xml",
+                    "position": {
+                        "startLine": 20,
+                        "startColumn": 4,
+                        "startOffset": 1927,
+                        "endColumn": 98,
+                        "endOffset": 2021
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 21,
+                    "startColumn": 4,
+                    "startOffset": 2026,
+                    "endColumn": 81,
+                    "endOffset": 2103
+                },
+                "from": {
+                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\bce1e8d7708deb639b578b1fdbd4f09ff3fe7531\\output\\res\\values-si-rLK\\values-si-rLK.xml",
+                    "position": {
+                        "startLine": 21,
+                        "startColumn": 4,
+                        "startOffset": 2026,
+                        "endColumn": 81,
+                        "endOffset": 2103
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 22,
+                    "startColumn": 4,
+                    "startOffset": 2108,
+                    "endColumn": 100,
+                    "endOffset": 2204
+                },
+                "from": {
+                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\bce1e8d7708deb639b578b1fdbd4f09ff3fe7531\\output\\res\\values-si-rLK\\values-si-rLK.xml",
+                    "position": {
+                        "startLine": 22,
+                        "startColumn": 4,
+                        "startOffset": 2108,
+                        "endColumn": 100,
+                        "endOffset": 2204
+                    }
+                }
+            }
+        ]
+    },
+    {
         "outputFile": "C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-si-rLK\\values-si-rLK.xml",
         "map": [
             {
@@ -1212,7 +1616,7 @@
         ]
     },
     {
-        "outputFile": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\Documents\\Files\\2016-2017\\CMPUT301\\MoodSwing\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-si-rLK\\values-si-rLK.xml",
+        "outputFile": "C:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-si-rLK\\values-si-rLK.xml",
         "map": [
             {
                 "to": {
@@ -1223,7 +1627,7 @@
                     "endOffset": 160
                 },
                 "from": {
-                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\bce1e8d7708deb639b578b1fdbd4f09ff3fe7531\\output\\res\\values-si-rLK\\values-si-rLK.xml",
+                    "file": "C:\\Users\\Henry\\.android\\build-cache\\632216b252a2de72069a29211c06a7f75a0a9a02\\output\\res\\values-si-rLK\\values-si-rLK.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,
@@ -1242,7 +1646,7 @@
                     "endOffset": 268
                 },
                 "from": {
-                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\bce1e8d7708deb639b578b1fdbd4f09ff3fe7531\\output\\res\\values-si-rLK\\values-si-rLK.xml",
+                    "file": "C:\\Users\\Henry\\.android\\build-cache\\632216b252a2de72069a29211c06a7f75a0a9a02\\output\\res\\values-si-rLK\\values-si-rLK.xml",
                     "position": {
                         "startLine": 3,
                         "startColumn": 4,
@@ -1261,7 +1665,7 @@
                     "endOffset": 391
                 },
                 "from": {
-                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\bce1e8d7708deb639b578b1fdbd4f09ff3fe7531\\output\\res\\values-si-rLK\\values-si-rLK.xml",
+                    "file": "C:\\Users\\Henry\\.android\\build-cache\\632216b252a2de72069a29211c06a7f75a0a9a02\\output\\res\\values-si-rLK\\values-si-rLK.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 4,
@@ -1280,7 +1684,7 @@
                     "endOffset": 498
                 },
                 "from": {
-                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\bce1e8d7708deb639b578b1fdbd4f09ff3fe7531\\output\\res\\values-si-rLK\\values-si-rLK.xml",
+                    "file": "C:\\Users\\Henry\\.android\\build-cache\\632216b252a2de72069a29211c06a7f75a0a9a02\\output\\res\\values-si-rLK\\values-si-rLK.xml",
                     "position": {
                         "startLine": 5,
                         "startColumn": 4,
@@ -1299,7 +1703,7 @@
                     "endOffset": 605
                 },
                 "from": {
-                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\bce1e8d7708deb639b578b1fdbd4f09ff3fe7531\\output\\res\\values-si-rLK\\values-si-rLK.xml",
+                    "file": "C:\\Users\\Henry\\.android\\build-cache\\632216b252a2de72069a29211c06a7f75a0a9a02\\output\\res\\values-si-rLK\\values-si-rLK.xml",
                     "position": {
                         "startLine": 6,
                         "startColumn": 4,
@@ -1318,7 +1722,7 @@
                     "endOffset": 693
                 },
                 "from": {
-                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\bce1e8d7708deb639b578b1fdbd4f09ff3fe7531\\output\\res\\values-si-rLK\\values-si-rLK.xml",
+                    "file": "C:\\Users\\Henry\\.android\\build-cache\\632216b252a2de72069a29211c06a7f75a0a9a02\\output\\res\\values-si-rLK\\values-si-rLK.xml",
                     "position": {
                         "startLine": 7,
                         "startColumn": 4,
@@ -1337,7 +1741,7 @@
                     "endOffset": 798
                 },
                 "from": {
-                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\bce1e8d7708deb639b578b1fdbd4f09ff3fe7531\\output\\res\\values-si-rLK\\values-si-rLK.xml",
+                    "file": "C:\\Users\\Henry\\.android\\build-cache\\632216b252a2de72069a29211c06a7f75a0a9a02\\output\\res\\values-si-rLK\\values-si-rLK.xml",
                     "position": {
                         "startLine": 8,
                         "startColumn": 4,
@@ -1356,7 +1760,7 @@
                     "endOffset": 914
                 },
                 "from": {
-                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\bce1e8d7708deb639b578b1fdbd4f09ff3fe7531\\output\\res\\values-si-rLK\\values-si-rLK.xml",
+                    "file": "C:\\Users\\Henry\\.android\\build-cache\\632216b252a2de72069a29211c06a7f75a0a9a02\\output\\res\\values-si-rLK\\values-si-rLK.xml",
                     "position": {
                         "startLine": 9,
                         "startColumn": 4,
@@ -1375,7 +1779,7 @@
                     "endOffset": 1003
                 },
                 "from": {
-                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\bce1e8d7708deb639b578b1fdbd4f09ff3fe7531\\output\\res\\values-si-rLK\\values-si-rLK.xml",
+                    "file": "C:\\Users\\Henry\\.android\\build-cache\\632216b252a2de72069a29211c06a7f75a0a9a02\\output\\res\\values-si-rLK\\values-si-rLK.xml",
                     "position": {
                         "startLine": 10,
                         "startColumn": 4,
@@ -1394,7 +1798,7 @@
                     "endOffset": 1090
                 },
                 "from": {
-                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\bce1e8d7708deb639b578b1fdbd4f09ff3fe7531\\output\\res\\values-si-rLK\\values-si-rLK.xml",
+                    "file": "C:\\Users\\Henry\\.android\\build-cache\\632216b252a2de72069a29211c06a7f75a0a9a02\\output\\res\\values-si-rLK\\values-si-rLK.xml",
                     "position": {
                         "startLine": 11,
                         "startColumn": 4,
@@ -1413,7 +1817,7 @@
                     "endOffset": 1174
                 },
                 "from": {
-                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\bce1e8d7708deb639b578b1fdbd4f09ff3fe7531\\output\\res\\values-si-rLK\\values-si-rLK.xml",
+                    "file": "C:\\Users\\Henry\\.android\\build-cache\\632216b252a2de72069a29211c06a7f75a0a9a02\\output\\res\\values-si-rLK\\values-si-rLK.xml",
                     "position": {
                         "startLine": 12,
                         "startColumn": 4,
@@ -1432,7 +1836,7 @@
                     "endOffset": 1283
                 },
                 "from": {
-                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\bce1e8d7708deb639b578b1fdbd4f09ff3fe7531\\output\\res\\values-si-rLK\\values-si-rLK.xml",
+                    "file": "C:\\Users\\Henry\\.android\\build-cache\\632216b252a2de72069a29211c06a7f75a0a9a02\\output\\res\\values-si-rLK\\values-si-rLK.xml",
                     "position": {
                         "startLine": 13,
                         "startColumn": 4,
@@ -1451,7 +1855,7 @@
                     "endOffset": 1388
                 },
                 "from": {
-                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\bce1e8d7708deb639b578b1fdbd4f09ff3fe7531\\output\\res\\values-si-rLK\\values-si-rLK.xml",
+                    "file": "C:\\Users\\Henry\\.android\\build-cache\\632216b252a2de72069a29211c06a7f75a0a9a02\\output\\res\\values-si-rLK\\values-si-rLK.xml",
                     "position": {
                         "startLine": 14,
                         "startColumn": 4,
@@ -1470,7 +1874,7 @@
                     "endOffset": 1486
                 },
                 "from": {
-                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\bce1e8d7708deb639b578b1fdbd4f09ff3fe7531\\output\\res\\values-si-rLK\\values-si-rLK.xml",
+                    "file": "C:\\Users\\Henry\\.android\\build-cache\\632216b252a2de72069a29211c06a7f75a0a9a02\\output\\res\\values-si-rLK\\values-si-rLK.xml",
                     "position": {
                         "startLine": 15,
                         "startColumn": 4,
@@ -1489,7 +1893,7 @@
                     "endOffset": 1596
                 },
                 "from": {
-                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\bce1e8d7708deb639b578b1fdbd4f09ff3fe7531\\output\\res\\values-si-rLK\\values-si-rLK.xml",
+                    "file": "C:\\Users\\Henry\\.android\\build-cache\\632216b252a2de72069a29211c06a7f75a0a9a02\\output\\res\\values-si-rLK\\values-si-rLK.xml",
                     "position": {
                         "startLine": 16,
                         "startColumn": 4,
@@ -1508,7 +1912,7 @@
                     "endOffset": 1695
                 },
                 "from": {
-                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\bce1e8d7708deb639b578b1fdbd4f09ff3fe7531\\output\\res\\values-si-rLK\\values-si-rLK.xml",
+                    "file": "C:\\Users\\Henry\\.android\\build-cache\\632216b252a2de72069a29211c06a7f75a0a9a02\\output\\res\\values-si-rLK\\values-si-rLK.xml",
                     "position": {
                         "startLine": 17,
                         "startColumn": 4,
@@ -1527,7 +1931,7 @@
                     "endOffset": 1801
                 },
                 "from": {
-                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\bce1e8d7708deb639b578b1fdbd4f09ff3fe7531\\output\\res\\values-si-rLK\\values-si-rLK.xml",
+                    "file": "C:\\Users\\Henry\\.android\\build-cache\\632216b252a2de72069a29211c06a7f75a0a9a02\\output\\res\\values-si-rLK\\values-si-rLK.xml",
                     "position": {
                         "startLine": 18,
                         "startColumn": 4,
@@ -1546,7 +1950,7 @@
                     "endOffset": 1922
                 },
                 "from": {
-                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\bce1e8d7708deb639b578b1fdbd4f09ff3fe7531\\output\\res\\values-si-rLK\\values-si-rLK.xml",
+                    "file": "C:\\Users\\Henry\\.android\\build-cache\\632216b252a2de72069a29211c06a7f75a0a9a02\\output\\res\\values-si-rLK\\values-si-rLK.xml",
                     "position": {
                         "startLine": 19,
                         "startColumn": 4,
@@ -1565,7 +1969,7 @@
                     "endOffset": 2021
                 },
                 "from": {
-                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\bce1e8d7708deb639b578b1fdbd4f09ff3fe7531\\output\\res\\values-si-rLK\\values-si-rLK.xml",
+                    "file": "C:\\Users\\Henry\\.android\\build-cache\\632216b252a2de72069a29211c06a7f75a0a9a02\\output\\res\\values-si-rLK\\values-si-rLK.xml",
                     "position": {
                         "startLine": 20,
                         "startColumn": 4,
@@ -1584,7 +1988,7 @@
                     "endOffset": 2103
                 },
                 "from": {
-                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\bce1e8d7708deb639b578b1fdbd4f09ff3fe7531\\output\\res\\values-si-rLK\\values-si-rLK.xml",
+                    "file": "C:\\Users\\Henry\\.android\\build-cache\\632216b252a2de72069a29211c06a7f75a0a9a02\\output\\res\\values-si-rLK\\values-si-rLK.xml",
                     "position": {
                         "startLine": 21,
                         "startColumn": 4,
@@ -1603,7 +2007,7 @@
                     "endOffset": 2204
                 },
                 "from": {
-                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\C:\\Users\\PeterWeckend\\.android\\build-cache\\bce1e8d7708deb639b578b1fdbd4f09ff3fe7531\\output\\res\\values-si-rLK\\values-si-rLK.xml",
+                    "file": "C:\\Users\\Henry\\.android\\build-cache\\632216b252a2de72069a29211c06a7f75a0a9a02\\output\\res\\values-si-rLK\\values-si-rLK.xml",
                     "position": {
                         "startLine": 22,
                         "startColumn": 4,

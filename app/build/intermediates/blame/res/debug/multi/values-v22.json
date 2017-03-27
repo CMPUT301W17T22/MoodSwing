@@ -85,7 +85,7 @@
         ]
     },
     {
-        "outputFile": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v22\\values-v22.xml",
+        "outputFile": "C:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v22\\values-v22.xml",
         "map": [
             {
                 "to": {
@@ -96,7 +96,7 @@
                     "endOffset": 125
                 },
                 "from": {
-                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\.android\\build-cache\\e46c339567afbf7b5732dbe8e4b6a0ce76443ea9\\output\\res\\values-v22\\values-v22.xml",
+                    "file": "C:\\Users\\Henry\\.android\\build-cache\\632216b252a2de72069a29211c06a7f75a0a9a02\\output\\res\\values-v22\\values-v22.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,
@@ -115,7 +115,7 @@
                     "endOffset": 212
                 },
                 "from": {
-                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\.android\\build-cache\\e46c339567afbf7b5732dbe8e4b6a0ce76443ea9\\output\\res\\values-v22\\values-v22.xml",
+                    "file": "C:\\Users\\Henry\\.android\\build-cache\\632216b252a2de72069a29211c06a7f75a0a9a02\\output\\res\\values-v22\\values-v22.xml",
                     "position": {
                         "startLine": 3,
                         "startColumn": 4,
@@ -135,7 +135,7 @@
                     "endOffset": 548
                 },
                 "from": {
-                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\.android\\build-cache\\e46c339567afbf7b5732dbe8e4b6a0ce76443ea9\\output\\res\\values-v22\\values-v22.xml",
+                    "file": "C:\\Users\\Henry\\.android\\build-cache\\632216b252a2de72069a29211c06a7f75a0a9a02\\output\\res\\values-v22\\values-v22.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 4,
@@ -156,7 +156,7 @@
                     "endOffset": 896
                 },
                 "from": {
-                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\.android\\build-cache\\e46c339567afbf7b5732dbe8e4b6a0ce76443ea9\\output\\res\\values-v22\\values-v22.xml",
+                    "file": "C:\\Users\\Henry\\.android\\build-cache\\632216b252a2de72069a29211c06a7f75a0a9a02\\output\\res\\values-v22\\values-v22.xml",
                     "position": {
                         "startLine": 9,
                         "startColumn": 4,
@@ -242,6 +242,91 @@
                 },
                 "from": {
                     "file": "C:\\Users\\fred\\.android\\build-cache\\a987e0752e8a3c33a80e6f25858c5aa9a1461541\\output\\res\\values-v22\\values-v22.xml",
+                    "position": {
+                        "startLine": 9,
+                        "startColumn": 4,
+                        "startOffset": 553,
+                        "endLine": 13,
+                        "endColumn": 12,
+                        "endOffset": 896
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "outputFile": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v22\\values-v22.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 74,
+                    "endOffset": 125
+                },
+                "from": {
+                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\.android\\build-cache\\e46c339567afbf7b5732dbe8e4b6a0ce76443ea9\\output\\res\\values-v22\\values-v22.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 74,
+                        "endOffset": 125
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 130,
+                    "endColumn": 86,
+                    "endOffset": 212
+                },
+                "from": {
+                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\.android\\build-cache\\e46c339567afbf7b5732dbe8e4b6a0ce76443ea9\\output\\res\\values-v22\\values-v22.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 130,
+                        "endColumn": 86,
+                        "endOffset": 212
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 217,
+                    "endLine": 8,
+                    "endColumn": 12,
+                    "endOffset": 548
+                },
+                "from": {
+                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\.android\\build-cache\\e46c339567afbf7b5732dbe8e4b6a0ce76443ea9\\output\\res\\values-v22\\values-v22.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 217,
+                        "endLine": 8,
+                        "endColumn": 12,
+                        "endOffset": 548
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 9,
+                    "startColumn": 4,
+                    "startOffset": 553,
+                    "endLine": 13,
+                    "endColumn": 12,
+                    "endOffset": 896
+                },
+                "from": {
+                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\.android\\build-cache\\e46c339567afbf7b5732dbe8e4b6a0ce76443ea9\\output\\res\\values-v22\\values-v22.xml",
                     "position": {
                         "startLine": 9,
                         "startColumn": 4,
