@@ -260,6 +260,8 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
+        //TODO: add markers from mood feed
+
         // Add a marker in Sydney and move the camera
         LatLng sydney = new LatLng(-34, 151);
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
