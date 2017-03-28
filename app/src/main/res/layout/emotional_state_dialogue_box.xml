@@ -5,69 +5,88 @@
     android:layout_height="wrap_content"
     android:background="@color/white">
 
-    <RadioButton
-        android:id="@+id/happinessRadioButton"
+    <RadioGroup
+        android:id="@+id/emotionsRadioGroup"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Happiness"
-        app:buttonTint="@color/black" />
+        android:layout_height="wrap_content">
 
-    <RadioButton
-        android:id="@+id/angerRadioButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/happinessRadioButton"
-        android:text="Anger"
-        app:buttonTint="@color/black"/>
+        <RadioButton
+            android:id="@+id/confusionRadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/angerRadioButton"
+            android:layout_weight="1"
+            android:text="Confusion"
+            android:buttonTint="@color/black" />
 
-    <RadioButton
-        android:id="@+id/confusionRadioButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/angerRadioButton"
-        android:text="Confusion"
-        app:buttonTint="@color/black"/>
-    <RadioButton
-        android:id="@+id/disgustRadioButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/confusionRadioButton"
-        android:text="Disgust"
-        app:buttonTint="@color/black"/>
-    <RadioButton
-        android:id="@+id/fearRadioButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/disgustRadioButton"
-        android:text="Fear"
-        app:buttonTint="@color/black"/>
-    <RadioButton
-        android:id="@+id/sadnessRadioButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/fearRadioButton"
-        android:text="Sadness"
-        app:buttonTint="@color/black"/>
-    <RadioButton
-        android:id="@+id/shameRadioButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/sadnessRadioButton"
-        android:text="Shame"
-        app:buttonTint="@color/black"/>
-    <RadioButton
-        android:id="@+id/surpriseRadioButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/shameRadioButton"
-        android:text="Surprise"
-        app:buttonTint="@color/black"/>
+        <RadioButton
+            android:id="@+id/angerRadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/happinessRadioButton"
+            android:layout_weight="1"
+            android:text="Anger"
+            android:buttonTint="@color/black" />
+
+        <RadioButton
+            android:id="@+id/fearRadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/disgustRadioButton"
+            android:layout_weight="1"
+            android:text="Fear"
+            android:buttonTint="@color/black" />
+
+        <RadioButton
+            android:id="@+id/shameRadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/sadnessRadioButton"
+            android:layout_weight="1"
+            android:text="Shame"
+            android:buttonTint="@color/black" />
+
+        <RadioButton
+            android:id="@+id/happinessRadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Happiness"
+            android:buttonTint="@color/black" />
+
+        <RadioButton
+            android:id="@+id/sadnessRadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/fearRadioButton"
+            android:layout_weight="1"
+            android:text="Sadness"
+            android:buttonTint="@color/black" />
+
+        <RadioButton
+            android:id="@+id/disgustRadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/confusionRadioButton"
+            android:layout_weight="1"
+            android:text="Disgust"
+            android:buttonTint="@color/black" />
+
+        <RadioButton
+            android:id="@+id/surpriseRadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/shameRadioButton"
+            android:layout_weight="1"
+            android:text="Surprise"
+            android:buttonTint="@color/black" />
+    </RadioGroup>
 
     <Button
         android:id="@+id/validateEmotionalFilterButton"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/surpriseRadioButton"
+        android:layout_below="@+id/emotionsRadioGroup"
         android:layout_centerInParent="true"
         android:text="Select" />
 

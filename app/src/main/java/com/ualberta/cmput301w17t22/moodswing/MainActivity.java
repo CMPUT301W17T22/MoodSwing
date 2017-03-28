@@ -28,10 +28,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -91,6 +93,8 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
 
     // The trigger word that the user will search for in filter
     private String triggerWord = "";
+    // The chosen mood that the user will filter
+    private String triggerEmotion = "";
 
 
 
@@ -268,16 +272,18 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
                     case "Recent Week":     // sort by recent week
                         // to add some sort of maker when Recent Week selected. Remove on other options
                         //filter_strings.set(filter_strings.indexOf("Recent Week"), "Recent Week*");
-
+                        Toast.makeText(MainActivity.this, "Filtering by Recent Week", Toast.LENGTH_SHORT).show();
                         // filter by recent week here
                         break;
                     case "By Emotion":      // sort by emotion
-                        Dialog dialog = new Dialog(MainActivity.this);
+                        // from http://stackoverflow.com/questions/10903754/input-text-dialog-android on 3/27
+                        final Dialog dialog = new Dialog(MainActivity.this);
                         dialog.setContentView(R.layout.emotional_state_dialogue_box);
                         dialog.setTitle("This is my custom dialog box");
                         dialog.setCancelable(true);
-                        // there are a lot of settings, for dialog, check them all out!
-                        // set up radiobutton
+
+                        // set up radio buttons and filter/cancel buttons
+                        final RadioGroup emotionsRadioGroup = (RadioGroup) dialog.findViewById(R.id.emotionsRadioGroup);
                         RadioButton happinessRB = (RadioButton) dialog.findViewById(R.id.happinessRadioButton);
                         RadioButton angerRB = (RadioButton) dialog.findViewById(R.id.angerRadioButton);
                         RadioButton disgustRB = (RadioButton) dialog.findViewById(R.id.disgustRadioButton);
@@ -286,6 +292,29 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
                         RadioButton sadnessRB = (RadioButton) dialog.findViewById(R.id.sadnessRadioButton);
                         RadioButton shameRB = (RadioButton) dialog.findViewById(R.id.shameRadioButton);
                         RadioButton surpriseRB = (RadioButton) dialog.findViewById(R.id.surpriseRadioButton);
+                        Button validateEmotionFilter = (Button) dialog.findViewById(R.id.validateEmotionalFilterButton);
+                        Button cancelEmotionFilter = (Button) dialog.findViewById(R.id.cancelEmotionalFilterButton);
+
+                        // get value chosen if filter button is clicked
+                        validateEmotionFilter.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                int chosenEmotionIndex = emotionsRadioGroup.getCheckedRadioButtonId();
+                                RadioButton chosenEmotionRadioButton = (RadioButton) dialog.findViewById(chosenEmotionIndex);
+                                triggerEmotion = chosenEmotionRadioButton.getText().toString();
+                                Toast.makeText(MainActivity.this, triggerEmotion, Toast.LENGTH_SHORT).show();
+                                dialog.dismiss();
+
+                            }
+                        });
+                        // dismiss dialog if cancel is clicked
+                        cancelEmotionFilter.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                dialog.dismiss();
+                            }
+                        });
+
 
                         // now that the dialog is set up, it's time to show it
                         dialog.show();
@@ -331,6 +360,15 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 triggerWord = triggerEditText.getText().toString();
+                                // make sure triggerWord is only one word long
+                                if (wordCount(triggerWord) != 1) {
+                                    Toast.makeText(MainActivity.this, "Trigger search must be one word long.",
+                                            Toast.LENGTH_SHORT).show();
+                                    dialog.cancel();
+                                } else {
+                                    // triggerWord is acceptable
+                                    Toast.makeText(MainActivity.this, triggerWord, Toast.LENGTH_SHORT).show();
+                                }
                             }
                         });
                         builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -552,5 +590,17 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
     @Override
     public void onStatusChanged(String arg0, int arg1, Bundle arg2) {
         // TODO Auto-generated method stub
+    }
+
+    // from http://stackoverflow.com/questions/8924599/how-to-count-the-exact-number-of-words-in-a-string-that-has-empty-spaces-between
+    // on 3/28
+    public static int wordCount(String s){
+        if (s == null) {
+            return 0;
+        }
+        if (s.equals("")){
+            return 0;
+        }
+        return s.trim().split("\\s+").length;
     }
 }
