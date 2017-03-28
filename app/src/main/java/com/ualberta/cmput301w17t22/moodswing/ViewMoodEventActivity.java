@@ -2,8 +2,7 @@ package com.ualberta.cmput301w17t22.moodswing;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.content.res.ResourcesCompat;
+import android.location.Location;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,13 +13,22 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+
 
 /**
  * Activity is launched when app user chooses to view a mood event. Launched from both
  * MoodHistoryActivity to view a mood event in the mood history, and from MainActivity, to view
  * a mood event in the mood feed.
  */
-public class ViewMoodEventActivity extends AppCompatActivity implements MSView<MoodSwing> {
+public class ViewMoodEventActivity extends AppCompatActivity implements MSView<MoodSwing>,
+        OnMapReadyCallback {
 
     /** The position of the mood event being viewed in the participant's mood history. */
     private int position;
@@ -53,6 +61,9 @@ public class ViewMoodEventActivity extends AppCompatActivity implements MSView<M
     /** The button that allows the user to delete the mood event if it is their own. */
     Button deleteMoodEventButton;
 
+    /** The support map fragment that displays the location of the mood event. */
+    SupportMapFragment supportMapFragment;
+
     /** The mainParticipant (current user) of the app. */
     Participant mainParticipant;
 
@@ -62,6 +73,8 @@ public class ViewMoodEventActivity extends AppCompatActivity implements MSView<M
     /** Boolean we use to check onDestroy whether the mood event being viewed was chosen to be
      * deleted. */
     boolean delete;
+
+    private GoogleMap mMap;
 
     /**
      * Initialize all the widgets for the Activity, and add this View to the main Model's list of
@@ -95,6 +108,12 @@ public class ViewMoodEventActivity extends AppCompatActivity implements MSView<M
                 (Button) findViewById(R.id.editMoodEventButton_ViewMoodEventActivity);
         deleteMoodEventButton =
                 (Button) findViewById(R.id.deleteMoodEventButton_ViewMoodEventActivity);
+
+        // Initialize the map.
+        supportMapFragment = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.map_ViewMoodEventActivity);
+
+        supportMapFragment.getMapAsync(this);
 
         // Add this View to the main Model class.
         MoodSwingController moodSwingController = MoodSwingApplication.getMoodSwingController();
@@ -146,7 +165,7 @@ public class ViewMoodEventActivity extends AppCompatActivity implements MSView<M
             @Override
             public void onClick(View v) {
 
-                // Launch the ViewMoodEventActivity.
+                // Launch the EditMoodEventActivity.
                 Intent intent = new Intent(ViewMoodEventActivity.this, EditMoodEventActivity.class);
                 startActivity(intent);
             }
@@ -229,9 +248,28 @@ public class ViewMoodEventActivity extends AppCompatActivity implements MSView<M
                         "Mood Event deleted!",
                         Toast.LENGTH_SHORT).show();
             }
+        }
+    }
 
+    /**
+     * Called when the map is ready. Set the location to the one in the mood event.
+     */
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
 
+        // Load the location from the mood event.
+        Location location = moodEvent.getLocation();
+        Log.i("MoodSwing", location.toString());
 
+        if (location != null) {
+            // Create a LatLng object from the location so we can properly set a camera position.
+            LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
+
+            // Move the camera and place a marker.
+            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 13));
+            googleMap.addMarker(new MarkerOptions()
+                    .title(moodEvent.getOriginalPoster())
+                    .position(latLng));
         }
     }
 
@@ -267,21 +305,11 @@ public class ViewMoodEventActivity extends AppCompatActivity implements MSView<M
      */
     private void loadFromMoodEvent() {
         Log.i("MoodSwing", String.valueOf(moodEvent.getEmotionalState().getDrawableId()));
-        // Load values from MoodEvent into the simple text fields.
+        // Load username from MoodEvent into the simple text field.
         usernameTextView.setText(moodEvent.getOriginalPoster());
 
-        if (moodEvent.getTrigger().isEmpty()) {
-            //Toast.makeText(ViewMoodEventActivity.this, "empty", Toast.LENGTH_SHORT).show();
-            triggerTextView.setVisibility(View.GONE);
-            triggerPrefixTextView.setVisibility(View.GONE);
-        } else {
-            triggerTextView.setText(moodEvent.getTrigger());
-            triggerTextView.setVisibility(View.VISIBLE);
-            triggerPrefixTextView.setVisibility(View.VISIBLE);
-            //Toast.makeText(ViewMoodEventActivity.this, moodEvent.getTrigger(), Toast.LENGTH_SHORT).show();
-            //triggerTextView.setTextColor(getResources().getColor(R.color.colorPrimary));
-        }
-
+        // Set the trigger appropriately.
+        setTriggerTextView();
 
         // Set the image and text for the appropriate Mood Event.
         emotionalStateTextView.setText(moodEvent.getEmotionalState().getDescription());
@@ -315,24 +343,42 @@ public class ViewMoodEventActivity extends AppCompatActivity implements MSView<M
                 break;
         }
 
-
         emotionalStateImageView.setImageDrawable(getDrawable(
                     moodEvent.getEmotionalState().getDrawableId()));
 
+        // Set the text and the image for the social situation properly.
+        setSocialSituationViews();
 
+        //Set the image from the MoodEvent image into the view.
+        setImageImageView();
 
-        // Set the image and text for the appropriate social situation.
-        if (moodEvent.getSocialSituation().getDescription() == null){
-            socialSituationTextView.setVisibility(View.GONE);
-            socialSituationImageView.setVisibility(View.GONE);
+        // Set the map fragment visibility.
+        setMapFragmentVisibility();
+    }
+
+    /**
+     * Set the trigger from the mood event to display properly.
+     */
+    public void setTriggerTextView() {
+        // If there is no trigger, change the textview to be gone.
+        if (moodEvent.getTrigger().isEmpty()) {
+
+            triggerTextView.setVisibility(View.GONE);
+            triggerPrefixTextView.setVisibility(View.GONE);
+
         } else {
-            socialSituationTextView.setText(moodEvent.getSocialSituation().getDescription());
-            socialSituationImageView.setImageDrawable(getDrawable(
-                    moodEvent.getSocialSituation().getDrawableId()));
-            socialSituationTextView.setVisibility(View.VISIBLE);
-            socialSituationImageView.setVisibility(View.VISIBLE);
-        }
+            // If there is a trigger, make it visible and set the text properly.
+            triggerTextView.setText(moodEvent.getTrigger());
 
+            triggerTextView.setVisibility(View.VISIBLE);
+            triggerPrefixTextView.setVisibility(View.VISIBLE);
+        }
+    }
+
+    /**
+     * Set the social situation from the mood event to display properly.
+     */
+    public void setSocialSituationViews() {
 
         // Disable the inspection for the visibility resource type, so that we can pass in
         // a variable for the visibility. Taken from
@@ -340,18 +386,33 @@ public class ViewMoodEventActivity extends AppCompatActivity implements MSView<M
         // on 3/13/2017.
         //noinspection ResourceType
         socialSituationImageView.setVisibility(moodEvent.getSocialSituation().getVisibility());
+        //noinspection ResourceType
+        socialSituationTextView.setVisibility(moodEvent.getSocialSituation().getVisibility());
+    }
 
-        //Set the image from the MoodEvent image into the view.
-      // imageImageView.setVisibility(moodEvent.getImage().);
+    /**
+     * Set the imageImageView to display the image from the mood event if there is one.
+     */
+    public void setImageImageView() {
         if(moodEvent.getImage() != null) {
             imageImageView.setImageBitmap(moodEvent.getImage());
             imageImageView.setVisibility(View.VISIBLE);
         } else {
             imageImageView.setVisibility(View.GONE);
         }
-
     }
 
+    /**
+     * Set the map fragment to be visible or invisible depending on if the location is given.
+     */
+    public void setMapFragmentVisibility() {
+        // If there is no location, make the map invisible, if there is a location, make it visible.
+        if (moodEvent.getLocation() != null) {
+            supportMapFragment.getView().setVisibility(View.VISIBLE);
+        } else {
+            supportMapFragment.getView().setVisibility(View.GONE);
+        }
+    }
 
 
     /**
