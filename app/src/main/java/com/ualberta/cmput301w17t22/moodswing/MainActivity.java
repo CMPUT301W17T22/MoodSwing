@@ -96,6 +96,11 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
     // The chosen mood that the user will filter
     private String triggerEmotion = "";
 
+    // shows which filters are active and which aren't
+    // if activeFilters = [a, b, c], a = recent week, b = emotion filter, c = trigger filter
+    // activeFilters[x] = 1: this filter is active, 0: this filter is not applied
+    private int[] activeFilters = new int[3];   // should be initialized to 0
+
 
 
 
@@ -265,15 +270,18 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
 
                 switch (selected) {
                     case "No Filter":       // no filter selected
-                        Toast.makeText(MainActivity.this, selected, Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(MainActivity.this, selected, Toast.LENGTH_SHORT).show();
 
                         // remove filters
+                        updateFilterMenu(-1);
                         break;
                     case "Recent Week":     // sort by recent week
                         // to add some sort of maker when Recent Week selected. Remove on other options
                         //filter_strings.set(filter_strings.indexOf("Recent Week"), "Recent Week*");
-                        Toast.makeText(MainActivity.this, "Filtering by Recent Week", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(MainActivity.this, "Filtering by Recent Week", Toast.LENGTH_SHORT).show();
+
                         // filter by recent week here
+                        updateFilterMenu(0);
                         break;
                     case "By Emotion":      // sort by emotion
                         // from http://stackoverflow.com/questions/10903754/input-text-dialog-android on 3/27
@@ -302,7 +310,8 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
                                 int chosenEmotionIndex = emotionsRadioGroup.getCheckedRadioButtonId();
                                 RadioButton chosenEmotionRadioButton = (RadioButton) dialog.findViewById(chosenEmotionIndex);
                                 triggerEmotion = chosenEmotionRadioButton.getText().toString();
-                                Toast.makeText(MainActivity.this, triggerEmotion, Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(MainActivity.this, triggerEmotion, Toast.LENGTH_SHORT).show();
+                                updateFilterMenu(1);
                                 dialog.dismiss();
 
                             }
@@ -368,6 +377,7 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
                                 } else {
                                     // triggerWord is acceptable
                                     Toast.makeText(MainActivity.this, triggerWord, Toast.LENGTH_SHORT).show();
+                                    updateFilterMenu(2);
                                 }
                             }
                         });
@@ -594,6 +604,7 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
 
     // from http://stackoverflow.com/questions/8924599/how-to-count-the-exact-number-of-words-in-a-string-that-has-empty-spaces-between
     // on 3/28
+    // returns word count of a String s
     public static int wordCount(String s){
         if (s == null) {
             return 0;
@@ -602,5 +613,52 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
             return 0;
         }
         return s.trim().split("\\s+").length;
+    }
+
+
+    /**
+     * updateFilterUI: Changes the UI to reflect changes in activeFilters.
+     * Called by updateFilterMenu
+     */
+    public void updateFilterUI() {
+
+        if (activeFilters[0] == 1) {     // recent week filter active
+            filter_strings.set(1, "Recent Week*");
+        } else {                        // recent week filter off
+            filter_strings.set(1, "Recent Week");
+        }
+
+        if (activeFilters[1] == 1) { // emotion filter on
+            filter_strings.set(2, "By Emotion*");
+        } else {                    // emotion filter off
+            filter_strings.set(2, "By Emotion");
+        }
+
+        if (activeFilters[2] == 1) {    // trigger filter on
+            filter_strings.set(3, "By Trigger*");
+        } else {                        // trigger filter off
+            filter_strings.set(3, "By Trigger");
+        }
+
+        Toast.makeText(MainActivity.this, filter_strings.get(0), Toast.LENGTH_SHORT).show();
+
+    }
+
+    /**
+     * Changes and updates the filters for a given item.
+     * Given an index of activeFilters, flip the value of that item.
+     * If it's activated, deactivite it, and vice versa.
+     * Then call updateFilter
+     * i = 0 is recent week, i = 1 is emotion filter, i = 2 is trigger filter, -1 is no filters
+     */
+    public void updateFilterMenu(int i) {
+        if(i < 0 | i > 2) { // by default, reset all filters, includes i = -1 case
+            activeFilters[0] = 0;
+            activeFilters[1] = 0;
+            activeFilters[2] = 0;
+        } else {            // flip the appropriate filter
+            activeFilters[i] = activeFilters[i] ^= 1;
+        }
+        updateFilterUI();
     }
 }
