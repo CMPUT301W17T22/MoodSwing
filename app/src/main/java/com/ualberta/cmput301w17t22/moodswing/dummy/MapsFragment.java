@@ -17,6 +17,7 @@ public class MapsFragment extends FragmentActivity implements OnMapReadyCallback
     MapView mapView;
     private GoogleMap googleMapView;
     boolean showMap;
+
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -28,8 +29,6 @@ public class MapsFragment extends FragmentActivity implements OnMapReadyCallback
 
         Log.i("debugMaps","wrong map activity");
     }
-
-
 
     @Override
     public void onMapReady(GoogleMap googleMap){

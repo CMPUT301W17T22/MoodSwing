@@ -2,6 +2,7 @@ package com.ualberta.cmput301w17t22.moodswing;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.location.Location;
 import android.media.Image;
 import android.util.Log;
 import android.widget.ImageView;
@@ -17,7 +18,7 @@ import java.util.Date;
  * <p/>
  * A MoodEvent contains the posting participant's username, emotional state, the date the mood
  * event was created, a short explanation trigger for the mood event, a social situation that
- * contributed to the mood event, and the location of the mood event.
+ * contributed to the mood event, and the lastKnownLocation of the mood event.
  *
  * @author Fred
  * @author bbest
@@ -44,9 +45,9 @@ public class MoodEvent {
      * @see SocialSituation */
     private SocialSituation socialSituation;
 
-    /** The location that the mood event originally was entered at.
+    /** The lastKnownLocation that the mood event originally was entered at.
      * CAN NOT BE EDITED AFTER INITIALIZATION.*/
-    private LatLng location;
+    private Location location;
 
     /**The image that can be attached to the mood event. This can be added by taking a picture
      * or selecting one from the phones gallery */
@@ -66,25 +67,20 @@ public class MoodEvent {
                      EmotionalState emotionalState,
                      String trigger,
                      SocialSituation socialSituation,
-                     LatLng location, ByteArrayOutputStream importImage) {
+                     Location location,
+                     ByteArrayOutputStream importImage) {
         this.originalPoster = posterUsername;
         this.date = date;
         this.emotionalState = emotionalState;
         this.trigger = trigger;
         this.socialSituation = socialSituation;
         this.image = importImage;
-        // Check for null location, set to 0 if it is null.
-        if (location == null) {
-            this.location = new LatLng(0, 0);
-        } else {
-            this.location = location;
-        }
+        this.location = location;
     }
+
     //TODO: Regenerate equals method to include image and location.
     /**
      * Android Studio generated equals method.
-     * @param o
-     * @return
      */
     @Override
     public boolean equals(Object o) {
@@ -122,7 +118,7 @@ public class MoodEvent {
 
     /**
      * Edit MoodEvent method, uses setters to replace the attributes that are editable.
-     * Date, original poster, and location are not editable.
+     * Date, original poster, and lastKnownLocation are not editable.
      * @param emotionalState The new emotional state of the mood event.
      * @param trigger The new trigger of the mood event.
      * @param socialSituation The new social situation of the mood event.
@@ -145,12 +141,12 @@ public class MoodEvent {
      * @return null if no position
      */
 //    public Marker getMapMarker(GoogleMap googleMap){
-//        if(location == null){
+//        if(lastKnownLocation == null){
 //            return null;
 //        }
 //
 //        Marker marker = googleMap.addMarker(new MarkerOptions()
-//                .position(location)
+//                .position(lastKnownLocation)
 //                .title(emotionalState.getDescription())
 //                .icon(icon));
 //
@@ -206,11 +202,11 @@ public class MoodEvent {
     }
 
 
-    public void setLocation(LatLng location) {
+    public void setLocation(Location location) {
         this.location = location;
     }
 
-    public LatLng getLocation() {
+    public Location getLocation() {
         return location;
     }
 

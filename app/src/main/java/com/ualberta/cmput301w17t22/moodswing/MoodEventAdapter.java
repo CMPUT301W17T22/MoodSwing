@@ -109,8 +109,7 @@ public class MoodEventAdapter extends ArrayAdapter<MoodEvent> {
         }
 
         //Location Indicator
-        LatLng latLng = new LatLng(0,0);
-        if(moodEvent.getLocation().equals(latLng)){
+        if(moodEvent.getLocation() == null){
             locationIndicatorImageView.setVisibility(View.INVISIBLE);
         }else{
             locationIndicatorImageView.setVisibility(View.VISIBLE);

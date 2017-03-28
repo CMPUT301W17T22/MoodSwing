@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.location.Location;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
@@ -70,7 +71,7 @@ public class EditMoodEventActivity extends AppCompatActivity implements MSView<M
     /** The edit button object that confirms that the participant is done editing.*/
     Button editButton;
 
-    /** Checkbox that indicates if the user wants to add their current location.*/
+    /** Checkbox that indicates if the user wants to add their current lastKnownLocation.*/
     CheckBox addCurrentLocationCheckBox;
 
     /**Button used to trigger the gallery option to upload a photo. */
@@ -78,7 +79,6 @@ public class EditMoodEventActivity extends AppCompatActivity implements MSView<M
 
     /**Button used to trigger the camera on the phone to take a picture and attach it to the Mood Event */
     Button photoCaptureButton;
-
 
     /**Image View used to display the chosen image. */
     ImageView imageView;
@@ -91,32 +91,21 @@ public class EditMoodEventActivity extends AppCompatActivity implements MSView<M
 
         emotionalStateSpinner =
                 (Spinner) findViewById(R.id.emotionalStateSpinner_EditMoodEventActivity);
-
         socialSituationSpinner =
                 (Spinner) findViewById(R.id.socialSituationSpinner_EditMoodEventActivity);
 
-        triggerEditText =
-                (EditText) findViewById(R.id.triggerEditText_EditMoodEventActivity);
-
-        editButton =
-                (Button) findViewById(R.id.newMoodEventPostButton_EditMoodEventActivity);
-
-        photoUploadButton =
-                (Button) findViewById(R.id.photoUploadButton_EditMoodEventActivity);
-
-        photoCaptureButton =
-                (Button) findViewById(R.id.photoCaptureButton_EditMoodEventActivity);
+        triggerEditText = (EditText) findViewById(R.id.triggerEditText_EditMoodEventActivity);
+        editButton = (Button) findViewById(R.id.newMoodEventPostButton_EditMoodEventActivity);
+        photoUploadButton = (Button) findViewById(R.id.photoUploadButton_EditMoodEventActivity);
+        photoCaptureButton = (Button) findViewById(R.id.photoCaptureButton_EditMoodEventActivity);
 
         addCurrentLocationCheckBox =
                 (CheckBox) findViewById(R.id.addCurentLocationCheckBox_EditMoodEventActivity);
-
-        imageView =
-             (ImageView) findViewById(R.id.imageView_EditMoodEventActivity);
+        imageView = (ImageView) findViewById(R.id.imageView_EditMoodEventActivity);
 
         // Add this View to the main Model class.
         MoodSwingController moodSwingController = MoodSwingApplication.getMoodSwingController();
         moodSwingController.addView(this);
-
 
         editMoodToolbar = (Toolbar) findViewById(R.id.editMoodToolbar);
         editMoodToolbar.setTitle("Edit Mood Event");
@@ -143,7 +132,6 @@ public class EditMoodEventActivity extends AppCompatActivity implements MSView<M
 
         // Load the mood event information into the widgets of the app.
         loadFromOldMoodEvent();
-
 
         // photo upload press. Need a real device to test this on
         // https://developer.android.com/training/camera/photobasics.html
@@ -194,12 +182,12 @@ public class EditMoodEventActivity extends AppCompatActivity implements MSView<M
                     // Get social situation.
                     SocialSituation socialSituation = getSpinnerSocialSituation();
 
-                    // Get location if location box is checked, otherwise just use null.
-                    LatLng location = null;
+                    // Get lastKnownLocation if lastKnownLocation box is checked,
+                    // otherwise just use the old value.
+                    Location location = oldMoodEvent.getLocation();
                     if (addCurrentLocationCheckBox.isChecked()) {
-                        location = getDeviceLocation();
+                        location = getLocation();
                     }
-
 
                     // Get MoodSwingController.
                     MoodSwingController moodSwingController =
@@ -217,13 +205,8 @@ public class EditMoodEventActivity extends AppCompatActivity implements MSView<M
 
                     // Toast to inform the user that the mood event was added.
                     Toast.makeText(EditMoodEventActivity.this,
-                            "Mood Event added!\n" +
-                                    "Input Test: " +
-                                    "\nEmotional State: " + emotionalState.toString() +
-                                    "\nSocial Situation: " + socialSituation.toString() +
-                                    "\nTrigger: " + trigger,
+                            "Mood Event added!\n",
                             Toast.LENGTH_SHORT).show();
-
                     finish();
                 }
             }
@@ -364,22 +347,14 @@ public class EditMoodEventActivity extends AppCompatActivity implements MSView<M
     }
 
     /**
-     * Gets the LatLng location from the android device.
-     * @return The current / last known location as a LatLng
+     * Gets the lastKnownLocation from the main model class.
+     * @return The current / last known lastKnownLocation as a Location.
      */
-    public LatLng getDeviceLocation() {
-        // TODO: I have no clue if this works.
-
-        GPSTracker gps = new GPSTracker(this);
-        if (gps.canGetLocation()){
-            double lat = gps.getLatitude();
-            double lon = gps.getLongitude();
-
-            return new LatLng(lat,lon);
-        }
-        return null;
+    public Location getLocation() {
+        // Get the mood swing controller and get the last known location.
+        MoodSwingController moodSwingController = MoodSwingApplication.getMoodSwingController();
+        return moodSwingController.getLastKnownLocation();
     }
-
 
     /**
      * Create and launch intent to view and select photo from gallery.
@@ -398,8 +373,6 @@ public class EditMoodEventActivity extends AppCompatActivity implements MSView<M
         startActivityForResult(i, RESULT_LOAD_IMG);
     }
 
-    // invoke intent to capture a photo
-
     /**
      * Invoke intent to capture a photo.
      * Uses code from below site on 03/12:
@@ -411,8 +384,6 @@ public class EditMoodEventActivity extends AppCompatActivity implements MSView<M
             startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
         }
     }
-
-
 
     /**
      * After user selects an image from gallery or takes a picture,

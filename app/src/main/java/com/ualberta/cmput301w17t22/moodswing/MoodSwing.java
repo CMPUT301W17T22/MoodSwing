@@ -1,5 +1,6 @@
 package com.ualberta.cmput301w17t22.moodswing;
 
+import android.location.Location;
 import android.util.Log;
 
 import java.util.ArrayList;
@@ -35,6 +36,11 @@ public class MoodSwing extends MSModel<MSView> {
      * The position of the currently being viewed mood event in the mood list.
      */
     private int moodFeedPosition;
+
+    /**
+     * The last known location of the device/main participant.
+     */
+    private Location lastKnownLocation;
 
     /**
      * Adds the mainParticipant for the MoodSwing app to ElasticSearch. This is used when logging
@@ -215,6 +221,14 @@ public class MoodSwing extends MSModel<MSView> {
 
     public void setMoodFeedPosition(int moodFeedPosition) {
         this.moodFeedPosition = moodFeedPosition;
+    }
+
+    public Location getLastKnownLocation() {
+        return lastKnownLocation;
+    }
+
+    public void setLastKnownLocation(Location lastKnownLocation) {
+        this.lastKnownLocation = lastKnownLocation;
     }
 
     // --- END: Getters and Setters

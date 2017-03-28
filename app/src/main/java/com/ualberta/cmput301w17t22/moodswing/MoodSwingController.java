@@ -1,5 +1,6 @@
 package com.ualberta.cmput301w17t22.moodswing;
 
+import android.location.Location;
 import android.util.Log;
 
 import java.util.ArrayList;
@@ -131,4 +132,8 @@ public class MoodSwingController implements MSController {
     public void setMoodFeedPosition(int moodFeedPosition) {
         ms.setMoodFeedPosition(moodFeedPosition);
     }
+
+    public Location getLastKnownLocation() { return ms.getLastKnownLocation(); }
+
+    public void setLastKnownLocation(Location location) { ms.setLastKnownLocation(location); }
 }

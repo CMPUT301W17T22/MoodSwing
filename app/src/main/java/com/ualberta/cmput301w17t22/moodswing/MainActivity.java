@@ -4,9 +4,7 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.content.pm.PackageManager;
@@ -16,13 +14,9 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.text.InputType;
 import android.util.Log;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,8 +31,6 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -60,7 +52,9 @@ import com.google.android.gms.maps.model.MarkerOptions;
  * dark magenta: #66023C
  * background: e0b0ff
  */
-public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>, LocationListener, OnMapReadyCallback {
+public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>,
+        LocationListener,
+        OnMapReadyCallback {
 
     /** The main toolbar of the app that lets users navigate to the other parts of the app. */
     Toolbar mainToolbar;
@@ -71,20 +65,35 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
      */
     TextView welcomeText;
 
-    private Participant mainParticipant;
     /**
-     *
+     * The main participant, the current participant using the app.
+     */
+    private Participant mainParticipant;
+
+    /**
+     * The adapter for the list of mood events constructed from the main participant's
+     * following list.
      */
     private MoodEventAdapter moodFeedAdapter;
 
-    // displays text when MoodFeed is empty
-    TextView emptyFeed;
-
-    // listview that holds the mood feed
+    /**
+     * The listview that holds the mood feed.
+     */
     private ListView moodFeedListView;
 
-    ArrayList<MoodEvent> moodFeedEvents = new ArrayList<MoodEvent>();
+    /**
+     * The arraylist that contains the actual mood events in the mood feed.
+     */
+    ArrayList<MoodEvent> moodFeedEvents = new ArrayList<>();
 
+    /**
+     * Displays appropriate text when the main participant's mood feed is empty.
+     */
+    TextView emptyFeed;
+
+    /**
+     * Spinner that shows the user options for filtering the mood feed and map.
+     */
     Spinner filterSpinner;
 
     ElasticSearchController elasticSearchController;
@@ -105,32 +114,11 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
 
 
     private GoogleMap mMap;
-    LocationManager lm;
-    Location l;
+    LocationManager locationManager;
+    Location lastKnownLocation;
     String provider;
     double lng;
     double lat;
-    /*LocationListener locationListener = new LocationListener() {
-        @Override
-        public void onLocationChanged(Location location) {
-
-        }
-
-        @Override
-        public void onStatusChanged(String provider, int status, Bundle extras) {
-
-        }
-
-        @Override
-        public void onProviderEnabled(String provider) {
-
-        }
-
-        @Override
-        public void onProviderDisabled(String provider) {
-
-        }
-    };*/
 
     /**
      * Called on opening of activity for the first time.
@@ -159,9 +147,7 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
         welcomeText.setText("Welcome user \"" + mainParticipant.getUsername() +
                 "\" with ID \"" + mainParticipant.getId() + "\"");
 
-
-
-
+        // On click for the mood feed list view.
         moodFeedListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -176,46 +162,58 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
 
                 // Launch the ViewMoodEventActivity.
                 Intent intent = new Intent(MainActivity.this, ViewMoodEventActivity.class);
+
                 // Tell the view mood event activity we are coming from the mood history.
                 intent.putExtra("MoodListType", "MoodFeed");
                 startActivity(intent);
             }
         });
 
-
-
-
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+        SupportMapFragment mapFragment =
+                (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+
         mapFragment.getMapAsync(this);
 
-        //get location service
-        lm = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
-        Criteria c = new Criteria();
-        //criteria object will select best service based on
-        //Accuracy, power consumption, response, bearing and monetary cost
-        //set false to use best service otherwise it will select the default Sim network
-        //and give the location based on sim network
-        //now it will first check satellite than Internet than Sim network location
-        provider = lm.getBestProvider(c, false);
-        Log.i("debugMaps","provider: " + provider);
-        //now you have best provider
-        //get location
+        // Get lastKnownLocation service
+        locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+
+        // Criteria object will select best service based on accuracy, power consumption,
+        // response, bearing and monetary cost
+        Criteria criteria = new Criteria();
+
+        // Set false to use best service otherwise it will select the default Sim network
+        //and give the lastKnownLocation based on sim network
+        //now it will first check satellite than Internet than Sim network lastKnownLocation
+        provider = locationManager.getBestProvider(criteria, false);
+
+        // Get Location start
         // http://stackoverflow.com/questions/32491960/android-check-permission-for-locationmanager
-        if ( ContextCompat.checkSelfPermission( this, android.Manifest.permission.ACCESS_COARSE_LOCATION ) != PackageManager.PERMISSION_GRANTED ) {
-            //TODO: actually ask permission
-            //TODO: fix '8'
-            Log.i("debugMaps","requesting coarse permission");
-            ActivityCompat.requestPermissions( this, new String[] {  android.Manifest.permission.ACCESS_COARSE_LOCATION  },
-                    8 );
+
+        // Check if we have proper permissions to get the coarse lastKnownLocation.
+        if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.
+                ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+
+            Log.i("MoodSwing", "Requesting coarse permission.");
+            // Request the permission.
+            // Dummy request code 8 used.
+            ActivityCompat.requestPermissions(this,
+                    new String[] {android.Manifest.permission.ACCESS_COARSE_LOCATION},
+                    8);
         }
-        if ( ContextCompat.checkSelfPermission( this, android.Manifest.permission.ACCESS_FINE_LOCATION ) != PackageManager.PERMISSION_GRANTED ) {
-            //TODO: actually ask permission
-            //TODO: fix '8'
-            Log.i("debugMaps","requesting fine permission");
-            ActivityCompat.requestPermissions( this, new String[] {  android.Manifest.permission.ACCESS_FINE_LOCATION  },
-                    8 );
+
+        // Check if we have proper permissions to get the fine lastKnownLocation.
+        if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.
+                ACCESS_FINE_LOCATION ) != PackageManager.PERMISSION_GRANTED ) {
+
+            Log.i("debugMaps","Requesting fine permission");
+            // Request the permission.
+            // Dummy request code 8 used.
+            ActivityCompat.requestPermissions(this,
+                    new String[] {android.Manifest.permission.ACCESS_FINE_LOCATION},
+                    8);
         }
+
         /*if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
             //    ActivityCompat#requestPermissions
@@ -226,38 +224,36 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
             // for ActivityCompat#requestPermissions for more details.
             return;
         }*/
-        //once every 5 seconds, 10 meters
-        lm.requestLocationUpdates(provider, 5000, 10, this);
-        l = lm.getLastKnownLocation(provider);
-        if(l!=null)
-        {
-            //get latitude and longitude of the location
-                lng=l.getLongitude();
-                lat=l.getLatitude();
-            //TODO: update map based on location
+
+        // Get the lastKnownLocation once every 5 seconds, or every 10 meters.
+        locationManager.requestLocationUpdates(provider, 5000, 10, this);
+
+        lastKnownLocation = locationManager.getLastKnownLocation(provider);
+
+        // Get latitude and longitude of the lastKnownLocation
+        if (lastKnownLocation != null) {
+
+            moodSwingController.setLastKnownLocation(lastKnownLocation);
+            lng = lastKnownLocation.getLongitude();
+            lat = lastKnownLocation.getLatitude();
+            //TODO: update map based on lastKnownLocation
             //TODO: this creates null exception
             //mMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(lat, lng)));
+        } else {
+            Log.i("MoodSwing","No location provider.");
         }
-        else
-        {
-            //TODO: indicate no provider
-            Log.i("debugMaps","no provider");
-        }
-
-
     }
-
 
     @Override
     protected void onStart(){
         super.onStart();
 
+        // Load information from main model class.
         loadMoodSwing();
 
+        // Update the adapter.
         moodFeedAdapter = new MoodEventAdapter(this, moodFeedEvents);
-
         moodFeedListView.setAdapter(moodFeedAdapter);
-
 
         // handles when a different thing is selected in filter spinner
         // place in onStart deliberately to minimize calls to setOnItemSelectedListener
@@ -265,6 +261,8 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
         filterSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                // TODO: All of this should be extracted out into its own method.
+
                 //Toast.makeText(MainActivity.this, filter_strings.get(position)+"selected", Toast.LENGTH_SHORT);
                 String selected = filterSpinner.getSelectedItem().toString();
 
@@ -275,6 +273,7 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
                         // remove filters
                         updateFilterMenu(-1);
                         break;
+
                     case "Recent Week":     // sort by recent week
                         // to add some sort of maker when Recent Week selected. Remove on other options
                         //filter_strings.set(filter_strings.indexOf("Recent Week"), "Recent Week*");
@@ -283,6 +282,7 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
                         // filter by recent week here
                         updateFilterMenu(0);
                         break;
+
                     case "By Emotion":      // sort by emotion
                         // from http://stackoverflow.com/questions/10903754/input-text-dialog-android on 3/27
                         final Dialog dialog = new Dialog(MainActivity.this);
@@ -390,7 +390,6 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
 
                         builder.show();
 
-
                         break;
                 }
 
@@ -418,17 +417,12 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
     /**
      * Inflates the menu. Connects the menu_main_activity.xml to the
      * menu_main_activity in activity_main.xml.
-     * @param menu
-     * @return
      */
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.menu_main_activity, menu);
         return true;
     }
-
-
-
 
     /**
      * This method handles clicks on menu items from the overflow menu.
@@ -451,11 +445,7 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
 
             case R.id.newMoodEventToolBarButton:
                 // User chose the "New Mood Event" item, should navigate the NewMoodEventActivity.
-                Bundle params = new Bundle();
-                params.putDouble("doubleLng", lng);
-                params.putDouble("doubleLat", lat);
                 intent = new Intent(MainActivity.this, NewMoodEventActivity.class);
-                intent.putExtras(params);
                 startActivity(intent);
                 return true;
 
@@ -484,6 +474,7 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
      * Initializes all the widgets for this activity.
      */
     public void initialize() {
+        // Initialize all basic widgets.
         mainToolbar = (Toolbar) findViewById(R.id.mainToolBar);
         mainToolbar.setTitle("");
         welcomeText = (TextView)findViewById(R.id.mainWelcomeText);
@@ -491,50 +482,66 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
         emptyFeed = (TextView) findViewById(R.id.emptyMoodFeed);
         filterSpinner = (Spinner) findViewById(R.id.filterSpinnerMoodFeed);
 
-        // these will populate the filter spinner
-
+        // these populate the filter spinner
         filter_strings.add("No Filter");
         filter_strings.add("Recent Week");
         filter_strings.add("By Emotion");
         filter_strings.add("By Trigger");
 
         // for our custom spinner options and settings
-        ArrayAdapter<String> filteradapter = new ArrayAdapter<String>(this, R.layout.filter_spinner, filter_strings);
-        filterSpinner.setAdapter(filteradapter);
+        ArrayAdapter<String> filterAdapter =
+                new ArrayAdapter<>(this, R.layout.filter_spinner, filter_strings);
+        filterSpinner.setAdapter(filterAdapter);
 
         // Add this View to the main Model class.
         MoodSwingController moodSwingController = MoodSwingApplication.getMoodSwingController();
         moodSwingController.addView(this);
     }
-    public void loadMoodSwing() {
-        // Get the main Model and get the main participant, and the main participant's mood history.
-        moodFeedEvents.clear();
-        MoodSwingController moodSwingController = MoodSwingApplication.getMoodSwingController();
 
+    /**
+     * Loads information from the main model class MoodSwing. This includes things like the main
+     * participant and their mood history.
+     */
+    public void loadMoodSwing() {
+
+        // Clear the mood feed.
+        moodFeedEvents.clear();
+
+        // Get the MoodSwingController, and use that to get the main participant.
+        MoodSwingController moodSwingController = MoodSwingApplication.getMoodSwingController();
         mainParticipant = moodSwingController.getMainParticipant();
+
+        // Get the main participant's list of participants they are following.
         ArrayList<String> mainParticipantFollowingList = mainParticipant.getFollowing();
 
+        // Load mood events of the participant's the main participant is following
+        // into the mood event.
+        // TODO: This should be extracted out into its own method.
         int i;
-        int size =0 ;
-        if(mainParticipantFollowingList.isEmpty() == false){
+        int size = 0;
+        if(!mainParticipantFollowingList.isEmpty()){
             size = mainParticipantFollowingList.size();
         }
+
         // add most recent mood event of all those we're following
          for(i =0; i < size ; i++){
-             Participant followingParticipant = elasticSearchController.getParticipantByUsername(mainParticipantFollowingList.get(i));
+             Participant followingParticipant = elasticSearchController
+                     .getParticipantByUsername(mainParticipantFollowingList.get(i));
              if(followingParticipant.getMostRecentMoodEvent() != null){
                  // make sure the followed person as at least one mood event
                  moodFeedEvents.add(followingParticipant.getMostRecentMoodEvent());
              }
          }
 
-
+        // Sort the mood feed events by date.
         Collections.sort(moodFeedEvents, new Comparator<MoodEvent>() {
             @Override
             public int compare(MoodEvent o1, MoodEvent o2) {
                 return o2.getDate().compareTo(o1.getDate());
             }
         });
+
+        // Update the model.
         moodSwingController.setMoodFeed(moodFeedEvents);
 
         // Initialize array adapter.
@@ -545,15 +552,12 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
 
     /**
      * This is called when the Model tells this View to update because of some change in the Model.
-     * @param moodSwing
      */
     public void update(MoodSwing moodSwing) {
         loadMoodSwing();
 
 
     }
-
-
 
     /**
      * Manipulates the map once available.
@@ -567,24 +571,20 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-
-
     }
 
-    //If you want location on changing place also than use below method
-    //otherwise remove all below methods and don't implement location listener
+    //If you want lastKnownLocation on changing place also than use below method
+    //otherwise remove all below methods and don't implement lastKnownLocation listener
     @Override
     public void onLocationChanged(Location arg0)
     {
-        l = arg0;
-         lng=l.getLongitude();
-          lat=l.getLatitude();
-        //TODO: update map based on location
+        lastKnownLocation = arg0;
+        lng = lastKnownLocation.getLongitude();
+        lat = lastKnownLocation.getLatitude();
+
+        // TODO: update map based on lastKnownLocation
         mMap.addMarker(new MarkerOptions().position(new LatLng(lat, lng)).title("new marker"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(lat, lng)));
-
-
-
     }
 
 
