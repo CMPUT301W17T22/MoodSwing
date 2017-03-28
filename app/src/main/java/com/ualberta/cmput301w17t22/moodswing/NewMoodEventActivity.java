@@ -5,6 +5,8 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.location.Address;
+import android.location.Geocoder;
 import android.media.Image;
 import android.net.Uri;
 import android.provider.MediaStore;
@@ -25,6 +27,8 @@ import com.google.android.gms.maps.model.LatLng;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.util.Date;
+import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 import java.util.regex.Pattern;
 
@@ -83,6 +87,12 @@ public class NewMoodEventActivity extends AppCompatActivity implements MSView<Mo
     /** The toolbar, shows the title. */
     Toolbar newMoodToolbar;
 
+    double lng; //lat and lng to receive.
+
+    double lat;
+
+
+
     /**
      * Initializes all the widgets for this activity and adds this View to the main Model class.
      */
@@ -110,6 +120,12 @@ public class NewMoodEventActivity extends AppCompatActivity implements MSView<Mo
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_mood_event);
 
+        Intent intent = getIntent();
+        Bundle b = intent.getExtras();
+        if(b!= null){
+            lat = (double) b.get("doubleLat");
+            lng = (double) b.get("doubleLng");
+        }
         // Initialize all widgets for this activity and add this View to the main Model class.
         initialize();
 
@@ -431,6 +447,27 @@ public class NewMoodEventActivity extends AppCompatActivity implements MSView<Mo
 
     public void update(MoodSwing moodSwing) {
 
+    }
+    public String location(double lat, double lng){ //geocoder information and inspiration http://stackoverflow.com/questions/9409195/how-to-get-complete-address-from-latitude-and-longitude
+        Geocoder geocoder; //needd to get specific addresses.
+        List<Address> locationAddress;
+        String city = ""; //if null return an ""
+
+        geocoder = new Geocoder(this, Locale.getDefault());
+        try{
+        locationAddress = geocoder.getFromLocation(lat,lng,1);
+        city = locationAddress.get(0).getLocality(); //this portion gets the city
+        return city;
+        }//requires a catch to get location }
+
+
+
+
+        catch(Exception e){
+            e.printStackTrace();//
+        }
+
+        return city;
     }
 
 }
