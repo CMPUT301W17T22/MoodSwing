@@ -1,18 +1,18 @@
 [
     {
-        "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/layout-v21/notification_template_icon_group.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/bce1e8d7708deb639b578b1fdbd4f09ff3fe7531/output/res/layout-v21/notification_template_icon_group.xml"
+        "merged": "C:\\Users\\Fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout-v21\\notification_template_icon_group.xml",
+        "source": "C:\\Users\\Fred\\.android\\build-cache\\cd9c4cfd4be481eb0ca86ab77048eb1cbe3df69d\\output\\res\\layout-v21\\notification_template_icon_group.xml"
     },
     {
-        "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/layout-v21/notification_template_custom_big.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/bce1e8d7708deb639b578b1fdbd4f09ff3fe7531/output/res/layout-v21/notification_template_custom_big.xml"
+        "merged": "C:\\Users\\Fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout-v21\\notification_template_custom_big.xml",
+        "source": "C:\\Users\\Fred\\.android\\build-cache\\cd9c4cfd4be481eb0ca86ab77048eb1cbe3df69d\\output\\res\\layout-v21\\notification_template_custom_big.xml"
     },
     {
-        "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/layout-v21/notification_action.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/bce1e8d7708deb639b578b1fdbd4f09ff3fe7531/output/res/layout-v21/notification_action.xml"
+        "merged": "C:\\Users\\Fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout-v21\\notification_action.xml",
+        "source": "C:\\Users\\Fred\\.android\\build-cache\\cd9c4cfd4be481eb0ca86ab77048eb1cbe3df69d\\output\\res\\layout-v21\\notification_action.xml"
     },
     {
-        "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/layout-v21/notification_action_tombstone.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/bce1e8d7708deb639b578b1fdbd4f09ff3fe7531/output/res/layout-v21/notification_action_tombstone.xml"
+        "merged": "C:\\Users\\Fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\layout-v21\\notification_action_tombstone.xml",
+        "source": "C:\\Users\\Fred\\.android\\build-cache\\cd9c4cfd4be481eb0ca86ab77048eb1cbe3df69d\\output\\res\\layout-v21\\notification_action_tombstone.xml"
     }
 ]
