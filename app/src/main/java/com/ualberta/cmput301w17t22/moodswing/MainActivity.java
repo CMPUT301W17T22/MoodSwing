@@ -47,10 +47,11 @@ import com.google.android.gms.maps.model.MarkerOptions;
  * The MainActivity of the MoodSwing app. This screen will display the map view of mood events,
  * the mood feed, and have a floating toolbar to navigate the user to the other functionalities of
  * the app.
+ *
+ * MORE JAVADOC TESTING 123123123
  * <p/>
- * Hexadecimal color codes:
- * dark magenta: #66023C
- * background: e0b0ff
+ * TODO: For filtering: using activeFilters, as well as triggerWord and filterEmotion
+ * TODO: in loadMoodSwing() might be a good idea
  */
 public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>,
         LocationListener,
@@ -103,7 +104,7 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
     // The trigger word that the user will search for in filter
     private String triggerWord = "";
     // The chosen mood that the user will filter
-    private String triggerEmotion = "";
+    private String filterEmotion = "";
 
     // shows which filters are active and which aren't
     // if activeFilters = [a, b, c], a = recent week, b = emotion filter, c = trigger filter
@@ -268,26 +269,22 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
 
                 switch (selected) {
                     case "No Filter":       // no filter selected
-                        //Toast.makeText(MainActivity.this, selected, Toast.LENGTH_SHORT).show();
-
-                        // remove filters
-                        updateFilterMenu(-1);
+                        Toast.makeText(MainActivity.this, "Filters removed.", Toast.LENGTH_SHORT).show();
+                        updateFilterMenu(-1);   // update filter list
+                        loadMoodSwing(); // refresh the feed and filter
                         break;
 
                     case "Recent Week":     // sort by recent week
-                        // to add some sort of maker when Recent Week selected. Remove on other options
-                        //filter_strings.set(filter_strings.indexOf("Recent Week"), "Recent Week*");
-                        //Toast.makeText(MainActivity.this, "Filtering by Recent Week", Toast.LENGTH_SHORT).show();
-
-                        // filter by recent week here
-                        updateFilterMenu(0);
+                        Toast.makeText(MainActivity.this, "Filtering by week.", Toast.LENGTH_SHORT).show();
+                        updateFilterMenu(0); // update filter list
+                        loadMoodSwing(); // refresh the feed and filter
                         break;
 
                     case "By Emotion":      // sort by emotion
                         // from http://stackoverflow.com/questions/10903754/input-text-dialog-android on 3/27
                         final Dialog dialog = new Dialog(MainActivity.this);
                         dialog.setContentView(R.layout.emotional_state_dialogue_box);
-                        dialog.setTitle("This is my custom dialog box");
+                        dialog.setTitle("Select an emotion to filter.");
                         dialog.setCancelable(true);
 
                         // set up radio buttons and filter/cancel buttons
@@ -309,10 +306,12 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
                             public void onClick(View v) {
                                 int chosenEmotionIndex = emotionsRadioGroup.getCheckedRadioButtonId();
                                 RadioButton chosenEmotionRadioButton = (RadioButton) dialog.findViewById(chosenEmotionIndex);
-                                triggerEmotion = chosenEmotionRadioButton.getText().toString();
-                                //Toast.makeText(MainActivity.this, triggerEmotion, Toast.LENGTH_SHORT).show();
+                                filterEmotion = chosenEmotionRadioButton.getText().toString();
+                                Toast.makeText(MainActivity.this, "Filtering by "+filterEmotion, Toast.LENGTH_SHORT).show();
                                 updateFilterMenu(1);
                                 dialog.dismiss();
+                                loadMoodSwing(); // refresh the feed
+
 
                             }
                         });
@@ -327,12 +326,12 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
 
                         // now that the dialog is set up, it's time to show it
                         dialog.show();
-
                         break;
+
+
                     default:                // sort by trigger
                         // from http://stackoverflow.com/questions/10903754/input-text-dialog-android on 3/27
                         AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this, R.style.DialogTheme);
-
 
                         // Method for displaying an edittext nicely in an alertdialog adapted from
                         // http://stackoverflow.com/questions/27774414/add-bigger-margin-to-edittext-in-android-alertdialog
@@ -363,7 +362,6 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
                                 .setCancelable(true)
                                 .setView(triggerEditTextContainer);
 
-
                         // Set up the buttons
                         builder.setPositiveButton("Filter", new DialogInterface.OnClickListener() {
                             @Override
@@ -376,8 +374,9 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
                                     dialog.cancel();
                                 } else {
                                     // triggerWord is acceptable
-                                    Toast.makeText(MainActivity.this, triggerWord, Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(MainActivity.this, "Filtering by trigger word: "+triggerWord, Toast.LENGTH_SHORT).show();
                                     updateFilterMenu(2);
+                                    loadMoodSwing(); // refresh the feed
                                 }
                             }
                         });
@@ -389,7 +388,6 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
                         });
 
                         builder.show();
-
                         break;
                 }
 
@@ -487,6 +485,7 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
         filter_strings.add("Recent Week");
         filter_strings.add("By Emotion");
         filter_strings.add("By Trigger");
+        filter_strings.add("Test hidden");
 
         // for our custom spinner options and settings
         ArrayAdapter<String> filterAdapter =
@@ -501,9 +500,10 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
     /**
      * Loads information from the main model class MoodSwing. This includes things like the main
      * participant and their mood history.
+     * Use
      */
     public void loadMoodSwing() {
-
+        Toast.makeText(MainActivity.this, filter_strings.get(0), Toast.LENGTH_SHORT).show();
         // Clear the mood feed.
         moodFeedEvents.clear();
 
@@ -555,8 +555,6 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
      */
     public void update(MoodSwing moodSwing) {
         loadMoodSwing();
-
-
     }
 
     /**
@@ -639,9 +637,6 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
         } else {                        // trigger filter off
             filter_strings.set(3, "By Trigger");
         }
-
-        Toast.makeText(MainActivity.this, filter_strings.get(0), Toast.LENGTH_SHORT).show();
-
     }
 
     /**
