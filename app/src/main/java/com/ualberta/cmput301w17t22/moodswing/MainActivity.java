@@ -541,7 +541,7 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
         // Filter Recent Week if needed. Less overhead if you do it here
         // vs in elasticsearch
         if(activeFilters[0] == 1) {
-            ArrayList<MoodEvent> moodFeedEvents2 = filterRecentWeek(moodFeedEvents);
+            moodFeedEvents = filterRecentWeek(moodFeedEvents);
         }
 
         // Sort the mood feed events by date.

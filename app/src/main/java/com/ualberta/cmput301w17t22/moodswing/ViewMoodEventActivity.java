@@ -21,6 +21,8 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.text.SimpleDateFormat;
+
 
 /**
  * Activity is launched when app user chooses to view a mood event. Launched from both
@@ -45,6 +47,9 @@ public class ViewMoodEventActivity extends AppCompatActivity implements MSView<M
     /** TextView that holds the mood event's trigger text. */
     TextView triggerTextView;
     TextView triggerPrefixTextView;
+
+    /** TextView that holds the mood event's date and time of occurance */
+    TextView dateTextView;
 
     /** ImageView that holds the appropriate image for the emotional state. */
     ImageView emotionalStateImageView;
@@ -94,6 +99,8 @@ public class ViewMoodEventActivity extends AppCompatActivity implements MSView<M
 
         triggerPrefixTextView =
                 (TextView) findViewById(R.id.triggerPrefixTextView);
+
+        dateTextView = (TextView) findViewById(R.id.dateTextView_ViewMoodEvent);
 
         // Initialize the image views.
         emotionalStateImageView =
@@ -354,6 +361,9 @@ public class ViewMoodEventActivity extends AppCompatActivity implements MSView<M
 
         // Set the map fragment visibility.
         setMapFragmentVisibility();
+
+        // Set date and time
+        setDateTime();
     }
 
     /**
@@ -414,6 +424,15 @@ public class ViewMoodEventActivity extends AppCompatActivity implements MSView<M
         }
     }
 
+
+    /**
+     * Set the date and time in the correct format.
+     */
+    public void setDateTime() {
+        //Sets the formatted date into its corresponding View
+        String formattedDate = new SimpleDateFormat("EEE, MMMM dd, yyyy").format(moodEvent.getDate());
+        dateTextView.setText("on "+formattedDate);
+    }
 
     /**
      * Refreshes this view to display current information.

@@ -33,7 +33,7 @@
         android:layout_below="@+id/Emoticon_MoodHistory"
         android:layout_marginLeft="6dp"
         android:text="date/time stamp"
-        android:textColor="?attr/colorControlNormal" />
+        android:textColor="@color/common_google_signin_btn_text_light_focused" />
 
     <TextView
         android:id="@+id/EmotionStateTextView_MoodEvent"

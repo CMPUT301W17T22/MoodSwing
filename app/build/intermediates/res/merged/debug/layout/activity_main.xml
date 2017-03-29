@@ -1,121 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/backgroundPink">
+    android:fillViewport="true">
 
-
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/mainToolBar"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:layout_alignParentTop="true"
-        android:background="?attr/colorPrimary"
-        android:elevation="4dp"
-        android:theme="@style/AppTheme"
-        app:popupTheme="@style/AppTheme"
-        app:titleTextColor="@color/white">
+        android:layout_height="match_parent"
+        android:background="@color/backgroundPink"
+        android:orientation="vertical">
+
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/mainToolBar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_alignParentTop="true"
+            android:background="?attr/colorPrimary"
+            android:elevation="4dp"
+            android:theme="@style/AppTheme"
+            app:popupTheme="@style/AppTheme"
+            app:titleTextColor="@color/white">
+
+            <TextView
+                android:id="@+id/toolbar_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="cursive"
+                android:text="@string/moodswing"
+                android:textColor="@color/white"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+        </android.support.v7.widget.Toolbar>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0.3dp" />
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/filterToolbar_MoodFeed"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:background="?attr/colorPrimary"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme"
+            android:weightSum="1"
+            app:titleTextColor="@color/white">
+
+            <TextView
+                android:id="@+id/filterTitleMoodFeed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.64"
+                android:fontFamily="sans-serif"
+                android:text="@string/moodfeedtitle"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
+
+            <Spinner
+                android:id="@+id/filterSpinnerMoodFeed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:gravity="right"
+                android:popupBackground="@color/white"
+                android:textAlignment="gravity"
+                android:theme="@style/AppTheme" />
+        </android.support.v7.widget.Toolbar>
 
         <TextView
-            android:id="@+id/toolbar_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="cursive"
-            android:text="@string/moodswing"
-            android:textColor="@color/white"
-            android:textSize="30sp"
-            android:textStyle="bold" />
-
-    </android.support.v7.widget.Toolbar>
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="0.3dp" />
-
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/filterToolbar_MoodFeed"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:background="?attr/colorPrimary"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
-        app:titleTextColor="@color/white"
-        android:weightSum="1">
-
-        <TextView
-            android:id="@+id/filterTitleMoodFeed"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1.64"
-            android:fontFamily="sans-serif"
-            android:text="@string/moodfeedtitle"
-            android:textColor="@color/white"
-            android:textSize="18sp" />
-
-
-        <Spinner
-            android:id="@+id/filterSpinnerMoodFeed"
+            android:id="@+id/mainWelcomeText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginRight="5dp"
-            android:gravity="right"
-            android:popupBackground="@color/white"
-            android:textAlignment="gravity"
-            android:theme="@style/AppTheme" />
-    </android.support.v7.widget.Toolbar>
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/mainToolBar"
+            android:layout_marginBottom="6dp"
+            android:layout_marginLeft="6dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/main_welcome_text" />
 
-    <TextView
-        android:id="@+id/mainWelcomeText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/mainToolBar"
-        android:layout_marginBottom="6dp"
-        android:layout_marginLeft="6dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/main_welcome_text" />
+        <ListView
+            android:id="@+id/MoodFeedListView"
+            android:layout_width="match_parent"
+            android:layout_height="285dp"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="3dp"
+            android:nestedScrollingEnabled="true" />
 
-    <ListView
-        android:id="@+id/MoodFeedListView"
-        android:layout_width="match_parent"
-        android:layout_height="285dp"
-        android:layout_marginLeft="3dp"
-        android:layout_marginRight="3dp"
-        android:nestedScrollingEnabled="true"
-        />
+        <TextView
+            android:id="@+id/emptyMoodFeed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="100dp"
+            android:layout_marginTop="100dp"
+            android:text="Your MoodFeed is empty."
+            android:textAlignment="center"
+            android:textSize="18sp"
+            android:visibility="gone" />
 
-    <!-- <fragment
-        class ="com.google.android.gms.maps.MapFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="270dp"
-        android:layout_below="@+id/mainWelcomeText"
-        android:layout_alignParentStart="true"
-        tools:layout="@layout/activity_main"
-        android:id ="@+id/map"/> -->
-
-    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:map="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/map"
-        android:name="com.google.android.gms.maps.SupportMapFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context="com.ualberta.cmput301w17t22.moodswing.MapsFragment" />
-
-    <TextView
-        android:id="@+id/emptyMoodFeed"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:text="Your MoodFeed is empty."
-        android:textAlignment="center"
-        android:textSize="18sp"
-        android:visibility="gone" />
+        <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:map="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/MoodFeedListView"
+            android:layout_weight="0.3"
+            tools:context="com.ualberta.cmput301w17t22.moodswing.MapsFragment" />
 
 
-
-
-</LinearLayout>
+    </LinearLayout>
+</ScrollView>

@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.google.android.gms.maps.model.LatLng;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 /** Adapter to display mood events in list views properly
@@ -54,8 +55,9 @@ public class MoodEventAdapter extends ArrayAdapter<MoodEvent> {
         }else{
             usernameTextView.setText(moodEvent.getOriginalPoster()+" was feeling ");
         }
-        //Sets the date into its corresponding View
-        dateStamp.setText(moodEvent.getDate().toString());
+        //Sets the formatted date into its corresponding View
+        String formattedDate = new SimpleDateFormat("EEE, MMMM dd, yyyy").format(moodEvent.getDate());
+        dateStamp.setText(formattedDate);
 
         // Set the image and text for the appropriate Mood Event.
         emotionalStateTextView.setText(moodEvent.getEmotionalState().getDescription());
