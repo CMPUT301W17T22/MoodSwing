@@ -15,7 +15,6 @@ import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
@@ -266,7 +265,6 @@ public class ViewMoodEventActivity extends AppCompatActivity implements MSView<M
 
         // Load the location from the mood event.
         Location location = moodEvent.getLocation();
-        Log.i("MoodSwing", location.toString());
 
         if (location != null) {
             // Create a LatLng object from the location so we can properly set a camera position.
