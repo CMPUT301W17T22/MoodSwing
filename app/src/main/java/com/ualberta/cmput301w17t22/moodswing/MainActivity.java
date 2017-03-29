@@ -33,8 +33,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -52,6 +54,8 @@ import com.google.android.gms.maps.model.MarkerOptions;
  * <p/>
  * TODO: For filtering: using activeFilters, as well as triggerWord and filterEmotion
  * TODO: in loadMoodSwing() might be a good idea
+ *
+ * TODO: prevent filters from going off automatically onStart
  */
 public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>,
         LocationListener,
@@ -265,22 +269,23 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
                 // TODO: All of this should be extracted out into its own method.
 
                 //Toast.makeText(MainActivity.this, filter_strings.get(position)+"selected", Toast.LENGTH_SHORT);
-                String selected = filterSpinner.getSelectedItem().toString();
+                int selected = filterSpinner.getSelectedItemPosition();
 
                 switch (selected) {
-                    case "No Filter":       // no filter selected
+                    case 0:       // no filter selected
                         Toast.makeText(MainActivity.this, "Filters removed.", Toast.LENGTH_SHORT).show();
                         updateFilterMenu(-1);   // update filter list
                         loadMoodSwing(); // refresh the feed and filter
                         break;
 
-                    case "Recent Week":     // sort by recent week
+
+                    case 1:     // sort by recent week
                         Toast.makeText(MainActivity.this, "Filtering by week.", Toast.LENGTH_SHORT).show();
                         updateFilterMenu(0); // update filter list
                         loadMoodSwing(); // refresh the feed and filter
                         break;
 
-                    case "By Emotion":      // sort by emotion
+                    case 2:      // sort by emotion
                         // from http://stackoverflow.com/questions/10903754/input-text-dialog-android on 3/27
                         final Dialog dialog = new Dialog(MainActivity.this);
                         dialog.setContentView(R.layout.emotional_state_dialogue_box);
@@ -503,10 +508,10 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
      * Use
      */
     public void loadMoodSwing() {
-        Toast.makeText(MainActivity.this, filter_strings.get(0), Toast.LENGTH_SHORT).show();
+        //Toast.makeText(MainActivity.this, filter_strings.get(0), Toast.LENGTH_SHORT).show();
         // Clear the mood feed.
         moodFeedEvents.clear();
-
+        //Toast.makeText(MainActivity.this, "Filtering..", Toast.LENGTH_SHORT).show();
         // Get the MoodSwingController, and use that to get the main participant.
         MoodSwingController moodSwingController = MoodSwingApplication.getMoodSwingController();
         mainParticipant = moodSwingController.getMainParticipant();
@@ -532,6 +537,12 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
                  moodFeedEvents.add(followingParticipant.getMostRecentMoodEvent());
              }
          }
+
+        // Filter Recent Week if needed. Less overhead if you do it here
+        // vs in elasticsearch
+        if(activeFilters[0] == 1) {
+            ArrayList<MoodEvent> moodFeedEvents2 = filterRecentWeek(moodFeedEvents);
+        }
 
         // Sort the mood feed events by date.
         Collections.sort(moodFeedEvents, new Comparator<MoodEvent>() {
@@ -655,5 +666,31 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
             activeFilters[i] = activeFilters[i] ^= 1;
         }
         updateFilterUI();
+    }
+
+    /**
+     * Given a list of MoodEvents, remove the MoodEvents that are more than a
+     * week old. Logically all you need to do for filtering, should be more
+     * efficient than doing this filter in elasticsearch.
+     * @param moodList - a list of MoodEvents to filter
+     * @return a moodlist without any MoodEvents older than a week.
+     */
+    public ArrayList<MoodEvent> filterRecentWeek(ArrayList<MoodEvent> moodList) {
+        Date currentDate = new Date();
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(currentDate);
+        cal.add(Calendar.DATE, -7);
+        // date one week ago. Compare this to MoodEvents
+        Date weekAgo = cal.getTime();
+
+        //Toast.makeText(MainActivity.this, weekAgo.toString(), Toast.LENGTH_SHORT).show();
+        ArrayList<MoodEvent> returnMoodList = new ArrayList<>();
+        for(int i = 0; i < moodList.size(); i++) {
+            Date moodDate = moodList.get(i).getDate();
+            if (moodDate.after(weekAgo)) {  // if date is within past week, keep it
+                returnMoodList.add(moodList.get(i));
+            }
+        }
+        return returnMoodList;
     }
 }
