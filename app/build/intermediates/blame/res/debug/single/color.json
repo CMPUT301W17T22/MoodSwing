@@ -1,202 +1,102 @@
 [
     {
-        "merged": "/Users/PeterWeckend/Desktop/test301'/MoodSwing/app/build/intermediates/res/merged/debug/color/switch_thumb_material_light.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/3b7b1f04ee66bb6e8f3a110c8f3ce86dc592946a/output/res/color/switch_thumb_material_light.xml"
+        "merged": "C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_btn_checkable.xml",
+        "source": "C:\\Users\\fred\\.android\\build-cache\\a987e0752e8a3c33a80e6f25858c5aa9a1461541\\output\\res\\color\\abc_tint_btn_checkable.xml"
     },
     {
-        "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/color/switch_thumb_material_light.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/bce1e8d7708deb639b578b1fdbd4f09ff3fe7531/output/res/color/switch_thumb_material_light.xml"
+        "merged": "C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\color\\common_google_signin_btn_text_dark.xml",
+        "source": "C:\\Users\\fred\\.android\\build-cache\\85f91bee56933bded0e8bb241e8d55d94a91fdb7\\output\\res\\color\\common_google_signin_btn_text_dark.xml"
     },
     {
-        "merged": "/Users/PeterWeckend/Desktop/test301'/MoodSwing/app/build/intermediates/res/merged/debug/color/abc_hint_foreground_material_light.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/3b7b1f04ee66bb6e8f3a110c8f3ce86dc592946a/output/res/color/abc_hint_foreground_material_light.xml"
+        "merged": "C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\color\\common_google_signin_btn_text_light.xml",
+        "source": "C:\\Users\\fred\\.android\\build-cache\\85f91bee56933bded0e8bb241e8d55d94a91fdb7\\output\\res\\color\\common_google_signin_btn_text_light.xml"
     },
     {
-        "merged": "/Users/PeterWeckend/Desktop/test301'/MoodSwing/app/build/intermediates/res/merged/debug/color/switch_thumb_material_dark.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/3b7b1f04ee66bb6e8f3a110c8f3ce86dc592946a/output/res/color/switch_thumb_material_dark.xml"
+        "merged": "C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_disable_only_material_dark.xml",
+        "source": "C:\\Users\\fred\\.android\\build-cache\\a987e0752e8a3c33a80e6f25858c5aa9a1461541\\output\\res\\color\\abc_primary_text_disable_only_material_dark.xml"
     },
     {
-        "merged": "/Users/PeterWeckend/Desktop/test301'/MoodSwing/app/build/intermediates/res/merged/debug/color/abc_primary_text_disable_only_material_light.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/3b7b1f04ee66bb6e8f3a110c8f3ce86dc592946a/output/res/color/abc_primary_text_disable_only_material_light.xml"
+        "merged": "C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_btn_colored_text_material.xml",
+        "source": "C:\\Users\\fred\\.android\\build-cache\\a987e0752e8a3c33a80e6f25858c5aa9a1461541\\output\\res\\color\\abc_btn_colored_text_material.xml"
     },
     {
-        "merged": "/Users/PeterWeckend/Desktop/test301'/MoodSwing/app/build/intermediates/res/merged/debug/color/abc_primary_text_material_dark.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/3b7b1f04ee66bb6e8f3a110c8f3ce86dc592946a/output/res/color/abc_primary_text_material_dark.xml"
+        "merged": "C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\color\\common_google_signin_btn_tint.xml",
+        "source": "C:\\Users\\fred\\.android\\build-cache\\85f91bee56933bded0e8bb241e8d55d94a91fdb7\\output\\res\\color\\common_google_signin_btn_tint.xml"
     },
     {
-        "merged": "/Users/PeterWeckend/Desktop/test301'/MoodSwing/app/build/intermediates/res/merged/debug/color/design_error.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/14356d65f3209c87f8a7fe0d695b0c8cfc0e24f0/output/res/color/design_error.xml"
+        "merged": "C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_material_dark.xml",
+        "source": "C:\\Users\\fred\\.android\\build-cache\\a987e0752e8a3c33a80e6f25858c5aa9a1461541\\output\\res\\color\\abc_primary_text_material_dark.xml"
     },
     {
-        "merged": "/Users/PeterWeckend/Desktop/test301'/MoodSwing/app/build/intermediates/res/merged/debug/color/abc_tint_btn_checkable.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/3b7b1f04ee66bb6e8f3a110c8f3ce86dc592946a/output/res/color/abc_tint_btn_checkable.xml"
+        "merged": "C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_material_light.xml",
+        "source": "C:\\Users\\fred\\.android\\build-cache\\a987e0752e8a3c33a80e6f25858c5aa9a1461541\\output\\res\\color\\abc_primary_text_material_light.xml"
     },
     {
-        "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/color/abc_btn_colored_text_material.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/bce1e8d7708deb639b578b1fdbd4f09ff3fe7531/output/res/color/abc_btn_colored_text_material.xml"
+        "merged": "C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_secondary_text_material_light.xml",
+        "source": "C:\\Users\\fred\\.android\\build-cache\\a987e0752e8a3c33a80e6f25858c5aa9a1461541\\output\\res\\color\\abc_secondary_text_material_light.xml"
     },
     {
-        "merged": "/Users/PeterWeckend/Desktop/test301'/MoodSwing/app/build/intermediates/res/merged/debug/color/abc_search_url_text.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/3b7b1f04ee66bb6e8f3a110c8f3ce86dc592946a/output/res/color/abc_search_url_text.xml"
+        "merged": "C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_search_url_text.xml",
+        "source": "C:\\Users\\fred\\.android\\build-cache\\a987e0752e8a3c33a80e6f25858c5aa9a1461541\\output\\res\\color\\abc_search_url_text.xml"
     },
     {
-        "merged": "/Users/PeterWeckend/Desktop/test301'/MoodSwing/app/build/intermediates/res/merged/debug/color/abc_tint_spinner.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/3b7b1f04ee66bb6e8f3a110c8f3ce86dc592946a/output/res/color/abc_tint_spinner.xml"
+        "merged": "C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_btn_colored_borderless_text_material.xml",
+        "source": "C:\\Users\\fred\\.android\\build-cache\\a987e0752e8a3c33a80e6f25858c5aa9a1461541\\output\\res\\color\\abc_btn_colored_borderless_text_material.xml"
     },
     {
-        "merged": "/Users/PeterWeckend/Desktop/test301'/MoodSwing/app/build/intermediates/res/merged/debug/color/abc_tint_seek_thumb.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/3b7b1f04ee66bb6e8f3a110c8f3ce86dc592946a/output/res/color/abc_tint_seek_thumb.xml"
+        "merged": "C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_default.xml",
+        "source": "C:\\Users\\fred\\.android\\build-cache\\a987e0752e8a3c33a80e6f25858c5aa9a1461541\\output\\res\\color\\abc_tint_default.xml"
     },
     {
-        "merged": "/Users/PeterWeckend/Desktop/test301'/MoodSwing/app/build/intermediates/res/merged/debug/color/abc_tint_switch_track.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/3b7b1f04ee66bb6e8f3a110c8f3ce86dc592946a/output/res/color/abc_tint_switch_track.xml"
+        "merged": "C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\color\\design_error.xml",
+        "source": "C:\\Users\\fred\\.android\\build-cache\\8a6305c6c9cf45ea4e7250a5d1077f87e2894639\\output\\res\\color\\design_error.xml"
     },
     {
-        "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/color/switch_thumb_material_dark.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/bce1e8d7708deb639b578b1fdbd4f09ff3fe7531/output/res/color/switch_thumb_material_dark.xml"
+        "merged": "C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_edittext.xml",
+        "source": "C:\\Users\\fred\\.android\\build-cache\\a987e0752e8a3c33a80e6f25858c5aa9a1461541\\output\\res\\color\\abc_tint_edittext.xml"
     },
     {
-        "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/color/abc_tint_default.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/bce1e8d7708deb639b578b1fdbd4f09ff3fe7531/output/res/color/abc_tint_default.xml"
+        "merged": "C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\color\\design_tint_password_toggle.xml",
+        "source": "C:\\Users\\fred\\.android\\build-cache\\8a6305c6c9cf45ea4e7250a5d1077f87e2894639\\output\\res\\color\\design_tint_password_toggle.xml"
     },
     {
-        "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/color/abc_secondary_text_material_light.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/bce1e8d7708deb639b578b1fdbd4f09ff3fe7531/output/res/color/abc_secondary_text_material_light.xml"
+        "merged": "C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_switch_thumb.xml",
+        "source": "C:\\Users\\fred\\.android\\build-cache\\a987e0752e8a3c33a80e6f25858c5aa9a1461541\\output\\res\\color\\abc_tint_switch_thumb.xml"
     },
     {
-        "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/color/abc_tint_spinner.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/bce1e8d7708deb639b578b1fdbd4f09ff3fe7531/output/res/color/abc_tint_spinner.xml"
+        "merged": "C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_disable_only_material_light.xml",
+        "source": "C:\\Users\\fred\\.android\\build-cache\\a987e0752e8a3c33a80e6f25858c5aa9a1461541\\output\\res\\color\\abc_primary_text_disable_only_material_light.xml"
     },
     {
-        "merged": "/Users/PeterWeckend/Desktop/test301'/MoodSwing/app/build/intermediates/res/merged/debug/color/abc_primary_text_disable_only_material_dark.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/3b7b1f04ee66bb6e8f3a110c8f3ce86dc592946a/output/res/color/abc_primary_text_disable_only_material_dark.xml"
+        "merged": "C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_seek_thumb.xml",
+        "source": "C:\\Users\\fred\\.android\\build-cache\\a987e0752e8a3c33a80e6f25858c5aa9a1461541\\output\\res\\color\\abc_tint_seek_thumb.xml"
     },
     {
-        "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/color/design_error.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/eb961abbd6e14e0aab0f2126e4bcc17b36db89e3/output/res/color/design_error.xml"
+        "merged": "C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_hint_foreground_material_light.xml",
+        "source": "C:\\Users\\fred\\.android\\build-cache\\a987e0752e8a3c33a80e6f25858c5aa9a1461541\\output\\res\\color\\abc_hint_foreground_material_light.xml"
     },
     {
-        "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/color/abc_primary_text_disable_only_material_light.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/bce1e8d7708deb639b578b1fdbd4f09ff3fe7531/output/res/color/abc_primary_text_disable_only_material_light.xml"
+        "merged": "C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\color\\switch_thumb_material_light.xml",
+        "source": "C:\\Users\\fred\\.android\\build-cache\\a987e0752e8a3c33a80e6f25858c5aa9a1461541\\output\\res\\color\\switch_thumb_material_light.xml"
     },
     {
-        "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/color/common_google_signin_btn_tint.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/d7350be4b00c090efaa02f0ffbc246a03362dcd9/output/res/color/common_google_signin_btn_tint.xml"
+        "merged": "C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_switch_track.xml",
+        "source": "C:\\Users\\fred\\.android\\build-cache\\a987e0752e8a3c33a80e6f25858c5aa9a1461541\\output\\res\\color\\abc_tint_switch_track.xml"
     },
     {
-        "merged": "/Users/PeterWeckend/Desktop/test301'/MoodSwing/app/build/intermediates/res/merged/debug/color/abc_tint_switch_thumb.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/3b7b1f04ee66bb6e8f3a110c8f3ce86dc592946a/output/res/color/abc_tint_switch_thumb.xml"
+        "merged": "C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_hint_foreground_material_dark.xml",
+        "source": "C:\\Users\\fred\\.android\\build-cache\\a987e0752e8a3c33a80e6f25858c5aa9a1461541\\output\\res\\color\\abc_hint_foreground_material_dark.xml"
     },
     {
-        "merged": "/Users/PeterWeckend/Desktop/test301'/MoodSwing/app/build/intermediates/res/merged/debug/color/abc_tint_default.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/3b7b1f04ee66bb6e8f3a110c8f3ce86dc592946a/output/res/color/abc_tint_default.xml"
+        "merged": "C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\color\\switch_thumb_material_dark.xml",
+        "source": "C:\\Users\\fred\\.android\\build-cache\\a987e0752e8a3c33a80e6f25858c5aa9a1461541\\output\\res\\color\\switch_thumb_material_dark.xml"
     },
     {
-        "merged": "/Users/PeterWeckend/Desktop/test301'/MoodSwing/app/build/intermediates/res/merged/debug/color/abc_secondary_text_material_light.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/3b7b1f04ee66bb6e8f3a110c8f3ce86dc592946a/output/res/color/abc_secondary_text_material_light.xml"
+        "merged": "C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_spinner.xml",
+        "source": "C:\\Users\\fred\\.android\\build-cache\\a987e0752e8a3c33a80e6f25858c5aa9a1461541\\output\\res\\color\\abc_tint_spinner.xml"
     },
     {
-        "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/color/design_tint_password_toggle.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/eb961abbd6e14e0aab0f2126e4bcc17b36db89e3/output/res/color/design_tint_password_toggle.xml"
-    },
-    {
-        "merged": "/Users/PeterWeckend/Desktop/test301'/MoodSwing/app/build/intermediates/res/merged/debug/color/design_tint_password_toggle.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/14356d65f3209c87f8a7fe0d695b0c8cfc0e24f0/output/res/color/design_tint_password_toggle.xml"
-    },
-    {
-        "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/color/abc_tint_btn_checkable.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/bce1e8d7708deb639b578b1fdbd4f09ff3fe7531/output/res/color/abc_tint_btn_checkable.xml"
-    },
-    {
-        "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/color/abc_tint_switch_thumb.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/bce1e8d7708deb639b578b1fdbd4f09ff3fe7531/output/res/color/abc_tint_switch_thumb.xml"
-    },
-    {
-        "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/color/abc_primary_text_disable_only_material_dark.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/bce1e8d7708deb639b578b1fdbd4f09ff3fe7531/output/res/color/abc_primary_text_disable_only_material_dark.xml"
-    },
-    {
-        "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/color/abc_secondary_text_material_dark.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/bce1e8d7708deb639b578b1fdbd4f09ff3fe7531/output/res/color/abc_secondary_text_material_dark.xml"
-    },
-    {
-        "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/color/abc_hint_foreground_material_dark.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/bce1e8d7708deb639b578b1fdbd4f09ff3fe7531/output/res/color/abc_hint_foreground_material_dark.xml"
-    },
-    {
-        "merged": "/Users/PeterWeckend/Desktop/test301'/MoodSwing/app/build/intermediates/res/merged/debug/color/abc_btn_colored_borderless_text_material.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/3b7b1f04ee66bb6e8f3a110c8f3ce86dc592946a/output/res/color/abc_btn_colored_borderless_text_material.xml"
-    },
-    {
-        "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/color/abc_tint_edittext.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/bce1e8d7708deb639b578b1fdbd4f09ff3fe7531/output/res/color/abc_tint_edittext.xml"
-    },
-    {
-        "merged": "/Users/PeterWeckend/Desktop/test301'/MoodSwing/app/build/intermediates/res/merged/debug/color/abc_hint_foreground_material_dark.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/3b7b1f04ee66bb6e8f3a110c8f3ce86dc592946a/output/res/color/abc_hint_foreground_material_dark.xml"
-    },
-    {
-        "merged": "/Users/PeterWeckend/Desktop/test301'/MoodSwing/app/build/intermediates/res/merged/debug/color/abc_btn_colored_text_material.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/3b7b1f04ee66bb6e8f3a110c8f3ce86dc592946a/output/res/color/abc_btn_colored_text_material.xml"
-    },
-    {
-        "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/color/abc_primary_text_material_light.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/bce1e8d7708deb639b578b1fdbd4f09ff3fe7531/output/res/color/abc_primary_text_material_light.xml"
-    },
-    {
-        "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/color/common_google_signin_btn_text_light.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/d7350be4b00c090efaa02f0ffbc246a03362dcd9/output/res/color/common_google_signin_btn_text_light.xml"
-    },
-    {
-        "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/color/abc_hint_foreground_material_light.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/bce1e8d7708deb639b578b1fdbd4f09ff3fe7531/output/res/color/abc_hint_foreground_material_light.xml"
-    },
-    {
-        "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/color/abc_btn_colored_borderless_text_material.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/bce1e8d7708deb639b578b1fdbd4f09ff3fe7531/output/res/color/abc_btn_colored_borderless_text_material.xml"
-    },
-    {
-        "merged": "/Users/PeterWeckend/Desktop/test301'/MoodSwing/app/build/intermediates/res/merged/debug/color/common_google_signin_btn_text_light.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/d7350be4b00c090efaa02f0ffbc246a03362dcd9/output/res/color/common_google_signin_btn_text_light.xml"
-    },
-    {
-        "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/color/abc_tint_switch_track.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/bce1e8d7708deb639b578b1fdbd4f09ff3fe7531/output/res/color/abc_tint_switch_track.xml"
-    },
-    {
-        "merged": "/Users/PeterWeckend/Desktop/test301'/MoodSwing/app/build/intermediates/res/merged/debug/color/abc_tint_edittext.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/3b7b1f04ee66bb6e8f3a110c8f3ce86dc592946a/output/res/color/abc_tint_edittext.xml"
-    },
-    {
-        "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/color/abc_primary_text_material_dark.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/bce1e8d7708deb639b578b1fdbd4f09ff3fe7531/output/res/color/abc_primary_text_material_dark.xml"
-    },
-    {
-        "merged": "/Users/PeterWeckend/Desktop/test301'/MoodSwing/app/build/intermediates/res/merged/debug/color/common_google_signin_btn_text_dark.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/d7350be4b00c090efaa02f0ffbc246a03362dcd9/output/res/color/common_google_signin_btn_text_dark.xml"
-    },
-    {
-        "merged": "/Users/PeterWeckend/Desktop/test301'/MoodSwing/app/build/intermediates/res/merged/debug/color/common_google_signin_btn_tint.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/d7350be4b00c090efaa02f0ffbc246a03362dcd9/output/res/color/common_google_signin_btn_tint.xml"
-    },
-    {
-        "merged": "/Users/PeterWeckend/Desktop/test301'/MoodSwing/app/build/intermediates/res/merged/debug/color/abc_primary_text_material_light.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/3b7b1f04ee66bb6e8f3a110c8f3ce86dc592946a/output/res/color/abc_primary_text_material_light.xml"
-    },
-    {
-        "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/color/abc_tint_seek_thumb.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/bce1e8d7708deb639b578b1fdbd4f09ff3fe7531/output/res/color/abc_tint_seek_thumb.xml"
-    },
-    {
-        "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/color/common_google_signin_btn_text_dark.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/d7350be4b00c090efaa02f0ffbc246a03362dcd9/output/res/color/common_google_signin_btn_text_dark.xml"
-    },
-    {
-        "merged": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/res/merged/debug/color/abc_search_url_text.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/bce1e8d7708deb639b578b1fdbd4f09ff3fe7531/output/res/color/abc_search_url_text.xml"
-    },
-    {
-        "merged": "/Users/PeterWeckend/Desktop/test301'/MoodSwing/app/build/intermediates/res/merged/debug/color/abc_secondary_text_material_dark.xml",
-        "source": "/Users/PeterWeckend/.android/build-cache/3b7b1f04ee66bb6e8f3a110c8f3ce86dc592946a/output/res/color/abc_secondary_text_material_dark.xml"
+        "merged": "C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_secondary_text_material_dark.xml",
+        "source": "C:\\Users\\fred\\.android\\build-cache\\a987e0752e8a3c33a80e6f25858c5aa9a1461541\\output\\res\\color\\abc_secondary_text_material_dark.xml"
     }
 ]

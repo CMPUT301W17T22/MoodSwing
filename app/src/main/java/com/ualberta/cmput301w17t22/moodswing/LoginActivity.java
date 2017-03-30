@@ -49,6 +49,12 @@ public class LoginActivity extends AppCompatActivity implements MSView<MoodSwing
         loginProgress = (ProgressBar) findViewById(R.id.loginProgress);
         loginProgress.setVisibility(View.GONE);
 
+        /**
+         * For now, data generation goes here. This will change to a different place.
+         */
+        DataGenerator dataGenerator = new DataGenerator();
+        dataGenerator.generate();
+
         // Initialize all widgets and add the view to the main model class.
         initialize();
 

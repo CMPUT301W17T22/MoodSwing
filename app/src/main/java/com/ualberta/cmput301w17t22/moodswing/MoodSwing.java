@@ -1,6 +1,5 @@
 package com.ualberta.cmput301w17t22.moodswing;
 
-import android.location.Location;
 import android.util.Log;
 
 import java.util.ArrayList;
@@ -40,7 +39,8 @@ public class MoodSwing extends MSModel<MSView> {
     /**
      * The last known location of the device/main participant.
      */
-    private Location lastKnownLocation;
+    private double lastKnownLat;
+    private double lastKnownLng;
 
     /**
      * Adds the mainParticipant for the MoodSwing app to ElasticSearch. This is used when logging
@@ -223,12 +223,17 @@ public class MoodSwing extends MSModel<MSView> {
         this.moodFeedPosition = moodFeedPosition;
     }
 
-    public Location getLastKnownLocation() {
-        return lastKnownLocation;
+    public double getLastKnownLat() {
+        return lastKnownLat;
     }
 
-    public void setLastKnownLocation(Location lastKnownLocation) {
-        this.lastKnownLocation = lastKnownLocation;
+    public double getLastKnownLng() {
+        return lastKnownLng;
+    }
+
+    public void setLastKnownLocation(double lastKnownLat, double lastKnownLng) {
+        this.lastKnownLat = lastKnownLat;
+        this.lastKnownLng = lastKnownLng;
     }
 
     // --- END: Getters and Setters

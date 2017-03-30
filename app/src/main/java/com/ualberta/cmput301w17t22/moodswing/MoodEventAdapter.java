@@ -8,10 +8,10 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.google.android.gms.maps.model.LatLng;
-
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+
+import static java.lang.Double.NaN;
 
 /** Adapter to display mood events in list views properly
  * https://www.youtube.com/watch?v=nOdSARCVYic
@@ -111,7 +111,7 @@ public class MoodEventAdapter extends ArrayAdapter<MoodEvent> {
         }
 
         //Location Indicator
-        if(moodEvent.getLocation() == null){
+        if(moodEvent.getLat() == NaN || moodEvent.getLng() == NaN){
             locationIndicatorImageView.setVisibility(View.INVISIBLE);
         }else{
             locationIndicatorImageView.setVisibility(View.VISIBLE);

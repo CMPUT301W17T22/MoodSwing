@@ -2,10 +2,9 @@ package com.ualberta.cmput301w17t22.moodswing;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.location.Location;
+import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -21,6 +20,8 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.text.SimpleDateFormat;
+
+import static java.lang.Double.NaN;
 
 
 /**
@@ -264,11 +265,12 @@ public class ViewMoodEventActivity extends AppCompatActivity implements MSView<M
     public void onMapReady(GoogleMap googleMap) {
 
         // Load the location from the mood event.
-        Location location = moodEvent.getLocation();
+        double lat = moodEvent.getLat();
+        double lng = moodEvent.getLng();
 
-        if (location != null) {
+        if (lat != NaN && lng != NaN) {
             // Create a LatLng object from the location so we can properly set a camera position.
-            LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
+            LatLng latLng = new LatLng(lat, lng);
 
             // Move the camera and place a marker.
             googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 13));
@@ -415,7 +417,7 @@ public class ViewMoodEventActivity extends AppCompatActivity implements MSView<M
      */
     public void setMapFragmentVisibility() {
         // If there is no location, make the map invisible, if there is a location, make it visible.
-        if (moodEvent.getLocation() != null) {
+        if (moodEvent.getLat() != NaN && moodEvent.getLng() != NaN) {
             supportMapFragment.getView().setVisibility(View.VISIBLE);
         } else {
             supportMapFragment.getView().setVisibility(View.GONE);

@@ -1,7 +1,0 @@
-#Mon Mar 27 17:59:46 MDT 2017
-base.0=C\:\\Users\\Fred\\MoodSwing\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_13e1100c4f6b7501437736d59deaaae5f68a31d0
-renamed.1=classes2.dex
-renamed.0=classes.dex
-file.1=C\:\\Users\\Fred\\MoodSwing\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_2f09f70b0e221a8f2baf22b219ecb05cdaf17c5f\\classes.dex
-base.1=C\:\\Users\\Fred\\MoodSwing\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_2f09f70b0e221a8f2baf22b219ecb05cdaf17c5f
-file.0=C\:\\Users\\Fred\\MoodSwing\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_13e1100c4f6b7501437736d59deaaae5f68a31d0\\classes.dex

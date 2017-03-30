@@ -7,12 +7,10 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.location.Address;
 import android.location.Geocoder;
-import android.location.Location;
-import android.media.Image;
 import android.net.Uri;
+import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
@@ -23,17 +21,14 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.maps.model.LatLng;
-
 import java.io.ByteArrayOutputStream;
-import java.io.OutputStream;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
 import java.util.regex.Pattern;
 
-import static com.ualberta.cmput301w17t22.moodswing.R.id.image;
+import static java.lang.Double.NaN;
 
 /**
  * Activity that lets user add a new mood event to their mood history.
@@ -168,10 +163,12 @@ public class NewMoodEventActivity extends AppCompatActivity implements MSView<Mo
                     // Get social situation.
                     SocialSituation socialSituation = getSocialSituation();
 
-                    // Get lastKnownLocation if lastKnownLocation box is checked, otherwise just use null.
-                    Location location = null;
+                    // Get lastKnownLat and lastKnownLng if lastKnownLocation box is checked, otherwise just use null.
+                    double lat = NaN;
+                    double lng = NaN;
                     if (addCurrentLocationCheckBox.isChecked()) {
-                        location = getLocation();
+                        lat = getLat();
+                        lng = getLng();
                     }
                     //Image is initialized as null so it does not need to be set. If an image was
                     //taken or attached then it will already be in the image variable.
@@ -187,7 +184,8 @@ public class NewMoodEventActivity extends AppCompatActivity implements MSView<Mo
                             emotionalState,
                             trigger,
                             socialSituation,
-                            location,
+                            lat,
+                            lng,
                             image));
 
                     // Toast to inform the user that the mood event was added.
@@ -410,14 +408,23 @@ public class NewMoodEventActivity extends AppCompatActivity implements MSView<Mo
     }
 
     /**
-     * Gets the lastKnownLocation from the android device.
-
-     * @return The current / last known lastKnownLocation as a Location
+     * Gets the lastKnownLat from the main model class.
+     * @return The current / last known lastKnownLat as a double.
      */
-    public Location getLocation() {
+    public double getLat() {
         // Get the mood swing controller and get the last known location.
         MoodSwingController moodSwingController = MoodSwingApplication.getMoodSwingController();
-        return moodSwingController.getLastKnownLocation();
+        return moodSwingController.getLastKnownLat();
+    }
+
+    /**
+     * Gets the lastKnownLng from the main model class.
+     * @return The current / last known lastKnownLng as a double.
+     */
+    public double getLng() {
+        // Get the mood swing controller and get the last known location.
+        MoodSwingController moodSwingController = MoodSwingApplication.getMoodSwingController();
+        return moodSwingController.getLastKnownLng();
     }
 
     /** Gets the image from the image view*/
