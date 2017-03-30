@@ -132,6 +132,11 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
      * Called on opening of activity for the first time.
      * @param savedInstanceState
      */
+
+    //command function that executes
+    public interface Command{
+        public void execute();
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -442,6 +447,7 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+        mMap.setMinZoomPreference(10.0f); //minimum zoom set to
         mMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(lastKnownLat, lastKnownLng)));
     }
 
