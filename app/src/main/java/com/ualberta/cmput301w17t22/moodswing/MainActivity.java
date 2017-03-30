@@ -134,9 +134,7 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
      */
 
     //command function that executes
-    public interface Command{
-        public void execute();
-    }
+   
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
