@@ -27,16 +27,76 @@ public class FollowerFollowingTest extends ActivityInstrumentationTestCase2<Logi
         Activity activity = getActivity();
     }
 
-    public void testFollower() {
-        // Login and verify the activities at each step.
+    // Verify that requesting to follow non-existant user fails
+    public void testFollowingInvalidUser() {
+        // login and navigate to following/followers
         solo.assertCurrentActivity("Wrong Activity!", LoginActivity.class);
         solo.clearEditText((EditText) solo.getView(R.id.usernameEditText));
-        solo.enterText((EditText) solo.getView(R.id.usernameEditText), "intent001");
-        solo.clickOnButton("login");
+        solo.enterText((EditText) solo.getView(R.id.usernameEditText), "intent301");
+        // click on login button
+        solo.clickOnView(solo.getView(R.id.loginButton));
+        solo.sleep(20000);
         solo.waitForActivity("MainActivity");
-        assertTrue(solo.waitForText("Welcome user \"intent001\""));
         solo.assertCurrentActivity("Wrong Activity!", MainActivity.class);
 
-        //
+        // navigate to followers/following
+        solo.waitForText("Welcome user \"intent301\"");
+        solo.clickOnActionBarItem(R.id.mainToolBar);
+        solo.waitForText("Home");
+        solo.clickOnMenuItem("Followers & Following");
+        //solo.clickOnView(solo.getView(R.id.followToolBarButton));
+        solo.waitForActivity("MainFollowActivity");
+        solo.assertCurrentActivity("Wrong Activity!", MainFollowActivity.class);
+
+        // request to follow another user
+        solo.clickOnView(solo.getView(R.id.fab));
+        solo.enterText(0, "intent999");
+        solo.clickOnButton("Send Follow Request");
+        assertTrue(solo.waitForText("No user with given username found."));
+    }
+
+    // Verify that requesting to follow another user displays requests
+    public void testFollowing() {
+        // login as the user to be followed - make sure account exists
+        solo.assertCurrentActivity("Wrong Activity!", LoginActivity.class);
+        solo.clearEditText((EditText) solo.getView(R.id.usernameEditText));
+        solo.enterText((EditText) solo.getView(R.id.usernameEditText), "intentfollow");
+        solo.clickOnView(solo.getView(R.id.loginButton));
+        solo.sleep(20000);
+        solo.waitForActivity("MainActivity");
+        solo.assertCurrentActivity("Wrong Activity!", MainActivity.class);
+        solo.goBack();
+
+        // login as follower user
+        solo.assertCurrentActivity("Wrong Activity!", LoginActivity.class);
+        solo.clearEditText((EditText) solo.getView(R.id.usernameEditText));
+        solo.enterText((EditText) solo.getView(R.id.usernameEditText), "intent301");
+        // click on login button
+        solo.clickOnView(solo.getView(R.id.loginButton));
+        solo.sleep(20000);
+        solo.waitForActivity("MainActivity");
+        solo.assertCurrentActivity("Wrong Activity!", MainActivity.class);
+
+        // navigate to followers/following
+        solo.waitForText("Welcome user \"intent301\"");
+        solo.clickOnActionBarItem(R.id.mainToolBar);
+        solo.waitForText("Home");
+        solo.clickOnMenuItem("Followers & Following");
+        //solo.clickOnView(solo.getView(R.id.followToolBarButton));
+        solo.waitForActivity("MainFollowActivity");
+        solo.assertCurrentActivity("Wrong Activity!", MainFollowActivity.class);
+
+        // request to follow another user
+//        solo.clickOnView(solo.getView(R.id.fab));
+//        solo.enterText(0, "intent999");
+//        solo.clickOnButton("Send Follow Request");
+//        assertTrue(solo.waitForText("No user with given username found."));
+    }
+
+
+    @Override
+    public void tearDown() throws Exception {
+        solo.finishOpenedActivities();  // important
+        super.tearDown();
     }
 }

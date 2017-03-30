@@ -41,7 +41,10 @@ public class LoginActivityTest extends ActivityInstrumentationTestCase2<LoginAct
         solo.assertCurrentActivity("Wrong Activity!", LoginActivity.class);
         solo.clearEditText((EditText) solo.getView(R.id.usernameEditText));
         solo.enterText((EditText) solo.getView(R.id.usernameEditText), "intent106");
-        solo.clickOnButton("login");
+
+        // click on button
+        solo.clickOnView(solo.getView(R.id.loginButton));
+
         solo.waitForActivity("MainActivity");
         assertTrue(solo.waitForText("Welcome user \"intent106\""));
 
@@ -60,7 +63,8 @@ public class LoginActivityTest extends ActivityInstrumentationTestCase2<LoginAct
 
         solo.assertCurrentActivity("Wrong Activity!", LoginActivity.class);
         solo.clearEditText((EditText) solo.getView(R.id.usernameEditText));
-        solo.clickOnButton("login");
+        // click on button
+        solo.clickOnView(solo.getView(R.id.loginButton));
 
         assertTrue(solo.waitForText("Entry is required!"));
 
