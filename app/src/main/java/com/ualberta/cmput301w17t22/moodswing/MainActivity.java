@@ -266,136 +266,9 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
         filterSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                // TODO: All of this should be extracted out into its own method.
-
                 //Toast.makeText(MainActivity.this, filter_strings.get(position)+"selected", Toast.LENGTH_SHORT);
                 int selected = filterSpinner.getSelectedItemPosition();
-
-                switch (selected) {
-                    case 0:       // no filter selected
-                        Toast.makeText(MainActivity.this, "Filters removed.", Toast.LENGTH_SHORT).show();
-                        updateFilterMenu(-1);   // update filter list
-                        loadMoodSwing(); // refresh the feed and filter
-                        break;
-
-
-                    case 1:     // sort by recent week
-                        Toast.makeText(MainActivity.this, "Filtering by week.", Toast.LENGTH_SHORT).show();
-                        updateFilterMenu(0); // update filter list
-                        loadMoodSwing(); // refresh the feed and filter
-                        break;
-
-                    case 2:      // sort by emotion
-                        // from http://stackoverflow.com/questions/10903754/input-text-dialog-android on 3/27
-                        final Dialog dialog = new Dialog(MainActivity.this);
-                        dialog.setContentView(R.layout.emotional_state_dialogue_box);
-                        dialog.setTitle("Select an emotion to filter.");
-                        dialog.setCancelable(true);
-
-                        // set up radio buttons and filter/cancel buttons
-                        final RadioGroup emotionsRadioGroup = (RadioGroup) dialog.findViewById(R.id.emotionsRadioGroup);
-                        RadioButton happinessRB = (RadioButton) dialog.findViewById(R.id.happinessRadioButton);
-                        RadioButton angerRB = (RadioButton) dialog.findViewById(R.id.angerRadioButton);
-                        RadioButton disgustRB = (RadioButton) dialog.findViewById(R.id.disgustRadioButton);
-                        RadioButton confusionRB = (RadioButton) dialog.findViewById(R.id.confusionRadioButton);
-                        RadioButton fearRB = (RadioButton) dialog.findViewById(R.id.fearRadioButton);
-                        RadioButton sadnessRB = (RadioButton) dialog.findViewById(R.id.sadnessRadioButton);
-                        RadioButton shameRB = (RadioButton) dialog.findViewById(R.id.shameRadioButton);
-                        RadioButton surpriseRB = (RadioButton) dialog.findViewById(R.id.surpriseRadioButton);
-                        Button validateEmotionFilter = (Button) dialog.findViewById(R.id.validateEmotionalFilterButton);
-                        Button cancelEmotionFilter = (Button) dialog.findViewById(R.id.cancelEmotionalFilterButton);
-
-                        // get value chosen if filter button is clicked
-                        validateEmotionFilter.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                int chosenEmotionIndex = emotionsRadioGroup.getCheckedRadioButtonId();
-                                RadioButton chosenEmotionRadioButton = (RadioButton) dialog.findViewById(chosenEmotionIndex);
-                                filterEmotion = chosenEmotionRadioButton.getText().toString();
-                                Toast.makeText(MainActivity.this, "Filtering by "+filterEmotion, Toast.LENGTH_SHORT).show();
-                                updateFilterMenu(1);
-                                dialog.dismiss();
-                                loadMoodSwing(); // refresh the feed
-
-
-                            }
-                        });
-                        // dismiss dialog if cancel is clicked
-                        cancelEmotionFilter.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                dialog.dismiss();
-                            }
-                        });
-
-
-                        // now that the dialog is set up, it's time to show it
-                        dialog.show();
-                        break;
-
-
-                    default:                // sort by trigger
-                        // from http://stackoverflow.com/questions/10903754/input-text-dialog-android on 3/27
-                        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this, R.style.DialogTheme);
-
-                        // Method for displaying an edittext nicely in an alertdialog adapted from
-                        // http://stackoverflow.com/questions/27774414/add-bigger-margin-to-edittext-in-android-alertdialog
-                        // on 3/25/2017.
-
-                        // Create edittext to take user input.
-                        final EditText triggerEditText = new EditText(MainActivity.this);
-                        // Set custom edittext shape.
-                        triggerEditText.setBackgroundResource(R.drawable.dialog_edittext_shape);
-                        // Set some padding from the left.
-                        triggerEditText.setPadding(6, 0, 6, 0);
-
-                        // Create a container for the edittext.
-                        LinearLayout triggerEditTextContainer = new LinearLayout(MainActivity.this);
-                        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-                                ViewGroup.LayoutParams.MATCH_PARENT,
-                                ViewGroup.LayoutParams.WRAP_CONTENT);
-                        // Set the margins for the edittext.
-                        params.leftMargin = getResources().getDimensionPixelSize(R.dimen.dialog_margin);
-                        params.rightMargin = getResources().getDimensionPixelSize(R.dimen.dialog_margin);
-
-                        // Set the parameters to the edittext and add it to the container.
-                        triggerEditText.setLayoutParams(params);
-                        triggerEditTextContainer.addView(triggerEditText);
-
-                        builder.setTitle("Enter Trigger Word:")
-                                .setMessage("(max one word)")
-                                .setCancelable(true)
-                                .setView(triggerEditTextContainer);
-
-                        // Set up the buttons
-                        builder.setPositiveButton("Filter", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                triggerWord = triggerEditText.getText().toString();
-                                // make sure triggerWord is only one word long
-                                if (wordCount(triggerWord) != 1) {
-                                    Toast.makeText(MainActivity.this, "Trigger search must be one word long.",
-                                            Toast.LENGTH_SHORT).show();
-                                    dialog.cancel();
-                                } else {
-                                    // triggerWord is acceptable
-                                    Toast.makeText(MainActivity.this, "Filtering by trigger word: "+triggerWord, Toast.LENGTH_SHORT).show();
-                                    updateFilterMenu(2);
-                                    loadMoodSwing(); // refresh the feed
-                                }
-                            }
-                        });
-                        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.cancel();
-                            }
-                        });
-
-                        builder.show();
-                        break;
-                }
-
+                handleFilterSelection(selected);
             }
 
             @Override
@@ -519,38 +392,7 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
         // Get the main participant's list of participants they are following.
         ArrayList<String> mainParticipantFollowingList = mainParticipant.getFollowing();
 
-        // Load mood events of the participant's the main participant is following
-        // into the mood event.
-        // TODO: This should be extracted out into its own method.
-        int i;
-        int size = 0;
-        if(!mainParticipantFollowingList.isEmpty()){
-            size = mainParticipantFollowingList.size();
-        }
-
-        // add most recent mood event of all those we're following
-         for(i =0; i < size ; i++){
-             Participant followingParticipant = elasticSearchController
-                     .getParticipantByUsername(mainParticipantFollowingList.get(i));
-             if(followingParticipant.getMostRecentMoodEvent() != null){
-                 // make sure the followed person as at least one mood event
-                 moodFeedEvents.add(followingParticipant.getMostRecentMoodEvent());
-             }
-         }
-
-        // Filter Recent Week if needed. Less overhead if you do it here
-        // vs in elasticsearch
-        if(activeFilters[0] == 1) {
-            moodFeedEvents = filterRecentWeek(moodFeedEvents);
-        }
-
-        // Sort the mood feed events by date.
-        Collections.sort(moodFeedEvents, new Comparator<MoodEvent>() {
-            @Override
-            public int compare(MoodEvent o1, MoodEvent o2) {
-                return o2.getDate().compareTo(o1.getDate());
-            }
-        });
+        createMoodFeed(mainParticipantFollowingList);
 
         // Update the model.
         moodSwingController.setMoodFeed(moodFeedEvents);
@@ -692,5 +534,173 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
             }
         }
         return returnMoodList;
+    }
+
+    /**
+     * Load mood events of the participant's the main participant is following
+     * into the mood event.
+     * Handles date
+     * @param mainParticipantFollowingList Strings of usernames this participant follows
+     */
+    public void createMoodFeed(ArrayList<String> mainParticipantFollowingList) {
+        int i;
+        int size = 0;
+        if(!mainParticipantFollowingList.isEmpty()){
+            size = mainParticipantFollowingList.size();
+        }
+
+        // add most recent mood event of all those we're following
+        for(i =0; i < size ; i++){
+            Participant followingParticipant = elasticSearchController
+                    .getParticipantByUsername(mainParticipantFollowingList.get(i));
+            if(followingParticipant.getMostRecentMoodEvent() != null){
+                // make sure the followed person as at least one mood event
+                moodFeedEvents.add(followingParticipant.getMostRecentMoodEvent());
+            }
+        }
+
+        // Filter Recent Week if needed. Less overhead if you do it here
+        // vs in elasticsearch
+        if(activeFilters[0] == 1) {
+            moodFeedEvents = filterRecentWeek(moodFeedEvents);
+        }
+
+        // Sort the mood feed events by date.
+        Collections.sort(moodFeedEvents, new Comparator<MoodEvent>() {
+            @Override
+            public int compare(MoodEvent o1, MoodEvent o2) {
+                return o2.getDate().compareTo(o1.getDate());
+            }
+        });
+    }
+
+
+
+    public void handleFilterSelection(int selected){
+        switch (selected) {
+            case 0:       // no filter selected
+                Toast.makeText(MainActivity.this, "Filters removed.", Toast.LENGTH_SHORT).show();
+                updateFilterMenu(-1);   // update filter list
+                loadMoodSwing(); // refresh the feed and filter
+                break;
+
+
+            case 1:     // sort by recent week
+                Toast.makeText(MainActivity.this, "Filtering by week.", Toast.LENGTH_SHORT).show();
+                updateFilterMenu(0); // update filter list
+                loadMoodSwing(); // refresh the feed and filter
+                break;
+
+            case 2:      // sort by emotion
+                // from http://stackoverflow.com/questions/10903754/input-text-dialog-android on 3/27
+                final Dialog dialog = new Dialog(MainActivity.this);
+                dialog.setContentView(R.layout.emotional_state_dialogue_box);
+                dialog.setTitle("Select an emotion to filter.");
+                dialog.setCancelable(true);
+
+                // set up radio buttons and filter/cancel buttons
+                final RadioGroup emotionsRadioGroup = (RadioGroup) dialog.findViewById(R.id.emotionsRadioGroup);
+                RadioButton happinessRB = (RadioButton) dialog.findViewById(R.id.happinessRadioButton);
+                RadioButton angerRB = (RadioButton) dialog.findViewById(R.id.angerRadioButton);
+                RadioButton disgustRB = (RadioButton) dialog.findViewById(R.id.disgustRadioButton);
+                RadioButton confusionRB = (RadioButton) dialog.findViewById(R.id.confusionRadioButton);
+                RadioButton fearRB = (RadioButton) dialog.findViewById(R.id.fearRadioButton);
+                RadioButton sadnessRB = (RadioButton) dialog.findViewById(R.id.sadnessRadioButton);
+                RadioButton shameRB = (RadioButton) dialog.findViewById(R.id.shameRadioButton);
+                RadioButton surpriseRB = (RadioButton) dialog.findViewById(R.id.surpriseRadioButton);
+                Button validateEmotionFilter = (Button) dialog.findViewById(R.id.validateEmotionalFilterButton);
+                Button cancelEmotionFilter = (Button) dialog.findViewById(R.id.cancelEmotionalFilterButton);
+
+                // get value chosen if filter button is clicked
+                validateEmotionFilter.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        int chosenEmotionIndex = emotionsRadioGroup.getCheckedRadioButtonId();
+                        RadioButton chosenEmotionRadioButton = (RadioButton) dialog.findViewById(chosenEmotionIndex);
+                        filterEmotion = chosenEmotionRadioButton.getText().toString();
+                        Toast.makeText(MainActivity.this, "Filtering by "+filterEmotion, Toast.LENGTH_SHORT).show();
+                        updateFilterMenu(1);
+                        dialog.dismiss();
+                        loadMoodSwing(); // refresh the feed
+
+
+                    }
+                });
+                // dismiss dialog if cancel is clicked
+                cancelEmotionFilter.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
+
+
+                // now that the dialog is set up, it's time to show it
+                dialog.show();
+                break;
+
+
+            default:                // sort by trigger
+                // from http://stackoverflow.com/questions/10903754/input-text-dialog-android on 3/27
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this, R.style.DialogTheme);
+
+                // Method for displaying an edittext nicely in an alertdialog adapted from
+                // http://stackoverflow.com/questions/27774414/add-bigger-margin-to-edittext-in-android-alertdialog
+                // on 3/25/2017.
+
+                // Create edittext to take user input.
+                final EditText triggerEditText = new EditText(MainActivity.this);
+                // Set custom edittext shape.
+                triggerEditText.setBackgroundResource(R.drawable.dialog_edittext_shape);
+                // Set some padding from the left.
+                triggerEditText.setPadding(6, 0, 6, 0);
+
+                // Create a container for the edittext.
+                LinearLayout triggerEditTextContainer = new LinearLayout(MainActivity.this);
+                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                        ViewGroup.LayoutParams.MATCH_PARENT,
+                        ViewGroup.LayoutParams.WRAP_CONTENT);
+                // Set the margins for the edittext.
+                params.leftMargin = getResources().getDimensionPixelSize(R.dimen.dialog_margin);
+                params.rightMargin = getResources().getDimensionPixelSize(R.dimen.dialog_margin);
+
+                // Set the parameters to the edittext and add it to the container.
+                triggerEditText.setLayoutParams(params);
+                triggerEditTextContainer.addView(triggerEditText);
+
+                builder.setTitle("Enter Trigger Word:")
+                        .setMessage("(max one word)")
+                        .setCancelable(true)
+                        .setView(triggerEditTextContainer);
+
+                // Set up the buttons
+                builder.setPositiveButton("Filter", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        triggerWord = triggerEditText.getText().toString();
+                        // make sure triggerWord is only one word long
+                        if (wordCount(triggerWord) != 1) {
+                            Toast.makeText(MainActivity.this, "Trigger search must be one word long.",
+                                    Toast.LENGTH_SHORT).show();
+                            dialog.cancel();
+                        } else {
+                            // triggerWord is acceptable
+                            Toast.makeText(MainActivity.this, "Filtering by trigger word: "+triggerWord, Toast.LENGTH_SHORT).show();
+                            updateFilterMenu(2);
+                            loadMoodSwing(); // refresh the feed
+                        }
+                    }
+                });
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+
+                builder.show();
+                break;
+        }
+
     }
 }

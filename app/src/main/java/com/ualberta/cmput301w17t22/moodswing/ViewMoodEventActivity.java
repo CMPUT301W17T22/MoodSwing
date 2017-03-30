@@ -428,8 +428,8 @@ public class ViewMoodEventActivity extends AppCompatActivity implements MSView<M
      */
     public void setDateTime() {
         //Sets the formatted date into its corresponding View
-        String formattedDate = new SimpleDateFormat("EEE, MMMM dd, yyyy").format(moodEvent.getDate());
-        dateTextView.setText("on "+formattedDate);
+        String formattedDate = new SimpleDateFormat("EEE, MMMM dd, yyyy,").format(moodEvent.getDate());
+        dateTextView.setText("On "+formattedDate);
     }
 
     /**
