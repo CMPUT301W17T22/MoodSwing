@@ -21,6 +21,8 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.text.SimpleDateFormat;
 
+import static java.lang.Double.NaN;
+
 
 /**
  * Activity is launched when app user chooses to view a mood event. Launched from both
@@ -266,8 +268,7 @@ public class ViewMoodEventActivity extends AppCompatActivity implements MSView<M
         double lat = moodEvent.getLat();
         double lng = moodEvent.getLng();
 
-        //TODO: define 1000 better
-        if (lat != 1000 && lng != 1000) {
+        if (lat != NaN && lng != NaN) {
             // Create a LatLng object from the location so we can properly set a camera position.
             LatLng latLng = new LatLng(lat, lng);
 
@@ -416,8 +417,7 @@ public class ViewMoodEventActivity extends AppCompatActivity implements MSView<M
      */
     public void setMapFragmentVisibility() {
         // If there is no location, make the map invisible, if there is a location, make it visible.
-        //TODO: define 1000 better
-        if (moodEvent.getLat() != 1000 && moodEvent.getLng() != 1000) {
+        if (moodEvent.getLat() != NaN && moodEvent.getLng() != NaN) {
             supportMapFragment.getView().setVisibility(View.VISIBLE);
         } else {
             supportMapFragment.getView().setVisibility(View.GONE);

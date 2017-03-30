@@ -44,6 +44,8 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 
+import static java.lang.Double.NaN;
+
 /**
  * The MainActivity of the MoodSwing app. This screen will display the map view of mood events,
  * the mood feed, and have a floating toolbar to navigate the user to the other functionalities of
@@ -122,9 +124,8 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
     private GoogleMap mMap;
     LocationManager locationManager;
     //Location lastKnownLocation;
-    //TODO: define unknown value better (currently 1000)
-    double lastKnownLat = 1000;
-    double lastKnownLng = 1000;
+    double lastKnownLat = NaN;
+    double lastKnownLng = NaN;
     String provider;
 
     /**

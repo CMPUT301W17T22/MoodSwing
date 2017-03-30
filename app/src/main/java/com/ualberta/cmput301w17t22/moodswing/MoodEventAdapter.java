@@ -11,6 +11,8 @@ import android.widget.TextView;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
+import static java.lang.Double.NaN;
+
 /** Adapter to display mood events in list views properly
  * https://www.youtube.com/watch?v=nOdSARCVYic
  * accessed March 26th
@@ -109,8 +111,7 @@ public class MoodEventAdapter extends ArrayAdapter<MoodEvent> {
         }
 
         //Location Indicator
-        //TODO: define 1000 better
-        if(moodEvent.getLat() == 1000 || moodEvent.getLng() == 1000){
+        if(moodEvent.getLat() == NaN || moodEvent.getLng() == NaN){
             locationIndicatorImageView.setVisibility(View.INVISIBLE);
         }else{
             locationIndicatorImageView.setVisibility(View.VISIBLE);

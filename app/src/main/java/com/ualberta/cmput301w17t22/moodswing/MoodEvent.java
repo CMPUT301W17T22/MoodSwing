@@ -97,7 +97,14 @@ public class MoodEvent {
         if (socialSituation != null ? !socialSituation.equals(moodEvent.socialSituation) : moodEvent.socialSituation != null)
             return false;
        // if(image != null ? !image.equals(moodEvent.image) : moodEvent.image != null) return false;
-        if(lat != moodEvent.lat | lng != moodEvent.lng) return false;
+        if(Double.isNaN(lat) || Double.isNaN(moodEvent.lat)){
+            if(!Double.isNaN(lat) || !Double.isNaN(moodEvent.lat)) return false;
+        }
+        else if(lat != moodEvent.lat) return false;
+        if(Double.isNaN(lng) || Double.isNaN(moodEvent.lng)) {
+            if (!Double.isNaN(lng) || !Double.isNaN(moodEvent.lng)) return false;
+        }
+        else if (lng != moodEvent.lng) return false;
         return true;
     }
 
@@ -105,6 +112,7 @@ public class MoodEvent {
      * Android Studio generated hashCode method.
      * double hashing from Tomasz Nurkiewicz grab date 29/03/2017
      * http://stackoverflow.com/questions/9650798/hash-a-double-in-java
+     * TODO: regenerate with Android Studio
      * @return
      */
     @Override
@@ -115,8 +123,12 @@ public class MoodEvent {
         result = 31 * result + (trigger != null ? trigger.hashCode() : 0);
         result = 31 * result + (socialSituation != null ? socialSituation.hashCode() : 0);
         //result = 31 * result + (image != null ? image.hashCode() : 0);
-        result = 31 * result + Double.valueOf(lat).hashCode();
-        result = 31 * result + Double.valueOf(lng).hashCode();
+        if(!Double.isNaN(lat)) {
+            result = 31 * result + Double.valueOf(lat).hashCode();
+        }
+        if(!Double.isNaN(lng)) {
+            result = 31 * result + Double.valueOf(lng).hashCode();
+        }
         return result;
     }
 

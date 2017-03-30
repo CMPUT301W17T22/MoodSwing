@@ -28,6 +28,8 @@ import java.util.Locale;
 import java.util.Objects;
 import java.util.regex.Pattern;
 
+import static java.lang.Double.NaN;
+
 /**
  * Activity that lets user add a new mood event to their mood history.
  * <p/>
@@ -162,9 +164,8 @@ public class NewMoodEventActivity extends AppCompatActivity implements MSView<Mo
                     SocialSituation socialSituation = getSocialSituation();
 
                     // Get lastKnownLat and lastKnownLng if lastKnownLocation box is checked, otherwise just use null.
-                    //TODO: define 1000 better
-                    double lat = 1000;
-                    double lng = 1000;
+                    double lat = NaN;
+                    double lng = NaN;
                     if (addCurrentLocationCheckBox.isChecked()) {
                         lat = getLat();
                         lng = getLng();

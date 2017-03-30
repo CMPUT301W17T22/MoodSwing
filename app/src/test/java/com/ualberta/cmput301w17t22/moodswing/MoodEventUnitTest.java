@@ -4,8 +4,10 @@ import org.junit.Test;
 
 import java.util.Date;
 
+import static java.lang.Double.NaN;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertTrue;
 
 /** Unit Test class for MoodEvent
  * Created by Fred on 2017-02-18.
@@ -26,9 +28,8 @@ public class MoodEventUnitTest {
                 new EmotionalStateFactory().createEmotionalStateByName("Happiness");
         SocialSituation socialSituation =
                 new SocialSituationFactory().createSocialSituationByName("Alone");
-        //TODO: define 1000 better
-        double lat = 1000;
-        double lng = 1000;
+        double lat = NaN;
+        double lng = NaN;
 
         MoodEvent moodEvent = new MoodEvent(username,
                 date,
@@ -41,8 +42,8 @@ public class MoodEventUnitTest {
         assertEquals(moodEvent.getEmotionalState(), emotionalState);
         assertEquals(moodEvent.getOriginalPoster(), username);
         assertEquals(moodEvent.getSocialSituation(), socialSituation);
-        assertEquals(moodEvent.getLat(), lat);
-        assertEquals(moodEvent.getLng(), lng);
+        assertTrue(Double.isNaN(moodEvent.getLat()));
+        assertTrue(Double.isNaN(moodEvent.getLng()));
         assertEquals(moodEvent.getDate(), date);
         assertEquals(moodEvent.getTrigger(), trigger);
 
@@ -63,9 +64,8 @@ public class MoodEventUnitTest {
                 new EmotionalStateFactory().createEmotionalStateByName("Happiness");
         SocialSituation socialSituation =
                 new SocialSituationFactory().createSocialSituationByName("Alone");
-        //TODO: define 1000 better
-        double lat = 1000;
-        double lng = 1000;
+        double lat = NaN;
+        double lng = NaN;
 
         MoodEvent moodEvent1 = new MoodEvent(username,
                 date,
@@ -91,13 +91,12 @@ public class MoodEventUnitTest {
                 lat, lng,
                 null);
 
-        //TODO: define 1000 better
         MoodEvent moodEvent4 = new MoodEvent(username,
                 date,
                 emotionalState,
                 trigger,
                 socialSituation,
-                1000, 1000,
+                NaN, NaN,
                 null);
 
         MoodEvent moodEvent5 = new MoodEvent(username,
@@ -105,7 +104,7 @@ public class MoodEventUnitTest {
                 emotionalState,
                 null,
                 socialSituation,
-                1000, 1000,
+                NaN, NaN,
                 null);
 
         MoodEvent moodEvent6 = new MoodEvent(username,
@@ -113,7 +112,7 @@ public class MoodEventUnitTest {
                 emotionalState,
                 trigger,
                 null,
-                1000, 1000,
+                NaN, NaN,
                 null);
 
         MoodEvent moodEvent7 = new MoodEvent(username,
@@ -121,63 +120,63 @@ public class MoodEventUnitTest {
                 emotionalState,
                 null,
                 null,
-                1000, 1000,
+                NaN, NaN,
                 null);
 
         // Test empty getters and setters.
         assertEquals(moodEvent1.getEmotionalState(), emotionalState);
         assertEquals(moodEvent1.getOriginalPoster(), username);
         assertEquals(moodEvent1.getSocialSituation(), null);
-        assertEquals(moodEvent1.getLat(), lat);
-        assertEquals(moodEvent1.getLng(), lng);
+        assertTrue(Double.isNaN(moodEvent1.getLat()));
+        assertTrue(Double.isNaN(moodEvent1.getLng()));
         assertEquals(moodEvent1.getDate(), date);
         assertEquals(moodEvent1.getTrigger(), null);
 
         assertEquals(moodEvent2.getEmotionalState(), emotionalState);
         assertEquals(moodEvent2.getOriginalPoster(), username);
         assertEquals(moodEvent2.getSocialSituation(), socialSituation);
-        assertEquals(moodEvent2.getLat(), lat);
-        assertEquals(moodEvent2.getLng(), lng);
+        assertTrue(Double.isNaN(moodEvent2.getLat()));
+        assertTrue(Double.isNaN(moodEvent2.getLng()));
         assertEquals(moodEvent2.getDate(), date);
         assertEquals(moodEvent2.getTrigger(), null);
 
         assertEquals(moodEvent3.getEmotionalState(), emotionalState);
         assertEquals(moodEvent3.getOriginalPoster(), username);
         assertEquals(moodEvent3.getSocialSituation(), null);
-        assertEquals(moodEvent3.getLat(), lat);
-        assertEquals(moodEvent3.getLng(), lng);
+        assertTrue(Double.isNaN(moodEvent3.getLat()));
+        assertTrue(Double.isNaN(moodEvent3.getLng()));
         assertEquals(moodEvent3.getDate(), date);
         assertEquals(moodEvent3.getTrigger(), trigger);
 
         assertEquals(moodEvent4.getEmotionalState(), emotionalState);
         assertEquals(moodEvent4.getOriginalPoster(), username);
         assertEquals(moodEvent4.getSocialSituation(), socialSituation);
-        assertEquals(moodEvent4.getLat(), lat);
-        assertEquals(moodEvent4.getLng(), lng);
+        assertTrue(Double.isNaN(moodEvent4.getLat()));
+        assertTrue(Double.isNaN(moodEvent4.getLng()));
         assertEquals(moodEvent4.getDate(), date);
         assertEquals(moodEvent4.getTrigger(), trigger);
 
         assertEquals(moodEvent5.getEmotionalState(), emotionalState);
         assertEquals(moodEvent5.getOriginalPoster(), username);
         assertEquals(moodEvent5.getSocialSituation(), socialSituation);
-        assertEquals(moodEvent5.getLat(), lat);
-        assertEquals(moodEvent5.getLng(), lng);
+        assertTrue(Double.isNaN(moodEvent5.getLat()));
+        assertTrue(Double.isNaN(moodEvent5.getLng()));
         assertEquals(moodEvent5.getDate(), date);
         assertEquals(moodEvent5.getTrigger(), null);
 
         assertEquals(moodEvent6.getEmotionalState(), emotionalState);
         assertEquals(moodEvent6.getOriginalPoster(), username);
         assertEquals(moodEvent6.getSocialSituation(), null);
-        assertEquals(moodEvent6.getLat(), lat);
-        assertEquals(moodEvent6.getLng(), lng);
+        assertTrue(Double.isNaN(moodEvent6.getLat()));
+        assertTrue(Double.isNaN(moodEvent6.getLng()));
         assertEquals(moodEvent6.getDate(), date);
         assertEquals(moodEvent6.getTrigger(), trigger);
 
         assertEquals(moodEvent7.getEmotionalState(), emotionalState);
         assertEquals(moodEvent7.getOriginalPoster(), username);
         assertEquals(moodEvent7.getSocialSituation(), null);
-        assertEquals(moodEvent7.getLat(), lat);
-        assertEquals(moodEvent7.getLng(), lng);
+        assertTrue(Double.isNaN(moodEvent7.getLat()));
+        assertTrue(Double.isNaN(moodEvent7.getLng()));
         assertEquals(moodEvent7.getDate(), date);
         assertEquals(moodEvent7.getTrigger(), null);
     }
@@ -198,9 +197,8 @@ public class MoodEventUnitTest {
                 new SocialSituationFactory().createSocialSituationByName("Alone");
         SocialSituation socialSituation2 =
                 new SocialSituationFactory().createSocialSituationByName("With A Crowd");
-        //TODO: define 1000 better
-        double lat = 1000;
-        double lng = 1000;
+        double lat = NaN;
+        double lng = NaN;
 
         // Create the mood events.
         MoodEvent moodEvent1 =
