@@ -88,7 +88,7 @@ public class ParticipantTest {
         participant1.addMoodEvent(moodEvent2);
 
         // edit first mood event
-        participant1.editMoodEventByPosition(0,moodEvent1);
+        participant1.editMoodEventByPosition(0,moodEvent3);
 
         // check first event is edited
         assertTrue(participant1.getMoodHistory().get(0).getTrigger().equals(trigger3));
@@ -187,14 +187,14 @@ public class ParticipantTest {
         assertTrue(participant1.getMostRecentMoodEvent().getOriginalPoster().equals("participant1"));
         assertTrue(participant1.getMostRecentMoodEvent().getDate().equals(date2));
         assertTrue(participant1.getMostRecentMoodEvent().getEmotionalState().equals(emotionalState2));
-        assertTrue(participant1.getMoodHistory().get(0).getLat() == lat2);
-        assertTrue(participant1.getMoodHistory().get(0).getLng() == lng2);
+        assertTrue(participant1.getMostRecentMoodEvent().getLat() == lat2);
+        assertTrue(participant1.getMostRecentMoodEvent().getLng() == lng2);
 
         // check it doesn't grab #1
         assertFalse(participant1.getMostRecentMoodEvent().getTrigger().equals(trigger));
         assertFalse(participant1.getMostRecentMoodEvent().getEmotionalState().equals(emotionalState));
-        assertFalse(participant1.getMoodHistory().get(0).getLat() == lat1);
-        assertFalse(participant1.getMoodHistory().get(0).getLng() == lng1);
+        assertFalse(participant1.getMostRecentMoodEvent().getLat() == lat1);
+        assertFalse(participant1.getMostRecentMoodEvent().getLng() == lng1);
 
     }
 
