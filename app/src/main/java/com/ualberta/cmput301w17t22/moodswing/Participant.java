@@ -42,6 +42,8 @@ public class Participant extends User {
     /** All of this participant's mood events in reverse chronological order. */
     private ArrayList<MoodEvent> moodHistory = new ArrayList<>();
 
+    private MoodEvent mostRecentMoodEvent;
+
     public Participant(String username) {
         this.username = username;
     }
@@ -58,6 +60,7 @@ public class Participant extends User {
             throw new IllegalArgumentException();
         } else {
             moodHistory.add(moodEvent);
+            updateMostRecentMoodEvent();
         }
     }
 
@@ -72,6 +75,7 @@ public class Participant extends User {
 
         // Add the edited mood event at the index of the old one.
         moodHistory.add(position, moodEvent);
+        updateMostRecentMoodEvent();
     }
 
     /**
@@ -80,18 +84,19 @@ public class Participant extends User {
      */
     public void deleteMoodEventByPosition(int position) {
         moodHistory.remove(position);
+        updateMostRecentMoodEvent();
     }
 
     /**
-     * Returns the most recent mood event of this participant.
-     * @return Most recent mood event of this participant.
+     * Internal method to update the most recent mood event of this participant. Sets the
+     * mostRecentMoodEvent to be the last one in the mood history if the mood history is not empty.
      */
-    public MoodEvent getMostRecentMoodEvent() {
-        // Last element of moodHistory is the most recent.
-        if (moodHistory.size() >= 1) {
-            return moodHistory.get(moodHistory.size() - 1);
+    private void updateMostRecentMoodEvent() {
+        // The last element of moodHistory is the most recent.
+        if (!moodHistory.isEmpty()) {
+            mostRecentMoodEvent = moodHistory.get(moodHistory.size() - 1);
         } else {
-            return null;
+            mostRecentMoodEvent = null;
         }
     }
 
@@ -271,6 +276,10 @@ public class Participant extends User {
 
     public ArrayList<MoodEvent> getMoodHistory() {
         return moodHistory;
+    }
+
+    public MoodEvent getMostRecentMoodEvent() {
+        return mostRecentMoodEvent;
     }
 
     // --- END: Getters and Setters

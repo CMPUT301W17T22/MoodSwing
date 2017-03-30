@@ -187,6 +187,25 @@ public class MoodSwing extends MSModel<MSView> {
 
     }
 
+    /**
+     * Construct a mood feed (arraylist of mood events) appropriate to the given filters.
+     * @param activeFilters
+     * @return
+     */
+    public void buildMoodFeed(int[] activeFilters, String filterTrigger, String filterEmotion) {
+
+        // Get ElasticSearchController.
+        ElasticSearchController elasticSearchController =
+                MoodSwingApplication.getElasticSearchController();
+
+        // Use the elastic search controller to build the mood feed.
+        setMoodFeed(elasticSearchController.buildMoodFeed(mainParticipant,
+                activeFilters,
+                filterTrigger,
+                filterEmotion));
+
+    }
+
     // --- START: Getters and Setters
 
     public ArrayList<MoodEvent> getMoodFeed() { return moodFeed; }

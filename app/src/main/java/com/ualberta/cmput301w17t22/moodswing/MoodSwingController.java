@@ -1,5 +1,6 @@
 package com.ualberta.cmput301w17t22.moodswing;
 
+import android.icu.text.MessagePattern;
 import android.util.Log;
 
 import java.util.ArrayList;
@@ -89,6 +90,18 @@ public class MoodSwingController implements MSController {
         ms.notifyViews();
 
         return requestStatus;
+    }
+
+    /**
+     * Builds a mood feed for the main participant given the active filters passed by the
+     * MainActivity.
+     * @param activeFilters
+     */
+    public void buildMoodFeed(int[] activeFilters, String filterTrigger, String filterEmotion) {
+
+        ms.buildMoodFeed(activeFilters, filterTrigger, filterEmotion);
+
+        ms.notifyViews();
     }
 
     /**

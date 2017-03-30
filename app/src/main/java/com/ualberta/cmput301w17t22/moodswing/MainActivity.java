@@ -53,7 +53,7 @@ import static java.lang.Double.NaN;
  *
  * MORE JAVADOC TESTING 123123123
  * <p/>
- * TODO: For filtering: using activeFilters, as well as triggerWord and filterEmotion
+ * TODO: For filtering: using activeFilters, as well as filterTrigger and filterEmotion
  * TODO: in loadMoodSwing() might be a good idea
  *
  * TODO: prevent filters from going off automatically onStart
@@ -109,7 +109,7 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
     ArrayList<String> filter_strings = new ArrayList<>();
 
     // The trigger word that the user will search for in filter
-    private String triggerWord = "";
+    private String filterTrigger = "";
     // The chosen mood that the user will filter
     private String filterEmotion = "";
 
@@ -199,7 +199,6 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
         // http://stackoverflow.com/questions/32491960/android-check-permission-for-locationmanager
 
         // Check if we have proper permissions to get the coarse lastKnownLocation.
-        //TODO: check const. '8'
         if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.
                 ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
 
@@ -211,7 +210,6 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
         }
 
         // Check if we have proper permissions to get the fine lastKnownLocation.
-        //TODO: check const. '8'
         if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.
                 ACCESS_FINE_LOCATION ) != PackageManager.PERMISSION_GRANTED ) {
 
@@ -255,10 +253,6 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
 
         // Load information from main model class.
         loadMoodSwing();
-
-        // Update the adapter.
-        moodFeedAdapter = new MoodEventAdapter(this, moodFeedEvents);
-        moodFeedListView.setAdapter(moodFeedAdapter);
 
         // handles when a different thing is selected in filter spinner
         // place in onStart deliberately to minimize calls to setOnItemSelectedListener
@@ -381,26 +375,52 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
      * Use
      */
     public void loadMoodSwing() {
+
         //Toast.makeText(MainActivity.this, filter_strings.get(0), Toast.LENGTH_SHORT).show();
-        // Clear the mood feed.
-        moodFeedEvents.clear();
+
         //Toast.makeText(MainActivity.this, "Filtering..", Toast.LENGTH_SHORT).show();
+
         // Get the MoodSwingController, and use that to get the main participant.
         MoodSwingController moodSwingController = MoodSwingApplication.getMoodSwingController();
         mainParticipant = moodSwingController.getMainParticipant();
 
-        // Get the main participant's list of participants they are following.
-        ArrayList<String> mainParticipantFollowingList = mainParticipant.getFollowing();
+        // Load the mood feed.
+        Log.i("MoodSwing",moodFeedEvents.toString());
+        moodFeedEvents = moodSwingController.getMoodFeed();
 
-        createMoodFeed(mainParticipantFollowingList);
-
-        // Update the model.
-        moodSwingController.setMoodFeed(moodFeedEvents);
+        // Sort the mood feed events by date.
+        if (!moodFeedEvents.isEmpty()) {
+            Collections.sort(moodFeedEvents, new Comparator<MoodEvent>() {
+                @Override
+                public int compare(MoodEvent o1, MoodEvent o2) {
+                    return o2.getDate().compareTo(o1.getDate());
+                }
+            });
+        }
 
         // Initialize array adapter.
         moodFeedAdapter = new MoodEventAdapter(this, moodFeedEvents);
         moodFeedListView.setEmptyView(findViewById(R.id.emptyMoodFeed));
         moodFeedListView.setAdapter(moodFeedAdapter);
+    }
+
+    /**
+     * Load mood events of the participant's that the main participant is following
+     * into the mood feed according to the given filter information.
+     */
+    public void buildMoodFeed() {
+
+        if (!mainParticipant.getFollowing().isEmpty()) {
+
+            // Get Mood Swing Controller.
+            MoodSwingController moodSwingController = MoodSwingApplication.getMoodSwingController();
+
+            // Build the mood feed according to the current filters.
+            moodSwingController.buildMoodFeed(
+                    activeFilters,
+                    filterTrigger,
+                    filterEmotion);
+        }
     }
 
     /**
@@ -506,6 +526,8 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
      */
     public void updateFilterMenu(int i) {
         if(i < 0 | i > 2) { // by default, reset all filters, includes i = -1 case
+            filterTrigger = "";
+            filterEmotion = "";
             activeFilters[0] = 0;
             activeFilters[1] = 0;
             activeFilters[2] = 0;
@@ -541,59 +563,19 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
         return returnMoodList;
     }
 
-    /**
-     * Load mood events of the participant's the main participant is following
-     * into the mood event.
-     * Handles date
-     * @param mainParticipantFollowingList Strings of usernames this participant follows
-     */
-    public void createMoodFeed(ArrayList<String> mainParticipantFollowingList) {
-        int i;
-        int size = 0;
-        if(!mainParticipantFollowingList.isEmpty()){
-            size = mainParticipantFollowingList.size();
-        }
-
-        // add most recent mood event of all those we're following
-        for(i =0; i < size ; i++){
-            Participant followingParticipant = elasticSearchController
-                    .getParticipantByUsername(mainParticipantFollowingList.get(i));
-            if(followingParticipant.getMostRecentMoodEvent() != null){
-                // make sure the followed person as at least one mood event
-                moodFeedEvents.add(followingParticipant.getMostRecentMoodEvent());
-            }
-        }
-
-        // Filter Recent Week if needed. Less overhead if you do it here
-        // vs in elasticsearch
-        if(activeFilters[0] == 1) {
-            moodFeedEvents = filterRecentWeek(moodFeedEvents);
-        }
-
-        // Sort the mood feed events by date.
-        Collections.sort(moodFeedEvents, new Comparator<MoodEvent>() {
-            @Override
-            public int compare(MoodEvent o1, MoodEvent o2) {
-                return o2.getDate().compareTo(o1.getDate());
-            }
-        });
-    }
-
-
-
     public void handleFilterSelection(int selected){
         switch (selected) {
             case 0:       // no filter selected
                 Toast.makeText(MainActivity.this, "Filters removed.", Toast.LENGTH_SHORT).show();
                 updateFilterMenu(-1);   // update filter list
-                loadMoodSwing(); // refresh the feed and filter
+                loadMoodSwing(); // refresh the feed
                 break;
 
 
             case 1:     // sort by recent week
                 Toast.makeText(MainActivity.this, "Filtering by week.", Toast.LENGTH_SHORT).show();
                 updateFilterMenu(0); // update filter list
-                loadMoodSwing(); // refresh the feed and filter
+                loadMoodSwing(); // refresh the feed
                 break;
 
             case 2:      // sort by emotion
@@ -623,12 +605,10 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
                         int chosenEmotionIndex = emotionsRadioGroup.getCheckedRadioButtonId();
                         RadioButton chosenEmotionRadioButton = (RadioButton) dialog.findViewById(chosenEmotionIndex);
                         filterEmotion = chosenEmotionRadioButton.getText().toString();
-                        Toast.makeText(MainActivity.this, "Filtering by "+filterEmotion, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "Filtering by " + filterEmotion, Toast.LENGTH_SHORT).show();
                         updateFilterMenu(1);
                         dialog.dismiss();
                         loadMoodSwing(); // refresh the feed
-
-
                     }
                 });
                 // dismiss dialog if cancel is clicked
@@ -682,17 +662,18 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
                 builder.setPositiveButton("Filter", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        triggerWord = triggerEditText.getText().toString();
-                        // make sure triggerWord is only one word long
-                        if (wordCount(triggerWord) != 1) {
+                        filterTrigger = triggerEditText.getText().toString();
+                        // make sure filterTrigger is only one word long
+                        if (wordCount(filterTrigger) != 1) {
                             Toast.makeText(MainActivity.this, "Trigger search must be one word long.",
                                     Toast.LENGTH_SHORT).show();
                             dialog.cancel();
                         } else {
-                            // triggerWord is acceptable
-                            Toast.makeText(MainActivity.this, "Filtering by trigger word: "+triggerWord, Toast.LENGTH_SHORT).show();
+                            // filterTrigger is acceptable
+                            Toast.makeText(MainActivity.this, "Filtering by trigger word: "+ filterTrigger, Toast.LENGTH_SHORT).show();
                             updateFilterMenu(2);
-                            loadMoodSwing(); // refresh the feed
+                            buildMoodFeed();
+                            loadMoodSwing();// refresh the feed
                         }
                     }
                 });
