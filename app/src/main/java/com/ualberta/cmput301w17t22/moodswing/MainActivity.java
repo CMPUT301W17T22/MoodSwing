@@ -1,12 +1,9 @@
 package com.ualberta.cmput301w17t22.moodswing;
 
 import android.app.Dialog;
-import android.content.DialogInterface;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.content.pm.PackageManager;
 import android.location.Criteria;
 import android.location.Location;
@@ -14,6 +11,9 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -32,18 +32,18 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Date;
-
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Date;
 
 /**
  * The MainActivity of the MoodSwing app. This screen will display the map view of mood events,
@@ -196,6 +196,7 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
         // http://stackoverflow.com/questions/32491960/android-check-permission-for-locationmanager
 
         // Check if we have proper permissions to get the coarse lastKnownLocation.
+        //TODO: check const. '8'
         if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.
                 ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
 
@@ -203,11 +204,11 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
             // Request the permission.
             // Dummy request code 8 used.
             ActivityCompat.requestPermissions(this,
-                    new String[] {android.Manifest.permission.ACCESS_COARSE_LOCATION},
-                    8);
+                    new String[] {android.Manifest.permission.ACCESS_COARSE_LOCATION}, 8);
         }
 
         // Check if we have proper permissions to get the fine lastKnownLocation.
+        //TODO: check const. '8'
         if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.
                 ACCESS_FINE_LOCATION ) != PackageManager.PERMISSION_GRANTED ) {
 
@@ -215,8 +216,7 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
             // Request the permission.
             // Dummy request code 8 used.
             ActivityCompat.requestPermissions(this,
-                    new String[] {android.Manifest.permission.ACCESS_FINE_LOCATION},
-                    8);
+                    new String[] {android.Manifest.permission.ACCESS_FINE_LOCATION}, 8);
         }
 
         /*if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -242,7 +242,7 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
             lng = lastKnownLocation.getLongitude();
             lat = lastKnownLocation.getLatitude();
             //TODO: update map based on lastKnownLocation
-            //TODO: this creates null exception
+            //TODO: this creates null exception. Probably because map is not ready.
             //mMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(lat, lng)));
         } else {
             Log.i("MoodSwing","No location provider.");
@@ -580,6 +580,11 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+        if (lastKnownLocation != null) {
+            lng = lastKnownLocation.getLongitude();
+            lat = lastKnownLocation.getLatitude();
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(lat, lng)));
+        }
     }
 
     //If you want lastKnownLocation on changing place also than use below method
@@ -588,10 +593,11 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
     public void onLocationChanged(Location arg0)
     {
         lastKnownLocation = arg0;
+        //TODO: moodSwingController.setLastKnownLocation(lastKnownLocation);
         lng = lastKnownLocation.getLongitude();
         lat = lastKnownLocation.getLatitude();
 
-        // TODO: update map based on lastKnownLocation
+        //marker used for testing
         mMap.addMarker(new MarkerOptions().position(new LatLng(lat, lng)).title("new marker"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(lat, lng)));
     }
