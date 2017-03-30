@@ -37,7 +37,6 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -241,9 +240,6 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
             moodSwingController.setLastKnownLocation(lastKnownLocation);
             lng = lastKnownLocation.getLongitude();
             lat = lastKnownLocation.getLatitude();
-            //TODO: update map based on lastKnownLocation
-            //TODO: this creates null exception. Probably because map is not ready.
-            //mMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(lat, lng)));
         } else {
             Log.i("MoodSwing","No location provider.");
         }
@@ -592,13 +588,17 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
     @Override
     public void onLocationChanged(Location arg0)
     {
+        // Get MoodSwingController.
+        MoodSwingController moodSwingController =
+                MoodSwingApplication.getMoodSwingController();
+
         lastKnownLocation = arg0;
-        //TODO: moodSwingController.setLastKnownLocation(lastKnownLocation);
+        moodSwingController.setLastKnownLocation(lastKnownLocation);
         lng = lastKnownLocation.getLongitude();
         lat = lastKnownLocation.getLatitude();
 
         //marker used for testing
-        mMap.addMarker(new MarkerOptions().position(new LatLng(lat, lng)).title("new marker"));
+        //mMap.addMarker(new MarkerOptions().position(new LatLng(lat, lng)).title("new marker"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(lat, lng)));
     }
 
