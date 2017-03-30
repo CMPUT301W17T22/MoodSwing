@@ -1,6 +1,5 @@
 package com.ualberta.cmput301w17t22.moodswing;
 
-import android.location.Location;
 import android.util.Log;
 
 import java.util.ArrayList;
@@ -196,17 +195,13 @@ public class DataGenerator {
         SocialSituation socialSituation =
                 new SocialSituationFactory().createSocialSituationByName(socialSituationName);
 
-        // Create the location of the mood event.
-        Location location = new Location("");
-        location.setLatitude(latitude);
-        location.setLongitude(longitude);
-
         return new MoodEvent(username,
                 date,
                 emotionalState,
                 trigger,
                 socialSituation,
-                location,
+                latitude,
+                longitude,
                 null);
     }
 }

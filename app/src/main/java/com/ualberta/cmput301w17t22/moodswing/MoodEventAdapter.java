@@ -8,8 +8,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.google.android.gms.maps.model.LatLng;
-
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
@@ -111,7 +109,8 @@ public class MoodEventAdapter extends ArrayAdapter<MoodEvent> {
         }
 
         //Location Indicator
-        if(moodEvent.getLocation() == null){
+        //TODO: define 1000 better
+        if(moodEvent.getLat() == 1000 || moodEvent.getLng() == 1000){
             locationIndicatorImageView.setVisibility(View.INVISIBLE);
         }else{
             locationIndicatorImageView.setVisibility(View.VISIBLE);

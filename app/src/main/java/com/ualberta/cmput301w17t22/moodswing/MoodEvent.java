@@ -2,12 +2,6 @@ package com.ualberta.cmput301w17t22.moodswing;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.location.Location;
-import android.media.Image;
-import android.util.Log;
-import android.widget.ImageView;
-
-import com.google.android.gms.maps.model.LatLng;
 
 import java.io.ByteArrayOutputStream;
 import java.util.Date;
@@ -45,9 +39,12 @@ public class MoodEvent {
      * @see SocialSituation */
     private SocialSituation socialSituation;
 
-    /** The lastKnownLocation that the mood event originally was entered at.
+    /** The lastKnownLat that the mood event originally was entered at.
      * CAN NOT BE EDITED AFTER INITIALIZATION.*/
-    private Location location;
+    private double lat;
+    /** The lastKnownLng that the mood event originally was entered at.
+     * CAN NOT BE EDITED AFTER INITIALIZATION.*/
+    private double lng;
 
     /**The image that can be attached to the mood event. This can be added by taking a picture
      * or selecting one from the phones gallery */
@@ -60,14 +57,16 @@ public class MoodEvent {
      * @param emotionalState
      * @param trigger
      * @param socialSituation
-     * @param location
+     * @param lat
+     * @param lng
      */
     public MoodEvent(String posterUsername,
                      Date date,
                      EmotionalState emotionalState,
                      String trigger,
                      SocialSituation socialSituation,
-                     Location location,
+                     double lat,
+                     double lng,
                      ByteArrayOutputStream importImage) {
         this.originalPoster = posterUsername;
         this.date = date;
@@ -75,7 +74,8 @@ public class MoodEvent {
         this.trigger = trigger;
         this.socialSituation = socialSituation;
         this.image = importImage;
-        this.location = location;
+        this.lat = lat;
+        this.lng = lng;
     }
 
     //TODO: Regenerate equals method to include image and location.
@@ -97,11 +97,14 @@ public class MoodEvent {
         if (socialSituation != null ? !socialSituation.equals(moodEvent.socialSituation) : moodEvent.socialSituation != null)
             return false;
        // if(image != null ? !image.equals(moodEvent.image) : moodEvent.image != null) return false;
-        return location != null ? location.equals(moodEvent.location) : moodEvent.location == null;
+        if(lat != moodEvent.lat | lng != moodEvent.lng) return false;
+        return true;
     }
 
     /**
      * Android Studio generated hashCode method.
+     * double hashing from Tomasz Nurkiewicz grab date 29/03/2017
+     * http://stackoverflow.com/questions/9650798/hash-a-double-in-java
      * @return
      */
     @Override
@@ -112,7 +115,8 @@ public class MoodEvent {
         result = 31 * result + (trigger != null ? trigger.hashCode() : 0);
         result = 31 * result + (socialSituation != null ? socialSituation.hashCode() : 0);
         //result = 31 * result + (image != null ? image.hashCode() : 0);
-        result = 31 * result + (location != null ? location.hashCode() : 0);
+        result = 31 * result + Double.valueOf(lat).hashCode();
+        result = 31 * result + Double.valueOf(lng).hashCode();
         return result;
     }
 
@@ -164,7 +168,8 @@ public class MoodEvent {
                 "\nDate: " + this.getDate().toString() +
                 "\nTrigger: " + this.getTrigger() +
                 "\nSocial Situation: " + this.getSocialSituation().toString() +
-                "\nLocation: " + this.getLocation().toString();
+                "\nLatitude: " + this.getLat() +
+                "\nLongitude: " + this.getLng();
     }
 
     // --- START: Getters and Setters
@@ -202,12 +207,17 @@ public class MoodEvent {
     }
 
 
-    public void setLocation(Location location) {
-        this.location = location;
+    public void setLocation(double lat, double lng) {
+        this.lat = lat;
+        this.lng = lng;
     }
 
-    public Location getLocation() {
-        return location;
+    public double getLat() {
+        return lat;
+    }
+
+    public double getLng() {
+        return lng;
     }
 
     /**Compresses the ByteArrayOutputStream into a byte size restricted Bitmap and returns the

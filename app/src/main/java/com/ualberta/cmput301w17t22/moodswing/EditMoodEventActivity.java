@@ -5,11 +5,10 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
-import android.location.Location;
 import android.net.Uri;
+import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
@@ -19,8 +18,6 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.google.android.gms.maps.model.LatLng;
 
 import java.io.ByteArrayOutputStream;
 import java.util.Objects;
@@ -184,9 +181,11 @@ public class EditMoodEventActivity extends AppCompatActivity implements MSView<M
 
                     // Get lastKnownLocation if lastKnownLocation box is checked,
                     // otherwise just use the old value.
-                    Location location = oldMoodEvent.getLocation();
+                    double lat = oldMoodEvent.getLat();
+                    double lng = oldMoodEvent.getLng();
                     if (addCurrentLocationCheckBox.isChecked()) {
-                        location = getLocation();
+                        lat = getLat();
+                        lng = getLng();
                     }
 
                     // Get MoodSwingController.
@@ -200,7 +199,8 @@ public class EditMoodEventActivity extends AppCompatActivity implements MSView<M
                             emotionalState,
                             trigger,
                             socialSituation,
-                            location,
+                            lat,
+                            lng,
                             image));
 
                     // Toast to inform the user that the mood event was added.
@@ -347,13 +347,23 @@ public class EditMoodEventActivity extends AppCompatActivity implements MSView<M
     }
 
     /**
-     * Gets the lastKnownLocation from the main model class.
-     * @return The current / last known lastKnownLocation as a Location.
+     * Gets the lastKnownLat from the main model class.
+     * @return The current / last known lastKnownLat as a double.
      */
-    public Location getLocation() {
+    public double getLat() {
         // Get the mood swing controller and get the last known location.
         MoodSwingController moodSwingController = MoodSwingApplication.getMoodSwingController();
-        return moodSwingController.getLastKnownLocation();
+        return moodSwingController.getLastKnownLat();
+    }
+
+    /**
+     * Gets the lastKnownLng from the main model class.
+     * @return The current / last known lastKnownLng as a double.
+     */
+    public double getLng() {
+        // Get the mood swing controller and get the last known location.
+        MoodSwingController moodSwingController = MoodSwingApplication.getMoodSwingController();
+        return moodSwingController.getLastKnownLng();
     }
 
     /**

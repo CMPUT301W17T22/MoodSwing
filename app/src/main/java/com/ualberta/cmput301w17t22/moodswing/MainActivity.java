@@ -55,6 +55,8 @@ import java.util.Date;
  * TODO: in loadMoodSwing() might be a good idea
  *
  * TODO: prevent filters from going off automatically onStart
+ *
+ * TODO: there is some repeated location code in here. likely need to extract method.
  */
 public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>,
         LocationListener,
@@ -119,10 +121,11 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
 
     private GoogleMap mMap;
     LocationManager locationManager;
-    Location lastKnownLocation;
+    //Location lastKnownLocation;
+    //TODO: define unknown value better (currently 1000)
+    double lastKnownLat = 1000;
+    double lastKnownLng = 1000;
     String provider;
-    double lng;
-    double lat;
 
     /**
      * Called on opening of activity for the first time.
@@ -232,14 +235,14 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
         // Get the lastKnownLocation once every 5 seconds, or every 10 meters.
         locationManager.requestLocationUpdates(provider, 5000, 10, this);
 
-        lastKnownLocation = locationManager.getLastKnownLocation(provider);
+        Location lastKnownLocation = locationManager.getLastKnownLocation(provider);
 
         // Get latitude and longitude of the lastKnownLocation
         if (lastKnownLocation != null) {
 
-            moodSwingController.setLastKnownLocation(lastKnownLocation);
-            lng = lastKnownLocation.getLongitude();
-            lat = lastKnownLocation.getLatitude();
+            lastKnownLat = lastKnownLocation.getLatitude();
+            lastKnownLng = lastKnownLocation.getLongitude();
+            moodSwingController.setLastKnownLocation(lastKnownLat, lastKnownLng);
         } else {
             Log.i("MoodSwing","No location provider.");
         }
@@ -576,30 +579,25 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        if (lastKnownLocation != null) {
-            lng = lastKnownLocation.getLongitude();
-            lat = lastKnownLocation.getLatitude();
-            mMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(lat, lng)));
-        }
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(lastKnownLat, lastKnownLng)));
     }
 
     //If you want lastKnownLocation on changing place also than use below method
     //otherwise remove all below methods and don't implement lastKnownLocation listener
     @Override
-    public void onLocationChanged(Location arg0)
+    public void onLocationChanged(Location lastKnownLocation)
     {
         // Get MoodSwingController.
         MoodSwingController moodSwingController =
                 MoodSwingApplication.getMoodSwingController();
 
-        lastKnownLocation = arg0;
-        moodSwingController.setLastKnownLocation(lastKnownLocation);
-        lng = lastKnownLocation.getLongitude();
-        lat = lastKnownLocation.getLatitude();
+        lastKnownLat = lastKnownLocation.getLatitude();
+        lastKnownLng = lastKnownLocation.getLongitude();
+        moodSwingController.setLastKnownLocation(lastKnownLat, lastKnownLng);
 
         //marker used for testing
         //mMap.addMarker(new MarkerOptions().position(new LatLng(lat, lng)).title("new marker"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(lat, lng)));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(lastKnownLat, lastKnownLng)));
     }
 
 
