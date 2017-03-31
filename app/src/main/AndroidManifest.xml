@@ -16,11 +16,6 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
 
-    <uses-feature android:name="android.hardware.camera2.full" />
-    <uses-feature
-        android:name="android.hardware.camera"
-        android:required="true" />
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -61,10 +56,6 @@
         <activity android:name=".NewMoodEventActivity" />
         <activity android:name=".MoodHistoryActivity" />
 
-        <!-- For using camera in mood events -->
-        <uses-feature
-            android:name="android.hardware.camera"
-            android:required="true" />
 
         <activity android:name=".ViewMoodEventActivity" />
         <activity android:name=".EditMoodEventActivity" />
@@ -77,5 +68,10 @@
             android:label="@string/title_activity_block_user"
             android:theme="@style/AppTheme" />
     </application>
+
+    <uses-feature android:name="android.hardware.camera2.full" />
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
 
 </manifest>

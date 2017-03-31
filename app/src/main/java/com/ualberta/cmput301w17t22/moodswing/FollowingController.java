@@ -2,6 +2,8 @@ package com.ualberta.cmput301w17t22.moodswing;
 
 import android.util.Log;
 
+import java.security.InvalidParameterException;
+
 /** Controller for handling a FollowingList of participants that the mainParticipant follows.
  * <p/>
  * Created by nyitrai on 3/1/2017.
@@ -43,13 +45,11 @@ public class FollowingController implements MSController {
 
         Participant newFollowedParticipant =
                 elasticSearchController.getParticipantByUsername(participant);
-        //follow the participant
         mainParticipant.followParticipant(newFollowedParticipant);
-        //Send a follow request to the participant
-        mainParticipant.createFollowerRequest(newFollowedParticipant);
 
         // Update elastic search.
         elasticSearchController.updateParticipantByParticipant(mainParticipant);
+        elasticSearchController.updateParticipantByParticipant(newFollowedParticipant);
     }
 
     /**

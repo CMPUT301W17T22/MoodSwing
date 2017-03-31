@@ -1,34 +1,66 @@
 [
     {
-        "merged": "/afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/build/intermediates/res/merged/debug/drawable-v21/abc_action_bar_item_background_material.xml",
-        "source": "/afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/acdb84b68f35b908e2c9b146a432be87557f43c4/output/res/drawable-v21/abc_action_bar_item_background_material.xml"
+        "merged": "C:\\Users\\Fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21\\avd_show_password.xml",
+        "source": "C:\\Users\\Fred\\.android\\build-cache\\99a848ef72751d2bcbd1d589c83993e30dc6f96e\\output\\res\\drawable-v21\\avd_show_password.xml"
     },
     {
-        "merged": "/afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/build/intermediates/res/merged/debug/drawable-v21/avd_show_password.xml",
-        "source": "/afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/457340c7a14cce4a7fc1517802d2d30dbf684ab0/output/res/drawable-v21/avd_show_password.xml"
+        "merged": "C:\\Users\\Fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21\\abc_action_bar_item_background_material.xml",
+        "source": "C:\\Users\\Fred\\.android\\build-cache\\cd9c4cfd4be481eb0ca86ab77048eb1cbe3df69d\\output\\res\\drawable-v21\\abc_action_bar_item_background_material.xml"
     },
     {
-        "merged": "/afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/build/intermediates/res/merged/debug/drawable-v21/design_bottom_navigation_item_background.xml",
-        "source": "/afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/457340c7a14cce4a7fc1517802d2d30dbf684ab0/output/res/drawable-v21/design_bottom_navigation_item_background.xml"
+        "merged": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21\\design_password_eye.xml",
+        "source": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\.android\\build-cache\\457340c7a14cce4a7fc1517802d2d30dbf684ab0\\output\\res\\drawable-v21\\design_password_eye.xml"
     },
     {
-        "merged": "/afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/build/intermediates/res/merged/debug/drawable-v21/notification_action_background.xml",
-        "source": "/afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/acdb84b68f35b908e2c9b146a432be87557f43c4/output/res/drawable-v21/notification_action_background.xml"
+        "merged": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21\\abc_action_bar_item_background_material.xml",
+        "source": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\.android\\build-cache\\acdb84b68f35b908e2c9b146a432be87557f43c4\\output\\res\\drawable-v21\\abc_action_bar_item_background_material.xml"
     },
     {
-        "merged": "/afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/build/intermediates/res/merged/debug/drawable-v21/design_password_eye.xml",
-        "source": "/afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/457340c7a14cce4a7fc1517802d2d30dbf684ab0/output/res/drawable-v21/design_password_eye.xml"
+        "merged": "C:\\Users\\Fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21\\design_bottom_navigation_item_background.xml",
+        "source": "C:\\Users\\Fred\\.android\\build-cache\\99a848ef72751d2bcbd1d589c83993e30dc6f96e\\output\\res\\drawable-v21\\design_bottom_navigation_item_background.xml"
     },
     {
-        "merged": "/afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/build/intermediates/res/merged/debug/drawable-v21/avd_hide_password.xml",
-        "source": "/afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/457340c7a14cce4a7fc1517802d2d30dbf684ab0/output/res/drawable-v21/avd_hide_password.xml"
+        "merged": "C:\\Users\\Fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21\\abc_edit_text_material.xml",
+        "source": "C:\\Users\\Fred\\.android\\build-cache\\cd9c4cfd4be481eb0ca86ab77048eb1cbe3df69d\\output\\res\\drawable-v21\\abc_edit_text_material.xml"
     },
     {
-        "merged": "/afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/build/intermediates/res/merged/debug/drawable-v21/abc_edit_text_material.xml",
-        "source": "/afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/acdb84b68f35b908e2c9b146a432be87557f43c4/output/res/drawable-v21/abc_edit_text_material.xml"
+        "merged": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21\\abc_edit_text_material.xml",
+        "source": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\.android\\build-cache\\acdb84b68f35b908e2c9b146a432be87557f43c4\\output\\res\\drawable-v21\\abc_edit_text_material.xml"
     },
     {
-        "merged": "/afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/build/intermediates/res/merged/debug/drawable-v21/abc_btn_colored_material.xml",
-        "source": "/afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/acdb84b68f35b908e2c9b146a432be87557f43c4/output/res/drawable-v21/abc_btn_colored_material.xml"
+        "merged": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21\\abc_btn_colored_material.xml",
+        "source": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\.android\\build-cache\\acdb84b68f35b908e2c9b146a432be87557f43c4\\output\\res\\drawable-v21\\abc_btn_colored_material.xml"
+    },
+    {
+        "merged": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21\\avd_hide_password.xml",
+        "source": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\.android\\build-cache\\457340c7a14cce4a7fc1517802d2d30dbf684ab0\\output\\res\\drawable-v21\\avd_hide_password.xml"
+    },
+    {
+        "merged": "C:\\Users\\Fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21\\notification_action_background.xml",
+        "source": "C:\\Users\\Fred\\.android\\build-cache\\cd9c4cfd4be481eb0ca86ab77048eb1cbe3df69d\\output\\res\\drawable-v21\\notification_action_background.xml"
+    },
+    {
+        "merged": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21\\avd_show_password.xml",
+        "source": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\.android\\build-cache\\457340c7a14cce4a7fc1517802d2d30dbf684ab0\\output\\res\\drawable-v21\\avd_show_password.xml"
+    },
+    {
+        "merged": "C:\\Users\\Fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21\\avd_hide_password.xml",
+        "source": "C:\\Users\\Fred\\.android\\build-cache\\99a848ef72751d2bcbd1d589c83993e30dc6f96e\\output\\res\\drawable-v21\\avd_hide_password.xml"
+    },
+    {
+        "merged": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21\\design_bottom_navigation_item_background.xml",
+        "source": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\.android\\build-cache\\457340c7a14cce4a7fc1517802d2d30dbf684ab0\\output\\res\\drawable-v21\\design_bottom_navigation_item_background.xml"
+    },
+    {
+        "merged": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21\\notification_action_background.xml",
+        "source": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\.android\\build-cache\\acdb84b68f35b908e2c9b146a432be87557f43c4\\output\\res\\drawable-v21\\notification_action_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\Fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21\\design_password_eye.xml",
+        "source": "C:\\Users\\Fred\\.android\\build-cache\\99a848ef72751d2bcbd1d589c83993e30dc6f96e\\output\\res\\drawable-v21\\design_password_eye.xml"
+    },
+    {
+        "merged": "C:\\Users\\Fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21\\abc_btn_colored_material.xml",
+        "source": "C:\\Users\\Fred\\.android\\build-cache\\cd9c4cfd4be481eb0ca86ab77048eb1cbe3df69d\\output\\res\\drawable-v21\\abc_btn_colored_material.xml"
     }
 ]

@@ -4,6 +4,7 @@ import android.util.Log;
 
 import com.google.android.gms.maps.model.LatLng;
 
+import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.InputMismatchException;
@@ -113,7 +114,7 @@ public class Participant extends User {
          * Adding the participant to the sending participants pending on the followingList.
          * Creates a follower request that is sent to the receiving participant.
          * @param receivingParticipant */
-    public void followParticipant(Participant receivingParticipant) {
+    public void followParticipant(Participant receivingParticipant) throws InvalidParameterException {
         Boolean sendFollowRequest = false;
 
         // If the receivingParticipant's blocklist is uninitialized, send the follow request.
@@ -145,7 +146,7 @@ public class Participant extends User {
     public void unfollowParticipant(Participant receivingParticipant){
 
         followingList.remove(receivingParticipant);
-        receivingParticipant.createUnfollowEvent(this);
+
     }
     /**Remove a pending following request from the main participant and corresponding
      * follower request from the receiving participant.
@@ -173,7 +174,7 @@ public class Participant extends User {
      * the pending following request is moved to the approved list in followingList.
      * @param receivingParticipant
      */
-    public void followRequestApproved(Participant receivingParticipant){
+    public void followRequestApproved(Participant receivingParticipant) throws InvalidParameterException{
         followingList.approvePending(receivingParticipant);
     }
     /**Event that is received indicating the main participants follow request was declined so
@@ -200,7 +201,7 @@ public class Participant extends User {
       * list, that adds them to the main participants pending followers.
      * @param requestingParticipant
      */
-    public void createFollowerRequest(Participant requestingParticipant){
+    public void createFollowerRequest(Participant requestingParticipant) throws InvalidParameterException{
         Boolean createFollowRequest = false;
 
         // If the blocklist is uninitialized, create the follow request.
@@ -229,7 +230,7 @@ public class Participant extends User {
     /**Approves a pending follower request and sends a followRequestApproved(this) event
      * to the participant in order to let them know to update their list.
      * @param requestingParticipant */
-    public void approveFollowerRequest(Participant requestingParticipant){
+    public void approveFollowerRequest(Participant requestingParticipant) throws InvalidParameterException{
         requestingParticipant.followRequestApproved(this);
         followerList.approvePending(requestingParticipant);
     }

@@ -111,7 +111,7 @@ public class MoodEventAdapter extends ArrayAdapter<MoodEvent> {
         }
 
         //Location Indicator
-        if(moodEvent.getLat() == NaN || moodEvent.getLng() == NaN){
+        if(Double.isNaN(moodEvent.getLat()) || Double.isNaN(moodEvent.getLng())){
             locationIndicatorImageView.setVisibility(View.INVISIBLE);
         }else{
             locationIndicatorImageView.setVisibility(View.VISIBLE);

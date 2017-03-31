@@ -6,6 +6,8 @@ import android.graphics.BitmapFactory;
 import java.io.ByteArrayOutputStream;
 import java.util.Date;
 
+import static java.lang.Double.NaN;
+
 /**
  * A MoodEvent is an object that is posted to the MoodSwing app and displayed on certain feeds
  * within it.
@@ -22,6 +24,8 @@ import java.util.Date;
  */
 
 public class MoodEvent {
+    private static final double NOT_SET = 911.911;
+
     /** The original poster of the MoodEvent's username. */
     private String originalPoster;
 
@@ -41,10 +45,10 @@ public class MoodEvent {
 
     /** The lastKnownLat that the mood event originally was entered at.
      * CAN NOT BE EDITED AFTER INITIALIZATION.*/
-    private double lat;
+    private double lat = NOT_SET;
     /** The lastKnownLng that the mood event originally was entered at.
      * CAN NOT BE EDITED AFTER INITIALIZATION.*/
-    private double lng;
+    private double lng = NOT_SET;
 
     /**The image that can be attached to the mood event. This can be added by taking a picture
      * or selecting one from the phones gallery */
@@ -60,6 +64,7 @@ public class MoodEvent {
      * @param lat
      * @param lng
      */
+    //TODO: this needs to be implemented in the same way as the editor!!!!!!
     public MoodEvent(String posterUsername,
                      Date date,
                      EmotionalState emotionalState,
@@ -74,8 +79,10 @@ public class MoodEvent {
         this.trigger = trigger;
         this.socialSituation = socialSituation;
         this.image = importImage;
-        this.lat = lat;
-        this.lng = lng;
+        if(!Double.isNaN(lat) && !Double.isNaN(lng)) {
+            this.lat = lat;
+            this.lng = lng;
+        }
     }
 
     //TODO: Regenerate equals method to include image and location.
@@ -123,12 +130,8 @@ public class MoodEvent {
         result = 31 * result + (trigger != null ? trigger.hashCode() : 0);
         result = 31 * result + (socialSituation != null ? socialSituation.hashCode() : 0);
         //result = 31 * result + (image != null ? image.hashCode() : 0);
-        if(!Double.isNaN(lat)) {
-            result = 31 * result + Double.valueOf(lat).hashCode();
-        }
-        if(!Double.isNaN(lng)) {
-            result = 31 * result + Double.valueOf(lng).hashCode();
-        }
+        result = 31 * result + Double.valueOf(lat).hashCode();
+        result = 31 * result + Double.valueOf(lng).hashCode();
         return result;
     }
 
@@ -139,6 +142,7 @@ public class MoodEvent {
      * @param trigger The new trigger of the mood event.
      * @param socialSituation The new social situation of the mood event.
      */
+    //TODO: this needs to be implemented in the same way as the constructor!!!!!!
     public void editMoodEvent(EmotionalState emotionalState,
                               String trigger,
                               SocialSituation socialSituation,
@@ -224,11 +228,11 @@ public class MoodEvent {
     }
 
     public double getLat() {
-        return lat;
+        return lat == NOT_SET ? NaN : lat;
     }
 
     public double getLng() {
-        return lng;
+        return lng == NOT_SET ? NaN : lng;
     }
 
     /**Compresses the ByteArrayOutputStream into a byte size restricted Bitmap and returns the

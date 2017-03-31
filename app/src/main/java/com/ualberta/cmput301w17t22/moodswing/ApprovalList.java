@@ -27,7 +27,7 @@ public class ApprovalList {
      * Otherwise it adds that participants username to the pending list.
      * @param otherParticipant
      */
-    public void newPendingParticipant(Participant otherParticipant){
+    public void newPendingParticipant(Participant otherParticipant) throws InvalidParameterException{
         if(pending.contains(otherParticipant.getUsername()) || approved.contains(otherParticipant.getUsername())){
             throw new InvalidParameterException();
         } else {
@@ -40,7 +40,7 @@ public class ApprovalList {
      * are remove them from it and add them to the approved list.
      * @param otherParticipant
      */
-    public void approvePending(Participant otherParticipant) {
+    public void approvePending(Participant otherParticipant) throws InvalidParameterException {
         if (pending.contains(otherParticipant.getUsername())) {
 
             pending.remove(otherParticipant.getUsername());
