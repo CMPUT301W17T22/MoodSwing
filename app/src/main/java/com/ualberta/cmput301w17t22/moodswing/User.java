@@ -30,7 +30,7 @@ public abstract class User {
             return false;
         }
         User otherUser = (User) otherObject;
-        return(this.username == otherUser.username);
+        return(this.username.equals(otherUser.username));
     }
 
     /**
