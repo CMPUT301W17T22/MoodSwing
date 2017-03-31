@@ -4,6 +4,7 @@ import android.util.Log;
 
 import com.google.android.gms.maps.model.LatLng;
 
+import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.InputMismatchException;
@@ -113,7 +114,7 @@ public class Participant extends User {
          * Adding the participant to the sending participants pending on the followingList.
          * Creates a follower request that is sent to the receiving participant.
          * @param receivingParticipant */
-    public void followParticipant(Participant receivingParticipant) {
+    public void followParticipant(Participant receivingParticipant) throws InvalidParameterException {
         Boolean sendFollowRequest = false;
 
         // If the receivingParticipant's blocklist is uninitialized, send the follow request.
