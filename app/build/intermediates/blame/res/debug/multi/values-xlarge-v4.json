@@ -1,6 +1,6 @@
 [
     {
-        "outputFile": "C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-xlarge-v4\\values-xlarge-v4.xml",
+        "outputFile": "/afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-xlarge-v4/values-xlarge-v4.xml",
         "map": [
             {
                 "to": {
@@ -11,7 +11,7 @@
                     "endOffset": 121
                 },
                 "from": {
-                    "file": "C:\\Users\\fred\\.android\\build-cache\\a987e0752e8a3c33a80e6f25858c5aa9a1461541\\output\\res\\values-xlarge-v4\\values-xlarge-v4.xml",
+                    "file": "/afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/acdb84b68f35b908e2c9b146a432be87557f43c4/output/res/values-xlarge-v4/values-xlarge-v4.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,
@@ -30,7 +30,7 @@
                     "endOffset": 192
                 },
                 "from": {
-                    "file": "C:\\Users\\fred\\.android\\build-cache\\a987e0752e8a3c33a80e6f25858c5aa9a1461541\\output\\res\\values-xlarge-v4\\values-xlarge-v4.xml",
+                    "file": "/afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/acdb84b68f35b908e2c9b146a432be87557f43c4/output/res/values-xlarge-v4/values-xlarge-v4.xml",
                     "position": {
                         "startLine": 3,
                         "startColumn": 4,
@@ -49,7 +49,7 @@
                     "endOffset": 262
                 },
                 "from": {
-                    "file": "C:\\Users\\fred\\.android\\build-cache\\a987e0752e8a3c33a80e6f25858c5aa9a1461541\\output\\res\\values-xlarge-v4\\values-xlarge-v4.xml",
+                    "file": "/afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/acdb84b68f35b908e2c9b146a432be87557f43c4/output/res/values-xlarge-v4/values-xlarge-v4.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 4,
@@ -68,7 +68,7 @@
                     "endOffset": 332
                 },
                 "from": {
-                    "file": "C:\\Users\\fred\\.android\\build-cache\\a987e0752e8a3c33a80e6f25858c5aa9a1461541\\output\\res\\values-xlarge-v4\\values-xlarge-v4.xml",
+                    "file": "/afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/acdb84b68f35b908e2c9b146a432be87557f43c4/output/res/values-xlarge-v4/values-xlarge-v4.xml",
                     "position": {
                         "startLine": 5,
                         "startColumn": 4,
@@ -87,7 +87,7 @@
                     "endOffset": 400
                 },
                 "from": {
-                    "file": "C:\\Users\\fred\\.android\\build-cache\\a987e0752e8a3c33a80e6f25858c5aa9a1461541\\output\\res\\values-xlarge-v4\\values-xlarge-v4.xml",
+                    "file": "/afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/acdb84b68f35b908e2c9b146a432be87557f43c4/output/res/values-xlarge-v4/values-xlarge-v4.xml",
                     "position": {
                         "startLine": 6,
                         "startColumn": 4,
@@ -106,7 +106,7 @@
                     "endOffset": 468
                 },
                 "from": {
-                    "file": "C:\\Users\\fred\\.android\\build-cache\\a987e0752e8a3c33a80e6f25858c5aa9a1461541\\output\\res\\values-xlarge-v4\\values-xlarge-v4.xml",
+                    "file": "/afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/acdb84b68f35b908e2c9b146a432be87557f43c4/output/res/values-xlarge-v4/values-xlarge-v4.xml",
                     "position": {
                         "startLine": 7,
                         "startColumn": 4,

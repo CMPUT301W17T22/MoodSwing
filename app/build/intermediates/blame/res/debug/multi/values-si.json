@@ -1,6 +1,6 @@
 [
     {
-        "outputFile": "C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-si\\values-si.xml",
+        "outputFile": "/afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-si/values-si.xml",
         "map": [
             {
                 "to": {
@@ -11,7 +11,7 @@
                     "endOffset": 210
                 },
                 "from": {
-                    "file": "C:\\Users\\fred\\.android\\build-cache\\85f91bee56933bded0e8bb241e8d55d94a91fdb7\\output\\res\\values-si\\values.xml",
+                    "file": "/afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/542c4e15536884a8d9b0f90bc0db94f642d7c3de/output/res/values-si/values.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 0,
@@ -30,7 +30,7 @@
                     "endOffset": 396
                 },
                 "from": {
-                    "file": "C:\\Users\\fred\\.android\\build-cache\\85f91bee56933bded0e8bb241e8d55d94a91fdb7\\output\\res\\values-si\\values.xml",
+                    "file": "/afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/542c4e15536884a8d9b0f90bc0db94f642d7c3de/output/res/values-si/values.xml",
                     "position": {
                         "startLine": 5,
                         "startColumn": 0,
@@ -49,7 +49,7 @@
                     "endOffset": 522
                 },
                 "from": {
-                    "file": "C:\\Users\\fred\\.android\\build-cache\\85f91bee56933bded0e8bb241e8d55d94a91fdb7\\output\\res\\values-si\\values.xml",
+                    "file": "/afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/542c4e15536884a8d9b0f90bc0db94f642d7c3de/output/res/values-si/values.xml",
                     "position": {
                         "startLine": 6,
                         "startColumn": 0,
@@ -68,7 +68,7 @@
                     "endOffset": 637
                 },
                 "from": {
-                    "file": "C:\\Users\\fred\\.android\\build-cache\\85f91bee56933bded0e8bb241e8d55d94a91fdb7\\output\\res\\values-si\\values.xml",
+                    "file": "/afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/542c4e15536884a8d9b0f90bc0db94f642d7c3de/output/res/values-si/values.xml",
                     "position": {
                         "startLine": 7,
                         "startColumn": 0,
@@ -87,7 +87,7 @@
                     "endOffset": 838
                 },
                 "from": {
-                    "file": "C:\\Users\\fred\\.android\\build-cache\\85f91bee56933bded0e8bb241e8d55d94a91fdb7\\output\\res\\values-si\\values.xml",
+                    "file": "/afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/542c4e15536884a8d9b0f90bc0db94f642d7c3de/output/res/values-si/values.xml",
                     "position": {
                         "startLine": 8,
                         "startColumn": 0,
@@ -106,7 +106,7 @@
                     "endOffset": 964
                 },
                 "from": {
-                    "file": "C:\\Users\\fred\\.android\\build-cache\\85f91bee56933bded0e8bb241e8d55d94a91fdb7\\output\\res\\values-si\\values.xml",
+                    "file": "/afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/542c4e15536884a8d9b0f90bc0db94f642d7c3de/output/res/values-si/values.xml",
                     "position": {
                         "startLine": 9,
                         "startColumn": 0,
@@ -125,7 +125,7 @@
                     "endOffset": 1091
                 },
                 "from": {
-                    "file": "C:\\Users\\fred\\.android\\build-cache\\85f91bee56933bded0e8bb241e8d55d94a91fdb7\\output\\res\\values-si\\values.xml",
+                    "file": "/afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/542c4e15536884a8d9b0f90bc0db94f642d7c3de/output/res/values-si/values.xml",
                     "position": {
                         "startLine": 10,
                         "startColumn": 0,
@@ -144,7 +144,7 @@
                     "endOffset": 1289
                 },
                 "from": {
-                    "file": "C:\\Users\\fred\\.android\\build-cache\\2d4c3d320d50a701fbc2b74d928539ff1e4cdc1b\\output\\res\\values-si\\values.xml",
+                    "file": "/afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/094b2d9994a825172a838c941447253c9e1a738b/output/res/values-si/values.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 0,
@@ -163,7 +163,7 @@
                     "endOffset": 1499
                 },
                 "from": {
-                    "file": "C:\\Users\\fred\\.android\\build-cache\\85f91bee56933bded0e8bb241e8d55d94a91fdb7\\output\\res\\values-si\\values.xml",
+                    "file": "/afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/542c4e15536884a8d9b0f90bc0db94f642d7c3de/output/res/values-si/values.xml",
                     "position": {
                         "startLine": 11,
                         "startColumn": 0,
@@ -182,7 +182,7 @@
                     "endOffset": 1616
                 },
                 "from": {
-                    "file": "C:\\Users\\fred\\.android\\build-cache\\85f91bee56933bded0e8bb241e8d55d94a91fdb7\\output\\res\\values-si\\values.xml",
+                    "file": "/afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/542c4e15536884a8d9b0f90bc0db94f642d7c3de/output/res/values-si/values.xml",
                     "position": {
                         "startLine": 12,
                         "startColumn": 0,
@@ -201,7 +201,7 @@
                     "endOffset": 1803
                 },
                 "from": {
-                    "file": "C:\\Users\\fred\\.android\\build-cache\\85f91bee56933bded0e8bb241e8d55d94a91fdb7\\output\\res\\values-si\\values.xml",
+                    "file": "/afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/542c4e15536884a8d9b0f90bc0db94f642d7c3de/output/res/values-si/values.xml",
                     "position": {
                         "startLine": 13,
                         "startColumn": 0,
@@ -220,7 +220,7 @@
                     "endOffset": 1936
                 },
                 "from": {
-                    "file": "C:\\Users\\fred\\.android\\build-cache\\85f91bee56933bded0e8bb241e8d55d94a91fdb7\\output\\res\\values-si\\values.xml",
+                    "file": "/afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/542c4e15536884a8d9b0f90bc0db94f642d7c3de/output/res/values-si/values.xml",
                     "position": {
                         "startLine": 14,
                         "startColumn": 0,
@@ -239,7 +239,7 @@
                     "endOffset": 2139
                 },
                 "from": {
-                    "file": "C:\\Users\\fred\\.android\\build-cache\\85f91bee56933bded0e8bb241e8d55d94a91fdb7\\output\\res\\values-si\\values.xml",
+                    "file": "/afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/542c4e15536884a8d9b0f90bc0db94f642d7c3de/output/res/values-si/values.xml",
                     "position": {
                         "startLine": 15,
                         "startColumn": 0,
@@ -258,7 +258,7 @@
                     "endOffset": 2330
                 },
                 "from": {
-                    "file": "C:\\Users\\fred\\.android\\build-cache\\85f91bee56933bded0e8bb241e8d55d94a91fdb7\\output\\res\\values-si\\values.xml",
+                    "file": "/afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/542c4e15536884a8d9b0f90bc0db94f642d7c3de/output/res/values-si/values.xml",
                     "position": {
                         "startLine": 16,
                         "startColumn": 0,
@@ -277,7 +277,7 @@
                     "endOffset": 2433
                 },
                 "from": {
-                    "file": "C:\\Users\\fred\\.android\\build-cache\\85f91bee56933bded0e8bb241e8d55d94a91fdb7\\output\\res\\values-si\\values.xml",
+                    "file": "/afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/542c4e15536884a8d9b0f90bc0db94f642d7c3de/output/res/values-si/values.xml",
                     "position": {
                         "startLine": 17,
                         "startColumn": 0,
@@ -296,7 +296,7 @@
                     "endOffset": 2524
                 },
                 "from": {
-                    "file": "C:\\Users\\fred\\.android\\build-cache\\85f91bee56933bded0e8bb241e8d55d94a91fdb7\\output\\res\\values-si\\values.xml",
+                    "file": "/afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/542c4e15536884a8d9b0f90bc0db94f642d7c3de/output/res/values-si/values.xml",
                     "position": {
                         "startLine": 18,
                         "startColumn": 0,
@@ -315,7 +315,7 @@
                     "endOffset": 2633
                 },
                 "from": {
-                    "file": "C:\\Users\\fred\\.android\\build-cache\\85f91bee56933bded0e8bb241e8d55d94a91fdb7\\output\\res\\values-si\\values.xml",
+                    "file": "/afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/542c4e15536884a8d9b0f90bc0db94f642d7c3de/output/res/values-si/values.xml",
                     "position": {
                         "startLine": 19,
                         "startColumn": 0,

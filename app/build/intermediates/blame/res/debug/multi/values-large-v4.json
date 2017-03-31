@@ -1,6 +1,6 @@
 [
     {
-        "outputFile": "C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-large-v4\\values-large-v4.xml",
+        "outputFile": "/afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-large-v4/values-large-v4.xml",
         "map": [
             {
                 "to": {
@@ -11,7 +11,7 @@
                     "endOffset": 109
                 },
                 "from": {
-                    "file": "C:\\Users\\fred\\.android\\build-cache\\a987e0752e8a3c33a80e6f25858c5aa9a1461541\\output\\res\\values-large-v4\\values-large-v4.xml",
+                    "file": "/afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/acdb84b68f35b908e2c9b146a432be87557f43c4/output/res/values-large-v4/values-large-v4.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,
@@ -30,7 +30,7 @@
                     "endOffset": 180
                 },
                 "from": {
-                    "file": "C:\\Users\\fred\\.android\\build-cache\\a987e0752e8a3c33a80e6f25858c5aa9a1461541\\output\\res\\values-large-v4\\values-large-v4.xml",
+                    "file": "/afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/acdb84b68f35b908e2c9b146a432be87557f43c4/output/res/values-large-v4/values-large-v4.xml",
                     "position": {
                         "startLine": 3,
                         "startColumn": 4,
@@ -49,7 +49,7 @@
                     "endOffset": 251
                 },
                 "from": {
-                    "file": "C:\\Users\\fred\\.android\\build-cache\\a987e0752e8a3c33a80e6f25858c5aa9a1461541\\output\\res\\values-large-v4\\values-large-v4.xml",
+                    "file": "/afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/acdb84b68f35b908e2c9b146a432be87557f43c4/output/res/values-large-v4/values-large-v4.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 4,
@@ -68,7 +68,7 @@
                     "endOffset": 321
                 },
                 "from": {
-                    "file": "C:\\Users\\fred\\.android\\build-cache\\a987e0752e8a3c33a80e6f25858c5aa9a1461541\\output\\res\\values-large-v4\\values-large-v4.xml",
+                    "file": "/afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/acdb84b68f35b908e2c9b146a432be87557f43c4/output/res/values-large-v4/values-large-v4.xml",
                     "position": {
                         "startLine": 5,
                         "startColumn": 4,
@@ -87,7 +87,7 @@
                     "endOffset": 391
                 },
                 "from": {
-                    "file": "C:\\Users\\fred\\.android\\build-cache\\a987e0752e8a3c33a80e6f25858c5aa9a1461541\\output\\res\\values-large-v4\\values-large-v4.xml",
+                    "file": "/afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/acdb84b68f35b908e2c9b146a432be87557f43c4/output/res/values-large-v4/values-large-v4.xml",
                     "position": {
                         "startLine": 6,
                         "startColumn": 4,
@@ -106,7 +106,7 @@
                     "endOffset": 459
                 },
                 "from": {
-                    "file": "C:\\Users\\fred\\.android\\build-cache\\a987e0752e8a3c33a80e6f25858c5aa9a1461541\\output\\res\\values-large-v4\\values-large-v4.xml",
+                    "file": "/afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/acdb84b68f35b908e2c9b146a432be87557f43c4/output/res/values-large-v4/values-large-v4.xml",
                     "position": {
                         "startLine": 7,
                         "startColumn": 4,
@@ -125,7 +125,7 @@
                     "endOffset": 527
                 },
                 "from": {
-                    "file": "C:\\Users\\fred\\.android\\build-cache\\a987e0752e8a3c33a80e6f25858c5aa9a1461541\\output\\res\\values-large-v4\\values-large-v4.xml",
+                    "file": "/afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/acdb84b68f35b908e2c9b146a432be87557f43c4/output/res/values-large-v4/values-large-v4.xml",
                     "position": {
                         "startLine": 8,
                         "startColumn": 4,
@@ -144,7 +144,7 @@
                     "endOffset": 631
                 },
                 "from": {
-                    "file": "C:\\Users\\fred\\.android\\build-cache\\a987e0752e8a3c33a80e6f25858c5aa9a1461541\\output\\res\\values-large-v4\\values-large-v4.xml",
+                    "file": "/afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/acdb84b68f35b908e2c9b146a432be87557f43c4/output/res/values-large-v4/values-large-v4.xml",
                     "position": {
                         "startLine": 9,
                         "startColumn": 4,
@@ -163,7 +163,7 @@
                     "endOffset": 747
                 },
                 "from": {
-                    "file": "C:\\Users\\fred\\.android\\build-cache\\a987e0752e8a3c33a80e6f25858c5aa9a1461541\\output\\res\\values-large-v4\\values-large-v4.xml",
+                    "file": "/afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/acdb84b68f35b908e2c9b146a432be87557f43c4/output/res/values-large-v4/values-large-v4.xml",
                     "position": {
                         "startLine": 10,
                         "startColumn": 4,
