@@ -57,6 +57,7 @@ public class MoodFeedFilterTest extends ActivityInstrumentationTestCase2<LoginAc
         solo.clickOnButton("Post");
 
 
+
     }
 
 
