@@ -40,7 +40,7 @@ public class ApprovalList {
      * are remove them from it and add them to the approved list.
      * @param otherParticipant
      */
-    public void approvePending(Participant otherParticipant) {
+    public void approvePending(Participant otherParticipant) throws InvalidParameterException {
         if (pending.contains(otherParticipant.getUsername())) {
 
             pending.remove(otherParticipant.getUsername());

@@ -1,204 +1,204 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:2:1-81:12
+ADDED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml:2:1-81:12
 	package
-		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:3:5-52
-		INJECTED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml
-		INJECTED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml
+		ADDED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml:3:5-52
+		INJECTED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml
 	android:versionName
-		INJECTED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml
-		INJECTED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml
+		INJECTED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml
 	xmlns:android
-		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:2:11-69
+		ADDED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml:2:11-69
 	android:versionCode
-		INJECTED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml
-		INJECTED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml
+		INJECTED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml
 uses-permission#android.permission.ACCESS_NETWORK_STATE
-ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:10:5-80
-MERGED from [com.google.android.gms:play-services-maps:10.2.0] /afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/5ef74efbec96774b9473889127a0998eef631987/output/AndroidManifest.xml:19:5-78
+ADDED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml:10:5-80
+MERGED from [com.google.android.gms:play-services-maps:10.2.0] C:\Users\Fred\.android\build-cache\951bb0f44bee57864306125b87928d77d837d1af\output\AndroidManifest.xml:19:5-78
 	android:name
-		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:10:22-78
+		ADDED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml:10:22-78
 uses-permission#android.permission.INTERNET
-ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:11:5-66
-MERGED from [com.google.android.gms:play-services-maps:10.2.0] /afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/5ef74efbec96774b9473889127a0998eef631987/output/AndroidManifest.xml:20:5-66
+ADDED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml:11:5-66
+MERGED from [com.google.android.gms:play-services-maps:10.2.0] C:\Users\Fred\.android\build-cache\951bb0f44bee57864306125b87928d77d837d1af\output\AndroidManifest.xml:20:5-66
 	android:name
-		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:11:22-64
+		ADDED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml:11:22-64
 uses-permission#com.google.android.provider.gsf.permission.READ_GSERVICSE
-ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:12:5-96
+ADDED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml:12:5-96
 	android:name
-		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:12:22-94
+		ADDED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml:12:22-94
 uses-permission#android.permission.ACCESS_COARSE_LOCATION
-ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:13:5-80
+ADDED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml:13:5-80
 	android:name
-		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:13:22-78
+		ADDED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml:13:22-78
 uses-permission#android.permission.ACCESS_FINE_LOCATION
-ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:14:5-79
+ADDED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml:14:5-79
 	android:name
-		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:14:22-76
+		ADDED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml:14:22-76
 uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
-ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:16:5-81
+ADDED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml:16:5-81
 	android:name
-		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:16:22-78
+		ADDED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml:16:22-78
 uses-permission#android.permission.CAMERA
-ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:17:5-65
+ADDED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml:17:5-65
 	android:name
-		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:17:22-62
+		ADDED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml:17:22-62
 uses-feature#android.hardware.camera2.full
-ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:19:5-66
+ADDED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml:19:5-66
 	android:name
-		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:19:19-63
+		ADDED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml:19:19-63
 uses-feature#android.hardware.camera
-ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:20:5-22:35
+ADDED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml:20:5-22:35
 	android:required
-		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:22:9-32
+		ADDED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml:22:9-32
 	android:name
-		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:21:9-47
+		ADDED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml:21:9-47
 application
-ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:24:5-79:19
-MERGED from [com.google.android.gms:play-services-maps:10.2.0] /afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/5ef74efbec96774b9473889127a0998eef631987/output/AndroidManifest.xml:24:5-19
-MERGED from [com.google.android.gms:play-services-location:10.2.0] /afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/0cb2ca36435548612261eb7538443bec95861e47/output/AndroidManifest.xml:4:5-19
-MERGED from [com.google.android.gms:play-services-base:10.2.0] /afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/542c4e15536884a8d9b0f90bc0db94f642d7c3de/output/AndroidManifest.xml:18:5-20:19
-MERGED from [com.google.android.gms:play-services-tasks:10.2.0] /afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/7dff727405fdb838bc690c320aa63ae3f1ae8627/output/AndroidManifest.xml:4:5-19
-MERGED from [com.google.android.gms:play-services-basement:10.2.0] /afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/094b2d9994a825172a838c941447253c9e1a738b/output/AndroidManifest.xml:19:5-21:19
-MERGED from [com.android.support.constraint:constraint-layout:1.0.1] /afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/a7eb9531fa2dfba974dcaa696c03448aee9352d6/output/AndroidManifest.xml:9:5-20
-MERGED from [com.android.support:design:25.2.0] /afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/457340c7a14cce4a7fc1517802d2d30dbf684ab0/output/AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:appcompat-v7:25.2.0] /afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/acdb84b68f35b908e2c9b146a432be87557f43c4/output/AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:animated-vector-drawable:25.2.0] /afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/9325c8b2d779ac6e31dc7c9a5f0eeacffdff779e/output/AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:support-vector-drawable:25.2.0] /afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/ab046330d1a1b0b4a7dc3d6679125f878b9bdd38/output/AndroidManifest.xml:23:5-20
-MERGED from [com.android.support:transition:25.2.0] /afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/13db7abb5fbd6b1a618111099b008bc7a66d6d19/output/AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:support-v4:25.2.0] /afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/96bccba5cc838a3cb03aa6f5cadba585ff27079b/output/AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:support-fragment:25.2.0] /afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/8c74d7d573b34a33f9fbf481d6fdadb6e2caa6ae/output/AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:support-media-compat:25.2.0] /afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/f87e30cec6e3d9c5e3c7ea0ee2ba39b382f8a07a/output/AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:support-core-utils:25.2.0] /afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/9faf22882fc237de018631ce9aab55a7c463786f/output/AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:support-core-ui:25.2.0] /afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/dd09e69421fac125b71b0c3ba655bbc54a4ab5f8/output/AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:support-compat:25.2.0] /afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/23598af813ff12893310390f0c41573c97929ab5/output/AndroidManifest.xml:25:5-20
+ADDED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml:24:5-79:19
+MERGED from [com.google.android.gms:play-services-maps:10.2.0] C:\Users\Fred\.android\build-cache\951bb0f44bee57864306125b87928d77d837d1af\output\AndroidManifest.xml:24:5-19
+MERGED from [com.google.android.gms:play-services-location:10.2.0] C:\Users\Fred\.android\build-cache\b6a671b49cb207631c710f4ef5e85def30bc74af\output\AndroidManifest.xml:4:5-19
+MERGED from [com.google.android.gms:play-services-base:10.2.0] C:\Users\Fred\.android\build-cache\5bc16326bc89fb082ecab2d0200d2ac785b47bd0\output\AndroidManifest.xml:18:5-20:19
+MERGED from [com.google.android.gms:play-services-tasks:10.2.0] C:\Users\Fred\.android\build-cache\35a3616d5b6ccf5bc4d7085edfca33ede11702a3\output\AndroidManifest.xml:4:5-19
+MERGED from [com.google.android.gms:play-services-basement:10.2.0] C:\Users\Fred\.android\build-cache\d7e0d4c00f7d5895faccddbee114d55e72da4c88\output\AndroidManifest.xml:19:5-21:19
+MERGED from [com.android.support.constraint:constraint-layout:1.0.1] C:\Users\Fred\.android\build-cache\c8618ec20941782994ff6fae9df15b38ed273ea9\output\AndroidManifest.xml:9:5-20
+MERGED from [com.android.support:design:25.2.0] C:\Users\Fred\.android\build-cache\99a848ef72751d2bcbd1d589c83993e30dc6f96e\output\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:appcompat-v7:25.2.0] C:\Users\Fred\.android\build-cache\cd9c4cfd4be481eb0ca86ab77048eb1cbe3df69d\output\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:animated-vector-drawable:25.2.0] C:\Users\Fred\.android\build-cache\fc6925ac7a74a9ae4ab2f271f0cdce6fc98645de\output\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-vector-drawable:25.2.0] C:\Users\Fred\.android\build-cache\4c9cb63f1ae0e086ce6d6b9cea282aa8f4ec1cdf\output\AndroidManifest.xml:23:5-20
+MERGED from [com.android.support:transition:25.2.0] C:\Users\Fred\.android\build-cache\02ab5d4e80aebec854598477ac153ba4b5654219\output\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:25.2.0] C:\Users\Fred\.android\build-cache\eb382fdf163d34d2b370418ec109b87757045d3a\output\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-fragment:25.2.0] C:\Users\Fred\.android\build-cache\bbb263675ce5457235c255a50839a0f7f168469b\output\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-media-compat:25.2.0] C:\Users\Fred\.android\build-cache\efe0cdb98e18f5fe8caf387ecef654d30f50045e\output\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-core-utils:25.2.0] C:\Users\Fred\.android\build-cache\7bdd6ea8fd54b425a10002f45d45beace789d435\output\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-core-ui:25.2.0] C:\Users\Fred\.android\build-cache\c4712adbf495c583975288a209f92a5ed6505746\output\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-compat:25.2.0] C:\Users\Fred\.android\build-cache\12d086f82b9f97c6826230dd7d91a27f512db24b\output\AndroidManifest.xml:25:5-20
 	android:label
-		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:27:9-34
+		ADDED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml:27:9-34
 	android:supportsRtl
-		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:28:9-35
+		ADDED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml:28:9-35
 	android:allowBackup
-		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:25:9-35
+		ADDED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml:25:9-35
 	android:icon
-		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:26:9-43
+		ADDED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml:26:9-43
 	android:theme
-		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:29:9-40
+		ADDED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml:29:9-40
 activity#com.ualberta.cmput301w17t22.moodswing.LoginActivity
-ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:30:9-36:20
+ADDED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml:30:9-36:20
 	android:name
-		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:30:19-48
+		ADDED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml:30:19-48
 intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
-ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:31:13-35:29
+ADDED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml:31:13-35:29
 action#android.intent.action.MAIN
-ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:32:17-69
+ADDED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml:32:17-69
 	android:name
-		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:32:25-66
+		ADDED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml:32:25-66
 category#android.intent.category.LAUNCHER
-ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:34:17-77
+ADDED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml:34:17-77
 	android:name
-		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:34:27-74
+		ADDED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml:34:27-74
 activity#com.ualberta.cmput301w17t22.moodswing.MainActivity
-ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:37:9-43:20
+ADDED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml:37:9-43:20
 	android:label
-		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:39:13-38
+		ADDED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml:39:13-38
 	android:name
-		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:38:13-41
+		ADDED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml:38:13-41
 intent-filter#android.intent.action.VIEW
-ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:40:13-42:29
+ADDED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml:40:13-42:29
 action#android.intent.action.VIEW
-ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:41:17-69
+ADDED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml:41:17-69
 	android:name
-		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:41:25-66
+		ADDED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml:41:25-66
 meta-data#com.google.android.geo.API_KEY
-ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:53:9-55:55
+ADDED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml:53:9-55:55
 	android:value
-		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:55:13-52
+		ADDED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml:55:13-52
 	android:name
-		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:54:13-58
+		ADDED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml:54:13-58
 activity#com.ualberta.cmput301w17t22.moodswing.MapsActivity
-ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:57:9-60:59
+ADDED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml:57:9-60:59
 	android:label
-		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:60:13-56
+		ADDED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml:60:13-56
 	android:exported
-		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:59:13-36
+		ADDED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml:59:13-36
 	android:name
-		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:58:13-41
+		ADDED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml:58:13-41
 activity#com.ualberta.cmput301w17t22.moodswing.NewMoodEventActivity
-ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:61:9-58
+ADDED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml:61:9-58
 	android:name
-		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:61:19-55
+		ADDED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml:61:19-55
 activity#com.ualberta.cmput301w17t22.moodswing.MoodHistoryActivity
-ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:62:9-57
+ADDED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml:62:9-57
 	android:name
-		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:62:19-54
+		ADDED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml:62:19-54
 activity#com.ualberta.cmput301w17t22.moodswing.ViewMoodEventActivity
-ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:69:9-59
+ADDED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml:69:9-59
 	android:name
-		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:69:19-56
+		ADDED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml:69:19-56
 activity#com.ualberta.cmput301w17t22.moodswing.EditMoodEventActivity
-ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:70:9-59
+ADDED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml:70:9-59
 	android:name
-		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:70:19-56
+		ADDED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml:70:19-56
 activity#com.ualberta.cmput301w17t22.moodswing.MainFollowActivity
-ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:71:9-74:47
+ADDED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml:71:9-74:47
 	android:label
-		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:73:13-63
+		ADDED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml:73:13-63
 	android:theme
-		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:74:13-44
+		ADDED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml:74:13-44
 	android:name
-		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:72:13-47
+		ADDED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml:72:13-47
 activity#com.ualberta.cmput301w17t22.moodswing.BlockUserActivity
-ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:75:9-78:47
+ADDED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml:75:9-78:47
 	android:label
-		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:77:13-62
+		ADDED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml:77:13-62
 	android:theme
-		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:78:13-44
+		ADDED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml:78:13-44
 	android:name
-		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:76:13-46
+		ADDED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml:76:13-46
 uses-sdk
-INJECTED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
-MERGED from [com.google.android.gms:play-services-maps:10.2.0] /afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/5ef74efbec96774b9473889127a0998eef631987/output/AndroidManifest.xml:23:5-43
-MERGED from [com.google.android.gms:play-services-location:10.2.0] /afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/0cb2ca36435548612261eb7538443bec95861e47/output/AndroidManifest.xml:3:5-43
-MERGED from [com.google.android.gms:play-services-base:10.2.0] /afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/542c4e15536884a8d9b0f90bc0db94f642d7c3de/output/AndroidManifest.xml:17:5-43
-MERGED from [com.google.android.gms:play-services-tasks:10.2.0] /afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/7dff727405fdb838bc690c320aa63ae3f1ae8627/output/AndroidManifest.xml:3:5-43
-MERGED from [com.google.android.gms:play-services-basement:10.2.0] /afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/094b2d9994a825172a838c941447253c9e1a738b/output/AndroidManifest.xml:17:5-43
-MERGED from [com.android.support.constraint:constraint-layout:1.0.1] /afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/a7eb9531fa2dfba974dcaa696c03448aee9352d6/output/AndroidManifest.xml:5:5-7:41
-MERGED from [com.android.support:design:25.2.0] /afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/457340c7a14cce4a7fc1517802d2d30dbf684ab0/output/AndroidManifest.xml:21:5-23:62
-MERGED from [com.android.support:appcompat-v7:25.2.0] /afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/acdb84b68f35b908e2c9b146a432be87557f43c4/output/AndroidManifest.xml:21:5-23:78
-MERGED from [com.android.support:animated-vector-drawable:25.2.0] /afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/9325c8b2d779ac6e31dc7c9a5f0eeacffdff779e/output/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-vector-drawable:25.2.0] /afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/ab046330d1a1b0b4a7dc3d6679125f878b9bdd38/output/AndroidManifest.xml:21:5-43
-MERGED from [com.android.support:transition:25.2.0] /afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/13db7abb5fbd6b1a618111099b008bc7a66d6d19/output/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-v4:25.2.0] /afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/96bccba5cc838a3cb03aa6f5cadba585ff27079b/output/AndroidManifest.xml:21:5-23:54
-MERGED from [com.android.support:support-fragment:25.2.0] /afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/8c74d7d573b34a33f9fbf481d6fdadb6e2caa6ae/output/AndroidManifest.xml:21:5-23:60
-MERGED from [com.android.support:support-media-compat:25.2.0] /afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/f87e30cec6e3d9c5e3c7ea0ee2ba39b382f8a07a/output/AndroidManifest.xml:21:5-23:63
-MERGED from [com.android.support:support-core-utils:25.2.0] /afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/9faf22882fc237de018631ce9aab55a7c463786f/output/AndroidManifest.xml:21:5-23:61
-MERGED from [com.android.support:recyclerview-v7:25.2.0] /afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/5db0811a573e0b55f058ff66e1fd69964d8960b5/output/AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:support-core-ui:25.2.0] /afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/dd09e69421fac125b71b0c3ba655bbc54a4ab5f8/output/AndroidManifest.xml:21:5-23:58
-MERGED from [com.android.support:support-compat:25.2.0] /afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/23598af813ff12893310390f0c41573c97929ab5/output/AndroidManifest.xml:21:5-23:58
+INJECTED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+MERGED from [com.google.android.gms:play-services-maps:10.2.0] C:\Users\Fred\.android\build-cache\951bb0f44bee57864306125b87928d77d837d1af\output\AndroidManifest.xml:23:5-43
+MERGED from [com.google.android.gms:play-services-location:10.2.0] C:\Users\Fred\.android\build-cache\b6a671b49cb207631c710f4ef5e85def30bc74af\output\AndroidManifest.xml:3:5-43
+MERGED from [com.google.android.gms:play-services-base:10.2.0] C:\Users\Fred\.android\build-cache\5bc16326bc89fb082ecab2d0200d2ac785b47bd0\output\AndroidManifest.xml:17:5-43
+MERGED from [com.google.android.gms:play-services-tasks:10.2.0] C:\Users\Fred\.android\build-cache\35a3616d5b6ccf5bc4d7085edfca33ede11702a3\output\AndroidManifest.xml:3:5-43
+MERGED from [com.google.android.gms:play-services-basement:10.2.0] C:\Users\Fred\.android\build-cache\d7e0d4c00f7d5895faccddbee114d55e72da4c88\output\AndroidManifest.xml:17:5-43
+MERGED from [com.android.support.constraint:constraint-layout:1.0.1] C:\Users\Fred\.android\build-cache\c8618ec20941782994ff6fae9df15b38ed273ea9\output\AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support:design:25.2.0] C:\Users\Fred\.android\build-cache\99a848ef72751d2bcbd1d589c83993e30dc6f96e\output\AndroidManifest.xml:21:5-23:62
+MERGED from [com.android.support:appcompat-v7:25.2.0] C:\Users\Fred\.android\build-cache\cd9c4cfd4be481eb0ca86ab77048eb1cbe3df69d\output\AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:animated-vector-drawable:25.2.0] C:\Users\Fred\.android\build-cache\fc6925ac7a74a9ae4ab2f271f0cdce6fc98645de\output\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:25.2.0] C:\Users\Fred\.android\build-cache\4c9cb63f1ae0e086ce6d6b9cea282aa8f4ec1cdf\output\AndroidManifest.xml:21:5-43
+MERGED from [com.android.support:transition:25.2.0] C:\Users\Fred\.android\build-cache\02ab5d4e80aebec854598477ac153ba4b5654219\output\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:25.2.0] C:\Users\Fred\.android\build-cache\eb382fdf163d34d2b370418ec109b87757045d3a\output\AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-fragment:25.2.0] C:\Users\Fred\.android\build-cache\bbb263675ce5457235c255a50839a0f7f168469b\output\AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-media-compat:25.2.0] C:\Users\Fred\.android\build-cache\efe0cdb98e18f5fe8caf387ecef654d30f50045e\output\AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-core-utils:25.2.0] C:\Users\Fred\.android\build-cache\7bdd6ea8fd54b425a10002f45d45beace789d435\output\AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:recyclerview-v7:25.2.0] C:\Users\Fred\.android\build-cache\97048f6d13ab81de52bf7c440d48aebc69e474b1\output\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-core-ui:25.2.0] C:\Users\Fred\.android\build-cache\c4712adbf495c583975288a209f92a5ed6505746\output\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-compat:25.2.0] C:\Users\Fred\.android\build-cache\12d086f82b9f97c6826230dd7d91a27f512db24b\output\AndroidManifest.xml:21:5-23:58
 	tools:overrideLibrary
-		ADDED from [com.android.support:design:25.2.0] /afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/457340c7a14cce4a7fc1517802d2d30dbf684ab0/output/AndroidManifest.xml:23:9-59
+		ADDED from [com.android.support:design:25.2.0] C:\Users\Fred\.android\build-cache\99a848ef72751d2bcbd1d589c83993e30dc6f96e\output\AndroidManifest.xml:23:9-59
 	android:targetSdkVersion
-		INJECTED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml
-		INJECTED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml
+		INJECTED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml
-		INJECTED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml
+		INJECTED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml
 uses-feature#0x00020000
-ADDED from [com.google.android.gms:play-services-maps:10.2.0] /afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/5ef74efbec96774b9473889127a0998eef631987/output/AndroidManifest.xml:21:5-77
+ADDED from [com.google.android.gms:play-services-maps:10.2.0] C:\Users\Fred\.android\build-cache\951bb0f44bee57864306125b87928d77d837d1af\output\AndroidManifest.xml:21:5-77
 	android:glEsVersion
-		ADDED from [com.google.android.gms:play-services-maps:10.2.0] /afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/5ef74efbec96774b9473889127a0998eef631987/output/AndroidManifest.xml:21:19-51
+		ADDED from [com.google.android.gms:play-services-maps:10.2.0] C:\Users\Fred\.android\build-cache\951bb0f44bee57864306125b87928d77d837d1af\output\AndroidManifest.xml:21:19-51
 	android:required
-		ADDED from [com.google.android.gms:play-services-maps:10.2.0] /afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/5ef74efbec96774b9473889127a0998eef631987/output/AndroidManifest.xml:21:52-75
+		ADDED from [com.google.android.gms:play-services-maps:10.2.0] C:\Users\Fred\.android\build-cache\951bb0f44bee57864306125b87928d77d837d1af\output\AndroidManifest.xml:21:52-75
 activity#com.google.android.gms.common.api.GoogleApiActivity
-ADDED from [com.google.android.gms:play-services-base:10.2.0] /afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/542c4e15536884a8d9b0f90bc0db94f642d7c3de/output/AndroidManifest.xml:19:9-172
+ADDED from [com.google.android.gms:play-services-base:10.2.0] C:\Users\Fred\.android\build-cache\5bc16326bc89fb082ecab2d0200d2ac785b47bd0\output\AndroidManifest.xml:19:9-172
 	android:exported
-		ADDED from [com.google.android.gms:play-services-base:10.2.0] /afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/542c4e15536884a8d9b0f90bc0db94f642d7c3de/output/AndroidManifest.xml:19:146-170
+		ADDED from [com.google.android.gms:play-services-base:10.2.0] C:\Users\Fred\.android\build-cache\5bc16326bc89fb082ecab2d0200d2ac785b47bd0\output\AndroidManifest.xml:19:146-170
 	android:theme
-		ADDED from [com.google.android.gms:play-services-base:10.2.0] /afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/542c4e15536884a8d9b0f90bc0db94f642d7c3de/output/AndroidManifest.xml:19:86-145
+		ADDED from [com.google.android.gms:play-services-base:10.2.0] C:\Users\Fred\.android\build-cache\5bc16326bc89fb082ecab2d0200d2ac785b47bd0\output\AndroidManifest.xml:19:86-145
 	android:name
-		ADDED from [com.google.android.gms:play-services-base:10.2.0] /afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/542c4e15536884a8d9b0f90bc0db94f642d7c3de/output/AndroidManifest.xml:19:19-85
+		ADDED from [com.google.android.gms:play-services-base:10.2.0] C:\Users\Fred\.android\build-cache\5bc16326bc89fb082ecab2d0200d2ac785b47bd0\output\AndroidManifest.xml:19:19-85
 meta-data#com.google.android.gms.version
-ADDED from [com.google.android.gms:play-services-basement:10.2.0] /afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/094b2d9994a825172a838c941447253c9e1a738b/output/AndroidManifest.xml:20:9-121
+ADDED from [com.google.android.gms:play-services-basement:10.2.0] C:\Users\Fred\.android\build-cache\d7e0d4c00f7d5895faccddbee114d55e72da4c88\output\AndroidManifest.xml:20:9-121
 	android:value
-		ADDED from [com.google.android.gms:play-services-basement:10.2.0] /afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/094b2d9994a825172a838c941447253c9e1a738b/output/AndroidManifest.xml:20:66-119
+		ADDED from [com.google.android.gms:play-services-basement:10.2.0] C:\Users\Fred\.android\build-cache\d7e0d4c00f7d5895faccddbee114d55e72da4c88\output\AndroidManifest.xml:20:66-119
 	android:name
-		ADDED from [com.google.android.gms:play-services-basement:10.2.0] /afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/094b2d9994a825172a838c941447253c9e1a738b/output/AndroidManifest.xml:20:20-65
+		ADDED from [com.google.android.gms:play-services-basement:10.2.0] C:\Users\Fred\.android\build-cache\d7e0d4c00f7d5895faccddbee114d55e72da4c88\output\AndroidManifest.xml:20:20-65

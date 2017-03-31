@@ -1,14 +1,26 @@
 [
     {
-        "merged": "/afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/build/intermediates/res/merged/debug/menu/menu_main_activity.xml",
-        "source": "/afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/res/menu/menu_main_activity.xml"
+        "merged": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_main_follow.xml",
+        "source": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\app\\src\\main\\res\\menu\\menu_main_follow.xml"
     },
     {
-        "merged": "/afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/build/intermediates/res/merged/debug/menu/menu_main_follow.xml",
-        "source": "/afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/res/menu/menu_main_follow.xml"
+        "merged": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_main_activity.xml",
+        "source": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\app\\src\\main\\res\\menu\\menu_main_activity.xml"
     },
     {
-        "merged": "/afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/build/intermediates/res/merged/debug/menu/menu_mood_history.xml",
-        "source": "/afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/res/menu/menu_mood_history.xml"
+        "merged": "C:\\Users\\Fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_mood_history.xml",
+        "source": "C:\\Users\\Fred\\MoodSwing\\app\\src\\main\\res\\menu\\menu_mood_history.xml"
+    },
+    {
+        "merged": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_mood_history.xml",
+        "source": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\app\\src\\main\\res\\menu\\menu_mood_history.xml"
+    },
+    {
+        "merged": "C:\\Users\\Fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_main_activity.xml",
+        "source": "C:\\Users\\Fred\\MoodSwing\\app\\src\\main\\res\\menu\\menu_main_activity.xml"
+    },
+    {
+        "merged": "C:\\Users\\Fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_main_follow.xml",
+        "source": "C:\\Users\\Fred\\MoodSwing\\app\\src\\main\\res\\menu\\menu_main_follow.xml"
     }
 ]
