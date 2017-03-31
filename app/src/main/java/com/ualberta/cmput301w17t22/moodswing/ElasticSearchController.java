@@ -191,6 +191,15 @@ public class ElasticSearchController implements MSController {
                 String query = "{\n" +
                         "    \"_source\": \"mostRecentMoodEvent\",\n" +
                         "    \"query\": {\n" +
+//                        "        \"nested\" : {\n" +
+//                        "            \"path\" : \"mostRecentMoodEvent\"," +
+//                        "            \"query\" : {\n" +
+//                        "                \"bool\" : {\n" +
+//                        "                    \"must\" : [\n" +
+//                        "                    { \"match\" : {\"mostRecentMoodEvent.trigger\" : \"" + filterTrigger + "\"} }\n" +
+//                        "                    ]\n" +
+//                        "               }\n" +
+//                        "           }\n" +
                         "        \"match\" : {\n" +
                         "            \"username\" : \"" + username + "\"\n" +
                         "        }\n" +
@@ -206,13 +215,24 @@ public class ElasticSearchController implements MSController {
                 try {
                     // Try to execute the search.
                     SearchResult result = client.execute(search);
-                    Log.i("MoodSwing", result.toString());
 
                     if (result.isSucceeded()) {
-                        // It says that getSourceAsObject is deprecated but I dont know
-                        // what it is replaced by.
-                        MoodEvent moodEvent = result.getSourceAsObject(MoodEvent.class);
+                        // Use a gson object that can deserialize our dates properly.
+                        Gson gson = new GsonBuilder()
+                                .setDateFormat("yyyy-MM-dd'T'HH:mm:ssz")
+                                .create();
 
+                        // Get source as string, because getting as an object does not work
+                        // for nested objects.
+                        String moodEventJson = result.getSourceAsString();
+
+                        // Get the proper json.
+                        moodEventJson = moodEventJson.substring(23, moodEventJson.length() - 1);
+
+                        // Create the mood event from the json.
+                        MoodEvent moodEvent = gson.fromJson(moodEventJson, MoodEvent.class);
+
+                        // Add the mood event to the mood feed.
                         moodFeed.add(moodEvent);
                     }
                     else {
