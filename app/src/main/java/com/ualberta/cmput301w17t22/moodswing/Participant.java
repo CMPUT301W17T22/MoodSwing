@@ -145,7 +145,7 @@ public class Participant extends User {
     public void unfollowParticipant(Participant receivingParticipant){
 
         followingList.remove(receivingParticipant);
-        receivingParticipant.createUnfollowEvent(this);
+        
     }
     /**Remove a pending following request from the main participant and corresponding
      * follower request from the receiving participant.
