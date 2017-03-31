@@ -40,8 +40,6 @@ import com.google.android.gms.maps.model.LatLng;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.Date;
 
 import static java.lang.Double.NaN;
@@ -391,16 +389,6 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
         Log.i("MoodSwing",moodFeedEvents.toString());
         moodFeedEvents = moodSwingController.getMoodFeed();
 
-        // Sort the mood feed events by date.
-        if (!moodFeedEvents.isEmpty()) {
-            Collections.sort(moodFeedEvents, new Comparator<MoodEvent>() {
-                @Override
-                public int compare(MoodEvent o1, MoodEvent o2) {
-                    return o2.getDate().compareTo(o1.getDate());
-                }
-            });
-        }
-
         // Initialize array adapter.
         moodFeedAdapter = new MoodEventAdapter(this, moodFeedEvents);
         moodFeedListView.setEmptyView(findViewById(R.id.emptyMoodFeed));
@@ -572,6 +560,7 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
             case 0:       // no filter selected
                 Toast.makeText(MainActivity.this, "Filters removed.", Toast.LENGTH_SHORT).show();
                 updateFilterMenu(-1);   // update filter list
+                buildMoodFeed();
                 loadMoodSwing(); // refresh the feed
                 break;
 
@@ -579,6 +568,7 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
             case 1:     // sort by recent week
                 Toast.makeText(MainActivity.this, "Filtering by week.", Toast.LENGTH_SHORT).show();
                 updateFilterMenu(0); // update filter list
+                buildMoodFeed();
                 loadMoodSwing(); // refresh the feed
                 break;
 
@@ -612,6 +602,7 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
                         Toast.makeText(MainActivity.this, "Filtering by " + filterEmotion, Toast.LENGTH_SHORT).show();
                         updateFilterMenu(1);
                         dialog.dismiss();
+                        buildMoodFeed();
                         loadMoodSwing(); // refresh the feed
                     }
                 });
