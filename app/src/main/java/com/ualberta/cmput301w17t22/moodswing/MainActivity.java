@@ -9,8 +9,6 @@ import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -40,7 +38,6 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
@@ -123,7 +120,7 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
 
     Context context;
 
-    checkConnection connected;
+    CheckConnection connected;
     private GoogleMap mMap;
     LocationManager locationManager;
     //Location lastKnownLocation;
@@ -144,7 +141,7 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        connected = new checkConnection(this);
+        connected = new CheckConnection(this);
 
         if(connected.isConnected()){
             Toast.makeText(MainActivity.this,"online!", Toast.LENGTH_SHORT).show();

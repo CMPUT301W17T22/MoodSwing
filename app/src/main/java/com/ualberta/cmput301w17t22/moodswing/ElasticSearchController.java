@@ -25,8 +25,10 @@ import io.searchbox.core.SearchResult;
  * Created by nyitrai on 2/26/2017.
  */
 
-public class ElasticSearchController implements MSController {
+public class ElasticSearchController implements MSController{
     MoodSwing ms = null;
+
+
 
     public ElasticSearchController(MoodSwing ms) { this.ms = ms; }
 

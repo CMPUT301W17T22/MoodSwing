@@ -1,10 +1,18 @@
 [
     {
-        "merged": "/afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/build/intermediates/res/merged/debug/color-v11/abc_background_cache_hint_selector_material_dark.xml",
-        "source": "/afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/acdb84b68f35b908e2c9b146a432be87557f43c4/output/res/color-v11/abc_background_cache_hint_selector_material_dark.xml"
+        "merged": "C:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\color-v11\\abc_background_cache_hint_selector_material_dark.xml",
+        "source": "C:\\Users\\Henry\\.android\\build-cache\\84c1fa54b483296fe1b99aea8b6ff2fdc87de653\\output\\res\\color-v11\\abc_background_cache_hint_selector_material_dark.xml"
     },
     {
-        "merged": "/afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/build/intermediates/res/merged/debug/color-v11/abc_background_cache_hint_selector_material_light.xml",
-        "source": "/afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/acdb84b68f35b908e2c9b146a432be87557f43c4/output/res/color-v11/abc_background_cache_hint_selector_material_light.xml"
+        "merged": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\color-v11\\abc_background_cache_hint_selector_material_light.xml",
+        "source": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\.android\\build-cache\\acdb84b68f35b908e2c9b146a432be87557f43c4\\output\\res\\color-v11\\abc_background_cache_hint_selector_material_light.xml"
+    },
+    {
+        "merged": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\color-v11\\abc_background_cache_hint_selector_material_dark.xml",
+        "source": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\.android\\build-cache\\acdb84b68f35b908e2c9b146a432be87557f43c4\\output\\res\\color-v11\\abc_background_cache_hint_selector_material_dark.xml"
+    },
+    {
+        "merged": "C:\\Users\\Henry\\Documents\\GitHub\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\color-v11\\abc_background_cache_hint_selector_material_light.xml",
+        "source": "C:\\Users\\Henry\\.android\\build-cache\\84c1fa54b483296fe1b99aea8b6ff2fdc87de653\\output\\res\\color-v11\\abc_background_cache_hint_selector_material_light.xml"
     }
 ]
