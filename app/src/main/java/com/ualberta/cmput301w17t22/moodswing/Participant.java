@@ -174,7 +174,7 @@ public class Participant extends User {
      * the pending following request is moved to the approved list in followingList.
      * @param receivingParticipant
      */
-    public void followRequestApproved(Participant receivingParticipant){
+    public void followRequestApproved(Participant receivingParticipant) throws InvalidParameterException{
         followingList.approvePending(receivingParticipant);
     }
     /**Event that is received indicating the main participants follow request was declined so
@@ -201,7 +201,7 @@ public class Participant extends User {
       * list, that adds them to the main participants pending followers.
      * @param requestingParticipant
      */
-    public void createFollowerRequest(Participant requestingParticipant){
+    public void createFollowerRequest(Participant requestingParticipant) throws InvalidParameterException{
         Boolean createFollowRequest = false;
 
         // If the blocklist is uninitialized, create the follow request.
@@ -230,7 +230,7 @@ public class Participant extends User {
     /**Approves a pending follower request and sends a followRequestApproved(this) event
      * to the participant in order to let them know to update their list.
      * @param requestingParticipant */
-    public void approveFollowerRequest(Participant requestingParticipant){
+    public void approveFollowerRequest(Participant requestingParticipant) throws InvalidParameterException{
         requestingParticipant.followRequestApproved(this);
         followerList.approvePending(requestingParticipant);
     }

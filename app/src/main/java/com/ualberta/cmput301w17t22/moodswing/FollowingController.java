@@ -45,12 +45,7 @@ public class FollowingController implements MSController {
 
         Participant newFollowedParticipant =
                 elasticSearchController.getParticipantByUsername(participant);
-        try {
-            //follow the participant and send request
-            mainParticipant.followParticipant(newFollowedParticipant);
-        } catch (InvalidParameterException E){
-            //TODO: toast notification
-        }
+        mainParticipant.followParticipant(newFollowedParticipant);
 
         // Update elastic search.
         elasticSearchController.updateParticipantByParticipant(mainParticipant);

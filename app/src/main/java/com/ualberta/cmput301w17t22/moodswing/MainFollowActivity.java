@@ -18,9 +18,12 @@ import android.view.MenuItem;
 import android.view.View;
 
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
+
+import java.security.InvalidParameterException;
 
 /**
  * Includes auto generated code from Android Studio when created a tabbed layout.
@@ -148,16 +151,22 @@ public class MainFollowActivity extends AppCompatActivity implements MSView<Mood
 
                 // Send the follow request. requestStatus is true if the request went
                 // through, and false if no user with the given username was found.
-                requestStatus = moodSwingController
-                        .sendFollowRequestFromMainParticipantToUsername(usernameToFollow);
+                try {
+                    requestStatus = moodSwingController
+                            .sendFollowRequestFromMainParticipantToUsername(usernameToFollow);
 
-                if (requestStatus) {
+                    if (requestStatus) {
+                        Toast.makeText(MainFollowActivity.this,
+                                "Request successfully sent!",
+                                Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(MainFollowActivity.this,
+                                "No user with given username found.",
+                                Toast.LENGTH_SHORT).show();
+                    }
+                } catch (InvalidParameterException E){
                     Toast.makeText(MainFollowActivity.this,
-                            "Request successfully sent!",
-                            Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(MainFollowActivity.this,
-                            "No user with given username found.",
+                            "Request could not send!",
                             Toast.LENGTH_SHORT).show();
                 }
 
