@@ -189,7 +189,7 @@ public class ElasticSearchController implements MSController {
             for (String username : followingList) {
                 // Create the query string. We do a match search on username.
                 String query = "{\n" +
-                        "    \"fields\": \"mostRecentMoodEvent\",\n" +
+                        "    \"_source\": \"mostRecentMoodEvent\",\n" +
                         "    \"query\": {\n" +
                         "        \"match\" : {\n" +
                         "            \"username\" : \"" + username + "\"\n" +
@@ -206,12 +206,13 @@ public class ElasticSearchController implements MSController {
                 try {
                     // Try to execute the search.
                     SearchResult result = client.execute(search);
+                    Log.i("MoodSwing", result.toString());
 
                     if (result.isSucceeded()) {
                         // It says that getSourceAsObject is deprecated but I dont know
                         // what it is replaced by.
                         MoodEvent moodEvent = result.getSourceAsObject(MoodEvent.class);
-                        Log.i("MoodSwing", moodEvent.toString());
+
                         moodFeed.add(moodEvent);
                     }
                     else {
