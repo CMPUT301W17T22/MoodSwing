@@ -9,6 +9,8 @@ import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -38,6 +40,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
@@ -118,9 +121,9 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
     // activeFilters[x] = 1: this filter is active, 0: this filter is not applied
     private int[] activeFilters = new int[3];   // should be initialized to 0
 
+    Context context;
 
-
-
+    checkConnection connected;
     private GoogleMap mMap;
     LocationManager locationManager;
     //Location lastKnownLocation;
@@ -128,20 +131,30 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
     double lastKnownLng = NaN;
     String provider;
 
+
     /**
      * Called on opening of activity for the first time.
      * @param savedInstanceState
      */
 
-    //command function that executes
-   
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        connected = new checkConnection(this);
+
+        if(connected.isConnected()){
+            Toast.makeText(MainActivity.this,"online!", Toast.LENGTH_SHORT).show();
+        }
+
         // Initialize all the widgets of the app.
         initialize();
+        /** This portion checks whether the app is connected to the internet or not */
+
+
 
         setSupportActionBar(mainToolbar);
 

@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:2:1-81:12
+ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:2:1-82:12
 	package
 		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:3:5-52
 		INJECTED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml
@@ -44,17 +44,17 @@ ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src
 	android:name
 		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:17:22-62
 uses-feature#android.hardware.camera2.full
-ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:19:5-66
+ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:20:5-66
 	android:name
-		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:19:19-63
+		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:20:19-63
 uses-feature#android.hardware.camera
-ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:20:5-22:35
+ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:21:5-23:35
 	android:required
-		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:22:9-32
+		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:23:9-32
 	android:name
-		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:21:9-47
+		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:22:9-47
 application
-ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:24:5-79:19
+ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:25:5-80:19
 MERGED from [com.google.android.gms:play-services-maps:10.2.0] /afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/5ef74efbec96774b9473889127a0998eef631987/output/AndroidManifest.xml:24:5-19
 MERGED from [com.google.android.gms:play-services-location:10.2.0] /afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/0cb2ca36435548612261eb7538443bec95861e47/output/AndroidManifest.xml:4:5-19
 MERGED from [com.google.android.gms:play-services-base:10.2.0] /afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/542c4e15536884a8d9b0f90bc0db94f642d7c3de/output/AndroidManifest.xml:18:5-20:19
@@ -73,87 +73,87 @@ MERGED from [com.android.support:support-core-utils:25.2.0] /afs/ualberta.ca/hom
 MERGED from [com.android.support:support-core-ui:25.2.0] /afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/dd09e69421fac125b71b0c3ba655bbc54a4ab5f8/output/AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:support-compat:25.2.0] /afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/23598af813ff12893310390f0c41573c97929ab5/output/AndroidManifest.xml:25:5-20
 	android:label
-		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:27:9-34
+		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:28:9-34
 	android:supportsRtl
-		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:28:9-35
+		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:29:9-35
 	android:allowBackup
-		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:25:9-35
+		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:26:9-35
 	android:icon
-		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:26:9-43
+		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:27:9-43
 	android:theme
-		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:29:9-40
+		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:30:9-40
 activity#com.ualberta.cmput301w17t22.moodswing.LoginActivity
-ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:30:9-36:20
+ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:31:9-37:20
 	android:name
-		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:30:19-48
+		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:31:19-48
 intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
-ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:31:13-35:29
+ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:32:13-36:29
 action#android.intent.action.MAIN
-ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:32:17-69
+ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:33:17-69
 	android:name
-		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:32:25-66
+		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:33:25-66
 category#android.intent.category.LAUNCHER
-ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:34:17-77
+ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:35:17-77
 	android:name
-		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:34:27-74
+		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:35:27-74
 activity#com.ualberta.cmput301w17t22.moodswing.MainActivity
-ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:37:9-43:20
+ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:38:9-44:20
 	android:label
-		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:39:13-38
+		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:40:13-38
 	android:name
-		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:38:13-41
+		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:39:13-41
 intent-filter#android.intent.action.VIEW
-ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:40:13-42:29
+ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:41:13-43:29
 action#android.intent.action.VIEW
-ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:41:17-69
+ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:42:17-69
 	android:name
-		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:41:25-66
+		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:42:25-66
 meta-data#com.google.android.geo.API_KEY
-ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:53:9-55:55
+ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:54:9-56:55
 	android:value
-		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:55:13-52
+		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:56:13-52
 	android:name
-		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:54:13-58
+		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:55:13-58
 activity#com.ualberta.cmput301w17t22.moodswing.MapsActivity
-ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:57:9-60:59
+ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:58:9-61:59
 	android:label
-		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:60:13-56
+		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:61:13-56
 	android:exported
-		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:59:13-36
+		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:60:13-36
 	android:name
-		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:58:13-41
+		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:59:13-41
 activity#com.ualberta.cmput301w17t22.moodswing.NewMoodEventActivity
-ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:61:9-58
+ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:62:9-58
 	android:name
-		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:61:19-55
+		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:62:19-55
 activity#com.ualberta.cmput301w17t22.moodswing.MoodHistoryActivity
-ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:62:9-57
+ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:63:9-57
 	android:name
-		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:62:19-54
+		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:63:19-54
 activity#com.ualberta.cmput301w17t22.moodswing.ViewMoodEventActivity
-ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:69:9-59
-	android:name
-		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:69:19-56
-activity#com.ualberta.cmput301w17t22.moodswing.EditMoodEventActivity
 ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:70:9-59
 	android:name
 		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:70:19-56
+activity#com.ualberta.cmput301w17t22.moodswing.EditMoodEventActivity
+ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:71:9-59
+	android:name
+		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:71:19-56
 activity#com.ualberta.cmput301w17t22.moodswing.MainFollowActivity
-ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:71:9-74:47
+ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:72:9-75:47
 	android:label
-		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:73:13-63
+		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:74:13-63
 	android:theme
-		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:74:13-44
+		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:75:13-44
 	android:name
-		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:72:13-47
+		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:73:13-47
 activity#com.ualberta.cmput301w17t22.moodswing.BlockUserActivity
-ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:75:9-78:47
+ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:76:9-79:47
 	android:label
-		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:77:13-62
+		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:78:13-62
 	android:theme
-		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:78:13-44
+		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:79:13-44
 	android:name
-		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:76:13-46
+		ADDED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml:77:13-46
 uses-sdk
 INJECTED from /afs/ualberta.ca/home/h/t/htruong1/CMPUT301/project/MoodSwing/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.google.android.gms:play-services-maps:10.2.0] /afs/ualberta.ca/home/h/t/htruong1/.android/build-cache/5ef74efbec96774b9473889127a0998eef631987/output/AndroidManifest.xml:23:5-43
