@@ -6,6 +6,8 @@ import android.graphics.BitmapFactory;
 import java.io.ByteArrayOutputStream;
 import java.util.Date;
 
+import static java.lang.Double.NaN;
+
 /**
  * A MoodEvent is an object that is posted to the MoodSwing app and displayed on certain feeds
  * within it.
@@ -128,12 +130,8 @@ public class MoodEvent {
         result = 31 * result + (trigger != null ? trigger.hashCode() : 0);
         result = 31 * result + (socialSituation != null ? socialSituation.hashCode() : 0);
         //result = 31 * result + (image != null ? image.hashCode() : 0);
-        if(!Double.isNaN(lat)) {
-            result = 31 * result + Double.valueOf(lat).hashCode();
-        }
-        if(!Double.isNaN(lng)) {
-            result = 31 * result + Double.valueOf(lng).hashCode();
-        }
+        result = 31 * result + Double.valueOf(lat).hashCode();
+        result = 31 * result + Double.valueOf(lng).hashCode();
         return result;
     }
 
@@ -230,11 +228,11 @@ public class MoodEvent {
     }
 
     public double getLat() {
-        return lat;
+        return lat == NOT_SET ? NaN : lat;
     }
 
     public double getLng() {
-        return lng;
+        return lng == NOT_SET ? NaN : lng;
     }
 
     /**Compresses the ByteArrayOutputStream into a byte size restricted Bitmap and returns the
