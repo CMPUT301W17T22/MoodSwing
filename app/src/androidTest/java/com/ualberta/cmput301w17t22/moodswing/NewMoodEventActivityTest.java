@@ -36,19 +36,18 @@ public class NewMoodEventActivityTest extends ActivityInstrumentationTestCase2<L
 
     /**
      * Try creating new mood event.
-     * No Photo/location yet.
      */
     public void testNewMoodEvent(){
         // getting to NewMoodEvent
         solo.assertCurrentActivity("Wrong Activity!", LoginActivity.class);
         solo.enterText((EditText) solo.getView(R.id.usernameEditText), "intent103");
-        solo.clickOnButton("login");
+        solo.clickOnView(solo.getView(R.id.loginButton));
+        solo.sleep(30000);  // make sure MainActivity has loaded
         solo.waitForActivity("MainActivity");
         assertTrue(solo.waitForText("Welcome user \"intent103\""));
         solo.assertCurrentActivity("Wrong Activity!", MainActivity.class);
-        // might be a way for this to work, but can't find out how yet
-        //solo.clickOnActionBarItem(R.id.newMoodEventToolBarButton);
-        // sloppier but works fine
+        solo.clickOnActionBarItem(R.id.mainToolBar);
+        solo.waitForText("Home");
         solo.clickOnMenuItem("New Mood Event");
 
 
@@ -75,6 +74,8 @@ public class NewMoodEventActivityTest extends ActivityInstrumentationTestCase2<L
 
         // cleanup
         // navigate to mood history
+        solo.clickOnActionBarItem(R.id.mainToolBar);
+        solo.waitForText("Home");
         solo.clickOnMenuItem("View Mood History");
         solo.assertCurrentActivity("Wrong Activity!", MoodHistoryActivity.class);
         assertTrue(solo.waitForText("the finale sucked"));
@@ -95,20 +96,19 @@ public class NewMoodEventActivityTest extends ActivityInstrumentationTestCase2<L
 
     /**
      * Try creating new mood event without mood event to catch error message.
-     * No Photo/location yet.
      */
     public void testNewMoodEventMoodless(){
         // getting to NewMoodEvent
         solo.assertCurrentActivity("Wrong Activity!", LoginActivity.class);
         solo.clearEditText((EditText) solo.getView(R.id.usernameEditText));
         solo.enterText((EditText) solo.getView(R.id.usernameEditText), "intent104");
-        solo.clickOnButton("login");
+        solo.clickOnView(solo.getView(R.id.loginButton));
+        solo.sleep(30000);  // make sure MainActivity has loaded
         solo.waitForActivity("MainActivity");
         assertTrue(solo.waitForText("Welcome user \"intent104\""));
         solo.assertCurrentActivity("Wrong Activity!", MainActivity.class);
-        // might be a way for this to work, but can't find out how yet
-        //solo.clickOnActionBarItem(R.id.newMoodEventToolBarButton);
-        // sloppier but works fine
+        solo.clickOnActionBarItem(R.id.mainToolBar);
+        solo.waitForText("Home");
         solo.clickOnMenuItem("New Mood Event");
 
 
@@ -128,20 +128,19 @@ public class NewMoodEventActivityTest extends ActivityInstrumentationTestCase2<L
 
     /**
      * Try creating new mood event with incompatable triggers to catch error message.
-     * No Photo/location yet.
      */
     public void testNewMoodEventTriggerLen(){
         // getting to NewMoodEvent
         solo.assertCurrentActivity("Wrong Activity!", LoginActivity.class);
         solo.clearEditText((EditText) solo.getView(R.id.usernameEditText));
         solo.enterText((EditText) solo.getView(R.id.usernameEditText), "intent105");
-        solo.clickOnButton("login");
+        solo.clickOnView(solo.getView(R.id.loginButton));
+        solo.sleep(30000);  // make sure MainActivity has loaded
         solo.waitForActivity("MainActivity");
         assertTrue(solo.waitForText("Welcome user \"intent105\""));
         solo.assertCurrentActivity("Wrong Activity!", MainActivity.class);
-        // might be a way for this to work, but can't find out how yet
-        //solo.clickOnActionBarItem(R.id.newMoodEventToolBarButton);
-        // sloppier but works fine
+        solo.clickOnActionBarItem(R.id.mainToolBar);
+        solo.waitForText("Home");
         solo.clickOnMenuItem("New Mood Event");
 
 

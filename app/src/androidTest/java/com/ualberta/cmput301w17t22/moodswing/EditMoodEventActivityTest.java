@@ -43,13 +43,14 @@ public class EditMoodEventActivityTest extends ActivityInstrumentationTestCase2<
         solo.assertCurrentActivity("Wrong Activity!", LoginActivity.class);
         solo.clearEditText((EditText) solo.getView(R.id.usernameEditText));
         solo.enterText((EditText) solo.getView(R.id.usernameEditText), "intent109");
-        solo.clickOnButton("login");
+        solo.clickOnView(solo.getView(R.id.loginButton));
+        solo.sleep(30000);  // make sure MainActivity has loaded
         solo.waitForActivity("MainActivity");
         assertTrue(solo.waitForText("Welcome user \"intent109\""));
         solo.assertCurrentActivity("Wrong Activity!", MainActivity.class);
-        // might be a way for this to work, but can't find out how yet
-        //solo.clickOnActionBarItem(R.id.newMoodEventToolBarButton);
-        // sloppier but works fine
+
+        solo.clickOnActionBarItem(R.id.mainToolBar);
+        solo.waitForText("Home");
         solo.clickOnMenuItem("New Mood Event");
         // Once inside NewMoodEvent:
         solo.assertCurrentActivity("Wrong Activity!", NewMoodEventActivity.class);
@@ -63,6 +64,8 @@ public class EditMoodEventActivityTest extends ActivityInstrumentationTestCase2<
         solo.waitForActivity("MainActivity");
         solo.assertCurrentActivity("Wrong Activity!", MainActivity.class);
         // navigate to mood history
+        solo.clickOnActionBarItem(R.id.mainToolBar);
+        solo.waitForText("Home");
         solo.clickOnMenuItem("View Mood History");
         solo.assertCurrentActivity("Wrong Activity!", MoodHistoryActivity.class);
         assertTrue(solo.waitForText("fortune"));
@@ -83,7 +86,7 @@ public class EditMoodEventActivityTest extends ActivityInstrumentationTestCase2<
         solo.pressSpinnerItem(0,1);
         solo.clearEditText((EditText) solo.getView(R.id.triggerEditText_EditMoodEventActivity));
         solo.enterText((EditText) solo.getView(R.id.triggerEditText_EditMoodEventActivity), "hangover");
-        solo.clickOnButton("Edit");
+        solo.clickOnButton("Edit"); // finished editing
         // view edited mood
         solo.waitForActivity("ViewMoodEventActivity");
         solo.assertCurrentActivity("Wrong Activity!", ViewMoodEventActivity.class);
@@ -106,13 +109,14 @@ public class EditMoodEventActivityTest extends ActivityInstrumentationTestCase2<
         solo.assertCurrentActivity("Wrong Activity!", LoginActivity.class);
         solo.clearEditText((EditText) solo.getView(R.id.usernameEditText));
         solo.enterText((EditText) solo.getView(R.id.usernameEditText), "intent108");
-        solo.clickOnButton("login");
+        solo.clickOnView(solo.getView(R.id.loginButton));
+        solo.sleep(30000);  // make sure MainActivity has loaded
         solo.waitForActivity("MainActivity");
         assertTrue(solo.waitForText("Welcome user \"intent108\""));
         solo.assertCurrentActivity("Wrong Activity!", MainActivity.class);
-        // might be a way for this to work, but can't find out how yet
-        //solo.clickOnActionBarItem(R.id.newMoodEventToolBarButton);
-        // sloppier but works fine
+
+        solo.clickOnActionBarItem(R.id.mainToolBar);
+        solo.waitForText("Home");
         solo.clickOnMenuItem("New Mood Event");
         // Once inside NewMoodEvent:
         solo.assertCurrentActivity("Wrong Activity!", NewMoodEventActivity.class);
@@ -126,6 +130,8 @@ public class EditMoodEventActivityTest extends ActivityInstrumentationTestCase2<
         solo.waitForActivity("MainActivity");
         solo.assertCurrentActivity("Wrong Activity!", MainActivity.class);
         // navigate to mood history
+        solo.clickOnActionBarItem(R.id.mainToolBar);
+        solo.waitForText("Home");
         solo.clickOnMenuItem("View Mood History");
         solo.assertCurrentActivity("Wrong Activity!", MoodHistoryActivity.class);
         assertTrue(solo.waitForText("fortune"));
