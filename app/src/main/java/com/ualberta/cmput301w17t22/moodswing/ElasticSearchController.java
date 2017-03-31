@@ -11,6 +11,7 @@ import com.searchly.jestdroid.JestClientFactory;
 import com.searchly.jestdroid.JestDroidClient;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import io.searchbox.core.DocumentResult;
 import io.searchbox.core.Index;
@@ -114,6 +115,119 @@ public class ElasticSearchController implements MSController {
 
         // Execute the task.
         updateParticipantByParticipantTask.execute(participant);
+    }
+
+    /**
+     * Creates and returns an array list of mood events for a given participant according to their
+     * following list and the filters chosen.
+     *
+     * @param participant
+     * @param activeFilters
+     * @return
+     */
+    public ArrayList<MoodEvent> buildMoodFeed(Participant participant, int[] activeFilters,
+                                              String filterTrigger,
+                                              String filterEmotion) {
+
+        // Create empty mood feed.
+        ArrayList<MoodEvent> moodFeed = new ArrayList<>();
+
+        // Get the task.
+        BuildMoodFeedTask buildMoodFeedTask = new BuildMoodFeedTask();
+
+        // Execute the task.
+        buildMoodFeedTask.execute(participant, activeFilters, filterTrigger, filterEmotion);
+
+        try {
+            moodFeed = buildMoodFeedTask.get();
+        } catch (Exception e) {
+            Log.i("ERROR", "Something went wrong when getting the" +
+                    " mood feed from the AsyncTask.");
+        }
+
+        return moodFeed;
+
+    }
+
+    public static class BuildMoodFeedTask extends AsyncTask<Object, Void, ArrayList<MoodEvent>> {
+        @Override
+        protected ArrayList<MoodEvent> doInBackground(Object ... parameters) {
+            // Always verify the ElasticSearch config first.
+            verifyConfig();
+
+            // Initialize mood feed.
+            ArrayList<MoodEvent> moodFeed = new ArrayList<>();
+
+            // Get the participant and the active filters from the parameters.
+            Participant participant = (Participant) parameters[0];
+            int[] activeFilters = (int[]) parameters[1];
+            String filterTrigger = (String) parameters[2];
+            String filterEmotion = (String) parameters[3];
+
+
+            if (activeFilters[0] == 1) {     // recent week filter active
+
+            } else {                        // recent week filter off
+
+            }
+
+            if (activeFilters[1] == 1) { // emotion filter on
+
+            } else {                    // emotion filter off
+
+            }
+
+            if (activeFilters[2] == 1) {    // trigger filter on
+
+            } else {                        // trigger filter off
+
+            }
+
+            // For each user in the participant's following list, grab their most recent mood event
+            // if it passes all the queries.
+            ArrayList<String> followingList = participant.getFollowing();
+            for (String username : followingList) {
+                // Create the query string. We do a match search on username.
+                String query = "{\n" +
+                        "    \"fields\": \"mostRecentMoodEvent\",\n" +
+                        "    \"query\": {\n" +
+                        "        \"match\" : {\n" +
+                        "            \"username\" : \"" + username + "\"\n" +
+                        "        }\n" +
+                        "    }\n" +
+                        "}";
+
+                // Build Jest/ElasticSearch search.
+                Search search = new Search.Builder(query)
+                        .addIndex("cmput301w17t22")
+                        .addType("Participant")
+                        .build();
+
+                try {
+                    // Try to execute the search.
+                    SearchResult result = client.execute(search);
+
+                    if (result.isSucceeded()) {
+                        // It says that getSourceAsObject is deprecated but I dont know
+                        // what it is replaced by.
+                        MoodEvent moodEvent = result.getSourceAsObject(MoodEvent.class);
+                        Log.i("MoodSwing", moodEvent.toString());
+                        moodFeed.add(moodEvent);
+                    }
+                    else {
+                        // No participant with given username found.
+                        Log.i("MoodSwing", "No participant with given username found.");
+                    }
+                } catch (IOException e) {
+                    // TODO: Deal with IOException.
+                    Log.i("ERROR", "Something went wrong when trying to grab a participant by username" +
+                            "from ElasticSearch.");
+                }
+            } // end for loop.
+
+            // Return the mood feed.
+            return moodFeed;
+        }
     }
 
     /**

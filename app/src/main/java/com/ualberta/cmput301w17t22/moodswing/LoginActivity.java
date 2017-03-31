@@ -118,6 +118,9 @@ public class LoginActivity extends AppCompatActivity implements MSView<MoodSwing
             // a new participant will be added to ElasticSearch.
             moodSwingController.loadMainParticipantByUsername(username);
 
+            // Initialize the mood feed.
+            moodSwingController.buildMoodFeed(new int[]{0,0,0,0}, "", "");
+
             // Continue.
             return true;
         } else {

@@ -31,8 +31,18 @@ public class DataGenerator {
             // Put the participant on ElasticSearch.
             elasticSearchController.updateParticipantByParticipant(paragon56);
         }
-    }
 
+        Participant albertab33fgirl =
+                elasticSearchController.getParticipantByUsername("albertab33fgirl");
+        if (albertab33fgirl == null) {
+
+            albertab33fgirl = generateAlbertab33fgirl();
+
+            elasticSearchController.updateParticipantByParticipant(albertab33fgirl);
+        }
+
+        //generateFollowerConnections();
+    }
 
     public Participant generateParagon56() {
         Log.i("MoodSwing", "Generating user \"paragon56\".");
@@ -42,7 +52,7 @@ public class DataGenerator {
         ArrayList<MoodEvent> moodHistory = new ArrayList<>();
 
         moodHistory.add(createMoodEvent(paragon56.getUsername(),
-                2017, 9, 29,
+                2017, 9, 6,
                 "Happiness",
                 "Beat my highscore!",
                 "Alone",
@@ -50,7 +60,7 @@ public class DataGenerator {
                 -113.535082d));
 
         moodHistory.add(createMoodEvent(paragon56.getUsername(),
-                2017, 9, 27,
+                2017, 9, 9,
                 "Sadness",
                 "Physics is hard.",
                 "With One Other Person",
@@ -58,7 +68,7 @@ public class DataGenerator {
                 -113.525643d));
 
         moodHistory.add(createMoodEvent(paragon56.getUsername(),
-                2017, 9, 23,
+                2017, 9, 10,
                 "Shame",
                 "McDonalds",
                 "With Two To Several People",
@@ -66,7 +76,7 @@ public class DataGenerator {
                 -113.513932d));
 
         moodHistory.add(createMoodEvent(paragon56.getUsername(),
-                2017, 9, 22,
+                2017, 9, 11,
                 "Confusion",
                 "Chemistry?!",
                 "Alone",
@@ -74,7 +84,7 @@ public class DataGenerator {
                 -113.521772d));
 
         moodHistory.add(createMoodEvent(paragon56.getUsername(),
-                2017, 9, 20,
+                2017, 9, 14,
                 "Happiness",
                 "HBDay to me!",
                 "With A Crowd",
@@ -82,7 +92,7 @@ public class DataGenerator {
                 -113.535082d));
 
         moodHistory.add(createMoodEvent(paragon56.getUsername(),
-                2017, 9, 18,
+                2017, 9, 15,
                 "Anger",
                 "Lonely dog!",
                 "Alone",
@@ -98,7 +108,7 @@ public class DataGenerator {
                 -113.488516d));
 
         moodHistory.add(createMoodEvent(paragon56.getUsername(),
-                2017, 9, 16,
+                2017, 9, 18,
                 "Happiness",
                 "Shopping!",
                 "With Two To Several People",
@@ -106,7 +116,7 @@ public class DataGenerator {
                 -113.524860d));
 
         moodHistory.add(createMoodEvent(paragon56.getUsername(),
-                2017, 9, 15,
+                2017, 9, 20,
                 "Fear",
                 "Car crash!",
                 "Alone",
@@ -114,7 +124,7 @@ public class DataGenerator {
                 -113.533462d));
 
         moodHistory.add(createMoodEvent(paragon56.getUsername(),
-                2017, 9, 12,
+                2017, 9, 23,
                 "Happiness",
                 "Matt's House",
                 "With Two To Several People",
@@ -122,7 +132,7 @@ public class DataGenerator {
                 -113.643278d));
 
         moodHistory.add(createMoodEvent(paragon56.getUsername(),
-                2017, 9, 11,
+                2017, 9, 24,
                 "Disgust",
                 "Bit rotten apple",
                 "Alone",
@@ -130,7 +140,7 @@ public class DataGenerator {
                 -113.535082d));
 
         moodHistory.add(createMoodEvent(paragon56.getUsername(),
-                2017, 9, 9,
+                2017, 9, 26,
                 "Surprise",
                 "Surprize zoo trip!",
                 "With Two To Several People",
@@ -138,7 +148,7 @@ public class DataGenerator {
                 -113.554912d));
 
         moodHistory.add(createMoodEvent(paragon56.getUsername(),
-                2017, 9, 6,
+                2017, 9, 27,
                 "Happiness",
                 "Anniversary <3",
                 "With One Other Person",
@@ -146,7 +156,7 @@ public class DataGenerator {
                 -113.497745d));
 
         moodHistory.add(createMoodEvent(paragon56.getUsername(),
-                2017, 9, 5,
+                2017, 9, 28,
                 "Shame",
                 "Matt's House. Pizza.",
                 "With Two To Several People",
@@ -154,7 +164,7 @@ public class DataGenerator {
                 -113.643278d));
 
         moodHistory.add(createMoodEvent(paragon56.getUsername(),
-                2017, 9, 2,
+                2017, 9, 29,
                 "Disgust",
                 "Textbook prices!",
                 "With Two To Several People",
@@ -167,6 +177,58 @@ public class DataGenerator {
         }
 
         return paragon56;
+    }
+
+    /**
+     * Generates the user albertab33fgirl.
+     */
+    public Participant generateAlbertab33fgirl() {
+
+        Participant albertab33fgirl = new Participant("albertab33fgirl");
+
+        ArrayList<MoodEvent> moodHistory = new ArrayList<>();
+
+        moodHistory.add(createMoodEvent(albertab33fgirl.getUsername(),
+                2017, 9, 16,
+                "Happiness",
+                "mmmmmm beeeef",
+                "Alone",
+                53.546349d,
+                -113.555783d));
+
+        // Add all the mood events to the participant.
+        for (MoodEvent moodEvent : moodHistory) {
+            albertab33fgirl.addMoodEvent(moodEvent);
+        }
+
+        return albertab33fgirl;
+
+    }
+
+    /**
+     * Generates follower / following connections between the generated followers.
+     */
+    public void generateFollowerConnections() {
+
+        // Get the elastic search controller.
+        ElasticSearchController elasticSearchController =
+                MoodSwingApplication.getElasticSearchController();
+
+        // Get generated users.
+        Participant paragon56 = elasticSearchController.getParticipantByUsername("paragon56");
+        Participant albertab33fgirl =
+                elasticSearchController.getParticipantByUsername("albertab33fgirl");
+
+        // Create follower connections.
+        paragon56.followParticipant(albertab33fgirl);
+        albertab33fgirl.approveFollowerRequest(paragon56);
+
+        albertab33fgirl.followParticipant(paragon56);
+        paragon56.approveFollowerRequest(albertab33fgirl);
+
+        // Update the participants.
+        elasticSearchController.updateParticipantByParticipant(paragon56);
+        elasticSearchController.updateParticipantByParticipant(albertab33fgirl);
     }
 
     /**

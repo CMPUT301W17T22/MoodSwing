@@ -218,7 +218,6 @@ public class MoodEvent {
         return socialSituation;
     }
 
-
     public void setLocation(double lat, double lng) {
         this.lat = lat;
         this.lng = lng;
