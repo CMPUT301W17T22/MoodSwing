@@ -5,7 +5,6 @@ import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-
 import com.searchly.jestdroid.DroidClientConfig;
 import com.searchly.jestdroid.JestClientFactory;
 import com.searchly.jestdroid.JestDroidClient;
@@ -25,8 +24,13 @@ import io.searchbox.core.SearchResult;
  * Created by nyitrai on 2/26/2017.
  */
 
-public class ElasticSearchController implements MSController{
+public class ElasticSearchController implements MSController, Command{
     MoodSwing ms = null;
+
+
+
+
+     //checks for connection
 
 
 
@@ -112,6 +116,7 @@ public class ElasticSearchController implements MSController{
      */
     public void updateParticipantByParticipant(Participant participant) {
         // Get the task.
+
         UpdateParticipantByParticipantTask updateParticipantByParticipantTask =
                 new UpdateParticipantByParticipantTask();
 
@@ -156,7 +161,11 @@ public class ElasticSearchController implements MSController{
         protected ArrayList<MoodEvent> doInBackground(Object ... parameters) {
             // Always verify the ElasticSearch config first.
             verifyConfig();
-
+            /*CheckConnection connected; //this shit doens't work
+            connected = new CheckConnection(this);
+            if(connected.isConnected()){
+                Log.d("Can yo uconnect","Connected bbg");
+            }*/
             // Initialize mood feed.
             ArrayList<MoodEvent> moodFeed = new ArrayList<>();
 
@@ -165,8 +174,6 @@ public class ElasticSearchController implements MSController{
             int[] activeFilters = (int[]) parameters[1];
             String filterTrigger = (String) parameters[2];
             String filterEmotion = (String) parameters[3];
-
-
             if (activeFilters[0] == 1) {     // recent week filter active
 
             } else {                        // recent week filter off
@@ -360,9 +367,13 @@ public class ElasticSearchController implements MSController{
      * UpdateParticipantByParticipantTask will whole update the document for that participant
      * on ElasticSearch.
      */
-    public static class UpdateParticipantByParticipantTask extends AsyncTask<Participant, Void, Void> {
+    public class UpdateParticipantByParticipantTask extends AsyncTask<Participant, Void, Void> {
         @Override
         protected Void doInBackground(Participant ... participants) {
+           // CheckConnection connected;
+           // connected = new CheckConnection(this); //check if online at the time
+
+
             // Verify the ElasticSearch config.
             verifyConfig();
 
@@ -404,6 +415,9 @@ public class ElasticSearchController implements MSController{
             }
             return null;
         }
+    }
+    public void execute(){
+
     }
     
 }

@@ -1,6 +1,5 @@
 package com.ualberta.cmput301w17t22.moodswing;
 
-import android.icu.text.MessagePattern;
 import android.util.Log;
 
 import java.util.ArrayList;
@@ -13,7 +12,7 @@ import java.util.ArrayList;
  * Created by nyitrai on 3/7/2017.
  */
 
-public class MoodSwingController implements MSController {
+public class MoodSwingController implements MSController, Command {
 
     // Grab the main model class singleton.
     MoodSwing ms = null;
@@ -25,6 +24,9 @@ public class MoodSwingController implements MSController {
 
     public void removeView(MSView view) { ms.removeView(view);}
 
+    CheckConnection connected;  //check if online or offline
+
+    ArrayList<MoodEvent> queue; //queue for offline connectvity
     /**
      * Loads a participant into the Model's main participant given a username.
      * @param username
@@ -149,4 +151,7 @@ public class MoodSwingController implements MSController {
     public double getLastKnownLng() { return ms.getLastKnownLng(); }
 
     public void setLastKnownLocation(double lat, double lng) { ms.setLastKnownLocation(lat, lng); }
+    public void execute(){ //executes if online
+
+    }
 }

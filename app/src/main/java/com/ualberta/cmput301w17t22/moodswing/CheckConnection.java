@@ -1,16 +1,17 @@
 package com.ualberta.cmput301w17t22.moodswing;
 
+/**
+ * Created by htruong1 on 2017-03-30.
+ */
+
 import android.app.Service;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
 /**
- * Created by htruong1 on 2017-03-30.
- */
-
-/**
- * Code was used from //https://www.youtube.com/watch?v=9H4Ik9hqDlQ
+ *  //https://www.youtube.com/watch?v=9H4Ik9hqDlQ
+ *  2017/04/01
  * getNetwork methods are deprecated as of API 23 so unable to use
  * This class checks for whether the device is connected to a WIFI/Cellular network.
  * Returns true if you are connected, returns false otherwise.
@@ -36,7 +37,7 @@ public class CheckConnection {
                 }
             }
         }
-            return false;
-        }
+        return false;
+    }
 
 }

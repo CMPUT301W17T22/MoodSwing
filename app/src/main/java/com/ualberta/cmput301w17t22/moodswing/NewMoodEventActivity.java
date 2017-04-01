@@ -83,6 +83,7 @@ public class NewMoodEventActivity extends AppCompatActivity implements MSView<Mo
     /** The toolbar, shows the title. */
     Toolbar newMoodToolbar;
 
+    CheckConnection connected;
     /**
      * Initializes all the widgets for this activity and adds this View to the main Model class.
      */
@@ -108,6 +109,11 @@ public class NewMoodEventActivity extends AppCompatActivity implements MSView<Mo
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_mood_event);
+        connected = new CheckConnection(this);
+        if(connected.isConnected()){
+            Toast.makeText(NewMoodEventActivity.this,"Can post an event",
+                    Toast.LENGTH_SHORT).show();
+        }
 
         // Initialize all widgets for this activity and add this View to the main Model class.
         initialize();

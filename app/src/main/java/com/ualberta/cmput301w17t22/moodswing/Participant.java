@@ -2,11 +2,7 @@ package com.ualberta.cmput301w17t22.moodswing;
 
 import android.util.Log;
 
-import com.google.android.gms.maps.model.LatLng;
-
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.InputMismatchException;
 
 import io.searchbox.annotations.JestId;
 
@@ -23,7 +19,7 @@ import io.searchbox.annotations.JestId;
  * @see ApprovalList
  */
 
-public class Participant extends User {
+public class Participant extends User implements Command {
     /**
      * This id is used in ElasticSearch and Jest to identify a Participants document.
      */
@@ -48,12 +44,17 @@ public class Participant extends User {
         this.username = username;
     }
 
+    private ArrayList<MoodEvent> queue;
+
+    CheckConnection connected;
+
     // --- START: MoodEvent methods
 
     /**
      * Adds a mood event defined into the Participant's mood history.
      */
     public void addMoodEvent(MoodEvent moodEvent) {
+
         if (!moodEvent.getOriginalPoster().equals(this.getUsername())) {
             Log.i("ERROR","Attempted to add MoodEvent to a different Participant than the " +
                     "Participant who created the MoodEvent.");
@@ -83,6 +84,7 @@ public class Participant extends User {
      * @param position The given position to remove the mood event from.
      */
     public void deleteMoodEventByPosition(int position) {
+
         moodHistory.remove(position);
         updateMostRecentMoodEvent();
     }
@@ -99,7 +101,9 @@ public class Participant extends User {
             mostRecentMoodEvent = null;
         }
     }
+    public void execute(){
 
+    }
     // --- END: MoodEvent methods
 
 
