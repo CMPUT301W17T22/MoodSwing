@@ -40,7 +40,6 @@ public class FollowingController implements MSController {
      * request is accepted. Controller calls upon the similar method in the Participant class.
      * @param participant
      */
-    //TODO: Implement error handle when the string entered is not an existing participant
     public void followParticipant(String participant){
 
         Participant newFollowedParticipant =
@@ -59,9 +58,9 @@ public class FollowingController implements MSController {
      * followerList.
      * @param receivingParticipant
      */
-    //TODO:Need to create a new type of request that tells the receiving participant to remove?
-
     public void unfollowParticipant(Participant receivingParticipant){
+
+
 
         // Unfollow the participant.
         mainParticipant.unfollowParticipant(receivingParticipant);

@@ -120,7 +120,7 @@ public class Participant extends User {
     // --- START: Following methods ---
 
         /**Follow a participant by:
-         * Checking if the sending participant is in their block list.
+         * Checking if main participant is in their block list.
          * Checks to see if the sending participant has already sent a follow request to that participant.
          * Checks to see if the sending participant is already following the participant.
          * Successfully follows a participant by:
@@ -128,23 +128,26 @@ public class Participant extends User {
          * Creates a follower request that is sent to the receiving participant.
          * @param receivingParticipant */
     public void followParticipant(Participant receivingParticipant) throws InvalidParameterException {
+
         Boolean sendFollowRequest = false;
 
-        // If the receivingParticipant's blocklist is uninitialized, send the follow request.
-        if (receivingParticipant.blockList == null ) {
-            sendFollowRequest = true;
+            // If the receivingParticipant's blockList is empty and the main participant isn't in their block list.
+         if (receivingParticipant.blockList.isEmpty() || !receivingParticipant.blockList.contains(this.getUsername())) {
+             //check to see if we already have a pending request and if we are already following them
+             if(this.followingList.getPending().contains(receivingParticipant.getUsername())) {
 
-            // If the receivingParticipant's blockList is empty, send the follow request.
-        } else if (receivingParticipant.blockList.isEmpty()){
-            sendFollowRequest = true;
+                 //checks to see if we are already following them
+             }else  if(this.followingList.getApproved().contains(receivingParticipant.getUsername())){
 
-            // If this participant is not in the receiving participant's blocklist,
-            // send the follow request.
-        } else if (!receivingParticipant.blockList.contains(this.getUsername())) {
-            sendFollowRequest = true;
-        } else if(this.followerList.getPending().contains(receivingParticipant.getUsername()) ||
-                this.followingList.getPending().contains(receivingParticipant.getUsername())){
 
+             } else{
+                 sendFollowRequest = true;
+             }
+         }
+        //check to see if we are blocking this person
+        // if so we remove them from our block list and follow them
+         if(this.blockList.contains(receivingParticipant) && sendFollowRequest){
+             this.unblockParticipant(receivingParticipant.getUsername());
         }
 
         if (sendFollowRequest) {
@@ -210,30 +213,14 @@ public class Participant extends User {
 
 
      // DO NOT call explicitly. Should only be called by requestingParticipant
-     /**Creates a request object received from a participant, if that participant is not in our block
-      * list, that adds them to the main participants pending followers.
+     /**Creates a request object received from a participant
+      * that adds them to the main participants pending followers.
      * @param requestingParticipant
      */
     public void createFollowerRequest(Participant requestingParticipant) throws InvalidParameterException{
-        Boolean createFollowRequest = false;
 
-        // If the blocklist is uninitialized, create the follow request.
-        if (this.blockList == null ) {
-            createFollowRequest = true;
-
-            // If the blockList is empty, create the follow request.
-        } else if (this.blockList.isEmpty()){
-            createFollowRequest = true;
-
-            // If the requestingParticipant is not in the blocklist,
-            // send the follow request.
-        } else if (!this.blockList.contains(requestingParticipant.getUsername())) {
-            createFollowRequest = true;
-        }
-
-        if (createFollowRequest) {
             followerList.newPendingParticipant(requestingParticipant);
-        }
+
     }
     /**Create an unfollow event to inform the requesting participant that they are being unfollowed.
      * @param requestingParticipant  */
@@ -255,11 +242,7 @@ public class Participant extends User {
         followerList.remove(requestingParticipant);
     }
 
-    //TODO: Check to see if we need this?
-    public void blockFollowerRequest(Participant requestingParticipant){
-        followerList.remove(requestingParticipant);
-        this.blockParticipant(requestingParticipant.getUsername());
-    }
+
 
     // --- END: Follower methods ---
 
