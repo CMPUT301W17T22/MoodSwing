@@ -1,10 +1,12 @@
 package com.ualberta.cmput301w17t22.moodswing;
 
-import android.util.Log;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 
-import com.google.android.gms.maps.model.LatLng;
-
+import java.io.ByteArrayOutputStream;
 import java.util.Date;
+
+import static java.lang.Double.NaN;
 
 /**
  * A MoodEvent is an object that is posted to the MoodSwing app and displayed on certain feeds
@@ -12,7 +14,7 @@ import java.util.Date;
  * <p/>
  * A MoodEvent contains the posting participant's username, emotional state, the date the mood
  * event was created, a short explanation trigger for the mood event, a social situation that
- * contributed to the mood event, and the location of the mood event.
+ * contributed to the mood event, and the lastKnownLocation of the mood event.
  *
  * @author Fred
  * @author bbest
@@ -22,6 +24,8 @@ import java.util.Date;
  */
 
 public class MoodEvent {
+    private static final double NOT_SET = 911.911;
+
     /** The original poster of the MoodEvent's username. */
     private String originalPoster;
 
@@ -39,9 +43,16 @@ public class MoodEvent {
      * @see SocialSituation */
     private SocialSituation socialSituation;
 
-    /** The location that the mood event originally was entered at.
+    /** The lastKnownLat that the mood event originally was entered at.
      * CAN NOT BE EDITED AFTER INITIALIZATION.*/
-    private LatLng location;
+    private double lat = NOT_SET;
+    /** The lastKnownLng that the mood event originally was entered at.
+     * CAN NOT BE EDITED AFTER INITIALIZATION.*/
+    private double lng = NOT_SET;
+
+    /**The image that can be attached to the mood event. This can be added by taking a picture
+     * or selecting one from the phones gallery */
+    private ByteArrayOutputStream image;
 
     /**
      * Mood event constructor. Sets the attributes of this MoodEvent.
@@ -50,32 +61,33 @@ public class MoodEvent {
      * @param emotionalState
      * @param trigger
      * @param socialSituation
-     * @param location
+     * @param lat
+     * @param lng
      */
+    //TODO: this needs to be implemented in the same way as the editor!!!!!!
     public MoodEvent(String posterUsername,
                      Date date,
                      EmotionalState emotionalState,
                      String trigger,
                      SocialSituation socialSituation,
-                     LatLng location) {
+                     double lat,
+                     double lng,
+                     ByteArrayOutputStream importImage) {
         this.originalPoster = posterUsername;
         this.date = date;
         this.emotionalState = emotionalState;
         this.trigger = trigger;
         this.socialSituation = socialSituation;
-
-        // Check for null location, set to 0 if it is null.
-        if (location == null) {
-            this.location = new LatLng(0, 0);
-        } else {
-            this.location = location;
+        this.image = importImage;
+        if(!Double.isNaN(lat) && !Double.isNaN(lng)) {
+            this.lat = lat;
+            this.lng = lng;
         }
     }
 
+    //TODO: Regenerate equals method to include image and location.
     /**
      * Android Studio generated equals method.
-     * @param o
-     * @return
      */
     @Override
     public boolean equals(Object o) {
@@ -91,11 +103,23 @@ public class MoodEvent {
             return false;
         if (socialSituation != null ? !socialSituation.equals(moodEvent.socialSituation) : moodEvent.socialSituation != null)
             return false;
-        return location != null ? location.equals(moodEvent.location) : moodEvent.location == null;
+       // if(image != null ? !image.equals(moodEvent.image) : moodEvent.image != null) return false;
+        if(Double.isNaN(lat) || Double.isNaN(moodEvent.lat)){
+            if(!Double.isNaN(lat) || !Double.isNaN(moodEvent.lat)) return false;
+        }
+        else if(lat != moodEvent.lat) return false;
+        if(Double.isNaN(lng) || Double.isNaN(moodEvent.lng)) {
+            if (!Double.isNaN(lng) || !Double.isNaN(moodEvent.lng)) return false;
+        }
+        else if (lng != moodEvent.lng) return false;
+        return true;
     }
 
     /**
      * Android Studio generated hashCode method.
+     * double hashing from Tomasz Nurkiewicz grab date 29/03/2017
+     * http://stackoverflow.com/questions/9650798/hash-a-double-in-java
+     * TODO: regenerate with Android Studio
      * @return
      */
     @Override
@@ -105,23 +129,28 @@ public class MoodEvent {
         result = 31 * result + date.hashCode();
         result = 31 * result + (trigger != null ? trigger.hashCode() : 0);
         result = 31 * result + (socialSituation != null ? socialSituation.hashCode() : 0);
-        result = 31 * result + (location != null ? location.hashCode() : 0);
+        //result = 31 * result + (image != null ? image.hashCode() : 0);
+        result = 31 * result + Double.valueOf(lat).hashCode();
+        result = 31 * result + Double.valueOf(lng).hashCode();
         return result;
     }
 
     /**
      * Edit MoodEvent method, uses setters to replace the attributes that are editable.
-     * Date, original poster, and location are not editable.
+     * Date, original poster, and lastKnownLocation are not editable.
      * @param emotionalState The new emotional state of the mood event.
      * @param trigger The new trigger of the mood event.
      * @param socialSituation The new social situation of the mood event.
      */
+    //TODO: this needs to be implemented in the same way as the constructor!!!!!!
     public void editMoodEvent(EmotionalState emotionalState,
                               String trigger,
-                              SocialSituation socialSituation) {
+                              SocialSituation socialSituation,
+                              ByteArrayOutputStream image) {
         this.setEmotionalState(emotionalState);
         this.setTrigger(trigger);
         this.setSocialSituation(socialSituation);
+        this.setImage(image);
     }
 
     /**
@@ -132,30 +161,18 @@ public class MoodEvent {
      * @return null if no position
      */
 //    public Marker getMapMarker(GoogleMap googleMap){
-//        if(location == null){
+//        if(lastKnownLocation == null){
 //            return null;
 //        }
 //
 //        Marker marker = googleMap.addMarker(new MarkerOptions()
-//                .position(location)
+//                .position(lastKnownLocation)
 //                .title(emotionalState.getDescription())
 //                .icon(icon));
 //
 //        return marker;
 //    }
 
-    /**
-     * Generates and returns a deep copy of this mood event.
-     * @return A deep copy of this mood event.
-     */
-    public MoodEvent getDeepCopy() {
-        return new MoodEvent(this.getOriginalPoster(),
-                this.getDate(),
-                this.getEmotionalState(),
-                this.getTrigger(),
-                this.getSocialSituation(),
-                this.getLocation());
-    }
 
     /**
      * To string method for printing.
@@ -167,7 +184,8 @@ public class MoodEvent {
                 "\nDate: " + this.getDate().toString() +
                 "\nTrigger: " + this.getTrigger() +
                 "\nSocial Situation: " + this.getSocialSituation().toString() +
-                "\nLocation: " + this.getLocation().toString();
+                "\nLatitude: " + this.getLat() +
+                "\nLongitude: " + this.getLng();
     }
 
     // --- START: Getters and Setters
@@ -182,10 +200,6 @@ public class MoodEvent {
 
     public EmotionalState getEmotionalState() {
         return emotionalState;
-    }
-
-    public void setDate(Date date){
-        this.date = date;
     }
 
     public Date getDate() {
@@ -208,15 +222,30 @@ public class MoodEvent {
         return socialSituation;
     }
 
-    public void setOriginalPoster(String originalPoster) { this.originalPoster = originalPoster; }
-
-    public void setLocation(LatLng location) {
-        this.location = location;
+    public void setLocation(double lat, double lng) {
+        this.lat = lat;
+        this.lng = lng;
     }
 
-    public LatLng getLocation() {
-        return location;
+    public double getLat() {
+        return lat == NOT_SET ? NaN : lat;
     }
+
+    public double getLng() {
+        return lng == NOT_SET ? NaN : lng;
+    }
+
+    /**Compresses the ByteArrayOutputStream into a byte size restricted Bitmap and returns the
+     * image Bitmap*/
+    public Bitmap getImage() {
+        if (image == null) {
+            return null;
+        }
+        Bitmap newimage = BitmapFactory.decodeByteArray(image.toByteArray(), 0, image.size());
+        return newimage; }
+
+    public void setImage(ByteArrayOutputStream image) {
+        this.image = image; }
 
     // --- END: Getters and Setters
 }

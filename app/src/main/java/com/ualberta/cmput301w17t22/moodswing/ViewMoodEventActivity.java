@@ -2,11 +2,9 @@ package com.ualberta.cmput301w17t22.moodswing;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.content.res.ResourcesCompat;
+import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -14,13 +12,23 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+
+import java.text.SimpleDateFormat;
+
 
 /**
  * Activity is launched when app user chooses to view a mood event. Launched from both
  * MoodHistoryActivity to view a mood event in the mood history, and from MainActivity, to view
  * a mood event in the mood feed.
  */
-public class ViewMoodEventActivity extends AppCompatActivity implements MSView<MoodSwing> {
+public class ViewMoodEventActivity extends AppCompatActivity implements MSView<MoodSwing>,
+        OnMapReadyCallback {
 
     /** The position of the mood event being viewed in the participant's mood history. */
     private int position;
@@ -36,6 +44,10 @@ public class ViewMoodEventActivity extends AppCompatActivity implements MSView<M
 
     /** TextView that holds the mood event's trigger text. */
     TextView triggerTextView;
+    TextView triggerPrefixTextView;
+
+    /** TextView that holds the mood event's date and time of occurance */
+    TextView dateTextView;
 
     /** ImageView that holds the appropriate image for the emotional state. */
     ImageView emotionalStateImageView;
@@ -52,6 +64,9 @@ public class ViewMoodEventActivity extends AppCompatActivity implements MSView<M
     /** The button that allows the user to delete the mood event if it is their own. */
     Button deleteMoodEventButton;
 
+    /** The support map fragment that displays the location of the mood event. */
+    SupportMapFragment supportMapFragment;
+
     /** The mainParticipant (current user) of the app. */
     Participant mainParticipant;
 
@@ -62,6 +77,53 @@ public class ViewMoodEventActivity extends AppCompatActivity implements MSView<M
      * deleted. */
     boolean delete;
 
+    private GoogleMap mMap;
+
+    /**
+     * Initialize all the widgets for the Activity, and add this View to the main Model's list of
+     * Views.
+     */
+    public void initialize(){
+
+        // Initialize the text views.
+        usernameTextView =
+                (TextView) findViewById(R.id.usernameTextView_ViewMoodEventActivity);
+        emotionalStateTextView =
+                (TextView) findViewById(R.id.emotionalStateTextView_ViewMoodEventActivity);
+        socialSituationTextView =
+                (TextView) findViewById(R.id.socialSituationTextView_ViewMoodEventActivity);
+        triggerTextView =
+                (TextView) findViewById(R.id.triggerTextView_ViewMoodEventActivity);
+
+        triggerPrefixTextView =
+                (TextView) findViewById(R.id.triggerPrefixTextView);
+
+        dateTextView = (TextView) findViewById(R.id.dateTextView_ViewMoodEvent);
+
+        // Initialize the image views.
+        emotionalStateImageView =
+                (ImageView) findViewById(R.id.emotionalStateImageView_ViewMoodEventActivity);
+        socialSituationImageView =
+                (ImageView) findViewById(R.id.socialSituationImageView_ViewMoodEventActivity);
+        imageImageView =
+                (ImageView) findViewById(R.id.imageImageView_ViewMoodEventActivity);
+
+        // Initialize the buttons.
+        editMoodEventButton =
+                (Button) findViewById(R.id.editMoodEventButton_ViewMoodEventActivity);
+        deleteMoodEventButton =
+                (Button) findViewById(R.id.deleteMoodEventButton_ViewMoodEventActivity);
+
+        // Initialize the map.
+        supportMapFragment = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.map_ViewMoodEventActivity);
+
+        supportMapFragment.getMapAsync(this);
+
+        // Add this View to the main Model class.
+        MoodSwingController moodSwingController = MoodSwingApplication.getMoodSwingController();
+        moodSwingController.addView(this);
+    }
     /** Called when the activity is first created.
      * In this, we get the position of the mood event, get the mood event itself, and initialize
      * all of the widgets.
@@ -93,14 +155,14 @@ public class ViewMoodEventActivity extends AppCompatActivity implements MSView<M
         // Load the values from the mood event being viewed into the widgets of the activity.
         loadFromMoodEvent();
 
-        // Check if the user own's this mood event, and dissapear or appear the edit and
+        // Check if the user own's this mood event, and disappear or appear the edit and
         // delete buttons appropriately.
         if (moodEvent.getOriginalPoster().equals(mainParticipant.getUsername())) {
             editMoodEventButton.setVisibility(View.VISIBLE);
             deleteMoodEventButton.setVisibility(View.VISIBLE);
         } else {
-            editMoodEventButton.setVisibility(View.GONE);
-            deleteMoodEventButton.setVisibility(View.GONE);
+            editMoodEventButton.setVisibility(View.INVISIBLE);
+            deleteMoodEventButton.setVisibility(View.INVISIBLE);
         }
 
         // Edit button press, starts the EditMoodEventActivity.
@@ -108,7 +170,7 @@ public class ViewMoodEventActivity extends AppCompatActivity implements MSView<M
             @Override
             public void onClick(View v) {
 
-                // Launch the ViewMoodEventActivity.
+                // Launch the EditMoodEventActivity.
                 Intent intent = new Intent(ViewMoodEventActivity.this, EditMoodEventActivity.class);
                 startActivity(intent);
             }
@@ -167,12 +229,52 @@ public class ViewMoodEventActivity extends AppCompatActivity implements MSView<M
 
         // Delete the mood event if delete is true.
         if (delete) {
-            // Delete the mood event.
-            moodSwingController.deleteMoodEventFromMainParticipantByPosition(position);
-            // Inform the user that the mood event was deleted.
-            Toast.makeText(ViewMoodEventActivity.this,
-                    "Mood Event deleted!",
-                    Toast.LENGTH_SHORT).show();
+            // check if you're deleting from mood feed or mood history
+
+            // if the event is from mood history, proceed deleting as normal
+            if (getIntent().getStringExtra("MoodListType").equals("MoodHistory")) {
+                // Delete the mood event.
+                moodSwingController.deleteMoodEventFromMainParticipantByPosition(position);
+                // Inform the user that the mood event was deleted.
+                Toast.makeText(ViewMoodEventActivity.this,
+                        "Mood Event deleted!",
+                        Toast.LENGTH_SHORT).show();
+
+            // If this activity was launched from the MainActivity, automatically
+            // delete most recent mood event
+            } else if (getIntent().getStringExtra("MoodListType").equals("MoodFeed")) {
+                // find the most recent mood event
+                //Log.d("help", String.valueOf(mainParticipant.getMoodHistory().size()));
+                // Delete the mood event.
+                position = mainParticipant.getMoodHistory().size() - 1;
+                moodSwingController.deleteMoodEventFromMainParticipantByPosition(position);
+                // Inform the user that the mood event was deleted.
+                Toast.makeText(ViewMoodEventActivity.this,
+                        "Mood Event deleted!",
+                        Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    /**
+     * Called when the map is ready. Set the location to the one in the mood event.
+     */
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+
+        // Load the location from the mood event.
+        double lat = moodEvent.getLat();
+        double lng = moodEvent.getLng();
+
+        if (!Double.isNaN(lat) && !Double.isNaN(lng)) {
+            // Create a LatLng object from the location so we can properly set a camera position.
+            LatLng latLng = new LatLng(lat, lng);
+
+            // Move the camera and place a marker.
+            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 13));
+            googleMap.addMarker(new MarkerOptions()
+                    .title(moodEvent.getOriginalPoster())
+                    .position(latLng));
         }
     }
 
@@ -208,19 +310,83 @@ public class ViewMoodEventActivity extends AppCompatActivity implements MSView<M
      */
     private void loadFromMoodEvent() {
         Log.i("MoodSwing", String.valueOf(moodEvent.getEmotionalState().getDrawableId()));
-        // Load values from MoodEvent into the simple text fields.
+        // Load username from MoodEvent into the simple text field.
         usernameTextView.setText(moodEvent.getOriginalPoster());
-        triggerTextView.setText(moodEvent.getTrigger());
+
+        // Set the trigger appropriately.
+        setTriggerTextView();
 
         // Set the image and text for the appropriate Mood Event.
         emotionalStateTextView.setText(moodEvent.getEmotionalState().getDescription());
-        emotionalStateImageView.setImageDrawable(getDrawable(
-                moodEvent.getEmotionalState().getDrawableId()));
+        switch (moodEvent.getEmotionalState().getDescription()) {
+            case "Anger":
+                emotionalStateTextView.setTextColor(getResources().getColor(R.color.angry));
+                break;
+            case "Sadness":
+                emotionalStateTextView.setTextColor(getResources().getColor(R.color.sad));
+                break;
+            case "Disgust":
+                emotionalStateTextView.setTextColor(getResources().getColor(R.color.disgusted));
+                break;
+            case "Shame":
+                emotionalStateTextView.setTextColor(getResources().getColor(R.color.ashamed));
+                break;
+            case "Happiness":
+                emotionalStateTextView.setTextColor(getResources().getColor(R.color.happy));
+                break;
+            case "Surprise":
+                emotionalStateTextView.setTextColor(getResources().getColor(R.color.surprised));
+                break;
+            case "Confusion":
+                emotionalStateTextView.setTextColor(getResources().getColor(R.color.confused));
+                break;
+            case "Fear":
+                emotionalStateTextView.setTextColor(getResources().getColor(R.color.fearful));
+                break;
+            default:
+                emotionalStateTextView.setTextColor(getResources().getColor(R.color.white));
+                break;
+        }
 
-        // Set the image and text for the appropriate social situation.
-        socialSituationTextView.setText(moodEvent.getSocialSituation().getDescription());
-        socialSituationImageView.setImageDrawable(getDrawable(
-                moodEvent.getSocialSituation().getDrawableId()));
+        emotionalStateImageView.setImageDrawable(getDrawable(
+                    moodEvent.getEmotionalState().getDrawableId()));
+
+        // Set the text and the image for the social situation properly.
+        setSocialSituationViews();
+
+        //Set the image from the MoodEvent image into the view.
+        setImageImageView();
+
+        // Set the map fragment visibility.
+        setMapFragmentVisibility();
+
+        // Set date and time
+        setDateTime();
+    }
+
+    /**
+     * Set the trigger from the mood event to display properly.
+     */
+    public void setTriggerTextView() {
+        // If there is no trigger, change the textview to be gone.
+        if (moodEvent.getTrigger().isEmpty()) {
+
+            triggerTextView.setVisibility(View.GONE);
+            triggerPrefixTextView.setVisibility(View.GONE);
+
+        } else {
+            // If there is a trigger, make it visible and set the text properly.
+            triggerTextView.setText(moodEvent.getTrigger());
+
+            triggerTextView.setVisibility(View.VISIBLE);
+            triggerPrefixTextView.setVisibility(View.VISIBLE);
+        }
+    }
+
+    /**
+     * Set the social situation from the mood event to display properly.
+     */
+    public void setSocialSituationViews() {
 
         // Disable the inspection for the visibility resource type, so that we can pass in
         // a variable for the visibility. Taken from
@@ -228,42 +394,46 @@ public class ViewMoodEventActivity extends AppCompatActivity implements MSView<M
         // on 3/13/2017.
         //noinspection ResourceType
         socialSituationImageView.setVisibility(moodEvent.getSocialSituation().getVisibility());
+        //noinspection ResourceType
+        socialSituationTextView.setVisibility(moodEvent.getSocialSituation().getVisibility());
+
+        //set correct icon
+        socialSituationImageView.setImageDrawable(getDrawable(moodEvent.getSocialSituation().getDrawableId()));
 
     }
 
     /**
-     * Initialize all the widgets for the Activity, and add this View to the main Model's list of
-     * Views.
+     * Set the imageImageView to display the image from the mood event if there is one.
      */
-    public void initialize(){
+    public void setImageImageView() {
+        if(moodEvent.getImage() != null) {
+            imageImageView.setImageBitmap(moodEvent.getImage());
+            imageImageView.setVisibility(View.VISIBLE);
+        } else {
+            imageImageView.setVisibility(View.GONE);
+        }
+    }
 
-        // Initialize the text views.
-        usernameTextView =
-                (TextView) findViewById(R.id.usernameTextView_ViewMoodEventActivity);
-        emotionalStateTextView =
-                (TextView) findViewById(R.id.emotionalStateTextView_ViewMoodEventActivity);
-        socialSituationTextView =
-                (TextView) findViewById(R.id.socialSituationTextView_ViewMoodEventActivity);
-        triggerTextView =
-                (TextView) findViewById(R.id.triggerTextView_ViewMoodEventActivity);
+    /**
+     * Set the map fragment to be visible or invisible depending on if the location is given.
+     */
+    public void setMapFragmentVisibility() {
+        // If there is no location, make the map invisible, if there is a location, make it visible.
+        if (!Double.isNaN(moodEvent.getLat()) && !Double.isNaN(moodEvent.getLng())) {
+            supportMapFragment.getView().setVisibility(View.VISIBLE);
+        } else {
+            supportMapFragment.getView().setVisibility(View.GONE);
+        }
+    }
 
-        // Initialize the image views.
-        emotionalStateImageView =
-                (ImageView) findViewById(R.id.emotionalStateImageView_ViewMoodEventActivity);
-        socialSituationImageView =
-                (ImageView) findViewById(R.id.socialSituationImageView_ViewMoodEventActivity);
-        imageImageView =
-                (ImageView) findViewById(R.id.imageImageView_ViewMoodEventActivity);
 
-        // Initialize the buttons.
-        editMoodEventButton =
-                (Button) findViewById(R.id.editMoodEventButton_ViewMoodEventActivity);
-        deleteMoodEventButton =
-                (Button) findViewById(R.id.deleteMoodEventButton_ViewMoodEventActivity);
-
-        // Add this View to the main Model class.
-        MoodSwingController moodSwingController = MoodSwingApplication.getMoodSwingController();
-        moodSwingController.addView(this);
+    /**
+     * Set the date and time in the correct format.
+     */
+    public void setDateTime() {
+        //Sets the formatted date into its corresponding View
+        String formattedDate = new SimpleDateFormat("EEE, MMMM dd, yyyy,").format(moodEvent.getDate());
+        dateTextView.setText("On "+formattedDate);
     }
 
     /**
@@ -273,4 +443,5 @@ public class ViewMoodEventActivity extends AppCompatActivity implements MSView<M
         loadFromMoodSwing();
         loadFromMoodEvent();
     }
+
 }

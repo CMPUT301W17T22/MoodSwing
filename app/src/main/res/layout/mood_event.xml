@@ -1,6 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@color/white">
 
-</TextView>
+
+    <TextView
+        android:id="@+id/MoodEventHistoryText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/MoodEventHistoryTriggers"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="6dp"
+        android:text="@string/you_were_feeling"
+        android:textColor="@color/black" />
+
+    <TextView
+        android:id="@+id/MoodEventHistoryTriggers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/MoodEvenHistoryDatetimeStamp"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="6dp"
+        android:text="Triggers..."
+        android:textColor="@color/black" />
+
+    <TextView
+        android:id="@+id/MoodEvenHistoryDatetimeStamp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/Emoticon_MoodHistory"
+        android:layout_marginLeft="6dp"
+        android:text="date/time stamp"
+        android:textColor="@color/common_google_signin_btn_text_light_focused" />
+
+    <TextView
+        android:id="@+id/EmotionStateTextView_MoodEvent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textStyle="bold"
+        android:layout_alignBaseline="@+id/MoodEventHistoryText"
+        android:layout_alignBottom="@+id/MoodEventHistoryText"
+        android:layout_toEndOf="@+id/MoodEventHistoryText" />
+
+    <ImageView
+        android:id="@+id/Emoticon_MoodHistory"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="6dp"
+        android:layout_toEndOf="@+id/EmotionStateTextView_MoodEvent"
+        app:srcCompat="@drawable/emoticon_happiness" />
+
+    <ImageView
+        android:id="@+id/SocialSituation_MoodHistory"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignBottom="@+id/MoodEvenHistoryDatetimeStamp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="6dp"
+        android:layout_marginRight="6dp"
+        app:srcCompat="@drawable/social_situation_alone" />
+
+    <ImageView
+        android:id="@+id/ImageIndicator_MoodHistory"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignBottom="@+id/SocialSituation_MoodHistory"
+        android:layout_toStartOf="@+id/SocialSituation_MoodHistory"
+        app:srcCompat="@android:drawable/ic_menu_gallery" />
+
+    <ImageView
+        android:id="@+id/LocationIndicator_MoodHistory"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        app:srcCompat="@android:drawable/ic_menu_mylocation"
+        android:layout_alignTop="@+id/ImageIndicator_MoodHistory"
+        android:layout_toStartOf="@+id/ImageIndicator_MoodHistory" />
+</RelativeLayout>

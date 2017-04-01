@@ -10,8 +10,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.ualberta.cmput301w17t22.moodswing.dummy.DummyContent;
-
 /**
  * A fragment representing a list of Items.
  * <p/>
@@ -20,9 +18,7 @@ import com.ualberta.cmput301w17t22.moodswing.dummy.DummyContent;
  */
 public class FollowersFragment extends Fragment {
 
-    // TODO: Customize parameter argument names
     private static final String ARG_COLUMN_COUNT = "column-count";
-    // TODO: Customize parameters
     private int mColumnCount = 1;
     private OnListFragmentInteractionListener mListener;
 
@@ -66,7 +62,15 @@ public class FollowersFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new MyFollowerRecyclerViewAdapter(DummyContent.ITEMS, mListener));
+
+            // Get main model class controller.
+            MoodSwingController moodSwingController =
+                    MoodSwingApplication.getMoodSwingController();
+
+            // Get main participant, get followers.
+            recyclerView.setAdapter(new FollowersRecyclerViewAdapter(
+                    moodSwingController.getMainParticipant().getFollowers(),
+                    mListener));
         }
         return view;
     }

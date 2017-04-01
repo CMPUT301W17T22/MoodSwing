@@ -2,6 +2,7 @@ package com.ualberta.cmput301w17t22.moodswing;
 
 import android.util.Log;
 
+import java.security.InvalidParameterException;
 import java.util.ArrayList;
 
 /**
@@ -20,16 +21,27 @@ public class MoodSwing extends MSModel<MSView> {
      */
     private ArrayList<MoodEvent> moodFeed;
 
-    /** The main participant. The current user of the app from the Android device. */
+    /**
+     * The main participant. The current user of the app from the Android device.
+     */
     private Participant mainParticipant;
 
-    /** The position of the currently being viewed or edited mood event in the main participants
+    /**
+     * The position of the currently being viewed or edited mood event in the main participants
      * mood history.
      */
     private int moodHistoryPosition;
 
-    /** The position of the currently being viewed mood event in the mood list. */
+    /**
+     * The position of the currently being viewed mood event in the mood list.
+     */
     private int moodFeedPosition;
+
+    /**
+     * The last known location of the device/main participant.
+     */
+    private double lastKnownLat;
+    private double lastKnownLng;
 
     /**
      * Adds the mainParticipant for the MoodSwing app to ElasticSearch. This is used when logging
@@ -102,6 +114,7 @@ public class MoodSwing extends MSModel<MSView> {
     /**
      * Deletes the mood event at the given position from the MainParticipant and propagates
      * the changes through to ElasticSearch and the views.
+     *
      * @param position The position of the mood event in the main participant's mood history.
      */
     public void deleteMoodEventFromMainParticipantByPosition(int position) {
@@ -112,6 +125,40 @@ public class MoodSwing extends MSModel<MSView> {
 
         // Notify all views of the change.
         notifyViews();
+    }
+
+    /**
+     * Sends a follow request from the main participant to the given MoodSwing user
+     * according to the provided username.
+     *
+     * @param username The username to send the request to.
+     */
+    public boolean sendFollowRequestFromMainParticipantToUsername(String username) {
+        // Get the ElasticSearchController.
+        ElasticSearchController elasticSearchController =
+                MoodSwingApplication.getElasticSearchController();
+
+        // Get the participant that we are sending the follower request to.
+        Participant participantToFollow =
+                elasticSearchController.getParticipantByUsername(username);
+
+        // If the participant is found by the given username, send the follow request.
+        if (participantToFollow != null) {
+            // Send the follow request.
+            mainParticipant.followParticipant(participantToFollow);
+
+            // Update both participants.
+            elasticSearchController.updateParticipantByParticipant(mainParticipant);
+            elasticSearchController.updateParticipantByParticipant(participantToFollow);
+
+            notifyViews();
+            return true;
+        } else {
+            // Return that no user was found.
+            notifyViews();
+            return false;
+        }
+
     }
 
     /**
@@ -138,6 +185,25 @@ public class MoodSwing extends MSModel<MSView> {
      * a new mood event, accepts/declines a follower request, sends out a new follow request, etc.
      */
     public void saveLocal() {
+
+    }
+
+    /**
+     * Construct a mood feed (arraylist of mood events) appropriate to the given filters.
+     * @param activeFilters
+     * @return
+     */
+    public void buildMoodFeed(int[] activeFilters, String filterTrigger, String filterEmotion) {
+
+        // Get ElasticSearchController.
+        ElasticSearchController elasticSearchController =
+                MoodSwingApplication.getElasticSearchController();
+
+        // Use the elastic search controller to build the mood feed.
+        setMoodFeed(elasticSearchController.buildMoodFeed(mainParticipant,
+                activeFilters,
+                filterTrigger,
+                filterEmotion));
 
     }
 
@@ -170,10 +236,24 @@ public class MoodSwing extends MSModel<MSView> {
         this.moodHistoryPosition = moodHistoryPosition;
     }
 
-    public int getMoodFeedPosition() {  return moodFeedPosition; }
+    public int getMoodFeedPosition() {
+        return moodFeedPosition; }
 
     public void setMoodFeedPosition(int moodFeedPosition) {
         this.moodFeedPosition = moodFeedPosition;
+    }
+
+    public double getLastKnownLat() {
+        return lastKnownLat;
+    }
+
+    public double getLastKnownLng() {
+        return lastKnownLng;
+    }
+
+    public void setLastKnownLocation(double lastKnownLat, double lastKnownLng) {
+        this.lastKnownLat = lastKnownLat;
+        this.lastKnownLng = lastKnownLng;
     }
 
     // --- END: Getters and Setters

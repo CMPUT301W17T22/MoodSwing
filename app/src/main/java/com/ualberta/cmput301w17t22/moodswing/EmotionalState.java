@@ -6,8 +6,8 @@ import android.graphics.drawable.Drawable;
  * An EmotionalState is the user entered emotional state of a MoodEvent.
  * <p/>
  * Contains the information associated with a pre-defined emotional state.
- * For now, this is only a description of the MoodEvent, we may expand this later.
- * This and EmotionalStateFactory should be refactored.
+ * This includes its description which is the name of the emotion and
+ * the drawable id for the attached emoticon.
  *
  * @author Fred
  * @version 2017-02-18
@@ -15,8 +15,6 @@ import android.graphics.drawable.Drawable;
  * @see MoodEvent
  */
 
-// TODO: Refactor this and EmotionalStateFactory to instead be a factory method and include
-// image references.
 
 public class EmotionalState {
 
@@ -62,15 +60,22 @@ public class EmotionalState {
 
     // --- START: Getters and Setters
 
+    /**Gets the description (name) of the emotional state.*/
     public String getDescription(){
         return description;
     }
+
+    /**Sets the description to a new emotional state description
+     * @param description */
     public void setDescription(String description) { this.description = description; }
 
+    /**Returns the drawable id for the attached emoticon */
     public int getDrawableId() { return drawableId; }
+
+    /**Sets the drawable id for the attached emoticon
+     * @param drawableId */
     public void setDrawableId(int drawableId) { this.drawableId = drawableId; }
 
-    public String toString() { return this.getDescription(); }
 
     // --- END: Getters and Setters
 }

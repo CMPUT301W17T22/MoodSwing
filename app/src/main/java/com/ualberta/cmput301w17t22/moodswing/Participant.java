@@ -4,6 +4,7 @@ import android.util.Log;
 
 import com.google.android.gms.maps.model.LatLng;
 
+import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.InputMismatchException;
@@ -36,11 +37,13 @@ public class Participant extends User {
     /** The list of other participants that are following this participant. */
     private ApprovalList followerList = new ApprovalList();
 
-    /**The list of participants being blocked from sending further follow request. */
-    private ArrayList<Participant> blockList = new ArrayList<Participant>();
+    /** The list of participants being blocked from sending further follow requests. */
+    private ArrayList<String> blockList = new ArrayList<>();
 
     /** All of this participant's mood events in reverse chronological order. */
     private ArrayList<MoodEvent> moodHistory = new ArrayList<>();
+
+    private MoodEvent mostRecentMoodEvent;
 
     public Participant(String username) {
         this.username = username;
@@ -58,6 +61,7 @@ public class Participant extends User {
             throw new IllegalArgumentException();
         } else {
             moodHistory.add(moodEvent);
+            updateMostRecentMoodEvent();
         }
     }
 
@@ -72,6 +76,7 @@ public class Participant extends User {
 
         // Add the edited mood event at the index of the old one.
         moodHistory.add(position, moodEvent);
+        updateMostRecentMoodEvent();
     }
 
     /**
@@ -80,15 +85,20 @@ public class Participant extends User {
      */
     public void deleteMoodEventByPosition(int position) {
         moodHistory.remove(position);
+        updateMostRecentMoodEvent();
     }
 
     /**
-     * Returns the most recent mood event of this participant.
-     * @return Most recent mood event of this participant.
+     * Internal method to update the most recent mood event of this participant. Sets the
+     * mostRecentMoodEvent to be the last one in the mood history if the mood history is not empty.
      */
-    public MoodEvent getMostRecentMoodEvent() {
-        // Last element of moodHistory is the most recent.
-        return moodHistory.get(moodHistory.size() - 1);
+    private void updateMostRecentMoodEvent() {
+        // The last element of moodHistory is the most recent.
+        if (!moodHistory.isEmpty()) {
+            mostRecentMoodEvent = moodHistory.get(moodHistory.size() - 1);
+        } else {
+            mostRecentMoodEvent = null;
+        }
     }
 
     // --- END: MoodEvent methods
@@ -96,50 +106,86 @@ public class Participant extends User {
 
     // --- START: Following methods ---
 
-    public void followParticipant(Participant receivingParticipant){
-        if(receivingParticipant.blockList.contains(this)){
+        /**Follow a participant by:
+         * Checking if the sending participant is in their block list.
+         * Checks to see if the sending participant has already sent a follow request to that participant.
+         * Checks to see if the sending participant is already following the participant.
+         * Successfully follows a participant by:
+         * Adding the participant to the sending participants pending on the followingList.
+         * Creates a follower request that is sent to the receiving participant.
+         * @param receivingParticipant */
+    public void followParticipant(Participant receivingParticipant) throws InvalidParameterException {
+        Boolean sendFollowRequest = false;
 
-        }else {
+        // If the receivingParticipant's blocklist is uninitialized, send the follow request.
+        if (receivingParticipant.blockList == null ) {
+            sendFollowRequest = true;
+
+            // If the receivingParticipant's blockList is empty, send the follow request.
+        } else if (receivingParticipant.blockList.isEmpty()){
+            sendFollowRequest = true;
+
+            // If this participant is not in the receiving participant's blocklist,
+            // send the follow request.
+        } else if (!receivingParticipant.blockList.contains(this.getUsername())) {
+            sendFollowRequest = true;
+        } else if(this.followerList.getPending().contains(receivingParticipant.getUsername()) ||
+                this.followingList.getPending().contains(receivingParticipant.getUsername())){
+
+        }
+
+        if (sendFollowRequest) {
             followingList.newPendingParticipant(receivingParticipant);
             receivingParticipant.createFollowerRequest(this);
         }
     }
-
+    /**Removes the participant from the main participants from our followingList, and sends a
+     * unfollowedEvent to the receiving participant to remove the main participant
+     * from their followerList.
+     * @param receivingParticipant */
     public void unfollowParticipant(Participant receivingParticipant){
 
         followingList.remove(receivingParticipant);
-    }
 
+    }
+    /**Remove a pending following request from the main participant and corresponding
+     * follower request from the receiving participant.
+     * @param receivingParticipant */
     public void cancelFollowRequest(Participant receivingParticipant){
         followingList.remove(receivingParticipant);
         receivingParticipant.followerList.remove(this);
     }
-
-    public void blockParticipant(Participant recevingParticipant){
-        if (this.blockList.contains(recevingParticipant)) {
-        }else{
-            blockList.add(recevingParticipant);
+    /**Adds the participant username to the main participants block list, unless they are already in it.
+     * @param participantUsername  */
+    public void blockParticipant(String participantUsername){
+        if (this.blockList.contains(participantUsername)) {
+        } else {
+            blockList.add(participantUsername);
         }
-
+    }
+    /**Removes the participant username from the main Participants block list. */
+    public void unblockParticipant(String participantUsername){
+        this.blockList.remove(participantUsername);
     }
 
-    public void unblockParticipant(Participant unblockee){
-        this.blockList.remove(unblockee);
-    }
 
-    /**
-     * DO NOT call explicitly. Should only be called by receivingParticipant
-     *
+     //DO NOT call explicitly. Should only be called by receivingParticipant
+    /**Event that is received indicating the main participants follow request was approved so
+     * the pending following request is moved to the approved list in followingList.
      * @param receivingParticipant
      */
-    public void followRequestApproved(Participant receivingParticipant){
+    public void followRequestApproved(Participant receivingParticipant) throws InvalidParameterException{
         followingList.approvePending(receivingParticipant);
     }
-
+    /**Event that is received indicating the main participants follow request was declined so
+     * the pending following request is removed from followingList.
+     * @param receivingParticipant
+     */
     public void followRequestDeclined(Participant receivingParticipant){
         followingList.remove(receivingParticipant);
     }
-
+    /**Event received indicating that the main participant has been unfollowed. The corresponding
+     * follower is removed from the main participants follower list. */
     public void unfollowedEvent(Participant receivingParticipant){
         followerList.remove(receivingParticipant);
     }
@@ -149,36 +195,57 @@ public class Participant extends User {
 
     // --- START: Follower methods ---
 
-    /**
-     * DO NOT call explicitly. Should only be called by requestingParticipant
-     *
+
+     // DO NOT call explicitly. Should only be called by requestingParticipant
+     /**Creates a request object received from a participant, if that participant is not in our block
+      * list, that adds them to the main participants pending followers.
      * @param requestingParticipant
      */
-    public void createFollowerRequest(Participant requestingParticipant){
-        if(this.blockList.contains(requestingParticipant)){
+    public void createFollowerRequest(Participant requestingParticipant) throws InvalidParameterException{
+        Boolean createFollowRequest = false;
 
-        }else {
+        // If the blocklist is uninitialized, create the follow request.
+        if (this.blockList == null ) {
+            createFollowRequest = true;
+
+            // If the blockList is empty, create the follow request.
+        } else if (this.blockList.isEmpty()){
+            createFollowRequest = true;
+
+            // If the requestingParticipant is not in the blocklist,
+            // send the follow request.
+        } else if (!this.blockList.contains(requestingParticipant.getUsername())) {
+            createFollowRequest = true;
+        }
+
+        if (createFollowRequest) {
             followerList.newPendingParticipant(requestingParticipant);
         }
     }
-
+    /**Create an unfollow event to inform the requesting participant that they are being unfollowed.
+     * @param requestingParticipant  */
     public void createUnfollowEvent(Participant requestingParticipant){
         requestingParticipant.unfollowedEvent(this);
     }
-
-    public void approveFollowerRequest(Participant requestingParticipant){
+    /**Approves a pending follower request and sends a followRequestApproved(this) event
+     * to the participant in order to let them know to update their list.
+     * @param requestingParticipant */
+    public void approveFollowerRequest(Participant requestingParticipant) throws InvalidParameterException{
         requestingParticipant.followRequestApproved(this);
         followerList.approvePending(requestingParticipant);
     }
-
+    /**Declines a follower request by removing it from the followerList and sends a
+     * followRequestDeclined(this) to the participant to indicate their request has been denied.
+     * @param requestingParticipant */
     public void declineFollowerRequest(Participant requestingParticipant){
         requestingParticipant.followRequestDeclined(this);
         followerList.remove(requestingParticipant);
     }
 
+    //TODO: Check to see if we need this?
     public void blockFollowerRequest(Participant requestingParticipant){
         followerList.remove(requestingParticipant);
-        this.blockParticipant(requestingParticipant);
+        this.blockParticipant(requestingParticipant.getUsername());
     }
 
     // --- END: Follower methods ---
@@ -190,24 +257,30 @@ public class Participant extends User {
 
     public void setId(String id) { this.id = id; }
 
-    public ArrayList<Participant> getPendingFollowing() {
+    public ArrayList<String> getBlockList() { return blockList; }
+
+    public ArrayList<String> getPendingFollowing() {
         return followingList.getPending();
     }
 
-    public ArrayList<Participant> getFollowing() {
+    public ArrayList<String> getFollowing() {
         return followingList.getApproved();
     }
 
-    public ArrayList<Participant> getPendingFollowers() {
+    public ArrayList<String> getPendingFollowers() {
         return followerList.getPending();
     }
 
-    public ArrayList<Participant> getFollowers() {
+    public ArrayList<String> getFollowers() {
         return followerList.getApproved();
     }
 
     public ArrayList<MoodEvent> getMoodHistory() {
         return moodHistory;
+    }
+
+    public MoodEvent getMostRecentMoodEvent() {
+        return mostRecentMoodEvent;
     }
 
     // --- END: Getters and Setters

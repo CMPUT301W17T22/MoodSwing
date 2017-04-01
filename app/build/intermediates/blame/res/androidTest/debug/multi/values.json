@@ -1,6 +1,6 @@
 [
     {
-        "outputFile": "/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values/values.xml",
+        "outputFile": "C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values\\values.xml",
         "map": [
             {
                 "to": {
@@ -11,7 +11,31 @@
                     "endOffset": 96
                 },
                 "from": {
-                    "file": "/Users/PeterWeckend/.android/build-cache/0e550952282a70f8e979ef0e05602f522d45eda8/output/res/values/values.xml",
+                    "file": "C:\\Users\\fred\\.android\\build-cache\\9e08797b044a0ea6ea9d02972169334e28a6160b\\output\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 229,
+                        "endColumn": 45,
+                        "endOffset": 270
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "outputFile": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\app\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values\\values.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 45,
+                    "endOffset": 96
+                },
+                "from": {
+                    "file": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\.android\\build-cache\\a86b0664973e1b2b08fd2e574aa67e6011ffa273\\output\\res\\values\\values.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 4,

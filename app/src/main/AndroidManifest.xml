@@ -7,13 +7,14 @@
         Google Maps Android API v2, but you must specify either coarse or fine
         location permissions for the 'MyLocation' functionality.
     -->
+    <uses-permission android:name = "android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="com.google.android.provider.gsf.permission.READ_GSERVICSE"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.CAMERA"/>
-    <uses-feature android:name="android.hardware.camera2.full"/>
-    <uses-feature android:name="android.hardware.camera"
-        android:required="true"/>
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:allowBackup="true"
@@ -55,18 +56,22 @@
         <activity android:name=".NewMoodEventActivity" />
         <activity android:name=".MoodHistoryActivity" />
 
-        <!-- For using camera in mood events -->
-        <uses-feature
-            android:name="android.hardware.camera"
-            android:required="true" />
 
         <activity android:name=".ViewMoodEventActivity" />
         <activity android:name=".EditMoodEventActivity" />
-        <activity android:name=".FollowActivity" />
         <activity
             android:name=".MainFollowActivity"
             android:label="@string/title_activity_main_follow"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".BlockUserActivity"
+            android:label="@string/title_activity_block_user"
+            android:theme="@style/AppTheme" />
     </application>
+
+    <uses-feature android:name="android.hardware.camera2.full" />
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
 
 </manifest>

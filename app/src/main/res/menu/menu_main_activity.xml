@@ -21,5 +21,10 @@
             android:title="@string/mood_history"
             app:showAsAction="never"
             android:enabled="true" />
+
+        <item android:id="@+id/blockUserToolBarButton"
+            android:title="@string/block_user"
+            app:showAsAction="never"
+            android:enabled="true" />
         
 </menu>

@@ -12,11 +12,11 @@ public interface MSView<M> {
      * Each View has an update method that reloads all the information from the Model
      * that the View surfaces to the app's user.
      */
-    public void update(M model);
+    void update(M model);
 
     /**
      * Each View, or android activity, should initialize all its widgets in this function, and also
      * add itself to the Views tracked by the main Model class.
      */
-    public void initialize();
+    void initialize();
 }
