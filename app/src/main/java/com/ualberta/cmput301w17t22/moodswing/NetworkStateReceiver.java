@@ -1,11 +1,26 @@
 package com.ualberta.cmput301w17t22.moodswing;
 
+import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.util.Log;
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.lang.reflect.Type;
+
+import io.searchbox.core.Index;
+
+import static java.security.AccessController.getContext;
 
 /**
  * http://stackoverflow.com/questions/3767591/check-intent-internet-connection
@@ -14,6 +29,7 @@ import android.util.Log;
 
 public class NetworkStateReceiver extends BroadcastReceiver {
     private static final String TAG = "NetworkStateReceiver";
+    private static final String FILENAME = "moodswingFile.sav";
 
     @Override
     public void onReceive(final Context context, final Intent intent) {
@@ -27,10 +43,41 @@ public class NetworkStateReceiver extends BroadcastReceiver {
             if (ni != null && ni.isConnectedOrConnecting()) {
                 Log.d(TAG, "Network " + ni.getTypeName() + " connected");
                 //TODO: retry pending moodevent saving on elasticsearch
-                ElasticSearchController(index);
+                Index index = loadFromFile();
+                if(index != null) {
+                    ElasticSearchController.executeElasticSearch(index);
+                }
             } else if (intent.getBooleanExtra(ConnectivityManager.EXTRA_NO_CONNECTIVITY, Boolean.FALSE)) {
                 Log.d(TAG, "There's no network connectivity");
             }
         }
+    }
+
+    /**
+     * Loads tweet from specified file.
+     *
+     * @exception FileNotFoundException if the file is not created first.
+     */
+    private Index loadFromFile() {
+        Index index;
+        try {
+            //FileInputStream fis = openFileInput(FILENAME);
+            FileInputStream fis = new FileInputStream(FILENAME);
+            BufferedReader in = new BufferedReader(new InputStreamReader(fis));
+
+            Gson gson = new Gson();
+
+            //Taken from http://stackoverflow.com/questions/12384064/gson-convert-from-json-to-a-typed-arraylistt
+            //2017-01-24 18:19
+            Type listType = new TypeToken<Index>(){}.getType();
+            index = gson.fromJson(in, listType);
+
+        } catch (FileNotFoundException e) {
+            index = null;
+        } catch (IOException e) {
+            // TODO Handle the Exception properly later
+            throw new RuntimeException(); //crashes app
+        }
+        return index;
     }
 }
