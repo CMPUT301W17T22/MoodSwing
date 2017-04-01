@@ -42,7 +42,6 @@ public class ApprovalList {
      */
     public void approvePending(Participant otherParticipant) throws InvalidParameterException {
         if (pending.contains(otherParticipant.getUsername())) {
-
             pending.remove(otherParticipant.getUsername());
             approved.add(otherParticipant.getUsername());
 

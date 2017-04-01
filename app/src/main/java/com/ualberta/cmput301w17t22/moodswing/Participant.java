@@ -1,6 +1,8 @@
 package com.ualberta.cmput301w17t22.moodswing;
 
+import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.model.LatLng;
 
@@ -113,33 +115,25 @@ public class Participant extends User {
          * Successfully follows a participant by:
          * Adding the participant to the sending participants pending on the followingList.
          * Creates a follower request that is sent to the receiving participant.
+         * TODO: find a way to return a "could not follow xyz because.." message. Currently shows
+         * TODO: success no matter what sendFollowRequest is
          * @param receivingParticipant */
     public void followParticipant(Participant receivingParticipant) throws InvalidParameterException {
 
         Boolean sendFollowRequest = false;
 
-            // If the receivingParticipant's blockList is empty and the main participant isn't in their block list.
-         if (receivingParticipant.blockList.isEmpty() || !receivingParticipant.blockList.contains(this.getUsername())) {
-             //check to see if we already have a pending request and if we are already following them
-             if(this.followingList.getPending().contains(receivingParticipant.getUsername())) {
-
-                 //checks to see if we are already following them
-             }else  if(this.followingList.getApproved().contains(receivingParticipant.getUsername())){
-
-
-             } else{
-                 sendFollowRequest = true;
-             }
+            // Make sure we aren't in their block list
+         if (receivingParticipant.blockList.isEmpty() || ! (receivingParticipant.blockList.contains(this.getUsername()))) {
+             sendFollowRequest = true;
          }
-        //check to see if we are blocking this person
-        // if so we remove them from our block list and follow them
-         if(this.blockList.contains(receivingParticipant) && sendFollowRequest){
-             this.unblockParticipant(receivingParticipant.getUsername());
-        }
+
 
         if (sendFollowRequest) {
             followingList.newPendingParticipant(receivingParticipant);
             receivingParticipant.createFollowerRequest(this);
+        } else {
+
+            throw new InvalidParameterException();
         }
     }
     /**Removes the participant from the main participants from our followingList, and sends a

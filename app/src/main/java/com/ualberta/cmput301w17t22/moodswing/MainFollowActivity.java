@@ -155,6 +155,12 @@ public class MainFollowActivity extends AppCompatActivity implements MSView<Mood
                     requestStatus = moodSwingController
                             .sendFollowRequestFromMainParticipantToUsername(usernameToFollow);
 
+                    // TODO:
+                    // requestStatus can be 1, but the request might not send
+                    // ex: because we are already following them
+                    // So "Request successfully sent!" displays when it might not be
+                    // supposed to. Need to fix this somehow.
+
                     if (requestStatus) {
                         Toast.makeText(MainFollowActivity.this,
                                 "Request successfully sent!",
@@ -171,6 +177,7 @@ public class MainFollowActivity extends AppCompatActivity implements MSView<Mood
                 }
 
                 mSectionsPagerAdapter.notifyDataSetChanged();
+
                 dialog.cancel();
             }
         });

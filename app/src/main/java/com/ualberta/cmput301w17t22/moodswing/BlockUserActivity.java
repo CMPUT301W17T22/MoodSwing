@@ -173,6 +173,7 @@ public class BlockUserActivity extends AppCompatActivity implements MSView<MoodS
                             Toast.makeText(BlockUserActivity.this,
                                     "User blocked successfully!",
                                     Toast.LENGTH_SHORT).show();
+                            Toast.makeText(BlockUserActivity.this, mainParticipant.getBlockList().toString(),Toast.LENGTH_SHORT).show();
 
                         } else {
                             Toast.makeText(BlockUserActivity.this,
