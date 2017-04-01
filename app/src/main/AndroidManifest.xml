@@ -7,7 +7,7 @@
         Google Maps Android API v2, but you must specify either coarse or fine
         location permissions for the 'MyLocation' functionality.
     -->
-    <uses-permission android:name = "android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="com.google.android.provider.gsf.permission.READ_GSERVICSE"/>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
@@ -67,6 +67,11 @@
             android:name=".BlockUserActivity"
             android:label="@string/title_activity_block_user"
             android:theme="@style/AppTheme" />
+        <receiver android:name="com.ualberta.cmput301w17t22.moodswing.NetworkStateReceiver" >
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
     </application>
 
     <uses-feature android:name="android.hardware.camera2.full" />
