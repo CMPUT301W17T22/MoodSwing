@@ -12,6 +12,8 @@ import com.searchly.jestdroid.JestDroidClient;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 import io.searchbox.core.DocumentResult;
 import io.searchbox.core.Index;
@@ -145,6 +147,16 @@ public class ElasticSearchController implements MSController {
                     " mood feed from the AsyncTask.");
         }
 
+        // Sort the mood feed by date.
+        if (!moodFeed.isEmpty()) {
+            Collections.sort(moodFeed, new Comparator<MoodEvent>() {
+                @Override
+                public int compare(MoodEvent o1, MoodEvent o2) {
+                    return o2.getDate().compareTo(o1.getDate());
+                }
+            });
+        }
+
         return moodFeed;
 
     }
@@ -164,47 +176,16 @@ public class ElasticSearchController implements MSController {
             String filterTrigger = (String) parameters[2];
             String filterEmotion = (String) parameters[3];
 
-
-            if (activeFilters[0] == 1) {     // recent week filter active
-
-            } else {                        // recent week filter off
-
-            }
-
-            if (activeFilters[1] == 1) { // emotion filter on
-
-            } else {                    // emotion filter off
-
-            }
-
-            if (activeFilters[2] == 1) {    // trigger filter on
-
-            } else {                        // trigger filter off
-
-            }
-
             // For each user in the participant's following list, grab their most recent mood event
             // if it passes all the queries.
             ArrayList<String> followingList = participant.getFollowing();
             for (String username : followingList) {
-                // Create the query string. We do a match search on username.
-                String query = "{\n" +
-                        "    \"_source\": \"mostRecentMoodEvent\",\n" +
-                        "    \"query\": {\n" +
-//                        "        \"nested\" : {\n" +
-//                        "            \"path\" : \"mostRecentMoodEvent\"," +
-//                        "            \"query\" : {\n" +
-//                        "                \"bool\" : {\n" +
-//                        "                    \"must\" : [\n" +
-//                        "                    { \"match\" : {\"mostRecentMoodEvent.trigger\" : \"" + filterTrigger + "\"} }\n" +
-//                        "                    ]\n" +
-//                        "               }\n" +
-//                        "           }\n" +
-                        "        \"match\" : {\n" +
-                        "            \"username\" : \"" + username + "\"\n" +
-                        "        }\n" +
-                        "    }\n" +
-                        "}";
+
+                // Build the query string.
+                String query = new QueryBuilder()
+                        .build(username, activeFilters, filterTrigger, filterEmotion);
+
+                Log.i("MoodSwing", query);
 
                 // Build Jest/ElasticSearch search.
                 Search search = new Search.Builder(query)
@@ -226,8 +207,10 @@ public class ElasticSearchController implements MSController {
                         // for nested objects.
                         String moodEventJson = result.getSourceAsString();
 
+                        Log.i("MoodSwing", moodEventJson);
                         // Get the proper json.
                         moodEventJson = moodEventJson.substring(23, moodEventJson.length() - 1);
+                        Log.i("MoodSwing", moodEventJson);
 
                         // Create the mood event from the json.
                         MoodEvent moodEvent = gson.fromJson(moodEventJson, MoodEvent.class);
@@ -335,7 +318,7 @@ public class ElasticSearchController implements MSController {
 
             // Need proper date format, so it doesn't get upset when trying to load the date.
             Gson gson = new GsonBuilder()
-                    .setDateFormat("yyyy-MM-dd'T'HH:mm:ssZ")
+                    .setDateFormat("yyyy-MM-dd'T'HH:mm:ssz")
                     .create();
             // Convert to Json.
             String participantJson = gson.toJson(participant);
@@ -390,7 +373,7 @@ public class ElasticSearchController implements MSController {
 
             // Need proper date format, so it doesn't get upset when trying to load the date.
             Gson gson = new GsonBuilder()
-                    .setDateFormat("yyyy-MM-dd'T'HH:mm:ssZ")
+                    .setDateFormat("yyyy-MM-dd'T'HH:mm:ssz")
                     .create();
             // Convert to Json.
             String participantJson = gson.toJson(participant);
