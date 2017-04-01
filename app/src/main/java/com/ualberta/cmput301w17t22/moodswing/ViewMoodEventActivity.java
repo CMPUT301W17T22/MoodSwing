@@ -21,8 +21,6 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.text.SimpleDateFormat;
 
-import static java.lang.Double.NaN;
-
 
 /**
  * Activity is launched when app user chooses to view a mood event. Launched from both
@@ -398,6 +396,10 @@ public class ViewMoodEventActivity extends AppCompatActivity implements MSView<M
         socialSituationImageView.setVisibility(moodEvent.getSocialSituation().getVisibility());
         //noinspection ResourceType
         socialSituationTextView.setVisibility(moodEvent.getSocialSituation().getVisibility());
+
+        //set correct icon
+        socialSituationImageView.setImageDrawable(getDrawable(moodEvent.getSocialSituation().getDrawableId()));
+
     }
 
     /**
