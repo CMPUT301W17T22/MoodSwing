@@ -16,8 +16,8 @@
         app:showAsAction="never"
         android:enabled="true" />
 
-    <item android:id="@+id/moodStatisticsToolBarButton"
-        android:title="@string/mood_statistics"
+    <item android:id="@+id/moodHistoryToolBarButton"
+        android:title="@string/mood_history"
         app:showAsAction="never"
         android:enabled="true" />
 

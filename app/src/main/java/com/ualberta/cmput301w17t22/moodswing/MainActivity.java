@@ -336,6 +336,13 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
                 startActivity(intent);
                 return true;
 
+            case R.id.moodStatisticsToolBarButton:
+                // User chose the "Block User" item, should navigate to the
+                // BlockUserActivity.
+                intent = new Intent(MainActivity.this, MoodStatistics.class);
+                startActivity(intent);
+                return true;
+
             default:
                 // If we got here, the user's action was not recognized.
                 // Invoke the superclass to handle it.

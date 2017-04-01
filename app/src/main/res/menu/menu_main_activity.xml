@@ -22,6 +22,11 @@
             app:showAsAction="never"
             android:enabled="true" />
 
+        <item android:id="@+id/moodStatisticsToolBarButton"
+            android:title="@string/mood_statistics"
+            app:showAsAction="never"
+            android:enabled="true" />
+
         <item android:id="@+id/blockUserToolBarButton"
             android:title="@string/block_user"
             app:showAsAction="never"
