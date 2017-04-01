@@ -121,8 +121,11 @@ public class Participant extends User {
             // If the receivingParticipant's blockList is empty and the main participant isn't in their block list.
          if (receivingParticipant.blockList.isEmpty() || !receivingParticipant.blockList.contains(this.getUsername())) {
              //check to see if we already have a pending request and if we are already following them
-             if(this.followingList.getPending().contains(receivingParticipant.getUsername()) &&
-                     this.followingList.getApproved().contains(receivingParticipant.getUsername())){
+             if(this.followingList.getPending().contains(receivingParticipant.getUsername())) {
+
+                 //checks to see if we are already following them
+             }else  if(this.followingList.getApproved().contains(receivingParticipant.getUsername())){
+
 
              } else{
                  sendFollowRequest = true;
