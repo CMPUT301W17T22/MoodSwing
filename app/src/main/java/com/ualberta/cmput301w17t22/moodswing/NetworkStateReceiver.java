@@ -26,6 +26,8 @@ public class NetworkStateReceiver extends BroadcastReceiver {
 
             if (ni != null && ni.isConnectedOrConnecting()) {
                 Log.d(TAG, "Network " + ni.getTypeName() + " connected");
+                //TODO: retry pending moodevent saving on elasticsearch
+                
             } else if (intent.getBooleanExtra(ConnectivityManager.EXTRA_NO_CONNECTIVITY, Boolean.FALSE)) {
                 Log.d(TAG, "There's no network connectivity");
             }

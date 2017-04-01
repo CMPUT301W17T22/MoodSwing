@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml:2:1-82:12
+ADDED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml:2:1-77:12
 	package
 		ADDED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml:3:5-52
 		INJECTED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml
@@ -44,7 +44,7 @@ ADDED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml:17:5-65
 	android:name
 		ADDED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml:17:22-62
 application
-ADDED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml:19:5-75:19
+ADDED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml:19:5-70:19
 MERGED from [com.google.android.gms:play-services-maps:10.2.0] C:\Users\Fred\.android\build-cache\951bb0f44bee57864306125b87928d77d837d1af\output\AndroidManifest.xml:24:5-19
 MERGED from [com.google.android.gms:play-services-location:10.2.0] C:\Users\Fred\.android\build-cache\b6a671b49cb207631c710f4ef5e85def30bc74af\output\AndroidManifest.xml:4:5-19
 MERGED from [com.google.android.gms:play-services-base:10.2.0] C:\Users\Fred\.android\build-cache\5bc16326bc89fb082ecab2d0200d2ac785b47bd0\output\AndroidManifest.xml:18:5-20:19
@@ -144,26 +144,16 @@ ADDED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml:66:9-69:47
 		ADDED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml:69:13-44
 	android:name
 		ADDED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml:67:13-46
-receiver#com.ualberta.cmput301w17t22.moodswing.NetworkStateReceiver
-ADDED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml:70:9-74:20
-	android:name
-		ADDED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml:70:19-92
-intent-filter#android.net.conn.CONNECTIVITY_CHANGE
-ADDED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml:71:13-73:29
-action#android.net.conn.CONNECTIVITY_CHANGE
-ADDED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml:72:17-79
-	android:name
-		ADDED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml:72:25-76
 uses-feature#android.hardware.camera2.full
-ADDED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml:77:5-66
+ADDED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml:72:5-66
 	android:name
-		ADDED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml:77:19-63
+		ADDED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml:72:19-63
 uses-feature#android.hardware.camera
-ADDED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml:78:5-80:35
+ADDED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml:73:5-75:35
 	android:required
-		ADDED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml:80:9-32
+		ADDED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml:75:9-32
 	android:name
-		ADDED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml:79:9-47
+		ADDED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml:74:9-47
 uses-sdk
 INJECTED from C:\Users\Fred\MoodSwing\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.google.android.gms:play-services-maps:10.2.0] C:\Users\Fred\.android\build-cache\951bb0f44bee57864306125b87928d77d837d1af\output\AndroidManifest.xml:23:5-43
