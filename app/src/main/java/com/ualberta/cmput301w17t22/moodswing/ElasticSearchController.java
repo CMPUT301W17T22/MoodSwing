@@ -398,7 +398,7 @@ public class ElasticSearchController implements MSController {
                     .build();
 
             // Try to update the participant.
-            try {
+            /*try {
                 DocumentResult result = client.execute(index);
 
                 if (result.isSucceeded()) {
@@ -416,37 +416,60 @@ public class ElasticSearchController implements MSController {
                         " username to ElasticSearch.");
                 Log.i("offlineTest", "exception");
                 saveInFile(index);
-            }
+            }*/
+            executeElasticSearch(index);
             return null;
-        }
-
-        /**
-         * Saves tweets to a specified file in JSON format.
-         * @throws FileNotFoundException if file folder doesn't exist
-         */
-        private void saveInFile(Index index) {
-            try {
-                //FileOutputStream fos = openFileOutput(FILENAME,
-                //        Context.MODE_PRIVATE); //MODE_PRIVATE is also '0'
-                FileOutputStream fos = new FileOutputStream(FILENAME, true);
-                BufferedWriter out = new BufferedWriter(new OutputStreamWriter(fos));
-
-                Gson gson = new Gson();
-                gson.toJson(index, out);
-                out.flush();
-
-                fos.close();
-            } catch (FileNotFoundException e) {
-                // TODO Handle the Exception properly later
-                throw new RuntimeException(); //crashes app
-            } catch (IOException e) {
-                // TODO Handle the Exception properly later
-                throw new RuntimeException(); //crashes app
-            }
         }
     }
 
+    //returns true if successful
+    public static void executeElasticSearch(Index index){
+        // Try to update the participant.
+        try {
+            DocumentResult result = client.execute(index);
 
+            if (result.isSucceeded()) {
+                // Result is good.
+                //Log.i("MoodSwing", "Participant " + participant.getUsername() +
+                //        " successfully updated.");
+                Log.i("offlineTest", "success" + result.toString());
+            } else {
+                // ElasticSearch is unable to add the participant.
+                Log.i("ERROR", "ElasticSearch was unable to add the participant.");
+                Log.i("offlineTest", "failure" + result.toString());
+            }
+        } catch (IOException e) {
+            Log.i("ERROR", "Something went wrong when adding a participant by" +
+                    " username to ElasticSearch.");
+            Log.i("offlineTest", "exception");
+            saveInFile(index);
+        }
+    }
+
+    /**
+     * Saves tweets to a specified file in JSON format.
+     * @throws FileNotFoundException if file folder doesn't exist
+     */
+    private static void saveInFile(Index index) {
+        try {
+            //FileOutputStream fos = openFileOutput(FILENAME,
+            //        Context.MODE_PRIVATE); //MODE_PRIVATE is also '0'
+            FileOutputStream fos = new FileOutputStream(FILENAME, true);
+            BufferedWriter out = new BufferedWriter(new OutputStreamWriter(fos));
+
+            Gson gson = new Gson();
+            gson.toJson(index, out);
+            out.flush();
+
+            fos.close();
+        } catch (FileNotFoundException e) {
+            // TODO Handle the Exception properly later
+            throw new RuntimeException(); //crashes app
+        } catch (IOException e) {
+            // TODO Handle the Exception properly later
+            throw new RuntimeException(); //crashes app
+        }
+    }
     
 }
 
