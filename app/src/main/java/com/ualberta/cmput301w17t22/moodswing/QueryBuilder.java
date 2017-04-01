@@ -1,5 +1,7 @@
 package com.ualberta.cmput301w17t22.moodswing;
 
+import android.util.Log;
+
 /**
  * Class to generate elastic search queries for the purpose of creating a Mood Feed. Not useful
  * for filtering the Mood History, as this only looks at the most recent mood event of a user.
@@ -25,76 +27,40 @@ public class QueryBuilder {
         // (optional) match search on the most recent mood event's trigger,
         // (optional) match search on the most recent mood event's emotional state's description.
 
+        // What the whole query should look like if all the filters are in place.
+        String whole =
+                "{\n" +
+                "  \"_source\": \"mostRecentMoodEvent\",\n" +
+                "  \"query\": {\n" +
+                "    \"bool\": {\n" +
+                "      \"must\": [\n" +
+                "        { \"match\": { \"username\": \"username\" }},\n" +
+                "        { \"range\": { \"mostRecentDate\": {\"gte\": \"now-1w\", \"lt\": \"now\" }}},\n" +
+                "        { \"match\": { \"mostRecentTrigger\": \"filterTrigger\" }},\n" +
+                "        { \"match\": { \"mostRecentEmotionalStateDescription\": \"filterEmotion\" }},\n" +
+                "      ]\n" +
+                "    }\n" +
+                "  }\n" +
+                "}";
+
         String partA =
                 "{\n" +
                 "  \"_source\": \"mostRecentMoodEvent\",\n" +
                 "  \"query\": {\n" +
                 "    \"bool\": {\n" +
                 "      \"must\": [\n" +
-                "        {\n" +
-                "          \"match\": {\n" +
-                "            \"username\": \"" + username + "\"\n" +
-                "          }\n";
+                "        { \"match\": { \"username\": \"" + username + "\" }}";
 
-        String partB_noFilters =
-                "        }\n";
+        String partB_weekFilter =
+                "        { \"range\": { \"mostRecentDate\": {\"gte\": \"now-1w\", \"lte\": \"now\" }}}";
 
-        String partB_withFilters =
-                "        },\n" +
-                "        {\n" +
-                "          \"nested\": {\n" +
-                "            \"path\": \"mostRecentMoodEvent\",\n" +
-                "            \"query\": {\n" +
-                "              \"bool\": {\n" +
-                "                \"must\": [\n";
+        String partB_triggerFilter =
+                "        { \"match\": { \"mostRecentTrigger\": \"" + filterTrigger + "\" }}";
 
-        String partC_weekFilter =
-                "                  {\n" +
-                "                    \"range\": {\n" +
-                "                      \"mostRecentMoodEvent.date\": {\n" +
-                "                        \"gte\": \"now-1w\",\n" +
-                "                        \"lt\": \"now\"\n" +
-                "                      }\n" +
-                "                    }\n" +
-                "                  }";
+        String partB_emotionFilter =
+                "        { \"match\": { \"mostRecentEmotionalStateDescription\": \"" + filterEmotion + "\" }}\n";
 
-        String partC_triggerFilter =
-                "                  {\n" +
-                "                    \"match\": {\n" +
-                "                      \"mostRecentMoodEvent.trigger\": \"" + filterTrigger + "\"\n" +
-                "                    }\n" +
-                "                  }";
-
-        String partC_emotionFilter =
-                "                  {\n" +
-                "                    \"nested\": {\n" +
-                "                      \"path\": \"mostRecentMoodEvent.emotionalState\",\n" +
-                "                      \"query\": {\n" +
-                "                        \"bool\": {\n" +
-                "                          \"must\": [\n" +
-                "                            {\n" +
-                "                              \"match\": {\n" +
-                "                                \"mostRecentMoodEvent.emotionalState.description\": \"" + filterEmotion + "\"\n" +
-                "                              }\n" +
-                "                            }\n" +
-                "                          ]\n" +
-                "                        }\n" +
-                "                      }\n" +
-                "                    }\n" +
-                "                  }\n";
-
-        String partD_withFilters =
-                "                ]\n" +
-                "              }\n" +
-                "            }\n" +
-                "          }\n" +
-                "        }\n" +
-                "      ]\n" +
-                "    }\n" +
-                "  }\n" +
-                "}";
-
-        String partD_noFilters =
+        String partC =
                 "      ]\n" +
                 "    }\n" +
                 "  }\n" +
@@ -109,15 +75,16 @@ public class QueryBuilder {
         // Check which filters are active and build the appropriate string.
         if (weekFilterActive || triggerFilterActive || emotionFilterActive ) {
             // Some filter is active.
-            query += partB_withFilters;
+            query += endFilterWithOthers;
 
             if (weekFilterActive) {
                 // The week filter is active.
-               query += partC_weekFilter;
+               query += partB_weekFilter;
 
                 if (triggerFilterActive || emotionFilterActive) {
                     // Some other filter is also active.
                     query += endFilterWithOthers;
+
                 } else {
                     // The week filter is the last filter we need to add.
                     query += endFilterAlone;
@@ -126,7 +93,7 @@ public class QueryBuilder {
 
             if (triggerFilterActive) {
                 // The trigger filter is active.
-                query += partC_triggerFilter;
+                query += partB_triggerFilter;
 
                 if (emotionFilterActive) {
                     // The emotion filter is also active.
@@ -139,15 +106,17 @@ public class QueryBuilder {
 
             if (emotionFilterActive) {
                 // The emotion filter is active.
-                query += partC_emotionFilter;
+                query += partB_emotionFilter;
             }
 
-            query += partD_withFilters;
+            query += partC;
 
         } else {
             // No filters are active.
-            query += partB_noFilters + partD_noFilters;
+            query += endFilterAlone + partC;
         }
+
+        Log.i("QueryBuilder", query);
 
         return query;
     }

@@ -185,8 +185,6 @@ public class ElasticSearchController implements MSController {
                 String query = new QueryBuilder()
                         .build(username, activeFilters, filterTrigger, filterEmotion);
 
-                Log.i("MoodSwing", query);
-
                 // Build Jest/ElasticSearch search.
                 Search search = new Search.Builder(query)
                         .addIndex("cmput301w17t22")
@@ -206,21 +204,23 @@ public class ElasticSearchController implements MSController {
                         // Get source as string, because getting as an object does not work
                         // for nested objects.
                         String moodEventJson = result.getSourceAsString();
+                        Log.i("MoodEventJson", moodEventJson);
 
-                        Log.i("MoodSwing", moodEventJson);
-                        // Get the proper json.
-                        moodEventJson = moodEventJson.substring(23, moodEventJson.length() - 1);
-                        Log.i("MoodSwing", moodEventJson);
+                        if (!moodEventJson.isEmpty()) {
+                            // Get the proper json.
+                            moodEventJson = moodEventJson.substring(23, moodEventJson.length() - 1);
+                            Log.i("MoodSwing", moodEventJson);
 
-                        // Create the mood event from the json.
-                        MoodEvent moodEvent = gson.fromJson(moodEventJson, MoodEvent.class);
+                            // Create the mood event from the json.
+                            MoodEvent moodEvent = gson.fromJson(moodEventJson, MoodEvent.class);
 
-                        // Add the mood event to the mood feed.
-                        moodFeed.add(moodEvent);
+                            // Add the mood event to the mood feed.
+                            moodFeed.add(moodEvent);
+                        }
                     }
                     else {
                         // No participant with given username found.
-                        Log.i("MoodSwing", "No participant with given username found.");
+                        Log.i("MoodSwing", result.getErrorMessage());
                     }
                 } catch (IOException e) {
                     // TODO: Deal with IOException.
@@ -256,7 +256,8 @@ public class ElasticSearchController implements MSController {
             Participant participant = new Participant(null);
 
             // Create the query string. We do a match search on username.
-            String query = "{\n" +
+            String query =
+                    "{\n" +
                     "    \"query\": {\n" +
                     "        \"match\" : {\n" +
                     "            \"username\" : \"" + username + "\"\n" +
