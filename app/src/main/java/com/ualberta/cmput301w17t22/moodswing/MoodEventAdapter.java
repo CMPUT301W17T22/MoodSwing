@@ -11,8 +11,6 @@ import android.widget.TextView;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
-import static java.lang.Double.NaN;
-
 /** Adapter to display mood events in list views properly
  * https://www.youtube.com/watch?v=nOdSARCVYic
  * accessed March 26th
@@ -103,7 +101,7 @@ public class MoodEventAdapter extends ArrayAdapter<MoodEvent> {
         emoticonImageView.setImageDrawable(getContext().getDrawable(moodEvent.getEmotionalState().getDrawableId()));
 
         //Social situation
-        if(moodEvent.getSocialSituation().getDescription() == null){
+        if(moodEvent.getSocialSituation().getDescription() == ""){
             socialSituationImageView.setVisibility(View.INVISIBLE);
         } else {
             socialSituationImageView.setVisibility(View.VISIBLE);
