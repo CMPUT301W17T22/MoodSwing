@@ -1,5 +1,7 @@
 package com.ualberta.cmput301w17t22.moodswing;
 
+import android.app.Activity;
+import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
@@ -10,7 +12,11 @@ import com.searchly.jestdroid.DroidClientConfig;
 import com.searchly.jestdroid.JestClientFactory;
 import com.searchly.jestdroid.JestDroidClient;
 
+import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -29,6 +35,7 @@ import io.searchbox.core.SearchResult;
 
 public class ElasticSearchController implements MSController {
     MoodSwing ms = null;
+    private static final String FILENAME = "moodswingFile.sav";
 
     public ElasticSearchController(MoodSwing ms) { this.ms = ms; }
 
@@ -361,6 +368,8 @@ public class ElasticSearchController implements MSController {
      * Calling execute(Participant participant) on an instance of
      * UpdateParticipantByParticipantTask will whole update the document for that participant
      * on ElasticSearch.
+     *
+     * TODO: offline behavior
      */
     public static class UpdateParticipantByParticipantTask extends AsyncTask<Participant, Void, Void> {
         @Override
@@ -396,17 +405,48 @@ public class ElasticSearchController implements MSController {
                     // Result is good.
                     Log.i("MoodSwing", "Participant " + participant.getUsername() +
                             " successfully updated.");
+                    Log.i("offlineTest", "success" + result.toString());
                 } else {
                     // ElasticSearch is unable to add the participant.
                     Log.i("ERROR", "ElasticSearch was unable to add the participant.");
+                    Log.i("offlineTest", "failure" + result.toString());
                 }
             } catch (IOException e) {
                 Log.i("ERROR", "Something went wrong when adding a participant by" +
                         " username to ElasticSearch.");
+                Log.i("offlineTest", "exception");
+                saveInFile(index);
             }
             return null;
         }
+
+        /**
+         * Saves tweets to a specified file in JSON format.
+         * @throws FileNotFoundException if file folder doesn't exist
+         */
+        private void saveInFile(Index index) {
+            try {
+                //FileOutputStream fos = openFileOutput(FILENAME,
+                //        Context.MODE_PRIVATE); //MODE_PRIVATE is also '0'
+                FileOutputStream fos = new FileOutputStream(FILENAME, true);
+                BufferedWriter out = new BufferedWriter(new OutputStreamWriter(fos));
+
+                Gson gson = new Gson();
+                gson.toJson(index, out);
+                out.flush();
+
+                fos.close();
+            } catch (FileNotFoundException e) {
+                // TODO Handle the Exception properly later
+                throw new RuntimeException(); //crashes app
+            } catch (IOException e) {
+                // TODO Handle the Exception properly later
+                throw new RuntimeException(); //crashes app
+            }
+        }
     }
+
+
     
 }
 
