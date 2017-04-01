@@ -55,6 +55,7 @@ public class NetworkStateReceiver extends BroadcastReceiver {
 
     /**
      * Loads tweet from specified file.
+     * //TODO: wipe file after loading.
      *
      * @exception FileNotFoundException if the file is not created first.
      */

@@ -448,6 +448,7 @@ public class ElasticSearchController implements MSController {
 
     /**
      * Saves tweets to a specified file in JSON format.
+     * //TODO: save as an ArrayList. load existing list then add the new index and re-save. currently only supports one index.
      * @throws FileNotFoundException if file folder doesn't exist
      */
     private static void saveInFile(Index index) {
