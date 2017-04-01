@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="C:\Users\Fred\MoodSwing\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="3d103c248f8bf90a24a0108e796f0cc70718b7cc">
+        <dex dex="C:\Users\Fred\MoodSwing\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_2f09f70b0e221a8f2baf22b219ecb05cdaf17c5f\classes.dex" />
+    </item>
+
+</items>
