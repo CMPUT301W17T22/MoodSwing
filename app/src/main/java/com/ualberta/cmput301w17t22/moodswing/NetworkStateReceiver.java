@@ -25,7 +25,7 @@ public class NetworkStateReceiver extends BroadcastReceiver {
             final NetworkInfo ni = connectivityManager.getActiveNetworkInfo();
 
             if (ni != null && ni.isConnectedOrConnecting()) {
-                Log.i(TAG, "Network " + ni.getTypeName() + " connected");
+                Log.d(TAG, "Network " + ni.getTypeName() + " connected");
             } else if (intent.getBooleanExtra(ConnectivityManager.EXTRA_NO_CONNECTIVITY, Boolean.FALSE)) {
                 Log.d(TAG, "There's no network connectivity");
             }

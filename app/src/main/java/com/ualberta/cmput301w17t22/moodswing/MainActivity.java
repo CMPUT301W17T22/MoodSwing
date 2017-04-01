@@ -1,14 +1,17 @@
 package com.ualberta.cmput301w17t22.moodswing;
 
+import android.app.Application;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -140,6 +143,9 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
 
         // Initialize all the widgets of the app.
         initialize();
+
+        //listen for network changes
+        registerReceiver(new NetworkStateReceiver(), new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
 
         setSupportActionBar(mainToolbar);
 

@@ -67,11 +67,6 @@
             android:name=".BlockUserActivity"
             android:label="@string/title_activity_block_user"
             android:theme="@style/AppTheme" />
-        <receiver android:name="com.ualberta.cmput301w17t22.moodswing.NetworkStateReceiver" >
-            <intent-filter>
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
-            </intent-filter>
-        </receiver>
     </application>
 
     <uses-feature android:name="android.hardware.camera2.full" />
