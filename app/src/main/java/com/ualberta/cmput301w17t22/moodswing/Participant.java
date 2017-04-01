@@ -2,12 +2,9 @@ package com.ualberta.cmput301w17t22.moodswing;
 
 import android.util.Log;
 
-import com.google.android.gms.maps.model.LatLng;
-
 import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.InputMismatchException;
 
 import io.searchbox.annotations.JestId;
 
@@ -43,7 +40,12 @@ public class Participant extends User {
     /** All of this participant's mood events in reverse chronological order. */
     private ArrayList<MoodEvent> moodHistory = new ArrayList<>();
 
+    /** These attributes keep track of the most recent mood event for this participant's
+     * emotional state, trigger, and date. These are used only in filtering. */
     private MoodEvent mostRecentMoodEvent;
+    private String mostRecentEmotionalStateDescription;
+    private String mostRecentTrigger;
+    private Date mostRecentDate;
 
     public Participant(String username) {
         this.username = username;
@@ -93,11 +95,22 @@ public class Participant extends User {
      * mostRecentMoodEvent to be the last one in the mood history if the mood history is not empty.
      */
     private void updateMostRecentMoodEvent() {
-        // The last element of moodHistory is the most recent.
         if (!moodHistory.isEmpty()) {
+            // The last element of moodHistory is the most recent.
             mostRecentMoodEvent = moodHistory.get(moodHistory.size() - 1);
+
+            mostRecentEmotionalStateDescription =
+                    mostRecentMoodEvent.getEmotionalState().getDescription();
+            mostRecentTrigger = mostRecentMoodEvent.getTrigger();
+            mostRecentDate = mostRecentMoodEvent.getDate();
+
         } else {
+            // If the participant has no mood events, initialize the most recent information to
+            // be empty, so it will not show up in filters.
             mostRecentMoodEvent = null;
+            mostRecentEmotionalStateDescription = "";
+            mostRecentTrigger = "";
+            mostRecentDate = new Date(0);
         }
     }
 
@@ -279,8 +292,16 @@ public class Participant extends User {
         return moodHistory;
     }
 
-    public MoodEvent getMostRecentMoodEvent() {
-        return mostRecentMoodEvent;
+    public String getMostRecentEmotionalStateDescription() {
+        return mostRecentEmotionalStateDescription;
+    }
+
+    public String getMostRecentTrigger() {
+        return mostRecentTrigger;
+    }
+
+    public Date getMostRecentDate() {
+        return mostRecentDate;
     }
 
     // --- END: Getters and Setters
