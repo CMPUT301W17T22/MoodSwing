@@ -15,7 +15,7 @@ import com.robotium.solo.Solo;
  * Intent testing viewing the Mood History a user and ensuring a newly
  * created Mood Event shows up.
  * All created Mood Events are deleted after testing.
- * Filters are handled in MoodFeedFilterTest
+ * Filters are handled in FilterTest
  */
 
 public class MoodHistoryActivityTest extends ActivityInstrumentationTestCase2<LoginActivity> {

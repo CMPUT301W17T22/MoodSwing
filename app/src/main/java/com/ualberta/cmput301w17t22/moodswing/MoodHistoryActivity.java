@@ -243,6 +243,9 @@ public class MoodHistoryActivity extends AppCompatActivity implements MSView<Moo
             moodHistory = filterByTrigger(moodHistory);
         }
 
+        // reverse moodHistory list into reverse chronological order
+        
+
         // Initialize array adapter.
         moodHistoryAdapter = new MoodEventAdapter(this, moodHistory);
         moodHistoryListView.setEmptyView(emptyMoodHistory);
