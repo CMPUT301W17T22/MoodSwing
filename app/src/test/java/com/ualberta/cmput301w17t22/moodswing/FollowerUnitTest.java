@@ -26,19 +26,19 @@ public class FollowerUnitTest {
         // participant1 requests to follow participant2
         participant1.followParticipant(participant2);
 
-        assertTrue(participant2.getPendingFollowers().get(0).equals(participant1));
-        assertFalse(participant2.getPendingFollowers().get(0).equals(participant2));
+        assertTrue(participant2.getPendingFollowers().get(0).equals(participant1.getUsername()));
+        assertFalse(participant2.getPendingFollowers().get(0).equals(participant2.getUsername()));
         assertTrue(participant2.getFollowers().isEmpty());
 
         // approving follow request
         participant2.approveFollowerRequest(participant1);
 
         assertTrue(participant2.getPendingFollowers().isEmpty());
-        assertTrue(participant2.getFollowers().get(0).equals(participant1));
+        assertTrue(participant2.getFollowers().get(0).equals(participant1.getUsername()));
 
         // check if act of approving causes correct result
         assertTrue(participant1.getPendingFollowing().isEmpty());
-        assertEquals(participant1.getFollowing().get(0), participant2);
+        assertEquals(participant1.getFollowing().get(0), participant2.getUsername());
     }
 
     // test follower request act of denying
@@ -70,16 +70,17 @@ public class FollowerUnitTest {
 
         // similar tests as testFollowRequestReceiver for follow
         participant1.followParticipant(participant2);
-        assertEquals(participant2.getPendingFollowers().get(0),participant1);
+        assertEquals(participant2.getPendingFollowers().get(0),participant1.getUsername());
         assertTrue(participant2.getFollowers().isEmpty());
 
         // make sure approveFollowerRequest adds participant1
         participant2.approveFollowerRequest(participant1);
         assertTrue(participant2.getPendingFollowers().isEmpty());
-        assertEquals(participant2.getFollowers().get(0), participant1);
+        assertEquals(participant2.getFollowers().get(0), participant1.getUsername());
+
 
         // make sure participant1 feels effect of 2's approve
         assertTrue(participant1.getPendingFollowing().isEmpty());
-        assertEquals(participant1.getFollowing().get(0), participant2);
+        assertEquals(participant1.getFollowing().get(0), participant2.getUsername());
     }
 }

@@ -9,6 +9,7 @@ import static org.junit.Assert.assertTrue;
 
 /**
  * Created by bbest on 15/03/17.
+ * Tests pending follower and following lists with ApprovalList.
  */
 
 public class ApprovalListTest {
@@ -26,8 +27,8 @@ public class ApprovalListTest {
         assertFalse(sendingParticipant.getPendingFollowing().isEmpty());
         assertFalse(receivingParticipant.getPendingFollowers().isEmpty());
 
-        assertTrue(receivingParticipant.getPendingFollowers().contains(sendingParticipant));
-        assertTrue(sendingParticipant.getPendingFollowing().contains(receivingParticipant));
+        assertTrue(receivingParticipant.getPendingFollowers().contains(sendingParticipant.getUsername()));
+        assertTrue(sendingParticipant.getPendingFollowing().contains(receivingParticipant.getUsername()));
 
 
     }
@@ -53,8 +54,8 @@ public class ApprovalListTest {
         assertTrue(sendingParticipant.getPendingFollowing().isEmpty());
         assertFalse(sendingParticipant.getFollowing().isEmpty());
 
-        assertTrue(receivingParticipant.getFollowers().contains(sendingParticipant));
-        assertTrue(sendingParticipant.getFollowing().contains(receivingParticipant));
+        assertTrue(receivingParticipant.getFollowers().contains(sendingParticipant.getUsername()));
+        assertTrue(sendingParticipant.getFollowing().contains(receivingParticipant.getUsername()));
 
     }
 
@@ -71,8 +72,8 @@ public class ApprovalListTest {
         assertFalse(sendingParticipant.getPendingFollowing().isEmpty());
         assertFalse(receivingParticipant.getPendingFollowers().isEmpty());
 
-        assertTrue(receivingParticipant.getPendingFollowers().contains(sendingParticipant));
-        assertTrue(sendingParticipant.getPendingFollowing().contains(receivingParticipant));
+        assertTrue(receivingParticipant.getPendingFollowers().contains(sendingParticipant.getUsername()));
+        assertTrue(sendingParticipant.getPendingFollowing().contains(receivingParticipant.getUsername()));
 
         receivingParticipant.declineFollowerRequest(sendingParticipant);
 
@@ -103,10 +104,10 @@ public class ApprovalListTest {
         sendingParticipant.followParticipant(receivingParticipant);
 
         assertFalse(sendingParticipant.getPendingFollowing().isEmpty());
-        assertTrue(sendingParticipant.getPendingFollowing().contains(receivingParticipant));
+        assertTrue(sendingParticipant.getPendingFollowing().contains(receivingParticipant.getUsername()));
 
         assertFalse(receivingParticipant.getPendingFollowers().isEmpty());
-        assertTrue(receivingParticipant.getPendingFollowers().contains(sendingParticipant));
+        assertTrue(receivingParticipant.getPendingFollowers().contains(sendingParticipant.getUsername()));
 
     }
 
@@ -122,10 +123,10 @@ public class ApprovalListTest {
         receivingParticipant.approveFollowerRequest(sendingParticipant);
 
         assertFalse(sendingParticipant.getFollowing().isEmpty());
-        assertTrue(sendingParticipant.getFollowing().contains(receivingParticipant));
+        assertTrue(sendingParticipant.getFollowing().contains(receivingParticipant.getUsername()));
 
         assertFalse(receivingParticipant.getFollowers().isEmpty());
-        assertTrue(receivingParticipant.getFollowers().contains(sendingParticipant));
+        assertTrue(receivingParticipant.getFollowers().contains(sendingParticipant.getUsername()));
 
     }
 }
