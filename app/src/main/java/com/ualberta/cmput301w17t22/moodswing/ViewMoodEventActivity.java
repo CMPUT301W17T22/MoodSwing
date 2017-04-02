@@ -90,8 +90,8 @@ public class ViewMoodEventActivity extends AppCompatActivity implements MSView<M
                 (TextView) findViewById(R.id.usernameTextView_ViewMoodEventActivity);
         emotionalStateTextView =
                 (TextView) findViewById(R.id.emotionalStateTextView_ViewMoodEventActivity);
-        socialSituationTextView =
-                (TextView) findViewById(R.id.socialSituationTextView_ViewMoodEventActivity);
+//        socialSituationTextView =
+//                (TextView) findViewById(R.id.socialSituationTextView_ViewMoodEventActivity);
         triggerTextView =
                 (TextView) findViewById(R.id.triggerTextView_ViewMoodEventActivity);
 
@@ -395,7 +395,7 @@ public class ViewMoodEventActivity extends AppCompatActivity implements MSView<M
         //noinspection ResourceType
         socialSituationImageView.setVisibility(moodEvent.getSocialSituation().getVisibility());
         //noinspection ResourceType
-        socialSituationTextView.setVisibility(moodEvent.getSocialSituation().getVisibility());
+        //socialSituationTextView.setVisibility(moodEvent.getSocialSituation().getVisibility());
 
         //set correct icon
         socialSituationImageView.setImageDrawable(getDrawable(moodEvent.getSocialSituation().getDrawableId()));
@@ -432,8 +432,8 @@ public class ViewMoodEventActivity extends AppCompatActivity implements MSView<M
      */
     public void setDateTime() {
         //Sets the formatted date into its corresponding View
-        String formattedDate = new SimpleDateFormat("EEE, MMMM dd, yyyy,").format(moodEvent.getDate());
-        dateTextView.setText("On "+formattedDate);
+        String formattedDate = new SimpleDateFormat("EEE, MMMM dd, yyyy").format(moodEvent.getDate());
+        dateTextView.setText("on "+formattedDate);
     }
 
     /**

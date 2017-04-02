@@ -190,11 +190,7 @@ public class NewMoodEventActivity extends AppCompatActivity implements MSView<Mo
 
                     // Toast to inform the user that the mood event was added.
                     Toast.makeText(NewMoodEventActivity.this,
-                            "Mood Event added!\n" +
-                                    "Input Test: " +
-                                    "\nEmotional State: " + emotionalState.toString() +
-                                    "\nSocial Situation: " + socialSituation.toString() +
-                                    "\nTrigger: " + trigger,
+                            "Mood Event added!\n",
                             Toast.LENGTH_SHORT).show();
 
                     finish();
