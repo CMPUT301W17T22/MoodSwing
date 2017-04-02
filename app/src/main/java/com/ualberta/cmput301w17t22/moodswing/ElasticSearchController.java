@@ -204,9 +204,10 @@ public class ElasticSearchController implements MSController {
                         // Get source as string, because getting as an object does not work
                         // for nested objects.
                         String moodEventJson = result.getSourceAsString();
+                        Log.i("MoodEventJson", String.valueOf(moodEventJson.length()));
                         Log.i("MoodEventJson", moodEventJson);
 
-                        if (!moodEventJson.isEmpty()) {
+                        if (!moodEventJson.isEmpty() && !moodEventJson.equals("{}")) {
                             // Get the proper json.
                             moodEventJson = moodEventJson.substring(23, moodEventJson.length() - 1);
                             Log.i("MoodSwing", moodEventJson);

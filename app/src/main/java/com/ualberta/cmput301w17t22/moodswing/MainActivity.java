@@ -153,8 +153,7 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
         Participant mainParticipant = moodSwingController.getMainParticipant();
 
         // Set the welcome text appropriately.
-        welcomeText.setText("Welcome user \"" + mainParticipant.getUsername() +
-                "\" with ID \"" + mainParticipant.getId() + "\"");
+        welcomeText.setText("Welcome user: " + mainParticipant.getUsername());
 
         // On click for the mood feed list view.
         moodFeedListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:map="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true">
@@ -80,15 +82,37 @@
             android:layout_marginBottom="6dp"
             android:layout_marginLeft="6dp"
             android:layout_marginTop="16dp"
-            android:text="@string/main_welcome_text" />
+            android:text="@string/main_welcome_text"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <ListView
             android:id="@+id/MoodFeedListView"
             android:layout_width="match_parent"
-            android:layout_height="285dp"
+            android:layout_height="350dp"
             android:layout_marginLeft="3dp"
             android:layout_marginRight="3dp"
             android:nestedScrollingEnabled="true" />
+
+        <TextView
+            android:id="@+id/MoodMapTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimaryDark"
+            android:text="Mood Map"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <fragment
+            android:id="@+id/map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            android:layout_below="@+id/MoodFeedListView"
+            android:layout_weight="0.3"
+            tools:context="com.ualberta.cmput301w17t22.moodswing.MapsFragment" />
 
         <TextView
             android:id="@+id/emptyMoodFeed"
@@ -100,17 +124,6 @@
             android:textAlignment="center"
             android:textSize="18sp"
             android:visibility="gone" />
-
-        <fragment xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:map="http://schemas.android.com/apk/res-auto"
-            xmlns:tools="http://schemas.android.com/tools"
-            android:id="@+id/map"
-            android:name="com.google.android.gms.maps.SupportMapFragment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/MoodFeedListView"
-            android:layout_weight="0.3"
-            tools:context="com.ualberta.cmput301w17t22.moodswing.MapsFragment" />
 
 
     </LinearLayout>
