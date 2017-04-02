@@ -196,6 +196,7 @@ public class ParticipantTest {
         assertFalse(participant1.getMostRecentMoodEvent().getLat() == lat1);
         assertFalse(participant1.getMostRecentMoodEvent().getLng() == lng1);
 
+
     }
 
 

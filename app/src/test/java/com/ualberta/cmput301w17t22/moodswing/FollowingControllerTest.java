@@ -7,6 +7,7 @@ import static org.junit.Assert.assertTrue;
 
 /**Test class for the FollowingController class and its methods
  * Created by bbest on 16/03/17.
+ * Needs to be updated.
  */
 
 public class FollowingControllerTest {

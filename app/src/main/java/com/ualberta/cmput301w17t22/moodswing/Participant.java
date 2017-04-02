@@ -269,6 +269,9 @@ public class Participant extends User {
         return moodHistory;
     }
 
+    // added for unit testing
+    public MoodEvent getMostRecentMoodEvent() { return mostRecentMoodEvent;}
+
     public String getMostRecentEmotionalStateDescription() {
         return mostRecentEmotionalStateDescription;
     }
