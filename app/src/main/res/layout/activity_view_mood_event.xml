@@ -96,12 +96,11 @@
             android:id="@+id/dateTextView_ViewMoodEvent"
             android:layout_width="219dp"
             android:layout_height="wrap_content"
-            android:paddingTop="24dp"
-            android:text="TextView"
-            android:textAlignment="textStart"
-            android:layout_marginTop="20dp"
             android:layout_weight="0.14"
-            android:text="Social Situation:"
+            android:paddingBottom="10dp"
+            android:paddingTop="24dp"
+            android:text="Date"
+            android:textAlignment="textStart"
             android:textColor="@color/black"
             android:textSize="18sp" />
 
@@ -111,7 +110,6 @@
             android:layout_height="50sp"
             android:layout_alignStart="@+id/emotionalStateImageView_ViewMoodEventActivity"
             android:layout_below="@+id/triggerTextView_ViewMoodEventActivity"
-            android:layout_weight="0.05"
             android:layout_weight="0.3"
             android:cropToPadding="false"
             app:srcCompat="@drawable/social_situation_alone" />
