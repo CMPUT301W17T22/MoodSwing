@@ -11,19 +11,61 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
+import static java.security.AccessController.getContext;
+
 /**
  * Very basics of MoodStatistics page. Contains menu for navigation and nothing else.
  * Blank canvas for us to add our main wow factor stuff.
- * Will contain statsitics about various mood events.
+ * Will contain statistics about various mood events.
  */
 public class MoodStatistics extends AppCompatActivity {
 
     ElasticSearchController elasticSearchController;
+    MoodSwingController moodSwingController;
+    Participant mainParticipant;
+
 
     /** The main toolbar of the app that lets users navigate to the other parts of the app. */
     Toolbar mainToolbar;
 
+    TextView followerCountView;
 
+    TextView followingCountView;
+
+    TextView emotionalStateTextView;
+
+    TextView mostUsedSocialSituation;
+
+    //counters
+    int angryCounter;
+    int happyCounter;
+    int surprisedCounter;
+    int shameCounter;
+    int fearCounter;
+    int disgustCounter;
+    int sadCounter;
+    int confusedCounter;
+    int aloneCounter;
+    int withSomeoneCounter;
+    int withGroupCounter;
+    int crowdCounter;
+    /**
+     * Initializes all the widgets for this activity.
+     */
+    public void initialize() {
+        // Initialize all basic widgets.
+        mainToolbar = (Toolbar) findViewById(R.id.mainToolBar);
+        mainToolbar.setTitle("");
+
+         followerCountView = (TextView) findViewById(R.id.FollowerCount);
+         followingCountView = (TextView) findViewById(R.id.FollowingCount);
+         mostUsedSocialSituation = (TextView) findViewById(R.id.MostUsedSSView);
+        emotionalStateTextView = (TextView) findViewById(R.id.MostUsedEmotionView);
+
+
+    }
 
 
     @Override
@@ -39,12 +81,73 @@ public class MoodStatistics extends AppCompatActivity {
 
 
         // Get MoodSwingController.
-        MoodSwingController moodSwingController =
+         moodSwingController =
                 MoodSwingApplication.getMoodSwingController();
         elasticSearchController =
                 MoodSwingApplication.getElasticSearchController();
+        mainParticipant =
+                moodSwingController.getMainParticipant();
+
+
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        ArrayList<MoodEvent> sample = mainParticipant.getMoodHistory();
+
+        //Calculate several statistics below that are then populated into the views.
+
+        //Number of followers
+        int followerCount =  mainParticipant.getFollowers().size();
+        followerCountView.setText(followerCount);
+
+        //Number of following
+        int followingCount = mainParticipant.getFollowing().size();
+        followingCountView.setText(followingCount);
+
+        //iterate through mood event list and increment counters
+        for(int i =0; i < sample.size(); i ++){
+            MoodEvent moodEvent = sample.get(i);
+
+            //Check the emotional state
+            if(moodEvent.getEmotionalState().getDescription() == "Anger"){
+                angryCounter++;
+            } else if(moodEvent.getEmotionalState().getDescription() == "Sadness"){
+                sadCounter++;
+            } else if(moodEvent.getEmotionalState().getDescription() == "Disgust"){
+                disgustCounter++;
+            }else if(moodEvent.getEmotionalState().getDescription() == "Shame"){
+                shameCounter++;
+            } else if(moodEvent.getEmotionalState().getDescription() == "Happiness"){
+                happyCounter++;
+            } else if(moodEvent.getEmotionalState().getDescription() == "Surprise"){
+                surprisedCounter++;
+            } else if(moodEvent.getEmotionalState().getDescription() == "Fear"){
+                fearCounter++;
+            } else if(moodEvent.getEmotionalState().getDescription() == "Confusion"){
+                confusedCounter++;
+            }
+
+            //Check Social situation
+            if(moodEvent.getSocialSituation().getDescription() == ""){
+
+            } else if(moodEvent.getSocialSituation().getDescription() == "Alone"){
+                aloneCounter++;
+            } else if(moodEvent.getSocialSituation().getDescription() =="With One Other Person"){
+                withSomeoneCounter++;
+            } else if(moodEvent.getSocialSituation().getDescription() =="With Two To Several People"){
+                withGroupCounter++;
+            } else if(moodEvent.getSocialSituation().getDescription() ==" With A Crowd"){
+                crowdCounter++;
+            }
+        }
+
+        findMostUsedEmotion();
+        findMostUsedSocial();
+
+    }
 
 
 
@@ -108,17 +211,92 @@ public class MoodStatistics extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
+    /**Using the emotion counters this method sets the appropriate text view to the most used emotional state
+     * @author bbest */
+    public void findMostUsedEmotion(){
+        //http://stackoverflow.com/questions/28020093/comparing-multiple-integers-in-if-statement-java#28020157
+        //Accessed: April 1st 2017
 
+        String mostUsedEmotion;
+        if(angryCounter == 0 && sadCounter == 0 && happyCounter == 0 && fearCounter ==0 && shameCounter == 0 && confusedCounter ==0 && disgustCounter ==0 && surprisedCounter ==0){
+            mostUsedEmotion = "No Data";
+        } else if((angryCounter>= happyCounter ) && (angryCounter >= sadCounter) &&
+                (angryCounter>= fearCounter) && (angryCounter >= confusedCounter)
+                && (angryCounter>=shameCounter) && (angryCounter>=disgustCounter) && (angryCounter >= surprisedCounter)){
+            mostUsedEmotion = "Anger";
+        } else if((happyCounter>= sadCounter) && (happyCounter >= fearCounter)
+                && (happyCounter>= confusedCounter) &&
+                (happyCounter>= shameCounter) && (happyCounter>= disgustCounter) && (happyCounter>= surprisedCounter)){
+            mostUsedEmotion = "Happiness";
+        } else if((sadCounter>= fearCounter) && (sadCounter>=confusedCounter) &&
+                (sadCounter>= shameCounter) && (sadCounter>= disgustCounter) && (sadCounter >= surprisedCounter) ){
+            mostUsedEmotion = "Sadness";
+        } else if((fearCounter>=confusedCounter) && (fearCounter>= shameCounter) &&
+                (fearCounter>= disgustCounter) && (fearCounter >= surprisedCounter)){
+            mostUsedEmotion = "Fear";
+        } else if((confusedCounter>=shameCounter) && (confusedCounter>= disgustCounter) && (confusedCounter>=surprisedCounter)){
+            mostUsedEmotion = "Confusion";
+        } else if((shameCounter >= disgustCounter) && (shameCounter >= surprisedCounter)){
+            mostUsedEmotion = "Shame";
+        } else if((disgustCounter>=surprisedCounter)){
+            mostUsedEmotion = "Disgust";
+        } else {
+            mostUsedEmotion = "Surprise";
+        }
+        // Set the image and text for the appropriate Mood Event.
+        emotionalStateTextView.setText(mostUsedEmotion);
+        switch (mostUsedEmotion) {
+            case "Anger":
+                emotionalStateTextView.setTextColor(getResources().getColor(R.color.angry));
+                break;
+            case "Sadness":
+                emotionalStateTextView.setTextColor(getResources().getColor(R.color.sad));
+                break;
+            case "Disgust":
+                emotionalStateTextView.setTextColor(getResources().getColor(R.color.disgusted));
+                break;
+            case "Shame":
+                emotionalStateTextView.setTextColor(getResources().getColor(R.color.ashamed));
+                break;
+            case "Happiness":
+                emotionalStateTextView.setTextColor(getResources().getColor(R.color.happy));
+                break;
+            case "Surprise":
+                emotionalStateTextView.setTextColor(getResources().getColor(R.color.surprised));
+                break;
+            case "Confusion":
+                emotionalStateTextView.setTextColor(getResources().getColor(R.color.confused));
+                break;
+            case "Fear":
+                emotionalStateTextView.setTextColor(getResources().getColor(R.color.fearful));
+                break;
+            case "No Data":
+                emotionalStateTextView.setTextColor(getResources().getColor(R.color.white));
+                break;
+        }
 
-    /**
-     * Initializes all the widgets for this activity.
-     */
-    public void initialize() {
-        // Initialize all basic widgets.
-        mainToolbar = (Toolbar) findViewById(R.id.mainToolBar);
-        mainToolbar.setTitle("");
     }
 
+    /**This method uses the social situation counters to determine the most used one and set that
+     * into the appropriate view.
+     * @author bbest*/
+    public void findMostUsedSocial(){
+        String mostUsedSocial;
+        //Check the most used social situation
+        if(aloneCounter == 0 && withSomeoneCounter == 0 && withGroupCounter == 0 && crowdCounter == 0){
+            mostUsedSocial = "No Data";
+        }
+        else if((aloneCounter>=withGroupCounter) && (aloneCounter>=withSomeoneCounter) && (aloneCounter>=crowdCounter)){
+            mostUsedSocial = "Alone";
+        } else if((withGroupCounter>=withSomeoneCounter) && (withGroupCounter>=crowdCounter)){
+            mostUsedSocial = "With Two To Several People";
+        } else if((withSomeoneCounter>=crowdCounter)){
+            mostUsedSocial = "With One Other Person";
+        } else{
+            mostUsedSocial = "With A Crowd";
+        }
 
+        mostUsedSocialSituation.setText(mostUsedSocial);
+    }
 
 }
