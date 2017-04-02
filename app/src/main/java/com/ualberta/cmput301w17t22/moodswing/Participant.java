@@ -184,7 +184,7 @@ public class Participant extends User {
      * the pending following request is moved to the approved list in followingList.
      * @param receivingParticipant
      */
-    public void followRequestApproved(Participant receivingParticipant) throws InvalidParameterException{
+    public void followRequestApproved(Participant receivingParticipant) {
         followingList.approvePending(receivingParticipant);
     }
     /**Event that is received indicating the main participants follow request was declined so

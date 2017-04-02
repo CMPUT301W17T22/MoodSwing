@@ -51,7 +51,8 @@
         android:layout_height="50dp"
         android:layout_alignParentTop="true"
         android:layout_marginTop="6dp"
-        android:layout_toEndOf="@+id/EmotionStateTextView_MoodEvent"
+        android:layout_marginRight="40dp"
+        android:layout_toStartOf="@+id/LocationIndicator_MoodHistory"
         app:srcCompat="@drawable/emoticon_happiness" />
 
     <ImageView

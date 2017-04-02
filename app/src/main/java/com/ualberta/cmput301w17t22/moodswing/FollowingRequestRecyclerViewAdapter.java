@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -60,7 +61,7 @@ public class FollowingRequestRecyclerViewAdapter extends RecyclerView.Adapter<Fo
      * Dialog that handles cancelling a follow request. Gets user confirmation also. Need holder
      * for the username and the view to show the dialog box.
      */
-    public void launchCancelRequestDialog(ViewHolder holder, View v) {
+    public void launchCancelRequestDialog(ViewHolder holder, final View v) {
 
         // Get the username to stop from following you.
         final String usernameToCancel = holder.mContentView.getText().toString();
@@ -96,6 +97,10 @@ public class FollowingRequestRecyclerViewAdapter extends RecyclerView.Adapter<Fo
 
                 // Notify the change of data.
                 notifyDataSetChanged();
+
+                // Tell the user.
+                Toast.makeText(v.getRootView().getContext(),
+                        "Follower request cancelled.", Toast.LENGTH_SHORT).show();
             }
         });
 

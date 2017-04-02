@@ -9,8 +9,6 @@ import android.view.View;
  * Created by nyitrai on 3/10/2017.
  */
 
-
-
 public class SocialSituationFactory {
 
     public SocialSituation createSocialSituationByName(String socialSituationName) {

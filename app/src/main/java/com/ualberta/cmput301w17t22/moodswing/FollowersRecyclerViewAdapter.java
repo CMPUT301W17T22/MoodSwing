@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -59,7 +60,7 @@ public class FollowersRecyclerViewAdapter extends RecyclerView.Adapter<Followers
         });
     }
 
-    public void launchStopFollowerDialog(ViewHolder holder, View v) {
+    public void launchStopFollowerDialog(ViewHolder holder, final View v) {
 
         // Get the username to stop from following you.
         final String usernameToStop = holder.mContentView.getText().toString();
@@ -94,6 +95,10 @@ public class FollowersRecyclerViewAdapter extends RecyclerView.Adapter<Followers
 
                 // Notify the change of data.
                 notifyDataSetChanged();
+
+                // Tell the user.
+                Toast.makeText(v.getRootView().getContext(),
+                        "Stopped user from following you.", Toast.LENGTH_SHORT).show();
             }
         });
 

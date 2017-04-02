@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
@@ -51,6 +52,8 @@ public class MoodStatistics extends AppCompatActivity {
     int withSomeoneCounter;
     int withGroupCounter;
     int crowdCounter;
+
+
     /**
      * Initializes all the widgets for this activity.
      */
@@ -59,12 +62,10 @@ public class MoodStatistics extends AppCompatActivity {
         mainToolbar = (Toolbar) findViewById(R.id.mainToolBar);
         mainToolbar.setTitle("");
 
-         followerCountView = (TextView) findViewById(R.id.FollowerCount);
-         followingCountView = (TextView) findViewById(R.id.FollowingCount);
-         mostUsedSocialSituation = (TextView) findViewById(R.id.MostUsedSSView);
+        followerCountView = (TextView) findViewById(R.id.FollowerCount);
+        followingCountView = (TextView) findViewById(R.id.FollowingCount);
+        mostUsedSocialSituation = (TextView) findViewById(R.id.MostUsedSSView);
         emotionalStateTextView = (TextView) findViewById(R.id.MostUsedEmotionView);
-
-
     }
 
 
@@ -73,12 +74,10 @@ public class MoodStatistics extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mood_statistics);
 
-
         // Initialize all the widgets of the app.
         initialize();
 
         setSupportActionBar(mainToolbar);
-
 
         // Get MoodSwingController.
          moodSwingController =
@@ -87,8 +86,6 @@ public class MoodStatistics extends AppCompatActivity {
                 MoodSwingApplication.getElasticSearchController();
         mainParticipant =
                 moodSwingController.getMainParticipant();
-
-
     }
 
     @Override
@@ -101,45 +98,45 @@ public class MoodStatistics extends AppCompatActivity {
 
         //Number of followers
         int followerCount =  mainParticipant.getFollowers().size();
-        followerCountView.setText(followerCount);
+        followerCountView.setText(String.valueOf(followerCount));
 
         //Number of following
         int followingCount = mainParticipant.getFollowing().size();
-        followingCountView.setText(followingCount);
+        followingCountView.setText(String.valueOf(followingCount));
 
         //iterate through mood event list and increment counters
         for(int i =0; i < sample.size(); i ++){
             MoodEvent moodEvent = sample.get(i);
 
             //Check the emotional state
-            if(moodEvent.getEmotionalState().getDescription() == "Anger"){
+            if(moodEvent.getEmotionalState().getDescription().equals("Anger")){
                 angryCounter++;
-            } else if(moodEvent.getEmotionalState().getDescription() == "Sadness"){
+            } else if(moodEvent.getEmotionalState().getDescription().equals("Sadness")){
                 sadCounter++;
-            } else if(moodEvent.getEmotionalState().getDescription() == "Disgust"){
+            } else if(moodEvent.getEmotionalState().getDescription().equals("Disgust")){
                 disgustCounter++;
-            }else if(moodEvent.getEmotionalState().getDescription() == "Shame"){
+            }else if(moodEvent.getEmotionalState().getDescription().equals("Shame")){
                 shameCounter++;
-            } else if(moodEvent.getEmotionalState().getDescription() == "Happiness"){
+            } else if(moodEvent.getEmotionalState().getDescription().equals("Happiness")){
                 happyCounter++;
-            } else if(moodEvent.getEmotionalState().getDescription() == "Surprise"){
+            } else if(moodEvent.getEmotionalState().getDescription().equals("Surprise")){
                 surprisedCounter++;
-            } else if(moodEvent.getEmotionalState().getDescription() == "Fear"){
+            } else if(moodEvent.getEmotionalState().getDescription().equals("Fear")){
                 fearCounter++;
-            } else if(moodEvent.getEmotionalState().getDescription() == "Confusion"){
+            } else if(moodEvent.getEmotionalState().getDescription().equals("Confusion")){
                 confusedCounter++;
             }
 
             //Check Social situation
-            if(moodEvent.getSocialSituation().getDescription() == ""){
+            if(moodEvent.getSocialSituation().getDescription().equals("")){
 
-            } else if(moodEvent.getSocialSituation().getDescription() == "Alone"){
+            } else if(moodEvent.getSocialSituation().getDescription().equals("Alone")){
                 aloneCounter++;
-            } else if(moodEvent.getSocialSituation().getDescription() =="With One Other Person"){
+            } else if(moodEvent.getSocialSituation().getDescription().equals("With One Other Person")){
                 withSomeoneCounter++;
-            } else if(moodEvent.getSocialSituation().getDescription() =="With Two To Several People"){
+            } else if(moodEvent.getSocialSituation().getDescription().equals("With Two To Several People")){
                 withGroupCounter++;
-            } else if(moodEvent.getSocialSituation().getDescription() ==" With A Crowd"){
+            } else if(moodEvent.getSocialSituation().getDescription().equals("With A Crowd")){
                 crowdCounter++;
             }
         }
@@ -148,8 +145,6 @@ public class MoodStatistics extends AppCompatActivity {
         findMostUsedSocial();
 
     }
-
-
 
     /**
      * Inflates the menu. Connects the menu_main_activity.xml to the
@@ -161,10 +156,6 @@ public class MoodStatistics extends AppCompatActivity {
         return true;
     }
 
-
-
-
-
     /**
      * This method handles clicks on menu items from the overflow menu.
      */
@@ -174,20 +165,21 @@ public class MoodStatistics extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.homeToolBarButton:
                 // User chose the "Home" item, should navigate to MainActivity.
-                intent = new Intent(MoodStatistics.this, MainActivity.class);
-                startActivity(intent);
+                finish();
                 return true;
 
             case R.id.followToolBarButton:
                 // User chose the "Follower & Following" action, should navigate to the
                 // follower/following activity
                 intent = new Intent(MoodStatistics.this, MainFollowActivity.class);
+                finish();
                 startActivity(intent);
                 return true;
 
             case R.id.newMoodEventToolBarButton:
                 // User chose the "New Mood Event" item, should navigate the NewMoodEventActivity.
                 intent = new Intent(MoodStatistics.this, NewMoodEventActivity.class);
+                finish();
                 startActivity(intent);
                 return true;
 
@@ -195,6 +187,7 @@ public class MoodStatistics extends AppCompatActivity {
                 // User chose the "View Mood History" item, should navigate to the
                 // MoodHistoryActivity.
                 intent = new Intent(MoodStatistics.this, MoodHistoryActivity.class);
+                finish();
                 startActivity(intent);
                 return true;
 
@@ -202,6 +195,7 @@ public class MoodStatistics extends AppCompatActivity {
                 // User chose the "Block User" item, should navigate to the
                 // BlockUserActivity.
                 intent = new Intent(MoodStatistics.this, BlockUserActivity.class);
+                finish();
                 startActivity(intent);
                 return true;
 
