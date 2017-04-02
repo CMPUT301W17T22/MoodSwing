@@ -47,7 +47,7 @@ public class LoginActivity extends AppCompatActivity implements MSView<MoodSwing
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         loginProgress = (ProgressBar) findViewById(R.id.loginProgress);
-        loginProgress.setVisibility(View.GONE);
+        loginProgress.setVisibility(View.INVISIBLE);
 
         /**
          * For now, data generation goes here. This will change to a different place.

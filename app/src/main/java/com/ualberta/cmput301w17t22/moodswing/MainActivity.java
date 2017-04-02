@@ -49,7 +49,6 @@ import static java.lang.Double.NaN;
  * the mood feed, and have a floating toolbar to navigate the user to the other functionalities of
  * the app.
  *
- * MORE JAVADOC TESTING 123123123
  * <p/>
  * TODO: For filtering: using activeFilters, as well as filterTrigger and filterEmotion
  * TODO: in loadMoodSwing() might be a good idea
@@ -111,9 +110,11 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
     // The chosen mood that the user will filter
     private String filterEmotion = "";
 
-    // shows which filters are active and which aren't
-    // if activeFilters = [a, b, c], a = recent week, b = emotion filter, c = trigger filter
-    // activeFilters[x] = 1: this filter is active, 0: this filter is not applied
+    /**
+     * shows which filters are active and which aren't
+     * if activeFilters = [a, b, c], a = recent week, b = emotion filter, c = trigger filter
+     * activeFilters[x] = 1: this filter is active, 0: this filter is not applied
+     */
     private int[] activeFilters = new int[3];   // should be initialized to 0
 
 
@@ -362,10 +363,10 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
 
         // these populate the filter spinner
         filter_strings.add("No Filter");
-        filter_strings.add("Recent Week");
+        filter_strings.add("By Recent Week");
         filter_strings.add("By Emotion");
         filter_strings.add("By Trigger");
-        filter_strings.add("Test hidden");
+        //filter_strings.add("Test hidden");
 
         // for our custom spinner options and settings
         ArrayAdapter<String> filterAdapter =
@@ -395,6 +396,12 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
         // Load the mood feed.
         Log.i("MoodSwing",moodFeedEvents.toString());
         moodFeedEvents = moodSwingController.getMoodFeed();
+
+        // filter by week here
+        if (activeFilters[0] == 1){
+            moodFeedEvents = filterRecentWeek(moodFeedEvents);
+        }
+
 
         // Initialize array adapter.
         moodFeedAdapter = new MoodEventAdapter(this, moodFeedEvents);
@@ -498,19 +505,19 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
     public void updateFilterUI() {
 
         if (activeFilters[0] == 1) {     // recent week filter active
-            filter_strings.set(1, "Recent Week*");
+            filter_strings.set(1, "By Recent Week: On");
         } else {                        // recent week filter off
-            filter_strings.set(1, "Recent Week");
+            filter_strings.set(1, "By Recent Week");
         }
 
         if (activeFilters[1] == 1) { // emotion filter on
-            filter_strings.set(2, "By Emotion*");
+            filter_strings.set(2, "By Emotion: " + filterEmotion);
         } else {                    // emotion filter off
             filter_strings.set(2, "By Emotion");
         }
 
         if (activeFilters[2] == 1) {    // trigger filter on
-            filter_strings.set(3, "By Trigger*");
+            filter_strings.set(3, "By Trigger: " + filterTrigger);
         } else {                        // trigger filter off
             filter_strings.set(3, "By Trigger");
         }
@@ -565,7 +572,7 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
     public void handleFilterSelection(int selected){
         switch (selected) {
             case 0:       // no filter selected
-                Toast.makeText(MainActivity.this, "Filters removed.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "No filters.", Toast.LENGTH_SHORT).show();
                 updateFilterMenu(-1);   // update filter list
                 buildMoodFeed();
                 loadMoodSwing(); // refresh the feed
@@ -573,7 +580,7 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
 
 
             case 1:     // sort by recent week
-                Toast.makeText(MainActivity.this, "Filtering by week.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "Adding Recent Week Filter.", Toast.LENGTH_SHORT).show();
                 updateFilterMenu(0); // update filter list
                 buildMoodFeed();
                 loadMoodSwing(); // refresh the feed
@@ -604,13 +611,20 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
                     @Override
                     public void onClick(View v) {
                         int chosenEmotionIndex = emotionsRadioGroup.getCheckedRadioButtonId();
-                        RadioButton chosenEmotionRadioButton = (RadioButton) dialog.findViewById(chosenEmotionIndex);
-                        filterEmotion = chosenEmotionRadioButton.getText().toString();
-                        Toast.makeText(MainActivity.this, "Filtering by " + filterEmotion, Toast.LENGTH_SHORT).show();
-                        updateFilterMenu(1);
-                        dialog.dismiss();
-                        buildMoodFeed();
-                        loadMoodSwing(); // refresh the feed
+
+                        if(chosenEmotionIndex == -1) {
+                            Toast.makeText(MainActivity.this, "No emotion selected.", Toast.LENGTH_SHORT).show();
+                            dialog.dismiss();
+                        } else {
+                            RadioButton chosenEmotionRadioButton = (RadioButton) dialog.findViewById(chosenEmotionIndex);
+                            filterEmotion = chosenEmotionRadioButton.getText().toString();
+                            Toast.makeText(MainActivity.this, "Adding filter by " + filterEmotion, Toast.LENGTH_SHORT).show();
+                            updateFilterMenu(1);
+                            dialog.dismiss();
+                            buildMoodFeed();
+                            loadMoodSwing(); // refresh the feed
+                        }
+
                     }
                 });
                 // dismiss dialog if cancel is clicked
@@ -672,7 +686,7 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
                             dialog.cancel();
                         } else {
                             // filterTrigger is acceptable
-                            Toast.makeText(MainActivity.this, "Filtering by trigger word: "+ filterTrigger, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity.this, "Adding filter by trigger word: "+ filterTrigger, Toast.LENGTH_SHORT).show();
                             updateFilterMenu(2);
                             buildMoodFeed();
                             loadMoodSwing();// refresh the feed
