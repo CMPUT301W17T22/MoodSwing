@@ -3,6 +3,13 @@ package com.ualberta.cmput301w17t22.moodswing;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
+
 import java.io.ByteArrayOutputStream;
 import java.util.Date;
 
@@ -154,24 +161,25 @@ public class MoodEvent {
     }
 
     /**
-     * Creates Marker for map based on emoticon and position. Things have changed, so this
-     * method will have to change a lot to work with how things work now.
+     * Creates Marker for map based on emoticon and position.
      *
-     * @return Marker corresponding to this MoodEvent
+     * @return MarkerOptions object corresponding to this MoodEvent
      * @return null if no position
      */
-//    public Marker getMapMarker(GoogleMap googleMap){
-//        if(lastKnownLocation == null){
-//            return null;
-//        }
-//
-//        Marker marker = googleMap.addMarker(new MarkerOptions()
-//                .position(lastKnownLocation)
-//                .title(emotionalState.getDescription())
-//                .icon(icon));
-//
-//        return marker;
-//    }
+    public MarkerOptions getMapMarker(){
+        if(Double.isNaN(lat) || Double.isNaN(lng)){
+            return null;
+        }
+
+        // Get bitmap descriptor for the drawable of the emotional state emoticon.
+        BitmapDescriptor icon =
+                BitmapDescriptorFactory.fromResource(emotionalState.getDrawableId());
+
+         return new MarkerOptions()
+                .position(new LatLng(lat, lng))
+                .title(emotionalState.getDescription())
+                .icon(icon);
+    }
 
 
     /**

@@ -24,6 +24,11 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
@@ -35,7 +40,8 @@ import java.util.Objects;
  * The MoodHistoryActivity displays the main participant's mood history in a readable format,
  * and allows the user to then select a mood event from their history to view.
  */
-public class MoodHistoryActivity extends AppCompatActivity implements MSView<MoodSwing> {
+public class MoodHistoryActivity extends AppCompatActivity implements MSView<MoodSwing>,
+        OnMapReadyCallback{
 
     /** The ListView that will hold the main participant's mood history. */
     private ListView moodHistoryListView;
@@ -53,6 +59,7 @@ public class MoodHistoryActivity extends AppCompatActivity implements MSView<Moo
     /** The main toolbar of the app that lets users navigate to the other parts of the app. */
     Toolbar mainToolbar2;
 
+    GoogleMap historyMap;
 
     /**
      * Spinner that shows the user options for filtering the mood feed and map.
@@ -86,6 +93,12 @@ public class MoodHistoryActivity extends AppCompatActivity implements MSView<Moo
         initialize();
 
         setSupportActionBar(mainToolbar2);
+
+        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.history_map);
+
+        mapFragment.getMapAsync(this);
 
         moodHistoryListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -131,9 +144,20 @@ public class MoodHistoryActivity extends AppCompatActivity implements MSView<Moo
                 Toast.makeText(MoodHistoryActivity.this, "nothing selected", Toast.LENGTH_SHORT).show();
             }
         });
+    }
 
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        historyMap = googleMap;
+        historyMap.setMinZoomPreference(10.0f);
 
+        // Grab the mood swing controller for the last known location.
+        MoodSwingController moodSwingController = MoodSwingApplication.getMoodSwingController();
+        LatLng lastKnownLocation =
+                new LatLng(moodSwingController.getLastKnownLat(),
+                        moodSwingController.getLastKnownLng());
 
+        historyMap.moveCamera(CameraUpdateFactory.newLatLng(lastKnownLocation));
     }
 
     /**
@@ -212,7 +236,15 @@ public class MoodHistoryActivity extends AppCompatActivity implements MSView<Moo
         }
     }
 
-
+    /**
+     * Loads the map markers from the mood events in the mood history onto the map with their
+     * special map markers.
+     */
+    public void loadMapMarkers() {
+        for (MoodEvent moodEvent : moodHistory) {
+            historyMap.addMarker(moodEvent.getMapMarker());
+        }
+    }
 
     /**
      * Load the main participant from the main model class MoodSwing, and set the current moodList
@@ -247,6 +279,9 @@ public class MoodHistoryActivity extends AppCompatActivity implements MSView<Moo
         moodHistoryAdapter = new MoodEventAdapter(this, moodHistory);
         moodHistoryListView.setEmptyView(emptyMoodHistory);
         moodHistoryListView.setAdapter(moodHistoryAdapter);
+
+        // Populate map markers.
+        loadMapMarkers();
     }
 
     /**
