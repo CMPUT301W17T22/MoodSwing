@@ -28,6 +28,7 @@ import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Date;
 import java.util.Objects;
 
@@ -243,8 +244,8 @@ public class MoodHistoryActivity extends AppCompatActivity implements MSView<Moo
             moodHistory = filterByTrigger(moodHistory);
         }
 
-        // reverse moodHistory list into reverse chronological order
-        
+        // put moodHistory list into reverse chronological order
+        Collections.reverse(moodHistory);
 
         // Initialize array adapter.
         moodHistoryAdapter = new MoodEventAdapter(this, moodHistory);

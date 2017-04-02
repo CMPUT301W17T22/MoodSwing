@@ -80,9 +80,8 @@ public class NewMoodEventActivityTest extends ActivityInstrumentationTestCase2<L
         solo.assertCurrentActivity("Wrong Activity!", MoodHistoryActivity.class);
         assertTrue(solo.waitForText("the finale sucked"));
         // view mood details
-        solo.scrollToBottom();
         ListView listView = (ListView)solo.getView(R.id.moodHistory);
-        View moodView = listView.getChildAt(listView.getAdapter().getCount()-1);
+        View moodView = listView.getChildAt(0);
         solo.clickLongOnView(moodView);
         solo.waitForActivity("ViewMoodEventActivity");
         solo.assertCurrentActivity("Wrong Activity!", ViewMoodEventActivity.class);
