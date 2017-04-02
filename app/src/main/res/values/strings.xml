@@ -73,6 +73,7 @@
     <string name="most_used">Most Used:</string>
     <string name="number_of_following">Number of Following:</string>
     <string name="_0">0</string>
+    <string name="emotion_usage_graph">Emotion Usage Graph</string>
 
 
 </resources>

@@ -36,19 +36,13 @@ public class ApprovalList {
     }
 
     /**
-     * Checks to see if the participant is on the pending list of the ApprovalList and if they
-     * are remove them from it and add them to the approved list.
+     * Removes a participant from the pending list and adds them to the approved list.
      * @param otherParticipant
      */
-    public void approvePending(Participant otherParticipant) throws InvalidParameterException {
+    public void approvePending(Participant otherParticipant){
 
-        if (pending.contains(otherParticipant.getUsername())) {
             pending.remove(otherParticipant.getUsername());
             approved.add(otherParticipant.getUsername());
-
-        } else {
-            throw new InvalidParameterException();
-        }
     }
 
     /**

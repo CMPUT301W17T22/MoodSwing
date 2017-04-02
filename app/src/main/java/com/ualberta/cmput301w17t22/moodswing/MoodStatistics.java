@@ -1,6 +1,8 @@
 package com.ualberta.cmput301w17t22.moodswing;
 
 import android.content.Intent;
+import android.content.res.Resources;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -12,14 +14,25 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.utils.ColorTemplate;
+
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
 
 import static java.security.AccessController.getContext;
 
 /**
- * Very basics of MoodStatistics page. Contains menu for navigation and nothing else.
- * Blank canvas for us to add our main wow factor stuff.
- * Will contain statistics about various mood events.
+ * Very basic Mood Statistics page displaying various stats about the main participant and their
+ * mood events.
+ * Bar Chart: http://www.android-examples.com/create-bar-chart-graph-using-mpandroidchart-library/
+ * @author bbest
  */
 public class MoodStatistics extends AppCompatActivity {
 
@@ -53,6 +66,12 @@ public class MoodStatistics extends AppCompatActivity {
     int withGroupCounter;
     int crowdCounter;
 
+    //Bar chart declaration variables
+    BarChart chart ;
+    ArrayList<BarEntry> BARENTRY ;
+    ArrayList<String> BarEntryLabels ;
+    BarDataSet Bardataset ;
+    BarData BARDATA ;
 
     /**
      * Initializes all the widgets for this activity.
@@ -86,6 +105,16 @@ public class MoodStatistics extends AppCompatActivity {
                 MoodSwingApplication.getElasticSearchController();
         mainParticipant =
                 moodSwingController.getMainParticipant();
+
+        //Bar chart initialization
+        chart = (BarChart) findViewById(R.id.chart1);
+
+        BARENTRY = new ArrayList<>();
+
+        BarEntryLabels = new ArrayList<String>();
+
+
+
     }
 
     @Override
@@ -141,8 +170,35 @@ public class MoodStatistics extends AppCompatActivity {
             }
         }
 
+        int[] emotionColors = new int[8];
+
+        emotionColors[0] = getResources().getColor(R.color.angry);
+        emotionColors[1] = getResources().getColor(R.color.happy);
+        emotionColors[2] = getResources().getColor(R.color.sad);
+        emotionColors[3] = getResources().getColor(R.color.fearful);
+        emotionColors[4] = getResources().getColor(R.color.confused);
+        emotionColors[5] = getResources().getColor(R.color.ashamed);
+        emotionColors[6] = getResources().getColor(R.color.disgusted);
+        emotionColors[7] = getResources().getColor(R.color.surprised);
+
         findMostUsedEmotion();
+
         findMostUsedSocial();
+
+        AddValuesToBARENTRY();
+
+        AddValuesToBarEntryLabels();
+
+        Bardataset = new BarDataSet(BARENTRY, "Emotions");
+
+        BARDATA = new BarData(BarEntryLabels, Bardataset);
+
+        Bardataset.setColors(emotionColors);
+
+
+        chart.setData(BARDATA);
+
+        chart.animateY(3000);
 
     }
 
@@ -292,5 +348,33 @@ public class MoodStatistics extends AppCompatActivity {
 
         mostUsedSocialSituation.setText(mostUsedSocial);
     }
+    /**Adds data to the bar values to determine height */
+    public void AddValuesToBARENTRY(){
 
+        BARENTRY.add(new BarEntry(angryCounter, 0));
+        BARENTRY.add(new BarEntry(happyCounter, 1));
+        BARENTRY.add(new BarEntry(sadCounter, 2));
+        BARENTRY.add(new BarEntry(fearCounter, 3));
+        BARENTRY.add(new BarEntry(confusedCounter, 4));
+        BARENTRY.add(new BarEntry(shameCounter, 5));
+        BARENTRY.add(new BarEntry(disgustCounter, 6));
+        BARENTRY.add(new BarEntry(surprisedCounter, 7));
+
+    }
+    /**Adds labels for the bar entries */
+    public void AddValuesToBarEntryLabels(){
+
+        BarEntryLabels.add("");
+        BarEntryLabels.add("");
+        BarEntryLabels.add("");
+        BarEntryLabels.add("");
+        BarEntryLabels.add("");
+        BarEntryLabels.add("");
+        BarEntryLabels.add("");
+        BarEntryLabels.add("");
+
+
+    }
 }
+
+
