@@ -141,7 +141,7 @@ public class MoodStatistics extends AppCompatActivity {
             }
         }
 
-        findMostUsedEmotion();
+       findMostUsedEmotion();
         findMostUsedSocial();
 
     }
