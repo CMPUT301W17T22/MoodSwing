@@ -40,7 +40,6 @@ public class LoginActivity extends AppCompatActivity implements MSView<MoodSwing
      * Triggered when the Activity first starts.
      * <p/>
      * In this we initialize buttons, and log the user in once the button is pushed.
-     * @param savedInstanceState
      */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -130,14 +129,6 @@ public class LoginActivity extends AppCompatActivity implements MSView<MoodSwing
             // Wait for proper input.
             return false;
         }
-
-    }
-
-    /**
-     * Should check whether the user is logged in or not. Called onStart. Not yet implemented.
-     */
-    public void checkLoggedIn() {
-
     }
 
     /**

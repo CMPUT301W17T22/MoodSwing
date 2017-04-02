@@ -64,7 +64,7 @@ public class FollowingRecyclerViewAdapter extends RecyclerView.Adapter<Following
      * on wanting to unfollow, then actually does the unfollowing. We need the holder
      * to get the username, and the view to launch the dialog box.
      */
-    public void launchUnfollowDialog(ViewHolder holder, View v) {
+    public void launchUnfollowDialog(ViewHolder holder, final View v) {
 
         // Get the username to unfollow.
         final String usernameToUnfollow = holder.mContentView.getText().toString();
@@ -98,6 +98,10 @@ public class FollowingRecyclerViewAdapter extends RecyclerView.Adapter<Following
 
                 // Notify the change of data.
                 notifyDataSetChanged();
+
+                // Tell the user.
+                Toast.makeText(v.getRootView().getContext(),
+                        "User unfollowed.", Toast.LENGTH_SHORT).show();
             }
         });
 

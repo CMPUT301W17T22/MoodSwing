@@ -129,7 +129,6 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
 
     /**
      * Called on opening of activity for the first time.
-     * @param savedInstanceState
      */
 
     //command function that executes
@@ -303,10 +302,6 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
     public boolean onOptionsItemSelected(MenuItem item) {
         Intent intent;
         switch (item.getItemId()) {
-            case R.id.homeToolBarButton:
-                // User chose the "Home" item, should navigate to MainActivity.
-
-                return true;
 
             case R.id.followToolBarButton:
                 // User chose the "Follower & Following" action, should navigate to the
@@ -366,7 +361,6 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
         filter_strings.add("By Recent Week");
         filter_strings.add("By Emotion");
         filter_strings.add("By Trigger");
-        //filter_strings.add("Test hidden");
 
         // for our custom spinner options and settings
         ArrayAdapter<String> filterAdapter =
@@ -580,7 +574,8 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
 
 
             case 1:     // sort by recent week
-                Toast.makeText(MainActivity.this, "Adding Recent Week Filter.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this,
+                        "Adding Recent Week Filter.", Toast.LENGTH_SHORT).show();
                 updateFilterMenu(0); // update filter list
                 buildMoodFeed();
                 loadMoodSwing(); // refresh the feed
@@ -594,17 +589,23 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
                 dialog.setCancelable(true);
 
                 // set up radio buttons and filter/cancel buttons
-                final RadioGroup emotionsRadioGroup = (RadioGroup) dialog.findViewById(R.id.emotionsRadioGroup);
-                RadioButton happinessRB = (RadioButton) dialog.findViewById(R.id.happinessRadioButton);
+                final RadioGroup emotionsRadioGroup =
+                        (RadioGroup) dialog.findViewById(R.id.emotionsRadioGroup);
+                RadioButton happinessRB =
+                        (RadioButton) dialog.findViewById(R.id.happinessRadioButton);
                 RadioButton angerRB = (RadioButton) dialog.findViewById(R.id.angerRadioButton);
                 RadioButton disgustRB = (RadioButton) dialog.findViewById(R.id.disgustRadioButton);
-                RadioButton confusionRB = (RadioButton) dialog.findViewById(R.id.confusionRadioButton);
+                RadioButton confusionRB =
+                        (RadioButton) dialog.findViewById(R.id.confusionRadioButton);
                 RadioButton fearRB = (RadioButton) dialog.findViewById(R.id.fearRadioButton);
                 RadioButton sadnessRB = (RadioButton) dialog.findViewById(R.id.sadnessRadioButton);
                 RadioButton shameRB = (RadioButton) dialog.findViewById(R.id.shameRadioButton);
-                RadioButton surpriseRB = (RadioButton) dialog.findViewById(R.id.surpriseRadioButton);
-                Button validateEmotionFilter = (Button) dialog.findViewById(R.id.validateEmotionalFilterButton);
-                Button cancelEmotionFilter = (Button) dialog.findViewById(R.id.cancelEmotionalFilterButton);
+                RadioButton surpriseRB =
+                        (RadioButton) dialog.findViewById(R.id.surpriseRadioButton);
+                Button validateEmotionFilter =
+                        (Button) dialog.findViewById(R.id.validateEmotionalFilterButton);
+                Button cancelEmotionFilter =
+                        (Button) dialog.findViewById(R.id.cancelEmotionalFilterButton);
 
                 // get value chosen if filter button is clicked
                 validateEmotionFilter.setOnClickListener(new View.OnClickListener() {
@@ -613,12 +614,15 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
                         int chosenEmotionIndex = emotionsRadioGroup.getCheckedRadioButtonId();
 
                         if(chosenEmotionIndex == -1) {
-                            Toast.makeText(MainActivity.this, "No emotion selected.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity.this,
+                                    "No emotion selected.", Toast.LENGTH_SHORT).show();
                             dialog.dismiss();
                         } else {
-                            RadioButton chosenEmotionRadioButton = (RadioButton) dialog.findViewById(chosenEmotionIndex);
+                            RadioButton chosenEmotionRadioButton =
+                                    (RadioButton) dialog.findViewById(chosenEmotionIndex);
                             filterEmotion = chosenEmotionRadioButton.getText().toString();
-                            Toast.makeText(MainActivity.this, "Adding filter by " + filterEmotion, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity.this,
+                                    "Adding filter by " + filterEmotion, Toast.LENGTH_SHORT).show();
                             updateFilterMenu(1);
                             dialog.dismiss();
                             buildMoodFeed();
@@ -643,7 +647,8 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
 
             default:                // sort by trigger
                 // from http://stackoverflow.com/questions/10903754/input-text-dialog-android on 3/27
-                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this, R.style.DialogTheme);
+                AlertDialog.Builder builder =
+                        new AlertDialog.Builder(MainActivity.this, R.style.DialogTheme);
 
                 // Method for displaying an edittext nicely in an alertdialog adapted from
                 // http://stackoverflow.com/questions/27774414/add-bigger-margin-to-edittext-in-android-alertdialog
@@ -681,12 +686,17 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
                         filterTrigger = triggerEditText.getText().toString();
                         // make sure filterTrigger is only one word long
                         if (wordCount(filterTrigger) != 1) {
-                            Toast.makeText(MainActivity.this, "Trigger search must be one word long.",
+
+                            Toast.makeText(MainActivity.this,
+                                    "Trigger search must be one word long.",
                                     Toast.LENGTH_SHORT).show();
                             dialog.cancel();
+
                         } else {
                             // filterTrigger is acceptable
-                            Toast.makeText(MainActivity.this, "Adding filter by trigger word: "+ filterTrigger, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity.this,
+                                    "Adding filter by trigger word: "+ filterTrigger,
+                                    Toast.LENGTH_SHORT).show();
                             updateFilterMenu(2);
                             buildMoodFeed();
                             loadMoodSwing();// refresh the feed

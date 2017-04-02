@@ -19,10 +19,8 @@
             android:id="@+id/emotionalStateImageView_ViewMoodEventActivity"
             android:layout_width="50sp"
             android:layout_height="50sp"
-            android:layout_above="@+id/triggerPrefixTextView"
             android:layout_marginBottom="11dp"
             android:layout_marginStart="30dp"
-            android:layout_toEndOf="@+id/emotionalStateTextView_ViewMoodEventActivity"
             android:layout_weight="0.3"
             app:srcCompat="@drawable/emoticon_happiness" />
 
@@ -30,9 +28,7 @@
             android:id="@+id/deleteMoodEventButton_ViewMoodEventActivity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="25dp"
-            android:layout_toStartOf="@+id/socialSituationImageView_ViewMoodEventActivity"
+            android:layout_marginStart="25dp"
             android:layout_weight="0.3"
             android:text="Delete" />
 
@@ -40,9 +36,7 @@
             android:id="@+id/editMoodEventButton_ViewMoodEventActivity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginRight="10dp"
+            android:layout_marginEnd="10dp"
             android:layout_weight="0.3"
             android:text="@string/edit" />
 
@@ -52,7 +46,7 @@
         android:id="@+id/dateTextView_ViewMoodEvent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="14dp"
+        android:layout_marginStart="14dp"
         android:text="TextView"
         android:textAlignment="center" />
 
@@ -63,15 +57,13 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="14dp"
+        android:layout_marginStart="14dp"
         android:orientation="horizontal">
 
         <TextView
             android:id="@+id/usernameTextView_ViewMoodEventActivity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
             android:text="username"
             android:textColor="@color/black"
             android:textSize="18sp" />
@@ -80,8 +72,6 @@
             android:id="@+id/wasFeeling"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/triggerTextView_ViewMoodEventActivity"
-            android:layout_alignParentStart="true"
             android:text=" was feeling"
             android:textColor="@color/black"
             android:textSize="18sp" />
@@ -90,9 +80,7 @@
             android:id="@+id/emotionalStateTextView_ViewMoodEventActivity"
             android:layout_width="185dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/usernameTextView_ViewMoodEventActivity"
-            android:layout_marginLeft="8dp"
-            android:layout_toEndOf="@+id/triggerPrefixTextView"
+            android:layout_marginStart="8dp"
             android:layout_weight="1"
             android:text="emotionalState"
             android:textAllCaps="false"
@@ -103,16 +91,13 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_marginLeft="14dp"
+        android:layout_marginStart="14dp"
         android:orientation="horizontal">
 
         <TextView
             android:id="@+id/socialSituationTextView_ViewMoodEventActivity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/emotionalStateTextView_ViewMoodEventActivity"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/triggerTextView_ViewMoodEventActivity"
             android:layout_marginTop="20dp"
             android:layout_weight="0.14"
             android:text="Social Situation:"
@@ -123,8 +108,6 @@
             android:id="@+id/socialSituationImageView_ViewMoodEventActivity"
             android:layout_width="50sp"
             android:layout_height="50sp"
-            android:layout_alignStart="@+id/emotionalStateImageView_ViewMoodEventActivity"
-            android:layout_below="@+id/triggerTextView_ViewMoodEventActivity"
             android:layout_weight="0.3"
             android:cropToPadding="false"
             app:srcCompat="@drawable/social_situation_alone" />
@@ -138,26 +121,21 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="14dp"
+        android:layout_marginStart="14dp"
         android:orientation="horizontal">
 
         <TextView
             android:id="@+id/triggerPrefixTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/triggerTextView_ViewMoodEventActivity"
-            android:layout_alignParentStart="true"
             android:text="Trigger: "
             android:textColor="@color/black"
             android:textSize="18sp" />
 
         <TextView
             android:id="@+id/triggerTextView_ViewMoodEventActivity"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_below="@+id/emotionalStateTextView_ViewMoodEventActivity"
-            android:layout_toEndOf="@+id/triggerPrefixTextView"
             android:layout_weight="1"
             android:text="trigger"
             android:textColor="@color/black"
@@ -169,10 +147,8 @@
         android:id="@+id/imageImageView_ViewMoodEventActivity"
         android:layout_width="match_parent"
         android:layout_height="182dp"
-        android:layout_alignParentStart="true"
-        android:layout_centerVertical="true"
         android:adjustViewBounds="true"
-        android:scaleType="centerInside"
+        android:scaleType="fitCenter"
         app:srcCompat="@android:drawable/ic_menu_gallery" />
 
     <fragment xmlns:android="http://schemas.android.com/apk/res/android"

@@ -169,20 +169,23 @@ public class MoodHistoryActivity extends AppCompatActivity implements MSView<Moo
         switch (item.getItemId()) {
             case R.id.homeToolBarButton:
                 // User chose the "Home" item, should navigate to MainActivity.
-                intent = new Intent(MoodHistoryActivity.this, MainActivity.class);
-                startActivity(intent);
+                finish();
+                //intent = new Intent(MoodHistoryActivity.this, MainActivity.class);
+                //startActivity(intent);
                 return true;
 
             case R.id.followToolBarButton:
                 // User chose the "Follower & Following" action, should navigate to the
                 // follower/following activity
                 intent = new Intent(MoodHistoryActivity.this, MainFollowActivity.class);
+                finish();
                 startActivity(intent);
                 return true;
 
             case R.id.newMoodEventToolBarButton:
                 // User chose the "New Mood Event" item, should navigate the NewMoodEventActivity.
                 intent = new Intent(MoodHistoryActivity.this, NewMoodEventActivity.class);
+                finish();
                 startActivity(intent);
                 return true;
 
@@ -190,6 +193,7 @@ public class MoodHistoryActivity extends AppCompatActivity implements MSView<Moo
                 // User chose the "Block User" item, should navigate to the
                 // BlockUserActivity.
                 intent = new Intent(MoodHistoryActivity.this, BlockUserActivity.class);
+                finish();
                 startActivity(intent);
                 return true;
 
@@ -197,6 +201,7 @@ public class MoodHistoryActivity extends AppCompatActivity implements MSView<Moo
                 // User chose the "Block User" item, should navigate to the
                 // BlockUserActivity.
                 intent = new Intent(MoodHistoryActivity.this, MoodStatistics.class);
+                finish();
                 startActivity(intent);
                 return true;
 

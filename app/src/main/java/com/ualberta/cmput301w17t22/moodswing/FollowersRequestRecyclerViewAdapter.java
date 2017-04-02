@@ -8,11 +8,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
 /** TODO: Javadocs.
- * {@link RecyclerView.Adapter} that can display a {@link DummyItem} and makes a call to the
+ * {@link RecyclerView.Adapter} that can display a and makes a call to the
  * specified {@link OnListFragmentInteractionListener}.
  */
 public class FollowersRequestRecyclerViewAdapter extends RecyclerView.Adapter<FollowersRequestRecyclerViewAdapter.ViewHolder> {
@@ -72,7 +73,7 @@ public class FollowersRequestRecyclerViewAdapter extends RecyclerView.Adapter<Fo
      * getting user confirmation of approval, and also doing the acutal approving. We need
      * the holder to get the username to approve, and the view to show the dialog box.
      */
-    public void launchApproveDialog(ViewHolder holder, View v) {
+    public void launchApproveDialog(ViewHolder holder, final View v) {
         final String usernameToApprove = holder.mContentView.getText().toString();
 
         // Create dialog box for denying a user's follow request.
@@ -106,6 +107,10 @@ public class FollowersRequestRecyclerViewAdapter extends RecyclerView.Adapter<Fo
 
                 // Notify the change of data.
                 notifyDataSetChanged();
+
+                // Tell the user.
+                Toast.makeText(v.getRootView().getContext(),
+                        "Follower request approved!", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -129,7 +134,7 @@ public class FollowersRequestRecyclerViewAdapter extends RecyclerView.Adapter<Fo
      * and also actual does the denying. We need the holder for the username and the view
      * to push the dialog to.
      */
-    public void launchDenyDialog(ViewHolder holder, View v) {
+    public void launchDenyDialog(ViewHolder holder, final View v) {
         final String usernameToDeny = holder.mContentView.getText().toString();
 
         // Create dialog box for denying a user's follow request.
@@ -162,6 +167,10 @@ public class FollowersRequestRecyclerViewAdapter extends RecyclerView.Adapter<Fo
 
                 // Notify the change of data.
                 notifyDataSetChanged();
+
+                // Tell the user.
+                Toast.makeText(v.getRootView().getContext(),
+                        "Follower request denied.", Toast.LENGTH_SHORT).show();
             }
         });
 

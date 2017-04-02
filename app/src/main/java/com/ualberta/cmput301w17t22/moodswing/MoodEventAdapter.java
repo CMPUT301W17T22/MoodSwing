@@ -101,7 +101,7 @@ public class MoodEventAdapter extends ArrayAdapter<MoodEvent> {
         emoticonImageView.setImageDrawable(getContext().getDrawable(moodEvent.getEmotionalState().getDrawableId()));
 
         //Social situation
-        if(moodEvent.getSocialSituation().getDescription() == ""){
+        if(moodEvent.getSocialSituation().getDescription().equals("")) {
             socialSituationImageView.setVisibility(View.INVISIBLE);
         } else {
             socialSituationImageView.setVisibility(View.VISIBLE);
