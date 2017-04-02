@@ -64,11 +64,11 @@
     <ListView
         android:id="@+id/moodHistory"
         android:layout_width="match_parent"
-        android:layout_height="285dp"
+        android:layout_height="350dp"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/textView"
-        android:scrollbars="vertical"
-        android:nestedScrollingEnabled="true" />
+        android:nestedScrollingEnabled="true"
+        android:scrollbars="vertical" />
 
     <TextView
         android:id="@+id/emptyMoodHistory"
@@ -80,12 +80,23 @@
         android:textSize="18sp"
         android:visibility="gone" />
 
+    <TextView
+        android:id="@+id/MoodHistoryMapTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark"
+        android:text="Mood History Map"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
     <fragment xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/history_map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="450dp"
         tools:context="com.ualberta.cmput301w17t22.moodswing.MapsFragment" />
 
 
