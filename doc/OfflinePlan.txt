@@ -1,0 +1,4 @@
+NewMoodEventActivity saves mood event to android
+Main activity tries to elastic search save.
+	Exception is passed up from elastic search back to main activity so that save can be done if elastic search fails.
+Still need to figure out what happens when network listenner is activated...
