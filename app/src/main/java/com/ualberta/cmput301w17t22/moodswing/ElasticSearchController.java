@@ -155,13 +155,11 @@ public class ElasticSearchController implements MSController {
                     return o1.getDate().compareTo(o2.getDate());
                 }
             });
-            //Collections.reverse(moodFeed);
+            Collections.reverse(moodFeed);
         }
-
-
         return moodFeed;
-
     }
+
     /**This class initializes the Mood Feed and populates it with the participants the main participant
      * follows most recent mood events. */
     public static class BuildMoodFeedTask extends AsyncTask<Object, Void, ArrayList<MoodEvent>> {
