@@ -69,9 +69,6 @@ public class MoodHistoryActivity extends AppCompatActivity implements MSView<Moo
     /** The map fragment for he mood events to be displayed on. */
     GoogleMap historyMap;
 
-    /** Boolean to detect whether the map has loaded yet. */
-    Boolean mapLoaded;
-
     SupportMapFragment mapFragment;
 
     /** The last known location of the user. */
@@ -85,7 +82,7 @@ public class MoodHistoryActivity extends AppCompatActivity implements MSView<Moo
     // necessary?
     ElasticSearchController elasticSearchController;
 
-    ArrayList<String> filter_strings = new ArrayList<>();
+    ArrayList<String> filterStrings = new ArrayList<>();
 
     // The trigger word that the user will search for in filter
     private String filterTrigger = "";
@@ -94,10 +91,11 @@ public class MoodHistoryActivity extends AppCompatActivity implements MSView<Moo
 
     /**
      * shows which filters are active and which aren't
-     * if activeFilters = [a, b, c], a = recent week, b = emotion filter, c = trigger filter
+     * if activeFilters = [a, b, c, d]
+     * a = recent week, b = emotion filter, c = trigger filter, d = 5km filter
      * activeFilters[x] = 1: this filter is active, 0: this filter is not applied
      */
-    private int[] activeFilters = new int[3];   // should be initialized to 0
+    private int[] activeFilters = new int[4];   // should be initialized to 0
 
     // For whether or not to display filter messages
     boolean displayFilterToast = false;
@@ -110,9 +108,6 @@ public class MoodHistoryActivity extends AppCompatActivity implements MSView<Moo
 
         // Initialize all widgets for this activity.
         initialize();
-
-        // When the activity first loads, the map has not loaded.
-        mapLoaded = false;
 
         setSupportActionBar(mainToolbar2);
 
@@ -156,7 +151,7 @@ public class MoodHistoryActivity extends AppCompatActivity implements MSView<Moo
         filterSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                //Toast.makeText(MainActivity.this, filter_strings.get(position)+"selected", Toast.LENGTH_SHORT);
+
                 int selected = filterSpinner.getSelectedItemPosition();
                 handleFilterSelection(selected);
                 displayFilterToast = true;
@@ -165,23 +160,10 @@ public class MoodHistoryActivity extends AppCompatActivity implements MSView<Moo
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
                 Toast.makeText(MoodHistoryActivity.this,
-                        "nothing selected",
+                        "Nothing selected.",
                         Toast.LENGTH_SHORT).show();
             }
         });
-    }
-
-    /**
-     * On the activity resume, reload the map markers.
-     */
-    @Override
-    public void onResume() {
-        super.onResume();
-        if (mapLoaded) {
-            Log.i("MapMarkers", "Got here.");
-            historyMap.clear();
-            loadMapMarkers();
-        }
     }
 
     @Override
@@ -198,8 +180,6 @@ public class MoodHistoryActivity extends AppCompatActivity implements MSView<Moo
 
         // Populate the map with custom markers for the mood events.
         loadMapMarkers();
-
-        mapLoaded = true;
 
         historyMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
             @Override
@@ -236,7 +216,7 @@ public class MoodHistoryActivity extends AppCompatActivity implements MSView<Moo
     /**
      * Inflates the menu. Connects the menu_main_activity.xml to the
      * menu_main_activity in activity_main.xml.
-     * @param menu
+     * @param appappmenu
      * @return
      */
     @Override
@@ -255,8 +235,6 @@ public class MoodHistoryActivity extends AppCompatActivity implements MSView<Moo
             case R.id.homeToolBarButton:
                 // User chose the "Home" item, should navigate to MainActivity.
                 finish();
-                //intent = new Intent(MoodHistoryActivity.this, MainActivity.class);
-                //startActivity(intent);
                 return true;
 
             case R.id.followToolBarButton:
@@ -282,8 +260,7 @@ public class MoodHistoryActivity extends AppCompatActivity implements MSView<Moo
                 return true;
 
             case R.id.moodStatisticsToolBarButton:
-                // User chose the "Block User" item, should navigate to the
-                // BlockUserActivity.
+                // User chose the "Block User" item, should navigate to the MoodStatisticsActivity.
                 intent = new Intent(MoodHistoryActivity.this, MoodStatistics.class);
                 finish();
                 startActivity(intent);
@@ -301,50 +278,36 @@ public class MoodHistoryActivity extends AppCompatActivity implements MSView<Moo
      * special map markers.
      */
     public void loadMapMarkers() {
-
-        Location lastKnownLocationLocation = new Location("");
-        lastKnownLocationLocation.setLatitude(lastKnownLocation.latitude);
-        lastKnownLocationLocation.setLongitude(lastKnownLocation.longitude);
-
         for (MoodEvent moodEvent : moodHistory) {
 
             // If the mood event has a location, make a map marker for it.
             if (!Double.isNaN(moodEvent.getLat()) && !Double.isNaN(moodEvent.getLng())) {
 
-                Location moodEventLocation = new Location("");
-                moodEventLocation.setLatitude(moodEvent.getLat());
-                moodEventLocation.setLongitude(moodEvent.getLng());
+                EmotionalState emotionalState = moodEvent.getEmotionalState();
 
-                // Check the distance between the last known location and the mood event location
-                // using the Location object's distanceTo function. 
-                if (lastKnownLocationLocation.distanceTo(moodEventLocation) < 5000.0) {
-                    EmotionalState emotionalState = moodEvent.getEmotionalState();
+                // Method to resize bitmap taken from
+                // http://stackoverflow.com/questions/14851641/change-marker-size-in-google-maps-api-v2
+                // on 04/02/2017.
+                Bitmap imageBitmap = BitmapFactory.decodeResource(getResources(),
+                        emotionalState.getDrawableId());
+                Bitmap resizedBitmap = Bitmap.createScaledBitmap(imageBitmap, 120, 120, false);
 
-                    // Method to resize bitmap taken from
-                    // http://stackoverflow.com/questions/14851641/change-marker-size-in-google-maps-api-v2
-                    // on 04/02/2017.
-                    Bitmap imageBitmap = BitmapFactory.decodeResource(getResources(),
-                            emotionalState.getDrawableId());
-                    Bitmap resizedBitmap = Bitmap.createScaledBitmap(imageBitmap, 120, 120, false);
+                // Create the icon from the resized emoticon
+                BitmapDescriptor icon = BitmapDescriptorFactory.fromBitmap(resizedBitmap);
 
-                    // Create the icon from the resized emoticon
-                    BitmapDescriptor icon =
-                            BitmapDescriptorFactory.fromBitmap(resizedBitmap);
+                MarkerOptions markerOptions = new MarkerOptions()
+                        .position(new LatLng(moodEvent.getLat(), moodEvent.getLng()))
+                        .title(emotionalState.getDescription())
+                        .snippet(moodEvent.getOriginalPoster())
+                        .icon(icon);
 
-                    MarkerOptions markerOptions = new MarkerOptions()
-                            .position(new LatLng(moodEvent.getLat(), moodEvent.getLng()))
-                            .title(emotionalState.getDescription())
-                            .snippet(moodEvent.getOriginalPoster())
-                            .icon(icon);
+                Marker marker = historyMap.addMarker(markerOptions);
 
-                    Marker marker =
-                            historyMap.addMarker(markerOptions);
-
-                    // Set the tag of the marker to be the mood event's position in the mood history.
-                    marker.setTag(moodHistory.indexOf(moodEvent));
-                }
+                // Set the tag of the marker to be the mood event's position in the mood history.
+                marker.setTag(moodHistory.indexOf(moodEvent));
             }
-        }
+
+        } // end for loop
     }
 
     /**
@@ -358,9 +321,7 @@ public class MoodHistoryActivity extends AppCompatActivity implements MSView<Moo
         mainParticipant = moodSwingController.getMainParticipant();
         moodHistory = mainParticipant.getMoodHistory();
 
-        //Log.d("msec", moodHistory.toString());
-        //TODO: Put filter items here
-        // filter by week here
+        // filter by week
         if (activeFilters[0] == 1){
             moodHistory = filterRecentWeek(moodHistory);
         }
@@ -370,10 +331,14 @@ public class MoodHistoryActivity extends AppCompatActivity implements MSView<Moo
             moodHistory = filterByEmotion(moodHistory);
         }
 
-        //Log.d("reout", String.valueOf(activeFilters[2]));
         // filter by trigger
         if (activeFilters[2] == 1){
             moodHistory = filterByTrigger(moodHistory);
+        }
+
+        // filter by within 5km
+        if (activeFilters[3] == 1){
+            moodHistory = filterByDistance(moodHistory);
         }
 
         // Initialize array adapter.
@@ -393,15 +358,15 @@ public class MoodHistoryActivity extends AppCompatActivity implements MSView<Moo
         filterSpinner = (Spinner) findViewById(R.id.filterSpinnerMoodHistory);
 
         // these populate the filter spinner
-        filter_strings.add("No Filter");
-        filter_strings.add("By Recent Week");
-        filter_strings.add("By Emotion");
-        filter_strings.add("By Trigger");
-        //filter_strings.add("Test hidden");
+        filterStrings.add("No Filter");
+        filterStrings.add("By Recent Week");
+        filterStrings.add("By Emotion");
+        filterStrings.add("By Trigger");
+        filterStrings.add("Within 5km");
 
         // for our custom spinner options and settings
         ArrayAdapter<String> filterAdapter =
-                new ArrayAdapter<>(this, R.layout.filter_spinner, filter_strings);
+                new ArrayAdapter<>(this, R.layout.filter_spinner, filterStrings);
         filterSpinner.setAdapter(filterAdapter);
 
 
@@ -415,8 +380,9 @@ public class MoodHistoryActivity extends AppCompatActivity implements MSView<Moo
      * @param moodSwing
      */
     public void update(MoodSwing moodSwing) {
-
         loadMoodSwing();
+        historyMap.clear();
+        loadMapMarkers();
     }
 
 
@@ -441,21 +407,27 @@ public class MoodHistoryActivity extends AppCompatActivity implements MSView<Moo
     public void updateFilterUI() {
 
         if (activeFilters[0] == 1) {     // recent week filter active
-            filter_strings.set(1, "By Recent Week: On");
+            filterStrings.set(1, "By Recent Week: On");
         } else {                        // recent week filter off
-            filter_strings.set(1, "By Recent Week");
+            filterStrings.set(1, "By Recent Week");
         }
 
         if (activeFilters[1] == 1) { // emotion filter on
-            filter_strings.set(2, "By Emotion: " + filterEmotion);
+            filterStrings.set(2, "By Emotion: " + filterEmotion);
         } else {                    // emotion filter off
-            filter_strings.set(2, "By Emotion");
+            filterStrings.set(2, "By Emotion");
         }
 
         if (activeFilters[2] == 1) {    // trigger filter on
-            filter_strings.set(3, "By Trigger: " + filterTrigger);
+            filterStrings.set(3, "By Trigger: " + filterTrigger);
         } else {                        // trigger filter off
-            filter_strings.set(3, "By Trigger");
+            filterStrings.set(3, "By Trigger");
+        }
+
+        if (activeFilters[3] == 1) { // 5km filter on
+            filterStrings.set(4, "Within 5km: On");
+        } else {
+            filterStrings.set(4, "Within 5km");
         }
     }
 
@@ -467,12 +439,13 @@ public class MoodHistoryActivity extends AppCompatActivity implements MSView<Moo
      * i = 0 is recent week, i = 1 is emotion filter, i = 2 is trigger filter, -1 is no filters
      */
     public void updateFilterMenu(int i) {
-        if(i < 0 | i > 2) { // by default, reset all filters, includes i = -1 case
+        if(i < 0 | i > 3) { // by default, reset all filters, includes i = -1 case
             filterTrigger = "";
             filterEmotion = "";
             activeFilters[0] = 0;
             activeFilters[1] = 0;
             activeFilters[2] = 0;
+            activeFilters[3] = 0;
         } else {            // flip the appropriate filter
             activeFilters[i] = activeFilters[i] ^= 1;
         }
@@ -524,7 +497,6 @@ public class MoodHistoryActivity extends AppCompatActivity implements MSView<Moo
         return returnMoodList;
     }
 
-
     /**
      * Given a list of MoodEvents, remove the MoodEvents that are not equal
      * equal to the filtered trigger word. Simply done with a for loop because all
@@ -544,6 +516,35 @@ public class MoodHistoryActivity extends AppCompatActivity implements MSView<Moo
         return returnMoodList;    // for now until filterByEmotion is done
     }
 
+    /**
+     * Given a list of MoodEvents, remove the MoodEvents that are not within 5km to the
+     * current location of the android device. Done with a for loop because all the MoodHistory
+     * items are already loaded.
+     * @param moodList The list of mood events to filter.
+     * @return The list of mood events within 5km of the current location.
+     */
+    public ArrayList<MoodEvent> filterByDistance(ArrayList<MoodEvent> moodList) {
+        ArrayList<MoodEvent> returnMoodList = new ArrayList<>();
+
+        Location lastKnownLocationLocation = new Location("");
+        lastKnownLocationLocation.setLatitude(lastKnownLocation.latitude);
+        lastKnownLocationLocation.setLongitude(lastKnownLocation.longitude);
+
+        for (MoodEvent moodEvent : moodList) {
+
+            Location moodEventLocation = new Location("");
+            moodEventLocation.setLatitude(moodEvent.getLat());
+            moodEventLocation.setLongitude(moodEvent.getLng());
+
+            // Check the distance between the last known location and the mood event location
+            // using the Location object's distanceTo function.
+            if (lastKnownLocationLocation.distanceTo(moodEventLocation) < 5000.0) {
+                returnMoodList.add(moodEvent);
+            }
+        }
+
+        return returnMoodList;
+    }
 
     /**
      * searchForKeyword is a helper function for filterByTrigger.
@@ -570,9 +571,6 @@ public class MoodHistoryActivity extends AppCompatActivity implements MSView<Moo
         return false;
     }
 
-
-
-
     /**
      * handleFilterSelection is called when a new filter spinner item is selected.
      * It acts depending on what item was chosen and applies the proper filters if necessary.
@@ -586,54 +584,73 @@ public class MoodHistoryActivity extends AppCompatActivity implements MSView<Moo
         switch (selected) {
             case 0:       // no filter selected
                 if(displayFilterToast){
-                    Toast.makeText(MoodHistoryActivity.this, "No filters.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MoodHistoryActivity.this,
+                            "No filters.", Toast.LENGTH_SHORT).show();
                 }
                 updateFilterMenu(-1);   // update filter list
-                loadMoodSwing(); // refresh the feed
+                update(MoodSwingApplication.getMoodSwing()); // refresh
                 break;
 
 
             case 1:     // sort by recent week
-                Toast.makeText(MoodHistoryActivity.this, "Adding Recent Week Filter.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MoodHistoryActivity.this,
+                        "Filtering by Recent Week", Toast.LENGTH_SHORT).show();
                 updateFilterMenu(0); // update filter list
-                loadMoodSwing(); // refresh the feed
+                update(MoodSwingApplication.getMoodSwing()); // refresh
                 break;
 
             case 2:      // sort by emotion
-                // from http://stackoverflow.com/questions/10903754/input-text-dialog-android on 3/27
+                // from http://stackoverflow.com/questions/10903754/input-text-dialog-android
+                // on 3/27
                 final Dialog dialog = new Dialog(MoodHistoryActivity.this);
                 dialog.setContentView(R.layout.emotional_state_dialogue_box);
                 dialog.setTitle("Select an emotion to filter.");
                 dialog.setCancelable(true);
 
                 // set up radio buttons and filter/cancel buttons
-                final RadioGroup emotionsRadioGroup = (RadioGroup) dialog.findViewById(R.id.emotionsRadioGroup);
-                RadioButton happinessRB = (RadioButton) dialog.findViewById(R.id.happinessRadioButton);
-                RadioButton angerRB = (RadioButton) dialog.findViewById(R.id.angerRadioButton);
-                RadioButton disgustRB = (RadioButton) dialog.findViewById(R.id.disgustRadioButton);
-                RadioButton confusionRB = (RadioButton) dialog.findViewById(R.id.confusionRadioButton);
-                RadioButton fearRB = (RadioButton) dialog.findViewById(R.id.fearRadioButton);
-                RadioButton sadnessRB = (RadioButton) dialog.findViewById(R.id.sadnessRadioButton);
-                RadioButton shameRB = (RadioButton) dialog.findViewById(R.id.shameRadioButton);
-                RadioButton surpriseRB = (RadioButton) dialog.findViewById(R.id.surpriseRadioButton);
-                Button validateEmotionFilter = (Button) dialog.findViewById(R.id.validateEmotionalFilterButton);
-                Button cancelEmotionFilter = (Button) dialog.findViewById(R.id.cancelEmotionalFilterButton);
+                final RadioGroup emotionsRadioGroup =
+                        (RadioGroup) dialog.findViewById(R.id.emotionsRadioGroup);
+                RadioButton happinessRB =
+                        (RadioButton) dialog.findViewById(R.id.happinessRadioButton);
+                RadioButton angerRB =
+                        (RadioButton) dialog.findViewById(R.id.angerRadioButton);
+                RadioButton disgustRB =
+                        (RadioButton) dialog.findViewById(R.id.disgustRadioButton);
+                RadioButton confusionRB =
+                        (RadioButton) dialog.findViewById(R.id.confusionRadioButton);
+                RadioButton fearRB =
+                        (RadioButton) dialog.findViewById(R.id.fearRadioButton);
+                RadioButton sadnessRB =
+                        (RadioButton) dialog.findViewById(R.id.sadnessRadioButton);
+                RadioButton shameRB =
+                        (RadioButton) dialog.findViewById(R.id.shameRadioButton);
+                RadioButton surpriseRB =
+                        (RadioButton) dialog.findViewById(R.id.surpriseRadioButton);
+                Button validateEmotionFilter =
+                        (Button) dialog.findViewById(R.id.validateEmotionalFilterButton);
+                Button cancelEmotionFilter =
+                        (Button) dialog.findViewById(R.id.cancelEmotionalFilterButton);
 
                 // get value chosen if filter button is clicked
                 validateEmotionFilter.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         int chosenEmotionIndex = emotionsRadioGroup.getCheckedRadioButtonId();
+
                         if(chosenEmotionIndex == -1){
-                            Toast.makeText(MoodHistoryActivity.this, "No emotion selected.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MoodHistoryActivity.this,
+                                    "No emotion selected.", Toast.LENGTH_SHORT).show();
                             dialog.dismiss();
+
                         } else {
-                            RadioButton chosenEmotionRadioButton = (RadioButton) dialog.findViewById(chosenEmotionIndex);
+                            RadioButton chosenEmotionRadioButton =
+                                    (RadioButton) dialog.findViewById(chosenEmotionIndex);
                             filterEmotion = chosenEmotionRadioButton.getText().toString();
-                            Toast.makeText(MoodHistoryActivity.this, "Adding filter by " + filterEmotion, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MoodHistoryActivity.this,
+                                    "Adding filter by " + filterEmotion, Toast.LENGTH_SHORT).show();
                             updateFilterMenu(1);
                             dialog.dismiss();
-                            loadMoodSwing(); // refresh the feed
+                            update(MoodSwingApplication.getMoodSwing()); // refresh the feed
                         }
 
                     }
@@ -646,15 +663,16 @@ public class MoodHistoryActivity extends AppCompatActivity implements MSView<Moo
                     }
                 });
 
-
                 // now that the dialog is set up, it's time to show it
                 dialog.show();
                 break;
 
 
-            default:                // sort by trigger
-                // from http://stackoverflow.com/questions/10903754/input-text-dialog-android on 3/27
-                AlertDialog.Builder builder = new AlertDialog.Builder(MoodHistoryActivity.this, R.style.DialogTheme);
+            case 3:                // sort by trigger
+                // from http://stackoverflow.com/questions/10903754/input-text-dialog-android
+                // on 3/27
+                AlertDialog.Builder builder =
+                        new AlertDialog.Builder(MoodHistoryActivity.this, R.style.DialogTheme);
 
                 // Method for displaying an edittext nicely in an alertdialog adapted from
                 // http://stackoverflow.com/questions/27774414/add-bigger-margin-to-edittext-in-android-alertdialog
@@ -692,14 +710,17 @@ public class MoodHistoryActivity extends AppCompatActivity implements MSView<Moo
                         filterTrigger = triggerEditText.getText().toString();
                         // make sure filterTrigger is only one word long
                         if (wordCount(filterTrigger) != 1) {
-                            Toast.makeText(MoodHistoryActivity.this, "Trigger search must be one word long.",
+                            Toast.makeText(MoodHistoryActivity.this,
+                                    "Trigger search must be one word long.",
                                     Toast.LENGTH_SHORT).show();
                             dialog.cancel();
                         } else {
                             // filterTrigger is acceptable
-                            Toast.makeText(MoodHistoryActivity.this, "Adding filter by trigger word: "+ filterTrigger, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MoodHistoryActivity.this,
+                                    "Adding filter by trigger word: "+ filterTrigger,
+                                    Toast.LENGTH_SHORT).show();
                             updateFilterMenu(2);
-                            loadMoodSwing();// refresh the feed
+                            update(MoodSwingApplication.getMoodSwing()); // refresh
                         }
                     }
                 });
@@ -712,7 +733,14 @@ public class MoodHistoryActivity extends AppCompatActivity implements MSView<Moo
 
                 builder.show();
                 break;
-        }
 
+            case 4: // sort for within 5km
+                Toast.makeText(MoodHistoryActivity.this,
+                        "Filtering Within 5km", Toast.LENGTH_SHORT).show();
+                updateFilterMenu(3); // update filter list
+                update(MoodSwingApplication.getMoodSwing()); // refresh
+                break;
+
+        }
     }
 }

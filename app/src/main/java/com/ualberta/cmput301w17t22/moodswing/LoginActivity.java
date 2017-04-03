@@ -1,7 +1,9 @@
 package com.ualberta.cmput301w17t22.moodswing;
 
+import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -56,6 +58,9 @@ public class LoginActivity extends AppCompatActivity implements MSView<MoodSwing
 
         // Initialize all widgets and add the view to the main model class.
         initialize();
+
+        // Check for permissions.
+        checkPermissions();
 
         // Login Button button press. Fetch user data from ElasticSearch,
         // if nothing is found, create user data.
@@ -129,6 +134,29 @@ public class LoginActivity extends AppCompatActivity implements MSView<MoodSwing
             // Wait for proper input.
             return false;
         }
+    }
+
+    /**
+     * Check that all the permissions that the app requires are granted.
+     */
+    public void checkPermissions() {
+        /**
+         * <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+         <uses-permission android:name="android.permission.INTERNET" />
+         <uses-permission android:name="com.google.android.provider.gsf.permission.READ_GSERVICSE" />
+         <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+         <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+         <uses-permission android:name="android.permission.INTERNET" />
+         <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+         <uses-permission android:name="android.permission.CAMERA" />
+         */
+
+        int accessNetworkStatePermission = ContextCompat.checkSelfPermission(LoginActivity.this,
+                Manifest.permission.ACCESS_NETWORK_STATE);
+        int fineLocationPermission = ContextCompat.checkSelfPermission(LoginActivity.this,
+                Manifest.permission.ACCESS_FINE_LOCATION);
+        int coarseLocationPermission = ContextCompat.checkSelfPermission(LoginActivity.this,
+                Manifest.permission.ACCESS_COARSE_LOCATION);
     }
 
     /**
