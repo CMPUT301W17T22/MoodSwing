@@ -48,6 +48,30 @@
         ]
     },
     {
+        "outputFile": "C:\\Users\\Henry\\Documents\\GitHub\\Current\\MoodSwing\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v18\\values-v18.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 48,
+                    "endOffset": 99
+                },
+                "from": {
+                    "file": "C:\\Users\\Henry\\.android\\build-cache\\84c1fa54b483296fe1b99aea8b6ff2fdc87de653\\output\\res\\values-v18\\values-v18.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 48,
+                        "endOffset": 99
+                    }
+                }
+            }
+        ]
+    },
+    {
         "outputFile": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v18\\values-v18.xml",
         "map": [
             {

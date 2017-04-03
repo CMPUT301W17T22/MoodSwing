@@ -40,10 +40,10 @@
             android:id="@+id/emotionalStateSpinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/black"
             android:entries="@array/emotionalState_array"
-            android:prompt="@string/mood_prompt"
             android:popupBackground="#fff"
-            />
+            android:prompt="@string/mood_prompt" />
     </RelativeLayout>
 
 
@@ -72,10 +72,12 @@
             android:id="@+id/socialSituationSpinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:backgroundTint="@color/black"
             android:entries="@array/socialSituation_array"
-            android:prompt="@string/socialSituation_prompt"
             android:popupBackground="#fff"
-            android:layout_alignParentStart="true" />
+            android:prompt="@string/socialSituation_prompt"
+            android:theme="@style/AppTheme" />
     </RelativeLayout>
 
 

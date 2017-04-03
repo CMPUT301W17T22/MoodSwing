@@ -724,6 +724,7 @@
     <integer name="hide_password_duration">320</integer>
     <integer name="show_password_duration">200</integer>
     <integer name="status_bar_notification_info_maxnum">999</integer>
+    <string name="_0">0</string>
     <string name="abc_action_bar_home_description">Navigate home</string>
     <string name="abc_action_bar_home_description_format">%1$s, %2$s</string>
     <string name="abc_action_bar_home_subtitle_description_format">%1$s, %2$s, %3$s</string>
@@ -783,6 +784,7 @@
     <string name="common_signin_button_text_long">Sign in with Google</string>
     <string name="edit">Edit</string>
     <string name="emotionFilter">By Emotion</string>
+    <string name="emotion_usage_graph"> Emotion Usage Graph</string>
     <string name="emotionalstate">Emotional State:</string>
     <string name="entry_required">Entry is required!</string>
     <string name="followers_following">Followers &amp; Following</string>
@@ -796,13 +798,17 @@
     <string name="main_welcome_text">Welcome (USERNAME and ID)!</string>
     <string name="mood_history">View Mood History</string>
     <string name="mood_prompt">Choose your emotional state</string>
+    <string name="mood_statistics">View Mood Statistics</string>
     <string name="moodfeedtitle">Mood Event Feed</string>
     <string name="moodhistorytitle">Mood Event History</string>
     <string name="moodswing">MoodSwing</string>
+    <string name="most_used">Most Used:</string>
     <string name="new_mood_event">New Mood Event</string>
     <string name="no_follow_requests_text">You currently have no one requesting to follow you.</string>
     <string name="no_followers_text">You currently have no followers!</string>
     <string name="not_blocking_text">You are currently not blocking any users.</string>
+    <string name="number_of_followers">Number of Followers:</string>
+    <string name="number_of_following">Number of Following:</string>
     <string name="password_toggle_content_description">Toggle password visibility</string>
     <string name="path_password_eye" translatable="false">M12,4.5C7,4.5 2.73,7.61 1,12c1.73,4.39 6,7.5 11,7.5s9.27,-3.11 11,-7.5c-1.73,-4.39 -6,-7.5 -11,-7.5zM12,17c-2.76,0 -5,-2.24 -5,-5s2.24,-5 5,-5 5,2.24 5,5 -2.24,5 -5,5zM12,9c-1.66,0 -3,1.34 -3,3s1.34,3 3,3 3,-1.34 3,-3 -1.34,-3 -3,-3z</string>
     <string name="path_password_eye_mask_strike_through" translatable="false">M2,4.27 L19.73,22 L22.27,19.46 L4.54,1.73 L4.54,1 L23,1 L23,23 L1,23 L1,4.27 Z</string>

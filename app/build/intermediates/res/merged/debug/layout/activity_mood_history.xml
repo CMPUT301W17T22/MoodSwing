@@ -9,9 +9,9 @@
     <android.support.v7.widget.Toolbar
         android:id="@+id/mainToolBar2"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
+        android:layout_height="56dp"
         android:layout_alignParentTop="true"
-        android:background="?attr/colorPrimary"
+        android:background="@color/colorPrimary"
         android:elevation="4dp"
         android:theme="@style/AppTheme"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
@@ -35,7 +35,7 @@
         android:id="@+id/filterToolbar_MoodHistory"
         android:layout_width="match_parent"
         android:layout_height="30dp"
-        android:background="?attr/colorPrimary"
+        android:background="@color/colorPrimary"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:titleTextColor="@color/white">
@@ -48,26 +48,57 @@
             android:text="@string/moodhistorytitle"
             android:textColor="@color/white"
             android:textSize="18sp" />
+
+
+        <Spinner
+            android:id="@+id/filterSpinnerMoodHistory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:gravity="right"
+            android:popupBackground="@color/white"
+            android:textAlignment="gravity"
+            android:theme="@style/AppTheme" />
     </android.support.v7.widget.Toolbar>
 
     <ListView
         android:id="@+id/moodHistory"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="250dp"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/textView"
-        android:divider="?attr/dividerHorizontal"
+        android:nestedScrollingEnabled="true"
         android:scrollbars="vertical" />
 
     <TextView
         android:id="@+id/emptyMoodHistory"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
+        android:layout_marginBottom="100dp"
+        android:layout_marginTop="100dp"
         android:text="Your MoodHistory is empty."
         android:textAlignment="center"
         android:textSize="18sp"
         android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/MoodHistoryMapTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark"
+        android:text="Mood History Map"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/history_map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.ualberta.cmput301w17t22.moodswing.MapsFragment" />
 
 
 </LinearLayout>

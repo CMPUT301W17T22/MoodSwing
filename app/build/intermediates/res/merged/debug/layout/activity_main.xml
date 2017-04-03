@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:map="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true">
@@ -15,9 +17,9 @@
         <android.support.v7.widget.Toolbar
             android:id="@+id/mainToolBar"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
+            android:layout_height="56dp"
             android:layout_alignParentTop="true"
-            android:background="?attr/colorPrimary"
+            android:background="@color/colorPrimary"
             android:elevation="4dp"
             android:theme="@style/AppTheme"
             app:popupTheme="@style/AppTheme"
@@ -43,7 +45,7 @@
             android:id="@+id/filterToolbar_MoodFeed"
             android:layout_width="match_parent"
             android:layout_height="30dp"
-            android:background="?attr/colorPrimary"
+            android:background="@color/colorPrimary"
             android:minHeight="?attr/actionBarSize"
             android:theme="?attr/actionBarTheme"
             android:weightSum="1"
@@ -71,21 +73,10 @@
                 android:theme="@style/AppTheme" />
         </android.support.v7.widget.Toolbar>
 
-        <TextView
-            android:id="@+id/mainWelcomeText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/mainToolBar"
-            android:layout_marginBottom="6dp"
-            android:layout_marginLeft="6dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/main_welcome_text" />
-
         <ListView
             android:id="@+id/MoodFeedListView"
             android:layout_width="match_parent"
-            android:layout_height="285dp"
+            android:layout_height="250dp"
             android:layout_marginLeft="3dp"
             android:layout_marginRight="3dp"
             android:nestedScrollingEnabled="true" />
@@ -101,9 +92,18 @@
             android:textSize="18sp"
             android:visibility="gone" />
 
-        <fragment xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:map="http://schemas.android.com/apk/res-auto"
-            xmlns:tools="http://schemas.android.com/tools"
+        <TextView
+            android:id="@+id/MoodMapTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimaryDark"
+            android:text="Mood Map"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <fragment
             android:id="@+id/map"
             android:name="com.google.android.gms.maps.SupportMapFragment"
             android:layout_width="match_parent"

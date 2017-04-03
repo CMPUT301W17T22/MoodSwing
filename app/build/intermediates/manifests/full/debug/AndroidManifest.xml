@@ -32,7 +32,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/icon_launcher"
         android:label="MoodSwing"
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
@@ -79,6 +79,7 @@
             android:name="com.ualberta.cmput301w17t22.moodswing.BlockUserActivity"
             android:label="@string/title_activity_block_user"
             android:theme="@style/AppTheme" />
+        <activity android:name="com.ualberta.cmput301w17t22.moodswing.MoodStatistics" />
         <activity
             android:name="com.google.android.gms.common.api.GoogleApiActivity"
             android:exported="false"

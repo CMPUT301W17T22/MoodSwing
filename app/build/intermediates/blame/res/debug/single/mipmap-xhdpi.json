@@ -1,5 +1,13 @@
 [
     {
+        "merged": "C:\\Users\\Henry\\Documents\\GitHub\\Current\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi\\ic_launcher.png",
+        "source": "C:\\Users\\Henry\\Documents\\GitHub\\Current\\MoodSwing\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\Henry\\Documents\\GitHub\\Current\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi\\icon_launcher.png",
+        "source": "C:\\Users\\Henry\\Documents\\GitHub\\Current\\MoodSwing\\app\\src\\main\\res\\mipmap-xhdpi\\icon_launcher.png"
+    },
+    {
         "merged": "C:\\Users\\fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi\\ic_launcher.png",
         "source": "C:\\Users\\fred\\MoodSwing\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher.png"
     },
