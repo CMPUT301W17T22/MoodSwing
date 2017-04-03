@@ -65,12 +65,6 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
     Toolbar mainToolbar;
 
     /**
-     * The welcome text for the app. Currently displays the username and the Jest id. Used mainly
-     * for testing right now.
-     */
-    TextView welcomeText;
-
-    /**
      * The main participant, the current participant using the app.
      */
     private Participant mainParticipant;
@@ -152,8 +146,7 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
         // Load MainParticipant.
         Participant mainParticipant = moodSwingController.getMainParticipant();
 
-        // Set the welcome text appropriately.
-        welcomeText.setText("Welcome user: " + mainParticipant.getUsername());
+
 
         // On click for the mood feed list view.
         moodFeedListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -350,7 +343,6 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
         // Initialize all basic widgets.
         mainToolbar = (Toolbar) findViewById(R.id.mainToolBar);
         mainToolbar.setTitle("");
-        welcomeText = (TextView)findViewById(R.id.mainWelcomeText);
         moodFeedListView  = (ListView) findViewById(R.id.MoodFeedListView);
         emptyFeed = (TextView) findViewById(R.id.emptyMoodFeed);
         filterSpinner = (Spinner) findViewById(R.id.filterSpinnerMoodFeed);
