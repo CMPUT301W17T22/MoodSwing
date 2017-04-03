@@ -5,10 +5,13 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.location.Address;
+import android.location.Geocoder;
 import android.net.Uri;
+import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -18,11 +21,14 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.maps.model.LatLng;
-
+import java.io.ByteArrayOutputStream;
 import java.util.Date;
+import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 import java.util.regex.Pattern;
+
+import static java.lang.Double.NaN;
 
 /**
  * Activity that lets user add a new mood event to their mood history.
@@ -46,6 +52,7 @@ public class NewMoodEventActivity extends AppCompatActivity implements MSView<Mo
     /** Used in photo selection. */
     private static int RESULT_LOAD_IMG = 1;
     private static int REQUEST_IMAGE_CAPTURE = 2;
+    private static int COMPRESSION_AMOUNT = 16;
 
     /** Used in photo selection. */
     String imgDecodableString;
@@ -59,7 +66,7 @@ public class NewMoodEventActivity extends AppCompatActivity implements MSView<Mo
     /** The edit text where the user can enter their given reason for the mood event. */
     EditText triggerEditText;
 
-    /** The checkbox that indicates if the user wants to attach their location to the mood event. */
+    /** The checkbox that indicates if the user wants to attach their lastKnownLocation to the mood event. */
     CheckBox addCurrentLocationCheckBox;
 
     /** Button that when pressed indicates the user is done creating their new mood event.*/
@@ -70,6 +77,32 @@ public class NewMoodEventActivity extends AppCompatActivity implements MSView<Mo
 
     /** Button that triggers the app to allow the user to capture a photo. */
     Button photoCaptureButton;
+
+    ByteArrayOutputStream image = null;
+
+    /** The toolbar, shows the title. */
+    Toolbar newMoodToolbar;
+
+    /**
+     * Initializes all the widgets for this activity and adds this View to the main Model class.
+     */
+    public void initialize() {
+        // Initialize all widgets.
+        socialSituationSpinner = (Spinner) findViewById(R.id.socialSituationSpinner);
+        emotionalStateSpinner = (Spinner) findViewById(R.id.emotionalStateSpinner);
+        newMoodEventPostButton = (Button) findViewById(R.id.newMoodEventPostButton);
+        photoUploadButton = (Button) findViewById(R.id.photoUploadButton);
+        photoCaptureButton = (Button) findViewById(R.id.photoCaptureButton);
+        triggerEditText = (EditText)findViewById(R.id.triggerEditText);
+        addCurrentLocationCheckBox = (CheckBox) findViewById(R.id.addCurentLocationCheckBox);
+
+        // Add this View to the main Model class.
+        MoodSwingController moodSwingController = MoodSwingApplication.getMoodSwingController();
+        moodSwingController.addView(this);
+
+        newMoodToolbar = (Toolbar) findViewById(R.id.newMoodToolbar);
+        newMoodToolbar.setTitle("New Mood Event");
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -130,11 +163,15 @@ public class NewMoodEventActivity extends AppCompatActivity implements MSView<Mo
                     // Get social situation.
                     SocialSituation socialSituation = getSocialSituation();
 
-                    // Get location if location box is checked, otherwise just use null.
-                    LatLng location = null;
+                    // Get lastKnownLat and lastKnownLng if lastKnownLocation box is checked, otherwise just use null.
+                    double lat = NaN;
+                    double lng = NaN;
                     if (addCurrentLocationCheckBox.isChecked()) {
-                        location = getLocation();
+                        lat = getLat();
+                        lng = getLng();
                     }
+                    //Image is initialized as null so it does not need to be set. If an image was
+                    //taken or attached then it will already be in the image variable.
 
                     // Get MoodSwingController.
                     MoodSwingController moodSwingController =
@@ -147,16 +184,13 @@ public class NewMoodEventActivity extends AppCompatActivity implements MSView<Mo
                             emotionalState,
                             trigger,
                             socialSituation,
-                            location));
+                            lat,
+                            lng,
+                            image));
 
                     // Toast to inform the user that the mood event was added.
                     Toast.makeText(NewMoodEventActivity.this,
-                            "Mood Event added!\n" +
-                                    "Input Test: " +
-                                    "\nEmotional State: " + emotionalState.toString() +
-                                    "\nSocial Situation: " + socialSituation.toString() +
-                                    "\nTrigger: " + trigger,
-                            Toast.LENGTH_SHORT).show();
+                            "Mood Event added!", Toast.LENGTH_SHORT).show();
 
                     finish();
                 }
@@ -260,6 +294,12 @@ public class NewMoodEventActivity extends AppCompatActivity implements MSView<Mo
                         imageView.setImageBitmap(BitmapFactory
                                 .decodeFile(imgDecodableString));
 
+                        //image = BitmapFactory.decodeFile(imgDecodableString);
+                        Bitmap imageBitmap = BitmapFactory.decodeFile(imgDecodableString);
+                        ByteArrayOutputStream out = new ByteArrayOutputStream();
+                        imageBitmap.compress(Bitmap.CompressFormat.JPEG, COMPRESSION_AMOUNT, out);
+                        image = out;
+
 
                     } else {
                         Toast.makeText(this, "You haven't picked an image",
@@ -272,6 +312,12 @@ public class NewMoodEventActivity extends AppCompatActivity implements MSView<Mo
                     if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
                         Bundle extras = data.getExtras();
                         Bitmap imageBitmap = (Bitmap) extras.get("data");
+                        ByteArrayOutputStream out = new ByteArrayOutputStream();
+                        imageBitmap.compress(Bitmap.CompressFormat.JPEG, COMPRESSION_AMOUNT, out);
+                        image = out;
+                        //image = imageBitmap;
+
+
                         // get image view
                         ImageView imageView =
                                 (ImageView) findViewById(R.id.imageView_NewMoodEventActivity);
@@ -280,6 +326,7 @@ public class NewMoodEventActivity extends AppCompatActivity implements MSView<Mo
                 }
                 break;
             }
+
         } catch (Exception e) {
             Toast.makeText(this, "Something went wrong.", Toast.LENGTH_LONG)
                     .show();
@@ -356,43 +403,54 @@ public class NewMoodEventActivity extends AppCompatActivity implements MSView<Mo
     }
 
     /**
-     * Gets the LatLng location from the android device.
-
-     * @return The current / last known location as a LatLng
+     * Gets the lastKnownLat from the main model class.
+     * @return The current / last known lastKnownLat as a double.
      */
-    public LatLng getLocation() {
-        // TODO: I have no clue how to do this.
-
-        GPSTracker gps = new GPSTracker(this);
-        if (gps.canGetLocation()){
-            double lat = gps.getLatitude();
-            double lon = gps.getLongitude();
-
-            return new LatLng(lat, lon);
-        }
-        return null;
+    public double getLat() {
+        // Get the mood swing controller and get the last known location.
+        MoodSwingController moodSwingController = MoodSwingApplication.getMoodSwingController();
+        return moodSwingController.getLastKnownLat();
     }
 
     /**
-     * Initializes all the widgets for this activity and adds this View to the main Model class.
+     * Gets the lastKnownLng from the main model class.
+     * @return The current / last known lastKnownLng as a double.
      */
-    public void initialize() {
-        // Initialize all widgets.
-        socialSituationSpinner = (Spinner) findViewById(R.id.socialSituationSpinner);
-        emotionalStateSpinner = (Spinner) findViewById(R.id.emotionalStateSpinner);
-        newMoodEventPostButton = (Button) findViewById(R.id.newMoodEventPostButton);
-        photoUploadButton = (Button) findViewById(R.id.photoUploadButton);
-        photoCaptureButton = (Button) findViewById(R.id.photoCaptureButton);
-        triggerEditText = (EditText)findViewById(R.id.triggerEditText);
-        addCurrentLocationCheckBox = (CheckBox) findViewById(R.id.addCurentLocationCheckBox);
-
-        // Add this View to the main Model class.
+    public double getLng() {
+        // Get the mood swing controller and get the last known location.
         MoodSwingController moodSwingController = MoodSwingApplication.getMoodSwingController();
-        moodSwingController.addView(this);
+        return moodSwingController.getLastKnownLng();
     }
 
-    public void update(MoodSwing moodSwing) {
+    /** Gets the image from the image view*/
+    public ByteArrayOutputStream getImage() {
 
+        return image;
     }
+
+    public String location(double lat, double lng){ //geocoder information and inspiration http://stackoverflow.com/questions/9409195/how-to-get-complete-address-from-latitude-and-longitude
+        Geocoder geocoder; //needd to get specific addresses.
+        List<Address> locationAddress;
+        String city = ""; //if null return an ""
+
+        geocoder = new Geocoder(this, Locale.getDefault());
+        try{
+            locationAddress = geocoder.getFromLocation(lat,lng,1);
+            city = locationAddress.get(0).getLocality(); //this portion gets the city
+            return city;
+        }//requires a catch to get lastKnownLocation }
+
+        catch(Exception e){
+            e.printStackTrace();//
+        }
+
+        return city;
+    }
+
+    /**
+     * No information on this view to update, so the update method does nothing.
+     * @param moodSwing
+     */
+    public void update(MoodSwing moodSwing) {}
 
 }

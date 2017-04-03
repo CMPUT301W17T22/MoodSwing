@@ -1,5 +1,6 @@
 package com.ualberta.cmput301w17t22.moodswing;
 
+import android.icu.text.MessagePattern;
 import android.util.Log;
 
 import java.util.ArrayList;
@@ -74,6 +75,33 @@ public class MoodSwingController implements MSController {
      */
     public void deleteMoodEventFromMainParticipantByPosition(int position) {
         ms.deleteMoodEventFromMainParticipantByPosition(position);
+
+        ms.notifyViews();
+    }
+
+    /**
+     * Sends a follow request from the main participant to the given username.
+     * @param username The username of the MoodSwing user that the main participant wants to follow.
+     * @return Returns true if a user by that username was found, false otherwise.
+     */
+    public Boolean sendFollowRequestFromMainParticipantToUsername(String username) {
+        Boolean requestStatus = ms.sendFollowRequestFromMainParticipantToUsername(username);
+
+        ms.notifyViews();
+
+        return requestStatus;
+    }
+
+    /**
+     * Builds a mood feed for the main participant given the active filters passed by the
+     * MainActivity.
+     * @param activeFilters
+     */
+    public void buildMoodFeed(int[] activeFilters, String filterTrigger, String filterEmotion) {
+
+        ms.buildMoodFeed(activeFilters, filterTrigger, filterEmotion);
+
+        ms.notifyViews();
     }
 
     /**
@@ -116,4 +144,9 @@ public class MoodSwingController implements MSController {
     public void setMoodFeedPosition(int moodFeedPosition) {
         ms.setMoodFeedPosition(moodFeedPosition);
     }
+
+    public double getLastKnownLat() { return ms.getLastKnownLat(); }
+    public double getLastKnownLng() { return ms.getLastKnownLng(); }
+
+    public void setLastKnownLocation(double lat, double lng) { ms.setLastKnownLocation(lat, lng); }
 }

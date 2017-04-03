@@ -1,8 +1,10 @@
 package com.ualberta.cmput301w17t22.moodswing;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
@@ -11,21 +13,36 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+
 import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.Toast;
 
-import android.widget.TextView;
-
-import com.ualberta.cmput301w17t22.moodswing.dummy.DummyContent;
+import java.security.InvalidParameterException;
 
 /**
+ * Main activity for the Follower & Following Fragment tabs.
  * Includes auto generated code from Android Studio when created a tabbed layout.
  */
 public class MainFollowActivity extends AppCompatActivity implements MSView<MoodSwing>,
         OnListFragmentInteractionListener {
+
+    /**
+     * requestStatus is true if a follow request went through, and false if no user with
+     * the given username was found.
+     */
+    Boolean requestStatus;
+
+    /**
+     * blockStatus is true
+     */
+    Boolean blockStatus;
+
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -60,13 +77,13 @@ public class MainFollowActivity extends AppCompatActivity implements MSView<Mood
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
 
-        // TODO: We can use this as our add a new follower button.
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+
+        // FAB OnClick.
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                launchFollowNewUserDialog();
             }
         });
 
@@ -84,6 +101,102 @@ public class MainFollowActivity extends AppCompatActivity implements MSView<Mood
         moodSwingController.removeView(this);
     }
 
+    /**
+     * Launches the dialog box that handles the following of a new user.
+     */
+    public void launchFollowNewUserDialog() {
+        // Create dialog box for following a new user.
+        AlertDialog.Builder adb =
+                new AlertDialog.Builder(MainFollowActivity.this, R.style.DialogTheme);
+
+        // Method for displaying an edittext nicely in an alertdialog adapted from
+        // http://stackoverflow.com/questions/27774414/add-bigger-margin-to-edittext-in-android-alertdialog
+        // on 3/25/2017.
+
+        // Create edittext to take user input.
+        final EditText usernameToFollowEditText = new EditText(MainFollowActivity.this);
+        // Set custom edittext shape.
+        usernameToFollowEditText.setBackgroundResource(R.drawable.dialog_edittext_shape);
+        // Set some padding from the left.
+        usernameToFollowEditText.setPadding(16, 0, 0, 0);
+
+        // Create a container for the edittext.
+        LinearLayout usernameToFollowEditTextContainer = new LinearLayout(MainFollowActivity.this);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT);
+        // Set the margins for the edittext.
+        params.leftMargin = getResources().getDimensionPixelSize(R.dimen.dialog_margin);
+        params.rightMargin = getResources().getDimensionPixelSize(R.dimen.dialog_margin);
+
+        // Set the parameters to the edittext and add it to the container.
+        usernameToFollowEditText.setLayoutParams(params);
+        usernameToFollowEditTextContainer.addView(usernameToFollowEditText);
+
+        // Set the message, the title, and the edittext container.
+        adb.setMessage("Enter the username of the user you would like to follow: ")
+                .setTitle("Request To Follow A New User")
+                .setCancelable(true)
+                .setView(usernameToFollowEditTextContainer);
+
+        // Create the positive button for the alert dialog.
+        adb.setPositiveButton("Send Follow Request", new DialogInterface.OnClickListener(){
+            @Override
+            public void onClick(DialogInterface dialog, int which){
+                // Get edittext value.
+                String usernameToFollow = usernameToFollowEditText.getText().toString();
+
+                // Get MoodSwingController.
+                MoodSwingController moodSwingController =
+                        MoodSwingApplication.getMoodSwingController();
+
+                // Send the follow request. requestStatus is true if the request went
+                // through, and false if no user with the given username was found.
+                try {
+                    requestStatus = moodSwingController
+                            .sendFollowRequestFromMainParticipantToUsername(usernameToFollow);
+
+                    // TODO:
+                    // requestStatus can be 1, but the request might not send
+                    // ex: because we are already following them
+                    // So "Request successfully sent!" displays when it might not be
+                    // supposed to. Need to fix this somehow.
+
+                    if (requestStatus) {
+                        Toast.makeText(MainFollowActivity.this,
+                                "Request successfully sent!",
+                                Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(MainFollowActivity.this,
+                                "No user with given username found.",
+                                Toast.LENGTH_SHORT).show();
+                    }
+                } catch (InvalidParameterException E){
+                    Toast.makeText(MainFollowActivity.this,
+                            "Request could not send!",
+                            Toast.LENGTH_SHORT).show();
+                }
+
+                mSectionsPagerAdapter.notifyDataSetChanged();
+
+                dialog.cancel();
+            }
+        });
+
+        // Create the negative button for the alert dialog.
+        adb.setNegativeButton("Cancel", new DialogInterface.OnClickListener(){
+            @Override
+            public void onClick(DialogInterface dialog, int which){
+                // Do nothing, cancel the dialog box.
+                dialog.cancel();
+            }
+        });
+
+        // Build and show the dialog box.
+        AlertDialog dialog = adb.create();
+        dialog.show();
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -91,54 +204,22 @@ public class MainFollowActivity extends AppCompatActivity implements MSView<Mood
         return true;
     }
 
-    /**
-     * We could add menu items here, but currently we have no menu items.
-     * @param item
+    /**onClick method for menu options from the Follower & Following page.
+     *  @param item
      * @return
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+        Intent intent;
 
+        // Handle action bar item clicks.
+        if (item.getItemId() == R.id.blockUserButton) {
+            // User chose the "Block User" item, should navigate to the
+            // BlockUserActivity.
+            intent = new Intent(MainFollowActivity.this, BlockUserActivity.class);
+            startActivity(intent);
+        }
         return super.onOptionsItemSelected(item);
-    }
-
-    /**
-     * A placeholder fragment containing a simple view.
-     */
-    public static class PlaceholderFragment extends Fragment {
-        /**
-         * The fragment argument representing the section number for this
-         * fragment.
-         */
-        private static final String ARG_SECTION_NUMBER = "section_number";
-
-        public PlaceholderFragment() {
-        }
-
-        /**
-         * Returns a new instance of this fragment for the given section
-         * number.
-         */
-        public static PlaceholderFragment newInstance(int sectionNumber) {
-            PlaceholderFragment fragment = new PlaceholderFragment();
-            Bundle args = new Bundle();
-            args.putInt(ARG_SECTION_NUMBER, sectionNumber);
-            fragment.setArguments(args);
-            return fragment;
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_main_follow, container, false);
-            TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-            //textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
-            return rootView;
-        }
     }
 
     /**
@@ -168,7 +249,11 @@ public class MainFollowActivity extends AppCompatActivity implements MSView<Mood
                 break;
 
                 case 2:
-                    fragment = RequestsFragment.newInstance(1);
+                    fragment = FollowersRequestFragment.newInstance(1);
+                break;
+
+                case 3:
+                    fragment = FollowingRequestFragment.newInstance(1);
                 break;
 
                 default:
@@ -179,10 +264,11 @@ public class MainFollowActivity extends AppCompatActivity implements MSView<Mood
 
         @Override
         public int getCount() {
-            // Show 3 total pages.
-            return 3;
+            // Show 4 total pages.
+            return 4;
         }
-
+        /**Returns the name of the current page by its position.
+         * @return CharSequence */
         @Override
         public CharSequence getPageTitle(int position) {
             switch (position) {
@@ -191,7 +277,9 @@ public class MainFollowActivity extends AppCompatActivity implements MSView<Mood
                 case 1:
                     return "Following";
                 case 2:
-                    return "Requests";
+                    return "Follow Requests";
+                case 3:
+                    return "Your Requests";
             }
             return null;
         }
@@ -202,13 +290,10 @@ public class MainFollowActivity extends AppCompatActivity implements MSView<Mood
      * on 3.12.2017.
      */
     @Override
-    public void onListFragmentInteraction(DummyContent.DummyItem dummyItem) {
+    public void onListFragmentInteraction(String username) {
         //do some stuff with the data
     }
 
-    /**
-     * I dont know how to structure this, so right now the initialize is empty.
-     */
     public void initialize() {
         // Add this View to the main Model class.
         MoodSwingController moodSwingController = MoodSwingApplication.getMoodSwingController();

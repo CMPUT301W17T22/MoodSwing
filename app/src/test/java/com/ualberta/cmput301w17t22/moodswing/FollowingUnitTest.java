@@ -28,10 +28,10 @@ public class FollowingUnitTest {
         participant1.followParticipant(participant2);
 
         // make sure that after follow, they are in eachother's appropriate pending lists.
-        assertEquals(participant1.getPendingFollowing().get(0), participant2);
+        assertEquals(participant1.getPendingFollowing().get(0), participant2.getUsername());
         assertTrue(participant1.getFollowing().isEmpty());
 
-        assertEquals(participant2.getPendingFollowers().get(0), participant1);
+        assertEquals(participant2.getPendingFollowers().get(0), participant1.getUsername());
         assertTrue(participant2.getFollowers().isEmpty());
     }
 
@@ -46,7 +46,7 @@ public class FollowingUnitTest {
         participant1.followParticipant(participant2);
 
         // following request goes right
-        assertEquals(participant1.getPendingFollowing().get(0), participant2);
+        assertEquals(participant1.getPendingFollowing().get(0), participant2.getUsername());
         assertTrue(participant1.getFollowing().isEmpty());
 
         // test both participant1 approved, and participant2 approving
@@ -55,7 +55,7 @@ public class FollowingUnitTest {
 
         // participant2 is added to the following list
         assertTrue(participant1.getPendingFollowing().isEmpty());
-        assertEquals(participant1.getFollowing().get(0), participant2);
+        assertEquals(participant1.getFollowing().get(0), participant2.getUsername());
     }
 
     // testing what happens if a follow request is declined
@@ -68,7 +68,7 @@ public class FollowingUnitTest {
         participant1.followParticipant(participant2);
 
         assertTrue(participant1.getFollowing().isEmpty());
-        assertEquals(participant1.getPendingFollowing().get(0), participant2);
+        assertEquals(participant1.getPendingFollowing().get(0), participant2.getUsername());
 
         // can test both participant 1 declined and participant 2 declining
         participant1.followRequestDeclined(participant2);

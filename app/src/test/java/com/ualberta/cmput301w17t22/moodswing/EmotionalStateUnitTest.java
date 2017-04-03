@@ -36,9 +36,6 @@ public class EmotionalStateUnitTest {
         assertNotEquals(emotionalState.getDescription(), happiness);
         assertNotEquals(emotionalState.getDescription(), happiness_also);
 
-        // Test the toString conversion.
-        assertEquals(emotionalState.toString(), sadness);
-
         // Change the description again.
         emotionalState.setDescription(happiness);
 

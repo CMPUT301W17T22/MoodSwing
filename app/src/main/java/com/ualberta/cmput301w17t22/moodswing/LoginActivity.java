@@ -1,11 +1,14 @@
 package com.ualberta.cmput301w17t22.moodswing;
 
+import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 
 /** The LoginActivity is what is loaded when the app is opened for the first time
  * or after it has been closed and is being opened again. It serves the function of
@@ -33,25 +36,38 @@ public class LoginActivity extends AppCompatActivity implements MSView<MoodSwing
     /** The edit text where the user enters their username. */
     EditText usernameEditText;
 
+    public ProgressBar loginProgress;
+
     /**
      * Triggered when the Activity first starts.
      * <p/>
      * In this we initialize buttons, and log the user in once the button is pushed.
-     * @param savedInstanceState
      */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        loginProgress = (ProgressBar) findViewById(R.id.loginProgress);
+        loginProgress.setVisibility(View.INVISIBLE);
+
+        /**
+         * For now, data generation goes here. This will change to a different place.
+         */
+        DataGenerator dataGenerator = new DataGenerator();
+        dataGenerator.generate();
 
         // Initialize all widgets and add the view to the main model class.
         initialize();
+
+        // Check for permissions.
+        checkPermissions();
 
         // Login Button button press. Fetch user data from ElasticSearch,
         // if nothing is found, create user data.
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                loginProgress.setVisibility(View.VISIBLE);
                 // Load the user into the main Model class.
                 boolean loadOK = loadUser();
 
@@ -62,6 +78,13 @@ public class LoginActivity extends AppCompatActivity implements MSView<MoodSwing
                 }
             }
         });
+    }
+
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+        loginProgress.setVisibility(View.GONE);
     }
 
     /**
@@ -99,6 +122,9 @@ public class LoginActivity extends AppCompatActivity implements MSView<MoodSwing
             // a new participant will be added to ElasticSearch.
             moodSwingController.loadMainParticipantByUsername(username);
 
+            // Initialize the mood feed.
+            moodSwingController.buildMoodFeed(new int[]{0,0,0,0}, "", "");
+
             // Continue.
             return true;
         } else {
@@ -108,14 +134,29 @@ public class LoginActivity extends AppCompatActivity implements MSView<MoodSwing
             // Wait for proper input.
             return false;
         }
-
     }
 
     /**
-     * Should check whether the user is logged in or not. Called onStart. Not yet implemented.
+     * Check that all the permissions that the app requires are granted.
      */
-    public void checkLoggedIn() {
+    public void checkPermissions() {
+        /**
+         * <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+         <uses-permission android:name="android.permission.INTERNET" />
+         <uses-permission android:name="com.google.android.provider.gsf.permission.READ_GSERVICSE" />
+         <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+         <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+         <uses-permission android:name="android.permission.INTERNET" />
+         <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+         <uses-permission android:name="android.permission.CAMERA" />
+         */
 
+        int accessNetworkStatePermission = ContextCompat.checkSelfPermission(LoginActivity.this,
+                Manifest.permission.ACCESS_NETWORK_STATE);
+        int fineLocationPermission = ContextCompat.checkSelfPermission(LoginActivity.this,
+                Manifest.permission.ACCESS_FINE_LOCATION);
+        int coarseLocationPermission = ContextCompat.checkSelfPermission(LoginActivity.this,
+                Manifest.permission.ACCESS_COARSE_LOCATION);
     }
 
     /**
