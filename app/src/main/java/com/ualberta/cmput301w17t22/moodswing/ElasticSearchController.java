@@ -1,6 +1,7 @@
 package com.ualberta.cmput301w17t22.moodswing;
 
 import android.os.AsyncTask;
+import android.os.StrictMode;
 import android.util.Log;
 
 import com.google.gson.Gson;
@@ -439,6 +440,8 @@ public class ElasticSearchController implements MSController {
 
         @Override
         protected Void doInBackground(Participant ... participants) {
+            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+            StrictMode.setThreadPolicy(policy);
             try {
                 DocumentResult result = client.execute(index);
 
