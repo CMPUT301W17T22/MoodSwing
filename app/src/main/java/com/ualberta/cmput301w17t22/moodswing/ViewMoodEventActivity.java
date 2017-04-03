@@ -409,7 +409,7 @@ public class ViewMoodEventActivity extends AppCompatActivity implements MSView<M
             imageImageView.setImageBitmap(moodEvent.getImage());
             imageImageView.setVisibility(View.VISIBLE);
         } else {
-            imageImageView.setVisibility(View.GONE);
+            imageImageView.setVisibility(View.VISIBLE);
         }
     }
 
@@ -418,11 +418,12 @@ public class ViewMoodEventActivity extends AppCompatActivity implements MSView<M
      */
     public void setMapFragmentVisibility() {
         // If there is no location, make the map invisible, if there is a location, make it visible.
-        if (!Double.isNaN(moodEvent.getLat()) && !Double.isNaN(moodEvent.getLng())) {
-            supportMapFragment.getView().setVisibility(View.VISIBLE);
-        } else {
-            supportMapFragment.getView().setVisibility(View.GONE);
-        }
+        supportMapFragment.getView().setVisibility(View.VISIBLE); // always display map
+//        if (!Double.isNaN(moodEvent.getLat()) && !Double.isNaN(moodEvent.getLng())) {
+//            supportMapFragment.getView().setVisibility(View.VISIBLE);
+//        } else {
+//            supportMapFragment.getView().setVisibility(View.GONE);
+//        }
     }
 
 

@@ -43,9 +43,9 @@ public class FollowerFollowingTest extends ActivityInstrumentationTestCase2<Logi
         solo.assertCurrentActivity("Wrong Activity!", MainActivity.class);
 
         // navigate to followers/following
-        solo.waitForText("Welcome user \"intent301\"");
+        solo.waitForText("Mood Event Feed");
         solo.clickOnActionBarItem(R.id.mainToolBar);
-        solo.waitForText("Home");
+        solo.waitForText("New Mood Event");
         solo.clickOnMenuItem("Followers & Following");
         //solo.clickOnView(solo.getView(R.id.followToolBarButton));
         solo.waitForActivity("MainFollowActivity");
@@ -84,9 +84,9 @@ public class FollowerFollowingTest extends ActivityInstrumentationTestCase2<Logi
         solo.assertCurrentActivity("Wrong Activity!", MainActivity.class);
 
         // navigate to followers/following
-        solo.waitForText("Welcome user \"intent302\"");
+        solo.waitForText("Mood Event Feed");
         solo.clickOnActionBarItem(R.id.mainToolBar);
-        solo.waitForText("Home");
+        solo.waitForText("New Mood Event");
         solo.clickOnMenuItem("Followers & Following");
         //solo.clickOnView(solo.getView(R.id.followToolBarButton));
         solo.waitForActivity("MainFollowActivity");
@@ -115,9 +115,9 @@ public class FollowerFollowingTest extends ActivityInstrumentationTestCase2<Logi
         solo.assertCurrentActivity("Wrong Activity!", MainActivity.class);
 
         // navigate to followers/following
-        solo.waitForText("Welcome user \"intentfollow\"");
+        solo.waitForText("Mood Event Feed");
         solo.clickOnActionBarItem(R.id.mainToolBar);
-        solo.waitForText("Home");
+        solo.waitForText("New Mood Event");
         solo.clickOnMenuItem("Followers & Following");
         //solo.clickOnView(solo.getView(R.id.followToolBarButton));
         solo.waitForActivity("MainFollowActivity");
@@ -147,9 +147,9 @@ public class FollowerFollowingTest extends ActivityInstrumentationTestCase2<Logi
         solo.assertCurrentActivity("Wrong Activity!", MainActivity.class);
 
         // navigate to followers/following
-        solo.waitForText("Welcome user \"intent302\"");
+        solo.waitForText("Mood Event Feed");
         solo.clickOnActionBarItem(R.id.mainToolBar);
-        solo.waitForText("Home");
+        solo.waitForText("New Mood Event");
         solo.clickOnMenuItem("Followers & Following");
         //solo.clickOnView(solo.getView(R.id.followToolBarButton));
         solo.waitForActivity("MainFollowActivity");

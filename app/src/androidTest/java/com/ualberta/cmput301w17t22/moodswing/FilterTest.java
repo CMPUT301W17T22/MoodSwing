@@ -80,12 +80,12 @@ public class FilterTest extends ActivityInstrumentationTestCase2<LoginActivity> 
         solo.clickOnView(solo.getView(R.id.loginButton));
         solo.sleep(30000);  // make sure MainActivity has loaded
         solo.waitForActivity("MainActivity");
-        assertTrue(solo.waitForText("Welcome user \"intent303\""));
+        assertTrue(solo.waitForText("Mood Event Feed"));
         solo.assertCurrentActivity("Wrong Activity!", MainActivity.class);
 
         // create mood event 1
         solo.clickOnActionBarItem(R.id.mainToolBar);
-        solo.waitForText("Home");
+        solo.waitForText("New Mood Event");
         solo.clickOnMenuItem("New Mood Event");
         // Once inside NewMoodEvent:
         solo.assertCurrentActivity("Wrong Activity!", NewMoodEventActivity.class);
@@ -103,7 +103,7 @@ public class FilterTest extends ActivityInstrumentationTestCase2<LoginActivity> 
 
         // create mood event 2
         solo.clickOnActionBarItem(R.id.mainToolBar);
-        solo.waitForText("Home");
+        solo.waitForText("New Mood Event");
         solo.clickOnMenuItem("New Mood Event");
         // Once inside NewMoodEvent:
         solo.assertCurrentActivity("Wrong Activity!", NewMoodEventActivity.class);
@@ -121,7 +121,7 @@ public class FilterTest extends ActivityInstrumentationTestCase2<LoginActivity> 
 
         // create mood event 3
         solo.clickOnActionBarItem(R.id.mainToolBar);
-        solo.waitForText("Home");
+        solo.waitForText("New Mood Event");
         solo.clickOnMenuItem("New Mood Event");
         // Once inside NewMoodEvent:
         solo.assertCurrentActivity("Wrong Activity!", NewMoodEventActivity.class);
@@ -138,7 +138,7 @@ public class FilterTest extends ActivityInstrumentationTestCase2<LoginActivity> 
 
         // navigate to MoodHistory
         solo.clickOnActionBarItem(R.id.mainToolBar);
-        solo.waitForText("Home");
+        solo.waitForText("New Mood Event");
         solo.clickOnMenuItem("View Mood History");
     }
 

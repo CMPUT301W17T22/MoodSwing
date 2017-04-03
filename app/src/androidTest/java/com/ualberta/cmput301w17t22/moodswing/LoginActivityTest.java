@@ -44,9 +44,9 @@ public class LoginActivityTest extends ActivityInstrumentationTestCase2<LoginAct
 
         // click on button
         solo.clickOnView(solo.getView(R.id.loginButton));
-
+        solo.sleep(30000);
         solo.waitForActivity("MainActivity");
-        assertTrue(solo.waitForText("Welcome user \"intent106\""));
+        assertTrue(solo.waitForText("Mood Event Feed"));
 
         // this command will come in handy
         //solo.waitForActivity("MainActivity");

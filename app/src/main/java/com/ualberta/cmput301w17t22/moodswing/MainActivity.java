@@ -65,12 +65,6 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
     Toolbar mainToolbar;
 
     /**
-     * The welcome text for the app. Currently displays the username and the Jest id. Used mainly
-     * for testing right now.
-     */
-    TextView welcomeText;
-
-    /**
      * The main participant, the current participant using the app.
      */
     private Participant mainParticipant;
@@ -117,7 +111,8 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
      */
     private int[] activeFilters = new int[3];   // should be initialized to 0
 
-
+    // For whether or not to display filter messages
+    boolean displayFilterToast = false;
 
 
     private GoogleMap mMap;
@@ -152,8 +147,7 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
         // Load MainParticipant.
         Participant mainParticipant = moodSwingController.getMainParticipant();
 
-        // Set the welcome text appropriately.
-        welcomeText.setText("Welcome user: " + mainParticipant.getUsername());
+
 
         // On click for the mood feed list view.
         moodFeedListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -250,7 +244,7 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
     @Override
     protected void onStart(){
         super.onStart();
-
+        displayFilterToast = false;
         // Load information from main model class.
         loadMoodSwing();
 
@@ -263,6 +257,7 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
                 //Toast.makeText(MainActivity.this, filter_strings.get(position)+"selected", Toast.LENGTH_SHORT);
                 int selected = filterSpinner.getSelectedItemPosition();
                 handleFilterSelection(selected);
+                displayFilterToast = true;
             }
 
             @Override
@@ -350,7 +345,6 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
         // Initialize all basic widgets.
         mainToolbar = (Toolbar) findViewById(R.id.mainToolBar);
         mainToolbar.setTitle("");
-        welcomeText = (TextView)findViewById(R.id.mainWelcomeText);
         moodFeedListView  = (ListView) findViewById(R.id.MoodFeedListView);
         emptyFeed = (TextView) findViewById(R.id.emptyMoodFeed);
         filterSpinner = (Spinner) findViewById(R.id.filterSpinnerMoodFeed);
@@ -565,7 +559,9 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
     public void handleFilterSelection(int selected){
         switch (selected) {
             case 0:       // no filter selected
-                Toast.makeText(MainActivity.this, "No filters.", Toast.LENGTH_SHORT).show();
+                if (displayFilterToast) {
+                    Toast.makeText(MainActivity.this, "No filters.", Toast.LENGTH_SHORT).show();
+                }
                 updateFilterMenu(-1);   // update filter list
                 buildMoodFeed();
                 loadMoodSwing(); // refresh the feed

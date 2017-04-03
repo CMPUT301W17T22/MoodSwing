@@ -152,7 +152,7 @@
         android:layout_height="182dp"
         android:adjustViewBounds="true"
         android:scaleType="fitCenter"
-        app:srcCompat="@android:drawable/ic_menu_gallery" />
+        app:srcCompat="@drawable/image_indicator" />
 
     <fragment xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:map="http://schemas.android.com/apk/res-auto"

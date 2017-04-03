@@ -56,9 +56,9 @@ public class MoodFeedTest extends ActivityInstrumentationTestCase2<LoginActivity
         solo.assertCurrentActivity("Wrong Activity!", MainActivity.class);
 
         // navigate to followers/following
-        solo.waitForText("Welcome user \"intent305\"");
+        solo.waitForText("Mood Event Feed");
         solo.clickOnActionBarItem(R.id.mainToolBar);
-        solo.waitForText("Home");
+        solo.waitForText("New Mood Event");
         solo.clickOnMenuItem("Followers & Following");
         //solo.clickOnView(solo.getView(R.id.followToolBarButton));
         solo.waitForActivity("MainFollowActivity");
@@ -87,9 +87,9 @@ public class MoodFeedTest extends ActivityInstrumentationTestCase2<LoginActivity
         solo.assertCurrentActivity("Wrong Activity!", MainActivity.class);
 
         // navigate to followers/following
-        solo.waitForText("Welcome user \"intentfollow\"");
+        solo.waitForText("Mood Event Feed");
         solo.clickOnActionBarItem(R.id.mainToolBar);
-        solo.waitForText("Home");
+        solo.waitForText("New Mood Event");
         solo.clickOnMenuItem("Followers & Following");
         //solo.clickOnView(solo.getView(R.id.followToolBarButton));
         solo.waitForActivity("MainFollowActivity");
@@ -126,9 +126,9 @@ public class MoodFeedTest extends ActivityInstrumentationTestCase2<LoginActivity
 
         // for future cleanup
         // navigate to followers/following
-        solo.waitForText("Welcome user \"intent305\"");
+        solo.waitForText("Mood Event Feed");
         solo.clickOnActionBarItem(R.id.mainToolBar);
-        solo.waitForText("Home");
+        solo.waitForText("New Mood Event");
         solo.clickOnMenuItem("Followers & Following");
         //solo.clickOnView(solo.getView(R.id.followToolBarButton));
         solo.waitForActivity("MainFollowActivity");

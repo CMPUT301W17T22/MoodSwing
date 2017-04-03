@@ -45,11 +45,11 @@ public class ViewMoodEventActivityTest extends ActivityInstrumentationTestCase2<
         solo.clickOnView(solo.getView(R.id.loginButton));
         solo.sleep(30000);  // make sure MainActivity has loaded
         solo.waitForActivity("MainActivity");
-        assertTrue(solo.waitForText("Welcome user \"intent101\""));
+        assertTrue(solo.waitForText("Mood Event Feed"));
         solo.assertCurrentActivity("Wrong Activity!", MainActivity.class);
 
         solo.clickOnActionBarItem(R.id.mainToolBar);
-        solo.waitForText("Home");
+        solo.waitForText("New Mood Event");
         solo.clickOnMenuItem("New Mood Event");
         // Once inside NewMoodEvent:
         solo.assertCurrentActivity("Wrong Activity!", NewMoodEventActivity.class);
@@ -64,7 +64,7 @@ public class ViewMoodEventActivityTest extends ActivityInstrumentationTestCase2<
         solo.assertCurrentActivity("Wrong Activity!", MainActivity.class);
         // navigate to mood history
         solo.clickOnActionBarItem(R.id.mainToolBar);
-        solo.waitForText("Home");
+        solo.waitForText("New Mood Event");
         solo.clickOnMenuItem("View Mood History");
         solo.assertCurrentActivity("Wrong Activity!", MoodHistoryActivity.class);
         assertTrue(solo.waitForText("fame fortune"));
@@ -98,10 +98,10 @@ public class ViewMoodEventActivityTest extends ActivityInstrumentationTestCase2<
         solo.clickOnView(solo.getView(R.id.loginButton));
         solo.sleep(30000);  // make sure MainActivity has loaded
         solo.waitForActivity("MainActivity");
-        assertTrue(solo.waitForText("Welcome user \"intent100\""));
+        assertTrue(solo.waitForText("Mood Event Feed"));
         solo.assertCurrentActivity("Wrong Activity!", MainActivity.class);
         solo.clickOnActionBarItem(R.id.mainToolBar);
-        solo.waitForText("Home");
+        solo.waitForText("New Mood Event");
         solo.clickOnMenuItem("New Mood Event");
         // Once inside NewMoodEvent:
         solo.assertCurrentActivity("Wrong Activity!", NewMoodEventActivity.class);
@@ -116,7 +116,7 @@ public class ViewMoodEventActivityTest extends ActivityInstrumentationTestCase2<
         solo.assertCurrentActivity("Wrong Activity!", MainActivity.class);
         // navigate to mood history
         solo.clickOnActionBarItem(R.id.mainToolBar);
-        solo.waitForText("Home");
+        solo.waitForText("New Mood Event");
         solo.clickOnMenuItem("View Mood History");
         solo.assertCurrentActivity("Wrong Activity!", MoodHistoryActivity.class);
         assertTrue(solo.waitForText("figgis"));

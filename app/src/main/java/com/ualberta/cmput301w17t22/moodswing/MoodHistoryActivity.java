@@ -98,6 +98,9 @@ public class MoodHistoryActivity extends AppCompatActivity implements MSView<Moo
      */
     private int[] activeFilters = new int[3];   // should be initialized to 0
 
+    // For whether or not to display filter messages
+    boolean displayFilterToast = false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -142,7 +145,7 @@ public class MoodHistoryActivity extends AppCompatActivity implements MSView<Moo
     @Override
     protected void onStart() {
         super.onStart();
-
+        displayFilterToast = false;
         // Load information on the main participant from MoodSwing.
         loadMoodSwing();
 
@@ -155,6 +158,7 @@ public class MoodHistoryActivity extends AppCompatActivity implements MSView<Moo
                 //Toast.makeText(MainActivity.this, filter_strings.get(position)+"selected", Toast.LENGTH_SHORT);
                 int selected = filterSpinner.getSelectedItemPosition();
                 handleFilterSelection(selected);
+                displayFilterToast = true;
             }
 
             @Override
@@ -565,7 +569,9 @@ public class MoodHistoryActivity extends AppCompatActivity implements MSView<Moo
     public void handleFilterSelection(int selected){
         switch (selected) {
             case 0:       // no filter selected
-                Toast.makeText(MoodHistoryActivity.this, "No filters.", Toast.LENGTH_SHORT).show();
+                if(displayFilterToast){
+                    Toast.makeText(MoodHistoryActivity.this, "No filters.", Toast.LENGTH_SHORT).show();
+                }
                 updateFilterMenu(-1);   // update filter list
                 loadMoodSwing(); // refresh the feed
                 break;
