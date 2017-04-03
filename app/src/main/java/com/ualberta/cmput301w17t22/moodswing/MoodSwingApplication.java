@@ -1,6 +1,7 @@
 package com.ualberta.cmput301w17t22.moodswing;
 
 import android.app.Application;
+import android.content.Context;
 
 /**
  * This Application class handles our singletons; the main model class, and the controllers.
@@ -9,6 +10,7 @@ import android.app.Application;
  */
 
 public class MoodSwingApplication extends Application {
+    private static MoodSwingApplication instance;
 
     /**
      * Get MoodSwing. Returns the MoodSwing object to the Controller that needs it.
@@ -19,6 +21,11 @@ public class MoodSwingApplication extends Application {
             moodSwing = new MoodSwing();
         }
         return moodSwing;
+    }
+
+    public static Context getContext(){
+        return instance;
+        // or return instance.getApplicationContext();
     }
 
     /**
@@ -52,5 +59,11 @@ public class MoodSwingApplication extends Application {
             followingController = new FollowingController(getMoodSwing());
         }
         return followingController;
+    }
+
+    @Override
+    public void onCreate() {
+        instance = this;
+        super.onCreate();
     }
 }

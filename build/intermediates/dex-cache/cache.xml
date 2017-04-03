@@ -3,12 +3,12 @@
 
     <item
         is-multidex="true"
-        jar="C:\Users\fred\MoodSwing\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jar="C:\Users\Fred\MoodSwing\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="1a66537b9e90d2d217d3ee1e10b6c27d7ad72f58">
-        <dex dex="C:\Users\fred\MoodSwing\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_23286c68afd7258d527f93eb8725a789c92d83cd\classes.dex" />
+        sha1="b93b60b4aa32b307512885261cd69afe5fa22d02">
+        <dex dex="C:\Users\Fred\MoodSwing\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_2f09f70b0e221a8f2baf22b219ecb05cdaf17c5f\classes.dex" />
     </item>
 
 </items>

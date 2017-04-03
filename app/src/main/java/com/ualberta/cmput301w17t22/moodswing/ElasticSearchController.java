@@ -453,9 +453,9 @@ public class ElasticSearchController implements MSController {
      */
     private static void saveInFile(Index index) {
         try {
-            //FileOutputStream fos = openFileOutput(FILENAME,
-            //        Context.MODE_PRIVATE); //MODE_PRIVATE is also '0'
-            FileOutputStream fos = new FileOutputStream(FILENAME, true);
+            FileOutputStream fos = MoodSwingApplication.getContext().openFileOutput(FILENAME,
+                    android.content.Context.MODE_PRIVATE); //MODE_PRIVATE is also '0'
+            //FileOutputStream fos = new FileOutputStream(FILENAME, true);
             BufferedWriter out = new BufferedWriter(new OutputStreamWriter(fos));
 
             Gson gson = new Gson();
@@ -465,9 +465,11 @@ public class ElasticSearchController implements MSController {
             fos.close();
         } catch (FileNotFoundException e) {
             // TODO Handle the Exception properly later
+            Log.d("offlineSucks","File not found: " + e.toString());
             throw new RuntimeException(); //crashes app
         } catch (IOException e) {
             // TODO Handle the Exception properly later
+            Log.d("offlineSucks","IO exception: " + e.toString());
             throw new RuntimeException(); //crashes app
         }
     }
