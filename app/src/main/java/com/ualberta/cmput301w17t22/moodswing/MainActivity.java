@@ -137,6 +137,7 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
      */
 
     //command function that executes
+    NetworkStateReceiver networkStateReceiver = new NetworkStateReceiver();
    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -148,7 +149,7 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
 
         //listen for network changes
         Log.d("NetworkStateReceiver", "Registering receiver");
-        registerReceiver(new NetworkStateReceiver(), new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
+        registerReceiver(networkStateReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
 
         setSupportActionBar(mainToolbar);
 
@@ -292,6 +293,7 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
         // Remove this View from the main Model class' list of Views.
         MoodSwingController moodSwingController = MoodSwingApplication.getMoodSwingController();
         moodSwingController.removeView(this);
+        unregisterReceiver(networkStateReceiver);
     }
 
     /**
