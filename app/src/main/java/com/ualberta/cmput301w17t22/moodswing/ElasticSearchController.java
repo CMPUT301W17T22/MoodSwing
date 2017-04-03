@@ -1,27 +1,19 @@
 package com.ualberta.cmput301w17t22.moodswing;
 
-import android.app.Activity;
-import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-
-import com.google.gson.reflect.TypeToken;
 import com.searchly.jestdroid.DroidClientConfig;
 import com.searchly.jestdroid.JestClientFactory;
 import com.searchly.jestdroid.JestDroidClient;
 
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -395,12 +387,7 @@ public class ElasticSearchController implements MSController {
             // Grab ElasticSearch id.
             String id = participant.getId();
 
-            // Create the index that the Jest droid client will execute on.
-            Index index = new Index.Builder(participantJson)
-                    .index("cmput301w17t22")
-                    .type("Participant")
-                    .id(id)
-                    .build();
+
 
             // Try to update the participant.
             /*try {
@@ -422,14 +409,23 @@ public class ElasticSearchController implements MSController {
                 Log.i("offlineTest", "exception");
                 saveInFile(index);
             }*/
-            executeElasticSearch(index);
+            executeElasticSearch(participantJson, id);
             return null;
         }
     }
 
     //returns true if successful
-    public static void executeElasticSearch(Index index){
+    public static void executeElasticSearch(String participantJson, String id){
+        MoodSwingController moodSwingController =
+                MoodSwingApplication.getMoodSwingController();
         // Try to update the participant.
+        // Create the index that the Jest droid client will execute on.
+        Index index = new Index.Builder(participantJson)
+                .index("cmput301w17t22")
+                .type("Participant")
+                .id(id)
+                .build();
+
         try {
             DocumentResult result = client.execute(index);
 
@@ -447,7 +443,9 @@ public class ElasticSearchController implements MSController {
             Log.i("ERROR", "Something went wrong when adding a participant by" +
                     " username to ElasticSearch.");
             Log.i("offlineTest", "exception");
-            saveInFile(index);
+            if(id == moodSwingController.getMainParticipant().getId()) {
+                saveInFile(participantJson);
+            }
         }
     }
 
@@ -456,7 +454,7 @@ public class ElasticSearchController implements MSController {
      * //TODO: save as an ArrayList. load existing list then add the new index and re-save. currently only supports one index.
      * @throws FileNotFoundException if file folder doesn't exist
      */
-    private static void saveInFile(Index index) {
+    private static void saveInFile(String participantJson) {
         MoodSwingController moodSwingController =
                 MoodSwingApplication.getMoodSwingController();
         String filename = moodSwingController.getMainParticipant().getUsername() + ".sav";
@@ -467,7 +465,7 @@ public class ElasticSearchController implements MSController {
             BufferedWriter out = new BufferedWriter(new OutputStreamWriter(fos));
 
             Gson gson = new Gson();
-            gson.toJson(index, out);
+            gson.toJson(participantJson, out);
             out.flush();
 
             fos.close();

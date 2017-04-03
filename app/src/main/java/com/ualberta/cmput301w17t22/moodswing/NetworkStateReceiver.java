@@ -15,8 +15,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-import io.searchbox.core.Index;
-
 /**
  * http://stackoverflow.com/questions/3767591/check-intent-internet-connection
  * grab date 01-04-2017
@@ -24,6 +22,8 @@ import io.searchbox.core.Index;
 
 public class NetworkStateReceiver extends BroadcastReceiver {
     private static final String TAG = "NetworkStateReceiver";
+    MoodSwingController moodSwingController =
+            MoodSwingApplication.getMoodSwingController();
 
     @Override
     public void onReceive(final Context context, final Intent intent) {
@@ -37,9 +37,9 @@ public class NetworkStateReceiver extends BroadcastReceiver {
             if (ni != null && ni.isConnectedOrConnecting()) {
                 Log.d(TAG, "Network " + ni.getTypeName() + " connected");
                 //TODO: retry pending moodevent saving on elasticsearch
-                Index index = loadFromFile();
-                if(index != null) {
-                    ElasticSearchController.executeElasticSearch(index);
+                String participantJson = loadFromFile();
+                if(participantJson != null) {
+                    ElasticSearchController.executeElasticSearch(participantJson, moodSwingController.getMainParticipant().getUsername());
                 }
             } else if (intent.getBooleanExtra(ConnectivityManager.EXTRA_NO_CONNECTIVITY, Boolean.FALSE)) {
                 Log.d(TAG, "There's no network connectivity");
@@ -53,10 +53,8 @@ public class NetworkStateReceiver extends BroadcastReceiver {
      *
      * @exception FileNotFoundException if the file is not created first.
      */
-    private Index loadFromFile() {
-        Index index;
-        MoodSwingController moodSwingController =
-                MoodSwingApplication.getMoodSwingController();
+    private String loadFromFile() {
+        String participantJson;
         String filename = moodSwingController.getMainParticipant().getUsername() + ".sav";
         try {
             FileInputStream fis = MoodSwingApplication.getContext().openFileInput(filename);
@@ -70,14 +68,14 @@ public class NetworkStateReceiver extends BroadcastReceiver {
 
             //Log.d("offlineSucks","in: " + in + " listType" + listType);
             //index = gson.fromJson(in, listType);
-            index = gson.fromJson(in, Index.class);
+            participantJson = gson.fromJson(in, String.class);
 
         } catch (FileNotFoundException e) {
-            index = null;
+            participantJson = null;
         } catch (IOException e) {
             // TODO Handle the Exception properly later
             throw new RuntimeException(); //crashes app
         }
-        return index;
+        return participantJson;
     }
 }
