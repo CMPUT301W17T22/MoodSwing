@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.location.Location;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -163,7 +164,9 @@ public class MoodHistoryActivity extends AppCompatActivity implements MSView<Moo
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-                Toast.makeText(MoodHistoryActivity.this, "nothing selected", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MoodHistoryActivity.this,
+                        "nothing selected",
+                        Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -298,35 +301,48 @@ public class MoodHistoryActivity extends AppCompatActivity implements MSView<Moo
      * special map markers.
      */
     public void loadMapMarkers() {
+
+        Location lastKnownLocationLocation = new Location("");
+        lastKnownLocationLocation.setLatitude(lastKnownLocation.latitude);
+        lastKnownLocationLocation.setLongitude(lastKnownLocation.longitude);
+
         for (MoodEvent moodEvent : moodHistory) {
 
             // If the mood event has a location, make a map marker for it.
             if (!Double.isNaN(moodEvent.getLat()) && !Double.isNaN(moodEvent.getLng())) {
 
-                EmotionalState emotionalState = moodEvent.getEmotionalState();
+                Location moodEventLocation = new Location("");
+                moodEventLocation.setLatitude(moodEvent.getLat());
+                moodEventLocation.setLongitude(moodEvent.getLng());
 
-                // Method to resize bitmap taken from
-                // http://stackoverflow.com/questions/14851641/change-marker-size-in-google-maps-api-v2
-                // on 04/02/2017.
-                Bitmap imageBitmap = BitmapFactory.decodeResource(getResources(),
-                        emotionalState.getDrawableId());
-                Bitmap resizedBitmap = Bitmap.createScaledBitmap(imageBitmap, 120, 120, false);
+                // Check the distance between the last known location and the mood event location
+                // using the Location object's distanceTo function. 
+                if (lastKnownLocationLocation.distanceTo(moodEventLocation) < 5000.0) {
+                    EmotionalState emotionalState = moodEvent.getEmotionalState();
 
-                // Create the icon from the resized emoticon
-                BitmapDescriptor icon =
-                        BitmapDescriptorFactory.fromBitmap(resizedBitmap);
+                    // Method to resize bitmap taken from
+                    // http://stackoverflow.com/questions/14851641/change-marker-size-in-google-maps-api-v2
+                    // on 04/02/2017.
+                    Bitmap imageBitmap = BitmapFactory.decodeResource(getResources(),
+                            emotionalState.getDrawableId());
+                    Bitmap resizedBitmap = Bitmap.createScaledBitmap(imageBitmap, 120, 120, false);
 
-                MarkerOptions markerOptions = new MarkerOptions()
-                        .position(new LatLng(moodEvent.getLat(), moodEvent.getLng()))
-                        .title(emotionalState.getDescription())
-                        .snippet(moodEvent.getOriginalPoster())
-                        .icon(icon);
+                    // Create the icon from the resized emoticon
+                    BitmapDescriptor icon =
+                            BitmapDescriptorFactory.fromBitmap(resizedBitmap);
 
-                Marker marker =
-                        historyMap.addMarker(markerOptions);
+                    MarkerOptions markerOptions = new MarkerOptions()
+                            .position(new LatLng(moodEvent.getLat(), moodEvent.getLng()))
+                            .title(emotionalState.getDescription())
+                            .snippet(moodEvent.getOriginalPoster())
+                            .icon(icon);
 
-                // Set the tag of the marker to be the mood event's position in the mood history.
-                marker.setTag(moodHistory.indexOf(moodEvent));
+                    Marker marker =
+                            historyMap.addMarker(markerOptions);
+
+                    // Set the tag of the marker to be the mood event's position in the mood history.
+                    marker.setTag(moodHistory.indexOf(moodEvent));
+                }
             }
         }
     }
