@@ -32,10 +32,12 @@ import static java.security.AccessController.getContext;
  * Very basic Mood Statistics page displaying various stats about the main participant and their
  * mood events.
  * Bar Chart: http://www.android-examples.com/create-bar-chart-graph-using-mpandroidchart-library/
+ * Accessed on: April 2nd 2017
  * @author bbest
  */
 public class MoodStatistics extends AppCompatActivity {
 
+    //declare important components
     ElasticSearchController elasticSearchController;
     MoodSwingController moodSwingController;
     Participant mainParticipant;
@@ -43,16 +45,17 @@ public class MoodStatistics extends AppCompatActivity {
 
     /** The main toolbar of the app that lets users navigate to the other parts of the app. */
     Toolbar mainToolbar;
-
+    /**TextView that will show the number of followers the main participant has currently. */
     TextView followerCountView;
-
+    /**TextView that will show the number of participants that follow the main participant currently. */
     TextView followingCountView;
-
+    /**TextView that shows the name of the most used Emotional State. */
     TextView emotionalStateTextView;
-
+    /**TextView that shows the most used Social Situation. */
     TextView mostUsedSocialSituation;
 
-    //counters
+    //counters that keep track of the number of times an emotional state or social situation was used.
+    //emotional state counters
     int angryCounter;
     int happyCounter;
     int surprisedCounter;
@@ -61,6 +64,7 @@ public class MoodStatistics extends AppCompatActivity {
     int disgustCounter;
     int sadCounter;
     int confusedCounter;
+    //social situation counters
     int aloneCounter;
     int withSomeoneCounter;
     int withGroupCounter;
@@ -69,7 +73,7 @@ public class MoodStatistics extends AppCompatActivity {
     //Bar chart declaration variables
     BarChart chart ;
     ArrayList<BarEntry> BARENTRY ;
-    ArrayList<String> BarEntryLabels ;
+    ArrayList<String> BarEntryLabels ; //not utilized because of alignment issues
     BarDataSet Bardataset ;
     BarData BARDATA ;
 
@@ -111,12 +115,14 @@ public class MoodStatistics extends AppCompatActivity {
 
         BARENTRY = new ArrayList<>();
 
-        BarEntryLabels = new ArrayList<String>();
+        BarEntryLabels = new ArrayList<>();
 
 
 
     }
-
+    /**onStart() will get the Mood History of the main participant.
+     * Calculate and set the number of followers and following participants to the appropriate views.
+     * Iterate through Mood History and increment counters based on emotional states and social situations.*/
     @Override
     protected void onStart() {
         super.onStart();
@@ -169,9 +175,10 @@ public class MoodStatistics extends AppCompatActivity {
                 crowdCounter++;
             }
         }
-
+        /**Emotion colors resource integers in a list so that the bar chart can assign
+         * those colors to the proper bar that represents a specific emotional state. */
         int[] emotionColors = new int[8];
-
+        //set emotion colors by index that correspond to the order of the bars in the chart.
         emotionColors[0] = getResources().getColor(R.color.angry);
         emotionColors[1] = getResources().getColor(R.color.happy);
         emotionColors[2] = getResources().getColor(R.color.sad);
@@ -180,6 +187,7 @@ public class MoodStatistics extends AppCompatActivity {
         emotionColors[5] = getResources().getColor(R.color.ashamed);
         emotionColors[6] = getResources().getColor(R.color.disgusted);
         emotionColors[7] = getResources().getColor(R.color.surprised);
+
 
         findMostUsedEmotion();
 

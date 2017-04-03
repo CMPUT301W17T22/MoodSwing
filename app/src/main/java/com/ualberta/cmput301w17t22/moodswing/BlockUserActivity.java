@@ -21,6 +21,10 @@ import java.util.ArrayList;
 /**
  * An activity where the user of the app may view who they have blocked, block a new user,
  * or unblock a user that they have blocked.
+ * // Method for displaying an EditText nicely in an AlertDialog adapted from
+ // http://stackoverflow.com/questions/27774414/add-bigger-margin-to-edittext-in-android-alertdialog
+ // on 3/25/2017.
+ * @author nyitrai
  */
 public class BlockUserActivity extends AppCompatActivity implements MSView<MoodSwing> {
 
@@ -33,7 +37,7 @@ public class BlockUserActivity extends AppCompatActivity implements MSView<MoodS
     /** The ArrayAdapter for the blockListListView. */
     private ArrayAdapter<String> blockListAdapter;
 
-    /** The main participant's mood history, an ArrayList of their MoodEvents */
+    /** The main participants ArrayList of usernames of participants they are blocking.*/
     private ArrayList<String> blockList;
 
     /** The floating action button the user may press to block a new user. */

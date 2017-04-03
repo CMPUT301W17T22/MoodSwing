@@ -4,8 +4,8 @@ import java.security.InvalidParameterException;
 import java.util.ArrayList;
 
 /**
- * This class contains two lists of Participants.
- * Participants are initially added as "pending".
+ * This class contains two lists of usernames of Participants.
+ * Participants username are initially added as "pending".
  * After approval, Participants are promoted to "approved".
  *
  * This list is part-of Participant (implemented twice).
@@ -57,12 +57,12 @@ public class ApprovalList {
     }
 
     // --- getters and setters ---
-    /**Returns the username of participants in the pending list. */
+    /**Returns the usernames of participants in the pending list. */
     public ArrayList<String> getPending() {
         return pending;
     }
 
-    /**Returns the username of participants in the approved list. */
+    /**Returns the usernames of participants in the approved list. */
     public ArrayList<String> getApproved() {
         return approved;
     }

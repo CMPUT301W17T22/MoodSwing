@@ -68,27 +68,26 @@ public class EditMoodEventActivity extends AppCompatActivity implements MSView<M
     /** The edit button object that confirms that the participant is done editing.*/
     Button editButton;
 
-    /** Checkbox that indicates if the user wants to add their current lastKnownLocation.*/
-    CheckBox addCurrentLocationCheckBox;
 
     /**Button used to trigger the gallery option to upload a photo. */
     Button photoUploadButton;
 
-    /**Button used to trigger the camera on the phone to take a picture and attach it to the Mood Event */
+    /**Button used to trigger the camera on the phone to take a picture and attach it to the Mood Event. */
     Button photoCaptureButton;
 
     /**Image View used to display the chosen image. */
     ImageView imageView;
 
-    /**Get the ImageView */
+    /**A byte array we write the image to in order to compress it. */
     ByteArrayOutputStream image = null;
 
-    /**If the image is edited, then change this to true*/
+    /**If the image is edited, then change this to true.*/
     boolean imageEdited = false;
 
     /**Initialize all the Views or Widgets in the Activity  */
     public void initialize() {
 
+        //initialize widgets to variable names
         emotionalStateSpinner =
                 (Spinner) findViewById(R.id.emotionalStateSpinner_EditMoodEventActivity);
         socialSituationSpinner =
@@ -105,6 +104,7 @@ public class EditMoodEventActivity extends AppCompatActivity implements MSView<M
         MoodSwingController moodSwingController = MoodSwingApplication.getMoodSwingController();
         moodSwingController.addView(this);
 
+        //setting the toolbar
         editMoodToolbar = (Toolbar) findViewById(R.id.editMoodToolbar);
         editMoodToolbar.setTitle("Edit Mood Event");
     }
@@ -193,10 +193,7 @@ public class EditMoodEventActivity extends AppCompatActivity implements MSView<M
                     // otherwise just use the old value.
                     double lat = oldMoodEvent.getLat();
                     double lng = oldMoodEvent.getLng();
-//                    if (addCurrentLocationCheckBox.isChecked()) {
-//                        lat = getLat();
-//                        lng = getLng();
-//                    }
+
 
                     // Get MoodSwingController.
                     MoodSwingController moodSwingController =
@@ -356,25 +353,6 @@ public class EditMoodEventActivity extends AppCompatActivity implements MSView<M
                 String.valueOf(socialSituationSpinner.getSelectedItem()));
     }
 
-    /**
-     * Gets the lastKnownLat from the main model class.
-     * @return The current / last known lastKnownLat as a double.
-     */
-    public double getLat() {
-        // Get the mood swing controller and get the last known location.
-        MoodSwingController moodSwingController = MoodSwingApplication.getMoodSwingController();
-        return moodSwingController.getLastKnownLat();
-    }
-
-    /**
-     * Gets the lastKnownLng from the main model class.
-     * @return The current / last known lastKnownLng as a double.
-     */
-    public double getLng() {
-        // Get the mood swing controller and get the last known location.
-        MoodSwingController moodSwingController = MoodSwingApplication.getMoodSwingController();
-        return moodSwingController.getLastKnownLng();
-    }
 
     /**
      * Create and launch intent to view and select photo from gallery.

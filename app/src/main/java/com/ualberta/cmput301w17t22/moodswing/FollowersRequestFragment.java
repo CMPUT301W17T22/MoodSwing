@@ -34,7 +34,7 @@ public class FollowersRequestFragment extends Fragment {
     public FollowersRequestFragment() {
     }
 
-    // TODO: Customize parameter initialization
+
     @SuppressWarnings("unused")
     public static FollowersRequestFragment newInstance(int columnCount) {
         FollowersRequestFragment fragment = new FollowersRequestFragment();

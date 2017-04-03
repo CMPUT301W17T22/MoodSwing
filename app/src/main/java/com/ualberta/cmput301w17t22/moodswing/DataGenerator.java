@@ -7,13 +7,14 @@ import java.util.Calendar;
 import java.util.Date;
 
 /** This class generates data for our app for demoing and sample purposes.
+ * Two users are created and MoodEvents made for them.
  * Created by nyitrai on 3/29/2017.
  */
 
 public class DataGenerator {
 
     /**
-     * The method that actually generates data.
+     * The method that actually generates data by creating users: paragon56 and albertab33fgirl
      */
     public void generate() {
 
@@ -43,7 +44,7 @@ public class DataGenerator {
 
         //generateFollowerConnections();
     }
-
+    /**Create paragon56 and generate MoodEvents*/
     public Participant generateParagon56() {
         Log.i("MoodSwing", "Generating user \"paragon56\".");
 

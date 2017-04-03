@@ -36,7 +36,7 @@ public class MoodEventAdapter extends ArrayAdapter<MoodEvent> {
         if(convertView == null){
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.mood_event, parent, false);
         }
-
+        //sets the widgets to correspond to variables
          TextView usernameTextView = (TextView) convertView.findViewById(R.id.MoodEventHistoryText);
          TextView dateStamp = (TextView) convertView.findViewById(R.id.MoodEvenHistoryDatetimeStamp);
          TextView emotionalStateTextView = (TextView) convertView.findViewById(R.id.EmotionStateTextView_MoodEvent);

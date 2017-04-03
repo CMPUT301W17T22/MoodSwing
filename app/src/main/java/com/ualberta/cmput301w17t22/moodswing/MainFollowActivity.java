@@ -26,6 +26,7 @@ import android.widget.Toast;
 import java.security.InvalidParameterException;
 
 /**
+ * Main activity for the Follower & Following Fragment tabs.
  * Includes auto generated code from Android Studio when created a tabbed layout.
  */
 public class MainFollowActivity extends AppCompatActivity implements MSView<MoodSwing>,
@@ -203,9 +204,8 @@ public class MainFollowActivity extends AppCompatActivity implements MSView<Mood
         return true;
     }
 
-    /**
-     * We could add menu items here, but currently we have no menu items.
-     * @param item
+    /**onClick method for menu options from the Follower & Following page.
+     *  @param item
      * @return
      */
     @Override
@@ -267,7 +267,8 @@ public class MainFollowActivity extends AppCompatActivity implements MSView<Mood
             // Show 4 total pages.
             return 4;
         }
-
+        /**Returns the name of the current page by its position.
+         * @return CharSequence */
         @Override
         public CharSequence getPageTitle(int position) {
             switch (position) {

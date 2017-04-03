@@ -24,6 +24,7 @@ import static java.lang.Double.NaN;
  */
 
 public class MoodEvent {
+
     private static final double NOT_SET = 911.911;
 
     /** The original poster of the MoodEvent's username. */
@@ -46,6 +47,7 @@ public class MoodEvent {
     /** The lastKnownLat that the mood event originally was entered at.
      * CAN NOT BE EDITED AFTER INITIALIZATION.*/
     private double lat = NOT_SET;
+
     /** The lastKnownLng that the mood event originally was entered at.
      * CAN NOT BE EDITED AFTER INITIALIZATION.*/
     private double lng = NOT_SET;

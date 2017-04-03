@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 import java.util.List;
 
-/** TODO: Javadocs.
+/**
  * {@link RecyclerView.Adapter} that can display a and makes a call to the
  * specified {@link OnListFragmentInteractionListener}.
  */
