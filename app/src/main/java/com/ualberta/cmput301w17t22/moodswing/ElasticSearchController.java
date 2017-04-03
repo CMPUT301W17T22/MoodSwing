@@ -459,9 +459,11 @@ public class ElasticSearchController implements MSController {
                 Log.i("ERROR", "Something went wrong when adding a participant by" +
                         " username to ElasticSearch.");
                 Log.i("offlineTest", "exception");
-                if(id.equals(moodSwingController.getMainParticipant().getId())) {
-                    saveInFile(participantJson);
-                }
+
+            }
+            //always save so that old data is never loaded
+            if(id.equals(moodSwingController.getMainParticipant().getId())) {
+                saveInFile(participantJson);
             }
 
             return null;
