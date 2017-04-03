@@ -99,8 +99,6 @@ public class EditMoodEventActivity extends AppCompatActivity implements MSView<M
         photoUploadButton = (Button) findViewById(R.id.photoUploadButton_EditMoodEventActivity);
         photoCaptureButton = (Button) findViewById(R.id.photoCaptureButton_EditMoodEventActivity);
 
-        addCurrentLocationCheckBox =
-                (CheckBox) findViewById(R.id.addCurentLocationCheckBox_EditMoodEventActivity);
         imageView = (ImageView) findViewById(R.id.imageView_EditMoodEventActivity);
 
         // Add this View to the main Model class.

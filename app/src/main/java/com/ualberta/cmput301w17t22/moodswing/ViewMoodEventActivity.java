@@ -308,7 +308,6 @@ public class ViewMoodEventActivity extends AppCompatActivity implements MSView<M
      * Loads the values from the mood event being viewed into the widgets of the activity.
      */
     private void loadFromMoodEvent() {
-        Log.i("MoodSwing", String.valueOf(moodEvent.getEmotionalState().getDrawableId()));
         // Load username from MoodEvent into the simple text field.
         usernameTextView.setText(moodEvent.getOriginalPoster());
 
