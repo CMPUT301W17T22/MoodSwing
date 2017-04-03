@@ -1,5 +1,9 @@
 [
     {
+        "merged": "C:\\Users\\Henry\\Documents\\GitHub\\offline\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi\\ic_launcher.png",
+        "source": "C:\\Users\\Henry\\Documents\\GitHub\\offline\\MoodSwing\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
+    },
+    {
         "merged": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi\\ic_launcher.png",
         "source": "C:\\afs\\ualberta.ca\\home\\h\\t\\htruong1\\CMPUT301\\project\\MoodSwing\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
     },

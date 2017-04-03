@@ -1,5 +1,13 @@
 [
     {
+        "merged": "C:\\Users\\Henry\\Documents\\GitHub\\offline\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\color-v11\\abc_background_cache_hint_selector_material_dark.xml",
+        "source": "C:\\Users\\Henry\\.android\\build-cache\\84c1fa54b483296fe1b99aea8b6ff2fdc87de653\\output\\res\\color-v11\\abc_background_cache_hint_selector_material_dark.xml"
+    },
+    {
+        "merged": "C:\\Users\\Henry\\Documents\\GitHub\\offline\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\color-v11\\abc_background_cache_hint_selector_material_light.xml",
+        "source": "C:\\Users\\Henry\\.android\\build-cache\\84c1fa54b483296fe1b99aea8b6ff2fdc87de653\\output\\res\\color-v11\\abc_background_cache_hint_selector_material_light.xml"
+    },
+    {
         "merged": "C:\\Users\\Fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\color-v11\\abc_background_cache_hint_selector_material_light.xml",
         "source": "C:\\Users\\Fred\\.android\\build-cache\\cd9c4cfd4be481eb0ca86ab77048eb1cbe3df69d\\output\\res\\color-v11\\abc_background_cache_hint_selector_material_light.xml"
     },

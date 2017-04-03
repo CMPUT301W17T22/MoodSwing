@@ -10,5 +10,9 @@
     {
         "merged": "C:\\Users\\Fred\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi\\ic_launcher.png",
         "source": "C:\\Users\\Fred\\MoodSwing\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\Henry\\Documents\\GitHub\\offline\\MoodSwing\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi\\ic_launcher.png",
+        "source": "C:\\Users\\Henry\\Documents\\GitHub\\offline\\MoodSwing\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
     }
 ]
