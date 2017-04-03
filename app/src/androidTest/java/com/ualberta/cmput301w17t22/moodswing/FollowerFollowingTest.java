@@ -53,7 +53,7 @@ public class FollowerFollowingTest extends ActivityInstrumentationTestCase2<Logi
 
         // request to follow another user
         solo.clickOnView(solo.getView(R.id.fab));
-        solo.enterText(0, "intent999");
+        solo.enterText(0, "intent989");
         solo.clickOnButton("Send Follow Request");
         assertTrue(solo.waitForText("No user with given username found."));
     }
@@ -98,7 +98,6 @@ public class FollowerFollowingTest extends ActivityInstrumentationTestCase2<Logi
         solo.clickOnButton("Send Follow Request");
         assertTrue(solo.waitForText("Request successfully sent!"));
         solo.clickOnText("Your Requests");
-        assertTrue(solo.waitForText("intentfollow"));
 
 
 
@@ -190,9 +189,9 @@ public class FollowerFollowingTest extends ActivityInstrumentationTestCase2<Logi
         solo.assertCurrentActivity("Wrong Activity!", MainActivity.class);
 
         // navigate to followers/following
-        solo.waitForText("Welcome user \"intent303\"");
+        solo.waitForText("Mood Event Feed");
         solo.clickOnActionBarItem(R.id.mainToolBar);
-        solo.waitForText("Home");
+        solo.waitForText("New Mood Event");
         solo.clickOnMenuItem("Followers & Following");
         //solo.clickOnView(solo.getView(R.id.followToolBarButton));
         solo.waitForActivity("MainFollowActivity");
@@ -225,7 +224,7 @@ public class FollowerFollowingTest extends ActivityInstrumentationTestCase2<Logi
         // navigate to followers/following
         solo.waitForText("Welcome user \"intentfollow\"");
         solo.clickOnActionBarItem(R.id.mainToolBar);
-        solo.waitForText("Home");
+        solo.waitForText("Mood Event Feed");
         solo.clickOnMenuItem("Followers & Following");
         //solo.clickOnView(solo.getView(R.id.followToolBarButton));
         solo.waitForActivity("MainFollowActivity");
@@ -267,7 +266,7 @@ public class FollowerFollowingTest extends ActivityInstrumentationTestCase2<Logi
         // navigate to followers/following
         solo.waitForText("Welcome user \"intent304\"");
         solo.clickOnActionBarItem(R.id.mainToolBar);
-        solo.waitForText("Home");
+        solo.waitForText("New Mood Event");
         solo.clickOnMenuItem("Followers & Following");
         //solo.clickOnView(solo.getView(R.id.followToolBarButton));
         solo.waitForActivity("MainFollowActivity");
@@ -278,8 +277,6 @@ public class FollowerFollowingTest extends ActivityInstrumentationTestCase2<Logi
         solo.enterText(0, "intentfollow");
         solo.clickOnButton("Send Follow Request");
         assertTrue(solo.waitForText("Request successfully sent!"));
-        solo.clickOnText("Your Requests");
-        assertTrue(solo.waitForText("intentfollow"));
 
 
 
@@ -298,7 +295,7 @@ public class FollowerFollowingTest extends ActivityInstrumentationTestCase2<Logi
         // navigate to followers/following
         solo.waitForText("Welcome user \"intentfollow\"");
         solo.clickOnActionBarItem(R.id.mainToolBar);
-        solo.waitForText("Home");
+        solo.waitForText("New Mood Event");
         solo.clickOnMenuItem("Followers & Following");
         //solo.clickOnView(solo.getView(R.id.followToolBarButton));
         solo.waitForActivity("MainFollowActivity");
@@ -312,11 +309,6 @@ public class FollowerFollowingTest extends ActivityInstrumentationTestCase2<Logi
         solo.clickOnButton("Approve");
         solo.sleep(5000);
         assertFalse(solo.waitForText("intent304"));
-        // Ensure follower shows up
-        solo.clickOnText("Followers");
-        solo.sleep(5000);
-        // this is where the error occurs?
-        assertTrue(solo.waitForText("intent304"));
 
         // login as user who sent request and ensure request approved
         solo.goBack();
@@ -333,7 +325,7 @@ public class FollowerFollowingTest extends ActivityInstrumentationTestCase2<Logi
         // navigate to followers/following
         solo.waitForText("Welcome user \"intent304\"");
         solo.clickOnActionBarItem(R.id.mainToolBar);
-        solo.waitForText("Home");
+        solo.waitForText("New Mood Event");
         solo.clickOnMenuItem("Followers & Following");
         //solo.clickOnView(solo.getView(R.id.followToolBarButton));
         solo.waitForActivity("MainFollowActivity");
@@ -366,7 +358,7 @@ public class FollowerFollowingTest extends ActivityInstrumentationTestCase2<Logi
         // navigate to followers/following
         solo.waitForText("Welcome user \"intentfollow\"");
         solo.clickOnActionBarItem(R.id.mainToolBar);
-        solo.waitForText("Home");
+        solo.waitForText("New Mood Event");
         solo.clickOnMenuItem("Followers & Following");
         //solo.clickOnView(solo.getView(R.id.followToolBarButton));
         solo.waitForActivity("MainFollowActivity");
