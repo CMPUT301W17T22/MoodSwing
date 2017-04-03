@@ -39,7 +39,7 @@ public class NetworkStateReceiver extends BroadcastReceiver {
                 //TODO: retry pending moodevent saving on elasticsearch
                 String participantJson = loadFromFile();
                 if(participantJson != null) {
-                    ElasticSearchController.executeElasticSearch(participantJson, moodSwingController.getMainParticipant().getUsername());
+                    ElasticSearchController.executeElasticSearch(participantJson, moodSwingController.getMainParticipant().getId());
                 }
             } else if (intent.getBooleanExtra(ConnectivityManager.EXTRA_NO_CONNECTIVITY, Boolean.FALSE)) {
                 Log.d(TAG, "There's no network connectivity");

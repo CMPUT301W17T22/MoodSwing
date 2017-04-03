@@ -443,7 +443,7 @@ public class ElasticSearchController implements MSController {
             Log.i("ERROR", "Something went wrong when adding a participant by" +
                     " username to ElasticSearch.");
             Log.i("offlineTest", "exception");
-            if(id == moodSwingController.getMainParticipant().getId()) {
+            if(id.equals(moodSwingController.getMainParticipant().getId())) {
                 saveInFile(participantJson);
             }
         }
