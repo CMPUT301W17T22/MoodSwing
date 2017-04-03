@@ -15,7 +15,11 @@ import com.robotium.solo.Solo;
  * seems to be having occasional trouble with elastic search refreshing
  * and fetching. This speeds up testing and alleviates the errors).
  *
- * How to test recent week? Move clock to test a week ahead?
+ * Have had some problems with intent tests not being able to log into
+ * the main page (MainActivity) from the login screen (LoginActivity).
+ * Re-running the test a second time almost always fixes the problem.
+ * The tests themselves are fine, I suspect it’s something related to
+ * network connectivity and elasticsearch.
  */
 
 public class FilterTest extends ActivityInstrumentationTestCase2<LoginActivity> {
@@ -33,6 +37,7 @@ public class FilterTest extends ActivityInstrumentationTestCase2<LoginActivity> 
     /**
      * Tests filters and ensures they are working and work to filter
      * out the appropriate MoodEvents.
+     * Uses two helper functions below.
      */
     public void testFilters(){
         createTestData();
@@ -72,6 +77,7 @@ public class FilterTest extends ActivityInstrumentationTestCase2<LoginActivity> 
 
     /**
      * Creates multiple MoodHistory events for testing, then remains in MoodHistory
+     * Helper function.
      */
     public void createTestData(){
         // getting to NewMoodEvent
@@ -144,6 +150,7 @@ public class FilterTest extends ActivityInstrumentationTestCase2<LoginActivity> 
 
     /**
      * Starts in MoodHistory, and deletes all created MoodEvents.
+     * Helper function.
      */
     public void cleanUpData() {
 

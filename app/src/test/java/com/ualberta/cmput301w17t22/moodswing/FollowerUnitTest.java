@@ -8,12 +8,15 @@ import static org.junit.Assert.assertTrue;
 
 /**
  * Unit test of the follower functionality of participants.
+ * Tests on the FOLLOWER participant's side. (as defined in glossary)
  * Created by Peter on 2017-02-23.
  */
 
 public class FollowerUnitTest {
 
-    // test follower request act of approving
+    /**
+     * test follower request act of approving
+     */
     @Test
     public void testFollowRequestReceiver(){
         Participant participant1 = new Participant("participant1");
@@ -41,7 +44,9 @@ public class FollowerUnitTest {
         assertEquals(participant1.getFollowing().get(0), participant2.getUsername());
     }
 
-    // test follower request act of denying
+    /**
+     * test follower request act of denying
+     */
     @Test
     public void testDeclineFollowRequestReceiver(){
         Participant participant1 = new Participant("participant1");
@@ -62,7 +67,9 @@ public class FollowerUnitTest {
         assertTrue(participant1.getFollowing().isEmpty());
     }
 
-    // test follower request act of approving
+    /**
+     * test follower request act of approving and checking effects of follow
+     */
     @Test
     public void testApproveFollowRequestReceiver(){
         Participant participant1 = new Participant("participant1");

@@ -11,6 +11,12 @@ import com.robotium.solo.Solo;
  * Created by PeterWeckend on 2017-03-12.
  * Does not follow assignment specifications for log in yet,
  * but works with our current app build.
+ *
+ * Have had some problems with intent tests not being able to log into
+ * the main page (MainActivity) from the login screen (LoginActivity).
+ * Re-running the test a second time almost always fixes the problem.
+ * The tests themselves are fine, I suspect it’s something related to
+ * network connectivity and elasticsearch.
  */
 
 public class LoginActivityTest extends ActivityInstrumentationTestCase2<LoginActivity> {

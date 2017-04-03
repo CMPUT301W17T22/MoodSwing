@@ -7,7 +7,8 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- * Test of the SocialSituation class.
+ * Test of the SocialSituation class and
+ * manipulating social situations.
  *
  * Created by nyitrai on 3/13/2017.
  */

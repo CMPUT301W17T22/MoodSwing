@@ -10,10 +10,13 @@ import static org.junit.Assert.assertTrue;
 /**
  * Created by PeterWeckend on 2017-04-02.
  * Test BlockUserActivity and everything related to blocking users.
+ * More details in each of the test cases.
  */
 
 public class BlockingUnitTest {
-    // test creating a follow request towards a user that blocks you
+    /**
+     * Test creating a follow request towards a user that blocks you
+     */
     @Test
     public void testFollowBlockingUser(){
         Participant participant1 = new Participant("participant1");
@@ -56,8 +59,10 @@ public class BlockingUnitTest {
     }
 
 
-
-    // test creating a follow request towards a user that blocked you
+    /**
+     * test creating a follow request towards a user that blocked you
+     * but later unblocked you
+     */
     @Test
     public void testFollowCancelledBlockingUser(){
         Participant participant1 = new Participant("participant1");
@@ -85,8 +90,10 @@ public class BlockingUnitTest {
 
     }
 
-    // test checking if you can follow someone you are blocking
-    // Passes if you can, fails if you cannot
+    /**
+     * Test checking if you can follow someone you are blocking.
+     * Passes if you can, fails if you cannot
+     */
     @Test
     public void testFollowBlockedUser(){
         Participant participant1 = new Participant("participant1");

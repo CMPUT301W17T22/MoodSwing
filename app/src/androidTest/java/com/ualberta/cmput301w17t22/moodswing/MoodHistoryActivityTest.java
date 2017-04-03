@@ -16,6 +16,12 @@ import com.robotium.solo.Solo;
  * created Mood Event shows up.
  * All created Mood Events are deleted after testing.
  * Filters are handled in FilterTest
+ *
+ * Have had some problems with intent tests not being able to log into
+ * the main page (MainActivity) from the login screen (LoginActivity).
+ * Re-running the test a second time almost always fixes the problem.
+ * The tests themselves are fine, I suspect it’s something related to
+ * network connectivity and elasticsearch.
  */
 
 public class MoodHistoryActivityTest extends ActivityInstrumentationTestCase2<LoginActivity> {

@@ -14,6 +14,9 @@ import static org.junit.Assert.assertTrue;
 
 public class ApprovalListTest {
 
+    /**
+     * Create a new pending follower request and ensure it works.
+     */
     @Test
     public void newPendingParticipantTest(){
         Participant receivingParticipant = new Participant("Jimmy");
@@ -33,6 +36,9 @@ public class ApprovalListTest {
 
     }
 
+    /**
+     * Approve a pending follower request and ensure it works.
+     */
     @Test
     public void approvePendingTest(){
         Participant receivingParticipant = new Participant("Jimmy");
@@ -59,6 +65,9 @@ public class ApprovalListTest {
 
     }
 
+    /**
+     * Test declining a follower request as well as cancelling a request
+     */
     @Test
     public void removeTest(){
         Participant receivingParticipant = new Participant("Jimmy");
@@ -93,6 +102,9 @@ public class ApprovalListTest {
         assertTrue(receivingParticipant.getPendingFollowers().isEmpty());
     }
 
+    /**
+     * Test viewing the pending list of a user
+     */
     @Test
     public void getPendingTest(){
         Participant receivingParticipant = new Participant("Jimmy");
@@ -111,6 +123,9 @@ public class ApprovalListTest {
 
     }
 
+    /**
+     * Test the approved list of a user
+     */
     @Test
     public void getApprovedTest(){
         Participant receivingParticipant = new Participant("Jimmy");

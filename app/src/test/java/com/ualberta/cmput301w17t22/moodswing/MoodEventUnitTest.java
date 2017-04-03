@@ -9,9 +9,10 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 
-/** Unit Test class for MoodEvent
+/**
+ * Unit Test class for MoodEvent and MoodEvent
+ * manipulation and modification.
  * Created by Fred on 2017-02-18.
- * Errors occur with location changes. Commented out for now.
  */
 
 public class MoodEventUnitTest {

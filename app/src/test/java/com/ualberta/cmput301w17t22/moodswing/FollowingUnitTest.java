@@ -6,12 +6,14 @@ import static org.junit.Assert.*;
 
 /**
  * Unit test of the following list functionality of participants.
+ * Tests on the FOLLOWING participant's side. (as defined in glossary)
  * Created by Fred on 2017-02-18.
  */
 public class FollowingUnitTest {
-    // TODO: Finish testing when implementation is finalized.
 
-    // test creating a follow request
+    /**
+     * test creating a follow request
+     */
     @Test
     public void testCreateFollowRequestRequester(){
         Participant participant1 = new Participant("participant1");
@@ -35,8 +37,11 @@ public class FollowingUnitTest {
         assertTrue(participant2.getFollowers().isEmpty());
     }
 
-    // testing what happens if a follow request is approved.
-    // (not the act of approving, but the result)
+
+    /**
+     * Testing what happens if a follow request is approved.
+     * (Not the act of approving but the result)
+     */
     @Test
     public void testConfirmFollowRequestRequester(){
         Participant participant1 = new Participant("participant1");
@@ -58,8 +63,11 @@ public class FollowingUnitTest {
         assertEquals(participant1.getFollowing().get(0), participant2.getUsername());
     }
 
-    // testing what happens if a follow request is declined
-    // (not the act of declining, but the result)
+
+    /**
+     * Testing what happens if a follow request is declined.
+     * (Not the act of declining but the result)
+     */
     @Test
     public void testDeclineFollowRequestRequester(){
         Participant participant1 = new Participant("participant1");

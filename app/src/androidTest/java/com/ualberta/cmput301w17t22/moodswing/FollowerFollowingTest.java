@@ -8,9 +8,21 @@ import com.robotium.solo.Solo;
 
 /**
  * Created by nyitrai on 3/21/2017.
- * Some code commented to save time in test testing.
+ * Tests the acts of following and interacting with followers.
  * Does NOT test viewing MoodFeed events of followers/following.
  * That is handled in MoodFeed intent testing.
+ *
+ *
+ * Have had some problems with intent tests not being able to log into
+ * the main page (MainActivity) from the login screen (LoginActivity).
+ * Re-running the test a second time almost always fixes the problem.
+ * The tests themselves are fine, I suspect it’s something related to
+ * network connectivity and elasticsearch.
+ *
+ * This can cause problems like:
+ * - solo cannot log in as intentfollow, so when it tries to follow
+ * that account (which does not exist if it's never logged into),
+ * an error occurs
  */
 
 public class FollowerFollowingTest extends ActivityInstrumentationTestCase2<LoginActivity> {
@@ -30,7 +42,9 @@ public class FollowerFollowingTest extends ActivityInstrumentationTestCase2<Logi
         Activity activity = getActivity();
     }
 
-    // Verify that requesting to follow non-existant user fails
+    /**
+     * Verify that requesting to follow non-existant user fails
+     */
     public void testFollowingInvalidUser() {
         // login and navigate to following/followers
         solo.assertCurrentActivity("Wrong Activity!", LoginActivity.class);
@@ -58,10 +72,10 @@ public class FollowerFollowingTest extends ActivityInstrumentationTestCase2<Logi
         assertTrue(solo.waitForText("No user with given username found."));
     }
 
-//    /**
-//     * Verify that following another user and having that user decline the request
-//     * works in UI.
-//     */
+    /**
+     * Verify that following another user and having that user decline the request
+     * works in UI.
+     */
     public void testFollowingDeclineRequest() {
         // login as the user to be followed - make sure account exists
         solo.assertCurrentActivity("Wrong Activity!", LoginActivity.class);
@@ -240,7 +254,6 @@ public class FollowerFollowingTest extends ActivityInstrumentationTestCase2<Logi
     /**
      * Verify that following another user works, and then test
      * unfollowing.
-     * TODO: Retry this test when the follower/following bugs are fixed.
      */
     public void testFollowingApproveRequest() {
 // login as the user to be followed - make sure account exists

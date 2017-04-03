@@ -11,7 +11,7 @@ import static org.junit.Assert.assertTrue;
 
 /**
  * Created by PeterWeckend on 2017-03-13.
- * Tests out Participant class.
+ * Tests out Participant class, not including follower/following methods.
  * Other Participant methods tested by Follower/Following Unit Tests.
  */
 

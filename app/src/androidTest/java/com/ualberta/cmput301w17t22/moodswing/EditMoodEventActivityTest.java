@@ -13,6 +13,13 @@ import com.robotium.solo.Solo;
  * Run from Login because a user needs to log in for app to work.
  * Intent testing the editing of a Mood Event.
  * All created Mood Events are deleted after testing.
+ *
+ * Have had some problems with intent tests not being able to log into
+ * the main page (MainActivity) from the login screen (LoginActivity).
+ * Re-running the test a second time almost always fixes the problem.
+ * The tests themselves are fine, I suspect it’s something related to
+ * network connectivity and elasticsearch.
+
  */
 
 public class EditMoodEventActivityTest extends ActivityInstrumentationTestCase2<LoginActivity> {

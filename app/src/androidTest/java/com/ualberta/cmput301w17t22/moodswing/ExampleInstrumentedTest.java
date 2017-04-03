@@ -11,7 +11,8 @@ import static org.junit.Assert.*;
 
 /**
  * Instrumentation test, which will execute on an Android device.
- *
+ * This test is used to experiment with UnitTesting.
+ * It is NOT used to test the MoodSwing app.
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
 @RunWith(AndroidJUnit4.class)
