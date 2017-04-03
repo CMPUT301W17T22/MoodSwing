@@ -42,9 +42,6 @@ public class ViewMoodEventActivity extends AppCompatActivity implements MSView<M
     /** TextView that holds the mood event's emotional state. */
     TextView emotionalStateTextView;
 
-    /** TextView that holds the mood event's social situation. */
-    TextView socialSituationTextView;
-
     /** TextView that holds the mood event's trigger text. */
     TextView triggerTextView;
     TextView triggerPrefixTextView;
@@ -84,7 +81,11 @@ public class ViewMoodEventActivity extends AppCompatActivity implements MSView<M
      * deleted. */
     boolean delete;
 
+    /** The google map that shows the location of the mood event. */
     private GoogleMap viewMoodEventMap;
+
+    /** The textview that acts as the title of the map. */
+    private TextView mapTitleTextView;
 
     /**
      * Initialize all the widgets for the Activity, and add this View to the main Model's list of
@@ -97,15 +98,14 @@ public class ViewMoodEventActivity extends AppCompatActivity implements MSView<M
                 (TextView) findViewById(R.id.usernameTextView_ViewMoodEventActivity);
         emotionalStateTextView =
                 (TextView) findViewById(R.id.emotionalStateTextView_ViewMoodEventActivity);
-//        socialSituationTextView =
-//                (TextView) findViewById(R.id.socialSituationTextView_ViewMoodEventActivity);
         triggerTextView =
                 (TextView) findViewById(R.id.triggerTextView_ViewMoodEventActivity);
-
         triggerPrefixTextView =
-                (TextView) findViewById(R.id.triggerPrefixTextView);
-
-        dateTextView = (TextView) findViewById(R.id.dateTextView_ViewMoodEvent);
+                (TextView) findViewById(R.id.triggerPrefixTextView_ViewMoodEventActivity);
+        dateTextView =
+                (TextView) findViewById(R.id.dateTextView_ViewMoodEvent);
+        mapTitleTextView =
+                (TextView) findViewById(R.id.mapTitleTextView_ViewMoodEventActivity);
 
         // Initialize the image views.
         emotionalStateImageView =
@@ -451,8 +451,10 @@ public class ViewMoodEventActivity extends AppCompatActivity implements MSView<M
         // If there is no location, make the map invisible, if there is a location, make it visible.
         if (!Double.isNaN(moodEvent.getLat()) && !Double.isNaN(moodEvent.getLng())) {
             supportMapFragment.getView().setVisibility(View.VISIBLE);
+            mapTitleTextView.setVisibility(View.VISIBLE);
         } else {
             supportMapFragment.getView().setVisibility(View.INVISIBLE);
+            mapTitleTextView.setVisibility(View.INVISIBLE);
         }
     }
 

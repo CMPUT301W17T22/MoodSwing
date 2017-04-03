@@ -142,6 +142,7 @@ public class MoodHistoryActivity extends AppCompatActivity implements MSView<Moo
     protected void onStart() {
         super.onStart();
         displayFilterToast = false;
+
         // Load information on the main participant from MoodSwing.
         loadMoodSwing();
 
@@ -216,8 +217,6 @@ public class MoodHistoryActivity extends AppCompatActivity implements MSView<Moo
     /**
      * Inflates the menu. Connects the menu_main_activity.xml to the
      * menu_main_activity in activity_main.xml.
-     * @param appappmenu
-     * @return
      */
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
@@ -346,59 +345,6 @@ public class MoodHistoryActivity extends AppCompatActivity implements MSView<Moo
         moodHistoryListView.setEmptyView(emptyMoodHistory);
         moodHistoryListView.setAdapter(moodHistoryAdapter);
     }
-
-    /**
-     * Initialize all widgets for this Activity, and add this view to the main model class.
-     */
-    public void initialize() {
-        mainToolbar2 = (Toolbar) findViewById(R.id.mainToolBar2);
-        mainToolbar2.setTitle("");
-        moodHistoryListView  = (ListView) findViewById(R.id.moodHistory);
-        emptyMoodHistory = (TextView) findViewById(R.id.emptyMoodHistory);
-        filterSpinner = (Spinner) findViewById(R.id.filterSpinnerMoodHistory);
-
-        // these populate the filter spinner
-        filterStrings.add("No Filter");
-        filterStrings.add("By Recent Week");
-        filterStrings.add("By Emotion");
-        filterStrings.add("By Trigger");
-        filterStrings.add("Within 5km");
-
-        // for our custom spinner options and settings
-        ArrayAdapter<String> filterAdapter =
-                new ArrayAdapter<>(this, R.layout.filter_spinner, filterStrings);
-        filterSpinner.setAdapter(filterAdapter);
-
-
-        // Add this View to the main Model class.
-        MoodSwingController moodSwingController = MoodSwingApplication.getMoodSwingController();
-        moodSwingController.addView(this);
-    }
-
-    /**
-     * Refreshes this view to have current information.
-     * @param moodSwing
-     */
-    public void update(MoodSwing moodSwing) {
-        loadMoodSwing();
-        historyMap.clear();
-        loadMapMarkers();
-    }
-
-
-    // from http://stackoverflow.com/questions/8924599/how-to-count-the-exact-number-of-words-in-a-string-that-has-empty-spaces-between
-    // on 3/28
-    // returns word count of a String s
-    public static int wordCount(String s){
-        if (s == null) {
-            return 0;
-        }
-        if (s.equals("")){
-            return 0;
-        }
-        return s.trim().split("\\s+").length;
-    }
-
 
     /**
      * updateFilterUI: Changes the UI to reflect changes in activeFilters.
@@ -578,6 +524,7 @@ public class MoodHistoryActivity extends AppCompatActivity implements MSView<Moo
      * Case 1: Recent week filter. Add on recent week filter to existing and refresh Mood History.
      * Case 2: Emotion filter. Create dialog box and update depending on emotion chosen.
      * Case 3: Trigger filter. Create dialog box, check input, and update depending on emotion chosen.
+     * Case 4: Distance filter. Add within 5km filter to existing and refresh mood history.
      * @param selected - index of item chosen in spinner
      */
     public void handleFilterSelection(int selected){
@@ -740,7 +687,61 @@ public class MoodHistoryActivity extends AppCompatActivity implements MSView<Moo
                 updateFilterMenu(3); // update filter list
                 update(MoodSwingApplication.getMoodSwing()); // refresh
                 break;
-
         }
     }
+
+    /**
+     * Gets the word count of a string.
+     * from http://stackoverflow.com/questions/8924599/how-to-count-the-exact-number-of-words-in-a-string-that-has-empty-spaces-between
+     * on 3/28
+     * @param s
+     * @return
+     */
+    public static int wordCount(String s){
+        if (s == null) {
+            return 0;
+        }
+        if (s.equals("")){
+            return 0;
+        }
+        return s.trim().split("\\s+").length;
+    }
+
+    /**
+     * Initialize all widgets for this Activity, and add this view to the main model class.
+     */
+    public void initialize() {
+        mainToolbar2 = (Toolbar) findViewById(R.id.mainToolBar2);
+        mainToolbar2.setTitle("");
+        moodHistoryListView  = (ListView) findViewById(R.id.moodHistory);
+        emptyMoodHistory = (TextView) findViewById(R.id.emptyMoodHistory);
+        filterSpinner = (Spinner) findViewById(R.id.filterSpinnerMoodHistory);
+
+        // these populate the filter spinner
+        filterStrings.add("No Filter");
+        filterStrings.add("By Recent Week");
+        filterStrings.add("By Emotion");
+        filterStrings.add("By Trigger");
+        filterStrings.add("Within 5km");
+
+        // for our custom spinner options and settings
+        ArrayAdapter<String> filterAdapter =
+                new ArrayAdapter<>(this, R.layout.filter_spinner, filterStrings);
+        filterSpinner.setAdapter(filterAdapter);
+
+        // Add this View to the main Model class.
+        MoodSwingController moodSwingController = MoodSwingApplication.getMoodSwingController();
+        moodSwingController.addView(this);
+    }
+
+    /**
+     * Refreshes this view to have current information.
+     * @param moodSwing
+     */
+    public void update(MoodSwing moodSwing) {
+        loadMoodSwing();
+        historyMap.clear();
+        loadMapMarkers();
+    }
+
 }
