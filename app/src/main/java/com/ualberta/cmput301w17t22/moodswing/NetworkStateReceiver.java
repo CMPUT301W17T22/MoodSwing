@@ -1,6 +1,5 @@
 package com.ualberta.cmput301w17t22.moodswing;
 
-import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -9,19 +8,14 @@ import android.net.NetworkInfo;
 import android.util.Log;
 
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.lang.reflect.Type;
-import java.lang.reflect.TypeVariable;
 
 import io.searchbox.core.Index;
-
-import static java.security.AccessController.getContext;
 
 /**
  * http://stackoverflow.com/questions/3767591/check-intent-internet-connection
