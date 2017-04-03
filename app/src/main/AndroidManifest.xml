@@ -23,7 +23,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/icon_launcher"
+        android:icon="@drawable/ic_launcher"
         android:label="MoodSwing"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -54,10 +54,7 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity
-            android:name=".MapsActivity"
-            android:exported="true"
-            android:label="@string/title_activity_maps" />
+
         <activity android:name=".NewMoodEventActivity" />
         <activity android:name=".MoodHistoryActivity" />
         <activity android:name=".ViewMoodEventActivity" />

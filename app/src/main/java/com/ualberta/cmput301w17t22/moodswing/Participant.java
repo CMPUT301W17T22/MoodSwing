@@ -6,6 +6,8 @@ import android.widget.Toast;
 
 import java.security.InvalidParameterException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 
 import io.searchbox.annotations.JestId;
@@ -65,6 +67,7 @@ public class Participant extends User {
             throw new IllegalArgumentException();
         } else {
             moodHistory.add(moodEvent);
+            sortMoodHistory();
             updateMostRecentMoodEvent();
         }
     }
@@ -93,13 +96,32 @@ public class Participant extends User {
     }
 
     /**
+     * Sorts the participant's mood history to be in reverse chronological order,
+     * so the first item in the mood history is always the most recent.
+     */
+    private void sortMoodHistory() {
+        // Sort the participant's mood history to be in chronological order.
+        if (!moodHistory.isEmpty()) {
+            Collections.sort(moodHistory, new Comparator<MoodEvent>() {
+                @Override
+                public int compare(MoodEvent o1, MoodEvent o2) {
+                    return o1.getDate().compareTo(o2.getDate());
+                }
+            });
+            // Reverse it.
+            Collections.reverse(moodHistory);
+        }
+    }
+
+
+    /**
      * Internal method to update the most recent mood event of this participant. Sets the
      * mostRecentMoodEvent to be the last one in the mood history if the mood history is not empty.
      */
     private void updateMostRecentMoodEvent() {
         if (!moodHistory.isEmpty()) {
-            // The last element of moodHistory is the most recent.
-            mostRecentMoodEvent = moodHistory.get(moodHistory.size() - 1);
+            // The first element of moodHistory is the most recent.
+            mostRecentMoodEvent = moodHistory.get(0);
 
             mostRecentEmotionalStateDescription =
                     mostRecentMoodEvent.getEmotionalState().getDescription();
@@ -128,27 +150,24 @@ public class Participant extends User {
          * Successfully follows a participant by:
          * Adding the participant to the sending participants pending on the followingList.
          * Creates a follower request that is sent to the receiving participant.
-         * TODO: find a way to return a "could not follow xyz because.." message. Currently shows
-         * TODO: success no matter what sendFollowRequest is
          * @param receivingParticipant */
     public void followParticipant(Participant receivingParticipant) throws InvalidParameterException {
-
         Boolean sendFollowRequest = false;
 
-            // Make sure we aren't in their block list
-         if (receivingParticipant.blockList.isEmpty() || ! (receivingParticipant.blockList.contains(this.getUsername()))) {
+        // Make sure we aren't in their block list
+         if (receivingParticipant.blockList.isEmpty()
+                 || !(receivingParticipant.blockList.contains(this.getUsername()))) {
              sendFollowRequest = true;
          }
-
 
         if (sendFollowRequest) {
             followingList.newPendingParticipant(receivingParticipant);
             receivingParticipant.createFollowerRequest(this);
         } else {
-
             throw new InvalidParameterException();
         }
     }
+
     /**Removes the participant from the main participants from our followingList, and sends a
      * unfollowedEvent to the receiving participant to remove the main participant
      * from their followerList.
