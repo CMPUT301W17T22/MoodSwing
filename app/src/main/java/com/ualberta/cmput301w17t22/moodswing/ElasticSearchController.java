@@ -409,13 +409,64 @@ public class ElasticSearchController implements MSController {
                 Log.i("offlineTest", "exception");
                 saveInFile(index);
             }*/
-            executeElasticSearch(participantJson, id);
+            new ElasticSearchExecuter().executeElasticSearch(participantJson, id);
+            return null;
+        }
+    }
+
+    public static class ElasticSearchExecuter extends AsyncTask<Participant, Void, Void> {
+        MoodSwingController moodSwingController =
+                MoodSwingApplication.getMoodSwingController();
+        String id;
+        Index index;
+        String participantJson;
+
+        ElasticSearchExecuter(){}
+
+        public void executeElasticSearch(String participantJson, String id){
+            this.id = id;
+            this.participantJson = participantJson;
+            // Try to update the participant.
+            // Create the index that the Jest droid client will execute on.
+            index = new Index.Builder(participantJson)
+                    .index("cmput301w17t22")
+                    .type("Participant")
+                    .id(id)
+                    .build();
+
+            doInBackground();//don't need to pass participant
+        }
+
+        @Override
+        protected Void doInBackground(Participant ... participants) {
+            try {
+                DocumentResult result = client.execute(index);
+
+                if (result.isSucceeded()) {
+                    // Result is good.
+                    //Log.i("MoodSwing", "Participant " + participant.getUsername() +
+                    //        " successfully updated.");
+                    Log.i("offlineTest", "success" + result.toString());
+                } else {
+                    // ElasticSearch is unable to add the participant.
+                    Log.i("ERROR", "ElasticSearch was unable to add the participant.");
+                    Log.i("offlineTest", "failure" + result.toString());
+                }
+            } catch (IOException e) {
+                Log.i("ERROR", "Something went wrong when adding a participant by" +
+                        " username to ElasticSearch.");
+                Log.i("offlineTest", "exception");
+                if(id.equals(moodSwingController.getMainParticipant().getId())) {
+                    saveInFile(participantJson);
+                }
+            }
+
             return null;
         }
     }
 
     //returns true if successful
-    public static void executeElasticSearch(String participantJson, String id){
+    /*public static void executeElasticSearch(String participantJson, String id){
         MoodSwingController moodSwingController =
                 MoodSwingApplication.getMoodSwingController();
         // Try to update the participant.
@@ -447,7 +498,7 @@ public class ElasticSearchController implements MSController {
                 saveInFile(participantJson);
             }
         }
-    }
+    }*/
 
     /**
      * Saves tweets to a specified file in JSON format.
