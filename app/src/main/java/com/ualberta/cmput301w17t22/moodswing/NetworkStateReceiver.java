@@ -30,7 +30,6 @@ import static java.security.AccessController.getContext;
 
 public class NetworkStateReceiver extends BroadcastReceiver {
     private static final String TAG = "NetworkStateReceiver";
-    private static final String FILENAME = "moodswingFile.sav";
 
     @Override
     public void onReceive(final Context context, final Intent intent) {
@@ -62,8 +61,11 @@ public class NetworkStateReceiver extends BroadcastReceiver {
      */
     private Index loadFromFile() {
         Index index;
+        MoodSwingController moodSwingController =
+                MoodSwingApplication.getMoodSwingController();
+        String filename = moodSwingController.getMainParticipant().getUsername() + ".sav";
         try {
-            FileInputStream fis = MoodSwingApplication.getContext().openFileInput(FILENAME);
+            FileInputStream fis = MoodSwingApplication.getContext().openFileInput(filename);
             BufferedReader in = new BufferedReader(new InputStreamReader(fis));
 
             Gson gson = new Gson();

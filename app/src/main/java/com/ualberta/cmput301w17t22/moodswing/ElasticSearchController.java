@@ -40,7 +40,7 @@ import io.searchbox.core.SearchResult;
 
 public class ElasticSearchController implements MSController {
     MoodSwing ms = null;
-    private static final String FILENAME = "moodswingFile.sav";
+    //private static final String FILENAME = "moodswingFile.sav";
 
     public ElasticSearchController(MoodSwing ms) { this.ms = ms; }
 
@@ -457,8 +457,11 @@ public class ElasticSearchController implements MSController {
      * @throws FileNotFoundException if file folder doesn't exist
      */
     private static void saveInFile(Index index) {
+        MoodSwingController moodSwingController =
+                MoodSwingApplication.getMoodSwingController();
+        String filename = moodSwingController.getMainParticipant().getUsername() + ".sav";
         try {
-            FileOutputStream fos = MoodSwingApplication.getContext().openFileOutput(FILENAME,
+            FileOutputStream fos = MoodSwingApplication.getContext().openFileOutput(filename,
                     android.content.Context.MODE_PRIVATE); //MODE_PRIVATE is also '0'. Auto overwrite? Looks like it...
             //FileOutputStream fos = new FileOutputStream(FILENAME, true);
             BufferedWriter out = new BufferedWriter(new OutputStreamWriter(fos));
