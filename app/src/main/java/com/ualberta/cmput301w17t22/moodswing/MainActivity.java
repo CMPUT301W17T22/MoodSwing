@@ -153,7 +153,7 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
         Participant mainParticipant = moodSwingController.getMainParticipant();
 
         // Set the welcome text appropriately.
-        welcomeText.setText("Welcome user: " + mainParticipant.getUsername());
+       // welcomeText.setText("Welcome user: " + mainParticipant.getUsername());
 
         // On click for the mood feed list view.
         moodFeedListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -350,7 +350,7 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
         // Initialize all basic widgets.
         mainToolbar = (Toolbar) findViewById(R.id.mainToolBar);
         mainToolbar.setTitle("");
-        welcomeText = (TextView)findViewById(R.id.mainWelcomeText);
+       // welcomeText = (TextView)findViewById(R.id.mainWelcomeText);
         moodFeedListView  = (ListView) findViewById(R.id.MoodFeedListView);
         emptyFeed = (TextView) findViewById(R.id.emptyMoodFeed);
         filterSpinner = (Spinner) findViewById(R.id.filterSpinnerMoodFeed);
