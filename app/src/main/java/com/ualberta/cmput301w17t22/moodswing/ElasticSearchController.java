@@ -11,6 +11,9 @@ import com.searchly.jestdroid.JestClientFactory;
 import com.searchly.jestdroid.JestDroidClient;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 import io.searchbox.core.DocumentResult;
 import io.searchbox.core.Index;
@@ -117,6 +120,125 @@ public class ElasticSearchController implements MSController {
     }
 
     /**
+     * Creates and returns an array list of mood events for a given participant according to their
+     * following list and the filters chosen.
+     *
+     * @param participant
+     * @param activeFilters
+     * @return
+     */
+    public ArrayList<MoodEvent> buildMoodFeed(Participant participant, int[] activeFilters,
+                                              String filterTrigger,
+                                              String filterEmotion) {
+
+        // Create empty mood feed.
+        ArrayList<MoodEvent> moodFeed = new ArrayList<>();
+
+        // Get the task.
+        BuildMoodFeedTask buildMoodFeedTask = new BuildMoodFeedTask();
+
+        // Execute the task.
+        buildMoodFeedTask.execute(participant, activeFilters, filterTrigger, filterEmotion);
+
+        try {
+            moodFeed = buildMoodFeedTask.get();
+        } catch (Exception e) {
+            Log.i("ERROR", "Something went wrong when getting the" +
+                    " mood feed from the AsyncTask.");
+        }
+
+        // Sort the mood feed by date.
+        if (!moodFeed.isEmpty()) {
+            Collections.sort(moodFeed, new Comparator<MoodEvent>() {
+                @Override
+                public int compare(MoodEvent o1, MoodEvent o2) {
+                    return o1.getDate().compareTo(o2.getDate());
+                }
+            });
+            //Collections.reverse(moodFeed);
+        }
+
+
+        return moodFeed;
+
+    }
+    /**This class initializes the Mood Feed and populates it with the participants the main participant
+     * follows most recent mood events. */
+    public static class BuildMoodFeedTask extends AsyncTask<Object, Void, ArrayList<MoodEvent>> {
+        @Override
+        protected ArrayList<MoodEvent> doInBackground(Object ... parameters) {
+            // Always verify the ElasticSearch config first.
+            verifyConfig();
+
+            // Initialize mood feed.
+            ArrayList<MoodEvent> moodFeed = new ArrayList<>();
+
+            // Get the participant and the active filters from the parameters.
+            Participant participant = (Participant) parameters[0];
+            int[] activeFilters = (int[]) parameters[1];
+            String filterTrigger = (String) parameters[2];
+            String filterEmotion = (String) parameters[3];
+
+            // For each user in the participant's following list, grab their most recent mood event
+            // if it passes all the queries.
+            ArrayList<String> followingList = participant.getFollowing();
+            for (String username : followingList) {
+
+                // Build the query string.
+                String query = new QueryBuilder()
+                        .build(username, activeFilters, filterTrigger, filterEmotion);
+
+                // Build Jest/ElasticSearch search.
+                Search search = new Search.Builder(query)
+                        .addIndex("cmput301w17t22")
+                        .addType("Participant")
+                        .build();
+
+                try {
+                    // Try to execute the search.
+                    SearchResult result = client.execute(search);
+
+                    if (result.isSucceeded()) {
+                        // Use a gson object that can deserialize our dates properly.
+                        Gson gson = new GsonBuilder()
+                                .setDateFormat("yyyy-MM-dd'T'HH:mm:ssz")
+                                .create();
+
+                        // Get source as string, because getting as an object does not work
+                        // for nested objects.
+                        String moodEventJson = result.getSourceAsString();
+                        Log.i("MoodEventJson", String.valueOf(moodEventJson.length()));
+                        Log.i("MoodEventJson", moodEventJson);
+
+                        if (!moodEventJson.isEmpty() && !moodEventJson.equals("{}")) {
+                            // Get the proper json.
+                            moodEventJson = moodEventJson.substring(23, moodEventJson.length() - 1);
+                            Log.i("MoodSwing", moodEventJson);
+
+                            // Create the mood event from the json.
+                            MoodEvent moodEvent = gson.fromJson(moodEventJson, MoodEvent.class);
+
+                            // Add the mood event to the mood feed.
+                            moodFeed.add(moodEvent);
+                        }
+                    }
+                    else {
+                        // No participant with given username found.
+                        Log.i("MoodSwing", result.getErrorMessage());
+                    }
+                } catch (IOException e) {
+                    // TODO: Deal with IOException.
+                    Log.i("ERROR", "Something went wrong when trying to grab a participant by username" +
+                            "from ElasticSearch.");
+                }
+            } // end for loop.
+
+            // Return the mood feed.
+            return moodFeed;
+        }
+    }
+
+    /**
      * AsyncTask that gets participants from ElasticSearch. Taken from CMPUT301 ElasticSearch
      * LonelyTwitter Jest Lab.
      * <p/>
@@ -138,7 +260,8 @@ public class ElasticSearchController implements MSController {
             Participant participant = new Participant(null);
 
             // Create the query string. We do a match search on username.
-            String query = "{\n" +
+            String query =
+                    "{\n" +
                     "    \"query\": {\n" +
                     "        \"match\" : {\n" +
                     "            \"username\" : \"" + username + "\"\n" +
@@ -162,7 +285,9 @@ public class ElasticSearchController implements MSController {
                     participant = result.getSourceAsObject(Participant.class);
                 }
                 else {
-                    // No participant with given username found.
+                    // No participant with given username found. In this case, the participant
+                    // returned is the null participant.
+
                     // This isn't a bad thing, this log just helps us track down
                     // the case when no user is found.
                     Log.i("MoodSwing", "No participant with given username found.");
@@ -198,7 +323,7 @@ public class ElasticSearchController implements MSController {
 
             // Need proper date format, so it doesn't get upset when trying to load the date.
             Gson gson = new GsonBuilder()
-                    .setDateFormat("yyyy-MM-dd'T'HH:mm:ssZ")
+                    .setDateFormat("yyyy-MM-dd'T'HH:mm:ssz")
                     .create();
             // Convert to Json.
             String participantJson = gson.toJson(participant);
@@ -253,7 +378,7 @@ public class ElasticSearchController implements MSController {
 
             // Need proper date format, so it doesn't get upset when trying to load the date.
             Gson gson = new GsonBuilder()
-                    .setDateFormat("yyyy-MM-dd'T'HH:mm:ssZ")
+                    .setDateFormat("yyyy-MM-dd'T'HH:mm:ssz")
                     .create();
             // Convert to Json.
             String participantJson = gson.toJson(participant);

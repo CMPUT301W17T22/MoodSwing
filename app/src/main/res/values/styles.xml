@@ -6,7 +6,10 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:colorBackground">@color/background_material_dark</item>
+        <item name="android:colorBackground">@color/backgroundPink</item>
+        <item name="android:textColorSecondary">@color/white</item>
+        <item name="android:popupBackground">@color/backgroundPink</item>
+
     </style>
 
     <style name="DialogTheme" parent="Theme.AppCompat.Light.Dialog">
@@ -15,6 +18,21 @@
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
+
+    <style name="AppTheme.AppBarOverlayspec" parent="ThemeOverlay.AppCompat.ActionBar" >
+        <item name="android:textColorSecondary">@color/white</item>
+        <item name="android:actionOverflowButtonStyle">@color/white</item>
+
+    </style>
+
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="Usernames" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:typeface">monospace</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+
 
 </resources>

@@ -42,13 +42,14 @@ public class ViewMoodEventActivityTest extends ActivityInstrumentationTestCase2<
         solo.assertCurrentActivity("Wrong Activity!", LoginActivity.class);
         solo.clearEditText((EditText) solo.getView(R.id.usernameEditText));
         solo.enterText((EditText) solo.getView(R.id.usernameEditText), "intent101");
-        solo.clickOnButton("login");
+        solo.clickOnView(solo.getView(R.id.loginButton));
+        solo.sleep(30000);  // make sure MainActivity has loaded
         solo.waitForActivity("MainActivity");
-        assertTrue(solo.waitForText("Welcome user \"intent101\""));
+        assertTrue(solo.waitForText("Mood Event Feed"));
         solo.assertCurrentActivity("Wrong Activity!", MainActivity.class);
-        // might be a way for this to work, but can't find out how yet
-        //solo.clickOnActionBarItem(R.id.newMoodEventToolBarButton);
-        // sloppier but works fine
+
+        solo.clickOnActionBarItem(R.id.mainToolBar);
+        solo.waitForText("New Mood Event");
         solo.clickOnMenuItem("New Mood Event");
         // Once inside NewMoodEvent:
         solo.assertCurrentActivity("Wrong Activity!", NewMoodEventActivity.class);
@@ -62,6 +63,8 @@ public class ViewMoodEventActivityTest extends ActivityInstrumentationTestCase2<
         solo.waitForActivity("MainActivity");
         solo.assertCurrentActivity("Wrong Activity!", MainActivity.class);
         // navigate to mood history
+        solo.clickOnActionBarItem(R.id.mainToolBar);
+        solo.waitForText("New Mood Event");
         solo.clickOnMenuItem("View Mood History");
         solo.assertCurrentActivity("Wrong Activity!", MoodHistoryActivity.class);
         assertTrue(solo.waitForText("fame fortune"));
@@ -69,7 +72,7 @@ public class ViewMoodEventActivityTest extends ActivityInstrumentationTestCase2<
         // view mood details
         solo.scrollToBottom();
         ListView listView = (ListView)solo.getView(R.id.moodHistory);
-        View moodView = listView.getChildAt(listView.getAdapter().getCount()-1);
+        View moodView = listView.getChildAt(0);
         solo.clickLongOnView(moodView);
         solo.waitForActivity("ViewMoodEventActivity");
         solo.assertCurrentActivity("Wrong Activity!", ViewMoodEventActivity.class);
@@ -92,13 +95,13 @@ public class ViewMoodEventActivityTest extends ActivityInstrumentationTestCase2<
         solo.assertCurrentActivity("Wrong Activity!", LoginActivity.class);
         solo.clearEditText((EditText) solo.getView(R.id.usernameEditText));
         solo.enterText((EditText) solo.getView(R.id.usernameEditText), "intent100");
-        solo.clickOnButton("login");
+        solo.clickOnView(solo.getView(R.id.loginButton));
+        solo.sleep(30000);  // make sure MainActivity has loaded
         solo.waitForActivity("MainActivity");
-        assertTrue(solo.waitForText("Welcome user \"intent100\""));
+        assertTrue(solo.waitForText("Mood Event Feed"));
         solo.assertCurrentActivity("Wrong Activity!", MainActivity.class);
-        // might be a way for this to work, but can't find out how yet
-        //solo.clickOnActionBarItem(R.id.newMoodEventToolBarButton);
-        // sloppier but works fine
+        solo.clickOnActionBarItem(R.id.mainToolBar);
+        solo.waitForText("New Mood Event");
         solo.clickOnMenuItem("New Mood Event");
         // Once inside NewMoodEvent:
         solo.assertCurrentActivity("Wrong Activity!", NewMoodEventActivity.class);
@@ -112,6 +115,8 @@ public class ViewMoodEventActivityTest extends ActivityInstrumentationTestCase2<
         solo.waitForActivity("MainActivity");
         solo.assertCurrentActivity("Wrong Activity!", MainActivity.class);
         // navigate to mood history
+        solo.clickOnActionBarItem(R.id.mainToolBar);
+        solo.waitForText("New Mood Event");
         solo.clickOnMenuItem("View Mood History");
         solo.assertCurrentActivity("Wrong Activity!", MoodHistoryActivity.class);
         assertTrue(solo.waitForText("figgis"));
@@ -119,7 +124,7 @@ public class ViewMoodEventActivityTest extends ActivityInstrumentationTestCase2<
         // view mood details
         solo.scrollToBottom();
         ListView listView = (ListView)solo.getView(R.id.moodHistory);
-        View moodView = listView.getChildAt(listView.getAdapter().getCount()-1);
+        View moodView = listView.getChildAt(0);
         solo.clickLongOnView(moodView);
         solo.waitForActivity("ViewMoodEventActivity");
         solo.assertCurrentActivity("Wrong Activity!", ViewMoodEventActivity.class);

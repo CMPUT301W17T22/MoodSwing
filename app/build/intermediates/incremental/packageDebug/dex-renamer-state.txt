@@ -1,4 +1,4 @@
-#Sun Mar 12 17:25:50 MDT 2017
-base.0=/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/transforms/dex/debug/folders/1000/1f/main
+#Mon Apr 03 12:47:56 MDT 2017
+base.0=/Users/PeterWeckend/Desktop/test301'-apr3backup2/MoodSwing/app/build/intermediates/transforms/dex/debug/folders/1000/1f/main
 renamed.0=classes.dex
-file.0=/Users/PeterWeckend/Documents/Files/2016-2017/CMPUT301/MoodSwing/app/build/intermediates/transforms/dex/debug/folders/1000/1f/main/classes.dex
+file.0=/Users/PeterWeckend/Desktop/test301'-apr3backup2/MoodSwing/app/build/intermediates/transforms/dex/debug/folders/1000/1f/main/classes.dex

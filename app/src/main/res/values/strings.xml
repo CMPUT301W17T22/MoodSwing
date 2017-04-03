@@ -13,6 +13,7 @@
     <string name="home">Home</string>
     <string name="new_mood_event">New Mood Event</string>
     <string name="mood_history">View Mood History</string>
+    <string name="mood_statistics">View Mood Statistics</string>
     <string name="entry_required">Entry is required!</string>
     <string name="trigger_invalid">Trigger length too long. Must be under 3 words and 20 chars."</string>
     <string name="app_title">MoodSwing</string>
@@ -49,11 +50,30 @@
         <item>With A Crowd</item>
     </string-array>
 
+
     <string name="socialSituation_prompt">Choose your social situation</string>
     <string name="edit">Edit</string>
     <string name="capture">Take Photo</string>
     <string name="title_activity_main_follow">Following and Followers</string>
-    <string name="moodhistory">MoodHistory</string>
+    <string name="moodhistorytitle">Mood Event History</string>
+    <string name="moodfeedtitle">Mood Event Feed</string>
+
+    <string name="block_user">Blocked Users</string>
+    <string name="block_user_welcome_text">Block User Welcome Text</string>
+    <string name="title_activity_block_user">Blocked Users</string>
+    <string name="not_blocking_text">You are currently not blocking any users.</string>
+    <string name="no_followers_text">You currently have no followers!</string>
+    <string name="no_follow_requests_text">You currently have no one requesting to follow you.</string>
+    <string name="you_were_feeling">You were feeling</string>
+
+    <string name="recentFilter">Recent Week</string>
+    <string name="emotionFilter">By Emotion</string>
+    <string name="triggerFilter">By Trigger</string>
+    <string name="number_of_followers">Number of Followers:</string>
+    <string name="most_used">Most Used:</string>
+    <string name="number_of_following">Number of Following:</string>
+    <string name="_0">0</string>
+    <string name="emotion_usage_graph"> Emotion Usage Graph</string>
 
 
 </resources>

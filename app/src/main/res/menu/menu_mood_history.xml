@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/homeToolBarButton"
+        android:title="@string/home"
+        app:showAsAction="never"
+        android:enabled="true" />
+
+    <item android:id="@+id/followToolBarButton"
+        android:title="@string/followers_following"
+        app:showAsAction="never"
+        android:enabled="true" />
+
+    <item android:id="@+id/newMoodEventToolBarButton"
+        android:title="@string/new_mood_event"
+        app:showAsAction="never"
+        android:enabled="true" />
+
+    <item android:id="@+id/moodStatisticsToolBarButton"
+        android:title="@string/mood_statistics"
+        app:showAsAction="never"
+        android:enabled="true" />
+
+    <item android:id="@+id/blockUserToolBarButton"
+        android:title="@string/block_user"
+        app:showAsAction="never"
+        android:enabled="true" />
+
+
+</menu>

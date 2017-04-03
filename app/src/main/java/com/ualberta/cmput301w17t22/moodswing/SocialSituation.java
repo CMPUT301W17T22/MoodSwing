@@ -11,8 +11,7 @@ package com.ualberta.cmput301w17t22.moodswing;
  * @see Participant
  */
 
-// TODO: Refactor this and SocialSituationFactory to instead be a factory method and include
-// image references.
+
 
 public class SocialSituation {
 
@@ -67,13 +66,13 @@ public class SocialSituation {
     // --- START: Getters and Setters
 
     public String getDescription() { return description; }
+
     public void setDescription(String description) { this.description = description; }
 
     public int getDrawableId() { return drawableId; }
-    public void setDrawableId(int drawableId) { this.drawableId = drawableId; }
+
 
     public int getVisibility() { return visibility; }
-    public void setVisibility(int visibility) { this.visibility = visibility; }
 
     // -- END: Getters and Setters
 

@@ -1,13 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="1">
+    android:weightSum="1"
+    android:background="@color/backgroundPink">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/editMoodToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:titleTextColor="@color/white" />
 
     <Space
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0.15" />
+        android:layout_weight="0.12" />
 
     <TextView
         android:id="@+id/emotionalStateTextView_EditMoodEventActivity"
@@ -29,11 +41,12 @@
             android:id="@+id/emotionalStateSpinner_EditMoodEventActivity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:entries="@array/emotionalState_array"
-            android:prompt="@string/mood_prompt"
-            android:popupBackground="#fff"
+            android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_alignParentStart="true" />
+            android:backgroundTint="@color/black"
+            android:entries="@array/emotionalState_array"
+            android:popupBackground="#fff"
+            android:prompt="@string/mood_prompt" />
     </RelativeLayout>
 
 
@@ -63,10 +76,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
+            android:backgroundTint="@color/black"
             android:entries="@array/socialSituation_array"
-            android:prompt="@string/socialSituation_prompt"
             android:popupBackground="#fff"
-            />
+            android:prompt="@string/socialSituation_prompt" />
     </RelativeLayout>
 
 
@@ -118,31 +131,45 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="38dp"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight="0.07">
 
-        <EditText
-            android:id="@+id/photoEditText_EditMoodEventActivity"
+        <ImageView
+            android:id="@+id/imageView_EditMoodEventActivity"
+            android:layout_width="140dp"
+            android:layout_height="50dp"
+            android:adjustViewBounds="true"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:scaleType="centerInside"
+            app:srcCompat="@android:drawable/stat_sys_upload" />
+
+        <Button
+            android:id="@+id/photoCaptureButton_EditMoodEventActivity"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginStart="8dp"
-            android:layout_weight="1"
-            android:background="#fff"
-            android:ems="10"
-            android:inputType="textPersonName" />
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:background="#66023C"
+            android:elevation="0dp"
+            android:text="@string/capture"
+            android:textColor="#fff"
+            android:textSize="16dp"
+            android:layout_weight="0.06" />
 
         <Button
             android:id="@+id/photoUploadButton_EditMoodEventActivity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
-            android:layout_weight="1"
+            android:layout_weight="0.03"
             android:background="#66023C"
             android:elevation="0dp"
             android:text="@string/upload"
             android:textColor="#fff"
             android:textSize="16dp" />
     </LinearLayout>
+
 
     <TextView
         android:id="@+id/photoSizeTextView_EditMoodEventActivity"
@@ -156,14 +183,6 @@
         android:layout_height="wrap_content"
         android:layout_weight="0.14" />
 
-    <CheckBox
-        android:id="@+id/addCurentLocationCheckBox_EditMoodEventActivity"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_weight="0.03"
-        android:text="@string/addlocation" />
 
     <Space
         android:layout_width="match_parent"
