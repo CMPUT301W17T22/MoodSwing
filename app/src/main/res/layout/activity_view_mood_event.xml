@@ -12,8 +12,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="59dp"
-        android:layout_marginTop="5dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:background="@color/colorPrimaryDark">
 
         <ImageView
             android:id="@+id/emotionalStateImageView_ViewMoodEventActivity"
@@ -21,6 +21,7 @@
             android:layout_height="50sp"
             android:layout_marginBottom="11dp"
             android:layout_marginStart="30dp"
+            android:layout_marginTop="5dp"
             android:layout_weight="0.3"
             app:srcCompat="@drawable/emoticon_happiness" />
 
@@ -29,6 +30,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="25dp"
+            android:layout_marginTop="5dp"
             android:layout_weight="0.3"
             android:text="Delete" />
 
@@ -37,6 +39,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
+            android:layout_marginTop="5dp"
             android:layout_weight="0.3"
             android:text="@string/edit" />
 
@@ -44,14 +47,14 @@
 
     <Space
         android:layout_width="match_parent"
-        android:layout_height="10dp" />
+        android:layout_height="20dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="14dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginLeft="14dp"
+        android:layout_marginEnd="14dp"
         android:orientation="horizontal">
 
         <TextView
@@ -75,9 +78,7 @@
             android:id="@+id/emotionalStateTextView_ViewMoodEventActivity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/usernameTextView_ViewMoodEventActivity"
-            android:layout_marginLeft="8dp"
-            android:layout_toEndOf="@+id/triggerPrefixTextView"
+            android:layout_marginStart="8dp"
             android:text="state"
             android:textAllCaps="false"
             android:textColor="@color/black"
@@ -108,8 +109,6 @@
             android:id="@+id/socialSituationImageView_ViewMoodEventActivity"
             android:layout_width="50sp"
             android:layout_height="50sp"
-            android:layout_alignStart="@+id/emotionalStateImageView_ViewMoodEventActivity"
-            android:layout_below="@+id/triggerTextView_ViewMoodEventActivity"
             android:layout_weight="0.3"
             android:cropToPadding="false"
             app:srcCompat="@drawable/social_situation_alone" />
@@ -128,10 +127,10 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/triggerPrefixTextView"
+            android:id="@+id/triggerPrefixTextView_ViewMoodEventActivity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Trigger: "
+            android:text="Reason: "
             android:textColor="@color/black"
             android:textSize="18sp" />
 
@@ -154,13 +153,24 @@
         android:scaleType="fitCenter"
         app:srcCompat="@drawable/image_indicator" />
 
+    <TextView
+        android:id="@+id/mapTitleTextView_ViewMoodEventActivity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark"
+        android:text="Mood Event Location"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
     <fragment xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:map="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/map_ViewMoodEventActivity"
         class="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
-        android:layout_height="228dp"
+        android:layout_height="match_parent"
         map:mapType="normal"
         map:liteMode="true"/>
 
