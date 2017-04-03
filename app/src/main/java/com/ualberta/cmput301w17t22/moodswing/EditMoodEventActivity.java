@@ -83,6 +83,9 @@ public class EditMoodEventActivity extends AppCompatActivity implements MSView<M
     /**Get the ImageView */
     ByteArrayOutputStream image = null;
 
+    /**If the image is edited, then change this to true*/
+    boolean imageEdited = false;
+
     /**Initialize all the Views or Widgets in the Activity  */
     public void initialize() {
 
@@ -179,14 +182,23 @@ public class EditMoodEventActivity extends AppCompatActivity implements MSView<M
                     // Get social situation.
                     SocialSituation socialSituation = getSpinnerSocialSituation();
 
+                    // if image is not edited:
+                    if(!imageEdited) {
+                        Bitmap imageBitmap = oldMoodEvent.getImage();
+                        ByteArrayOutputStream out = new ByteArrayOutputStream();
+                        imageBitmap.compress(Bitmap.CompressFormat.JPEG, COMPRESSION_AMOUNT, out);
+                        image = out;
+                    }
+
+
                     // Get lastKnownLocation if lastKnownLocation box is checked,
                     // otherwise just use the old value.
                     double lat = oldMoodEvent.getLat();
                     double lng = oldMoodEvent.getLng();
-                    if (addCurrentLocationCheckBox.isChecked()) {
-                        lat = getLat();
-                        lng = getLng();
-                    }
+//                    if (addCurrentLocationCheckBox.isChecked()) {
+//                        lat = getLat();
+//                        lng = getLng();
+//                    }
 
                     // Get MoodSwingController.
                     MoodSwingController moodSwingController =
@@ -446,6 +458,7 @@ public class EditMoodEventActivity extends AppCompatActivity implements MSView<M
                         ByteArrayOutputStream out = new ByteArrayOutputStream();
                         imageBitmap.compress(Bitmap.CompressFormat.JPEG, COMPRESSION_AMOUNT, out);
                         image = out;
+                        imageEdited = true;
 
 
                     } else {
@@ -462,6 +475,7 @@ public class EditMoodEventActivity extends AppCompatActivity implements MSView<M
                         ByteArrayOutputStream out = new ByteArrayOutputStream();
                         imageBitmap.compress(Bitmap.CompressFormat.JPEG, COMPRESSION_AMOUNT, out);
                         image = out;
+                        imageEdited = true;
 
 
 

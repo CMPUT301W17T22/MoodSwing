@@ -111,7 +111,8 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
      */
     private int[] activeFilters = new int[3];   // should be initialized to 0
 
-
+    // For whether or not to display filter messages
+    boolean displayFilterToast = false;
 
 
     private GoogleMap mMap;
@@ -243,7 +244,7 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
     @Override
     protected void onStart(){
         super.onStart();
-
+        displayFilterToast = false;
         // Load information from main model class.
         loadMoodSwing();
 
@@ -256,6 +257,7 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
                 //Toast.makeText(MainActivity.this, filter_strings.get(position)+"selected", Toast.LENGTH_SHORT);
                 int selected = filterSpinner.getSelectedItemPosition();
                 handleFilterSelection(selected);
+                displayFilterToast = true;
             }
 
             @Override
@@ -557,7 +559,9 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
     public void handleFilterSelection(int selected){
         switch (selected) {
             case 0:       // no filter selected
-                Toast.makeText(MainActivity.this, "No filters.", Toast.LENGTH_SHORT).show();
+                if (displayFilterToast) {
+                    Toast.makeText(MainActivity.this, "No filters.", Toast.LENGTH_SHORT).show();
+                }
                 updateFilterMenu(-1);   // update filter list
                 buildMoodFeed();
                 loadMoodSwing(); // refresh the feed
