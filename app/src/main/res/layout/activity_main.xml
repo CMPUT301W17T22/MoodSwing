@@ -95,6 +95,17 @@
             android:nestedScrollingEnabled="true" />
 
         <TextView
+            android:id="@+id/emptyMoodFeed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="100dp"
+            android:layout_marginTop="100dp"
+            android:text="Your MoodFeed is empty."
+            android:textAlignment="center"
+            android:textSize="18sp"
+            android:visibility="gone" />
+
+        <TextView
             android:id="@+id/MoodMapTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -113,17 +124,6 @@
             android:layout_below="@+id/MoodFeedListView"
             android:layout_weight="0.3"
             tools:context="com.ualberta.cmput301w17t22.moodswing.MapsFragment" />
-
-        <TextView
-            android:id="@+id/emptyMoodFeed"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="100dp"
-            android:layout_marginTop="100dp"
-            android:text="Your MoodFeed is empty."
-            android:textAlignment="center"
-            android:textSize="18sp"
-            android:visibility="gone" />
 
 
     </LinearLayout>

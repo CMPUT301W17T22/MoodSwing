@@ -44,10 +44,10 @@ public class NewMoodEventActivityTest extends ActivityInstrumentationTestCase2<L
         solo.clickOnView(solo.getView(R.id.loginButton));
         solo.sleep(30000);  // make sure MainActivity has loaded
         solo.waitForActivity("MainActivity");
-        assertTrue(solo.waitForText("Welcome user \"intent103\""));
+        assertTrue(solo.waitForText("Mood Event Feed"));
         solo.assertCurrentActivity("Wrong Activity!", MainActivity.class);
         solo.clickOnActionBarItem(R.id.mainToolBar);
-        solo.waitForText("Home");
+        solo.waitForText("New Mood Event");
         solo.clickOnMenuItem("New Mood Event");
 
 
@@ -75,7 +75,7 @@ public class NewMoodEventActivityTest extends ActivityInstrumentationTestCase2<L
         // cleanup
         // navigate to mood history
         solo.clickOnActionBarItem(R.id.mainToolBar);
-        solo.waitForText("Home");
+        solo.waitForText("New Mood Event");
         solo.clickOnMenuItem("View Mood History");
         solo.assertCurrentActivity("Wrong Activity!", MoodHistoryActivity.class);
         assertTrue(solo.waitForText("the finale sucked"));
@@ -104,10 +104,10 @@ public class NewMoodEventActivityTest extends ActivityInstrumentationTestCase2<L
         solo.clickOnView(solo.getView(R.id.loginButton));
         solo.sleep(30000);  // make sure MainActivity has loaded
         solo.waitForActivity("MainActivity");
-        assertTrue(solo.waitForText("Welcome user \"intent104\""));
+        assertTrue(solo.waitForText("Mood Event Feed"));
         solo.assertCurrentActivity("Wrong Activity!", MainActivity.class);
         solo.clickOnActionBarItem(R.id.mainToolBar);
-        solo.waitForText("Home");
+        solo.waitForText("New Mood Event");
         solo.clickOnMenuItem("New Mood Event");
 
 
@@ -136,10 +136,10 @@ public class NewMoodEventActivityTest extends ActivityInstrumentationTestCase2<L
         solo.clickOnView(solo.getView(R.id.loginButton));
         solo.sleep(30000);  // make sure MainActivity has loaded
         solo.waitForActivity("MainActivity");
-        assertTrue(solo.waitForText("Welcome user \"intent105\""));
+        assertTrue(solo.waitForText("Mood Event Feed"));
         solo.assertCurrentActivity("Wrong Activity!", MainActivity.class);
         solo.clickOnActionBarItem(R.id.mainToolBar);
-        solo.waitForText("Home");
+        solo.waitForText("New Mood Event");
         solo.clickOnMenuItem("New Mood Event");
 
 
