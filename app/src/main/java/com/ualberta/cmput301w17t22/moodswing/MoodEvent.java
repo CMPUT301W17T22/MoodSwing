@@ -3,13 +3,6 @@ package com.ualberta.cmput301w17t22.moodswing;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.model.BitmapDescriptor;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
-import com.google.android.gms.maps.model.MarkerOptions;
-
 import java.io.ByteArrayOutputStream;
 import java.util.Date;
 
@@ -159,28 +152,6 @@ public class MoodEvent {
         this.setSocialSituation(socialSituation);
         this.setImage(image);
     }
-
-    /**
-     * Creates Marker for map based on emoticon and position.
-     *
-     * @return MarkerOptions object corresponding to this MoodEvent
-     * @return null if no position
-     */
-    public MarkerOptions getMapMarker(){
-        if(Double.isNaN(lat) || Double.isNaN(lng)){
-            return null;
-        }
-
-        // Get bitmap descriptor for the drawable of the emotional state emoticon.
-        BitmapDescriptor icon =
-                BitmapDescriptorFactory.fromResource(emotionalState.getDrawableId());
-
-         return new MarkerOptions()
-                .position(new LatLng(lat, lng))
-                .title(emotionalState.getDescription())
-                .icon(icon);
-    }
-
 
     /**
      * To string method for printing.

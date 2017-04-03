@@ -3,9 +3,11 @@ package com.ualberta.cmput301w17t22.moodswing;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -28,14 +30,15 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.gson.Gson;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Collections;
 import java.util.Date;
-import java.util.Objects;
 
 /**
  * The MoodHistoryActivity displays the main participant's mood history in a readable format,
@@ -56,11 +59,22 @@ public class MoodHistoryActivity extends AppCompatActivity implements MSView<Moo
     /** The main participant's mood history, an ArrayList of their MoodEvents */
     private ArrayList<MoodEvent> moodHistory;
 
+    /** Textview that displays the "No Mood Events' text when appropriate. */
     TextView emptyMoodHistory;
+
     /** The main toolbar of the app that lets users navigate to the other parts of the app. */
     Toolbar mainToolbar2;
 
+    /** The map fragment for he mood events to be displayed on. */
     GoogleMap historyMap;
+
+    /** Boolean to detect whether the map has loaded yet. */
+    Boolean mapLoaded;
+
+    SupportMapFragment mapFragment;
+
+    /** The last known location of the user. */
+    LatLng lastKnownLocation;
 
     /**
      * Spinner that shows the user options for filtering the mood feed and map.
@@ -93,10 +107,13 @@ public class MoodHistoryActivity extends AppCompatActivity implements MSView<Moo
         // Initialize all widgets for this activity.
         initialize();
 
+        // When the activity first loads, the map has not loaded.
+        mapLoaded = false;
+
         setSupportActionBar(mainToolbar2);
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+        mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.history_map);
 
         mapFragment.getMapAsync(this);
@@ -147,6 +164,19 @@ public class MoodHistoryActivity extends AppCompatActivity implements MSView<Moo
         });
     }
 
+    /**
+     * On the activity resume, reload the map markers.
+     */
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (mapLoaded) {
+            Log.i("MapMarkers", "Got here.");
+            historyMap.clear();
+            loadMapMarkers();
+        }
+    }
+
     @Override
     public void onMapReady(GoogleMap googleMap) {
         historyMap = googleMap;
@@ -154,11 +184,34 @@ public class MoodHistoryActivity extends AppCompatActivity implements MSView<Moo
 
         // Grab the mood swing controller for the last known location.
         MoodSwingController moodSwingController = MoodSwingApplication.getMoodSwingController();
-        LatLng lastKnownLocation =
-                new LatLng(moodSwingController.getLastKnownLat(),
-                        moodSwingController.getLastKnownLng());
+        lastKnownLocation = new LatLng(moodSwingController.getLastKnownLat(),
+                moodSwingController.getLastKnownLng());
 
         historyMap.moveCamera(CameraUpdateFactory.newLatLng(lastKnownLocation));
+
+        // Populate the map with custom markers for the mood events.
+        loadMapMarkers();
+
+        mapLoaded = true;
+
+        historyMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
+            @Override
+            public void onInfoWindowClick(Marker marker) {
+
+                // Get MoodSwingController.
+                MoodSwingController moodSwingController =
+                        MoodSwingApplication.getMoodSwingController();
+
+                // Set the mood history position to be the position of the event that the marker
+                // represents.
+                moodSwingController.setMoodHistoryPosition((int) marker.getTag());
+
+                // Launch the view mood event activity.
+                Intent intent = new Intent(MoodHistoryActivity.this, ViewMoodEventActivity.class);
+                intent.putExtra("MoodListType", "MoodHistory");
+                startActivity(intent);
+            }
+        });
     }
 
     /**
@@ -210,7 +263,6 @@ public class MoodHistoryActivity extends AppCompatActivity implements MSView<Moo
             case R.id.newMoodEventToolBarButton:
                 // User chose the "New Mood Event" item, should navigate the NewMoodEventActivity.
                 intent = new Intent(MoodHistoryActivity.this, NewMoodEventActivity.class);
-                finish();
                 startActivity(intent);
                 return true;
 
@@ -243,7 +295,35 @@ public class MoodHistoryActivity extends AppCompatActivity implements MSView<Moo
      */
     public void loadMapMarkers() {
         for (MoodEvent moodEvent : moodHistory) {
-            historyMap.addMarker(moodEvent.getMapMarker());
+
+            // If the mood event has a location, make a map marker for it.
+            if (!Double.isNaN(moodEvent.getLat()) && !Double.isNaN(moodEvent.getLng())) {
+
+                EmotionalState emotionalState = moodEvent.getEmotionalState();
+
+                // Method to resize bitmap taken from
+                // http://stackoverflow.com/questions/14851641/change-marker-size-in-google-maps-api-v2
+                // on 04/02/2017.
+                Bitmap imageBitmap = BitmapFactory.decodeResource(getResources(),
+                        emotionalState.getDrawableId());
+                Bitmap resizedBitmap = Bitmap.createScaledBitmap(imageBitmap, 120, 120, false);
+
+                // Create the icon from the resized emoticon
+                BitmapDescriptor icon =
+                        BitmapDescriptorFactory.fromBitmap(resizedBitmap);
+
+                MarkerOptions markerOptions = new MarkerOptions()
+                        .position(new LatLng(moodEvent.getLat(), moodEvent.getLng()))
+                        .title(emotionalState.getDescription())
+                        .snippet(moodEvent.getOriginalPoster())
+                        .icon(icon);
+
+                Marker marker =
+                        historyMap.addMarker(markerOptions);
+
+                // Set the tag of the marker to be the mood event's position in the mood history.
+                marker.setTag(moodHistory.indexOf(moodEvent));
+            }
         }
     }
 
@@ -276,16 +356,10 @@ public class MoodHistoryActivity extends AppCompatActivity implements MSView<Moo
             moodHistory = filterByTrigger(moodHistory);
         }
 
-        // put moodHistory list into reverse chronological order
-        Collections.reverse(moodHistory);
-
         // Initialize array adapter.
         moodHistoryAdapter = new MoodEventAdapter(this, moodHistory);
         moodHistoryListView.setEmptyView(emptyMoodHistory);
         moodHistoryListView.setAdapter(moodHistoryAdapter);
-
-        // Populate map markers.
-        loadMapMarkers();
     }
 
     /**

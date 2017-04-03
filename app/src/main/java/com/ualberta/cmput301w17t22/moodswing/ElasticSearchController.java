@@ -152,10 +152,12 @@ public class ElasticSearchController implements MSController {
             Collections.sort(moodFeed, new Comparator<MoodEvent>() {
                 @Override
                 public int compare(MoodEvent o1, MoodEvent o2) {
-                    return o2.getDate().compareTo(o1.getDate());
+                    return o1.getDate().compareTo(o2.getDate());
                 }
             });
+            //Collections.reverse(moodFeed);
         }
+
 
         return moodFeed;
 

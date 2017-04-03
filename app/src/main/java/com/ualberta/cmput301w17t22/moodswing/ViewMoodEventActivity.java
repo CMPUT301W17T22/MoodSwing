@@ -295,7 +295,6 @@ public class ViewMoodEventActivity extends AppCompatActivity implements MSView<M
         if (getIntent().getStringExtra("MoodListType").equals("MoodHistory")) {
             position = moodSwingController.getMoodHistoryPosition();
             moodEvent = mainParticipant.getMoodHistory().get(position);
-            Log.i("MoodSwing", String.valueOf(moodEvent.getEmotionalState().getDrawableId()));
 
             // If this activity was launched from the MainActivity, get the position
             // and mood event from the mood feed instead.
