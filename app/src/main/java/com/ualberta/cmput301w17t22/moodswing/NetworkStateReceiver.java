@@ -17,6 +17,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.lang.reflect.Type;
+import java.lang.reflect.TypeVariable;
 
 import io.searchbox.core.Index;
 
@@ -62,16 +63,18 @@ public class NetworkStateReceiver extends BroadcastReceiver {
     private Index loadFromFile() {
         Index index;
         try {
-            //FileInputStream fis = openFileInput(FILENAME);
-            FileInputStream fis = new FileInputStream(FILENAME);
+            FileInputStream fis = MoodSwingApplication.getContext().openFileInput(FILENAME);
             BufferedReader in = new BufferedReader(new InputStreamReader(fis));
 
             Gson gson = new Gson();
 
             //Taken from http://stackoverflow.com/questions/12384064/gson-convert-from-json-to-a-typed-arraylistt
             //2017-01-24 18:19
-            Type listType = new TypeToken<Index>(){}.getType();
-            index = gson.fromJson(in, listType);
+            //Type listType = new TypeToken<Index>(){}.getType();
+
+            //Log.d("offlineSucks","in: " + in + " listType" + listType);
+            //index = gson.fromJson(in, listType);
+            index = gson.fromJson(in, Index.class);
 
         } catch (FileNotFoundException e) {
             index = null;

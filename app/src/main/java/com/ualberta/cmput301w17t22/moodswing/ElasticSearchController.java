@@ -8,15 +8,20 @@ import android.util.Log;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import com.google.gson.reflect.TypeToken;
 import com.searchly.jestdroid.DroidClientConfig;
 import com.searchly.jestdroid.JestClientFactory;
 import com.searchly.jestdroid.JestDroidClient;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -454,7 +459,7 @@ public class ElasticSearchController implements MSController {
     private static void saveInFile(Index index) {
         try {
             FileOutputStream fos = MoodSwingApplication.getContext().openFileOutput(FILENAME,
-                    android.content.Context.MODE_PRIVATE); //MODE_PRIVATE is also '0'
+                    android.content.Context.MODE_PRIVATE); //MODE_PRIVATE is also '0'. Auto overwrite? Looks like it...
             //FileOutputStream fos = new FileOutputStream(FILENAME, true);
             BufferedWriter out = new BufferedWriter(new OutputStreamWriter(fos));
 
@@ -473,6 +478,8 @@ public class ElasticSearchController implements MSController {
             throw new RuntimeException(); //crashes app
         }
     }
+
+
     
 }
 

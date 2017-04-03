@@ -2,6 +2,123 @@
 <items version="2" >
 
     <item
+        is-multidex="false"
+        jar="C:\Users\Fred\.android\build-cache\97048f6d13ab81de52bf7c440d48aebc69e474b1\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="152de8da301561dcb0946471697a420d8f7a68c5">
+        <dex dex="C:\Users\Fred\MoodSwing\app\build\intermediates\pre-dexed\debug\classes_dcd7561db2522d700c1b0b87b898f812af9d7ad7.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Fred\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\25.2.0\support-annotations-25.2.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="4a5a82a027706397fff621b22fd6fa796e91d7c5">
+        <dex dex="C:\Users\Fred\MoodSwing\app\build\intermediates\pre-dexed\debug\support-annotations-25.2.0_495542bde1b7f4cdccaea6ed9f229cc53be56881.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Fred\.android\build-cache\c8618ec20941782994ff6fae9df15b38ed273ea9\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="7113302c965566b66df46c6ca75ea301576114a5">
+        <dex dex="C:\Users\Fred\MoodSwing\app\build\intermediates\pre-dexed\debug\classes_b0b042645448800767f0cb2465c9555e13a2630c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Fred\.android\build-cache\c4712adbf495c583975288a209f92a5ed6505746\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="fa0446a14ed5dd3725047d6399ffea771a564b30">
+        <dex dex="C:\Users\Fred\MoodSwing\app\build\intermediates\pre-dexed\debug\classes_893ac54e06f801e40e7798fb6188f9521a221175.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Fred\.android\build-cache\b6a671b49cb207631c710f4ef5e85def30bc74af\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d08bb32b88df3dbcbe1d498c3c57f020b8c521ec">
+        <dex dex="C:\Users\Fred\MoodSwing\app\build\intermediates\pre-dexed\debug\classes_80ab270776b4acbaeb818bb5d8d5b1cab49b6a0a.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Fred\.android\build-cache\eb382fdf163d34d2b370418ec109b87757045d3a\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="C:\Users\Fred\MoodSwing\app\build\intermediates\pre-dexed\debug\classes_9126e348606358e6036508eccb81d595159a3958.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Fred\.android\build-cache\4c9cb63f1ae0e086ce6d6b9cea282aa8f4ec1cdf\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="810f41e5b7fd99f196ebeabe865ba2c54e7e76dc">
+        <dex dex="C:\Users\Fred\MoodSwing\app\build\intermediates\pre-dexed\debug\classes_c0c04178b96593c96144ee0e36af40a139fa6849.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Fred\.android\build-cache\99a848ef72751d2bcbd1d589c83993e30dc6f96e\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ea6a989b83d19b1b461281e0475a6cd6514897f8">
+        <dex dex="C:\Users\Fred\MoodSwing\app\build\intermediates\pre-dexed\debug\classes_d555f3e322eb54bbb463c961f965ad771e900996.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Fred\AppData\Local\Android\sdk\extras\m2repository\com\android\support\constraint\constraint-layout-solver\1.0.1\constraint-layout-solver-1.0.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="1ad79631209e77b0a2730fc112b4cc0c66a95132">
+        <dex dex="C:\Users\Fred\MoodSwing\app\build\intermediates\pre-dexed\debug\constraint-layout-solver-1.0.1_4ff708c062dd1dc5211f650412e5fe0d7b811585.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Fred\.android\build-cache\12d086f82b9f97c6826230dd7d91a27f512db24b\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="67eb33110dbacb46a48175b08ae0c96761d2c17d">
+        <dex dex="C:\Users\Fred\MoodSwing\app\build\intermediates\pre-dexed\debug\classes_f299ae307bd4d5733ed3067b712572f5d1809e38.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Fred\.android\build-cache\d7e0d4c00f7d5895faccddbee114d55e72da4c88\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="1ac56e5801e986583cbe27f2cce57f626cc7ff93">
+        <dex dex="C:\Users\Fred\MoodSwing\app\build\intermediates\pre-dexed\debug\classes_f0e620b48c72b1d3bf68efb1f802d617bbe6d519.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Fred\.gradle\caches\modules-2\files-2.1\com.jayway.android.robotium\robotium-solo\5.6.3\94ec2d7b23be9817d92905cc09124aecfc46d28c\robotium-solo-5.6.3.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="94ec2d7b23be9817d92905cc09124aecfc46d28c">
+        <dex dex="C:\Users\Fred\MoodSwing\app\build\intermediates\pre-dexed\debug\robotium-solo-5.6.3_5b27314ef34d9fe9b67579d98c8d37719dde3c9a.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Fred\.android\build-cache\35a3616d5b6ccf5bc4d7085edfca33ede11702a3\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="bd75f9f0296fe220da6d0ad961831b04541c4452">
+        <dex dex="C:\Users\Fred\MoodSwing\app\build\intermediates\pre-dexed\debug\classes_3a393800324ccf82853be84364a58954d2ab1b1d.jar" />
+    </item>
+    <item
         is-multidex="true"
         jar="C:\Users\Fred\MoodSwing\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
         jumboMode="true"
@@ -9,6 +126,105 @@
         revision="25.0.2"
         sha1="b93b60b4aa32b307512885261cd69afe5fa22d02">
         <dex dex="C:\Users\Fred\MoodSwing\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_2f09f70b0e221a8f2baf22b219ecb05cdaf17c5f\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Fred\.android\build-cache\7bdd6ea8fd54b425a10002f45d45beace789d435\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="e820b7be8c035dd522da4bc822e8a76c8e27921a">
+        <dex dex="C:\Users\Fred\MoodSwing\app\build\intermediates\pre-dexed\debug\classes_cb862f04367c6c086ca5926906d227b49f0415d4.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Fred\.android\build-cache\951bb0f44bee57864306125b87928d77d837d1af\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="6da05b7498da036b5b37c3beb861cd2060929dcd">
+        <dex dex="C:\Users\Fred\MoodSwing\app\build\intermediates\pre-dexed\debug\classes_6d011b753ba688936c7d9cf8f130096d24ce8bf6.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Fred\.android\build-cache\fc6925ac7a74a9ae4ab2f271f0cdce6fc98645de\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="cb454b52545859ed2f24a6c01366805b0fa04b22">
+        <dex dex="C:\Users\Fred\MoodSwing\app\build\intermediates\pre-dexed\debug\classes_7b934ae65b2d95c668d3bf457159b62f8eeb1af0.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Fred\.android\build-cache\5bc16326bc89fb082ecab2d0200d2ac785b47bd0\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="3d13e510077b35fe8e49930a627dd849ad5da0dc">
+        <dex dex="C:\Users\Fred\MoodSwing\app\build\intermediates\pre-dexed\debug\classes_063109f29a55e3cdb247cb0290baa36b7f9b0576.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Fred\.android\build-cache\bbb263675ce5457235c255a50839a0f7f168469b\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="8fe8a8f77d651982ce5e18f6187dc4daf914ac57">
+        <dex dex="C:\Users\Fred\MoodSwing\app\build\intermediates\pre-dexed\debug\classes_4df48778f72fb7967922955d1a9bf2668a5fd436.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Fred\.android\build-cache\02ab5d4e80aebec854598477ac153ba4b5654219\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="e51c2f662bb72419632af5192553c37e33890a99">
+        <dex dex="C:\Users\Fred\MoodSwing\app\build\intermediates\pre-dexed\debug\classes_3f30e65476dccaf9a47b4ee2fec428f9465783b5.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Fred\MoodSwing\app\src\include\jest-droid-2.0.1-SNAPSHOT.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="e1199e84d8d3907b8262330dd6976ce04d37f6de">
+        <dex dex="C:\Users\Fred\MoodSwing\app\build\intermediates\transforms\dex\debug\folders\1000\2\jest-droid-2.0.1-SNAPSHOT_61fcefd8263a9ee0f533fec028902804ad791751\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Fred\MoodSwing\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="c82741bc129dd5f99f11a4ab8666ae24262053b6">
+        <dex dex="C:\Users\Fred\MoodSwing\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_13e1100c4f6b7501437736d59deaaae5f68a31d0\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Fred\.android\build-cache\cd9c4cfd4be481eb0ca86ab77048eb1cbe3df69d\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="702d339bc0a81d21354cd7e2cf2b67225fa4a16c">
+        <dex dex="C:\Users\Fred\MoodSwing\app\build\intermediates\pre-dexed\debug\classes_6154adf129914ddc5c4ab4b37665b70d96e4652c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Fred\.android\build-cache\efe0cdb98e18f5fe8caf387ecef654d30f50045e\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ee394a892dd21c03a528139c1e8d4e0e1264ac84">
+        <dex dex="C:\Users\Fred\MoodSwing\app\build\intermediates\pre-dexed\debug\classes_fcdfff8d403db6c93f14955e3e1756a80db5597f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Fred\MoodSwing\app\src\include\jest-droid-2.0.1-SNAPSHOT.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="e1199e84d8d3907b8262330dd6976ce04d37f6de">
+        <dex dex="C:\Users\Fred\MoodSwing\app\build\intermediates\pre-dexed\debug\jest-droid-2.0.1-SNAPSHOT_61fcefd8263a9ee0f533fec028902804ad791751.jar" />
     </item>
 
 </items>
