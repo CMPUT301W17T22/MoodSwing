@@ -150,6 +150,7 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
         //listen for network changes
         Log.d("NetworkStateReceiver", "Registering receiver");
         registerReceiver(networkStateReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
+        networkStateReceiver.offlineUpdate();
 
         setSupportActionBar(mainToolbar);
 

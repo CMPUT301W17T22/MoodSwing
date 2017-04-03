@@ -36,14 +36,26 @@ public class NetworkStateReceiver extends BroadcastReceiver {
 
             if (ni != null && ni.isConnectedOrConnecting()) {
                 Log.d(TAG, "Network " + ni.getTypeName() + " connected");
-                //TODO: retry pending moodevent saving on elasticsearch
-                String participantJson = loadFromFile();
-                if(participantJson != null) {
-                    new ElasticSearchController.ElasticSearchExecuter().executeElasticSearch(participantJson, moodSwingController.getMainParticipant().getId());
-                }
+                offlineUpdate();
             } else if (intent.getBooleanExtra(ConnectivityManager.EXTRA_NO_CONNECTIVITY, Boolean.FALSE)) {
                 Log.d(TAG, "There's no network connectivity");
             }
+        }
+
+        //executes no matter what so that it will happen on login
+        //TODO: retry pending moodevent saving on elasticsearch
+        /*String participantJson = loadFromFile();
+        if(participantJson != null) {
+            Log.d(TAG, "participantJson successfully loaded");
+            new ElasticSearchController.ElasticSearchExecuter().executeElasticSearch(participantJson, moodSwingController.getMainParticipant().getId());
+        }*/
+    }
+
+    public void offlineUpdate(){
+        String participantJson = loadFromFile();
+        if(participantJson != null) {
+            Log.d(TAG, "participantJson successfully loaded");
+            new ElasticSearchController.ElasticSearchExecuter().executeElasticSearch(participantJson, moodSwingController.getMainParticipant().getId());
         }
     }
 
