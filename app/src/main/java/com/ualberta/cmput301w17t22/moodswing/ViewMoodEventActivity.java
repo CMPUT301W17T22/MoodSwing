@@ -2,10 +2,11 @@ package com.ualberta.cmput301w17t22.moodswing;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -16,6 +17,8 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
@@ -73,11 +76,15 @@ public class ViewMoodEventActivity extends AppCompatActivity implements MSView<M
     /** The mood event currently being viewed.*/
     MoodEvent moodEvent;
 
+    /** The emotional state of the mood event being viewed.
+     * Separately stored for use in map markers. */
+    EmotionalState emotionalState;
+
     /** Boolean we use to check onDestroy whether the mood event being viewed was chosen to be
      * deleted. */
     boolean delete;
 
-    private GoogleMap mMap;
+    private GoogleMap viewMoodEventMap;
 
     /**
      * Initialize all the widgets for the Activity, and add this View to the main Model's list of
@@ -262,20 +269,45 @@ public class ViewMoodEventActivity extends AppCompatActivity implements MSView<M
     @Override
     public void onMapReady(GoogleMap googleMap) {
 
-        // Load the location from the mood event.
+        viewMoodEventMap = googleMap;
+
         double lat = moodEvent.getLat();
         double lng = moodEvent.getLng();
 
-        if (!Double.isNaN(lat) && !Double.isNaN(lng)) {
-            // Create a LatLng object from the location so we can properly set a camera position.
-            LatLng latLng = new LatLng(lat, lng);
+        setMapFragmentVisibility();
 
-            // Move the camera and place a marker.
-            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 13));
-            googleMap.addMarker(new MarkerOptions()
-                    .title(moodEvent.getOriginalPoster())
-                    .position(latLng));
+        // If the location is valid,
+        if (!Double.isNaN(lat) && !Double.isNaN(lng)) {
+
+            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(lat, lng), 13));
+            loadMapMarkers();
         }
+    }
+
+    /**
+     * Function that loads the information about the mood event into a custom map marker and
+     * places the map marker on the map.
+     */
+    public void loadMapMarkers() {
+        // Method to resize bitmap taken from
+        // http://stackoverflow.com/questions/14851641/change-marker-size-in-google-maps-api-v2
+        // on 04/02/2017.
+        Bitmap imageBitmap = BitmapFactory.decodeResource(getResources(),
+                emotionalState.getDrawableId());
+        Bitmap resizedBitmap = Bitmap.createScaledBitmap(imageBitmap, 120, 120, false);
+
+        // Create the icon from the resized emoticon.
+        BitmapDescriptor icon =
+                BitmapDescriptorFactory.fromBitmap(resizedBitmap);
+
+        // Create the marker.
+        MarkerOptions markerOptions = new MarkerOptions()
+                .position(new LatLng(moodEvent.getLat(), moodEvent.getLng()))
+                .title(emotionalState.getDescription())
+                .snippet(moodEvent.getOriginalPoster())
+                .icon(icon);
+
+        viewMoodEventMap.addMarker(markerOptions);
     }
 
     /**
@@ -302,6 +334,8 @@ public class ViewMoodEventActivity extends AppCompatActivity implements MSView<M
             position = moodSwingController.getMoodFeedPosition();
             moodEvent = moodSwingController.getMoodFeed().get(position);
         }
+
+        emotionalState = moodEvent.getEmotionalState();
     }
 
     /**
@@ -355,9 +389,6 @@ public class ViewMoodEventActivity extends AppCompatActivity implements MSView<M
         //Set the image from the MoodEvent image into the view.
         setImageImageView();
 
-        // Set the map fragment visibility.
-        setMapFragmentVisibility();
-
         // Set date and time
         setDateTime();
     }
@@ -396,7 +427,8 @@ public class ViewMoodEventActivity extends AppCompatActivity implements MSView<M
         //socialSituationTextView.setVisibility(moodEvent.getSocialSituation().getVisibility());
 
         //set correct icon
-        socialSituationImageView.setImageDrawable(getDrawable(moodEvent.getSocialSituation().getDrawableId()));
+        socialSituationImageView.setImageDrawable(
+                getDrawable(moodEvent.getSocialSituation().getDrawableId()));
 
     }
 
@@ -408,7 +440,7 @@ public class ViewMoodEventActivity extends AppCompatActivity implements MSView<M
             imageImageView.setImageBitmap(moodEvent.getImage());
             imageImageView.setVisibility(View.VISIBLE);
         } else {
-            imageImageView.setVisibility(View.VISIBLE);
+            imageImageView.setVisibility(View.INVISIBLE);
         }
     }
 
@@ -417,12 +449,11 @@ public class ViewMoodEventActivity extends AppCompatActivity implements MSView<M
      */
     public void setMapFragmentVisibility() {
         // If there is no location, make the map invisible, if there is a location, make it visible.
-        supportMapFragment.getView().setVisibility(View.VISIBLE); // always display map
-//        if (!Double.isNaN(moodEvent.getLat()) && !Double.isNaN(moodEvent.getLng())) {
-//            supportMapFragment.getView().setVisibility(View.VISIBLE);
-//        } else {
-//            supportMapFragment.getView().setVisibility(View.GONE);
-//        }
+        if (!Double.isNaN(moodEvent.getLat()) && !Double.isNaN(moodEvent.getLng())) {
+            supportMapFragment.getView().setVisibility(View.VISIBLE);
+        } else {
+            supportMapFragment.getView().setVisibility(View.INVISIBLE);
+        }
     }
 
 
@@ -431,8 +462,9 @@ public class ViewMoodEventActivity extends AppCompatActivity implements MSView<M
      */
     public void setDateTime() {
         //Sets the formatted date into its corresponding View
-        String formattedDate = new SimpleDateFormat("EEE, MMMM dd, yyyy").format(moodEvent.getDate());
-        dateTextView.setText("on "+formattedDate);
+        String formattedDate = new SimpleDateFormat("EEE, MMMM dd, yyyy")
+                .format(moodEvent.getDate());
+        dateTextView.setText("on " + formattedDate);
     }
 
     /**
@@ -441,6 +473,8 @@ public class ViewMoodEventActivity extends AppCompatActivity implements MSView<M
     public void update(MoodSwing moodSwing){
         loadFromMoodSwing();
         loadFromMoodEvent();
+        viewMoodEventMap.clear();
+        loadMapMarkers();
     }
 
 }

@@ -254,7 +254,7 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
         filterSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                //Toast.makeText(MainActivity.this, filter_strings.get(position)+"selected", Toast.LENGTH_SHORT);
+                //Toast.makeText(MainActivity.this, filterStrings.get(position)+"selected", Toast.LENGTH_SHORT);
                 int selected = filterSpinner.getSelectedItemPosition();
                 handleFilterSelection(selected);
                 displayFilterToast = true;
@@ -372,7 +372,7 @@ public class MainActivity extends AppCompatActivity implements MSView<MoodSwing>
      */
     public void loadMoodSwing() {
 
-        //Toast.makeText(MainActivity.this, filter_strings.get(0), Toast.LENGTH_SHORT).show();
+        //Toast.makeText(MainActivity.this, filterStrings.get(0), Toast.LENGTH_SHORT).show();
 
         //Toast.makeText(MainActivity.this, "Filtering..", Toast.LENGTH_SHORT).show();
 

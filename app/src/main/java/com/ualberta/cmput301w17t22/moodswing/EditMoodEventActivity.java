@@ -181,13 +181,18 @@ public class EditMoodEventActivity extends AppCompatActivity implements MSView<M
                     SocialSituation socialSituation = getSpinnerSocialSituation();
 
                     // if image is not edited:
-                    if(!imageEdited) {
+                    if (!imageEdited) {
                         Bitmap imageBitmap = oldMoodEvent.getImage();
-                        ByteArrayOutputStream out = new ByteArrayOutputStream();
-                        imageBitmap.compress(Bitmap.CompressFormat.JPEG, COMPRESSION_AMOUNT, out);
-                        image = out;
-                    }
+                        // If there was a previous image.
+                        if (imageBitmap != null) {
+                            ByteArrayOutputStream out = new ByteArrayOutputStream();
 
+                            imageBitmap.compress(Bitmap.CompressFormat.JPEG,
+                                    COMPRESSION_AMOUNT, out);
+
+                            image = out;
+                        }
+                    }
 
                     // Get lastKnownLocation if lastKnownLocation box is checked,
                     // otherwise just use the old value.
@@ -210,9 +215,9 @@ public class EditMoodEventActivity extends AppCompatActivity implements MSView<M
                             lng,
                             image));
 
-                    // Toast to inform the user that the mood event was added.
+                    // Toast to inform the user that the mood event was edited.
                     Toast.makeText(EditMoodEventActivity.this,
-                            "Mood Event added!\n",
+                            "Mood Event edited!",
                             Toast.LENGTH_SHORT).show();
                     finish();
                 }
